@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import truckMark from "@/assets/chimcrew-logo.png";
 
@@ -15,6 +15,13 @@ const nav = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   return (
     <header className="sticky top-0 z-50 border-b-2 border-foreground/15 bg-background/90 backdrop-blur-md [overflow:visible]">
       <div className="stripe-warning h-1.5 w-full opacity-90" />
@@ -29,13 +36,15 @@ export function SiteHeader() {
               src={truckMark}
               alt=""
               aria-hidden
-              className="pointer-events-none absolute left-0 top-1/2 w-[150%] max-w-none origin-bottom-left select-none transition-transform duration-500 group-hover:translate-y-3 group-hover:[transform:translateY(35%)_rotateX(22deg)_rotateY(-14deg)_rotateZ(-3deg)_scale(1.08)]"
+              className="pointer-events-none absolute left-0 top-1/2 w-[150%] max-w-none origin-bottom-left select-none transition-[transform,filter] duration-700 ease-out"
               style={{
-                transform:
-                  "translateY(28%) rotateX(18deg) rotateY(-12deg) rotateZ(-2deg)",
+                transform: scrolled
+                  ? "translateY(-50%) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.78)"
+                  : "translateY(28%) rotateX(18deg) rotateY(-12deg) rotateZ(-2deg)",
                 transformStyle: "preserve-3d",
-                filter:
-                  "drop-shadow(0 18px 14px oklch(0.18 0.02 250 / 0.35)) drop-shadow(0 2px 0 oklch(0.7 0.22 48 / 0.4))",
+                filter: scrolled
+                  ? "drop-shadow(0 4px 6px oklch(0.18 0.02 250 / 0.25))"
+                  : "drop-shadow(0 18px 14px oklch(0.18 0.02 250 / 0.35)) drop-shadow(0 2px 0 oklch(0.7 0.22 48 / 0.4))",
               }}
             />
           </div>
