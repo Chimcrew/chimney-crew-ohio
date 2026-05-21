@@ -49,11 +49,11 @@ function Hero() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // 3D-ish drive-in: starts off-screen left, tilts, rolls into hero, then floats
-  const x = -60 + scroll * 90;          // %
-  const rotY = 18 - scroll * 28;        // deg
+  // 3D-ish drive-in: stays inside its visual column so it never covers the hero copy
+  const x = -10 + scroll * 18;          // %
+  const rotY = 10 - scroll * 16;        // deg
   const rotZ = -2 + scroll * 4;
-  const scale = 0.9 + scroll * 0.2;
+  const scale = 0.84 + scroll * 0.08;
 
   return (
     <section ref={heroRef} className="relative overflow-hidden border-b-2 border-primary/30">
@@ -64,7 +64,7 @@ function Hero() {
       <div className="pointer-events-none absolute -bottom-32 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full opacity-50 blur-3xl"
            style={{ background: "radial-gradient(closest-side, oklch(0.7 0.22 45 / 0.7), transparent 70%)" }} />
 
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-12 md:px-8 md:pt-20 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:pb-24">
+      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-12 md:px-8 md:pt-20 xl:grid-cols-[1.05fr_1fr] xl:items-center xl:pb-24">
         <div className="relative z-10">
           <p className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-primary">
             <Flame className="h-3.5 w-3.5" /> Columbus · Cincinnati · Dayton
@@ -102,7 +102,7 @@ function Hero() {
         </div>
 
         {/* The truck — animated in 3D as user enters page */}
-        <div className="relative h-[320px] md:h-[460px] lg:h-[560px]" style={{ perspective: "1400px" }}>
+        <div className="relative h-[240px] overflow-hidden sm:h-[300px] md:h-[360px] xl:h-[560px] xl:overflow-visible" style={{ perspective: "1400px" }}>
           {/* tire smoke */}
           <div className="pointer-events-none absolute bottom-8 left-1/4 h-16 w-40">
             <span className="absolute inset-0 rounded-full bg-foreground/10 blur-2xl animate-smoke" />
@@ -111,7 +111,7 @@ function Hero() {
           <img
             src={truck}
             alt="ChimCrew branded pickup truck with flame wrap"
-            className="absolute left-1/2 top-1/2 w-[110%] max-w-none drop-shadow-[0_40px_50px_oklch(0.7_0.22_45/0.4)]"
+            className="absolute left-1/2 top-1/2 w-[78%] max-w-none drop-shadow-[0_28px_36px_oklch(0.7_0.22_45/0.26)] sm:w-[68%] md:w-[58%] xl:w-[104%] xl:drop-shadow-[0_40px_50px_oklch(0.7_0.22_45/0.34)]"
             style={{
               transform: `translate(-50%, -50%) translateX(${x}%) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${scale})`,
               transition: "transform 80ms linear",
