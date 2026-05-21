@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
-import logo from "@/assets/chimcrew-logo.png";
+import truckMark from "@/assets/chimcrew-logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -16,11 +16,37 @@ const nav = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-primary/30 bg-background/85 backdrop-blur-md">
-      <div className="stripe-warning h-1.5 w-full opacity-80" />
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-8">
-        <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="ChimCrew" className="h-10 w-auto md:h-12" />
+    <header className="sticky top-0 z-50 border-b-2 border-foreground/15 bg-background/90 backdrop-blur-md [overflow:visible]">
+      <div className="stripe-warning h-1.5 w-full opacity-90" />
+      <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-8">
+        {/* 3D truck mark — sits on the header and tilts down onto the hero */}
+        <Link to="/" className="group relative flex items-center gap-3" aria-label="ChimCrew home">
+          <div
+            className="relative h-12 w-20 shrink-0 md:h-14 md:w-24"
+            style={{ perspective: "600px" }}
+          >
+            <img
+              src={truckMark}
+              alt=""
+              aria-hidden
+              className="pointer-events-none absolute left-0 top-1/2 w-[150%] max-w-none origin-bottom-left select-none transition-transform duration-500 group-hover:translate-y-3 group-hover:[transform:translateY(35%)_rotateX(22deg)_rotateY(-14deg)_rotateZ(-3deg)_scale(1.08)]"
+              style={{
+                transform:
+                  "translateY(28%) rotateX(18deg) rotateY(-12deg) rotateZ(-2deg)",
+                transformStyle: "preserve-3d",
+                filter:
+                  "drop-shadow(0 18px 14px oklch(0.18 0.02 250 / 0.35)) drop-shadow(0 2px 0 oklch(0.7 0.22 48 / 0.4))",
+              }}
+            />
+          </div>
+          <div className="flex flex-col leading-none">
+            <span className="font-display text-xl tracking-wider text-foreground md:text-2xl">
+              CHIM<span className="text-flame">CREW</span>
+            </span>
+            <span className="mt-1 font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground md:text-[10px]">
+              Chimney Services · Ohio
+            </span>
+          </div>
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
@@ -37,10 +63,10 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="relative z-10 flex items-center gap-3">
           <a
             href="tel:5551234567"
-            className="hidden items-center gap-2 rounded-sm border border-primary/40 px-3 py-2 font-mono text-sm text-primary transition hover:bg-primary hover:text-primary-foreground md:flex"
+            className="hidden items-center gap-2 rounded-sm border border-foreground/30 px-3 py-2 font-mono text-sm text-foreground transition hover:bg-foreground hover:text-background md:flex"
           >
             <Phone className="h-4 w-4" />
             555-123-4567
