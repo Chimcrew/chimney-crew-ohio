@@ -40,7 +40,7 @@ export function SiteHeader() {
               style={{
                 transform: scrolled
                   ? "translateY(-50%) rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.78)"
-                  : "translateY(28%) rotateX(18deg) rotateY(-12deg) rotateZ(-2deg)",
+                  : "translateY(-20%) rotateX(14deg) rotateY(-10deg) rotateZ(-2deg) scale(0.95)",
                 transformStyle: "preserve-3d",
                 filter: scrolled
                   ? "drop-shadow(0 4px 6px oklch(0.18 0.02 250 / 0.25))"
