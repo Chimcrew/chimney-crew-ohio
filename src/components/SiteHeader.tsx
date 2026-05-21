@@ -9,6 +9,8 @@ const nav = [
   { to: "/before-after", label: "Before / After" },
   { to: "/gallery", label: "Gallery" },
   { to: "/reviews", label: "Reviews" },
+  { to: "/blog", label: "Blog" },
+  { to: "/contact", label: "Contact" },
 ];
 
 export function SiteHeader() {

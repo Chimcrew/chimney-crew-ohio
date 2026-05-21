@@ -5,7 +5,7 @@ import { ServiceAreaMap } from "./ServiceAreaMap";
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-24 border-t-2 border-primary/40 bg-gradient-to-b from-background to-[oklch(0.1_0.01_50)] text-foreground">
+    <footer className="relative mt-24 border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
       <div className="stripe-warning h-1.5 w-full opacity-80" />
 
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
@@ -34,6 +34,8 @@ export function SiteFooter() {
               <li><Link to="/before-after" className="hover:text-primary">Before / After</Link></li>
               <li><Link to="/gallery" className="hover:text-primary">Gallery</Link></li>
               <li><Link to="/reviews" className="hover:text-primary">Reviews</Link></li>
+              <li><Link to="/blog" className="hover:text-primary">Blog</Link></li>
+              <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
             </ul>
           </div>
 
