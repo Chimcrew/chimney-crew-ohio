@@ -40,7 +40,7 @@ export function LeadForm({ id = "quote" }: { id?: string }) {
     step === 3;
 
   return (
-    <section id={id} className="relative overflow-hidden border-y-2 border-primary/30 bg-[oklch(0.13_0.01_50)] py-20">
+    <section id={id} className="relative overflow-hidden border-y-2 border-primary/30 bg-secondary py-20">
       <div className="bg-grid absolute inset-0 opacity-60" />
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 md:px-8 lg:grid-cols-[1fr_1.1fr]">
         {/* Left: truck + pitch */}
