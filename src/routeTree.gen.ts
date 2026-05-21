@@ -14,6 +14,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BeforeAfterRouteImport } from './routes/before-after'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LegalTermsRouteImport } from './routes/legal/terms'
@@ -44,6 +45,11 @@ const GalleryRoute = GalleryRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BeforeAfterRoute = BeforeAfterRouteImport.update({
@@ -80,6 +86,7 @@ const LegalAccessibilityRoute = LegalAccessibilityRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/before-after': typeof BeforeAfterRoute
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
@@ -93,6 +100,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/before-after': typeof BeforeAfterRoute
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
@@ -107,6 +115,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/before-after': typeof BeforeAfterRoute
+  '/blog': typeof BlogRoute
   '/contact': typeof ContactRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
@@ -122,6 +131,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/before-after'
+    | '/blog'
     | '/contact'
     | '/gallery'
     | '/reviews'
@@ -135,6 +145,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/before-after'
+    | '/blog'
     | '/contact'
     | '/gallery'
     | '/reviews'
@@ -148,6 +159,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/before-after'
+    | '/blog'
     | '/contact'
     | '/gallery'
     | '/reviews'
@@ -162,6 +174,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BeforeAfterRoute: typeof BeforeAfterRoute
+  BlogRoute: typeof BlogRoute
   ContactRoute: typeof ContactRoute
   GalleryRoute: typeof GalleryRoute
   ReviewsRoute: typeof ReviewsRoute
@@ -208,6 +221,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/before-after': {
@@ -258,6 +278,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BeforeAfterRoute: BeforeAfterRoute,
+  BlogRoute: BlogRoute,
   ContactRoute: ContactRoute,
   GalleryRoute: GalleryRoute,
   ReviewsRoute: ReviewsRoute,
