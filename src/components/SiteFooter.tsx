@@ -34,6 +34,8 @@ export function SiteFooter() {
               <li><Link to="/before-after" className="hover:text-primary">Before / After</Link></li>
               <li><Link to="/gallery" className="hover:text-primary">Gallery</Link></li>
               <li><Link to="/reviews" className="hover:text-primary">Reviews</Link></li>
+              <li><Link to="/blog" className="hover:text-primary">Blog</Link></li>
+              <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
             </ul>
           </div>
 
