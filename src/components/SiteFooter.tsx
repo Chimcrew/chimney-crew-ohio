@@ -5,7 +5,7 @@ import { ServiceAreaMap } from "./ServiceAreaMap";
 
 export function SiteFooter() {
   return (
-    <footer className="relative mt-24 border-t-2 border-primary/40 bg-gradient-to-b from-background to-[oklch(0.1_0.01_50)] text-foreground">
+    <footer className="relative mt-24 border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
       <div className="stripe-warning h-1.5 w-full opacity-80" />
 
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
