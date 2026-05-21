@@ -29,8 +29,8 @@ export function SiteHeader() {
         {/* 3D truck mark — sits on the header and tilts down onto the hero */}
         <Link to="/" className="group relative flex items-center gap-3" aria-label="ChimCrew home">
           <div
-            className="relative h-12 w-16 shrink-0 overflow-visible md:h-14 md:w-20"
-            style={{ perspective: "600px" }}
+            className="relative h-16 w-24 shrink-0 overflow-visible md:h-20 md:w-32"
+            style={{ perspective: "700px" }}
           >
             <img
               src={truckMark}
@@ -39,12 +39,12 @@ export function SiteHeader() {
               className="pointer-events-none absolute inset-0 h-full w-full origin-center select-none object-contain transition-[transform,filter] duration-700 ease-out"
               style={{
                 transform: scrolled
-                  ? "rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(0.92)"
-                  : "rotateX(14deg) rotateY(-10deg) rotateZ(-2deg) scale(1)",
+                  ? "rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1)"
+                  : "rotateX(12deg) rotateY(-10deg) rotateZ(-2deg) scale(1.08)",
                 transformStyle: "preserve-3d",
                 filter: scrolled
-                  ? "drop-shadow(0 4px 6px oklch(0.18 0.02 250 / 0.25))"
-                  : "drop-shadow(0 18px 14px oklch(0.18 0.02 250 / 0.35)) drop-shadow(0 2px 0 oklch(0.7 0.22 48 / 0.4))",
+                  ? "drop-shadow(0 2px 3px oklch(0.18 0.02 250 / 0.18))"
+                  : "drop-shadow(0 6px 6px oklch(0.18 0.02 250 / 0.18))",
               }}
             />
           </div>
