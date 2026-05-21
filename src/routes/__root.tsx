@@ -77,11 +77,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "ChimCrew — Chimney Sweep in Columbus, Cincinnati & Dayton, OH" },
       { name: "description", content: "Locally owned chimney sweeps serving Columbus, Cincinnati, and Dayton. CSIA-certified, flat-rate, same-day callbacks." },
       { name: "author", content: "ChimCrew" },
-      { property: "og:title", content: "ChimCrew — Ohio's Fired-Up Chimney Crew" },
-      { property: "og:description", content: "Sweeps, inspections, repairs across Columbus, Cincinnati & Dayton." },
+      { property: "og:title", content: "ChimCrew — Chimney Sweep in Columbus, Cincinnati & Dayton, OH" },
+      { property: "og:description", content: "Locally owned chimney sweeps serving Columbus, Cincinnati, and Dayton. CSIA-certified, flat-rate, same-day callbacks." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "ChimCrew — Chimney Sweep in Columbus, Cincinnati & Dayton, OH" },
+      { name: "twitter:description", content: "Locally owned chimney sweeps serving Columbus, Cincinnati, and Dayton. CSIA-certified, flat-rate, same-day callbacks." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6159d1b7-3552-4ec5-824c-865163694f19/id-preview-47a8de52--49851b74-ff19-4902-878c-836b03624bf9.lovable.app-1779390819801.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6159d1b7-3552-4ec5-824c-865163694f19/id-preview-47a8de52--49851b74-ff19-4902-878c-836b03624bf9.lovable.app-1779390819801.png" },
     ],
     links: [
       {
