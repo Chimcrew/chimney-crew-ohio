@@ -9,7 +9,7 @@ const cities = [
 
 export function ServiceAreaMap() {
   return (
-    <div className="relative w-full bg-[oklch(0.18_0.012_50)]">
+    <div className="relative w-full bg-secondary">
       <svg
         viewBox="0 0 800 500"
         className="block h-auto w-full"
@@ -18,12 +18,12 @@ export function ServiceAreaMap() {
       >
         <defs>
           <radialGradient id="cityGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="oklch(0.86 0.17 88)" stopOpacity="0.55" />
-            <stop offset="60%" stopColor="oklch(0.7 0.22 45)" stopOpacity="0.18" />
-            <stop offset="100%" stopColor="oklch(0.7 0.22 45)" stopOpacity="0" />
+            <stop offset="0%" stopColor="oklch(0.65 0.22 42)" stopOpacity="0.55" />
+            <stop offset="60%" stopColor="oklch(0.65 0.22 42)" stopOpacity="0.18" />
+            <stop offset="100%" stopColor="oklch(0.65 0.22 42)" stopOpacity="0" />
           </radialGradient>
           <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="oklch(0.86 0.17 88 / 0.06)" strokeWidth="1" />
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="oklch(0.22 0.04 45 / 0.08)" strokeWidth="1" />
           </pattern>
         </defs>
 
@@ -32,13 +32,13 @@ export function ServiceAreaMap() {
         {/* Stylized Ohio outline — abstract, evocative not literal */}
         <path
           d="M150 90 L640 70 L700 130 L690 230 L720 320 L660 430 L540 450 L420 470 L260 450 L180 380 L120 280 Z"
-          fill="oklch(0.21 0.015 55)"
-          stroke="oklch(0.86 0.17 88 / 0.5)"
+          fill="oklch(0.97 0.02 85)"
+          stroke="oklch(0.58 0.21 35 / 0.6)"
           strokeWidth="2"
         />
 
         {/* Interstate lines */}
-        <g stroke="oklch(0.86 0.17 88 / 0.3)" strokeWidth="1.5" strokeDasharray="6 6" fill="none">
+        <g stroke="oklch(0.58 0.21 35 / 0.45)" strokeWidth="1.5" strokeDasharray="6 6" fill="none">
           <path d="M285 380 L305 245 L560 215" />
           <path d="M305 245 L560 215" />
           <path d="M285 380 L560 215" />
@@ -48,15 +48,15 @@ export function ServiceAreaMap() {
         {cities.map((c) => (
           <g key={c.name}>
             <circle cx={c.cx} cy={c.cy} r={c.radius} fill="url(#cityGlow)" />
-            <circle cx={c.cx} cy={c.cy} r="10" fill="oklch(0.86 0.17 88)" />
-            <circle cx={c.cx} cy={c.cy} r="4" fill="oklch(0.12 0.01 50)" />
+            <circle cx={c.cx} cy={c.cy} r="10" fill="oklch(0.58 0.21 35)" />
+            <circle cx={c.cx} cy={c.cy} r="4" fill="oklch(0.99 0.015 90)" />
             <text
               x={c.cx}
               y={c.cy - 22}
               textAnchor="middle"
               fontFamily="Bungee, Impact, sans-serif"
               fontSize="18"
-              fill="oklch(0.97 0.02 90)"
+              fill="oklch(0.22 0.04 45)"
               letterSpacing="1"
             >
               {c.name.toUpperCase()}
@@ -71,7 +71,7 @@ export function ServiceAreaMap() {
           textAnchor="middle"
           fontFamily="Bungee, Impact, sans-serif"
           fontSize="36"
-          fill="oklch(0.86 0.17 88 / 0.18)"
+          fill="oklch(0.58 0.21 35 / 0.18)"
           letterSpacing="8"
         >
           OHIO
