@@ -7,6 +7,7 @@ import fireplace from "@/assets/fireplace-cozy.jpg";
 import beforeImg from "@/assets/before-chimney.jpg";
 import afterImg from "@/assets/after-chimney.jpg";
 import { LeadForm } from "@/components/LeadForm";
+import { BrickDivider, ChimneyGlyph, FlameGlyph, CornerChimneyAccent } from "@/components/ChimneyDecor";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,8 +24,10 @@ function Index() {
     <>
       <Hero />
       <TrustStrip />
+      <BrickDivider />
       <Services />
       <BeforeAfterTeaser />
+      <BrickDivider />
       <Process />
       <LeadForm />
       <ReviewsTeaser />
@@ -63,6 +66,10 @@ function Hero() {
       {/* Flame glow */}
       <div className="pointer-events-none absolute -bottom-32 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full opacity-50 blur-3xl"
            style={{ background: "radial-gradient(closest-side, oklch(0.7 0.22 45 / 0.7), transparent 70%)" }} />
+      {/* Decorative chimney + drifting flames behind the headline */}
+      <CornerChimneyAccent className="absolute right-6 top-8 hidden xl:block opacity-80" />
+      <FlameGlyph className="pointer-events-none absolute bottom-6 left-6 h-16 w-12 text-flame/70 animate-flicker hidden md:block" />
+      <FlameGlyph className="pointer-events-none absolute bottom-10 left-28 h-10 w-8 text-flame/50 animate-flicker hidden md:block" style={{ animationDelay: "0.6s" }} />
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-12 md:px-8 md:pt-20 xl:grid-cols-[1.05fr_1fr] xl:items-center xl:pb-24">
         <div className="relative z-10">
@@ -159,7 +166,11 @@ const SERVICES = [
 
 function Services() {
   return (
-    <section className="relative py-24">
+    <section className="relative overflow-hidden py-24">
+      {/* Soft brick grid backdrop */}
+      <div className="bg-bricks-soft pointer-events-none absolute inset-0 opacity-50" />
+      <ChimneyGlyph className="pointer-events-none absolute -right-6 top-10 h-40 w-32 text-primary/15 hidden md:block" />
+      <FlameGlyph className="pointer-events-none absolute -left-2 bottom-10 h-24 w-20 text-flame/20 animate-flicker hidden md:block" />
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
           <div>
@@ -176,13 +187,16 @@ function Services() {
           {SERVICES.map((s) => (
             <div
               key={s.title}
-              className="group relative rounded-sm border-2 border-border bg-card p-6 transition hover:border-primary hover:shadow-flame"
+              className="group relative overflow-hidden rounded-sm border-2 border-border bg-card p-6 transition hover:border-primary hover:shadow-flame"
             >
+              {/* corner brick accent reveals on hover */}
+              <div className="bg-bricks pointer-events-none absolute -right-6 -top-6 h-16 w-16 rotate-12 opacity-0 transition-opacity duration-500 group-hover:opacity-60" />
               <div className="grid h-12 w-12 place-items-center rounded-sm bg-primary text-primary-foreground">
                 <s.icon className="h-6 w-6" />
               </div>
               <h3 className="mt-5 text-2xl">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+              <FlameGlyph className="pointer-events-none absolute bottom-2 right-2 h-8 w-6 text-flame/0 transition-colors duration-500 group-hover:text-flame/70" />
             </div>
           ))}
         </div>
@@ -194,6 +208,9 @@ function Services() {
 function BeforeAfterTeaser() {
   return (
     <section className="relative overflow-hidden bg-card/40 py-24">
+      {/* faux brick wall on the right edge */}
+      <div className="bg-bricks pointer-events-none absolute -right-10 top-12 hidden h-64 w-32 rotate-3 opacity-25 md:block" />
+      <FlameGlyph className="pointer-events-none absolute left-6 top-10 h-20 w-16 text-flame/40 animate-flicker hidden md:block" />
       <div className="mx-auto grid max-w-7xl gap-12 px-4 md:px-8 lg:grid-cols-2 lg:items-center">
         <div>
           <p className="font-mono text-xs uppercase tracking-widest text-primary">// Before / After</p>
@@ -234,7 +251,8 @@ const STEPS = [
 
 function Process() {
   return (
-    <section className="relative py-24">
+    <section className="relative overflow-hidden py-24">
+      <ChimneyGlyph className="pointer-events-none absolute right-10 top-12 h-32 w-24 text-primary/15 hidden md:block" />
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <p className="font-mono text-xs uppercase tracking-widest text-primary">// How it works</p>
         <h2 className="mt-3 text-5xl md:text-6xl">Four steps. One yellow truck.</h2>
@@ -266,7 +284,9 @@ const REVIEWS = [
 
 function ReviewsTeaser() {
   return (
-    <section className="relative py-24">
+    <section className="relative overflow-hidden py-24">
+      <FlameGlyph className="pointer-events-none absolute left-10 top-10 h-16 w-12 text-flame/30 animate-flicker hidden md:block" />
+      <FlameGlyph className="pointer-events-none absolute right-10 bottom-10 h-20 w-16 text-flame/30 animate-flicker hidden md:block" style={{ animationDelay: "0.8s" }} />
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="flex items-end justify-between">
           <div>
