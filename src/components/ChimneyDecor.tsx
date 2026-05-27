@@ -12,11 +12,12 @@ export function BrickDivider({ className = "" }: { className?: string }) {
 }
 
 /** Inline brick stack svg — small standalone chimney glyph. */
-export function ChimneyGlyph({ className = "" }: { className?: string }) {
+export function ChimneyGlyph({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
   return (
     <svg
       viewBox="0 0 64 80"
       className={className}
+      style={style}
       aria-hidden="true"
       fill="none"
     >
@@ -51,9 +52,9 @@ export function ChimneyGlyph({ className = "" }: { className?: string }) {
 }
 
 /** Decorative flame SVG (hand-drawn vibe, currentColor). */
-export function FlameGlyph({ className = "" }: { className?: string }) {
+export function FlameGlyph({ className = "", style }: { className?: string; style?: React.CSSProperties }) {
   return (
-    <svg viewBox="0 0 48 64" className={className} aria-hidden="true" fill="none">
+    <svg viewBox="0 0 48 64" className={className} style={style} aria-hidden="true" fill="none">
       <path
         d="M24 2c2 10-8 14-8 24 0 6 4 9 4 14 0 4-3 6-3 6s9-2 9-12c0-4-2-6-2-9 0 0 3 4 3 9 0 6-2 9-2 9s11-3 11-16c0-12-12-15-12-25Z"
         fill="currentColor"
