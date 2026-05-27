@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone, CalendarCheck, ChevronDown } from "lucide-react";
-import truckMark from "@/assets/chimcrew-logo.png";
+import truckMark from "@/assets/chimcrew-truck.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -24,7 +24,7 @@ export function SiteHeader() {
             <img
               src={truckMark}
               alt="ChimCrew"
-              className="h-14 w-auto md:h-16"
+              className="h-16 w-auto md:h-20"
             />
             <div className="hidden flex-col leading-tight md:flex">
               <span className="font-display text-base tracking-wider">ChimCrew</span>
