@@ -1,19 +1,34 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import { Flame, ShieldCheck, Clock, Star, ChevronRight, Wind, Hammer, Search, Bird } from "lucide-react";
-import truck from "@/assets/chimcrew-truck.png";
+import {
+  CheckCircle2,
+  Phone,
+  CalendarCheck,
+  Wrench,
+  Search,
+  Sparkles,
+  ShieldCheck,
+  Flame,
+  Star,
+  ChevronRight,
+} from "lucide-react";
+import { useState } from "react";
+import logo from "@/assets/chimcrew-logo.png";
 import sweep from "@/assets/sweep-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import beforeImg from "@/assets/before-chimney.jpg";
 import afterImg from "@/assets/after-chimney.jpg";
+import truck from "@/assets/chimcrew-truck.png";
 import { LeadForm } from "@/components/LeadForm";
-import { BrickDivider, ChimneyGlyph, FlameGlyph, CornerChimneyAccent } from "@/components/ChimneyDecor";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "ChimCrew — Chimney Sweep in Columbus, Cincinnati & Dayton" },
-      { name: "description", content: "Local Ohio chimney sweeps. Sweeps, inspections, liners, caps & repairs in Columbus, Cincinnati and Dayton. Same-day callback." },
+      {
+        name: "description",
+        content:
+          "Local Ohio chimney experts. Sweeps, inspections, repair and masonry in Columbus, Cincinnati and Dayton. Same-day callback, 24/7.",
+      },
     ],
   }),
   component: Index,
@@ -23,290 +38,679 @@ function Index() {
   return (
     <>
       <Hero />
-      <TrustStrip />
-      <BrickDivider />
-      <Services />
-      <BeforeAfterTeaser />
-      <BrickDivider />
-      <Process />
-      <LeadForm />
-      <ReviewsTeaser />
+      <ReviewBanner />
+      <Testimonial />
+      <EmergencyCall />
+      <ServicesGrid />
+      <PeaceOfMind />
+      <Pillars />
+      <PromoStrip />
+      <ServiceDetails />
+      <Steps />
+      <FaqSection />
+      <ContactSection />
+      <ServicesList />
+      <RelatedArticles />
     </>
   );
 }
 
+/* ---------- HERO ---------- */
 function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const [scroll, setScroll] = useState(0);
-
-  useEffect(() => {
-    function onScroll() {
-      if (!heroRef.current) return;
-      const rect = heroRef.current.getBoundingClientRect();
-      const total = rect.height + window.innerHeight;
-      const p = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / total));
-      setScroll(p);
-    }
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // 3D-ish drive-in: stays inside its visual column so it never covers the hero copy
-  const x = -10 + scroll * 18;          // %
-  const rotY = 10 - scroll * 16;        // deg
-  const rotZ = -2 + scroll * 4;
-  const scale = 0.84 + scroll * 0.08;
-
   return (
-    <section ref={heroRef} className="relative overflow-hidden border-b-2 border-primary/30">
-      {/* Background */}
-      <div className="bg-grid absolute inset-0 opacity-60" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
-      {/* Flame glow */}
-      <div className="pointer-events-none absolute -bottom-32 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full opacity-50 blur-3xl"
-           style={{ background: "radial-gradient(closest-side, oklch(0.7 0.22 45 / 0.7), transparent 70%)" }} />
-      {/* Decorative chimney + drifting flames behind the headline */}
-      <CornerChimneyAccent className="absolute right-6 top-8 hidden xl:block opacity-80" />
-      <FlameGlyph className="pointer-events-none absolute bottom-6 left-6 h-16 w-12 text-flame/70 animate-flicker hidden md:block" />
-      <FlameGlyph className="pointer-events-none absolute bottom-10 left-28 h-10 w-8 text-flame/50 animate-flicker hidden md:block" style={{ animationDelay: "0.6s" }} />
+    <section className="relative overflow-hidden bg-secondary">
+      <div className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-foreground/5 blur-3xl" aria-hidden />
+      <div className="absolute right-10 bottom-10 h-40 w-40 rounded-full bg-flame/10 blur-2xl" aria-hidden />
 
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-16 pt-12 md:px-8 md:pt-20 xl:grid-cols-[1.05fr_1fr] xl:items-center xl:pb-24">
-        <div className="relative z-10">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-primary">
-            <Flame className="h-3.5 w-3.5" /> Columbus · Cincinnati · Dayton
-          </p>
-          <h1 className="mt-5 text-[clamp(2.6rem,7vw,5.5rem)] leading-[0.95]">
-            Ohio's <span className="text-flame">fired-up</span><br />
-            chimney crew.
-          </h1>
-          <p className="mt-5 max-w-xl text-lg text-muted-foreground">
-            Sweeps, inspections, liners and repairs done by a real local crew
-            that shows up, suits up, and gets your flue back in fighting shape.
-          </p>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a
-              href="#quote"
-              className="group inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-4 font-display text-sm uppercase tracking-widest text-primary-foreground transition hover:brightness-110"
-            >
-              Get my free quote
-              <ChevronRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </a>
-            <a
-              href="tel:5551234567"
-              className="inline-flex items-center gap-2 rounded-sm border-2 border-primary/50 px-6 py-4 font-display text-sm uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
-            >
-              Call 555-123-4567
-            </a>
-          </div>
-
-          <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-            <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> CSIA Certified</span>
-            <span className="flex items-center gap-2"><Clock className="h-4 w-4 text-primary" /> Same-day callback</span>
-            <span className="flex items-center gap-2"><Star className="h-4 w-4 text-primary" /> 4.9★ on Google</span>
-          </div>
-        </div>
-
-        {/* The truck — animated in 3D as user enters page */}
-        <div className="relative h-[240px] overflow-hidden sm:h-[300px] md:h-[360px] xl:h-[560px] xl:overflow-visible" style={{ perspective: "1400px" }}>
-          {/* tire smoke */}
-          <div className="pointer-events-none absolute bottom-8 left-1/4 h-16 w-40">
-            <span className="absolute inset-0 rounded-full bg-foreground/10 blur-2xl animate-smoke" />
-            <span className="absolute inset-0 rounded-full bg-foreground/10 blur-2xl animate-smoke" style={{ animationDelay: "1.2s" }} />
-          </div>
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:gap-12 md:px-8 md:py-24">
+        <div className="flex items-center justify-center">
           <img
-            src={truck}
-            alt="ChimCrew branded pickup truck with flame wrap"
-            className="absolute left-1/2 top-1/2 w-[78%] max-w-none drop-shadow-[0_28px_36px_oklch(0.7_0.22_45/0.26)] sm:w-[68%] md:w-[58%] xl:w-[104%] xl:drop-shadow-[0_40px_50px_oklch(0.7_0.22_45/0.34)]"
-            style={{
-              transform: `translate(-50%, -50%) translateX(${x}%) rotateY(${rotY}deg) rotateZ(${rotZ}deg) scale(${scale})`,
-              transition: "transform 80ms linear",
-              transformStyle: "preserve-3d",
-            }}
+            src={logo}
+            alt="ChimCrew Chimney Sweep logo"
+            className="w-full max-w-md drop-shadow-[0_20px_40px_oklch(0.18_0.02_250/0.25)]"
           />
         </div>
-      </div>
 
-      {/* warning stripe at bottom */}
-      <div className="stripe-warning h-2 w-full opacity-90" />
-    </section>
-  );
-}
-
-function TrustStrip() {
-  const items = [
-    "12+ Years in Ohio",
-    "2,400+ Flues Cleaned",
-    "Flat-Rate Pricing",
-    "Fully Insured",
-    "Local & Family-Owned",
-  ];
-  return (
-    <div className="border-b border-primary/20 bg-card/60">
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-x-10 gap-y-3 px-4 py-5 md:px-8">
-        {items.map((t) => (
-          <span key={t} className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-            ◆ {t}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-const SERVICES = [
-  { icon: Wind,   title: "Chimney Sweep",       desc: "Full creosote and soot removal with HEPA containment. No mess in the living room — guaranteed." },
-  { icon: Search, title: "Inspections",          desc: "CSIA Level 1, 2, and 3 inspections with a written report and photos from inside the flue." },
-  { icon: Hammer, title: "Repairs & Rebuilds",   desc: "Crown rebuilds, tuckpointing, flashing, caps, dampers — anything that's failing, we fix it." },
-  { icon: Flame,  title: "Liners & Installs",    desc: "Stainless steel liner installs sized to your appliance. Safer burns, better draft, longer life." },
-  { icon: Bird,   title: "Animal Removal",       desc: "Birds, raccoons, squirrels — humane removal and full-cap installation so they don't come back." },
-  { icon: ShieldCheck, title: "Safety Service Plans", desc: "Annual maintenance plans that keep your insurance happy and your family safe." },
-];
-
-function Services() {
-  return (
-    <section className="relative overflow-hidden py-24">
-      {/* Soft brick grid backdrop */}
-      <div className="bg-bricks-soft pointer-events-none absolute inset-0 opacity-50" />
-      <ChimneyGlyph className="pointer-events-none absolute -right-6 top-10 h-40 w-32 text-primary/15 hidden md:block" />
-      <FlameGlyph className="pointer-events-none absolute -left-2 bottom-10 h-24 w-20 text-flame/20 animate-flicker hidden md:block" />
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-primary">// Services</p>
-            <h2 className="mt-3 text-5xl md:text-6xl">Everything above the firebox.</h2>
-          </div>
-          <p className="max-w-md text-muted-foreground">
-            One crew, one truck, every service — from a quick sweep to a full
-            rebuild of your chimney crown.
-          </p>
-        </div>
-
-        <div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s) => (
-            <div
-              key={s.title}
-              className="group relative overflow-hidden rounded-sm border-2 border-border bg-card p-6 transition hover:border-primary hover:shadow-flame"
-            >
-              {/* corner brick accent reveals on hover */}
-              <div className="bg-bricks pointer-events-none absolute -right-6 -top-6 h-16 w-16 rotate-12 opacity-0 transition-opacity duration-500 group-hover:opacity-60" />
-              <div className="grid h-12 w-12 place-items-center rounded-sm bg-primary text-primary-foreground">
-                <s.icon className="h-6 w-6" />
-              </div>
-              <h3 className="mt-5 text-2xl">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-              <FlameGlyph className="pointer-events-none absolute bottom-2 right-2 h-8 w-6 text-flame/0 transition-colors duration-500 group-hover:text-flame/70" />
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function BeforeAfterTeaser() {
-  return (
-    <section className="relative overflow-hidden bg-card/40 py-24">
-      {/* faux brick wall on the right edge */}
-      <div className="bg-bricks pointer-events-none absolute -right-10 top-12 hidden h-64 w-32 rotate-3 opacity-25 md:block" />
-      <FlameGlyph className="pointer-events-none absolute left-6 top-10 h-20 w-16 text-flame/40 animate-flicker hidden md:block" />
-      <div className="mx-auto grid max-w-7xl gap-12 px-4 md:px-8 lg:grid-cols-2 lg:items-center">
         <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-primary">// Before / After</p>
-          <h2 className="mt-3 text-5xl md:text-6xl">From soot-caked to spotless.</h2>
-          <p className="mt-4 max-w-md text-muted-foreground">
-            Every job ends with a photo handover so you can see exactly what we
-            cleaned, repaired, or replaced. Receipts, not promises.
+          <h1 className="font-display text-3xl leading-tight text-primary md:text-5xl">
+            The Chimney Experts You've Trusted for Over 50 Years In Your Area
+          </h1>
+          <p className="mt-5 text-lg text-foreground md:text-xl">
+            Servicing Your Area And Surrounding Areas • Chimney Inspections, Repair And Cleaning Near Me
           </p>
+
+          <ul className="mt-6 space-y-3 text-lg font-semibold text-primary">
+            {[
+              "Locally Owned & Operated",
+              "Certified | Licensed | Insured",
+              "Satisfaction Guaranteed",
+            ].map((line) => (
+              <li key={line} className="flex items-center gap-3">
+                <CheckCircle2 className="h-6 w-6 text-flame" />
+                {line}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-7">
+            <p className="font-display text-2xl text-flame">Call Us Now!</p>
+            <a
+              href="tel:5551234567"
+              className="font-display text-3xl tracking-wider text-primary hover:text-flame md:text-4xl"
+            >
+              555-123-4567
+            </a>
+          </div>
+
           <Link
-            to="/before-after"
-            className="mt-8 inline-flex items-center gap-2 font-display text-sm uppercase tracking-widest text-primary hover:underline"
+            to="/contact"
+            className="mt-6 inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-4 font-display text-base uppercase tracking-wider text-primary-foreground shadow-hard transition hover:brightness-110"
           >
-            See the full gallery <ChevronRight className="h-4 w-4" />
+            Schedule Online <CalendarCheck className="h-5 w-5" />
           </Link>
         </div>
-
-        <div className="relative grid grid-cols-2 gap-4">
-          <figure className="relative overflow-hidden rounded-sm border-2 border-border">
-            <img src={beforeImg} alt="Soot-caked chimney before" className="aspect-[3/4] w-full object-cover" loading="lazy" />
-            <figcaption className="absolute left-3 top-3 rounded-sm bg-background/80 px-2 py-1 font-mono text-[10px] uppercase tracking-widest">Before</figcaption>
-          </figure>
-          <figure className="relative overflow-hidden rounded-sm border-2 border-primary">
-            <img src={afterImg} alt="Cleaned chimney after" className="aspect-[3/4] w-full object-cover" loading="lazy" />
-            <figcaption className="absolute left-3 top-3 rounded-sm bg-primary px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground">After</figcaption>
-          </figure>
-        </div>
       </div>
     </section>
   );
 }
 
-const STEPS = [
-  { n: "01", title: "Tell us what's up", desc: "60-second quote form — service, city, contact. That's it." },
-  { n: "02", title: "Same-day callback", desc: "A real ChimCrew tech calls you back, flat-rate pricing up front." },
-  { n: "03", title: "We roll out", desc: "The crew arrives in the yellow truck, drop cloths down, work begins." },
-  { n: "04", title: "Photo handover", desc: "Before & after photos, written report, warranty — all in your inbox." },
-];
-
-function Process() {
+/* ---------- REVIEW BANNER ---------- */
+function ReviewBanner() {
+  const platforms = ["Yelp", "Angi", "HomeAdvisor", "Google", "Porch", "BBB"];
   return (
-    <section className="relative overflow-hidden py-24">
-      <ChimneyGlyph className="pointer-events-none absolute right-10 top-12 h-32 w-24 text-primary/15 hidden md:block" />
+    <section className="bg-primary py-10 text-primary-foreground">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <p className="font-mono text-xs uppercase tracking-widest text-primary">// How it works</p>
-        <h2 className="mt-3 text-5xl md:text-6xl">Four steps. One yellow truck.</h2>
-
-        <div className="mt-12 grid gap-px overflow-hidden rounded-sm border-2 border-border bg-border md:grid-cols-4">
-          {STEPS.map((s) => (
-            <div key={s.n} className="bg-card p-6 transition hover:bg-card/60">
-              <p className="font-display text-5xl text-primary">{s.n}</p>
-              <h3 className="mt-4 text-xl">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
+        <p className="font-display text-base uppercase tracking-widest">
+          5 STAR — Based On 1,836 Reviews
+        </p>
+        <div className="mt-6 grid grid-cols-3 gap-3 md:grid-cols-6">
+          {platforms.map((p) => (
+            <div
+              key={p}
+              className="flex flex-col items-center justify-center gap-1 rounded-sm bg-background px-3 py-4 text-foreground shadow-flame"
+            >
+              <span className="font-display text-base uppercase tracking-wider">{p}</span>
+              <div className="flex gap-0.5 text-flame">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <Star key={i} className="h-3 w-3 fill-current" />
+                ))}
+              </div>
             </div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-2">
-          <img src={sweep} alt="ChimCrew technician on a rooftop" className="h-72 w-full rounded-sm border-2 border-border object-cover lg:h-96" loading="lazy" />
-          <img src={fireplace} alt="Cozy fireplace after service" className="h-72 w-full rounded-sm border-2 border-border object-cover lg:h-96" loading="lazy" />
+/* ---------- TESTIMONIAL ---------- */
+function Testimonial() {
+  return (
+    <section className="bg-background py-16">
+      <div className="mx-auto max-w-4xl px-4 text-center md:px-8">
+        <h2 className="font-display text-3xl text-primary md:text-4xl">Customer Testimonials</h2>
+        <div className="mt-4 flex justify-center gap-1 text-flame">
+          {[0, 1, 2, 3, 4].map((i) => (
+            <Star key={i} className="h-6 w-6 fill-current" />
+          ))}
+        </div>
+        <p className="mt-6 text-lg leading-relaxed text-foreground md:text-xl">
+          I've used ChimCrew for maintenance and other repairs &amp; cleaning, and I'm always
+          impressed with their level of service. They use top-quality materials and are very
+          detail-oriented. My chimney has never been in better shape, and I appreciate their
+          commitment to safety and customer satisfaction.
+        </p>
+        <Link
+          to="/reviews"
+          className="mt-6 inline-flex items-center gap-2 font-display text-sm uppercase tracking-widest text-flame hover:underline"
+        >
+          More From Our Customers <ChevronRight className="h-4 w-4" />
+        </Link>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- EMERGENCY CALL ---------- */
+function EmergencyCall() {
+  return (
+    <section className="bg-flame py-6 text-white">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-3 px-4 text-center md:flex-row md:gap-6 md:px-8">
+        <Flame className="h-6 w-6" />
+        <p className="font-display text-lg uppercase tracking-wider md:text-xl">
+          For emergency service Call:
+        </p>
+        <a href="tel:5551234567" className="font-display text-2xl tracking-wider hover:underline">
+          555-123-4567
+        </a>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- SERVICES GRID (4 cards) ---------- */
+function ServicesGrid() {
+  const items = [
+    {
+      icon: Sparkles,
+      title: "Chimney Cleaning",
+      sub: "and Fireplace Cleaning",
+      body: "Remove creosote buildup and debris for a safer, more efficient fireplace and improved indoor air quality.",
+    },
+    {
+      icon: Search,
+      title: "Chimney Inspection",
+      sub: "and Fireplace Inspection",
+      body: "Ensure your chimney's structural integrity and functionality with a thorough inspection to prevent hazards and issues.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Chimney Maintenance",
+      sub: "and Fireplace Maintenance",
+      body: "Regular maintenance prolongs chimney life, ensuring safety, efficiency, and preventing costly future repairs.",
+    },
+    {
+      icon: Wrench,
+      title: "Chimney Repair",
+      sub: "and Fireplace Repair",
+      body: "Fix cracks, leaks, Gas Fireplace Repair and structural issues to restore your chimney's safety, functionality, and aesthetic appeal.",
+    },
+  ];
+  return (
+    <section className="bg-background py-20">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <h2 className="text-center font-display text-3xl uppercase tracking-wider text-primary md:text-4xl">
+          Our Chimney Services
+        </h2>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {items.map(({ icon: Icon, title, sub, body }) => (
+            <div
+              key={title}
+              className="group flex flex-col items-center rounded-sm border-2 border-border bg-card p-6 text-center transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
+            >
+              <div className="grid h-16 w-16 place-items-center rounded-full bg-primary text-flame">
+                <Icon className="h-8 w-8" />
+              </div>
+              <h3 className="mt-5 font-display text-lg text-primary">{title}</h3>
+              <p className="text-sm font-semibold text-flame">{sub}</p>
+              <p className="mt-3 text-sm text-muted-foreground">{body}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-const REVIEWS = [
-  { name: "Marcus T.", city: "Columbus, OH", text: "Booked online Monday, swept Tuesday. Crew was sharp, the truck was wild, and the price didn't change at the door. Best service call I've had all year." },
-  { name: "Priya R.",  city: "Cincinnati, OH", text: "Found a cracked crown on a Level 2 inspection. They sent photos, quoted flat-rate, fixed it the next week. Very honest crew." },
-  { name: "Sam & Jess", city: "Dayton, OH",    text: "Raccoons in the flue. ChimCrew got them out humanely, installed a cap, and we haven't had a problem since. Highly recommend." },
-];
-
-function ReviewsTeaser() {
+/* ---------- PEACE OF MIND (image + headline) ---------- */
+function PeaceOfMind() {
   return (
-    <section className="relative overflow-hidden py-24">
-      <FlameGlyph className="pointer-events-none absolute left-10 top-10 h-16 w-12 text-flame/30 animate-flicker hidden md:block" />
-      <FlameGlyph className="pointer-events-none absolute right-10 bottom-10 h-20 w-16 text-flame/30 animate-flicker hidden md:block" style={{ animationDelay: "0.8s" }} />
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="flex items-end justify-between">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-primary">// Word on the street</p>
-            <h2 className="mt-3 text-5xl md:text-6xl">Neighbors talk.</h2>
+    <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground">
+      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 md:grid-cols-2 md:px-8">
+        <div className="overflow-hidden rounded-sm border-4 border-flame shadow-flame">
+          <img src={sweep} alt="Chimney sweep on a rooftop" className="h-full w-full object-cover" />
+        </div>
+        <div>
+          <h3 className="font-display text-2xl uppercase tracking-wider text-flame md:text-3xl">
+            Leave Chimney to the Pros
+          </h3>
+          <p className="mt-4 font-display text-xl leading-snug md:text-2xl">
+            Because with ChimCrew, you get more than just a service — you get peace of mind.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 4 PILLARS ---------- */
+function Pillars() {
+  const items = [
+    {
+      title: "Reputation",
+      body:
+        "Trusted chimney experts since 1975 in Your Area. Delivering exceptional service and craftsmanship with decades of proven expertise.",
+    },
+    {
+      title: "Transparency",
+      body:
+        "No hidden fees — our honest pricing covers chimney services any time, including holidays.",
+    },
+    {
+      title: "Efficiency",
+      body:
+        "Prompt same-day and emergency chimney services, available 365 days a year to meet your needs.",
+    },
+    {
+      title: "Quality",
+      body:
+        "Comprehensive chimney work, from cleaning to repair, using advanced techniques and the latest equipment.",
+    },
+  ];
+  return (
+    <section className="bg-background py-20">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 md:grid-cols-2 lg:grid-cols-4 md:px-8">
+        {items.map((p) => (
+          <div key={p.title} className="border-l-4 border-flame pl-5">
+            <h3 className="font-display text-2xl uppercase tracking-wider text-primary">{p.title}</h3>
+            <p className="mt-3 text-base text-muted-foreground">{p.body}</p>
           </div>
-          <Link to="/reviews" className="hidden font-display text-sm uppercase tracking-widest text-primary hover:underline md:inline">All reviews →</Link>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- PROMO STRIP ---------- */
+function PromoStrip() {
+  return (
+    <section className="relative bg-flame py-16 text-white">
+      <div className="mx-auto max-w-5xl px-4 text-center md:px-8">
+        <p className="font-display text-sm uppercase tracking-widest opacity-90">
+          Limited Time Offer
+        </p>
+        <h2 className="mt-2 font-display text-4xl uppercase tracking-wider md:text-6xl">
+          $69 Chimney Inspection Service
+        </h2>
+        <p className="mx-auto mt-5 max-w-3xl text-base leading-relaxed md:text-lg">
+          Chimney cleaning in Your Area is not merely about appearances; it's a crucial step in
+          safeguarding your home's air quality and overall safety. Regular cleaning reduces the
+          buildup of harmful contaminants and ensures that your chimney operates efficiently,
+          minimizing potential fire hazards.
+        </p>
+        <div className="mt-7 flex flex-col items-center justify-center gap-3 md:flex-row">
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-base uppercase tracking-wider text-primary-foreground shadow-hard"
+          >
+            Schedule Online <CalendarCheck className="h-5 w-5" />
+          </Link>
+          <a
+            href="tel:5551234567"
+            className="inline-flex items-center gap-2 rounded-sm border-2 border-white bg-transparent px-6 py-3 font-display text-base uppercase tracking-wider text-white hover:bg-white hover:text-flame"
+          >
+            Call Now 555-123-4567 <Phone className="h-5 w-5" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- DETAILED SERVICE SECTIONS ---------- */
+function ServiceDetails() {
+  const sections = [
+    {
+      title: "Chimney Cleaning",
+      sub: "Exceptional Chimney Cleaning Services in Your Area",
+      body:
+        "Chimney cleaning services. Maintaining a clean chimney is essential for the safety and efficiency of your fireplace or stove. Over time, soot, creosote, and other debris accumulate inside your chimney, posing fire hazards and reducing efficiency. Our expert technicians are committed to ensuring your chimney remains clean and safe for use.",
+      image: fireplace,
+    },
+    {
+      title: "Chimney Inspection",
+      sub: "Exceptional Chimney Inspection",
+      body:
+        "Regular chimney inspections are crucial for the safety and efficiency of your fireplace or stove. Over time, issues such as soot buildup, creosote accumulation, and structural concerns pose significant fire hazards and reduce efficiency. Our expert technicians are dedicated to thoroughly inspecting your chimney to ensure it remains safe and in optimal condition for use.",
+      image: beforeImg,
+    },
+    {
+      title: "Chimney Repair",
+      sub: "Professional Chimney Repair Services",
+      body:
+        "At ChimCrew, we offer expert chimney repair services to homeowners. A well-maintained chimney is essential for the safety and efficiency of your fireplace or stove. Over time, your chimney can suffer from wear and tear, weather damage, and other issues that compromise its integrity. Our skilled technicians are here to provide comprehensive chimney repairs, ensuring your chimney remains safe and functional.",
+      image: afterImg,
+    },
+    {
+      title: "Gas Fireplace Service",
+      sub: "Fireplace Installation, Repair, and Maintenance",
+      body:
+        "At ChimCrew Fireplace Services, we offer expert solutions for all your fireplace needs. From gas fireplace repairs and installation to inspections, maintenance, and pilot light fixes, our skilled technicians ensure safe and efficient operation year-round. Whether it's a new installation or troubleshooting why your pilot light won't stay lit, we've got you covered!",
+      image: fireplace,
+    },
+    {
+      title: "Chimney Masonry",
+      sub: "Quality Chimney Rebuilding Experts",
+      body:
+        "Chimney masonry involves building and maintaining brick, stone, or concrete chimneys. Weather, moisture, and heat can cause cracks, spalling, and deterioration over time. ChimCrew offers expert chimney rebuilding, tuckpointing, waterproofing, and crown repairs to ensure safety and durability. Trust ChimCrew for reliable service and lasting chimney solutions.",
+      image: sweep,
+    },
+    {
+      title: "Chimney Maintenance",
+      sub: "Top-Notch Chimney Maintenance Services",
+      body:
+        "At ChimCrew, we specialize in providing comprehensive chimney maintenance services to homeowners. Regular chimney maintenance is essential for the safety, efficiency, and longevity of your fireplace or stove. Our skilled technicians are dedicated to keeping your chimney in optimal condition, ensuring that it operates safely and efficiently year-round.",
+      image: afterImg,
+    },
+  ];
+
+  return (
+    <section className="bg-background py-20">
+      <div className="mx-auto max-w-7xl space-y-16 px-4 md:px-8">
+        {sections.map((s, i) => (
+          <div
+            key={s.title}
+            className={`grid items-center gap-10 md:grid-cols-2 ${
+              i % 2 === 1 ? "md:[&>div:first-child]:order-2" : ""
+            }`}
+          >
+            <div>
+              <h3 className="font-display text-3xl uppercase tracking-wider text-primary md:text-4xl">
+                {s.title}
+              </h3>
+              <p className="mt-3 font-display text-lg text-flame">{s.sub}</p>
+              <p className="mt-4 text-base leading-relaxed text-muted-foreground">{s.body}</p>
+            </div>
+            <div className="overflow-hidden rounded-sm border-4 border-primary shadow-flame">
+              <img src={s.image} alt={s.title} className="h-72 w-full object-cover md:h-96" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- 4 STEPS ---------- */
+function Steps() {
+  const steps = [
+    {
+      n: "1",
+      title: "Reach Out to Us",
+      body:
+        "Contact our expert team by phone or visit our book an appointment page to schedule your Chimney Sweep service.",
+    },
+    {
+      n: "2",
+      title: "Provide Your Details",
+      body:
+        "Share your address and any specific details about your home that could impact the service, ensuring our team is well-prepared.",
+    },
+    {
+      n: "3",
+      title: "Schedule Your Service",
+      body:
+        "Discuss the urgency of your needs, and we'll arrange a convenient date and time for our team to visit.",
+    },
+    {
+      n: "4",
+      title: "Receive a Customized Quote",
+      body:
+        "Our local service technician will assess your requirements and provide a quote based on your chimney.",
+    },
+  ];
+
+  return (
+    <section className="bg-primary py-20 text-primary-foreground">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <h2 className="text-center font-display text-3xl uppercase tracking-wider md:text-4xl">
+          How To Get In Touch With ChimCrew?
+        </h2>
+        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {steps.map((s) => (
+            <div key={s.n} className="rounded-sm border-2 border-flame/40 bg-primary/40 p-6">
+              <div className="font-display text-6xl text-flame">{s.n}</div>
+              <h3 className="mt-3 font-display text-xl uppercase tracking-wider">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed opacity-90">{s.body}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-10 flex flex-col items-center justify-center gap-3 md:flex-row">
+          <a
+            href="tel:5551234567"
+            className="inline-flex items-center gap-2 rounded-sm bg-flame px-6 py-3 font-display text-base uppercase tracking-wider text-white shadow-flame hover:brightness-110"
+          >
+            Call Now 555-123-4567 <Phone className="h-5 w-5" />
+          </a>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-sm border-2 border-white bg-transparent px-6 py-3 font-display text-base uppercase tracking-wider text-white hover:bg-white hover:text-primary"
+          >
+            Schedule Online <CalendarCheck className="h-5 w-5" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FAQ ---------- */
+function FaqSection() {
+  const faqs = [
+    {
+      q: "Why choose ChimCrew?",
+      a: "With 50 years of expertise, we provide professional, reliable chimney services, ensuring safety and efficiency in every home.",
+    },
+    {
+      q: "What does ChimCrew stand for?",
+      a: "ChimCrew is the crew of certified chimney technicians who built the company with a focus on quality chimney services, reflecting decades of trusted service to homes across Ohio.",
+    },
+    {
+      q: "What services do you offer?",
+      a: "We offer chimney cleaning, inspection, repairs, maintenance, creosote removal, waterproofing, and more for optimal performance.",
+    },
+    {
+      q: "How much is a chimney inspection?",
+      a: "Our chimney inspection costs $69. It includes a comprehensive check to identify potential issues.",
+    },
+    {
+      q: "Can you clean and repair together?",
+      a: "Yes, we offer same-day cleaning and repair services during your appointment if needed.",
+    },
+    {
+      q: "How do I book an appointment?",
+      a: "Call us at 555-123-4567 or fill out the online form to schedule your visit.",
+    },
+  ];
+
+  const [open, setOpen] = useState<number | null>(0);
+
+  return (
+    <section className="bg-background py-20">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 md:grid-cols-[1fr_1.2fr] md:px-8">
+        <div>
+          <h2 className="font-display text-3xl uppercase tracking-wider text-primary md:text-4xl">
+            Got Questions? We've Got Answers.
+          </h2>
+          <p className="mt-4 text-base text-muted-foreground">
+            Feel free to reach out to us by phone. For the fastest response, we are available by
+            phone 24/7 and ready to provide you with a complimentary consultation.
+          </p>
+          <Link
+            to="/contact"
+            className="mt-6 inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm uppercase tracking-wider text-primary-foreground"
+          >
+            Contact Us <ChevronRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="divide-y divide-border border-y border-border">
+          {faqs.map((f, i) => (
+            <button
+              key={f.q}
+              onClick={() => setOpen(open === i ? null : i)}
+              className="block w-full py-5 text-left"
+            >
+              <div className="flex items-center justify-between gap-4">
+                <span className="font-display text-base uppercase tracking-wider text-primary">
+                  {f.q}
+                </span>
+                <ChevronRight
+                  className={`h-5 w-5 shrink-0 text-flame transition-transform ${
+                    open === i ? "rotate-90" : ""
+                  }`}
+                />
+              </div>
+              {open === i && (
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{f.a}</p>
+              )}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- CONTACT ---------- */
+function ContactSection() {
+  return (
+    <section className="bg-secondary py-20">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="text-center">
+          <h2 className="font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
+            Get In Touch
+          </h2>
+          <p className="mt-3 font-display text-xl text-flame">
+            Is there anything else you'd like to know?
+          </p>
+          <p className="mx-auto mt-4 max-w-3xl text-base text-muted-foreground">
+            We are available via phone or by this form. However if you would like a quick response
+            we are by our phones 24/7 to give you a phone consultation free of charge.
+          </p>
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 md:flex-row">
+            <a
+              href="tel:5551234567"
+              className="inline-flex items-center gap-2 rounded-sm bg-flame px-6 py-3 font-display text-base uppercase tracking-wider text-white shadow-flame"
+            >
+              Click To Call Us Now! <Phone className="h-5 w-5" />
+            </a>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-base uppercase tracking-wider text-primary-foreground"
+            >
+              Schedule Online <CalendarCheck className="h-5 w-5" />
+            </Link>
+          </div>
         </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {REVIEWS.map((r) => (
-            <figure key={r.name} className="flex flex-col rounded-sm border-2 border-border bg-card p-6">
-              <div className="flex gap-1 text-primary">
-                {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4 fill-current" />)}
+        <div className="mt-12">
+          <div className="mx-auto max-w-4xl text-center">
+            <h3 className="font-display text-2xl uppercase tracking-wider text-primary">
+              Don't Hesitate To Reach Out!
+            </h3>
+            <p className="mt-3 text-base text-muted-foreground">
+              If you need help with a new service or have questions about an existing one, please
+              reach out via phone or by this form. Our team is here to assist you!
+            </p>
+          </div>
+          <div className="mt-8">
+            <LeadForm />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FULL SERVICES LIST ---------- */
+const allServices = [
+  "Chimney Cleaning", "Chimney Sweep", "Chimney Inspection", "Chimney Repair",
+  "Chimney Maintenance", "Creosote Removal", "Fireplace Cleaning",
+  "Chimney Liner Installation", "Chimney Cap Installation", "Chimney Waterproofing",
+  "Smoke Chamber Repair", "Chimney Relining", "Masonry Repair",
+  "Chimney Crown Repair", "Chimney Repointing", "Chimney Leak Detection",
+  "Chimney Animal Removal", "Chimney Odor Elimination", "Chimney Draft Issues",
+  "Fireplace Damper Repair", "Chimney Safety Inspections", "Chimney Cap Replacement",
+  "Chimney Flashing Repair", "Damper Installation", "Wood Stove Installation",
+  "Gas Fireplace Installation", "Fireplace Insert Installation", "Chimney Tuckpointing",
+  "Video Chimney Inspection", "Chimney Crown Replacement", "Pellet Stove Cleaning",
+  "Gas Fireplace Repair",
+];
+
+function ServicesList() {
+  return (
+    <section className="bg-background py-20">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <h2 className="font-display text-3xl uppercase tracking-wider text-primary md:text-4xl">
+          Our Chimney Services
+        </h2>
+        <p className="mt-4 max-w-4xl text-base text-muted-foreground">
+          At ChimCrew, we provide a full range of chimney services, including cleaning, inspection,
+          repair, and maintenance. Our certified technicians are dedicated to ensuring your chimney
+          is safe, efficient, and in optimal condition. We use only high-quality materials and
+          cutting-edge equipment to deliver outstanding results, enhancing both the safety and
+          comfort of your home while giving you peace of mind.
+        </p>
+        <div className="mt-8 flex flex-wrap gap-2">
+          {allServices.map((s) => (
+            <Link
+              key={s}
+              to="/services"
+              className="rounded-sm border border-border bg-card px-3 py-2 font-mono text-xs text-foreground transition hover:border-flame hover:bg-flame hover:text-white"
+            >
+              {s}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- RELATED ARTICLES ---------- */
+function RelatedArticles() {
+  const faqLinks = [
+    { q: "How much do chimney repairs typically cost", tag: "Chimney Repair" },
+    { q: "How long does chimney repair take", tag: "Chimney Repair" },
+    { q: "Can chimney repairs be done year-round", tag: "Chimney Repair" },
+    { q: "What does a chimney sweep do", tag: "Chimney Sweep" },
+    { q: "How often should I schedule a chimney sweep", tag: "Chimney Sweep" },
+  ];
+  return (
+    <section className="bg-secondary py-20">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="flex items-end justify-between">
+          <h2 className="font-display text-3xl uppercase tracking-wider text-primary md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <Link to="/blog" className="font-display text-sm uppercase tracking-widest text-flame hover:underline">
+            View All
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {faqLinks.map((f) => (
+            <Link
+              key={f.q}
+              to="/blog"
+              className="block rounded-sm border-2 border-border bg-card p-5 transition hover:border-flame"
+            >
+              <p className="font-mono text-[10px] uppercase tracking-widest text-flame">{f.tag}</p>
+              <p className="mt-2 font-display text-base text-primary">{f.q}</p>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-14 flex items-end justify-between">
+          <h2 className="font-display text-3xl uppercase tracking-wider text-primary md:text-4xl">
+            Related Articles
+          </h2>
+          <Link to="/blog" className="font-display text-sm uppercase tracking-widest text-flame hover:underline">
+            View All
+          </Link>
+        </div>
+        <div className="mt-8 grid gap-6 md:grid-cols-3">
+          {[
+            { title: "Why Annual Chimney Inspections Matter", img: sweep },
+            { title: "Signs You Need Chimney Repair Now", img: beforeImg },
+            { title: "How to Prepare Your Fireplace for Winter", img: fireplace },
+          ].map((a) => (
+            <Link
+              key={a.title}
+              to="/blog"
+              className="group overflow-hidden rounded-sm border-2 border-border bg-card transition hover:border-flame hover:shadow-flame"
+            >
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={a.img}
+                  alt={a.title}
+                  className="h-full w-full object-cover transition group-hover:scale-105"
+                />
               </div>
-              <blockquote className="mt-4 flex-1 text-sm text-foreground/90">"{r.text}"</blockquote>
-              <figcaption className="mt-4 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                {r.name} · {r.city}
-              </figcaption>
-            </figure>
+              <div className="p-5">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-flame">Blog</p>
+                <p className="mt-2 font-display text-lg text-primary">{a.title}</p>
+              </div>
+            </Link>
           ))}
         </div>
       </div>
