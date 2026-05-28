@@ -330,7 +330,7 @@ function FireHazards() {
           <p className="inline-flex items-center gap-2 rounded-full border border-destructive/40 bg-destructive/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-destructive">
             <AlertTriangle className="h-3.5 w-3.5" /> Why it matters
           </p>
-          <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
+          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
             Four reasons a neglected chimney is dangerous.
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
@@ -351,7 +351,7 @@ function FireHazards() {
               <div className="relative grid h-12 w-12 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
                 <Icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 font-display text-lg uppercase tracking-wider text-primary">
+              <h3 className="mt-5 font-display text-lg font-semibold text-primary">
                 {title}
               </h3>
               <p className="mt-2 flex-1 text-sm text-muted-foreground">{body}</p>
@@ -400,7 +400,7 @@ function ServicesGrid() {
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
               <HardHat className="h-3.5 w-3.5 text-flame" /> Our services
             </p>
-            <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
+            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
               Built to last an Ohio winter.
             </h2>
             <p className="mt-3 max-w-xl text-base text-muted-foreground">
@@ -449,7 +449,7 @@ function ServicesGrid() {
                     0{idx + 1} / 04
                   </span>
                 </div>
-                <h3 className="mt-4 font-display text-lg uppercase tracking-wider text-primary">
+                <h3 className="mt-4 font-display text-lg font-semibold text-primary">
                   {title}
                 </h3>
                 <p className="mt-2 flex-1 text-sm text-muted-foreground">{body}</p>
@@ -508,7 +508,7 @@ function LeakingChimney() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Droplets className="h-3.5 w-3.5 text-flame" /> Is your chimney leaking?
           </p>
-          <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
+          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
             Water is the silent killer of Ohio chimneys.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
@@ -532,13 +532,13 @@ function LeakingChimney() {
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 font-display text-sm uppercase tracking-wider text-primary-foreground transition hover:bg-flame hover:text-primary"
+              className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:bg-flame hover:text-primary"
             >
               Book a leak inspection <CalendarCheck className="h-4 w-4" />
             </Link>
             <a
               href="tel:5551234567"
-              className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-5 py-3 font-display text-sm uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-5 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
             >
               <Phone className="h-4 w-4" /> Talk to a sweep
             </a>
@@ -582,7 +582,7 @@ function ScheduleOnline() {
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
                     Step {n}
                   </p>
-                  <p className="mt-1 font-display text-sm uppercase tracking-wider">{t}</p>
+                  <p className="mt-1 font-display text-sm font-semibold">{t}</p>
                   <p className="mt-1 text-xs text-primary-foreground/70">{s}</p>
                 </li>
               ))}
@@ -591,14 +591,14 @@ function ScheduleOnline() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/contact"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-sm bg-flame px-6 py-4 font-display text-base uppercase tracking-wider text-primary shadow-flame transition hover:brightness-110"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-sm bg-flame px-6 py-4 font-display text-base font-semibold text-primary shadow-flame transition hover:brightness-110"
               >
                 <CalendarCheck className="h-5 w-5" /> Book my appointment
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </Link>
               <a
                 href="tel:5551234567"
-                className="inline-flex items-center gap-2 rounded-sm border-2 border-flame/70 px-6 py-4 font-display text-base uppercase tracking-wider text-flame transition hover:bg-flame hover:text-primary"
+                className="inline-flex items-center gap-2 rounded-sm border-2 border-flame/70 px-6 py-4 font-display text-base font-semibold text-flame transition hover:bg-flame hover:text-primary"
               >
                 <Phone className="h-5 w-5" /> 555-123-4567
               </a>
@@ -613,7 +613,7 @@ function ScheduleOnline() {
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
                   Limited-time
                 </p>
-                <p className="font-display text-2xl uppercase tracking-wider text-primary-foreground">
+                <p className="font-display text-2xl font-bold text-primary-foreground">
                   $69 chimney inspection
                 </p>
                 <p className="mt-1 text-xs text-primary-foreground/80">
@@ -645,7 +645,7 @@ function Process() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Clock className="h-3.5 w-3.5 text-flame" /> How it works
           </p>
-          <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
+          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
             Four steps. No surprises.
           </h2>
         </div>
@@ -660,7 +660,7 @@ function Process() {
                   {i + 1}
                 </span>
               </div>
-              <h3 className="mt-5 font-display text-base uppercase tracking-wider text-primary">
+              <h3 className="mt-5 font-display text-base font-semibold text-primary">
                 {title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">{body}</p>
@@ -704,7 +704,7 @@ function Testimonials() {
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
               <Star className="h-3.5 w-3.5 text-flame" /> Reviews
             </p>
-            <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
+            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
               Real Ohio neighbors. Real fires.
             </h2>
           </div>
@@ -731,7 +731,7 @@ function Testimonials() {
                 "{r.quote}"
               </blockquote>
               <figcaption className="mt-6 border-t border-border pt-4">
-                <p className="font-display text-sm uppercase tracking-wider text-primary">
+                <p className="font-display text-sm font-semibold text-primary">
                   {r.name}
                 </p>
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
@@ -779,7 +779,7 @@ function Faq() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             FAQ
           </p>
-          <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
+          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
             Answers from the crew.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
@@ -799,7 +799,7 @@ function Faq() {
               className="group rounded-xl border border-border bg-card p-5 transition open:border-flame open:shadow-flame"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                <span className="font-display text-base uppercase tracking-wider text-primary">
+                <span className="font-display text-base font-semibold text-primary">
                   {f.q}
                 </span>
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border text-primary transition group-open:rotate-45 group-open:border-flame group-open:text-flame">
@@ -825,7 +825,7 @@ function FinalCta() {
         <div className="flex items-center gap-4">
           <Flame className="h-10 w-10" />
           <div>
-            <p className="font-display text-2xl uppercase tracking-wider md:text-3xl">
+            <p className="font-display text-2xl font-bold md:text-3xl">
               Ready for a safer fireplace?
             </p>
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] opacity-80">
@@ -836,13 +836,13 @@ function FinalCta() {
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm uppercase tracking-wider text-primary-foreground transition hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:brightness-110"
           >
             Schedule Online <CalendarCheck className="h-4 w-4" />
           </Link>
           <a
             href="tel:5551234567"
-            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
             <Phone className="h-4 w-4" /> 555-123-4567
           </a>
