@@ -1,26 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Flame, Wind, Hammer, Search, Bird, ShieldCheck, ChevronRight } from "lucide-react";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import { LeadForm } from "@/components/LeadForm";
+import { SERVICES, ACCENT_CLASSES } from "@/data/services";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — ChimCrew Chimney Sweeps Ohio" },
-      { name: "description", content: "Chimney sweeps, inspections, liners, caps, animal removal and full rebuilds in Columbus, Cincinnati, and Dayton." },
+      { title: "Chimney Services in Ohio — ChimCrew" },
+      { name: "description", content: "Sweeps, inspections, liners, crowns, caps, waterproofing, flashing, firebox rebuilds, animal removal, gas service, and more — all flat-rate." },
+      { property: "og:title", content: "Chimney Services in Ohio — ChimCrew" },
+      { property: "og:description", content: "14 chimney services, every one flat-rate, every one with a photo report." },
     ],
   }),
   component: ServicesPage,
 });
-
-const SERVICES = [
-  { icon: Wind, title: "Chimney Sweep", price: "$189", desc: "Full creosote and soot removal with HEPA containment. Includes basic safety check.", bullets: ["Drop cloths + HEPA vacuum", "Smoke chamber & damper cleaned", "Written safety summary"] },
-  { icon: Search, title: "Level 1 Inspection", price: "$129", desc: "Visual inspection of all accessible portions, recommended annually.", bullets: ["Photo report", "Recommended next steps", "Bundled free with sweep"] },
-  { icon: Search, title: "Level 2 Inspection", price: "$299", desc: "Required for home sales, after a chimney fire, or appliance changes.", bullets: ["Camera scan of full flue", "Written documentation", "Compliant for real estate"] },
-  { icon: Hammer, title: "Crown & Tuckpoint", price: "From $650", desc: "Repair or rebuild your chimney crown and mortar joints.", bullets: ["Waterproofing included", "Stainless steel reinforcement", "5-year workmanship warranty"] },
-  { icon: Flame, title: "Stainless Liner Install", price: "From $1,890", desc: "Sized to your appliance for safer burns and better draft.", bullets: ["Lifetime liner warranty", "Insulated wrap", "Full inspection after install"] },
-  { icon: Bird, title: "Animal Removal + Cap", price: "From $349", desc: "Humane removal and a stainless cap so they don't come back.", bullets: ["Humane methods", "Cap install included", "Sanitization available"] },
-  { icon: ShieldCheck, title: "Annual Service Plan", price: "$249/yr", desc: "Yearly sweep + Level 1 inspection + priority scheduling.", bullets: ["10% off any repairs", "Priority emergency dispatch", "Digital service history"] },
-];
 
 function ServicesPage() {
   return (
@@ -31,34 +24,45 @@ function ServicesPage() {
           <p className="font-mono text-xs uppercase tracking-widest text-primary">// Services</p>
           <h1 className="mt-3 text-6xl md:text-7xl">Flat-rate. <span className="text-flame">No surprises.</span></h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            Every job priced before we start. Every job ends with photos and a
-            written report. Everything we do, all in one place.
+            {SERVICES.length} services, every one priced before we start, every
+            one ending with photos and a written report. Tap any service to see
+            exactly what's included.
           </p>
         </div>
       </section>
 
       <section className="py-20">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-3">
-          {SERVICES.map((s) => (
-            <article key={s.title} className="flex flex-col rounded-sm border-2 border-border bg-card p-6 transition hover:border-primary hover:shadow-flame">
-              <div className="flex items-start justify-between">
-                <div className="grid h-12 w-12 place-items-center rounded-sm bg-primary text-primary-foreground">
-                  <s.icon className="h-6 w-6" />
+          {SERVICES.map((s) => {
+            const accent = ACCENT_CLASSES[s.accent];
+            const Icon = s.icon;
+            return (
+              <Link
+                key={s.slug}
+                to="/services/$slug"
+                params={{ slug: s.slug }}
+                className="group flex flex-col rounded-sm border-2 border-border bg-card p-6 transition hover:border-primary hover:shadow-flame"
+              >
+                <div className="flex items-start justify-between">
+                  <div className={`grid h-12 w-12 place-items-center rounded-sm ${accent.bg} text-primary-foreground`}>
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <span className={`font-display text-2xl ${accent.text}`}>{s.price}</span>
                 </div>
-                <span className="font-display text-2xl text-primary">{s.price}</span>
-              </div>
-              <h3 className="mt-5 text-2xl">{s.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-              <ul className="mt-4 space-y-1.5 text-sm">
-                {s.bullets.map((b) => (
-                  <li key={b} className="flex gap-2"><ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary" /> {b}</li>
-                ))}
-              </ul>
-              <Link to="/" hash="quote" className="mt-6 inline-flex items-center justify-center gap-2 rounded-sm border-2 border-primary px-4 py-3 font-display text-xs uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground">
-                Book this service
+                <h3 className="mt-5 text-2xl">{s.shortTitle}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{s.tagline}</p>
+                <ul className="mt-4 space-y-1.5 text-sm">
+                  {s.bullets.slice(0, 3).map((b) => (
+                    <li key={b} className="flex gap-2"><ChevronRight className={`mt-0.5 h-4 w-4 shrink-0 ${accent.text}`} /> {b}</li>
+                  ))}
+                </ul>
+                <span className="mt-6 inline-flex items-center justify-between gap-2 border-t border-border pt-4 font-mono text-xs uppercase tracking-widest text-primary">
+                  View details
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </span>
               </Link>
-            </article>
-          ))}
+            );
+          })}
         </div>
       </section>
 
