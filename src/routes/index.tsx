@@ -338,12 +338,12 @@ function FireHazards() {
             <AlertTriangle className="h-3.5 w-3.5" /> Why it matters
           </p>
           <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
-            Four reasons a neglected chimney is dangerous.
+            What your chimney is hiding right now.
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
-            Every year the U.S. logs 25,000+ chimney fires causing $125M in damage.
-            We sweep, inspect and seal so your fireplace stays the warmest spot in the
-            house — not the most dangerous one.
+            25,000+ chimney fires hit U.S. homes every year — most start invisible.
+            Two minutes here could save your roof, your air, and a $40,000 insurance fight.
+            Here's what we look for on every Ohio rooftop we climb.
           </p>
         </div>
 
@@ -632,12 +632,12 @@ function LeakingChimney() {
             <Droplets className="h-3.5 w-3.5 text-flame" /> Is your chimney leaking?
           </p>
           <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
-            Water is the silent killer of Ohio chimneys.
+            One bad Ohio winter and the water wins.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
-            One bad winter is enough. Freeze-thaw cycles widen hairline cracks until
-            water reaches the firebox, the walls, and the ceiling below. We diagnose
-            the source, seal it for good, and back the work with a written warranty.
+            Freeze-thaw widens hairline cracks until water reaches your firebox, your walls,
+            your ceiling. We climb up, find the source, seal it for good, and put it in
+            writing — with a leak warranty you can hand to the next owner.
           </p>
 
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -687,12 +687,13 @@ function ScheduleOnline() {
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
               <CalendarCheck className="h-3.5 w-3.5" /> 60-second booking
             </p>
-            <h2 className="mt-4 font-display text-4xl uppercase tracking-wider md:text-5xl">
-              Schedule online — <span className="text-flame">we'll do the rest.</span>
+            <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">
+              Pick a window. <span className="text-flame">We handle everything else.</span>
             </h2>
             <p className="mt-4 max-w-xl text-base text-primary-foreground/80">
-              Pick a 2-hour window. We confirm by text within the hour and a local
-              ChimCrew van rolls up on time, in uniform, with shoe covers and tarps.
+              Tell us your address and pick a 2-hour window. We text to confirm within the hour,
+              and a local Ohio crew rolls up on time — in uniform, with shoe covers, tarps,
+              and a smile. If we're late, your inspection is on us.
             </p>
 
             <ol className="mt-6 grid gap-3 sm:grid-cols-3">
@@ -768,9 +769,12 @@ function Process() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Clock className="h-3.5 w-3.5 text-flame" /> How it works
           </p>
-          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
-            Four steps. No surprises.
-          </h2>
+            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+              From "hello" to handshake in four steps.
+            </h2>
+            <p className="mt-3 text-base text-muted-foreground">
+              No quote-bait, no upsells, no surprise invoices. The price you see is the price you pay.
+            </p>
         </div>
 
         <div className="relative mt-14 grid gap-8 md:grid-cols-4">
@@ -828,7 +832,7 @@ function Testimonials() {
               <Star className="h-3.5 w-3.5 text-flame" /> Reviews
             </p>
             <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
-              Real Ohio neighbors. Real fires.
+              Real Ohio neighbors. Honest words.
             </h2>
           </div>
           <Link
@@ -903,10 +907,10 @@ function Faq() {
             FAQ
           </p>
           <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
-            Answers from the crew.
+            Ask us anything — we don't bite.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
-            Still wondering? Call us — we answer the phone and the questions don't cost a dime.
+            Real Ohioans answer the phone. No call centers, no pressure, no charge for advice.
           </p>
           <a
             href="tel:5551234567"
@@ -949,10 +953,10 @@ function FinalCta() {
           <Flame className="h-10 w-10" />
           <div>
             <p className="font-display text-2xl font-bold md:text-3xl">
-              Ready for a safer fireplace?
+              One quick form. A safer home tonight.
             </p>
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] opacity-80">
-              Same-day callback · 24/7 emergency
+              Same-day callback · No card · 100% Ohio crew
             </p>
           </div>
         </div>
@@ -961,7 +965,7 @@ function FinalCta() {
             to="/contact"
             className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:brightness-110"
           >
-            Schedule Online <CalendarCheck className="h-4 w-4" />
+            Get my free quote <CalendarCheck className="h-4 w-4" />
           </Link>
           <a
             href="tel:5551234567"
