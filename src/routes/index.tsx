@@ -50,6 +50,7 @@ function Index() {
       <Hero />
       <TrustMarquee />
       <FireHazards />
+      <LogoDivider />
       <ServicesGrid />
       <LeakingChimney />
       <ScheduleOnline />
