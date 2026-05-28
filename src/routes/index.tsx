@@ -278,6 +278,40 @@ function TrustMarquee() {
 }
 
 /* ============================================================
+   LOGO DIVIDER — branded section break
+   ============================================================ */
+function LogoDivider() {
+  return (
+    <section className="relative overflow-hidden bg-primary py-16 text-primary-foreground">
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_oklch(0.22_0.02_250)_0%,_oklch(0.06_0.01_250)_70%)]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-flame/20 blur-3xl" aria-hidden />
+
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 text-center md:px-8">
+        <div className="flex items-center gap-6">
+          <span className="hidden h-px w-24 bg-gradient-to-r from-transparent to-flame/60 md:block" />
+          <div className="relative">
+            <div className="absolute -inset-6 rounded-full bg-flame/20 blur-2xl" aria-hidden />
+            <img
+              src={logo}
+              alt="ChimCrew — Ohio's chimney crew"
+              className="relative h-28 w-28 animate-float md:h-36 md:w-36"
+            />
+          </div>
+          <span className="hidden h-px w-24 bg-gradient-to-l from-transparent to-flame/60 md:block" />
+        </div>
+        <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-flame">
+          One crew · One promise · All of Ohio
+        </p>
+        <p className="max-w-xl font-display text-xl font-semibold leading-snug tracking-tight text-primary-foreground md:text-2xl">
+          The same yellow van. The same family crew. Every single visit.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
    FIRE HAZARDS — risk education
    ============================================================ */
 function FireHazards() {
