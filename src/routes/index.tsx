@@ -491,14 +491,14 @@ function ServicesGrid() {
             {/* Before / after split */}
             <div className="relative grid grid-cols-2 overflow-hidden">
               <div className="relative">
-                <img src={(s as any).beforeImg ?? beforeImg} alt={`${s.title} — before`} className="aspect-[4/3] h-full w-full object-cover md:aspect-[16/10]" />
+                <img src={(s as any).beforeImg ?? beforeImg} alt={`${s.title} — before`} className="aspect-[3/4] w-full bg-primary object-contain md:aspect-[4/5]" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
                 <span className="absolute left-2 top-2 rounded-full bg-primary/90 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary-foreground backdrop-blur md:left-3 md:top-3 md:px-2.5 md:py-1 md:text-[10px]">
                   {(s as any).beforeLabel ?? "Before"}
                 </span>
               </div>
               <div className="relative">
-                <img src={(s as any).afterImg ?? afterImg} alt={`${s.title} — after`} className="aspect-[4/3] h-full w-full object-cover md:aspect-[16/10]" />
+                <img src={(s as any).afterImg ?? afterImg} alt={`${s.title} — after`} className="aspect-[3/4] w-full bg-primary object-contain md:aspect-[4/5]" />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-flame/10 to-transparent" />
                 <span className="absolute right-2 top-2 rounded-full bg-flame px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary backdrop-blur md:right-3 md:top-3 md:px-2.5 md:py-1 md:text-[10px]">
                   {(s as any).afterLabel ?? "After"}
