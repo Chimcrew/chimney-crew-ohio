@@ -402,7 +402,7 @@ function ServicesGrid() {
     },
   ];
   const [active, setActive] = useState(0);
-  const s = services[active];
+  const s = services[active] ?? services[0];
   const Icon = s.icon;
   return (
     <section className="relative overflow-hidden bg-secondary/40 py-24">
