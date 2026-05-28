@@ -154,7 +154,7 @@
       linear-gradient(90deg, oklch(0.18 0.02 250 / 0.06) 1px, transparent 1px);
     background-size: 48px 48px;
   }
-  .bg-flame { background: var(--gradient-flame); }
+  .bg-flame-grad { background: var(--gradient-flame); }
   .text-flame { color: var(--flame); }
   .shadow-flame { box-shadow: var(--shadow-flame); }
   .shadow-hard { box-shadow: var(--shadow-hard); }
