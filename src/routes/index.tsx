@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import logo from "@/assets/chimcrew-logo.png";
 import van from "@/assets/chimcrew-van.png";
-import sweep from "@/assets/sweep-rooftop.jpg";
+import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import beforeImg from "@/assets/before-chimney.jpg";
 import afterImg from "@/assets/after-chimney.jpg";
