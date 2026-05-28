@@ -24,6 +24,7 @@ import { Route as LegalDisclaimerRouteImport } from './routes/legal/disclaimer'
 import { Route as LegalAccessibilityRouteImport } from './routes/legal/accessibility'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
+import { Route as ApiPublicNotifyLeadRouteImport } from './routes/api/public/notify-lead'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
@@ -103,6 +104,11 @@ const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
   path: '/lovable/email/suppression',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicNotifyLeadRoute = ApiPublicNotifyLeadRouteImport.update({
+  id: '/api/public/notify-lead',
+  path: '/api/public/notify-lead',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LovableEmailTransactionalSendRoute =
   LovableEmailTransactionalSendRouteImport.update({
     id: '/lovable/email/transactional/send',
@@ -137,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/legal/terms': typeof LegalTermsRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/notify-lead': typeof ApiPublicNotifyLeadRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -157,6 +164,7 @@ export interface FileRoutesByTo {
   '/legal/terms': typeof LegalTermsRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services': typeof ServicesIndexRoute
+  '/api/public/notify-lead': typeof ApiPublicNotifyLeadRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -178,6 +186,7 @@ export interface FileRoutesById {
   '/legal/terms': typeof LegalTermsRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
+  '/api/public/notify-lead': typeof ApiPublicNotifyLeadRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
   '/lovable/email/queue/process': typeof LovableEmailQueueProcessRoute
   '/lovable/email/transactional/preview': typeof LovableEmailTransactionalPreviewRoute
@@ -200,6 +209,7 @@ export interface FileRouteTypes {
     | '/legal/terms'
     | '/services/$slug'
     | '/services/'
+    | '/api/public/notify-lead'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -220,6 +230,7 @@ export interface FileRouteTypes {
     | '/legal/terms'
     | '/services/$slug'
     | '/services'
+    | '/api/public/notify-lead'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -240,6 +251,7 @@ export interface FileRouteTypes {
     | '/legal/terms'
     | '/services/$slug'
     | '/services/'
+    | '/api/public/notify-lead'
     | '/lovable/email/suppression'
     | '/lovable/email/queue/process'
     | '/lovable/email/transactional/preview'
@@ -261,6 +273,7 @@ export interface RootRouteChildren {
   LegalTermsRoute: typeof LegalTermsRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
+  ApiPublicNotifyLeadRoute: typeof ApiPublicNotifyLeadRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
   LovableEmailQueueProcessRoute: typeof LovableEmailQueueProcessRoute
   LovableEmailTransactionalPreviewRoute: typeof LovableEmailTransactionalPreviewRoute
@@ -374,6 +387,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LovableEmailSuppressionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/notify-lead': {
+      id: '/api/public/notify-lead'
+      path: '/api/public/notify-lead'
+      fullPath: '/api/public/notify-lead'
+      preLoaderRoute: typeof ApiPublicNotifyLeadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/transactional/send': {
       id: '/lovable/email/transactional/send'
       path: '/lovable/email/transactional/send'
@@ -413,6 +433,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalTermsRoute: LegalTermsRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesIndexRoute: ServicesIndexRoute,
+  ApiPublicNotifyLeadRoute: ApiPublicNotifyLeadRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,
   LovableEmailQueueProcessRoute: LovableEmailQueueProcessRoute,
   LovableEmailTransactionalPreviewRoute: LovableEmailTransactionalPreviewRoute,

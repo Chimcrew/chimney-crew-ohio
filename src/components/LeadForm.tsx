@@ -30,6 +30,20 @@ export function LeadForm({ id = "quote" }: { id?: string }) {
 
   function submit(e: React.FormEvent) {
     e.preventDefault();
+    void fetch('/api/public/notify-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        source: 'Quote form',
+        name: data.name,
+        phone: data.phone,
+        email: data.email || undefined,
+        service: data.service,
+        city: data.city,
+        address: data.address || undefined,
+        notes: data.notes || undefined,
+      }),
+    }).catch(() => {});
     setDone(true);
   }
 
