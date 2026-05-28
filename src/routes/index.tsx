@@ -17,7 +17,8 @@ import sweep from "@/assets/sweep-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import beforeImg from "@/assets/before-chimney.jpg";
 import afterImg from "@/assets/after-chimney.jpg";
-import truck from "@/assets/chimcrew-truck.png";
+import van from "@/assets/chimcrew-van.png";
+import { MapPin } from "lucide-react";
 import { LeadForm } from "@/components/LeadForm";
 
 export const Route = createFileRoute("/")({
