@@ -28,6 +28,8 @@ import sweep from "@/assets/sweep-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import beforeImg from "@/assets/before-chimney.jpg";
 import afterImg from "@/assets/after-chimney.jpg";
+import crownBefore from "@/assets/crown-before.jpg";
+import crownAfter from "@/assets/crown-after.jpg";
 import { LeadForm } from "@/components/LeadForm";
 
 export const Route = createFileRoute("/")({
@@ -436,6 +438,20 @@ function ServicesGrid() {
       body: "Vapor-permeable waterproofing on the masonry, stainless cap sized to your flue, flashing checked and resealed. We back it with a transferable leak warranty.",
       includes: ["Stainless steel cap install", "Vapor-permeable seal", "Flashing inspection & touch-up", "Transferable leak warranty"],
     },
+    {
+      icon: HardHat,
+      title: "Crown Seal Repair",
+      tag: "Stops cracks for good",
+      priceFrom: "$489",
+      duration: "Same day",
+      headline: "Cracked, crumbling crown? We rebuild and seal it so water can't sneak in again.",
+      body: "We grind out the failed mortar, rebuild the wash with a stainless-reinforced overlay, and finish with a flexible elastomeric seal that flexes through every Ohio freeze-thaw. Real before/after photos with every job.",
+      includes: ["Crack-bridging elastomeric seal", "Stainless-reinforced overlay", "10-year crown warranty", "Before/after photo report"],
+      beforeImg: crownBefore,
+      afterImg: crownAfter,
+      beforeLabel: "Cracked & failing",
+      afterLabel: "Rebuilt & sealed",
+    },
   ];
   const [active, setActive] = useState(0);
   const s = services[active] ?? services[0];
@@ -475,17 +491,17 @@ function ServicesGrid() {
             {/* Before / after split */}
             <div className="relative grid grid-cols-2 overflow-hidden">
               <div className="relative">
-                <img src={beforeImg} alt={`${s.title} — before`} className="aspect-[16/10] h-full w-full object-cover" />
+                <img src={(s as any).beforeImg ?? beforeImg} alt={`${s.title} — before`} className="aspect-[16/10] h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
                 <span className="absolute left-3 top-3 rounded-full bg-primary/85 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground backdrop-blur">
-                  Before
+                  {(s as any).beforeLabel ?? "Before"}
                 </span>
               </div>
               <div className="relative">
-                <img src={afterImg} alt={`${s.title} — after`} className="aspect-[16/10] h-full w-full object-cover" />
+                <img src={(s as any).afterImg ?? afterImg} alt={`${s.title} — after`} className="aspect-[16/10] h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-l from-flame/10 to-transparent" />
                 <span className="absolute right-3 top-3 rounded-full bg-flame px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary backdrop-blur">
-                  After
+                  {(s as any).afterLabel ?? "After"}
                 </span>
               </div>
               {/* divider */}
