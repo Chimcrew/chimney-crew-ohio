@@ -22,7 +22,7 @@ function Accessibility() {
         </ul>
       </Section>
       <Section title="Need help?">
-        <p>If you have trouble using any part of this website, please call us at 555-123-4567 or email <a href="mailto:access@chimcrew.com" className="text-primary">access@chimcrew.com</a> and a real person on our crew will help you book service over the phone.</p>
+        <p>If you have trouble using any part of this website, please call us at (614) 683-4422 or email <a href="mailto:access@chimcrew.com" className="text-primary">access@chimcrew.com</a> and a real person on our crew will help you book service over the phone.</p>
       </Section>
       <Section title="Feedback">
         <p>We welcome feedback on accessibility. Please tell us where we can do better.</p>

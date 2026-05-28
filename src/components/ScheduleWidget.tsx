@@ -279,7 +279,7 @@ export function ScheduleWidget() {
             <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 border-t border-border pt-4 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
               <span className="inline-flex items-center gap-1.5"><MapPin className="h-3 w-3 text-flame" /> Ohio crew</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-flame" /> CSIA Certified</span>
-              <span className="inline-flex items-center gap-1.5"><Phone className="h-3 w-3 text-flame" /> 555-123-4567</span>
+              <span className="inline-flex items-center gap-1.5"><Phone className="h-3 w-3 text-flame" /> (614) 683-4422</span>
             </div>
           </div>
         </DialogContent>
@@ -315,7 +315,7 @@ function StickyCta({ onClick }: { onClick: () => void }) {
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-flame/30 bg-primary/95 px-3 py-2.5 backdrop-blur-xl md:hidden" style={{ paddingBottom: "calc(0.625rem + env(safe-area-inset-bottom))" }}>
         <div className="flex items-center gap-2">
           <a
-            href="tel:5551234567"
+            href="tel:6146834422"
             className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-white/15 bg-white/5 text-primary-foreground"
             aria-label="Call ChimCrew"
           >
