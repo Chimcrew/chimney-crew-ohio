@@ -401,6 +401,7 @@ function ServicesGrid() {
     {
       icon: Sparkles,
       title: "Chimney Sweep",
+      slug: "chimney-sweep",
       tag: "Most booked",
       priceFrom: "$189",
       duration: "60–90 min",
@@ -411,6 +412,7 @@ function ServicesGrid() {
     {
       icon: Search,
       title: "Camera Inspection",
+      slug: "level-2-inspection",
       tag: "For home sales",
       priceFrom: "$129",
       duration: "45–60 min",
@@ -421,6 +423,7 @@ function ServicesGrid() {
     {
       icon: Wrench,
       title: "Repair & Tuckpoint",
+      slug: "crown-tuckpoint",
       tag: "Built for OH winters",
       priceFrom: "$650",
       duration: "1–2 days",
@@ -431,6 +434,7 @@ function ServicesGrid() {
     {
       icon: ShieldCheck,
       title: "Waterproof & Cap",
+      slug: "waterproofing",
       tag: "Stops leaks for good",
       priceFrom: "$349",
       duration: "Same day",
@@ -441,6 +445,7 @@ function ServicesGrid() {
     {
       icon: HardHat,
       title: "Crown Seal Repair",
+      slug: "crown-tuckpoint",
       tag: "Stops cracks for good",
       priceFrom: "$489",
       duration: "Same day",
@@ -562,10 +567,11 @@ function ServicesGrid() {
                 </div>
                 <div className="space-y-2">
                   <Link
-                    to="/contact"
+                    to="/services/$slug"
+                    params={{ slug: s.slug }}
                     className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-flame px-5 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:-translate-y-0.5"
                   >
-                    Book this service
+                    See full service page
                     <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                   </Link>
                   <a
