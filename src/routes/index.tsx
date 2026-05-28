@@ -128,14 +128,14 @@ function Hero() {
                 to="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
               >
-                <CalendarCheck className="h-4 w-4" /> Get my free quote
+                <CalendarCheck className="h-4 w-4" /> Schedule free inspection
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </Link>
               <a
                 href="tel:5551234567"
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-white/10 bg-primary/60 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
               >
-                <Phone className="h-4 w-4" /> Talk to a sweep
+                <Phone className="h-4 w-4" /> Call 555-123-4567
               </a>
             </div>
 
@@ -718,7 +718,7 @@ function LeakingChimney() {
               href="tel:5551234567"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-5 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
             >
-              <Phone className="h-4 w-4" /> Talk to a sweep
+              <Phone className="h-4 w-4" /> Call 555-123-4567
             </a>
           </div>
         </div>
@@ -1020,7 +1020,7 @@ function FinalCta() {
             to="/contact"
             className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:brightness-110"
           >
-            Get my free quote <CalendarCheck className="h-4 w-4" />
+            Schedule free inspection <CalendarCheck className="h-4 w-4" />
           </Link>
           <a
             href="tel:5551234567"
