@@ -431,47 +431,9 @@ function ServicesGrid() {
         </div>
 
         {/* Layered showcase */}
-        <div className="relative mt-12 grid gap-6 lg:grid-cols-[340px_1fr]">
-          {/* Service tabs */}
-          <ol className="flex flex-col gap-2.5">
-            {services.map((svc, i) => {
-              const SIcon = svc.icon;
-              const isActive = i === active;
-              return (
-                <li key={svc.title}>
-                  <button
-                    type="button"
-                    onClick={() => setActive(i)}
-                    className={`group flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition ${
-                      isActive
-                        ? "border-flame bg-primary text-primary-foreground shadow-flame"
-                        : "border-border bg-card hover:border-flame/60 hover:-translate-y-0.5"
-                    }`}
-                  >
-                    <div
-                      className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl transition ${
-                        isActive ? "bg-flame text-primary" : "bg-primary text-flame"
-                      }`}
-                    >
-                      <SIcon className="h-5 w-5" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <p className={`font-mono text-[10px] uppercase tracking-[0.22em] ${isActive ? "text-flame" : "text-muted-foreground"}`}>
-                        0{i + 1} · {svc.tag}
-                      </p>
-                      <h3 className={`mt-0.5 font-display text-lg font-semibold tracking-tight ${isActive ? "text-primary-foreground" : "text-primary"}`}>
-                        {svc.title}
-                      </h3>
-                    </div>
-                    <ChevronRight className={`h-5 w-5 shrink-0 transition ${isActive ? "translate-x-0.5 text-flame" : "text-muted-foreground"}`} />
-                  </button>
-                </li>
-              );
-            })}
-          </ol>
-
-          {/* Featured panel */}
-          <article
+        {(() => {
+          const panel = (
+            <article
             key={active}
             className="reveal relative overflow-hidden rounded-3xl border-2 border-primary/15 bg-card shadow-flame"
           >
@@ -567,8 +529,57 @@ function ServicesGrid() {
                 </div>
               </aside>
             </div>
-          </article>
-        </div>
+            </article>
+          );
+          return (
+            <div className="relative mt-12 grid gap-6 lg:grid-cols-[340px_1fr]">
+              {/* Service tabs */}
+              <ol className="flex flex-col gap-2.5">
+                {services.map((svc, i) => {
+                  const SIcon = svc.icon;
+                  const isActive = i === active;
+                  return (
+                    <li key={svc.title}>
+                      <button
+                        type="button"
+                        onClick={() => setActive(i)}
+                        className={`group flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition ${
+                          isActive
+                            ? "border-flame bg-primary text-primary-foreground shadow-flame"
+                            : "border-border bg-card hover:border-flame/60 hover:-translate-y-0.5"
+                        }`}
+                      >
+                        <div
+                          className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl transition ${
+                            isActive ? "bg-flame text-primary" : "bg-primary text-flame"
+                          }`}
+                        >
+                          <SIcon className="h-5 w-5" />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className={`font-mono text-[10px] uppercase tracking-[0.22em] ${isActive ? "text-flame" : "text-muted-foreground"}`}>
+                            0{i + 1} · {svc.tag}
+                          </p>
+                          <h3 className={`mt-0.5 font-display text-lg font-semibold tracking-tight ${isActive ? "text-primary-foreground" : "text-primary"}`}>
+                            {svc.title}
+                          </h3>
+                        </div>
+                        <ChevronRight className={`h-5 w-5 shrink-0 transition ${isActive ? "translate-x-0.5 text-flame" : "text-muted-foreground"}`} />
+                      </button>
+                      {/* Mobile: panel opens right below the active tab */}
+                      {isActive && (
+                        <div className="mt-3 lg:hidden">{panel}</div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ol>
+
+              {/* Desktop: side panel */}
+              <div className="hidden lg:block">{panel}</div>
+            </div>
+          );
+        })()}
       </div>
     </section>
   );
