@@ -124,10 +124,10 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
               </span>
             </button>
             <a
-              href="tel:5551234567"
+              href="tel:6146834422"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-current px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:bg-current/10"
             >
-              <Phone className="h-4 w-4" /> Call 555-123-4567
+              <Phone className="h-4 w-4" /> Call (614) 683-4422
             </a>
           </div>
         </div>
@@ -187,10 +187,10 @@ function Hero({
                 <CalendarCheck className="h-4 w-4" /> Schedule free inspection
               </button>
               <a
-                href="tel:5551234567"
+                href="tel:6146834422"
                 className="inline-flex items-center gap-2 rounded-sm border-2 border-border px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:border-primary"
               >
-                <Phone className="h-4 w-4" /> Call 555-123-4567
+                <Phone className="h-4 w-4" /> Call (614) 683-4422
               </a>
             </div>
           </div>
@@ -242,10 +242,10 @@ function Hero({
               <CalendarCheck className="h-4 w-4" /> Schedule free inspection
             </button>
             <a
-              href="tel:5551234567"
+              href="tel:6146834422"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-border px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:border-primary"
             >
-              <Phone className="h-4 w-4" /> Call 555-123-4567
+              <Phone className="h-4 w-4" /> Call (614) 683-4422
             </a>
           </div>
         </div>
@@ -287,10 +287,10 @@ function Hero({
               <CalendarCheck className="h-4 w-4" /> Schedule free inspection
             </button>
             <a
-              href="tel:5551234567"
+              href="tel:6146834422"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-white/30 px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:bg-white/10"
             >
-              <Phone className="h-4 w-4" /> Call 555-123-4567
+              <Phone className="h-4 w-4" /> Call (614) 683-4422
             </a>
           </div>
         </div>
@@ -317,10 +317,10 @@ function Hero({
               <CalendarCheck className="h-4 w-4" /> Schedule free inspection
             </button>
             <a
-              href="tel:5551234567"
+              href="tel:6146834422"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-border px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:border-primary"
             >
-              <Phone className="h-4 w-4" /> Call 555-123-4567
+              <Phone className="h-4 w-4" /> Call (614) 683-4422
             </a>
           </div>
         </div>
@@ -463,10 +463,10 @@ function Signs({
           </div>
           {loud && (
             <a
-              href="tel:5551234567"
+              href="tel:6146834422"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-flame px-5 py-3 font-display text-xs uppercase tracking-widest text-flame transition hover:bg-flame hover:text-white"
             >
-              <Phone className="h-4 w-4" /> Call 555-123-4567
+              <Phone className="h-4 w-4" /> Call (614) 683-4422
             </a>
           )}
         </div>

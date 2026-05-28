@@ -28,7 +28,7 @@ function ContactPage() {
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: Phone, label: "Call", value: "555-123-4567", href: "tel:5551234567" },
+              { icon: Phone, label: "Call", value: "(614) 683-4422", href: "tel:6146834422" },
               { icon: Mail, label: "Email", value: "hello@chimcrew.com", href: "mailto:hello@chimcrew.com" },
               { icon: MapPin, label: "Service area", value: "Columbus · Cincinnati · Dayton", href: undefined },
               { icon: Clock, label: "Hours", value: "Mon–Sat · 7a–7p", href: undefined },
