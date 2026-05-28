@@ -95,7 +95,7 @@ function Hero() {
         {/* ---------- TOP HERO ---------- */}
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
           {/* LEFT — message */}
-          <div className="reveal space-y-7 lg:col-span-7" style={{ animationDelay: "0.05s" }}>
+          <div className="reveal order-2 space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
             {/* Trust eyebrow */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
@@ -147,8 +147,8 @@ function Hero() {
           </div>
 
           {/* RIGHT — one strong visual */}
-          <div className="reveal lg:col-span-5" style={{ animationDelay: "0.15s" }}>
-            <div className="relative mx-auto w-full max-w-md">
+          <div className="reveal order-1 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
+            <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
               {/* glow */}
               <div className="absolute -inset-6 rounded-[2rem] bg-flame/20 blur-3xl" aria-hidden />
 
