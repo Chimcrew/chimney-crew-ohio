@@ -60,56 +60,77 @@ function Index() {
 /* ---------- HERO ---------- */
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-secondary">
-      <div className="absolute -left-20 top-20 h-72 w-72 rounded-full bg-foreground/5 blur-3xl" aria-hidden />
-      <div className="absolute right-10 bottom-10 h-40 w-40 rounded-full bg-flame/10 blur-2xl" aria-hidden />
+    <section className="relative overflow-hidden bg-primary text-primary-foreground">
+      {/* radial spotlight + ember glow, matching the logo artwork */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_oklch(0.22_0.02_250)_0%,_oklch(0.10_0.02_250)_75%)]" aria-hidden />
+      <div className="pointer-events-none absolute -left-24 top-1/4 h-96 w-96 rounded-full bg-flame/15 blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute right-0 bottom-0 h-72 w-72 rounded-full bg-flame/20 blur-3xl" aria-hidden />
 
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:gap-12 md:px-8 md:py-24">
-        <div className="flex items-center justify-center">
-          <img
-            src={logo}
-            alt="ChimCrew Chimney Sweep logo"
-            className="w-full max-w-md drop-shadow-[0_20px_40px_oklch(0.18_0.02_250/0.25)]"
-          />
-        </div>
-
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-16 md:grid-cols-[1.05fr_1fr] md:gap-10 md:px-8 md:py-24">
         <div>
-          <h1 className="font-display text-3xl leading-tight text-primary md:text-5xl">
-            The Chimney Experts You've Trusted for Over 50 Years In Your Area
+          <div className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.18em] text-flame">
+            <MapPin className="h-3.5 w-3.5" /> Locally Owned · Columbus · Cincinnati · Dayton
+          </div>
+          <h1 className="mt-5 font-display text-4xl leading-[0.95] text-primary-foreground md:text-6xl">
+            Your <span className="text-flame">local</span> chimney crew.
+            <br />
+            <span className="text-flame">Your safety, our priority.</span>
           </h1>
-          <p className="mt-5 text-lg text-foreground md:text-xl">
-            Servicing Your Area And Surrounding Areas • Chimney Inspections, Repair And Cleaning Near Me
+          <p className="mt-5 max-w-xl text-base text-primary-foreground/80 md:text-lg">
+            Born and raised in Ohio. Two generations of certified sweeps cleaning, inspecting,
+            and repairing chimneys across the I-71, I-70 and I-75 corridor — same-day callback, 24/7.
           </p>
 
-          <ul className="mt-6 space-y-3 text-lg font-semibold text-primary">
+          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
             {[
               "Locally Owned & Operated",
-              "Certified | Licensed | Insured",
+              "Certified · Licensed · Insured",
+              "Same-Day Local Dispatch",
               "Satisfaction Guaranteed",
             ].map((line) => (
-              <li key={line} className="flex items-center gap-3">
-                <CheckCircle2 className="h-6 w-6 text-flame" />
+              <li key={line} className="flex items-center gap-2 text-sm font-semibold text-primary-foreground/95">
+                <CheckCircle2 className="h-5 w-5 shrink-0 text-flame" />
                 {line}
               </li>
             ))}
           </ul>
 
-          <div className="mt-7">
-            <p className="font-display text-2xl text-flame">Call Us Now!</p>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="tel:5551234567"
-              className="font-display text-3xl tracking-wider text-primary hover:text-flame md:text-4xl"
+              className="inline-flex items-center gap-2 rounded-sm bg-flame px-6 py-4 font-display text-base uppercase tracking-wider text-primary shadow-flame transition hover:brightness-110"
             >
-              555-123-4567
+              <Phone className="h-5 w-5" /> Call 555-123-4567
             </a>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 rounded-sm border-2 border-flame/70 px-6 py-4 font-display text-base uppercase tracking-wider text-flame transition hover:bg-flame hover:text-primary"
+            >
+              Schedule Online <CalendarCheck className="h-5 w-5" />
+            </Link>
           </div>
 
-          <Link
-            to="/contact"
-            className="mt-6 inline-flex items-center gap-2 rounded-sm bg-primary px-7 py-4 font-display text-base uppercase tracking-wider text-primary-foreground shadow-hard transition hover:brightness-110"
-          >
-            Schedule Online <CalendarCheck className="h-5 w-5" />
-          </Link>
+          <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground/60">
+            ★ ★ ★ ★ ★ &nbsp; 1,836 local Ohio reviews
+          </p>
+        </div>
+
+        <div className="relative">
+          <div className="relative mx-auto max-w-md">
+            <img
+              src={logo}
+              alt="ChimCrew — Chimney Repair & Inspection. Your safety, our priority."
+              className="relative z-10 w-full drop-shadow-[0_30px_60px_oklch(0_0_0/0.6)]"
+            />
+          </div>
+          <div className="relative -mt-6 overflow-hidden rounded-sm border-2 border-flame/40 shadow-flame">
+            <img src={van} alt="ChimCrew service van" className="block w-full" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent p-4">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-flame">
+                On the road · Ohio plates · Always local
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
