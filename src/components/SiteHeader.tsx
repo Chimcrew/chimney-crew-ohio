@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Menu, X, Phone, CalendarCheck, ChevronDown } from "lucide-react";
-import truckMark from "@/assets/chimcrew-truck.png";
+import logoMark from "@/assets/chimcrew-logo.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -22,14 +22,14 @@ export function SiteHeader() {
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-8">
           <Link to="/" className="flex items-center gap-3" aria-label="ChimCrew home">
             <img
-              src={truckMark}
-              alt="ChimCrew"
-              className="h-16 w-auto md:h-20"
+              src={logoMark}
+              alt="ChimCrew — Chimney Repair & Inspection"
+              className="h-14 w-auto rounded-sm md:h-16"
             />
             <div className="hidden flex-col leading-tight md:flex">
-              <span className="font-display text-base tracking-wider">ChimCrew</span>
+              <span className="font-display text-base tracking-wider text-flame">ChimCrew</span>
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] opacity-80">
-                Your Local Chimney Sweep Company
+                Your Local Ohio Chimney Crew
               </span>
             </div>
           </Link>
