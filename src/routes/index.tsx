@@ -91,52 +91,66 @@ function Hero() {
 
       <div className="relative mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
-          {/* LEFT — refined crest card */}
+          {/* LEFT — layered polaroid stack: van tilted behind, crest in front */}
           <div className="relative reveal lg:col-span-5" style={{ animationDelay: "0.05s" }}>
-            <div className="group relative mx-auto max-w-md">
-              <div className="absolute -inset-4 rounded-full bg-flame/20 blur-3xl transition-all duration-700 group-hover:bg-flame/30" aria-hidden />
-              <div className="relative overflow-hidden rounded-3xl border-2 border-flame/30 bg-[oklch(0.13_0.01_250)] p-6 shadow-2xl md:p-8">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                    Est. 1975 // Ohio
-                  </span>
-                  <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
-                    <span className="grid h-5 w-5 place-items-center rounded-full bg-flame/20 text-flame">★</span>
-                    1,836
-                  </span>
-                </div>
-                <div className="mt-4 overflow-hidden rounded-2xl border border-white/5 bg-[oklch(0.10_0.01_250)] p-2">
-                  <img
-                    src={logo}
-                    alt="ChimCrew — Your safety, our priority"
-                    className="relative z-10 mx-auto w-full max-w-sm animate-float"
-                  />
-                </div>
-                <div className="mt-6 flex items-center gap-2">
-                  <div className="h-1 w-12 bg-flame" />
-                  <div className="h-1 w-4 bg-white/10" />
-                  <div className="h-1 w-4 bg-white/10" />
-                  <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
-                    Precision sweeps & safety
-                  </span>
-                </div>
-              </div>
-            </div>
+            <div className="relative mx-auto aspect-[5/6] w-full max-w-md">
+              {/* Ambient glow */}
+              <div className="absolute inset-6 rounded-full bg-flame/20 blur-3xl" aria-hidden />
 
-            {/* Van strip under crest */}
-            <div className="relative mt-6 overflow-hidden rounded-2xl border border-flame/20 bg-primary/60 shadow-flame backdrop-blur">
-              <div className="relative">
-                <img src={van} alt="ChimCrew Ohio service van" className="block w-full" />
-                <div className="pointer-events-none absolute inset-0 animate-shine" />
-              </div>
-              <div className="flex items-center justify-between gap-3 border-t border-flame/15 px-4 py-3">
-                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                  Local · Ohio plates · spot the yellow van
-                </p>
-                <span className="relative grid h-8 w-8 place-items-center rounded-full bg-flame text-primary">
+              {/* Van — tilted polaroid in the back */}
+              <div className="group absolute -bottom-2 -right-2 w-[78%] -rotate-6 transition-transform duration-500 hover:-rotate-3 sm:-right-6">
+                <div className="overflow-hidden rounded-sm border border-white/10 bg-white p-2 pb-10 shadow-[0_20px_50px_oklch(0_0_0/0.6)]">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[oklch(0.10_0.01_250)]">
+                    <img
+                      src={van}
+                      alt="ChimCrew Ohio service van"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                    <div className="pointer-events-none absolute inset-0 animate-shine" />
+                  </div>
+                  <p className="mt-2 px-1 font-mono text-[9px] uppercase tracking-[0.22em] text-primary/80">
+                    ◆ Spot the yellow van · Ohio plates
+                  </p>
+                </div>
+                {/* Pulse flame badge clipped on the polaroid corner */}
+                <span className="absolute -left-3 -top-3 grid h-9 w-9 place-items-center rounded-full bg-flame text-primary shadow-flame">
                   <span className="absolute inset-0 rounded-full animate-pulse-ring" />
                   <Flame className="h-4 w-4" />
                 </span>
+              </div>
+
+              {/* Crest — front card, slight opposite tilt */}
+              <div className="group absolute left-0 top-0 w-[80%] rotate-2 transition-transform duration-500 hover:rotate-0">
+                {/* Brand tape pinning it to the stack */}
+                <div className="absolute -top-3 left-1/2 z-20 h-6 w-24 -translate-x-1/2 -rotate-3 bg-flame/85 shadow-md ring-1 ring-flame/30 backdrop-blur">
+                  <span className="flex h-full items-center justify-center font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-primary">
+                    ChimCrew · OH
+                  </span>
+                </div>
+                <div className="relative overflow-hidden rounded-2xl border-2 border-flame/30 bg-[oklch(0.13_0.01_250)] p-4 shadow-2xl md:p-5">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                      Est. 1975 // Ohio
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
+                      <Star className="h-3 w-3 fill-flame text-flame" /> 1,836
+                    </span>
+                  </div>
+                  <div className="mt-3 overflow-hidden rounded-xl border border-white/5 bg-[oklch(0.10_0.01_250)] p-2">
+                    <img
+                      src={logo}
+                      alt="ChimCrew — Your safety, our priority"
+                      className="relative z-10 mx-auto w-full max-w-[260px] animate-float"
+                    />
+                  </div>
+                  <div className="mt-4 flex items-center gap-2">
+                    <div className="h-1 w-10 bg-flame" />
+                    <div className="h-1 w-3 bg-white/10" />
+                    <span className="ml-auto font-mono text-[9px] uppercase tracking-[0.22em] text-primary-foreground/60">
+                      Precision sweeps & safety
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
