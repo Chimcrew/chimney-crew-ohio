@@ -377,98 +377,214 @@ function FireHazards() {
    SERVICES GRID — with before/after
    ============================================================ */
 function ServicesGrid() {
-  const items = [
+  const services = [
     {
       icon: Sparkles,
       title: "Chimney Sweep",
-      body: "Full creosote and soot removal with HEPA vacuums — no mess in the living room.",
+      tag: "Most booked",
+      priceFrom: "$189",
+      duration: "60–90 min",
+      headline: "We pull years of creosote out — without a speck of soot in your living room.",
+      body: "Drop cloths corner to corner, HEPA-vacuum sealed at the firebox, every soot line wiped down before we leave. You get a written safety summary and a side-by-side photo.",
+      includes: ["HEPA-contained sweep", "Smoke chamber & damper", "Photo safety report", "Free Level 1 visual check"],
     },
     {
       icon: Search,
       title: "Camera Inspection",
-      body: "Level 1 & 2 inspections with high-res video so you see exactly what we see.",
+      tag: "For home sales",
+      priceFrom: "$129",
+      duration: "45–60 min",
+      headline: "See what's hiding inside your flue — on a tablet, in plain English.",
+      body: "Level 1 & Level 2 inspections with a high-res chimney camera. You watch the footage with us, we mark every crack and recommend only what your home actually needs.",
+      includes: ["Full-flue HD camera scan", "Written PDF report", "Real-estate compliant", "No upsell — promise"],
     },
     {
       icon: Wrench,
-      title: "Repair & Tuckpointing",
-      body: "Crown rebuilds, flue relining, masonry restoration — built for Ohio winters.",
+      title: "Repair & Tuckpoint",
+      tag: "Built for OH winters",
+      priceFrom: "$650",
+      duration: "1–2 days",
+      headline: "Crowns, mortar, liners — rebuilt to outlast another decade of freeze-thaw.",
+      body: "We rebuild crowns with stainless reinforcement, repoint with weather-rated mortar, and reline with insulated stainless. Every job ships with a 5-year written workmanship warranty.",
+      includes: ["Stainless-reinforced crowns", "Weather-rated mortar", "Insulated stainless liners", "5-year workmanship warranty"],
     },
     {
       icon: ShieldCheck,
       title: "Waterproof & Cap",
-      body: "Stainless caps and crown coatings stop leaks and animals at the source.",
+      tag: "Stops leaks for good",
+      priceFrom: "$349",
+      duration: "Same day",
+      headline: "Seal the chimney once. Keep rain, snow and wildlife out for years.",
+      body: "Vapor-permeable waterproofing on the masonry, stainless cap sized to your flue, flashing checked and resealed. We back it with a transferable leak warranty.",
+      includes: ["Stainless steel cap install", "Vapor-permeable seal", "Flashing inspection & touch-up", "Transferable leak warranty"],
     },
   ];
+  const [active, setActive] = useState(0);
+  const s = services[active];
+  const Icon = s.icon;
   return (
     <section className="relative overflow-hidden bg-secondary/40 py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-20" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div>
+          <div className="max-w-2xl">
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
-              <HardHat className="h-3.5 w-3.5 text-flame" /> Our services
+              <HardHat className="h-3.5 w-3.5 text-flame" /> What we do · all in one visit
             </p>
-            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
-              Built to last an Ohio winter.
+            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-6xl">
+              Pick a service.<br/>See the actual work.
             </h2>
-            <p className="mt-3 max-w-xl text-base text-muted-foreground">
-              Four core services. Real before/after work from local jobs in your zip code.
+            <p className="mt-4 max-w-xl text-base text-muted-foreground">
+              Tap any service to see a real ChimCrew before/after from an Ohio home this season —
+              with plain-English pricing and what's included.
             </p>
           </div>
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-4 py-2.5 font-display text-xs uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-5 py-3 font-display text-xs font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
-            All services <ArrowRight className="h-4 w-4" />
+            All 7 services <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map(({ icon: Icon, title, body }, idx) => (
-            <article
-              key={title}
-              className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
-            >
-              <div className="relative grid grid-cols-2 overflow-hidden">
-                <div className="relative">
-                  <img src={beforeImg} alt={`${title} before`} className="aspect-square h-full w-full object-cover transition group-hover:scale-105" />
-                  <span className="absolute left-2 top-2 rounded-full bg-primary/85 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary-foreground backdrop-blur">
-                    Before
-                  </span>
-                </div>
-                <div className="relative">
-                  <img src={afterImg} alt={`${title} after`} className="aspect-square h-full w-full object-cover transition group-hover:scale-105" />
-                  <span className="absolute right-2 top-2 rounded-full bg-flame px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary backdrop-blur">
-                    After
-                  </span>
-                </div>
-                <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-flame/80 shadow-[0_0_12px_oklch(0.78_0.19_92/0.6)]" />
-                <div className="pointer-events-none absolute left-1/2 top-1/2 grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-flame bg-primary text-flame">
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </div>
-              </div>
+        {/* Layered showcase */}
+        <div className="relative mt-12 grid gap-6 lg:grid-cols-[340px_1fr]">
+          {/* Service tabs */}
+          <ol className="flex flex-col gap-2.5">
+            {services.map((svc, i) => {
+              const SIcon = svc.icon;
+              const isActive = i === active;
+              return (
+                <li key={svc.title}>
+                  <button
+                    type="button"
+                    onClick={() => setActive(i)}
+                    className={`group flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition ${
+                      isActive
+                        ? "border-flame bg-primary text-primary-foreground shadow-flame"
+                        : "border-border bg-card hover:border-flame/60 hover:-translate-y-0.5"
+                    }`}
+                  >
+                    <div
+                      className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl transition ${
+                        isActive ? "bg-flame text-primary" : "bg-primary text-flame"
+                      }`}
+                    >
+                      <SIcon className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className={`font-mono text-[10px] uppercase tracking-[0.22em] ${isActive ? "text-flame" : "text-muted-foreground"}`}>
+                        0{i + 1} · {svc.tag}
+                      </p>
+                      <h3 className={`mt-0.5 font-display text-lg font-semibold tracking-tight ${isActive ? "text-primary-foreground" : "text-primary"}`}>
+                        {svc.title}
+                      </h3>
+                    </div>
+                    <ChevronRight className={`h-5 w-5 shrink-0 transition ${isActive ? "translate-x-0.5 text-flame" : "text-muted-foreground"}`} />
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
 
-              <div className="flex flex-1 flex-col p-6">
+          {/* Featured panel */}
+          <article
+            key={active}
+            className="reveal relative overflow-hidden rounded-3xl border-2 border-primary/15 bg-card shadow-flame"
+          >
+            {/* Before / after split */}
+            <div className="relative grid grid-cols-2 overflow-hidden">
+              <div className="relative">
+                <img src={beforeImg} alt={`${s.title} — before`} className="aspect-[16/10] h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
+                <span className="absolute left-3 top-3 rounded-full bg-primary/85 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground backdrop-blur">
+                  Before
+                </span>
+              </div>
+              <div className="relative">
+                <img src={afterImg} alt={`${s.title} — after`} className="aspect-[16/10] h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-l from-flame/10 to-transparent" />
+                <span className="absolute right-3 top-3 rounded-full bg-flame px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary backdrop-blur">
+                  After
+                </span>
+              </div>
+              {/* divider */}
+              <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-flame shadow-[0_0_18px_oklch(0.78_0.19_92/0.7)]" />
+              <div className="pointer-events-none absolute left-1/2 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-flame bg-primary text-flame">
+                <ArrowRight className="h-4 w-4" />
+              </div>
+              {/* meta strip */}
+              <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-white/10 bg-primary/80 px-3 py-2 text-primary-foreground backdrop-blur">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                  Real ChimCrew job · Worthington OH
+                </span>
+                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
+                  <Clock className="h-3 w-3" /> {s.duration}
+                </span>
+              </div>
+            </div>
+
+            {/* Body */}
+            <div className="grid gap-6 p-6 md:grid-cols-[1fr_280px] md:p-8">
+              <div>
                 <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                    0{idx + 1} / 04
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                    Service 0{active + 1} / 0{services.length}
                   </span>
                 </div>
-                <h3 className="mt-4 font-display text-lg font-semibold text-primary">
-                  {title}
+                <h3 className="mt-4 font-display text-2xl font-bold text-primary md:text-3xl">
+                  {s.headline}
                 </h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{body}</p>
-                <Link
-                  to="/services"
-                  className="mt-5 inline-flex items-center gap-1.5 font-display text-xs uppercase tracking-widest text-primary transition group-hover:text-flame"
-                >
-                  Local pricing <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {s.body}
+                </p>
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {s.includes.map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-sm text-foreground">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-flame" /> {b}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </article>
-          ))}
+
+              {/* Price + CTA */}
+              <aside className="flex flex-col justify-between gap-4 rounded-2xl border-2 border-primary/10 bg-secondary/60 p-5">
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                    Flat rate · Ohio neighbors
+                  </p>
+                  <p className="mt-1 font-display text-4xl font-extrabold text-primary">
+                    {s.priceFrom}
+                    <span className="ml-1 text-sm font-medium text-muted-foreground">+ tax</span>
+                  </p>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    Quoted in writing before we start. No surprises, ever.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <Link
+                    to="/contact"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-flame px-5 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:-translate-y-0.5"
+                  >
+                    Book this service
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                  </Link>
+                  <a
+                    href="tel:5551234567"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-primary px-5 py-3 font-display text-xs font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
+                  >
+                    <Phone className="h-3.5 w-3.5" /> Ask a question first
+                  </a>
+                  <p className="text-center text-[11px] text-muted-foreground">
+                    Most homeowners get a quote in under a minute.
+                  </p>
+                </div>
+              </aside>
+            </div>
+          </article>
         </div>
       </div>
     </section>
