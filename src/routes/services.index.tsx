@@ -3,7 +3,7 @@ import { ChevronRight, ArrowRight } from "lucide-react";
 import { LeadForm } from "@/components/LeadForm";
 import { SERVICES, ACCENT_CLASSES } from "@/data/services";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Chimney Services in Ohio — ChimCrew" },
