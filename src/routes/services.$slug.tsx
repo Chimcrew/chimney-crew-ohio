@@ -6,10 +6,10 @@ export const Route = createFileRoute("/services/$slug")({
   loader: ({ params }) => {
     const service = getService(params.slug);
     if (!service) throw notFound();
-    return { service };
+    return { slug: service.slug };
   },
   head: ({ loaderData }) => {
-    const s = loaderData?.service;
+    const s = loaderData ? getService(loaderData.slug) : undefined;
     if (!s) {
       return {
         meta: [
@@ -49,7 +49,9 @@ export const Route = createFileRoute("/services/$slug")({
 });
 
 function ServiceDetailRoute() {
-  const { service } = Route.useLoaderData();
+  const { slug } = Route.useLoaderData();
+  const service = getService(slug);
+  if (!service) return <NotFoundService />;
   return <ServiceDetailPage service={service} />;
 }
 
