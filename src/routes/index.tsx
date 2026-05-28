@@ -10,6 +10,8 @@ import {
   Flame,
   Star,
   ChevronRight,
+  MapPin,
+  ArrowRight,
 } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/chimcrew-logo.png";
