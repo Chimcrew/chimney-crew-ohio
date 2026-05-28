@@ -541,7 +541,7 @@ function ServicesGrid() {
                     <li key={svc.title}>
                       <button
                         type="button"
-                        onClick={() => setActive(i)}
+                        onClick={() => setActive(isActive ? -1 : i)}
                         className={`group flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition ${
                           isActive
                             ? "border-flame bg-primary text-primary-foreground shadow-flame"
@@ -575,7 +575,17 @@ function ServicesGrid() {
               </ol>
 
               {/* Desktop: side panel */}
-              <div className="hidden lg:block">{panel}</div>
+              <div className="hidden lg:block">
+                {active >= 0 ? panel : (
+                  <div className="grid h-full min-h-[420px] place-items-center rounded-3xl border-2 border-dashed border-primary/15 bg-card/50 p-8 text-center">
+                    <div>
+                      <Sparkles className="mx-auto h-8 w-8 text-flame" />
+                      <p className="mt-3 font-display text-lg font-semibold text-primary">Pick a service to see the before & after.</p>
+                      <p className="mt-1 text-sm text-muted-foreground">Tap any service on the left — tap again to close.</p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
           );
         })()}
