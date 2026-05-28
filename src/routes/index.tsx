@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   CheckCircle2,
@@ -164,17 +165,18 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-primary-foreground md:text-7xl">
-              Ohio's elite
+            <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.045em] text-primary-foreground md:text-7xl">
+              Your chimney,
               <br />
               <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
-                chimney force.
+                handled by neighbors.
               </span>
             </h1>
 
             <p className="max-w-xl text-lg leading-relaxed text-primary-foreground/70 md:text-xl">
-              Protecting Ohio homes from creosote fires, CO leaks and water damage —
-              with high-definition camera inspections and hi-vis reliability.
+              We're a family crew, born and raised in Ohio. We sweep, inspect and repair
+              chimneys the way we'd want it done in our own homes — on time, in uniform,
+              with photos of every fix and a price agreed before we start.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
@@ -182,16 +184,21 @@ function Hero() {
                 to="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
               >
-                <CalendarCheck className="h-4 w-4" /> Schedule Online
+                <CalendarCheck className="h-4 w-4" /> Get my free quote
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </Link>
               <a
                 href="tel:5551234567"
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-white/10 bg-primary/60 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
               >
-                <Phone className="h-4 w-4" /> Call 555-123-4567
+                <Phone className="h-4 w-4" /> Talk to a sweep
               </a>
             </div>
+            <p className="-mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary-foreground/55">
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Free quote in 60 seconds</span>
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> No card. No pressure.</span>
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Real human answers</span>
+            </p>
 
             {/* Hazard micro-chips */}
             <div className="grid grid-cols-1 gap-4 border-t border-white/10 pt-8 sm:grid-cols-2">
@@ -242,7 +249,7 @@ function Hero() {
               ))}
             </div>
             <p className="text-sm text-primary-foreground/70">
-              <span className="font-display font-extrabold text-primary-foreground">482 Ohio homes</span> protected this month.
+              <span className="font-display font-extrabold text-primary-foreground">482 Ohio neighbors</span> trusted us this month — your spot opens next.
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -330,13 +337,13 @@ function FireHazards() {
           <p className="inline-flex items-center gap-2 rounded-full border border-destructive/40 bg-destructive/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-destructive">
             <AlertTriangle className="h-3.5 w-3.5" /> Why it matters
           </p>
-          <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
-            Four reasons a neglected chimney is dangerous.
+          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+            What your chimney is hiding right now.
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
-            Every year the U.S. logs 25,000+ chimney fires causing $125M in damage.
-            We sweep, inspect and seal so your fireplace stays the warmest spot in the
-            house — not the most dangerous one.
+            25,000+ chimney fires hit U.S. homes every year — most start invisible.
+            Two minutes here could save your roof, your air, and a $40,000 insurance fight.
+            Here's what we look for on every Ohio rooftop we climb.
           </p>
         </div>
 
@@ -351,7 +358,7 @@ function FireHazards() {
               <div className="relative grid h-12 w-12 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
                 <Icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 font-display text-lg uppercase tracking-wider text-primary">
+              <h3 className="mt-5 font-display text-lg font-semibold text-primary">
                 {title}
               </h3>
               <p className="mt-2 flex-1 text-sm text-muted-foreground">{body}</p>
@@ -370,98 +377,214 @@ function FireHazards() {
    SERVICES GRID — with before/after
    ============================================================ */
 function ServicesGrid() {
-  const items = [
+  const services = [
     {
       icon: Sparkles,
       title: "Chimney Sweep",
-      body: "Full creosote and soot removal with HEPA vacuums — no mess in the living room.",
+      tag: "Most booked",
+      priceFrom: "$189",
+      duration: "60–90 min",
+      headline: "We pull years of creosote out — without a speck of soot in your living room.",
+      body: "Drop cloths corner to corner, HEPA-vacuum sealed at the firebox, every soot line wiped down before we leave. You get a written safety summary and a side-by-side photo.",
+      includes: ["HEPA-contained sweep", "Smoke chamber & damper", "Photo safety report", "Free Level 1 visual check"],
     },
     {
       icon: Search,
       title: "Camera Inspection",
-      body: "Level 1 & 2 inspections with high-res video so you see exactly what we see.",
+      tag: "For home sales",
+      priceFrom: "$129",
+      duration: "45–60 min",
+      headline: "See what's hiding inside your flue — on a tablet, in plain English.",
+      body: "Level 1 & Level 2 inspections with a high-res chimney camera. You watch the footage with us, we mark every crack and recommend only what your home actually needs.",
+      includes: ["Full-flue HD camera scan", "Written PDF report", "Real-estate compliant", "No upsell — promise"],
     },
     {
       icon: Wrench,
-      title: "Repair & Tuckpointing",
-      body: "Crown rebuilds, flue relining, masonry restoration — built for Ohio winters.",
+      title: "Repair & Tuckpoint",
+      tag: "Built for OH winters",
+      priceFrom: "$650",
+      duration: "1–2 days",
+      headline: "Crowns, mortar, liners — rebuilt to outlast another decade of freeze-thaw.",
+      body: "We rebuild crowns with stainless reinforcement, repoint with weather-rated mortar, and reline with insulated stainless. Every job ships with a 5-year written workmanship warranty.",
+      includes: ["Stainless-reinforced crowns", "Weather-rated mortar", "Insulated stainless liners", "5-year workmanship warranty"],
     },
     {
       icon: ShieldCheck,
       title: "Waterproof & Cap",
-      body: "Stainless caps and crown coatings stop leaks and animals at the source.",
+      tag: "Stops leaks for good",
+      priceFrom: "$349",
+      duration: "Same day",
+      headline: "Seal the chimney once. Keep rain, snow and wildlife out for years.",
+      body: "Vapor-permeable waterproofing on the masonry, stainless cap sized to your flue, flashing checked and resealed. We back it with a transferable leak warranty.",
+      includes: ["Stainless steel cap install", "Vapor-permeable seal", "Flashing inspection & touch-up", "Transferable leak warranty"],
     },
   ];
+  const [active, setActive] = useState(0);
+  const s = services[active];
+  const Icon = s.icon;
   return (
     <section className="relative overflow-hidden bg-secondary/40 py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-20" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
-          <div>
+          <div className="max-w-2xl">
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
-              <HardHat className="h-3.5 w-3.5 text-flame" /> Our services
+              <HardHat className="h-3.5 w-3.5 text-flame" /> What we do · all in one visit
             </p>
-            <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
-              Built to last an Ohio winter.
+            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-6xl">
+              Pick a service.<br/>See the actual work.
             </h2>
-            <p className="mt-3 max-w-xl text-base text-muted-foreground">
-              Four core services. Real before/after work from local jobs in your zip code.
+            <p className="mt-4 max-w-xl text-base text-muted-foreground">
+              Tap any service to see a real ChimCrew before/after from an Ohio home this season —
+              with plain-English pricing and what's included.
             </p>
           </div>
           <Link
             to="/services"
-            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-4 py-2.5 font-display text-xs uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
+            className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-5 py-3 font-display text-xs font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
-            All services <ArrowRight className="h-4 w-4" />
+            All 7 services <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map(({ icon: Icon, title, body }, idx) => (
-            <article
-              key={title}
-              className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
-            >
-              <div className="relative grid grid-cols-2 overflow-hidden">
-                <div className="relative">
-                  <img src={beforeImg} alt={`${title} before`} className="aspect-square h-full w-full object-cover transition group-hover:scale-105" />
-                  <span className="absolute left-2 top-2 rounded-full bg-primary/85 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary-foreground backdrop-blur">
-                    Before
-                  </span>
-                </div>
-                <div className="relative">
-                  <img src={afterImg} alt={`${title} after`} className="aspect-square h-full w-full object-cover transition group-hover:scale-105" />
-                  <span className="absolute right-2 top-2 rounded-full bg-flame px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary backdrop-blur">
-                    After
-                  </span>
-                </div>
-                <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-flame/80 shadow-[0_0_12px_oklch(0.78_0.19_92/0.6)]" />
-                <div className="pointer-events-none absolute left-1/2 top-1/2 grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-flame bg-primary text-flame">
-                  <ArrowRight className="h-3.5 w-3.5" />
-                </div>
-              </div>
+        {/* Layered showcase */}
+        <div className="relative mt-12 grid gap-6 lg:grid-cols-[340px_1fr]">
+          {/* Service tabs */}
+          <ol className="flex flex-col gap-2.5">
+            {services.map((svc, i) => {
+              const SIcon = svc.icon;
+              const isActive = i === active;
+              return (
+                <li key={svc.title}>
+                  <button
+                    type="button"
+                    onClick={() => setActive(i)}
+                    className={`group flex w-full items-center gap-4 rounded-2xl border-2 p-4 text-left transition ${
+                      isActive
+                        ? "border-flame bg-primary text-primary-foreground shadow-flame"
+                        : "border-border bg-card hover:border-flame/60 hover:-translate-y-0.5"
+                    }`}
+                  >
+                    <div
+                      className={`grid h-12 w-12 shrink-0 place-items-center rounded-xl transition ${
+                        isActive ? "bg-flame text-primary" : "bg-primary text-flame"
+                      }`}
+                    >
+                      <SIcon className="h-5 w-5" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <p className={`font-mono text-[10px] uppercase tracking-[0.22em] ${isActive ? "text-flame" : "text-muted-foreground"}`}>
+                        0{i + 1} · {svc.tag}
+                      </p>
+                      <h3 className={`mt-0.5 font-display text-lg font-semibold tracking-tight ${isActive ? "text-primary-foreground" : "text-primary"}`}>
+                        {svc.title}
+                      </h3>
+                    </div>
+                    <ChevronRight className={`h-5 w-5 shrink-0 transition ${isActive ? "translate-x-0.5 text-flame" : "text-muted-foreground"}`} />
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
 
-              <div className="flex flex-1 flex-col p-6">
+          {/* Featured panel */}
+          <article
+            key={active}
+            className="reveal relative overflow-hidden rounded-3xl border-2 border-primary/15 bg-card shadow-flame"
+          >
+            {/* Before / after split */}
+            <div className="relative grid grid-cols-2 overflow-hidden">
+              <div className="relative">
+                <img src={beforeImg} alt={`${s.title} — before`} className="aspect-[16/10] h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
+                <span className="absolute left-3 top-3 rounded-full bg-primary/85 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground backdrop-blur">
+                  Before
+                </span>
+              </div>
+              <div className="relative">
+                <img src={afterImg} alt={`${s.title} — after`} className="aspect-[16/10] h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-l from-flame/10 to-transparent" />
+                <span className="absolute right-3 top-3 rounded-full bg-flame px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary backdrop-blur">
+                  After
+                </span>
+              </div>
+              {/* divider */}
+              <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-flame shadow-[0_0_18px_oklch(0.78_0.19_92/0.7)]" />
+              <div className="pointer-events-none absolute left-1/2 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-flame bg-primary text-flame">
+                <ArrowRight className="h-4 w-4" />
+              </div>
+              {/* meta strip */}
+              <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-white/10 bg-primary/80 px-3 py-2 text-primary-foreground backdrop-blur">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                  Real ChimCrew job · Worthington OH
+                </span>
+                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
+                  <Clock className="h-3 w-3" /> {s.duration}
+                </span>
+              </div>
+            </div>
+
+            {/* Body */}
+            <div className="grid gap-6 p-6 md:grid-cols-[1fr_280px] md:p-8">
+              <div>
                 <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
                     <Icon className="h-5 w-5" />
                   </div>
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                    0{idx + 1} / 04
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                    Service 0{active + 1} / 0{services.length}
                   </span>
                 </div>
-                <h3 className="mt-4 font-display text-lg uppercase tracking-wider text-primary">
-                  {title}
+                <h3 className="mt-4 font-display text-2xl font-bold text-primary md:text-3xl">
+                  {s.headline}
                 </h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{body}</p>
-                <Link
-                  to="/services"
-                  className="mt-5 inline-flex items-center gap-1.5 font-display text-xs uppercase tracking-widest text-primary transition group-hover:text-flame"
-                >
-                  Local pricing <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground md:text-base">
+                  {s.body}
+                </p>
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {s.includes.map((b) => (
+                    <li key={b} className="flex items-start gap-2 text-sm text-foreground">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-flame" /> {b}
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </article>
-          ))}
+
+              {/* Price + CTA */}
+              <aside className="flex flex-col justify-between gap-4 rounded-2xl border-2 border-primary/10 bg-secondary/60 p-5">
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                    Flat rate · Ohio neighbors
+                  </p>
+                  <p className="mt-1 font-display text-4xl font-extrabold text-primary">
+                    {s.priceFrom}
+                    <span className="ml-1 text-sm font-medium text-muted-foreground">+ tax</span>
+                  </p>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    Quoted in writing before we start. No surprises, ever.
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <Link
+                    to="/contact"
+                    className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-flame px-5 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:-translate-y-0.5"
+                  >
+                    Book this service
+                    <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                  </Link>
+                  <a
+                    href="tel:5551234567"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-primary px-5 py-3 font-display text-xs font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
+                  >
+                    <Phone className="h-3.5 w-3.5" /> Ask a question first
+                  </a>
+                  <p className="text-center text-[11px] text-muted-foreground">
+                    Most homeowners get a quote in under a minute.
+                  </p>
+                </div>
+              </aside>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -508,13 +631,13 @@ function LeakingChimney() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Droplets className="h-3.5 w-3.5 text-flame" /> Is your chimney leaking?
           </p>
-          <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
-            Water is the silent killer of Ohio chimneys.
+          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+            One bad Ohio winter and the water wins.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
-            One bad winter is enough. Freeze-thaw cycles widen hairline cracks until
-            water reaches the firebox, the walls, and the ceiling below. We diagnose
-            the source, seal it for good, and back the work with a written warranty.
+            Freeze-thaw widens hairline cracks until water reaches your firebox, your walls,
+            your ceiling. We climb up, find the source, seal it for good, and put it in
+            writing — with a leak warranty you can hand to the next owner.
           </p>
 
           <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -532,13 +655,13 @@ function LeakingChimney() {
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 font-display text-sm uppercase tracking-wider text-primary-foreground transition hover:bg-flame hover:text-primary"
+              className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:bg-flame hover:text-primary"
             >
               Book a leak inspection <CalendarCheck className="h-4 w-4" />
             </Link>
             <a
               href="tel:5551234567"
-              className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-5 py-3 font-display text-sm uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-5 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
             >
               <Phone className="h-4 w-4" /> Talk to a sweep
             </a>
@@ -564,12 +687,13 @@ function ScheduleOnline() {
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
               <CalendarCheck className="h-3.5 w-3.5" /> 60-second booking
             </p>
-            <h2 className="mt-4 font-display text-4xl uppercase tracking-wider md:text-5xl">
-              Schedule online — <span className="text-flame">we'll do the rest.</span>
+            <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">
+              Pick a window. <span className="text-flame">We handle everything else.</span>
             </h2>
             <p className="mt-4 max-w-xl text-base text-primary-foreground/80">
-              Pick a 2-hour window. We confirm by text within the hour and a local
-              ChimCrew van rolls up on time, in uniform, with shoe covers and tarps.
+              Tell us your address and pick a 2-hour window. We text to confirm within the hour,
+              and a local Ohio crew rolls up on time — in uniform, with shoe covers, tarps,
+              and a smile. If we're late, your inspection is on us.
             </p>
 
             <ol className="mt-6 grid gap-3 sm:grid-cols-3">
@@ -582,7 +706,7 @@ function ScheduleOnline() {
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
                     Step {n}
                   </p>
-                  <p className="mt-1 font-display text-sm uppercase tracking-wider">{t}</p>
+                  <p className="mt-1 font-display text-sm font-semibold">{t}</p>
                   <p className="mt-1 text-xs text-primary-foreground/70">{s}</p>
                 </li>
               ))}
@@ -591,14 +715,14 @@ function ScheduleOnline() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 to="/contact"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-sm bg-flame px-6 py-4 font-display text-base uppercase tracking-wider text-primary shadow-flame transition hover:brightness-110"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-sm bg-flame px-6 py-4 font-display text-base font-semibold text-primary shadow-flame transition hover:brightness-110"
               >
                 <CalendarCheck className="h-5 w-5" /> Book my appointment
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </Link>
               <a
                 href="tel:5551234567"
-                className="inline-flex items-center gap-2 rounded-sm border-2 border-flame/70 px-6 py-4 font-display text-base uppercase tracking-wider text-flame transition hover:bg-flame hover:text-primary"
+                className="inline-flex items-center gap-2 rounded-sm border-2 border-flame/70 px-6 py-4 font-display text-base font-semibold text-flame transition hover:bg-flame hover:text-primary"
               >
                 <Phone className="h-5 w-5" /> 555-123-4567
               </a>
@@ -613,7 +737,7 @@ function ScheduleOnline() {
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
                   Limited-time
                 </p>
-                <p className="font-display text-2xl uppercase tracking-wider text-primary-foreground">
+                <p className="font-display text-2xl font-bold text-primary-foreground">
                   $69 chimney inspection
                 </p>
                 <p className="mt-1 text-xs text-primary-foreground/80">
@@ -645,9 +769,12 @@ function Process() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Clock className="h-3.5 w-3.5 text-flame" /> How it works
           </p>
-          <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
-            Four steps. No surprises.
-          </h2>
+            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+              From "hello" to handshake in four steps.
+            </h2>
+            <p className="mt-3 text-base text-muted-foreground">
+              No quote-bait, no upsells, no surprise invoices. The price you see is the price you pay.
+            </p>
         </div>
 
         <div className="relative mt-14 grid gap-8 md:grid-cols-4">
@@ -660,7 +787,7 @@ function Process() {
                   {i + 1}
                 </span>
               </div>
-              <h3 className="mt-5 font-display text-base uppercase tracking-wider text-primary">
+              <h3 className="mt-5 font-display text-base font-semibold text-primary">
                 {title}
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">{body}</p>
@@ -704,8 +831,8 @@ function Testimonials() {
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
               <Star className="h-3.5 w-3.5 text-flame" /> Reviews
             </p>
-            <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
-              Real Ohio neighbors. Real fires.
+            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+              Real Ohio neighbors. Honest words.
             </h2>
           </div>
           <Link
@@ -731,7 +858,7 @@ function Testimonials() {
                 "{r.quote}"
               </blockquote>
               <figcaption className="mt-6 border-t border-border pt-4">
-                <p className="font-display text-sm uppercase tracking-wider text-primary">
+                <p className="font-display text-sm font-semibold text-primary">
                   {r.name}
                 </p>
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
@@ -779,11 +906,11 @@ function Faq() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             FAQ
           </p>
-          <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
-            Answers from the crew.
+          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+            Ask us anything — we don't bite.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
-            Still wondering? Call us — we answer the phone and the questions don't cost a dime.
+            Real Ohioans answer the phone. No call centers, no pressure, no charge for advice.
           </p>
           <a
             href="tel:5551234567"
@@ -799,7 +926,7 @@ function Faq() {
               className="group rounded-xl border border-border bg-card p-5 transition open:border-flame open:shadow-flame"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
-                <span className="font-display text-base uppercase tracking-wider text-primary">
+                <span className="font-display text-base font-semibold text-primary">
                   {f.q}
                 </span>
                 <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border text-primary transition group-open:rotate-45 group-open:border-flame group-open:text-flame">
@@ -825,24 +952,24 @@ function FinalCta() {
         <div className="flex items-center gap-4">
           <Flame className="h-10 w-10" />
           <div>
-            <p className="font-display text-2xl uppercase tracking-wider md:text-3xl">
-              Ready for a safer fireplace?
+            <p className="font-display text-2xl font-bold md:text-3xl">
+              One quick form. A safer home tonight.
             </p>
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] opacity-80">
-              Same-day callback · 24/7 emergency
+              Same-day callback · No card · 100% Ohio crew
             </p>
           </div>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/contact"
-            className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm uppercase tracking-wider text-primary-foreground transition hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:brightness-110"
           >
-            Schedule Online <CalendarCheck className="h-4 w-4" />
+            Get my free quote <CalendarCheck className="h-4 w-4" />
           </Link>
           <a
             href="tel:5551234567"
-            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
             <Phone className="h-4 w-4" /> 555-123-4567
           </a>
