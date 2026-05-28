@@ -31,6 +31,7 @@ import afterImg from "@/assets/after-chimney.jpg";
 import crownBefore from "@/assets/crown-before.jpg";
 import crownAfter from "@/assets/crown-after.jpg";
 import { LeadForm } from "@/components/LeadForm";
+import { SERVICES } from "@/data/services";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -457,6 +458,39 @@ function ServicesGrid() {
       beforeLabel: "Cracked & failing",
       afterLabel: "Rebuilt & sealed",
     },
+    {
+      icon: Wind,
+      title: "Stainless Liner Install",
+      slug: "liner-install",
+      tag: "Code-compliant",
+      priceFrom: "$1,890",
+      duration: "1 day",
+      headline: "Insulated stainless liner sized to your appliance — installed in a day.",
+      body: "We measure your flue and appliance, drop in an insulated stainless liner from the top, and seal it at both ends. Smoke and draft tested before we leave. Lifetime liner warranty.",
+      includes: ["Insulated stainless steel", "Sized to your appliance", "Smoke + draft test", "Lifetime liner warranty"],
+    },
+    {
+      icon: AlertTriangle,
+      title: "Animal Removal",
+      slug: "animal-removal",
+      tag: "Humane + capped",
+      priceFrom: "$289",
+      duration: "1–2 hours",
+      headline: "Squirrels, raccoons, birds — out humanely, then capped so they stay out.",
+      body: "We identify what's in the flue, remove them with species-appropriate methods, clear the nesting material, and install a stainless mesh cap so it doesn't happen again.",
+      includes: ["Humane species-appropriate removal", "Nest debris cleared", "Stainless mesh cap install", "2-year exclusion warranty"],
+    },
+    {
+      icon: Droplets,
+      title: "Flashing Repair",
+      slug: "flashing-repair",
+      tag: "Stops roof leaks",
+      priceFrom: "$425",
+      duration: "Same day",
+      headline: "Leak where the chimney meets the roof? Re-flash it once — done right.",
+      body: "We pull the failed flashing, cut new flashing into a fresh mortar joint, and seal every transition with polyurethane — never silicone. Backed by a 5-year leak warranty.",
+      includes: ["New step + counter flashing", "Cut into mortar joint", "Polyurethane sealant", "5-year leak warranty"],
+    },
   ];
   const [active, setActive] = useState(0);
   const s = services[active] ?? services[0];
@@ -478,12 +512,6 @@ function ServicesGrid() {
               with plain-English pricing and what's included.
             </p>
           </div>
-          <Link
-            to="/services"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-5 py-3 font-display text-xs font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
-          >
-            All 7 services <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
 
         {/* Layered showcase */}
@@ -647,6 +675,20 @@ function ServicesGrid() {
             </div>
           );
         })()}
+
+        {/* See all services CTA */}
+        <div className="mt-14 flex flex-col items-center gap-3 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            + {Math.max(SERVICES.length - services.length, 0)} more services — sweeps, inspections, caps, firebox rebuilds & gas service
+          </p>
+          <Link
+            to="/services"
+            className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 font-display text-sm font-bold uppercase tracking-widest text-primary-foreground shadow-flame transition hover:bg-flame hover:text-primary"
+          >
+            See all {SERVICES.length} services
+            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </section>
   );
