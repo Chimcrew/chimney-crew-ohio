@@ -221,8 +221,8 @@ export function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="border-b border-white/5 bg-primary text-primary-foreground md:hidden">
-          <div className="mx-auto max-w-7xl px-4 py-4">
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-white/5 bg-primary text-primary-foreground md:hidden">
+          <div className="mx-auto max-w-7xl px-4 py-4 pb-8">
             <nav className="flex flex-col">
               {nav.map((n) => {
                 if (n.to === "/services") {
