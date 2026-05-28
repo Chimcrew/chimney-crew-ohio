@@ -66,6 +66,20 @@ export function ScheduleWidget() {
 
   const submit = useCallback(() => {
     setSubmitting(true);
+    void fetch('/api/public/notify-lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        source: 'Schedule widget',
+        name,
+        phone,
+        service: svc.label,
+        address,
+        date: date ? format(date, 'EEE, MMM d') : undefined,
+        timeWindow: slt.time,
+        notes: rush ? `RUSH callback requested. ${notes}` : (notes || undefined),
+      }),
+    }).catch(() => {});
     setTimeout(() => {
       setSubmitting(false);
       setOpen(false);
