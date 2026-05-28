@@ -491,33 +491,33 @@ function ServicesGrid() {
             {/* Before / after split */}
             <div className="relative grid grid-cols-2 overflow-hidden">
               <div className="relative">
-                <img src={(s as any).beforeImg ?? beforeImg} alt={`${s.title} — before`} className="aspect-[16/10] h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
-                <span className="absolute left-3 top-3 rounded-full bg-primary/85 px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground backdrop-blur">
+                <img src={(s as any).beforeImg ?? beforeImg} alt={`${s.title} — before`} className="aspect-[4/3] h-full w-full object-cover md:aspect-[16/10]" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
+                <span className="absolute left-2 top-2 rounded-full bg-primary/90 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary-foreground backdrop-blur md:left-3 md:top-3 md:px-2.5 md:py-1 md:text-[10px]">
                   {(s as any).beforeLabel ?? "Before"}
                 </span>
               </div>
               <div className="relative">
-                <img src={(s as any).afterImg ?? afterImg} alt={`${s.title} — after`} className="aspect-[16/10] h-full w-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-l from-flame/10 to-transparent" />
-                <span className="absolute right-3 top-3 rounded-full bg-flame px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-primary backdrop-blur">
+                <img src={(s as any).afterImg ?? afterImg} alt={`${s.title} — after`} className="aspect-[4/3] h-full w-full object-cover md:aspect-[16/10]" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-flame/10 to-transparent" />
+                <span className="absolute right-2 top-2 rounded-full bg-flame px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary backdrop-blur md:right-3 md:top-3 md:px-2.5 md:py-1 md:text-[10px]">
                   {(s as any).afterLabel ?? "After"}
                 </span>
               </div>
               {/* divider */}
               <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-flame shadow-[0_0_18px_oklch(0.78_0.19_92/0.7)]" />
-              <div className="pointer-events-none absolute left-1/2 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-flame bg-primary text-flame">
-                <ArrowRight className="h-4 w-4" />
+              <div className="pointer-events-none absolute left-1/2 top-1/2 grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-flame bg-primary text-flame md:h-10 md:w-10">
+                <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4" />
               </div>
-              {/* meta strip */}
-              <div className="absolute bottom-3 left-3 right-3 flex flex-wrap items-center justify-between gap-2 rounded-xl border border-white/10 bg-primary/80 px-3 py-2 text-primary-foreground backdrop-blur">
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                  Real ChimCrew job · Worthington OH
-                </span>
-                <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
-                  <Clock className="h-3 w-3" /> {s.duration}
-                </span>
-              </div>
+            </div>
+            {/* Meta strip — now below images, no overlap */}
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-secondary/60 px-4 py-2.5">
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                Real ChimCrew job · Ohio
+              </span>
+              <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                <Clock className="h-3 w-3" /> {s.duration}
+              </span>
             </div>
 
             {/* Body */}
