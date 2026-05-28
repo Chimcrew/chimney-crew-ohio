@@ -303,9 +303,11 @@ function LogoDivider() {
         <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-flame">
           One crew · One promise · All of Ohio
         </p>
-        <p className="max-w-xl font-display text-xl font-semibold leading-snug tracking-tight text-primary-foreground md:text-2xl">
-          The same yellow van. The same family crew. Every single visit.
-        </p>
+        <h2 className="max-w-2xl font-display text-2xl font-extrabold leading-[1.15] tracking-[-0.02em] text-primary-foreground md:text-4xl">
+          Same yellow van.{" "}
+          <span className="text-flame">Same family crew.</span>{" "}
+          <span className="text-primary-foreground/70">Every visit.</span>
+        </h2>
       </div>
     </section>
   );
