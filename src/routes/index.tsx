@@ -107,7 +107,7 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.045em] text-primary-foreground md:text-[5.5rem]">
+            <h1 className="font-display text-4xl font-extrabold leading-[1.02] tracking-[-0.035em] text-primary-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
               Ohio Chimney Sweep
               <br />
               <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
@@ -115,7 +115,7 @@ function Hero() {
               </span>
             </h1>
 
-            <p className="max-w-xl text-lg leading-relaxed text-primary-foreground/75 md:text-xl">
+            <p className="max-w-xl text-base leading-relaxed text-primary-foreground/75 md:text-lg">
               Same-day sweeps, HD camera inspections, leak repair and crown rebuilds —
               flat-rate pricing, photos with every job, and a written warranty you can hand
               to the next owner.
@@ -157,7 +157,7 @@ function Hero() {
                 {/* top meta strip */}
                 <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
                   <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                    ChimCrew · Est. 1975
+                    ChimCrew · The Yellow Van
                   </span>
                   <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/55">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Online now
@@ -165,31 +165,29 @@ function Hero() {
                 </div>
 
                 {/* hero image */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-[oklch(0.08_0.01_250)]">
-                  <img
-                    src={logo}
-                    alt="ChimCrew — Ohio chimney sweep & repair"
-                    className="absolute inset-1/2 w-[78%] -translate-x-1/2 -translate-y-1/2 animate-float"
-                  />
-                  {/* corner radial accent */}
-                  <div className="pointer-events-none absolute -right-12 -top-12 h-48 w-48 rounded-full bg-flame/25 blur-3xl" />
+                <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-[oklch(0.14_0.01_250)] to-[oklch(0.06_0.01_250)]">
+                  {/* subtle backdrop accents */}
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-flame/25 blur-3xl" />
+                  <div className="pointer-events-none absolute -left-12 bottom-0 h-48 w-48 rounded-full bg-flame/10 blur-3xl" />
                   <div className="pointer-events-none absolute inset-0 animate-shine" />
 
-                  {/* Floating van badge */}
-                  <div className="absolute -bottom-3 -right-3 w-[58%] rotate-3 transition-transform duration-500 hover:rotate-0">
-                    <div className="overflow-hidden rounded-xl border border-white/10 bg-white p-1.5 pb-6 shadow-2xl">
-                      <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-[oklch(0.10_0.01_250)]">
-                        <img src={van} alt="ChimCrew Ohio van" className="absolute inset-0 h-full w-full object-cover" />
-                      </div>
-                      <p className="mt-1 px-1 font-mono text-[8px] uppercase tracking-[0.18em] text-primary/80">
-                        ◆ The yellow van you'll spot
-                      </p>
-                    </div>
-                  </div>
+                  {/* The van — clean, centered, hero */}
+                  <img
+                    src={van}
+                    alt="ChimCrew yellow chimney sweep van — Ohio"
+                    className="absolute inset-x-0 bottom-[14%] mx-auto w-[92%] animate-float object-contain drop-shadow-[0_25px_35px_oklch(0_0_0/0.55)]"
+                  />
 
                   {/* Floating "Same-day" pill */}
                   <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-flame/30 bg-primary/85 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
                     <Clock className="h-3 w-3" /> Same-day slots open
+                  </div>
+
+                  {/* Caption pill bottom */}
+                  <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/80 px-3 py-2 text-center backdrop-blur">
+                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                      ◆ The yellow van you'll spot in the driveway
+                    </p>
                   </div>
                 </div>
 
