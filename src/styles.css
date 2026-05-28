@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Geist:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
 
 /*
  * Design system definition.
@@ -65,9 +65,9 @@
   --color-ember: var(--ember);
   --color-soot: var(--soot);
   --color-ash: var(--ash);
-  --font-display: 'Sora', 'Inter', system-ui, sans-serif;
+  --font-display: 'Geist', 'Inter', system-ui, sans-serif;
   --font-inline: 'Bungee', 'Impact', sans-serif;
-  --font-sans: 'Sora', 'Space Grotesk', system-ui, sans-serif;
+  --font-sans: 'Geist', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -137,9 +137,10 @@
 
   h1, h2, h3, .display {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
-    line-height: 0.95;
-    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.98;
+    font-weight: 700;
+    text-transform: none;
   }
 }
 
