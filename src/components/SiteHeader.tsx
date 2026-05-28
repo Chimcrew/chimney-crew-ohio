@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
-import { Menu, X, Phone, CalendarCheck, Flame, MapPin } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown } from "lucide-react";
 import logoMark from "@/assets/chimcrew-logo.png";
 import { openScheduleDialog } from "@/components/ScheduleWidget";
+import { SERVICES, ACCENT_CLASSES } from "@/data/services";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -19,6 +20,9 @@ const primaryNav = nav.filter((n) => ["/", "/services", "/reviews", "/blog", "/c
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const servicesRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -26,6 +30,25 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close desktop services dropdown on outside click / Escape
+  useEffect(() => {
+    if (!servicesOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
+        setServicesOpen(false);
+      }
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setServicesOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [servicesOpen]);
 
   return (
     <header className="sticky top-0 z-50">
@@ -76,18 +99,86 @@ export function SiteHeader() {
 
           {/* Nav pill */}
           <nav className="hidden items-center rounded-full border border-white/10 bg-white/5 px-2 py-1.5 backdrop-blur md:flex">
-            {primaryNav.map((n) => (
-              <Link
-                key={n.to}
-                to={n.to}
-                className="group relative px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground/70 transition hover:text-primary-foreground"
-                activeProps={{ className: "text-flame" }}
-                activeOptions={n.to === "/" ? { exact: true } : undefined}
-              >
-                {n.label}
-                <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-flame transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
-            ))}
+            {primaryNav.map((n) => {
+              if (n.to === "/services") {
+                return (
+                  <div key={n.to} className="relative" ref={servicesRef}>
+                    <button
+                      type="button"
+                      onClick={() => setServicesOpen((v) => !v)}
+                      aria-expanded={servicesOpen}
+                      aria-haspopup="menu"
+                      className={`group relative inline-flex items-center gap-1 px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition ${
+                        servicesOpen ? "text-flame" : "text-primary-foreground/70 hover:text-primary-foreground"
+                      }`}
+                    >
+                      {n.label}
+                      <ChevronDown
+                        className={`h-3 w-3 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+                    {servicesOpen && (
+                      <div
+                        role="menu"
+                        className="absolute left-1/2 top-[calc(100%+0.75rem)] z-50 w-[min(720px,90vw)] -translate-x-1/2 overflow-hidden rounded-2xl border border-white/10 bg-primary text-primary-foreground shadow-[0_30px_60px_oklch(0_0_0/0.5)] backdrop-blur-xl"
+                      >
+                        <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-5 py-3">
+                          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                            All chimney services
+                          </span>
+                          <Link
+                            to="/services"
+                            onClick={() => setServicesOpen(false)}
+                            className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70 transition hover:text-flame"
+                          >
+                            View all <ChevronDown className="h-3 w-3 -rotate-90" />
+                          </Link>
+                        </div>
+                        <div className="grid max-h-[60vh] grid-cols-2 gap-1 overflow-auto p-2">
+                          {SERVICES.map((s) => {
+                            const Icon = s.icon;
+                            const accent = ACCENT_CLASSES[s.accent];
+                            return (
+                              <Link
+                                key={s.slug}
+                                to="/services/$slug"
+                                params={{ slug: s.slug }}
+                                onClick={() => setServicesOpen(false)}
+                                className="group flex items-start gap-3 rounded-xl border border-transparent px-3 py-2.5 transition hover:border-white/10 hover:bg-white/5"
+                              >
+                                <span className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg ${accent.bg} text-primary-foreground`}>
+                                  <Icon className="h-4 w-4" />
+                                </span>
+                                <span className="min-w-0">
+                                  <span className="block font-display text-sm font-semibold leading-tight text-primary-foreground">
+                                    {s.shortTitle}
+                                  </span>
+                                  <span className="mt-0.5 block truncate font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/50">
+                                    {s.price} · {s.duration}
+                                  </span>
+                                </span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              return (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  className="group relative px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground/70 transition hover:text-primary-foreground"
+                  activeProps={{ className: "text-flame" }}
+                  activeOptions={n.to === "/" ? { exact: true } : undefined}
+                >
+                  {n.label}
+                  <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-flame transition-transform duration-300 group-hover:scale-x-100" />
+                </Link>
+              );
+            })}
           </nav>
 
           {/* CTAs */}
@@ -127,18 +218,82 @@ export function SiteHeader() {
         <div className="border-b border-white/5 bg-primary text-primary-foreground md:hidden">
           <div className="mx-auto max-w-7xl px-4 py-4">
             <nav className="flex flex-col">
-              {nav.map((n) => (
-                <Link
-                  key={n.to}
-                  to={n.to}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-between border-b border-white/5 py-3 font-display text-base font-bold uppercase tracking-wider"
-                  activeProps={{ className: "text-flame" }}
-                  activeOptions={n.to === "/" ? { exact: true } : undefined}
-                >
-                  {n.label} <Flame className="h-4 w-4 text-flame" />
-                </Link>
-              ))}
+              {nav.map((n) => {
+                if (n.to === "/services") {
+                  return (
+                    <div key={n.to} className="border-b border-white/5">
+                      <div className="flex items-stretch justify-between">
+                        <Link
+                          to="/services"
+                          onClick={() => setOpen(false)}
+                          className="flex flex-1 items-center gap-2 py-3 font-display text-base font-bold uppercase tracking-wider"
+                          activeProps={{ className: "text-flame" }}
+                        >
+                          {n.label}
+                        </Link>
+                        <button
+                          type="button"
+                          onClick={() => setMobileServicesOpen((v) => !v)}
+                          aria-expanded={mobileServicesOpen}
+                          aria-label="Toggle services list"
+                          className="grid w-12 place-items-center"
+                        >
+                          <ChevronDown
+                            className={`h-5 w-5 text-flame transition-transform duration-200 ${
+                              mobileServicesOpen ? "rotate-180" : ""
+                            }`}
+                          />
+                        </button>
+                      </div>
+                      {mobileServicesOpen && (
+                        <ul className="mb-3 grid gap-1 rounded-xl bg-white/5 p-2">
+                          {SERVICES.map((s) => {
+                            const Icon = s.icon;
+                            const accent = ACCENT_CLASSES[s.accent];
+                            return (
+                              <li key={s.slug}>
+                                <Link
+                                  to="/services/$slug"
+                                  params={{ slug: s.slug }}
+                                  onClick={() => {
+                                    setOpen(false);
+                                    setMobileServicesOpen(false);
+                                  }}
+                                  className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm transition active:bg-white/10"
+                                >
+                                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-md ${accent.bg} text-primary-foreground`}>
+                                    <Icon className="h-4 w-4" />
+                                  </span>
+                                  <span className="min-w-0 flex-1">
+                                    <span className="block truncate font-display text-sm font-semibold text-primary-foreground">
+                                      {s.shortTitle}
+                                    </span>
+                                    <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/50">
+                                      {s.price}
+                                    </span>
+                                  </span>
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                }
+                return (
+                  <Link
+                    key={n.to}
+                    to={n.to}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-between border-b border-white/5 py-3 font-display text-base font-bold uppercase tracking-wider"
+                    activeProps={{ className: "text-flame" }}
+                    activeOptions={n.to === "/" ? { exact: true } : undefined}
+                  >
+                    {n.label} <Flame className="h-4 w-4 text-flame" />
+                  </Link>
+                );
+              })}
             </nav>
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
