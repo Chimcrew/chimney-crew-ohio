@@ -675,6 +675,20 @@ function ServicesGrid() {
             </div>
           );
         })()}
+
+        {/* See all services CTA */}
+        <div className="mt-14 flex flex-col items-center gap-3 text-center">
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            + {Math.max(SERVICES.length - services.length, 0)} more services — sweeps, inspections, caps, firebox rebuilds & gas service
+          </p>
+          <Link
+            to="/services"
+            className="group inline-flex items-center gap-2 rounded-full bg-primary px-7 py-4 font-display text-sm font-bold uppercase tracking-widest text-primary-foreground shadow-flame transition hover:bg-flame hover:text-primary"
+          >
+            See all {SERVICES.length} services
+            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+          </Link>
+        </div>
       </div>
     </section>
   );
