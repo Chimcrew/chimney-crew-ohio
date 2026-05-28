@@ -102,7 +102,13 @@ export function SiteHeader() {
             {primaryNav.map((n) => {
               if (n.to === "/services") {
                 return (
-                  <div key={n.to} className="relative" ref={servicesRef}>
+                  <div
+                    key={n.to}
+                    className="relative"
+                    ref={servicesRef}
+                    onMouseEnter={() => setServicesOpen(true)}
+                    onMouseLeave={() => setServicesOpen(false)}
+                  >
                     <button
                       type="button"
                       onClick={() => setServicesOpen((v) => !v)}
@@ -222,31 +228,33 @@ export function SiteHeader() {
                 if (n.to === "/services") {
                   return (
                     <div key={n.to} className="border-b border-white/5">
-                      <div className="flex items-stretch justify-between">
-                        <Link
-                          to="/services"
-                          onClick={() => setOpen(false)}
-                          className="flex flex-1 items-center gap-2 py-3 font-display text-base font-bold uppercase tracking-wider"
-                          activeProps={{ className: "text-flame" }}
-                        >
-                          {n.label}
-                        </Link>
-                        <button
-                          type="button"
-                          onClick={() => setMobileServicesOpen((v) => !v)}
-                          aria-expanded={mobileServicesOpen}
-                          aria-label="Toggle services list"
-                          className="grid w-12 place-items-center"
-                        >
-                          <ChevronDown
-                            className={`h-5 w-5 text-flame transition-transform duration-200 ${
-                              mobileServicesOpen ? "rotate-180" : ""
-                            }`}
-                          />
-                        </button>
-                      </div>
+                      <button
+                        type="button"
+                        onClick={() => setMobileServicesOpen((v) => !v)}
+                        aria-expanded={mobileServicesOpen}
+                        className="flex w-full items-center justify-between py-3 font-display text-base font-bold uppercase tracking-wider"
+                      >
+                        <span className={mobileServicesOpen ? "text-flame" : ""}>{n.label}</span>
+                        <ChevronDown
+                          className={`h-5 w-5 text-flame transition-transform duration-200 ${
+                            mobileServicesOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
                       {mobileServicesOpen && (
                         <ul className="mb-3 grid gap-1 rounded-xl bg-white/5 p-2">
+                          <li>
+                            <Link
+                              to="/services"
+                              onClick={() => {
+                                setOpen(false);
+                                setMobileServicesOpen(false);
+                              }}
+                              className="flex items-center gap-3 rounded-lg px-2 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-flame transition active:bg-white/10"
+                            >
+                              View all services →
+                            </Link>
+                          </li>
                           {SERVICES.map((s) => {
                             const Icon = s.icon;
                             const accent = ACCENT_CLASSES[s.accent];
