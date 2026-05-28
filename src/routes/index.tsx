@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   CheckCircle2,
@@ -164,17 +165,18 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-primary-foreground md:text-7xl">
-              Ohio's elite
+            <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-[-0.045em] text-primary-foreground md:text-7xl">
+              Your chimney,
               <br />
               <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
-                chimney force.
+                handled by neighbors.
               </span>
             </h1>
 
             <p className="max-w-xl text-lg leading-relaxed text-primary-foreground/70 md:text-xl">
-              Protecting Ohio homes from creosote fires, CO leaks and water damage —
-              with high-definition camera inspections and hi-vis reliability.
+              We're a family crew, born and raised in Ohio. We sweep, inspect and repair
+              chimneys the way we'd want it done in our own homes — on time, in uniform,
+              with photos of every fix and a price agreed before we start.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
@@ -182,16 +184,21 @@ function Hero() {
                 to="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
               >
-                <CalendarCheck className="h-4 w-4" /> Schedule Online
+                <CalendarCheck className="h-4 w-4" /> Get my free quote
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </Link>
               <a
                 href="tel:5551234567"
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-white/10 bg-primary/60 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
               >
-                <Phone className="h-4 w-4" /> Call 555-123-4567
+                <Phone className="h-4 w-4" /> Talk to a sweep
               </a>
             </div>
+            <p className="-mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-primary-foreground/55">
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Free quote in 60 seconds</span>
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> No card. No pressure.</span>
+              <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Real human answers</span>
+            </p>
 
             {/* Hazard micro-chips */}
             <div className="grid grid-cols-1 gap-4 border-t border-white/10 pt-8 sm:grid-cols-2">
@@ -242,7 +249,7 @@ function Hero() {
               ))}
             </div>
             <p className="text-sm text-primary-foreground/70">
-              <span className="font-display font-extrabold text-primary-foreground">482 Ohio homes</span> protected this month.
+              <span className="font-display font-extrabold text-primary-foreground">482 Ohio neighbors</span> trusted us this month — your spot opens next.
             </p>
           </div>
           <div className="flex items-center gap-4">
