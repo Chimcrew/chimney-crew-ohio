@@ -512,12 +512,6 @@ function ServicesGrid() {
               with plain-English pricing and what's included.
             </p>
           </div>
-          <Link
-            to="/services"
-            className="inline-flex items-center gap-2 rounded-full border-2 border-primary px-5 py-3 font-display text-xs font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
-          >
-            All 7 services <ArrowRight className="h-4 w-4" />
-          </Link>
         </div>
 
         {/* Layered showcase */}
