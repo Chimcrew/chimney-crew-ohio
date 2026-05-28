@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X, Phone, CalendarCheck, Flame, MapPin } from "lucide-react";
 import logoMark from "@/assets/chimcrew-logo.png";
+import { openScheduleDialog } from "@/components/ScheduleWidget";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -97,13 +98,14 @@ export function SiteHeader() {
             >
               <Phone className="h-3.5 w-3.5" /> 555-123-4567
             </a>
-            <Link
-              to="/contact"
+            <button
+              type="button"
+              onClick={() => openScheduleDialog()}
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-flame px-5 py-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_8px_24px_oklch(0.78_0.19_92/0.35)] transition hover:bg-white"
             >
               <CalendarCheck className="h-3.5 w-3.5" /> Schedule Online
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-            </Link>
+            </button>
           </div>
 
           {/* Mobile toggle */}
@@ -145,13 +147,13 @@ export function SiteHeader() {
               >
                 <Phone className="h-4 w-4" /> Call
               </a>
-              <Link
-                to="/contact"
-                onClick={() => setOpen(false)}
+              <button
+                type="button"
+                onClick={() => { setOpen(false); openScheduleDialog(); }}
                 className="flex items-center justify-center gap-2 rounded-full bg-flame px-3 py-3 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary"
               >
                 <CalendarCheck className="h-4 w-4" /> Book
-              </Link>
+              </button>
             </div>
           </div>
         </div>

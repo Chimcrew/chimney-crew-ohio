@@ -12,6 +12,8 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AmbientEmbers } from "@/components/ChimneyDecor";
+import { ScheduleWidget } from "@/components/ScheduleWidget";
+import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
   return (
@@ -127,6 +129,8 @@ function RootComponent() {
           <Outlet />
         </main>
         <SiteFooter />
+        <ScheduleWidget />
+        <Toaster />
       </div>
     </QueryClientProvider>
   );
