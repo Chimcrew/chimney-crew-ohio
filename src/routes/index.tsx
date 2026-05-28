@@ -31,6 +31,7 @@ import afterImg from "@/assets/after-chimney.jpg";
 import crownBefore from "@/assets/crown-before.jpg";
 import crownAfter from "@/assets/crown-after.jpg";
 import { LeadForm } from "@/components/LeadForm";
+import { SERVICES } from "@/data/services";
 
 export const Route = createFileRoute("/")({
   head: () => ({
