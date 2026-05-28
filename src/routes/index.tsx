@@ -240,26 +240,82 @@ function ServicesGrid() {
     },
   ];
   return (
-    <section className="bg-background py-20">
+    <section className="relative overflow-hidden bg-background py-24">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-primary/5 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <h2 className="text-center font-display text-3xl uppercase tracking-wider text-primary md:text-4xl">
-          Our Chimney Services
-        </h2>
+        <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-foreground">
+              <MapPin className="h-3 w-3" /> Local Ohio Crews · 4 core services
+            </p>
+            <h2 className="mt-4 font-display text-4xl uppercase tracking-wider text-primary md:text-5xl">
+              Our Chimney Services
+            </h2>
+            <p className="mt-3 max-w-xl text-base text-muted-foreground">
+              Real before/after work from local jobs in your neighborhood. Tap any card to see the
+              transformation.
+            </p>
+          </div>
+          <Link
+            to="/services"
+            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-4 py-2.5 font-display text-xs uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
+          >
+            View all services <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {items.map(({ icon: Icon, title, sub, body }) => (
-            <div
+          {items.map(({ icon: Icon, title, sub, body }, idx) => (
+            <article
               key={title}
-              className="group flex flex-col items-center rounded-sm border-2 border-border bg-card p-6 text-center transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
+              className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
             >
-              <div className="grid h-16 w-16 place-items-center rounded-full bg-primary text-flame">
-                <Icon className="h-8 w-8" />
+              {/* before/after split */}
+              <div className="relative grid grid-cols-2 overflow-hidden">
+                <div className="relative">
+                  <img src={beforeImg} alt={`${title} before`} className="aspect-square h-full w-full object-cover" />
+                  <span className="absolute left-2 top-2 rounded-full bg-primary/85 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary-foreground backdrop-blur">
+                    Before
+                  </span>
+                </div>
+                <div className="relative">
+                  <img src={afterImg} alt={`${title} after`} className="aspect-square h-full w-full object-cover" />
+                  <span className="absolute right-2 top-2 rounded-full bg-flame px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary backdrop-blur">
+                    After
+                  </span>
+                </div>
+                <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-flame/80 shadow-[0_0_12px_oklch(0.78_0.19_92/0.6)]" />
+                <div className="pointer-events-none absolute left-1/2 top-1/2 grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-flame bg-primary text-flame">
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </div>
               </div>
-              <h3 className="mt-5 font-display text-lg text-primary">{title}</h3>
-              <p className="text-sm font-semibold text-flame">{sub}</p>
-              <p className="mt-3 text-sm text-muted-foreground">{body}</p>
-            </div>
+
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex items-center gap-3">
+                  <div className="grid h-11 w-11 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                    0{idx + 1} / 04
+                  </span>
+                </div>
+                <h3 className="mt-4 font-display text-lg text-primary">{title}</h3>
+                <p className="text-sm font-semibold text-flame">{sub}</p>
+                <p className="mt-3 flex-1 text-sm text-muted-foreground">{body}</p>
+                <Link
+                  to="/services"
+                  className="mt-5 inline-flex items-center gap-1.5 font-display text-xs uppercase tracking-widest text-primary transition group-hover:text-flame"
+                >
+                  Local pricing <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
+
+        <p className="mt-10 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+          ◆ Locally Owned · Family Operated · Serving Ohio Since 1975 ◆
+        </p>
       </div>
     </section>
   );
