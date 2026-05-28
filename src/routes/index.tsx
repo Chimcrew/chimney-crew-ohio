@@ -91,7 +91,7 @@ function Hero() {
         ))}
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+      <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-8 md:px-8 md:py-28">
         {/* ---------- TOP HERO ---------- */}
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
           {/* LEFT — message */}
