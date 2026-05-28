@@ -1,12 +1,43 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, CheckCircle2 } from "lucide-react";
 import logo from "@/assets/chimcrew-logo.png";
+import van from "@/assets/chimcrew-van.png";
 import { ServiceAreaMap } from "./ServiceAreaMap";
 
 export function SiteFooter() {
   return (
     <footer className="relative mt-24 border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
       <div className="stripe-warning h-1.5 w-full opacity-80" />
+
+      {/* Local commitment band featuring the wrapped service van */}
+      <div className="relative overflow-hidden bg-primary text-primary-foreground">
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_right,_oklch(0.22_0.02_250)_0%,_oklch(0.10_0.02_250)_70%)]" aria-hidden />
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 md:grid-cols-[1.1fr_1fr] md:px-8">
+          <div>
+            <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-flame">
+              <MapPin className="h-3 w-3" /> Your local Ohio chimney crew
+            </p>
+            <h3 className="mt-4 font-display text-3xl uppercase tracking-wider md:text-4xl">
+              Look for the <span className="text-flame">ChimCrew</span> van in your neighborhood.
+            </h3>
+            <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+              {[
+                "Local Ohio family business",
+                "Same-day local dispatch",
+                "Licensed in Ohio · Fully insured",
+                "Trusted by 1,836 local homes",
+              ].map((line) => (
+                <li key={line} className="flex items-center gap-2 text-sm font-semibold text-primary-foreground/90">
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-flame" /> {line}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="overflow-hidden rounded-sm border-2 border-flame/40 shadow-flame">
+            <img src={van} alt="ChimCrew service van parked locally in Ohio" className="block w-full" />
+          </div>
+        </div>
+      </div>
 
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
