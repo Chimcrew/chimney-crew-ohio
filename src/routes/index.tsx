@@ -89,105 +89,156 @@ function Hero() {
         ))}
       </div>
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 md:grid-cols-[1fr_1.1fr] md:gap-14 md:px-8 md:py-28">
-        {/* LEFT — visual stack */}
-        <div className="relative reveal" style={{ animationDelay: "0.05s" }}>
-          <div className="relative mx-auto max-w-md">
-            {/* Soft glow plate */}
-            <div className="absolute -inset-6 rounded-full bg-flame/15 blur-3xl" aria-hidden />
-            <img
-              src={logo}
-              alt="ChimCrew — Your safety, our priority"
-              className="relative z-10 mx-auto w-full max-w-sm animate-float drop-shadow-[0_30px_60px_oklch(0_0_0/0.7)]"
-            />
+      <div className="relative mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+          {/* LEFT — refined crest card */}
+          <div className="relative reveal lg:col-span-5" style={{ animationDelay: "0.05s" }}>
+            <div className="group relative mx-auto max-w-md">
+              <div className="absolute -inset-4 rounded-full bg-flame/20 blur-3xl transition-all duration-700 group-hover:bg-flame/30" aria-hidden />
+              <div className="relative overflow-hidden rounded-3xl border-2 border-flame/30 bg-[oklch(0.13_0.01_250)] p-6 shadow-2xl md:p-8">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                    Est. 1975 // Ohio
+                  </span>
+                  <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
+                    <span className="grid h-5 w-5 place-items-center rounded-full bg-flame/20 text-flame">★</span>
+                    1,836
+                  </span>
+                </div>
+                <div className="mt-4 overflow-hidden rounded-2xl border border-white/5 bg-[oklch(0.10_0.01_250)] p-2">
+                  <img
+                    src={logo}
+                    alt="ChimCrew — Your safety, our priority"
+                    className="relative z-10 mx-auto w-full max-w-sm animate-float"
+                  />
+                </div>
+                <div className="mt-6 flex items-center gap-2">
+                  <div className="h-1 w-12 bg-flame" />
+                  <div className="h-1 w-4 bg-white/10" />
+                  <div className="h-1 w-4 bg-white/10" />
+                  <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
+                    Precision sweeps & safety
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Van strip under crest */}
+            <div className="relative mt-6 overflow-hidden rounded-2xl border border-flame/20 bg-primary/60 shadow-flame backdrop-blur">
+              <div className="relative">
+                <img src={van} alt="ChimCrew Ohio service van" className="block w-full" />
+                <div className="pointer-events-none absolute inset-0 animate-shine" />
+              </div>
+              <div className="flex items-center justify-between gap-3 border-t border-flame/15 px-4 py-3">
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                  Local · Ohio plates · spot the yellow van
+                </p>
+                <span className="relative grid h-8 w-8 place-items-center rounded-full bg-flame text-primary">
+                  <span className="absolute inset-0 rounded-full animate-pulse-ring" />
+                  <Flame className="h-4 w-4" />
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* Van card */}
-          <div className="relative mt-6 overflow-hidden rounded-xl border border-flame/30 bg-primary/60 shadow-flame backdrop-blur">
-            <div className="relative">
-              <img src={van} alt="ChimCrew local Ohio service van" className="block w-full" />
-              <div className="pointer-events-none absolute inset-0 animate-shine" />
-            </div>
-            <div className="flex items-center justify-between gap-3 border-t border-flame/20 px-4 py-3">
-              <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                  Local · Ohio plates
-                </p>
-                <p className="font-display text-sm uppercase tracking-wider">
-                  Spot the yellow van
-                </p>
-              </div>
-              <span className="relative grid h-9 w-9 place-items-center rounded-full bg-flame text-primary">
-                <span className="absolute inset-0 rounded-full animate-pulse-ring" />
-                <Flame className="h-4 w-4" />
+          {/* RIGHT — headline + chips */}
+          <div className="space-y-8 reveal lg:col-span-7" style={{ animationDelay: "0.15s" }}>
+            <div className="inline-flex items-center gap-3 rounded-full border border-flame/30 bg-flame/10 px-3 py-1.5">
+              <span className="flex h-2 w-2 animate-pulse rounded-full bg-flame" />
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+                Columbus · Cincinnati · Dayton
               </span>
             </div>
-          </div>
 
-          {/* Floating rating chip */}
-          <div className="absolute -top-3 right-2 hidden rounded-full border border-flame/30 bg-primary/80 px-3 py-1.5 backdrop-blur md:flex md:items-center md:gap-2">
-            <div className="flex text-flame">
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Star key={i} className="h-3 w-3 fill-current" />
+            <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-primary-foreground md:text-7xl">
+              Ohio's elite
+              <br />
+              <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
+                chimney force.
+              </span>
+            </h1>
+
+            <p className="max-w-xl text-lg leading-relaxed text-primary-foreground/70 md:text-xl">
+              Protecting Ohio homes from creosote fires, CO leaks and water damage —
+              with high-definition camera inspections and hi-vis reliability.
+            </p>
+
+            <div className="flex flex-wrap gap-3 pt-2">
+              <Link
+                to="/contact"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
+              >
+                <CalendarCheck className="h-4 w-4" /> Schedule Online
+                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+              </Link>
+              <a
+                href="tel:5551234567"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/10 bg-primary/60 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
+              >
+                <Phone className="h-4 w-4" /> Call 555-123-4567
+              </a>
+            </div>
+
+            {/* Hazard micro-chips */}
+            <div className="grid grid-cols-1 gap-4 border-t border-white/10 pt-8 sm:grid-cols-2">
+              {[
+                {
+                  tag: "Creosote Hazard",
+                  body: "Flue-fire prevention experts.",
+                  Icon: Flame,
+                  tone: "text-destructive",
+                  bg: "bg-destructive/10 border-destructive/30",
+                },
+                {
+                  tag: "Leak Detection",
+                  body: "Zero-tolerance water sealing.",
+                  Icon: Droplets,
+                  tone: "text-[oklch(0.7_0.15_230)]",
+                  bg: "bg-[oklch(0.7_0.15_230/0.1)] border-[oklch(0.7_0.15_230/0.3)]",
+                },
+              ].map((h) => (
+                <div key={h.tag} className="group flex items-start gap-3">
+                  <div className={`mt-0.5 grid h-9 w-9 place-items-center rounded-lg border ${h.bg} transition group-hover:scale-105`}>
+                    <h.Icon className={`h-4 w-4 ${h.tone}`} />
+                  </div>
+                  <div>
+                    <p className={`font-display text-xs font-extrabold uppercase tracking-wider ${h.tone}`}>
+                      {h.tag}
+                    </p>
+                    <p className="text-sm text-primary-foreground/60">{h.body}</p>
+                  </div>
+                </div>
               ))}
             </div>
-            <span className="font-mono text-[10px] uppercase tracking-widest">1,836 reviews</span>
           </div>
         </div>
 
-        {/* RIGHT — message */}
-        <div className="reveal" style={{ animationDelay: "0.15s" }}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
-            <MapPin className="h-3.5 w-3.5" /> Columbus · Cincinnati · Dayton
+        {/* Live status bar */}
+        <div className="mt-16 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-2xl border border-white/10 bg-primary/40 p-6 backdrop-blur md:flex-row">
+          <div className="flex items-center gap-5">
+            <div className="flex -space-x-2">
+              {["#fbbf24", "#a3a3a3", "#525252"].map((c, i) => (
+                <span
+                  key={i}
+                  className="grid h-9 w-9 place-items-center rounded-full border-2 border-primary text-[10px] font-bold text-primary"
+                  style={{ background: c }}
+                >
+                  {["M", "D", "P"][i]}
+                </span>
+              ))}
+            </div>
+            <p className="text-sm text-primary-foreground/70">
+              <span className="font-display font-extrabold text-primary-foreground">482 Ohio homes</span> protected this month.
+            </p>
           </div>
-          <h1 className="mt-5 font-display text-4xl leading-[0.95] md:text-6xl">
-            Ohio's <span className="text-flame">local</span> chimney crew.
-            <br />
-            <span className="text-flame">Your safety</span> — our promise.
-          </h1>
-          <p className="mt-5 max-w-xl text-base text-primary-foreground/80 md:text-lg">
-            A spotless flue, a sealed crown, a fire that draws right. We protect Ohio
-            homes from chimney fires, carbon-monoxide leaks, and water damage — with
-            certified local sweeps, same-day callbacks, and honest pricing.
-          </p>
-
-          <ul className="mt-6 grid gap-2 sm:grid-cols-2">
-            {[
-              ["Locally owned & operated", Award],
-              ["CSIA-certified sweeps", ShieldCheck],
-              ["Same-day local dispatch", Clock],
-              ["Satisfaction guaranteed", ThumbsUp],
-            ].map(([line, Icon]: any) => (
-              <li
-                key={line}
-                className="flex items-center gap-2 text-sm font-semibold text-primary-foreground/95"
-              >
-                <Icon className="h-5 w-5 shrink-0 text-flame" />
-                {line}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Link
-              to="/contact"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-sm bg-flame px-6 py-4 font-display text-base uppercase tracking-wider text-primary shadow-flame transition hover:brightness-110"
-            >
-              <CalendarCheck className="h-5 w-5" /> Schedule Online
-              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-            </Link>
-            <a
-              href="tel:5551234567"
-              className="inline-flex items-center gap-2 rounded-sm border-2 border-flame/70 px-6 py-4 font-display text-base uppercase tracking-wider text-flame transition hover:bg-flame hover:text-primary"
-            >
-              <Phone className="h-5 w-5" /> 555-123-4567
-            </a>
+          <div className="flex items-center gap-4">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/50">
+              System status: ready
+            </span>
+            <div className="h-1.5 w-32 overflow-hidden rounded-full bg-white/10">
+              <div className="h-full w-3/4 rounded-full bg-flame" />
+            </div>
           </div>
-
-          <p className="mt-6 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60">
-            <span className="h-px w-10 bg-flame/40" />
-            Family-run in Ohio since 1975
-          </p>
         </div>
       </div>
     </section>
