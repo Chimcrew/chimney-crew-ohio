@@ -670,7 +670,7 @@ function LeakingChimney() {
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-transparent" />
             <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-primary/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-flame backdrop-blur">
-              <Droplets className="h-3 w-3" /> Leak diagnosis
+              <HardHat className="h-3 w-3" /> Crown rebuild
             </div>
           </div>
           {/* Floating stat card */}
