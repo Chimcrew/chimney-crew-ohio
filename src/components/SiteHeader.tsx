@@ -52,6 +52,15 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50">
+      {/* Mobile-only 3D floating badge sitting on the bottom edge of the header */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[60] flex justify-center sm:hidden">
+        <span
+          className="pointer-events-auto inline-flex translate-y-1/2 items-center gap-2 whitespace-nowrap rounded-full border border-flame/60 bg-gradient-to-b from-[oklch(0.22_0.02_250)] to-[oklch(0.10_0.01_250)] px-3.5 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame shadow-[0_12px_28px_-8px_oklch(0_0_0/0.75),0_2px_0_oklch(1_0_0/0.08)_inset,0_0_0_1px_oklch(0_0_0/0.4)] [transform:translateY(50%)_perspective(500px)_rotateX(10deg)]"
+        >
+          <span className="flex h-2 w-2 animate-pulse rounded-full bg-flame shadow-[0_0_10px_oklch(0.7_0.18_45)]" />
+          Serving Ohio since 1975
+        </span>
+      </div>
       {/* Tiny utility strip */}
       <div className="hidden bg-flame text-primary md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] md:px-8">

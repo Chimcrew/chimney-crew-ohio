@@ -72,13 +72,6 @@ function Index() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
-      {/* Mobile-only: "Serving Ohio since 1975" badge sitting on the seam between header and hero */}
-      <div className="absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2 sm:hidden">
-        <span className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-flame/40 bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame shadow-[0_8px_24px_oklch(0_0_0/0.45)] backdrop-blur">
-          <span className="flex h-2 w-2 animate-pulse rounded-full bg-flame" />
-          Serving Ohio since 1975
-        </span>
-      </div>
       {/* Background atmospherics */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,_oklch(0.24_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]" aria-hidden />
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
