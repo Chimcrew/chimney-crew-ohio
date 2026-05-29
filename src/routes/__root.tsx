@@ -13,6 +13,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AmbientEmbers } from "@/components/ChimneyDecor";
 import { ScheduleWidget } from "@/components/ScheduleWidget";
+import { TimedLeadPopup } from "@/components/TimedLeadPopup";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -130,6 +131,7 @@ function RootComponent() {
         </main>
         <SiteFooter />
         <ScheduleWidget />
+        <TimedLeadPopup />
         <Toaster />
       </div>
     </QueryClientProvider>
