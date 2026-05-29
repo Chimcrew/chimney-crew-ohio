@@ -98,7 +98,7 @@ export function ScheduleWidget() {
       <StickyCta onClick={() => { setStep(0); setOpen(true); }} />
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-h-[92vh] overflow-y-auto border-2 border-flame/30 bg-card p-0 sm:max-w-xl">
+        <DialogContent className="max-h-[92vh] overflow-y-auto border-2 border-flame/30 bg-card p-0 sm:max-w-xl [&>button.absolute]:right-3 [&>button.absolute]:top-3 [&>button.absolute]:z-10 [&>button.absolute]:flex [&>button.absolute]:h-9 [&>button.absolute]:w-9 [&>button.absolute]:items-center [&>button.absolute]:justify-center [&>button.absolute]:rounded-full [&>button.absolute]:border [&>button.absolute]:border-flame/40 [&>button.absolute]:bg-primary/70 [&>button.absolute]:text-primary-foreground [&>button.absolute]:opacity-100 [&>button.absolute]:shadow-[0_4px_12px_oklch(0_0_0/0.4)] [&>button.absolute]:backdrop-blur [&>button.absolute]:transition [&>button.absolute:hover]:bg-flame [&>button.absolute:hover]:text-primary [&>button.absolute_svg]:h-5 [&>button.absolute_svg]:w-5">
           {/* Header bar */}
           <div className="relative overflow-hidden rounded-t-lg bg-primary px-6 py-5 text-primary-foreground">
             <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-flame/30 blur-3xl" />
