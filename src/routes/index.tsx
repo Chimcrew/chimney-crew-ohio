@@ -167,18 +167,20 @@ function Hero() {
                   </span>
                 </div>
 
-                {/* hero image */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-[oklch(0.14_0.01_250)] to-[oklch(0.06_0.01_250)]">
+                {/* hero image — mobile gets a warm cinematic spotlight; desktop keeps the tall studio card */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-[radial-gradient(ellipse_at_center,_oklch(0.32_0.12_55)_0%,_oklch(0.12_0.04_45)_55%,_oklch(0.06_0.01_250)_100%)] sm:aspect-[4/5] sm:bg-gradient-to-br sm:from-[oklch(0.14_0.01_250)] sm:to-[oklch(0.06_0.01_250)]">
                   {/* subtle backdrop accents */}
-                  <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-flame/25 blur-3xl" />
-                  <div className="pointer-events-none absolute -left-12 bottom-0 h-48 w-48 rounded-full bg-flame/10 blur-3xl" />
+                  <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-flame/40 blur-3xl sm:bg-flame/25" />
+                  <div className="pointer-events-none absolute -left-12 bottom-0 h-48 w-48 rounded-full bg-flame/25 blur-3xl sm:bg-flame/10" />
+                  {/* mobile-only spotlight ring behind van */}
+                  <div className="pointer-events-none absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-flame/15 blur-2xl sm:hidden" aria-hidden />
                   <div className="pointer-events-none absolute inset-0 animate-shine" />
 
                   {/* The van — clean, centered, hero */}
                   <img
                     src={van}
                     alt="ChimCrew yellow chimney sweep van — Ohio"
-                    className="absolute inset-x-0 bottom-[14%] mx-auto w-[92%] animate-float object-contain drop-shadow-[0_25px_35px_oklch(0_0_0/0.55)]"
+                    className="absolute inset-x-0 bottom-[18%] mx-auto w-[78%] animate-float object-contain drop-shadow-[0_30px_40px_oklch(0_0_0/0.65)] sm:bottom-[14%] sm:w-[92%] sm:drop-shadow-[0_25px_35px_oklch(0_0_0/0.55)]"
                   />
 
                   {/* Floating "Same-day" pill */}
