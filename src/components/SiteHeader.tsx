@@ -82,11 +82,11 @@ export function SiteHeader() {
             type="button"
             onClick={() => openScheduleDialog()}
             aria-label="We're open now — schedule online"
-            className="pointer-events-auto absolute left-1/2 top-1/2 z-30 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-full border border-[oklch(0.85_0.2_145)] bg-[oklch(0.55_0.18_145)] px-3 py-1.5 font-mono text-[10px] font-extrabold uppercase tracking-[0.2em] text-white shadow-[0_0_0_0_oklch(0.65_0.2_145/0.7)] animate-[openNowFlash_1.6s_ease-in-out_infinite] hover:bg-[oklch(0.6_0.2_145)] md:text-[11px] md:px-4 md:py-2"
+            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border border-[oklch(0.7_0.13_150/0.45)] bg-[oklch(0.22_0.04_155/0.6)] px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-[oklch(0.88_0.14_150)] backdrop-blur transition hover:border-[oklch(0.7_0.13_150/0.8)] hover:text-[oklch(0.92_0.15_150)] md:px-3.5 md:py-1.5 md:text-[11px]"
           >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[oklch(0.78_0.18_150)] opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[oklch(0.78_0.18_150)]" />
             </span>
             Open Now
           </button>
