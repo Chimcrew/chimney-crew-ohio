@@ -253,6 +253,17 @@
   }
   .animate-pulse-ring { animation: pulse-ring 2.2s ease-out infinite; }
 
+  @keyframes openNowFlash {
+    0%, 100% {
+      box-shadow: 0 0 0 0 oklch(0.7 0.22 145 / 0.7), 0 6px 18px oklch(0.55 0.18 145 / 0.45);
+      filter: brightness(1);
+    }
+    50% {
+      box-shadow: 0 0 0 10px oklch(0.7 0.22 145 / 0), 0 8px 24px oklch(0.55 0.18 145 / 0.6);
+      filter: brightness(1.18);
+    }
+  }
+
   .reveal {
     opacity: 0;
     transform: translateY(24px);
