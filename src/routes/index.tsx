@@ -101,7 +101,11 @@ function Hero() {
           <div className="reveal order-2 space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
             {/* Trust eyebrow */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+              {/* Mobile: show "Same-day slots open" here. Desktop: keep "Serving Ohio since 1975". */}
+              <span className="inline-flex items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:hidden">
+                <Clock className="h-3 w-3" /> Same-day slots open
+              </span>
+              <span className="hidden items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
                 <span className="flex h-2 w-2 animate-pulse rounded-full bg-flame" />
                 Serving Ohio since 1975
               </span>
@@ -183,8 +187,8 @@ function Hero() {
                     className="absolute inset-x-0 bottom-[18%] mx-auto w-[78%] animate-float object-contain drop-shadow-[0_30px_40px_oklch(0_0_0/0.65)] sm:bottom-[14%] sm:w-[92%] sm:drop-shadow-[0_25px_35px_oklch(0_0_0/0.55)]"
                   />
 
-                  {/* Floating "Same-day" pill */}
-                  <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-flame/30 bg-primary/85 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
+                  {/* Floating "Same-day" pill — desktop only; on mobile it moves up into the eyebrow row */}
+                  <div className="absolute left-4 top-4 hidden items-center gap-2 rounded-full border border-flame/30 bg-primary/85 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur sm:inline-flex">
                     <Clock className="h-3 w-3" /> Same-day slots open
                   </div>
 
