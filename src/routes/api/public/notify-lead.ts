@@ -16,6 +16,32 @@ const ADMIN_EMAILS = [
   'igrushineli67@gmail.com',
 ]
 
+function generateToken(): string {
+  const bytes = new Uint8Array(32)
+  crypto.getRandomValues(bytes)
+  return Array.from(bytes).map((b) => b.toString(16).padStart(2, '0')).join('')
+}
+
+async function getOrCreateUnsubscribeToken(supabase: any, email: string): Promise<string> {
+  const normalized = email.toLowerCase()
+  const { data: existing } = await supabase
+    .from('email_unsubscribe_tokens')
+    .select('token, used_at')
+    .eq('email', normalized)
+    .maybeSingle()
+  if (existing && !existing.used_at) return existing.token
+  const token = generateToken()
+  await supabase
+    .from('email_unsubscribe_tokens')
+    .upsert({ token, email: normalized }, { onConflict: 'email', ignoreDuplicates: true })
+  const { data: stored } = await supabase
+    .from('email_unsubscribe_tokens')
+    .select('token')
+    .eq('email', normalized)
+    .maybeSingle()
+  return stored?.token || token
+}
+
 const LeadSchema = z.object({
   source: z.string().min(1).max(100).optional(),
   name: z.string().min(1).max(200).optional(),
@@ -68,6 +94,7 @@ export const Route = createFileRoute('/api/public/notify-lead')({
         const results = await Promise.all(
           ADMIN_EMAILS.map(async (to) => {
             const messageId = crypto.randomUUID()
+            const unsubscribeToken = await getOrCreateUnsubscribeToken(supabase, to)
             await supabase.from('email_send_log').insert({
               message_id: messageId,
               template_name: TEMPLATE_NAME,
@@ -87,6 +114,7 @@ export const Route = createFileRoute('/api/public/notify-lead')({
                 purpose: 'transactional',
                 label: TEMPLATE_NAME,
                 idempotency_key: `${TEMPLATE_NAME}-${messageId}`,
+                unsubscribe_token: unsubscribeToken,
                 queued_at: new Date().toISOString(),
               },
             })
