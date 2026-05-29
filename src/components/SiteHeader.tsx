@@ -76,7 +76,21 @@ export function SiteHeader() {
             : "bg-primary"
         } text-primary-foreground`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-8">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-8">
+          {/* Flashing OPEN NOW button — absolutely centered in the header */}
+          <button
+            type="button"
+            onClick={() => openScheduleDialog()}
+            aria-label="We're open now — schedule online"
+            className="pointer-events-auto absolute left-1/2 top-1/2 z-30 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-full border border-[oklch(0.85_0.2_145)] bg-[oklch(0.55_0.18_145)] px-3 py-1.5 font-mono text-[10px] font-extrabold uppercase tracking-[0.2em] text-white shadow-[0_0_0_0_oklch(0.65_0.2_145/0.7)] animate-[openNowFlash_1.6s_ease-in-out_infinite] hover:bg-[oklch(0.6_0.2_145)] md:text-[11px] md:px-4 md:py-2"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+            </span>
+            Open Now
+          </button>
+
           {/* Brand */}
           <Link to="/" className="group flex items-center gap-3" aria-label="ChimCrew home">
             <span className="relative">
