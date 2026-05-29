@@ -159,6 +159,38 @@ function Hero() {
               {/* glow */}
               <div className="absolute -inset-6 rounded-[2rem] bg-flame/20 blur-3xl" aria-hidden />
 
+              {/* Mobile-only heritage seal — spinning circular badge pinned to the card's top-right corner */}
+              <div
+                className="pointer-events-none absolute -right-3 -top-6 z-20 h-24 w-24 rotate-[8deg] sm:hidden"
+                aria-label="Serving Ohio since 1975"
+              >
+                <div className="absolute inset-0 rounded-full bg-flame/30 blur-xl" aria-hidden />
+                <div className="relative h-full w-full rounded-full border border-flame/40 bg-gradient-to-br from-[oklch(0.22_0.02_250)] to-[oklch(0.08_0.01_250)] shadow-[0_14px_30px_-6px_oklch(0_0_0/0.75),0_0_0_1px_oklch(0_0_0/0.5),inset_0_1px_0_oklch(1_0_0/0.08)]">
+                  <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full animate-[spin_22s_linear_infinite]">
+                    <defs>
+                      <path id="seal-arc" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
+                    </defs>
+                    <text
+                      fill="oklch(0.82 0.16 70)"
+                      style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace', fontSize: '10.5px', fontWeight: 700, letterSpacing: '3.2px' }}
+                    >
+                      <textPath href="#seal-arc" startOffset="0">
+                        SERVING OHIO · SINCE 1975 · SERVING OHIO · SINCE 1975 ·
+                      </textPath>
+                    </text>
+                  </svg>
+                  {/* center stamp */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className="font-display text-[10px] font-extrabold uppercase leading-none tracking-[0.2em] text-flame/70">EST</span>
+                    <span className="font-display text-2xl font-extrabold leading-none tracking-tight text-flame drop-shadow-[0_2px_8px_oklch(0.7_0.18_45/0.6)]">
+                      1975
+                    </span>
+                    <span className="mt-1 h-px w-6 bg-flame/50" aria-hidden />
+                    <span className="mt-1 font-mono text-[7px] font-bold uppercase tracking-[0.25em] text-flame/60">50 YRS</span>
+                  </div>
+                </div>
+              </div>
+
               {/* Main visual card */}
               <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
                 {/* top meta strip */}
