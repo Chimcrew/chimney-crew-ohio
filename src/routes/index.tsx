@@ -52,6 +52,8 @@ function Index() {
     <>
       <Hero />
       <TrustMarquee />
+      <WhyChooseUs />
+      <ProblemSolver />
       <FireHazards />
       <LogoDivider />
       <ServicesGrid />
@@ -123,9 +125,9 @@ function Hero() {
             </h1>
 
             <p className="max-w-xl text-base leading-relaxed text-primary-foreground/75 md:text-lg">
-              Same-day sweeps, HD camera inspections, leak repair and crown rebuilds —
-              flat-rate pricing, photos with every job, and a written warranty you can hand
-              to the next owner.
+              Fast, reliable repairs, cleaning &amp; inspections across Ohio.
+              <span className="font-semibold text-primary-foreground"> Same-day service available.</span>{" "}
+              Flat-rate pricing, photos with every job, written warranty.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-1">
@@ -133,14 +135,14 @@ function Hero() {
                 to="/contact"
                 className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
               >
-                <CalendarCheck className="h-4 w-4" /> Schedule free inspection
+                <CalendarCheck className="h-4 w-4" /> Get Free Estimate
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </Link>
               <a
                 href="tel:6146834422"
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-white/10 bg-primary/60 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
               >
-                <Phone className="h-4 w-4" /> Call (614) 683-4422
+                <Phone className="h-4 w-4" /> Call Now · (614) 683-4422
               </a>
             </div>
 
