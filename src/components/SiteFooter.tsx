@@ -2,8 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Facebook, Instagram, CheckCircle2 } from "lucide-react";
 import logo from "@/assets/chimcrew-logo.png";
 import van from "@/assets/chimcrew-van.png";
-import { ServiceAreaMap } from "./ServiceAreaMap";
-
 export function SiteFooter() {
   return (
     <footer className="relative mt-24 border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
