@@ -23,13 +23,19 @@ import {
   HardHat,
 } from "lucide-react";
 import logo from "@/assets/chimcrew-logo.png";
-import van from "@/assets/chimcrew-van.png";
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
-import beforeImg from "@/assets/before-chimney.jpg";
-import afterImg from "@/assets/after-chimney.jpg";
-import crownBefore from "@/assets/crown-before.jpg";
-import crownAfter from "@/assets/crown-after.jpg";
+import beforeImg from "@/assets/projects/project-07-flue-before.jpg";
+import afterImg from "@/assets/projects/project-08-cap-finished.jpg";
+import crownBefore from "@/assets/projects/project-09-crown-before.jpg";
+import crownAfter from "@/assets/projects/project-05-crown-rebuild.jpg";
+import projectHero from "@/assets/projects/project-01-double-crown.jpg";
+import projectTuckpoint from "@/assets/projects/project-02-tuckpointing-after.jpg";
+import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
+import projectCap from "@/assets/projects/project-04-cap-install.jpg";
+import projectCrownRebuild from "@/assets/projects/project-05-crown-rebuild.jpg";
+import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
+import projectCapFinished from "@/assets/projects/project-08-cap-finished.jpg";
 import { LeadForm } from "@/components/LeadForm";
 import { SERVICES } from "@/data/services";
 
