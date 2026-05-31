@@ -1278,3 +1278,68 @@ function FinalCta() {
     </section>
   );
 }
+/* ============================================================
+   SERVICE AREA — Central Ohio cities we cover
+   ============================================================ */
+function ServiceArea() {
+  const cities = [
+    "Columbus",
+    "Dublin",
+    "Hilliard",
+    "Grove City",
+    "Westerville",
+    "Powell",
+    "Worthington",
+  ];
+  return (
+    <section className="relative overflow-hidden bg-background py-20 md:py-24">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
+            <MapPin className="h-3 w-3" /> Local · Central Ohio
+          </p>
+          <h2 className="mt-4 font-display text-3xl uppercase tracking-wider md:text-5xl">
+            Proudly serving the <span className="text-flame">Columbus metro</span>
+          </h2>
+          <p className="mt-3 text-base text-muted-foreground md:text-lg">
+            Same-day local dispatch across these neighborhoods. Not sure if we cover yours? Call us — we probably do.
+          </p>
+        </div>
+
+        <div className="mt-10 grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
+          <div className="overflow-hidden rounded-sm border-2 border-primary/30 shadow-flame">
+            <ServiceAreaMap />
+          </div>
+
+          <div>
+            <ul className="grid grid-cols-2 gap-3">
+              {cities.map((city) => (
+                <li
+                  key={city}
+                  className="flex items-center gap-2 rounded-sm border border-primary/20 bg-secondary/40 px-4 py-3 font-display text-sm uppercase tracking-wider text-primary transition hover:border-flame hover:bg-flame/10"
+                >
+                  <CheckCircle2 className="h-4 w-4 shrink-0 text-flame" />
+                  {city}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="tel:6146834422"
+                className="inline-flex items-center gap-2 rounded-sm bg-flame px-5 py-3 font-display text-sm font-semibold text-primary transition hover:brightness-110"
+              >
+                <Phone className="h-4 w-4" /> (614) 683-4422
+              </a>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-5 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+              >
+                Check my address <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
