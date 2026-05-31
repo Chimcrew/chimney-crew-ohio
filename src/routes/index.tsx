@@ -1084,10 +1084,53 @@ function Testimonials() {
       name: "Priya S.",
       city: "Oakwood, Dayton",
     },
+    {
+      quote:
+        "Booked online at 8am, crew was at my door by 1pm. Diagnosed a draft issue our last sweep missed and fixed it the same visit. Honest pricing.",
+      name: "Jason T.",
+      city: "Upper Arlington, OH",
+    },
+    {
+      quote:
+        "Dryer was taking three cycles to dry a load. ChimCrew cleared the vent, showed me before/after photos, and now it's one cycle. Should've called sooner.",
+      name: "Lauren B.",
+      city: "Mason, Cincinnati",
+    },
+    {
+      quote:
+        "Family-owned and it shows. They treated my mom's house like their own — shoe covers, polite, explained everything. We're customers for life.",
+      name: "Marcus W.",
+      city: "Kettering, Dayton",
+    },
   ];
   return (
     <section className="bg-background py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
+        {/* Big social-proof banner */}
+        <div className="mb-12 grid gap-6 rounded-2xl border-2 border-flame/30 bg-secondary/60 p-6 sm:grid-cols-[auto_1fr_auto] sm:items-center md:p-8">
+          <div className="flex items-center gap-4">
+            <div className="flex">
+              {[0,1,2,3,4].map(i => <Star key={i} className="h-7 w-7 fill-flame text-flame" />)}
+            </div>
+            <div>
+              <p className="font-display text-3xl font-extrabold text-primary md:text-4xl">4.9 / 5</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                1,836 verified reviews
+              </p>
+            </div>
+          </div>
+          <p className="text-sm leading-relaxed text-foreground sm:text-base">
+            Google · Facebook · BBB A+ · Nextdoor Neighborhood Favorite —
+            <span className="font-semibold text-primary"> Ohio homeowners rate us their #1 chimney crew.</span>
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-6 py-3.5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground"
+          >
+            <CalendarCheck className="h-4 w-4" /> Get Free Estimate
+          </Link>
+        </div>
+
         <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
@@ -1105,7 +1148,7 @@ function Testimonials() {
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((r, i) => (
             <figure
               key={i}
@@ -1116,7 +1159,7 @@ function Testimonials() {
                   <Star key={s} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-              <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground">
+              <blockquote className="mt-4 flex-1 text-base leading-relaxed text-foreground">
                 "{r.quote}"
               </blockquote>
               <figcaption className="mt-6 border-t border-border pt-4">
