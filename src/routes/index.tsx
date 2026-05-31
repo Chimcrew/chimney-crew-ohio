@@ -23,14 +23,15 @@ import {
   HardHat,
 } from "lucide-react";
 import logo from "@/assets/chimcrew-logo.png";
-import van from "@/assets/chimcrew-van.png";
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
-import beforeImg from "@/assets/before-chimney.jpg";
-import afterImg from "@/assets/after-chimney.jpg";
-import crownBefore from "@/assets/crown-before.jpg";
-import crownAfter from "@/assets/crown-after.jpg";
+import beforeImg from "@/assets/projects/project-07-flue-before.jpg";
+import afterImg from "@/assets/projects/project-08-cap-finished.jpg";
+import crownBefore from "@/assets/projects/project-09-crown-before.jpg";
+import crownAfter from "@/assets/projects/project-05-crown-rebuild.jpg";
+import projectHero from "@/assets/projects/project-01-double-crown.jpg";
 import { LeadForm } from "@/components/LeadForm";
+import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES } from "@/data/services";
 
 export const Route = createFileRoute("/")({
@@ -52,6 +53,7 @@ function Index() {
     <>
       <Hero />
       <TrustMarquee />
+      <RecentProjects />
       <WhyChooseUs />
       <ProblemSolver />
       <FireHazards />
@@ -198,38 +200,29 @@ function Hero() {
                 {/* top meta strip */}
                 <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
                   <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                    ChimCrew · The Yellow Van
+                    Recent Job · Ohio
                   </span>
                   <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/55">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Online now
                   </span>
                 </div>
 
-                {/* hero image — mobile gets a warm cinematic spotlight; desktop keeps the tall studio card */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-[radial-gradient(ellipse_at_center,_oklch(0.32_0.12_55)_0%,_oklch(0.12_0.04_45)_55%,_oklch(0.06_0.01_250)_100%)] sm:aspect-[4/5] sm:bg-gradient-to-br sm:from-[oklch(0.14_0.01_250)] sm:to-[oklch(0.06_0.01_250)]">
-                  {/* subtle backdrop accents */}
-                  <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-flame/40 blur-3xl sm:bg-flame/25" />
-                  <div className="pointer-events-none absolute -left-12 bottom-0 h-48 w-48 rounded-full bg-flame/25 blur-3xl sm:bg-flame/10" />
-                  {/* mobile-only spotlight ring behind van */}
-                  <div className="pointer-events-none absolute left-1/2 top-1/2 h-[70%] w-[70%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-flame/15 blur-2xl sm:hidden" aria-hidden />
-                  <div className="pointer-events-none absolute inset-0 animate-shine" />
-
-                  {/* The van — clean, centered, hero */}
+                {/* hero image — REAL completed ChimCrew project */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-primary sm:aspect-[4/5]">
                   <img
-                    src={van}
-                    alt="ChimCrew yellow chimney sweep van — Ohio"
-                    className="absolute inset-x-0 bottom-[18%] mx-auto w-[78%] animate-float object-contain drop-shadow-[0_30px_40px_oklch(0_0_0/0.65)] sm:bottom-[14%] sm:w-[92%] sm:drop-shadow-[0_25px_35px_oklch(0_0_0/0.55)]"
+                    src={projectHero}
+                    alt="Real ChimCrew project — rebuilt chimney crown with new caps on an Ohio home"
+                    className="absolute inset-0 h-full w-full object-cover"
                   />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/0 to-primary/40" aria-hidden />
 
-                  {/* Floating "Same-day" pill — desktop only; on mobile it moves up into the eyebrow row */}
                   <div className="absolute left-4 top-4 hidden items-center gap-2 rounded-full border border-flame/30 bg-primary/85 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur sm:inline-flex">
                     <Clock className="h-3 w-3" /> Same-day slots open
                   </div>
 
-                  {/* Caption pill bottom */}
-                  <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/80 px-3 py-2 text-center backdrop-blur">
+                  <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-3 py-2 text-center backdrop-blur">
                     <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                      ◆ The yellow van you'll spot in the driveway
+                      ◆ Crown rebuild + new caps · real ChimCrew job
                     </p>
                   </div>
                 </div>
