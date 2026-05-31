@@ -55,6 +55,7 @@ function Index() {
       <Hero />
       <TrustMarquee />
       <RecentProjects />
+      <ServiceArea />
       <WhyChooseUs />
       <ProblemSolver />
       <FireHazards />
@@ -63,7 +64,6 @@ function Index() {
       <LeakingChimney />
       <ScheduleOnline />
       <Process />
-      <ServiceArea />
       <Testimonials />
       <Faq />
       <FinalCta />
