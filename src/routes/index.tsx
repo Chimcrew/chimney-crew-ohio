@@ -58,6 +58,7 @@ function Index() {
     <>
       <Hero />
       <TrustMarquee />
+      <RecentProjects />
       <WhyChooseUs />
       <ProblemSolver />
       <FireHazards />
