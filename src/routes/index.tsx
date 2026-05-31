@@ -1282,63 +1282,176 @@ function FinalCta() {
    SERVICE AREA — Central Ohio cities we cover
    ============================================================ */
 function ServiceArea() {
-  const cities = [
-    "Columbus",
-    "Dublin",
-    "Hilliard",
-    "Grove City",
-    "Westerville",
-    "Powell",
-    "Worthington",
-  ];
+function ServiceArea() {
+  const suburbs = ["Dublin", "Hilliard", "Westerville", "Powell", "Grove City", "Worthington"];
+
   return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/5 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-primary">
-            <MapPin className="h-3 w-3" /> Local · Central Ohio
-          </p>
-          <h2 className="mt-4 font-display text-3xl uppercase tracking-wider md:text-5xl">
-            Proudly serving the <span className="text-flame">Columbus metro</span>
+    <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28">
+      {/* faint dot grid backdrop */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-5xl px-4 md:px-8">
+        {/* Eyebrow */}
+        <div className="flex justify-center">
+          <span className="inline-flex items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.25em] text-flame">
+            <span className="relative inline-flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flame opacity-60" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-flame" />
+            </span>
+            Local Dispatch · Active
+          </span>
+        </div>
+
+        {/* Headline */}
+        <div className="mx-auto mt-5 max-w-3xl text-center">
+          <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight md:text-6xl">
+            Serving the <span className="text-flame">Ohio Heartland</span>
           </h2>
-          <p className="mt-3 text-base text-muted-foreground md:text-lg">
-            Same-day local dispatch across these neighborhoods. Not sure if we cover yours? Call us — we probably do.
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-primary-foreground/70 md:text-base">
+            From our HQ in <span className="font-semibold text-primary-foreground">Columbus</span> to the streets of{" "}
+            <span className="font-semibold text-primary-foreground">Cincinnati</span> and{" "}
+            <span className="font-semibold text-primary-foreground">Dayton</span> — three metros, one local crew, real same-day dispatch.
           </p>
         </div>
 
-        <div className="mt-10 grid items-center gap-10 lg:grid-cols-[1.4fr_1fr]">
-          <div className="overflow-hidden rounded-sm border-2 border-primary/30 shadow-flame">
-            <ServiceAreaMap />
-          </div>
+        {/* Dispatch board */}
+        <div className="relative mx-auto mt-10 max-w-3xl">
+          <div className="absolute -top-px left-6 h-[2px] w-16 bg-flame" />
+          <div className="absolute -bottom-px right-6 h-[2px] w-16 bg-flame" />
 
-          <div>
-            <ul className="grid grid-cols-2 gap-3">
-              {cities.map((city) => (
-                <li
-                  key={city}
-                  className="flex items-center gap-2 rounded-sm border border-primary/20 bg-secondary/40 px-4 py-3 font-display text-sm uppercase tracking-wider text-primary transition hover:border-flame hover:bg-flame/10"
+          <div className="border-y border-flame/20 bg-primary-foreground/[0.03] p-1">
+            <div className="relative overflow-hidden rounded-sm border border-flame/15 bg-primary/60">
+              {/* Map area */}
+              <div className="relative aspect-[4/3] md:aspect-[16/9]">
+                {/* Grid */}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 opacity-[0.06]"
+                  style={{
+                    backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)",
+                    backgroundSize: "20px 20px",
+                  }}
+                />
+
+                {/* Schematic SVG: Columbus (top-right), Dayton (mid-left), Cincinnati (bottom-left) */}
+                <svg
+                  viewBox="0 0 400 300"
+                  className="absolute inset-0 h-full w-full"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-hidden
                 >
-                  <CheckCircle2 className="h-4 w-4 shrink-0 text-flame" />
-                  {city}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="tel:6146834422"
-                className="inline-flex items-center gap-2 rounded-sm bg-flame px-5 py-3 font-display text-sm font-semibold text-primary transition hover:brightness-110"
-              >
-                <Phone className="h-4 w-4" /> (614) 683-4422
-              </a>
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-5 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
-              >
-                Check my address <ArrowRight className="h-4 w-4" />
-              </Link>
+                  {/* I-71 / I-75 corridor lines */}
+                  <line x1="305" y1="80" x2="170" y2="155" stroke="oklch(0.78 0.18 75)" strokeOpacity="0.55" strokeWidth="1.2" strokeDasharray="5 5" />
+                  <line x1="170" y1="155" x2="85" y2="235" stroke="oklch(0.78 0.18 75)" strokeOpacity="0.55" strokeWidth="1.2" strokeDasharray="5 5" />
+                  <line x1="305" y1="80" x2="85" y2="235" stroke="oklch(0.78 0.18 75)" strokeOpacity="0.25" strokeWidth="1" strokeDasharray="2 7" />
+
+                  {/* Halos */}
+                  <circle cx="305" cy="80" r="55" fill="oklch(0.78 0.18 75)" fillOpacity="0.06" />
+                  <circle cx="170" cy="155" r="45" fill="oklch(0.78 0.18 75)" fillOpacity="0.05" />
+                  <circle cx="85" cy="235" r="45" fill="oklch(0.78 0.18 75)" fillOpacity="0.05" />
+
+                  {/* Suburb dots around Columbus */}
+                  <circle cx="285" cy="60" r="2" fill="#fff" opacity="0.45" />
+                  <circle cx="325" cy="58" r="2" fill="#fff" opacity="0.45" />
+                  <circle cx="335" cy="92" r="2" fill="#fff" opacity="0.45" />
+                  <circle cx="278" cy="100" r="2" fill="#fff" opacity="0.45" />
+                  <circle cx="300" cy="115" r="2" fill="#fff" opacity="0.45" />
+                  <circle cx="320" cy="72" r="2" fill="#fff" opacity="0.45" />
+
+                  {/* Dayton pin */}
+                  <circle cx="170" cy="155" r="6" fill="oklch(0.78 0.18 75)" stroke="oklch(0.18 0.02 80)" strokeWidth="2.5" />
+                  {/* Cincinnati pin */}
+                  <circle cx="85" cy="235" r="6" fill="oklch(0.78 0.18 75)" stroke="oklch(0.18 0.02 80)" strokeWidth="2.5" />
+
+                  {/* Columbus HQ pin (large + pulse) */}
+                  <circle cx="305" cy="80" r="14" fill="oklch(0.78 0.18 75)" fillOpacity="0.25">
+                    <animate attributeName="r" values="10;18;10" dur="2.4s" repeatCount="indefinite" />
+                    <animate attributeName="fill-opacity" values="0.35;0;0.35" dur="2.4s" repeatCount="indefinite" />
+                  </circle>
+                  <circle cx="305" cy="80" r="8" fill="oklch(0.78 0.18 75)" stroke="oklch(0.18 0.02 80)" strokeWidth="3" />
+
+                  {/* City labels */}
+                  <text x="305" y="46" textAnchor="middle" fontFamily="Geist, Inter, system-ui, sans-serif" fontWeight="800" fontSize="14" letterSpacing="1.5" fill="#fff">COLUMBUS</text>
+                  <text x="305" y="60" textAnchor="middle" fontFamily="Geist, Inter, system-ui, sans-serif" fontWeight="700" fontSize="8" letterSpacing="3" fill="oklch(0.78 0.18 75)">HQ</text>
+
+                  <text x="170" y="142" textAnchor="middle" fontFamily="Geist, Inter, system-ui, sans-serif" fontWeight="700" fontSize="12" letterSpacing="1.5" fill="#fff" opacity="0.9">DAYTON</text>
+                  <text x="85" y="222" textAnchor="middle" fontFamily="Geist, Inter, system-ui, sans-serif" fontWeight="700" fontSize="12" letterSpacing="1.5" fill="#fff" opacity="0.9">CINCINNATI</text>
+                </svg>
+
+                {/* Corner brackets */}
+                <span className="pointer-events-none absolute left-2 top-2 h-3 w-3 border-l-2 border-t-2 border-flame/60" />
+                <span className="pointer-events-none absolute right-2 top-2 h-3 w-3 border-r-2 border-t-2 border-flame/60" />
+                <span className="pointer-events-none absolute bottom-2 left-2 h-3 w-3 border-b-2 border-l-2 border-flame/60" />
+                <span className="pointer-events-none absolute bottom-2 right-2 h-3 w-3 border-b-2 border-r-2 border-flame/60" />
+              </div>
+
+              {/* Suburbs strip */}
+              <div className="border-t border-flame/15 bg-primary/80 px-4 py-4 backdrop-blur md:px-6">
+                <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-flame/80">
+                  Regional Coverage · Greater Columbus
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {suburbs.map((s) => (
+                    <span
+                      key={s}
+                      className="rounded-sm border border-primary-foreground/10 bg-primary-foreground/5 px-2.5 py-1 font-mono text-[11px] font-medium uppercase tracking-wider text-primary-foreground/80"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
+
+        {/* Metro stat row */}
+        <div className="mx-auto mt-8 grid max-w-3xl grid-cols-3 gap-3 text-center">
+          {[
+            { city: "Columbus", tag: "HQ · Same-day" },
+            { city: "Dayton", tag: "Full coverage" },
+            { city: "Cincinnati", tag: "Full coverage" },
+          ].map((m) => (
+            <div
+              key={m.city}
+              className="rounded-sm border border-primary-foreground/10 bg-primary-foreground/[0.04] px-3 py-3"
+            >
+              <p className="font-display text-sm font-bold uppercase tracking-wider text-primary-foreground md:text-base">
+                {m.city}
+              </p>
+              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-flame/80 md:text-[10px]">
+                {m.tag}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Actions */}
+        <div className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row sm:justify-center">
+          <Link
+            to="/contact"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-sm bg-flame px-6 py-4 font-display text-base font-bold uppercase tracking-wider text-primary transition hover:brightness-110"
+          >
+            Check my address <ArrowRight className="h-4 w-4" />
+          </Link>
+          <a
+            href="tel:6146834422"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-sm border border-primary-foreground/20 bg-primary-foreground/[0.04] px-6 py-4 font-display text-sm font-semibold uppercase tracking-[0.15em] text-primary-foreground transition hover:bg-primary-foreground/10"
+          >
+            <Phone className="h-4 w-4 text-flame" /> (614) 683-4422
+          </a>
+        </div>
+
+        <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-primary-foreground/40">
+          Same-day dispatch available in most areas
+        </p>
       </div>
     </section>
   );
