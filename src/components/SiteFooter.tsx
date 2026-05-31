@@ -2,8 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Facebook, Instagram, CheckCircle2 } from "lucide-react";
 import logo from "@/assets/chimcrew-logo.png";
 import van from "@/assets/chimcrew-van.png";
-import { ServiceAreaMap } from "./ServiceAreaMap";
-
 export function SiteFooter() {
   return (
     <footer className="relative mt-24 border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
@@ -96,16 +94,6 @@ export function SiteFooter() {
                 <span>Columbus · Cincinnati · Dayton, OH</span>
               </li>
             </ul>
-          </div>
-        </div>
-
-        <div className="mt-14">
-          <h4 className="font-display text-sm uppercase tracking-widest text-primary">Where we serve</h4>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Full coverage across the I-71 / I-70 / I-75 corridor.
-          </p>
-          <div className="mt-6 overflow-hidden rounded-sm border-2 border-primary/30 shadow-flame">
-            <ServiceAreaMap />
           </div>
         </div>
 
