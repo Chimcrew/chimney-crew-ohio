@@ -321,6 +321,125 @@ function TrustMarquee() {
 }
 
 /* ============================================================
+   WHY CHOOSE CHIMCREW — trust + benefit cards
+   ============================================================ */
+function WhyChooseUs() {
+  const reasons = [
+    { icon: HomeIcon, title: "Family-Owned & Operated", body: "Three brothers, one Ohio crew. We answer the phone and show up ourselves — no call centers." },
+    { icon: ThumbsUp, title: "Honest Up-Front Pricing", body: "Flat rates quoted in writing before we start. No surprises, no upsell theater, no hidden fees." },
+    { icon: Clock, title: "Fast Response · Same-Day Service", body: "Most calls booked within the hour. Same-day slots open on weekdays during chimney season." },
+    { icon: ShieldCheck, title: "Licensed, Insured & CSIA Certified", body: "Fully insured Ohio crew with industry-standard certifications. Your home is covered every visit." },
+    { icon: Star, title: "5-Star Rated · 1,800+ Reviews", body: "4.9-star average from Ohio neighbors in Columbus, Cincinnati and Dayton." },
+    { icon: Award, title: "Written Workmanship Warranty", body: "Every repair backed in writing — transferable to the next owner. We stand behind every job." },
+  ];
+  return (
+    <section className="relative overflow-hidden bg-background py-20 md:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
+            <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why Chimcrew
+          </p>
+          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+            Six reasons Ohio homeowners trust us first.
+          </h2>
+          <p className="mt-4 text-base text-muted-foreground">
+            We're not the biggest chimney company in Ohio. We're the one your neighbors keep calling back.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {reasons.map(({ icon: Icon, title, body }) => (
+            <article key={title} className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame">
+              <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-flame/10 blur-2xl transition group-hover:bg-flame/30" />
+              <div className="relative grid h-12 w-12 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-5 font-display text-lg font-semibold text-primary">{title}</h3>
+              <p className="mt-2 flex-1 text-sm text-muted-foreground">{body}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground"
+          >
+            <CalendarCheck className="h-4 w-4" /> Get Free Estimate
+          </Link>
+          <a
+            href="tel:6146834422"
+            className="inline-flex items-center gap-2 rounded-xl border-2 border-primary px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+          >
+            <Phone className="h-4 w-4" /> Call Now · (614) 683-4422
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   PROBLEM SOLVER — pain points → solutions
+   ============================================================ */
+function ProblemSolver() {
+  const problems = [
+    { icon: Droplets, problem: "Water leaking around your chimney?", solution: "Crown seal + flashing repair — stops it for good.", cta: "Fix the leak" },
+    { icon: Wind, problem: "Smoke smell inside your home?", solution: "Camera inspection + flue cleaning — find the cause today.", cta: "Schedule inspection" },
+    { icon: AlertTriangle, problem: "Cracked chimney crown or mortar?", solution: "Stainless-reinforced rebuild with a 10-year warranty.", cta: "Get a repair quote" },
+    { icon: Flame, problem: "Fireplace not drafting or won't light?", solution: "Same-day diagnostic — gas, wood, or insert.", cta: "Book a diagnostic" },
+    { icon: HomeIcon, problem: "Dryer taking forever to dry?", solution: "Dryer vent cleaning — lower fire risk, faster loads.", cta: "Clean my vent" },
+    { icon: ShieldCheck, problem: "Buying or selling a home?", solution: "Level 2 inspection with PDF report — realtor-approved.", cta: "Book inspection" },
+  ];
+  return (
+    <section className="relative overflow-hidden bg-secondary/40 py-20 md:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-20" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-destructive/40 bg-destructive/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-destructive">
+            <AlertTriangle className="h-3.5 w-3.5" /> Sound familiar?
+          </p>
+          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+            The problem you're searching for — we fix it.
+          </h2>
+          <p className="mt-4 max-w-2xl text-base text-muted-foreground">
+            Tell us what's wrong. We've already seen it on an Ohio rooftop this week.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {problems.map(({ icon: Icon, problem, solution, cta }) => (
+            <article key={problem} className="group flex flex-col rounded-xl border-2 border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame">
+              <div className="grid h-11 w-11 place-items-center rounded-lg bg-destructive/10 text-destructive ring-1 ring-destructive/30">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-display text-lg font-bold text-primary">{problem}</h3>
+              <p className="mt-2 flex-1 text-sm text-muted-foreground">{solution}</p>
+              <Link
+                to="/contact"
+                className="mt-5 inline-flex items-center gap-2 self-start rounded-lg border-2 border-primary bg-primary px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary"
+              >
+                {cta} <ArrowRight className="h-3.5 w-3.5" />
+              </Link>
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-10 flex items-center justify-center">
+          <a
+            href="tel:6146834422"
+            className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
+          >
+            <Phone className="h-4 w-4" /> Talk to a tech now · (614) 683-4422
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
    LOGO DIVIDER — branded section break
    ============================================================ */
 function LogoDivider() {
