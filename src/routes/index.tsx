@@ -1282,7 +1282,6 @@ function FinalCta() {
    SERVICE AREA — Central Ohio cities we cover
    ============================================================ */
 function ServiceArea() {
-function ServiceArea() {
   const suburbs = ["Dublin", "Hilliard", "Westerville", "Powell", "Grove City", "Worthington"];
 
   return (
