@@ -70,10 +70,11 @@ export function ServiceAreaMap() {
               x={c.cx}
               y={c.cy - (c.primary ? 24 : 18)}
               textAnchor="middle"
-              fontFamily="Bungee, Impact, sans-serif"
+              fontFamily="Geist, Inter, system-ui, sans-serif"
+              fontWeight="700"
               fontSize={c.primary ? 20 : 15}
               fill="oklch(0.22 0.04 45)"
-              letterSpacing="1"
+              letterSpacing="0"
             >
               {c.name.toUpperCase()}
             </text>
@@ -85,10 +86,11 @@ export function ServiceAreaMap() {
           x="400"
           y="475"
           textAnchor="middle"
-          fontFamily="Bungee, Impact, sans-serif"
+          fontFamily="Geist, Inter, system-ui, sans-serif"
+          fontWeight="700"
           fontSize="22"
           fill="oklch(0.58 0.21 35 / 0.22)"
-          letterSpacing="6"
+          letterSpacing="2"
         >
           CENTRAL OHIO
         </text>
