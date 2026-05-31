@@ -97,16 +97,6 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-14">
-          <h4 className="font-display text-sm uppercase tracking-widest text-primary">Where we serve</h4>
-          <p className="mt-1 text-sm text-muted-foreground">
-            Full coverage across the I-71 / I-70 / I-75 corridor.
-          </p>
-          <div className="mt-6 overflow-hidden rounded-sm border-2 border-primary/30 shadow-flame">
-            <ServiceAreaMap />
-          </div>
-        </div>
-
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} ChimCrew Chimney Services. All rights reserved.</p>
           <p className="font-mono">CSIA Certified · Fully Insured · OH License #CHM-OH-0421</p>
