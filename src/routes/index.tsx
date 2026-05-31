@@ -32,6 +32,7 @@ import crownAfter from "@/assets/projects/project-05-crown-rebuild.jpg";
 import projectHero from "@/assets/projects/project-01-double-crown.jpg";
 import { LeadForm } from "@/components/LeadForm";
 import { RecentProjects } from "@/components/RecentProjectsSection";
+import { ServiceAreaMap } from "@/components/ServiceAreaMap";
 import { SERVICES } from "@/data/services";
 
 export const Route = createFileRoute("/")({
@@ -62,6 +63,7 @@ function Index() {
       <LeakingChimney />
       <ScheduleOnline />
       <Process />
+      <ServiceArea />
       <Testimonials />
       <Faq />
       <FinalCta />
