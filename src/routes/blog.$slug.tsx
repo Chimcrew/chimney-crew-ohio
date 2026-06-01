@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Calendar, Clock, ArrowLeft, Phone } from "lucide-react";
-import { BLOG_POSTS, getPostBySlug } from "@/data/blog-posts";
+import { BLOG_POSTS, getPostBySlug, type BlogPost } from "@/data/blog-posts";
 import { LeadForm } from "@/components/LeadForm";
 
 const SITE = "https://chimcrew.com";
@@ -84,7 +84,7 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function PostPage() {
-  const { post } = Route.useLoaderData();
+  const { post } = Route.useLoaderData() as { post: BlogPost };
   const related = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 3);
 
   return (
