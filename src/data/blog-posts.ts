@@ -1,11 +1,11 @@
-import sweep from "@/assets/sweep-rooftop.jpg";
-import fireplace from "@/assets/fireplace-cozy.jpg";
-import after from "@/assets/after-chimney.jpg";
-import before from "@/assets/before-chimney.jpg";
-import leak from "@/assets/leak-chimney-rooftop.jpg";
-import crown from "@/assets/crown-after.jpg";
-import truck from "@/assets/chimcrew-truck-original.jpeg";
+import projectDoubleCrown from "@/assets/projects/project-01-double-crown.jpg";
+import projectTuckpointing from "@/assets/projects/project-02-tuckpointing-after.jpg";
 import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
+import projectCapInstall from "@/assets/projects/project-04-cap-install.jpg";
+import projectCrownRebuild from "@/assets/projects/project-05-crown-rebuild.jpg";
+import projectTechOnsite from "@/assets/projects/project-06-tech-onsite.jpg";
+import projectFlueBefore from "@/assets/projects/project-07-flue-before.jpg";
+import projectCapFinished from "@/assets/projects/project-08-cap-finished.jpg";
 
 export interface BlogPost {
   slug: string;
