@@ -1456,3 +1456,74 @@ function ServiceArea() {
     </section>
   );
 }
+
+/* ============================================================
+   FIELD NOTES — latest blog articles
+   ============================================================ */
+function FieldNotes() {
+  const posts = BLOG_POSTS.slice(0, 3);
+  return (
+    <section className="relative overflow-hidden bg-background py-20 md:py-24" id="field-notes">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-2xl">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
+              ◆ Field Notes · From the rooftops
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-foreground md:text-5xl">
+              Straight talk from <span className="text-flame">our crew</span>.
+            </h2>
+            <p className="mt-4 text-base text-muted-foreground md:text-lg">
+              Practical chimney advice written by working Ohio sweeps — not
+              marketers, not AI. Read what we'd tell our own neighbors.
+            </p>
+          </div>
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-2 rounded-xl border-2 border-foreground/15 bg-card px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame hover:text-flame"
+          >
+            All articles <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {posts.map((p) => (
+            <article
+              key={p.slug}
+              className="group flex flex-col overflow-hidden rounded-2xl border-2 border-border bg-card transition hover:border-flame hover:shadow-flame"
+            >
+              <Link
+                to="/blog/$slug"
+                params={{ slug: p.slug }}
+                className="block aspect-[16/10] overflow-hidden"
+              >
+                <img
+                  src={p.cover}
+                  alt={p.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                />
+              </Link>
+              <div className="flex flex-1 flex-col p-6">
+                <span className="inline-flex w-fit rounded-full border border-flame/30 bg-flame/10 px-2.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-flame">
+                  {p.category}
+                </span>
+                <h3 className="mt-3 font-display text-lg font-extrabold leading-tight">
+                  <Link to="/blog/$slug" params={{ slug: p.slug }} className="hover:text-flame">
+                    {p.title}
+                  </Link>
+                </h3>
+                <p className="mt-3 flex-1 text-sm text-muted-foreground">{p.excerpt}</p>
+                <div className="mt-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  <span>{p.date}</span>
+                  <span>{p.readMinutes} min read</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
