@@ -33,6 +33,7 @@ import projectHero from "@/assets/projects/project-01-double-crown.jpg";
 import { LeadForm } from "@/components/LeadForm";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES } from "@/data/services";
+import { BLOG_POSTS } from "@/data/blog-posts";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,6 +65,7 @@ function Index() {
       <ScheduleOnline />
       <Process />
       <Testimonials />
+      <FieldNotes />
       <Faq />
       <FinalCta />
       <LeadForm />
