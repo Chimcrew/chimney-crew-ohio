@@ -45,6 +45,10 @@ export interface ServiceSpec {
   faqs: { q: string; a: string }[];
   related: string[]; // slugs
   metaDescription: string;
+  /** Common problems homeowners run into that this service solves. */
+  problems?: string[];
+  /** Direct benefits of doing the repair / service. */
+  benefits?: string[];
 }
 
 export const SERVICES: ServiceSpec[] = [
