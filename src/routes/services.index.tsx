@@ -22,7 +22,7 @@ function ServicesPage() {
         <div className="bg-grid absolute inset-0 opacity-60" />
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
           <p className="font-mono text-xs uppercase tracking-widest text-primary">// Services</p>
-          <h1 className="mt-3 text-6xl md:text-7xl">Flat-rate. <span className="text-flame">No surprises.</span></h1>
+          <h1 className="mt-3 text-6xl md:text-7xl">Chimney Services in <span className="text-flame">Ohio</span></h1>
           <p className="mt-4 max-w-2xl text-muted-foreground">
             {SERVICES.length} services, every one priced before we start, every
             one ending with photos and a written report. Tap any service to see
@@ -49,7 +49,7 @@ function ServicesPage() {
                   </div>
                   <span className={`font-display text-2xl ${accent.text}`}>{s.price}</span>
                 </div>
-                <h3 className="mt-5 text-2xl">{s.shortTitle}</h3>
+                <h2 className="mt-5 text-2xl">{s.shortTitle}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{s.tagline}</p>
                 <ul className="mt-4 space-y-1.5 text-sm">
                   {s.bullets.slice(0, 3).map((b) => (
