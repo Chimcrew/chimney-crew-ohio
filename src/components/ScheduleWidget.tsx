@@ -108,7 +108,7 @@ export function ScheduleWidget() {
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/15 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
                   <span className="flex h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Live availability
                 </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
                   Step {step + 1} / 3
                 </span>
               </div>
