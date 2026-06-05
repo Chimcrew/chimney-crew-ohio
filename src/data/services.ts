@@ -434,6 +434,18 @@ export const SERVICES: ServiceSpec[] = [
     ],
     related: ["crown-tuckpoint", "waterproofing", "level-2-inspection"],
     metaDescription: "Chimney flashing repair in Ohio. From $525. Stop ceiling leaks with proper step + counter-flashing.",
+    problems: [
+      "Roof leak symptoms appearing only after heavy rain or snowmelt",
+      "Interior water stains on ceilings or walls near the chimney",
+      "Curled or missing shingles around the base of the chimney",
+      "Failed surface caulk that was used instead of proper flashing",
+    ],
+    benefits: [
+      "Stops chronic ceiling and attic leaks at the most common entry point",
+      "Protects roof decking, framing, and drywall from rot and mold",
+      "Lead, copper, or color-matched aluminum that lasts 30+ years",
+      "Properly tucked into the mortar joint — not caulked on top",
+    ],
   },
   {
     slug: "firebox-rebuild",
