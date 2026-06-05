@@ -144,9 +144,9 @@ export function LeadForm({ id = "quote" }: { id?: string }) {
                     Just name and phone. We'll grab the rest when we call you back.
                   </p>
                   <div className="mt-6 grid gap-3">
-                    <Input label="Full name" value={data.name} onChange={(v) => setData({ ...data, name: v })} placeholder="Jane Smith" />
-                    <Input label="Phone" type="tel" value={data.phone} onChange={(v) => setData({ ...data, phone: v })} placeholder="(614) 555-0123" />
-                    <Input label="ZIP (optional)" value={data.zip} onChange={(v) => setData({ ...data, zip: v })} placeholder="43215" />
+                    <Input id="lead-name" label="Full name" value={data.name} onChange={(v) => setData({ ...data, name: v })} placeholder="Jane Smith" />
+                    <Input id="lead-phone" label="Phone" type="tel" value={data.phone} onChange={(v) => setData({ ...data, phone: v })} placeholder="(614) 555-0123" />
+                    <Input id="lead-zip" label="ZIP (optional)" value={data.zip} onChange={(v) => setData({ ...data, zip: v })} placeholder="43215" />
                   </div>
                 </div>
               )}
@@ -185,12 +185,13 @@ export function LeadForm({ id = "quote" }: { id?: string }) {
 }
 
 function Input({
-  label, value, onChange, placeholder, type = "text",
-}: { label: string; value: string; onChange: (v: string) => void; placeholder?: string; type?: string }) {
+  id, label, value, onChange, placeholder, type = "text",
+}: { id: string; label: string; value: string; onChange: (v: string) => void; placeholder?: string; type?: string }) {
   return (
     <div>
-      <label className="mb-1 block font-mono text-xs uppercase tracking-widest text-muted-foreground">{label}</label>
+      <label htmlFor={id} className="mb-1 block font-mono text-xs uppercase tracking-widest text-muted-foreground">{label}</label>
       <input
+        id={id}
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}

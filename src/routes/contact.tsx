@@ -20,7 +20,7 @@ function ContactPage() {
       <section className="border-b-2 border-primary/20 bg-secondary/40">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8 md:py-24">
           <p className="font-mono text-xs uppercase tracking-widest text-primary">Get in touch</p>
-          <h1 className="mt-3 text-[clamp(2.2rem,5vw,4rem)]">Talk to the crew.</h1>
+          <h1 className="mt-3 text-[clamp(2.2rem,5vw,4rem)]">Contact Our Ohio Chimney Crew</h1>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
             Quotes are free, callbacks are same-day, and the coffee is always on.
             Pick whichever way is easiest for you.
