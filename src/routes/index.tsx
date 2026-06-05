@@ -34,17 +34,23 @@ import { LeadForm } from "@/components/LeadForm";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
+import { TrustBar } from "@/components/TrustBar";
+import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ChimCrew — Ohio's Local Chimney Crew | Sweep, Repair & Inspection" },
+      { title: "Chimney Repair, Sweeping & Fireplace Services in Ohio | ChimCrew" },
       {
         name: "description",
         content:
-          "Locally-owned Ohio chimney experts. Prevent fire hazards, fix leaks, sweep flues — Columbus, Cincinnati & Dayton. Schedule online in 60 seconds.",
+          "Protect your home from chimney fires, water leaks, and costly structural damage with professional chimney inspections, repairs, and maintenance. Serving Columbus, Dayton, Cincinnati, Cleveland & Pittsburgh.",
       },
+      { property: "og:title", content: "Chimney Repair, Sweeping & Fireplace Services in Ohio | ChimCrew" },
+      { property: "og:description", content: "Family-owned chimney repair, sweeping, and fireplace services. CSIA-certified, upfront pricing, fully insured. Columbus · Dayton · Cincinnati · Cleveland · Pittsburgh." },
+      { property: "og:url", content: "https://chimcrew.com/" },
     ],
+    links: [{ rel: "canonical", href: "https://chimcrew.com/" }],
   }),
   component: Index,
 });
@@ -53,8 +59,10 @@ function Index() {
   return (
     <>
       <Hero />
+      <TrustBar />
       <TrustMarquee />
       <RecentProjects />
+      <ServiceAreaSeo />
       <ServiceArea />
       <WhyChooseUs />
       <ProblemSolver />
