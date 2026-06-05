@@ -163,11 +163,11 @@ function Hero() {
         ))}
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-20 pt-8 md:px-8 md:py-28">
+      <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 md:px-8 md:py-28">
         {/* ---------- TOP HERO ---------- */}
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
           {/* LEFT — message */}
-          <div className="reveal order-2 space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
+          <div className="reveal order-1 space-y-5 md:space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
             {/* Trust eyebrow */}
             <div className="flex flex-wrap items-center gap-2">
               {/* Mobile: show "Same-day slots open" here. Desktop: keep "Serving Ohio since 1975". */}
@@ -183,7 +183,7 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-[2.625rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-primary-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
+            <h1 className="font-display text-[2.25rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-primary-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
               Chimney Repair, Sweeping
               <br />
               <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
@@ -191,26 +191,39 @@ function Hero() {
               </span>
             </h1>
 
-            <p className="max-w-xl text-base leading-relaxed text-primary-foreground/75 md:text-lg">
-              Protect your home from chimney fires, water leaks, and costly structural damage with
-              <span className="font-semibold text-primary-foreground"> professional chimney inspections, repairs, and maintenance.</span>{" "}
-              CSIA-certified, fully insured, upfront pricing.
+            <p className="max-w-xl text-[15px] leading-relaxed text-primary-foreground/80 md:text-lg">
+              Protect your home from chimney fires, water leaks, and costly damage.{" "}
+              <span className="font-semibold text-primary-foreground">CSIA-certified inspections, repairs &amp; maintenance</span> — upfront pricing, same-day callback.
             </p>
 
-            <div className="flex flex-wrap gap-3 pt-1">
-              <Link
-                to="/contact"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-flame px-8 py-5 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white"
+            {/* CTAs — full-width on mobile, inline on desktop */}
+            <div className="grid grid-cols-1 gap-3 pt-1 sm:flex sm:flex-wrap">
+              <a
+                href="#quote"
+                className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-flame px-8 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white sm:w-auto sm:py-5"
               >
-                <CalendarCheck className="h-5 w-5" /> Schedule Service
+                <CalendarCheck className="h-5 w-5" /> Get Free Estimate
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              </Link>
+              </a>
               <a
                 href="tel:6146834422"
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/15 bg-transparent px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground/90 transition hover:border-flame hover:text-primary-foreground"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.03] px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame sm:w-auto"
               >
-                <Phone className="h-4 w-4" /> Call Now
+                <Phone className="h-4 w-4 text-flame" /> Call (614) 683-4422
               </a>
+            </div>
+
+            {/* Mobile-only urgency strip */}
+            <div className="flex items-center justify-between gap-3 rounded-xl border border-flame/25 bg-flame/[0.06] px-4 py-3 sm:hidden">
+              <div className="flex items-center gap-2">
+                <span className="flex h-2 w-2 animate-pulse rounded-full bg-flame" />
+                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
+                  Free estimate · 30 sec
+                </span>
+              </div>
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
+                Avg reply &lt; 1 hr
+              </span>
             </div>
 
             {/* Inline trust row */}
@@ -223,8 +236,8 @@ function Hero() {
           </div>
 
           {/* RIGHT — one strong visual */}
-          <div className="reveal order-1 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
-            <div className="relative mx-auto w-full max-w-sm lg:max-w-md">
+          <div className="reveal order-2 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
+            <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-md">
               {/* glow */}
               <div className="absolute -inset-6 rounded-[2rem] bg-flame/20 blur-3xl" aria-hidden />
 
