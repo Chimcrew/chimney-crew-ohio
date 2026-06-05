@@ -543,6 +543,57 @@ function Related({ service }: { service: ServiceSpec }) {
 }
 
 export function NotFoundService() {
+function ProblemsBlock({
+  service,
+  accent,
+}: {
+  service: ServiceSpec;
+  accent: (typeof ACCENT_CLASSES)[keyof typeof ACCENT_CLASSES];
+}) {
+  return (
+    <section className="border-b border-border bg-card/30 py-16">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>// Common problems</p>
+        <h2 className="mt-3 text-4xl">Problems we see on Ohio homes every week.</h2>
+        <ul className="mt-8 grid gap-3 md:grid-cols-2">
+          {service.problems!.map((p) => (
+            <li key={p} className="flex items-start gap-3 rounded-sm border-2 border-border bg-card p-4">
+              <Droplets className={`mt-0.5 h-5 w-5 shrink-0 ${accent.text}`} />
+              <span>{p}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+function BenefitsBlock({
+  service,
+  accent,
+}: {
+  service: ServiceSpec;
+  accent: (typeof ACCENT_CLASSES)[keyof typeof ACCENT_CLASSES];
+}) {
+  return (
+    <section className="border-b border-border py-16">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>// Benefits of the repair</p>
+        <h2 className="mt-3 text-4xl">What you get when this is done right.</h2>
+        <ul className="mt-8 grid gap-3 md:grid-cols-2">
+          {service.benefits!.map((b) => (
+            <li key={b} className="flex items-start gap-3 rounded-sm border-2 border-border bg-card p-4">
+              <Sparkles className={`mt-0.5 h-5 w-5 shrink-0 ${accent.text}`} />
+              <span>{b}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function NotFoundService() {
   return (
     <section className="py-24 text-center">
       <h1 className="text-5xl">Service not found</h1>
