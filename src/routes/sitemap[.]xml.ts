@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 import { BLOG_POSTS } from "@/data/blog-posts";
+import { SERVICES } from "@/data/services";
+import { SERVICE_CITIES } from "@/components/ServiceAreaSeo";
 
 const BASE_URL = "https://chimcrew.com";
 
@@ -27,7 +29,17 @@ export const Route = createFileRoute("/sitemap.xml")({
           priority: "0.7",
           lastmod: p.dateISO,
         }));
-        const urls = [...staticPaths, ...blogUrls]
+        const serviceUrls = SERVICES.map((s) => ({
+          path: `/services/${s.slug}`,
+          changefreq: "monthly",
+          priority: "0.8",
+        }));
+        const cityUrls = SERVICE_CITIES.map((c) => ({
+          path: `/service-area/${c.slug}`,
+          changefreq: "monthly",
+          priority: "0.8",
+        }));
+        const urls = [...staticPaths, ...serviceUrls, ...cityUrls, ...blogUrls]
           .map((e) => {
             const lastmod = "lastmod" in e && e.lastmod ? `<lastmod>${e.lastmod}</lastmod>` : "";
             return `  <url><loc>${BASE_URL}${e.path}</loc>${lastmod}<changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`;

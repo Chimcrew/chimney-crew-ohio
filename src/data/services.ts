@@ -45,6 +45,10 @@ export interface ServiceSpec {
   faqs: { q: string; a: string }[];
   related: string[]; // slugs
   metaDescription: string;
+  /** Common problems homeowners run into that this service solves. */
+  problems?: string[];
+  /** Direct benefits of doing the repair / service. */
+  benefits?: string[];
 }
 
 export const SERVICES: ServiceSpec[] = [
@@ -207,6 +211,18 @@ export const SERVICES: ServiceSpec[] = [
     ],
     related: ["waterproofing", "flashing-repair", "level-2-inspection"],
     metaDescription: "Chimney crown repair and tuckpointing in Ohio. From $650. 5-year warranty. Stop leaks before they become rebuilds.",
+    problems: [
+      "Hairline cracks in the crown letting water seep into the chimney structure",
+      "Brick faces spalling (popping off) from freeze-thaw water damage",
+      "Mortar joints washed out, leaving gaps along the chimney exterior",
+      "Efflorescence (white staining) showing chronic water intrusion",
+    ],
+    benefits: [
+      "Stops water at the source before it rots the framing or stains ceilings",
+      "Prevents the small five-figure rebuild down the road",
+      "Restores curb appeal with color-matched mortar and a clean crown line",
+      "Adds 15–25 years of life to the existing masonry",
+    ],
   },
   {
     slug: "liner-install",
@@ -247,6 +263,18 @@ export const SERVICES: ServiceSpec[] = [
     ],
     related: ["level-2-inspection", "smoke-chamber-parging", "gas-fireplace-service"],
     metaDescription: "Stainless steel chimney liner installation in Ohio. 316Ti, lifetime warranty, from $1,890. Columbus, Cincinnati, Dayton.",
+    problems: [
+      "Cracked clay tiles allowing heat and combustion gases into the wall cavity",
+      "Oversized flue causing poor draft, smoke spillage, and rapid creosote build-up",
+      "Old liner not rated for a new wood stove or gas insert",
+      "Carbon monoxide concerns from a deteriorated or unlined flue",
+    ],
+    benefits: [
+      "Dramatically improves draft so your fireplace stops smoking back into the room",
+      "Contains heat and combustion gases safely — protects your home from chimney fires",
+      "Properly sized for your appliance (wood stove, insert, furnace, or gas log set)",
+      "Lifetime, transferable warranty that adds resale value",
+    ],
   },
   {
     slug: "animal-removal",
@@ -406,6 +434,18 @@ export const SERVICES: ServiceSpec[] = [
     ],
     related: ["crown-tuckpoint", "waterproofing", "level-2-inspection"],
     metaDescription: "Chimney flashing repair in Ohio. From $525. Stop ceiling leaks with proper step + counter-flashing.",
+    problems: [
+      "Roof leak symptoms appearing only after heavy rain or snowmelt",
+      "Interior water stains on ceilings or walls near the chimney",
+      "Curled or missing shingles around the base of the chimney",
+      "Failed surface caulk that was used instead of proper flashing",
+    ],
+    benefits: [
+      "Stops chronic ceiling and attic leaks at the most common entry point",
+      "Protects roof decking, framing, and drywall from rot and mold",
+      "Lead, copper, or color-matched aluminum that lasts 30+ years",
+      "Properly tucked into the mortar joint — not caulked on top",
+    ],
   },
   {
     slug: "firebox-rebuild",

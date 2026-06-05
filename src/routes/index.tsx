@@ -34,17 +34,23 @@ import { LeadForm } from "@/components/LeadForm";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
+import { TrustBar } from "@/components/TrustBar";
+import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "ChimCrew — Ohio's Local Chimney Crew | Sweep, Repair & Inspection" },
+      { title: "Chimney Repair, Sweeping & Fireplace Services in Ohio | ChimCrew" },
       {
         name: "description",
         content:
-          "Locally-owned Ohio chimney experts. Prevent fire hazards, fix leaks, sweep flues — Columbus, Cincinnati & Dayton. Schedule online in 60 seconds.",
+          "Protect your home from chimney fires, water leaks, and costly structural damage with professional chimney inspections, repairs, and maintenance. Serving Columbus, Dayton, Cincinnati, Cleveland & Pittsburgh.",
       },
+      { property: "og:title", content: "Chimney Repair, Sweeping & Fireplace Services in Ohio | ChimCrew" },
+      { property: "og:description", content: "Family-owned chimney repair, sweeping, and fireplace services. CSIA-certified, upfront pricing, fully insured. Columbus · Dayton · Cincinnati · Cleveland · Pittsburgh." },
+      { property: "og:url", content: "https://chimcrew.com/" },
     ],
+    links: [{ rel: "canonical", href: "https://chimcrew.com/" }],
   }),
   component: Index,
 });
@@ -53,8 +59,10 @@ function Index() {
   return (
     <>
       <Hero />
+      <TrustBar />
       <TrustMarquee />
       <RecentProjects />
+      <ServiceAreaSeo />
       <ServiceArea />
       <WhyChooseUs />
       <ProblemSolver />
@@ -122,32 +130,32 @@ function Hero() {
             </div>
 
             <h1 className="font-display text-[2.625rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-primary-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
-              Ohio Chimney Sweep
+              Chimney Repair, Sweeping
               <br />
               <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
-                &amp; Repair, Done Right.
+                &amp; Fireplace Services.
               </span>
             </h1>
 
             <p className="max-w-xl text-base leading-relaxed text-primary-foreground/75 md:text-lg">
-              Fast, reliable repairs, cleaning &amp; inspections across Ohio.
-              <span className="font-semibold text-primary-foreground"> Same-day service available.</span>{" "}
-              Flat-rate pricing, photos with every job, written warranty.
+              Protect your home from chimney fires, water leaks, and costly structural damage with
+              <span className="font-semibold text-primary-foreground"> professional chimney inspections, repairs, and maintenance.</span>{" "}
+              CSIA-certified, fully insured, upfront pricing.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-1">
               <Link
                 to="/contact"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-xl bg-flame px-8 py-5 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white"
               >
-                <CalendarCheck className="h-4 w-4" /> Get Free Estimate
+                <CalendarCheck className="h-5 w-5" /> Schedule Service
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </Link>
               <a
                 href="tel:6146834422"
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/10 bg-primary/60 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
+                className="inline-flex items-center gap-2 rounded-xl border-2 border-white/15 bg-transparent px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground/90 transition hover:border-flame hover:text-primary-foreground"
               >
-                <Phone className="h-4 w-4" /> Call Now · (614) 683-4422
+                <Phone className="h-4 w-4" /> Call Now
               </a>
             </div>
 

@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Facebook, Instagram, CheckCircle2 } from "lucide-react";
 import logo from "@/assets/chimcrew-logo.png";
 import van from "@/assets/chimcrew-van.png";
+import { SERVICES } from "@/data/services";
+import { SERVICE_CITIES } from "@/components/ServiceAreaSeo";
 export function SiteFooter() {
   return (
     <footer className="relative mt-24 border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
@@ -38,7 +40,7 @@ export function SiteFooter() {
       </div>
 
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
-        <div className="grid gap-12 lg:grid-cols-[1.3fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_1.1fr_1fr_1fr]">
           <div>
             <img src={logo} alt="ChimCrew" className="h-14 w-auto" />
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
@@ -53,13 +55,9 @@ export function SiteFooter() {
                 <Instagram className="h-4 w-4" />
               </a>
             </div>
-          </div>
-
-          <div>
-            <h4 className="font-display text-sm uppercase tracking-widest text-primary">Site</h4>
-            <ul className="mt-4 space-y-2 text-sm">
+            <ul className="mt-6 space-y-2 text-sm">
               <li><Link to="/" className="hover:text-primary">Home</Link></li>
-              <li><Link to="/services" className="hover:text-primary">Services</Link></li>
+              <li><Link to="/services" className="hover:text-primary">All Services</Link></li>
               <li><Link to="/before-after" className="hover:text-primary">Before / After</Link></li>
               <li><Link to="/gallery" className="hover:text-primary">Gallery</Link></li>
               <li><Link to="/reviews" className="hover:text-primary">Reviews</Link></li>
@@ -69,10 +67,37 @@ export function SiteFooter() {
           </div>
 
           <div>
-            <h4 className="font-display text-sm uppercase tracking-widest text-primary">Legal</h4>
+            <h4 className="font-display text-sm uppercase tracking-widest text-primary">Services</h4>
+            <ul className="mt-4 grid grid-cols-1 gap-y-2 text-sm">
+              {SERVICES.map((s) => (
+                <li key={s.slug}>
+                  <Link to="/services/$slug" params={{ slug: s.slug }} className="hover:text-primary">
+                    {s.shortTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="font-display text-sm uppercase tracking-widest text-primary">Service Areas</h4>
+            <ul className="mt-4 space-y-2 text-sm">
+              {SERVICE_CITIES.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    to="/service-area/$city"
+                    params={{ city: c.slug }}
+                    className="hover:text-primary"
+                  >
+                    {c.name}, {c.state}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <h4 className="mt-8 font-display text-sm uppercase tracking-widest text-primary">Legal</h4>
             <ul className="mt-4 space-y-2 text-sm">
               <li><Link to="/legal/privacy" className="hover:text-primary">Privacy Policy</Link></li>
-              <li><Link to="/legal/terms" className="hover:text-primary">Terms of Service</Link></li>
+              <li><Link to="/legal/terms" className="hover:text-primary">Terms &amp; Conditions</Link></li>
               <li><Link to="/legal/disclaimer" className="hover:text-primary">Disclaimer</Link></li>
               <li><Link to="/legal/accessibility" className="hover:text-primary">Accessibility</Link></li>
             </ul>
@@ -91,7 +116,7 @@ export function SiteFooter() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 text-primary" />
-                <span>Columbus · Cincinnati · Dayton, OH</span>
+                <span>Columbus · Dayton · Cincinnati · Cleveland · Pittsburgh</span>
               </li>
             </ul>
           </div>
