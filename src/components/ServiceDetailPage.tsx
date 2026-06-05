@@ -8,6 +8,8 @@ import {
   AlertTriangle,
   ArrowRight,
   ShieldCheck,
+  Droplets,
+  Sparkles,
 } from "lucide-react";
 import { ACCENT_CLASSES, getService, type ServiceSpec } from "@/data/services";
 import { LeadForm } from "@/components/LeadForm";
@@ -82,6 +84,16 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
 
       {/* Warning signs — repair/emergency variants get a louder treatment */}
       <Signs service={service} accent={accent} />
+
+      {/* Common problems (optional) */}
+      {service.problems && service.problems.length > 0 && (
+        <ProblemsBlock service={service} accent={accent} />
+      )}
+
+      {/* Benefits of repair (optional) */}
+      {service.benefits && service.benefits.length > 0 && (
+        <BenefitsBlock service={service} accent={accent} />
+      )}
 
       {/* FAQs */}
       <section className="border-b border-border py-16">
