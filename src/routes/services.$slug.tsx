@@ -19,6 +19,7 @@ export const Route = createFileRoute("/services/$slug")({
       };
     }
     const title = `${s.title} — ChimCrew Ohio`;
+    const url = `https://chimcrew.com/services/${s.slug}`;
     return {
       meta: [
         { title },
@@ -26,9 +27,57 @@ export const Route = createFileRoute("/services/$slug")({
         { property: "og:title", content: title },
         { property: "og:description", content: s.metaDescription },
         { property: "og:type", content: "website" },
+        { property: "og:url", content: url },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: s.metaDescription },
+      ],
+      links: [{ rel: "canonical", href: url }],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: s.title,
+            description: s.metaDescription,
+            url,
+            serviceType: s.title,
+            provider: { "@id": "https://chimcrew.com/#business" },
+            areaServed: [
+              { "@type": "City", name: "Columbus" },
+              { "@type": "City", name: "Cincinnati" },
+              { "@type": "City", name: "Dayton" },
+              { "@type": "City", name: "Cleveland" },
+              { "@type": "City", name: "Pittsburgh" },
+            ],
+            offers: { "@type": "Offer", price: s.price, priceCurrency: "USD" },
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: s.faqs.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          }),
+        },
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: "https://chimcrew.com/" },
+              { "@type": "ListItem", position: 2, name: "Services", item: "https://chimcrew.com/services" },
+              { "@type": "ListItem", position: 3, name: s.shortTitle, item: url },
+            ],
+          }),
+        },
       ],
     };
   },
