@@ -211,6 +211,18 @@ export const SERVICES: ServiceSpec[] = [
     ],
     related: ["waterproofing", "flashing-repair", "level-2-inspection"],
     metaDescription: "Chimney crown repair and tuckpointing in Ohio. From $650. 5-year warranty. Stop leaks before they become rebuilds.",
+    problems: [
+      "Hairline cracks in the crown letting water seep into the chimney structure",
+      "Brick faces spalling (popping off) from freeze-thaw water damage",
+      "Mortar joints washed out, leaving gaps along the chimney exterior",
+      "Efflorescence (white staining) showing chronic water intrusion",
+    ],
+    benefits: [
+      "Stops water at the source before it rots the framing or stains ceilings",
+      "Prevents the small five-figure rebuild down the road",
+      "Restores curb appeal with color-matched mortar and a clean crown line",
+      "Adds 15–25 years of life to the existing masonry",
+    ],
   },
   {
     slug: "liner-install",
