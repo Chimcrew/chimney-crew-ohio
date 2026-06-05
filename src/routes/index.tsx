@@ -40,17 +40,20 @@ import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Chimney Repair, Sweeping & Fireplace Services in Ohio | ChimCrew" },
+      { title: "Ohio Chimney Sweep, Repair & Fireplace | ChimCrew" },
       {
         name: "description",
         content:
-          "Protect your home from chimney fires, water leaks, and costly structural damage with professional chimney inspections, repairs, and maintenance. Serving Columbus, Dayton, Cincinnati, Cleveland & Pittsburgh.",
+          "CSIA-certified chimney sweeps, inspections, and repairs across Columbus, Dayton, Cincinnati & Cleveland. Upfront pricing, fully insured, same-day callbacks.",
       },
-      { property: "og:title", content: "Chimney Repair, Sweeping & Fireplace Services in Ohio | ChimCrew" },
-      { property: "og:description", content: "Family-owned chimney repair, sweeping, and fireplace services. CSIA-certified, upfront pricing, fully insured. Columbus · Dayton · Cincinnati · Cleveland · Pittsburgh." },
+      { property: "og:title", content: "Ohio Chimney Sweep, Repair & Fireplace | ChimCrew" },
+      { property: "og:description", content: "CSIA-certified chimney sweeps and repairs across Columbus, Dayton, Cincinnati & Cleveland. Upfront pricing, fully insured." },
       { property: "og:url", content: "https://chimcrew.com/" },
     ],
-    links: [{ rel: "canonical", href: "https://chimcrew.com/" }],
+    links: [
+      { rel: "canonical", href: "https://chimcrew.com/" },
+      { rel: "preload", as: "image", href: projectHero, fetchpriority: "high" },
+    ],
     scripts: [
       {
         type: "application/ld+json",
@@ -211,7 +214,7 @@ function Hero() {
             </div>
 
             {/* Inline trust row */}
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-xs text-primary-foreground/65">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-xs text-primary-foreground/80">
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> CSIA Certified</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> BBB A+ Rated</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Licensed &amp; Insured</span>
@@ -264,7 +267,7 @@ function Hero() {
                   <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
                     Recent Job · Ohio
                   </span>
-                  <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/55">
+                  <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
                     <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Online now
                   </span>
                 </div>
@@ -275,6 +278,10 @@ function Hero() {
                     src={projectHero}
                     alt="Real ChimCrew project — rebuilt chimney crown with new caps on an Ohio home"
                     className="absolute inset-0 h-full w-full object-cover"
+                    width={800}
+                    height={1000}
+                    fetchPriority="high"
+                    decoding="async"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/0 to-primary/40" aria-hidden />
 
@@ -295,7 +302,7 @@ function Hero() {
                     <Flame className="h-4 w-4 text-flame" />
                     <span className="font-mono text-[10px] uppercase tracking-[0.22em]">Safety · Sweeps · Repairs</span>
                   </div>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/55">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
                     OH
                   </span>
                 </div>
@@ -333,7 +340,7 @@ function Hero() {
             </p>
           </div>
           <div className="flex items-center gap-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/50">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
               System status: ready
             </span>
             <div className="h-1.5 w-32 overflow-hidden rounded-full bg-white/10">
@@ -1508,7 +1515,7 @@ function ServiceArea() {
           </a>
         </div>
 
-        <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-primary-foreground/40">
+        <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.3em] text-primary-foreground/80">
           Same-day dispatch available in most areas
         </p>
       </div>

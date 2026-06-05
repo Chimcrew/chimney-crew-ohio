@@ -1,0 +1,20 @@
+# ChimCrew
+
+> Family-owned, CSIA-certified chimney sweep, inspection, and repair company serving Columbus, Dayton, Cincinnati, Cleveland, and Pittsburgh.
+
+ChimCrew has been keeping Ohio chimneys safe since 1975. We sweep wood, gas, and pellet systems; inspect for fire and water damage; rebuild crowns; install caps and liners; and handle leaks and masonry repair. Upfront flat-rate pricing, fully insured, same-day callbacks.
+
+## Pages
+
+- [Home](/): Services, service area, and booking overview.
+- [Services](/services): Full list of chimney and fireplace services with pricing.
+- [Contact](/contact): Phone, online booking form, and service area.
+- [Before & After](/before-after): Real ChimCrew project photos.
+- [Gallery](/gallery): Project gallery across Ohio.
+- [Reviews](/reviews): Customer reviews and ratings.
+- [Blog](/blog): Chimney care, safety, and seasonal maintenance articles.
+
+## Optional
+
+- [Privacy](/legal/privacy): Privacy policy.
+- [Terms](/legal/terms): Terms of service.

@@ -105,7 +105,7 @@ export function SiteHeader() {
               <span className="font-display text-base font-extrabold tracking-tight">
                 Chim<span className="text-flame">Crew</span>
               </span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-primary-foreground/60">
+              <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-primary-foreground/80">
                 Ohio's chimney force
               </span>
             </span>
@@ -174,7 +174,7 @@ export function SiteHeader() {
                                   <span className="block font-display text-sm font-semibold leading-tight text-primary-foreground">
                                     {s.shortTitle}
                                   </span>
-                                  <span className="mt-0.5 block truncate font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/50">
+                                  <span className="mt-0.5 block truncate font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
                                     {s.price} · {s.duration}
                                   </span>
                                 </span>
@@ -292,7 +292,7 @@ export function SiteHeader() {
                                     <span className="block truncate font-display text-sm font-semibold text-primary-foreground">
                                       {s.shortTitle}
                                     </span>
-                                    <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/50">
+                                    <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
                                       {s.price}
                                     </span>
                                   </span>
