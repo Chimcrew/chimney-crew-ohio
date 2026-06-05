@@ -263,6 +263,18 @@ export const SERVICES: ServiceSpec[] = [
     ],
     related: ["level-2-inspection", "smoke-chamber-parging", "gas-fireplace-service"],
     metaDescription: "Stainless steel chimney liner installation in Ohio. 316Ti, lifetime warranty, from $1,890. Columbus, Cincinnati, Dayton.",
+    problems: [
+      "Cracked clay tiles allowing heat and combustion gases into the wall cavity",
+      "Oversized flue causing poor draft, smoke spillage, and rapid creosote build-up",
+      "Old liner not rated for a new wood stove or gas insert",
+      "Carbon monoxide concerns from a deteriorated or unlined flue",
+    ],
+    benefits: [
+      "Dramatically improves draft so your fireplace stops smoking back into the room",
+      "Contains heat and combustion gases safely — protects your home from chimney fires",
+      "Properly sized for your appliance (wood stove, insert, furnace, or gas log set)",
+      "Lifetime, transferable warranty that adds resale value",
+    ],
   },
   {
     slug: "animal-removal",
