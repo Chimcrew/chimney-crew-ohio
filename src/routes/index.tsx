@@ -51,6 +51,57 @@ export const Route = createFileRoute("/")({
       { property: "og:url", content: "https://chimcrew.com/" },
     ],
     links: [{ rel: "canonical", href: "https://chimcrew.com/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "How often should I sweep my chimney?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "The CSIA recommends an annual inspection and a sweep whenever creosote reaches 1/8\". For most Ohio homes that burn wood weekly, that's once a year.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do you service gas fireplaces too?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes — we sweep, inspect and repair wood, gas and pellet systems, including inserts and zero-clearance units.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How long does a sweep take?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "A standard sweep and Level 1 inspection takes 45–90 minutes. Repairs are quoted on the spot in a written estimate.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What does it cost?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Our new-customer inspection is $69. Sweeps start at $179 and most repairs are completed under $600. Honest, flat-rate pricing — no hidden fees.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Are you really local?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Born and raised in Ohio. Our crew lives in Columbus, Cincinnati and Dayton — same neighborhoods we service.",
+              },
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: Index,
 });
