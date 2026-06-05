@@ -542,7 +542,6 @@ function Related({ service }: { service: ServiceSpec }) {
   );
 }
 
-export function NotFoundService() {
 function ProblemsBlock({
   service,
   accent,
