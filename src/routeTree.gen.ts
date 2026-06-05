@@ -18,6 +18,7 @@ import { Route as BeforeAfterRouteImport } from './routes/before-after'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
+import { Route as ServiceAreaCityRouteImport } from './routes/service-area.$city'
 import { Route as LegalTermsRouteImport } from './routes/legal/terms'
 import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
 import { Route as LegalDisclaimerRouteImport } from './routes/legal/disclaimer'
@@ -73,6 +74,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
   id: '/services/$slug',
   path: '/services/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServiceAreaCityRoute = ServiceAreaCityRouteImport.update({
+  id: '/service-area/$city',
+  path: '/service-area/$city',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalTermsRoute = LegalTermsRouteImport.update({
@@ -148,6 +154,7 @@ export interface FileRoutesByFullPath {
   '/legal/disclaimer': typeof LegalDisclaimerRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/service-area/$city': typeof ServiceAreaCityRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
   '/api/public/notify-lead': typeof ApiPublicNotifyLeadRoute
@@ -170,6 +177,7 @@ export interface FileRoutesByTo {
   '/legal/disclaimer': typeof LegalDisclaimerRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/service-area/$city': typeof ServiceAreaCityRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services': typeof ServicesIndexRoute
   '/api/public/notify-lead': typeof ApiPublicNotifyLeadRoute
@@ -193,6 +201,7 @@ export interface FileRoutesById {
   '/legal/disclaimer': typeof LegalDisclaimerRoute
   '/legal/privacy': typeof LegalPrivacyRoute
   '/legal/terms': typeof LegalTermsRoute
+  '/service-area/$city': typeof ServiceAreaCityRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
   '/api/public/notify-lead': typeof ApiPublicNotifyLeadRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/legal/disclaimer'
     | '/legal/privacy'
     | '/legal/terms'
+    | '/service-area/$city'
     | '/services/$slug'
     | '/services/'
     | '/api/public/notify-lead'
@@ -239,6 +249,7 @@ export interface FileRouteTypes {
     | '/legal/disclaimer'
     | '/legal/privacy'
     | '/legal/terms'
+    | '/service-area/$city'
     | '/services/$slug'
     | '/services'
     | '/api/public/notify-lead'
@@ -261,6 +272,7 @@ export interface FileRouteTypes {
     | '/legal/disclaimer'
     | '/legal/privacy'
     | '/legal/terms'
+    | '/service-area/$city'
     | '/services/$slug'
     | '/services/'
     | '/api/public/notify-lead'
@@ -283,6 +295,7 @@ export interface RootRouteChildren {
   LegalDisclaimerRoute: typeof LegalDisclaimerRoute
   LegalPrivacyRoute: typeof LegalPrivacyRoute
   LegalTermsRoute: typeof LegalTermsRoute
+  ServiceAreaCityRoute: typeof ServiceAreaCityRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ApiPublicNotifyLeadRoute: typeof ApiPublicNotifyLeadRoute
@@ -355,6 +368,13 @@ declare module '@tanstack/react-router' {
       path: '/services/$slug'
       fullPath: '/services/$slug'
       preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/service-area/$city': {
+      id: '/service-area/$city'
+      path: '/service-area/$city'
+      fullPath: '/service-area/$city'
+      preLoaderRoute: typeof ServiceAreaCityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal/terms': {
@@ -460,6 +480,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalDisclaimerRoute: LegalDisclaimerRoute,
   LegalPrivacyRoute: LegalPrivacyRoute,
   LegalTermsRoute: LegalTermsRoute,
+  ServiceAreaCityRoute: ServiceAreaCityRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ApiPublicNotifyLeadRoute: ApiPublicNotifyLeadRoute,
@@ -471,3 +492,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
