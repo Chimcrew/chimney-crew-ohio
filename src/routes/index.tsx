@@ -144,92 +144,91 @@ function Index() {
    ============================================================ */
 function HeroPhotoCard() {
   const photos = [
-    { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
-    { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH" },
-    { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
-    { src: projectCap, caption: "New cap & flashing", city: "Cleveland, OH" },
-    { src: projectTech, caption: "On-site sweep & inspect", city: "Westerville, OH" },
+    { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH", detail: "Water sealed" },
+    { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH", detail: "Fireplace safe" },
+    { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH", detail: "Brick restored" },
+    { src: projectCap, caption: "New cap & flashing", city: "Cleveland, OH", detail: "Leak stopped" },
+    { src: projectTech, caption: "Sweep & camera inspection", city: "Westerville, OH", detail: "Report ready" },
   ];
   const [idx, setIdx] = useState(0);
+
   useEffect(() => {
-    const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 3800);
+    const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 4200);
     return () => clearInterval(id);
   }, [photos.length]);
 
-  return (
-    <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-md">
-      {/* ambient glow */}
-      <div className="absolute -inset-6 rounded-[2rem] bg-flame/15 blur-3xl" aria-hidden />
+  const activePhoto = photos[idx];
 
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
-        {/* top meta strip */}
-        <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
-          <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Live · Recent Ohio jobs
+  return (
+    <div className="relative mx-auto w-full max-w-[22rem] lg:max-w-md">
+      <div className="relative overflow-hidden rounded-[1.4rem] border border-border bg-card p-3 shadow-[0_24px_70px_oklch(0.18_0.02_250/0.16)]">
+        <div className="flex items-center justify-between px-1 pb-3">
+          <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="h-1.5 w-1.5 rounded-full bg-flame" /> Verified job proof
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
             {String(idx + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
           </span>
         </div>
 
-        {/* photo stack — cross-fade */}
-        <div className="relative aspect-[4/5] overflow-hidden bg-primary sm:aspect-[4/5]">
-          {photos.map((p, i) => (
-            <img
-              key={p.src}
-              src={p.src}
-              alt={`ChimCrew project — ${p.caption} in ${p.city}`}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out ${i === idx ? "opacity-100" : "opacity-0"}`}
-              width={800}
-              height={1000}
-              fetchPriority={i === 0 ? "high" : "low"}
-              decoding="async"
-              loading={i === 0 ? "eager" : "lazy"}
-            />
-          ))}
-
-          {/* gradient scrim */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-primary/10" aria-hidden />
-
-          {/* top-left chip */}
-          <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-flame/30 bg-primary/80 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
-            <Clock className="h-3 w-3" /> Same-day slots
-          </div>
-
-          {/* caption card */}
-          <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
-            <div className="flex items-center justify-between gap-3">
-              <div className="min-w-0">
-                <p className="truncate font-display text-sm font-bold text-primary-foreground">
-                  {photos[idx].caption}
-                </p>
-                <p className="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                  <MapPin className="h-3 w-3" /> {photos[idx].city}
-                </p>
+        <div className="relative overflow-hidden rounded-[1rem] border border-border bg-secondary">
+          <div className="relative aspect-[1.08] overflow-hidden">
+            {photos.map((p, i) => (
+              <img
+                key={p.src}
+                src={p.src}
+                alt={`ChimCrew project — ${p.caption} in ${p.city}`}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ease-out ${i === idx ? "opacity-100" : "opacity-0"}`}
+                width={800}
+                height={740}
+                fetchPriority={i === 0 ? "high" : "low"}
+                decoding="async"
+                loading={i === 0 ? "eager" : "lazy"}
+              />
+            ))}
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-primary/55 to-transparent" aria-hidden />
+            <div className="absolute left-3 top-3 rounded-full border border-border bg-card/90 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground backdrop-blur">
+              Before → fixed
+            </div>
+            <div className="absolute bottom-3 left-3 right-3 rounded-xl border border-background/20 bg-card/92 p-3 shadow-sm backdrop-blur">
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="truncate font-display text-sm font-extrabold text-foreground">{activePhoto.caption}</p>
+                  <p className="mt-1 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                    <MapPin className="h-3 w-3 text-flame" /> {activePhoto.city}
+                  </p>
+                </div>
+                <span className="shrink-0 rounded-full bg-flame/15 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-foreground">
+                  {activePhoto.detail}
+                </span>
               </div>
-              <span className="shrink-0 rounded-full border border-flame/40 bg-flame/15 px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-                Done
-              </span>
             </div>
           </div>
         </div>
 
-        {/* thumbnail rail */}
-        <div className="flex items-center gap-2 border-t border-white/5 px-4 py-3">
+        <div className="mt-3 grid grid-cols-3 overflow-hidden rounded-xl border border-border bg-background text-center">
+          {[
+            ["CSIA", "Certified"],
+            ["4.9★", "1,836 reviews"],
+            ["A+", "BBB rated"],
+          ].map(([value, label]) => (
+            <div key={label} className="border-r border-border px-2 py-3 last:border-r-0">
+              <p className="font-display text-base font-extrabold text-foreground">{value}</p>
+              <p className="mt-0.5 font-mono text-[8px] uppercase tracking-[0.16em] text-muted-foreground">{label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-3 flex items-center gap-2 px-1">
           {photos.map((p, i) => (
             <button
               key={p.src}
               type="button"
               onClick={() => setIdx(i)}
               aria-label={`Show ${p.caption}`}
-              className={`group relative h-10 w-10 shrink-0 overflow-hidden rounded-md border transition ${i === idx ? "border-flame ring-2 ring-flame/40" : "border-white/10 opacity-60 hover:opacity-100"}`}
-            >
-              <img src={p.src} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
-            </button>
+              className={`h-2 flex-1 rounded-full transition ${i === idx ? "bg-flame" : "bg-border hover:bg-muted-foreground/30"}`}
+            />
           ))}
-          <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
-            Real jobs
-          </span>
         </div>
       </div>
     </div>
@@ -239,53 +238,42 @@ function HeroPhotoCard() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-background text-foreground">
-      {/* Soft background atmospherics */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,_oklch(0.99_0.01_230)_0%,_oklch(0.94_0.015_230)_70%)]" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.05]" aria-hidden />
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/10 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/[0.06] blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,var(--card)_0%,var(--background)_58%,var(--secondary)_100%)]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.035]" aria-hidden />
 
-      <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 md:px-8 md:py-28">
+      <div className="relative mx-auto max-w-7xl px-4 pb-12 pt-5 md:px-8 md:py-24">
         {/* ---------- TOP HERO ---------- */}
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
-          {/* LEFT — message (mobile: below image) */}
-          <div className="reveal order-2 space-y-5 md:space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
+        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+          {/* LEFT — message */}
+          <div className="reveal order-1 space-y-5 md:space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
             {/* Trust eyebrow */}
             <div className="flex flex-wrap items-center gap-2">
-              {/* Mobile: show "Same-day slots open" here. Desktop: keep "Serving Ohio since 1975". */}
-              <span className="inline-flex items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:hidden">
-                <Clock className="h-3 w-3" /> Same-day slots open
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground shadow-sm">
+                <Star className="h-3 w-3 fill-flame text-flame" /> 4.9 on Google · 1,836 reviews
               </span>
-              <span className="hidden items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground shadow-sm">
                 <span className="flex h-2 w-2 animate-pulse rounded-full bg-flame" />
-                Serving Ohio since 1975
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
-                <Star className="h-3 w-3 fill-flame text-flame" /> 4.9 · 1,836 reviews
+                Same-day callbacks
               </span>
             </div>
 
-            <h1 className="font-display text-[2.25rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
-              Chimney Repair, Sweeping
-              <br />
-              <span className="text-primary">
-                &amp; Fireplace Services.
-              </span>
+            <h1 className="max-w-3xl font-display text-[2.6rem] font-extrabold leading-[0.92] tracking-[-0.035em] text-foreground sm:text-5xl md:text-[3.35rem] lg:text-[4.15rem]">
+              Chimney Repair, Sweeping &amp; Fireplace Services
+              <span className="block text-muted-foreground">done cleanly.</span>
             </h1>
 
-            <p className="max-w-xl text-[15px] leading-relaxed text-muted-foreground md:text-lg">
-              Protect your home from chimney fires, water leaks, and costly damage.{" "}
-              <span className="font-semibold text-foreground">CSIA-certified inspections, repairs &amp; maintenance</span> — upfront pricing, same-day callback.
+            <p className="max-w-2xl text-[15px] leading-relaxed text-muted-foreground md:text-lg">
+              We inspect the whole system, show you photo proof, and give you a clear repair plan before any work starts.
+              <span className="font-semibold text-foreground"> No scare tactics. No messy house. No mystery pricing.</span>
             </p>
 
             {/* CTAs — full-width on mobile, inline on desktop */}
             <div className="grid grid-cols-1 gap-3 pt-1 sm:flex sm:flex-wrap">
               <a
                 href="#quote"
-                className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-flame px-8 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white sm:w-auto sm:py-5"
+                className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-flame px-8 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_12px_34px_oklch(0.18_0.02_250/0.16)] transition hover:-translate-y-0.5 sm:w-auto sm:py-5"
               >
                 <CalendarCheck className="h-5 w-5" /> Get Free Estimate
-                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </a>
               <a
                 href="tel:6146834422"
@@ -296,7 +284,18 @@ function Hero() {
             </div>
 
             {/* Mobile-only urgency strip */}
-            <div className="flex items-center justify-between gap-3 rounded-xl border border-flame/25 bg-flame/[0.06] px-4 py-3 sm:hidden">
+            <div className="grid grid-cols-2 gap-2 sm:hidden">
+              <div className="rounded-xl border border-border bg-card px-3 py-3">
+                <p className="font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Estimate</p>
+                <p className="mt-1 font-display text-sm font-extrabold text-foreground">Free & fast</p>
+              </div>
+              <div className="rounded-xl border border-border bg-card px-3 py-3">
+                <p className="font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Reply time</p>
+                <p className="mt-1 font-display text-sm font-extrabold text-foreground">Under 1 hour</p>
+              </div>
+            </div>
+
+            <div className="hidden items-center justify-between gap-3 rounded-xl border border-flame/25 bg-flame/[0.06] px-4 py-3 sm:flex">
               <div className="flex items-center gap-2">
                 <span className="flex h-2 w-2 animate-pulse rounded-full bg-flame" />
                 <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
@@ -317,8 +316,8 @@ function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — one strong visual (mobile: on top) */}
-          <div className="reveal order-1 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
+          {/* RIGHT — verified project proof */}
+          <div className="reveal order-2 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
             <HeroPhotoCard />
           </div>
         </div>
@@ -334,13 +333,13 @@ function Hero() {
         </div>
 
         {/* Live status bar */}
-        <div className="mt-16 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-2xl border border-white/10 bg-primary/40 p-6 backdrop-blur md:flex-row">
+        <div className="mt-10 flex flex-col items-center justify-between gap-6 overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-sm md:mt-16 md:flex-row md:p-6">
           <div className="flex items-center gap-5">
             <div className="flex -space-x-2">
               {["#fbbf24", "#a3a3a3", "#525252"].map((c, i) => (
                 <span
                   key={i}
-                  className="grid h-9 w-9 place-items-center rounded-full border-2 border-primary text-[10px] font-bold text-primary"
+                  className="grid h-9 w-9 place-items-center rounded-full border-2 border-card text-[10px] font-bold text-primary"
                   style={{ background: c }}
                 >
                   {["M", "D", "P"][i]}
