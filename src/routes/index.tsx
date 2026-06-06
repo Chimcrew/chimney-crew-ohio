@@ -161,9 +161,9 @@ function HeroPhotoCard() {
 
   return (
     <div className="relative mx-auto w-full max-w-[23rem] lg:max-w-md">
-      <div className="relative overflow-hidden rounded-[1.35rem] border border-border bg-card p-2.5 shadow-[0_18px_55px_oklch(0.18_0.02_250/0.14)]">
+      <div className="relative overflow-hidden rounded-[1.35rem] border border-border bg-card p-2 shadow-[0_18px_55px_oklch(0.18_0.02_250/0.14)] sm:p-2.5">
         <div className="relative overflow-hidden rounded-[1rem] bg-secondary">
-          <div className="relative aspect-[1.38] overflow-hidden sm:aspect-[1.12]">
+          <div className="relative aspect-[1.62] overflow-hidden sm:aspect-[1.12]">
             {photos.map((p, i) => (
               <img
                 key={p.src}
@@ -184,7 +184,7 @@ function HeroPhotoCard() {
             <div className="absolute right-3 top-3 rounded-full border border-background/70 bg-card/92 px-2.5 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-muted-foreground shadow-sm backdrop-blur">
               {String(idx + 1).padStart(2, "0")}/{String(photos.length).padStart(2, "0")}
             </div>
-            <div className="absolute bottom-3 left-3 right-3 rounded-xl border border-background/20 bg-card/92 p-3 shadow-sm backdrop-blur">
+            <div className="absolute bottom-2.5 left-2.5 right-2.5 rounded-xl border border-background/20 bg-card/92 p-2.5 shadow-sm backdrop-blur sm:bottom-3 sm:left-3 sm:right-3 sm:p-3">
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <p className="truncate font-display text-sm font-extrabold text-foreground">{activePhoto.caption}</p>
@@ -200,7 +200,7 @@ function HeroPhotoCard() {
           </div>
         </div>
 
-        <div className="mt-2.5 grid grid-cols-3 overflow-hidden rounded-xl border border-border bg-background text-center">
+        <div className="mt-2.5 hidden grid-cols-3 overflow-hidden rounded-xl border border-border bg-background text-center sm:grid">
           {[
             ["CSIA", "Certified"],
             ["4.9★", "1,836 reviews"],
@@ -213,7 +213,7 @@ function HeroPhotoCard() {
           ))}
         </div>
 
-        <div className="mt-2.5 flex items-center gap-2 px-1">
+        <div className="mt-2 flex items-center gap-2 px-1 sm:mt-2.5">
           {photos.map((p, i) => (
             <button
               key={p.src}
@@ -239,7 +239,7 @@ function Hero() {
         {/* ---------- TOP HERO ---------- */}
         <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-12">
           {/* LEFT — message */}
-          <div className="reveal order-2 space-y-4 md:space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
+          <div className="reveal order-2 space-y-3.5 md:space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
             {/* Trust eyebrow */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground shadow-sm">
@@ -251,12 +251,12 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="max-w-3xl font-display text-[2.2rem] font-extrabold leading-[0.95] tracking-[-0.035em] text-foreground sm:text-5xl md:text-[3.35rem] lg:text-[4.15rem]">
+            <h1 className="max-w-3xl font-display text-[2rem] font-extrabold leading-[0.95] tracking-[-0.035em] text-foreground sm:text-5xl md:text-[3.35rem] lg:text-[4.15rem]">
               Chimney Repair, Sweep &amp; Fireplace Care
               <span className="block text-muted-foreground">without the guesswork.</span>
             </h1>
 
-            <p className="max-w-2xl text-[14px] leading-relaxed text-muted-foreground md:text-lg">
+            <p className="max-w-2xl text-[13.5px] leading-relaxed text-muted-foreground md:text-lg">
               We inspect the whole system, show you photo proof, and give you a clear repair plan before any work starts.
               <span className="font-semibold text-foreground"> No scare tactics. No messy house. No mystery pricing.</span>
             </p>
@@ -265,20 +265,20 @@ function Hero() {
             <div className="grid grid-cols-1 gap-3 pt-1 sm:flex sm:flex-wrap">
               <a
                 href="#quote"
-                className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-flame px-8 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_12px_34px_oklch(0.18_0.02_250/0.16)] transition hover:-translate-y-0.5 sm:w-auto sm:py-5"
+                className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-flame px-8 py-3.5 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_12px_34px_oklch(0.18_0.02_250/0.16)] transition hover:-translate-y-0.5 sm:w-auto sm:py-5"
               >
                 <CalendarCheck className="h-5 w-5" /> Get Free Estimate
               </a>
               <a
                 href="tel:6146834422"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-border bg-card px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-border bg-card px-7 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame sm:w-auto sm:py-4"
               >
                 <Phone className="h-4 w-4 text-flame" /> Call (614) 683-4422
               </a>
             </div>
 
             {/* Mobile-only urgency strip */}
-            <div className="grid grid-cols-2 gap-2 sm:hidden">
+            <div className="hidden grid-cols-2 gap-2 sm:hidden">
               <div className="rounded-xl border border-border bg-card px-3 py-3">
                 <p className="font-mono text-[9px] font-bold uppercase tracking-[0.16em] text-muted-foreground">Estimate</p>
                 <p className="mt-1 font-display text-sm font-extrabold text-foreground">Free & fast</p>
