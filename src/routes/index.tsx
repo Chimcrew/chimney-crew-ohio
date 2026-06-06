@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   CheckCircle2,
@@ -30,6 +30,10 @@ import afterImg from "@/assets/projects/project-08-cap-finished.jpg";
 import crownBefore from "@/assets/projects/project-09-crown-before.jpg";
 import crownAfter from "@/assets/projects/project-05-crown-rebuild.jpg";
 import projectHero from "@/assets/projects/project-01-double-crown.jpg";
+import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg";
+import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
+import projectCap from "@/assets/projects/project-04-cap-install.jpg";
+import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import { LeadForm } from "@/components/LeadForm";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES } from "@/data/services";
@@ -138,6 +142,100 @@ function Index() {
 /* ============================================================
    HERO  — image LEFT, message RIGHT (as originally requested)
    ============================================================ */
+function HeroPhotoCard() {
+  const photos = [
+    { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
+    { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH" },
+    { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
+    { src: projectCap, caption: "New cap & flashing", city: "Cleveland, OH" },
+    { src: projectTech, caption: "On-site sweep & inspect", city: "Westerville, OH" },
+  ];
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 3800);
+    return () => clearInterval(id);
+  }, [photos.length]);
+
+  return (
+    <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-md">
+      {/* ambient glow */}
+      <div className="absolute -inset-6 rounded-[2rem] bg-flame/15 blur-3xl" aria-hidden />
+
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
+        {/* top meta strip */}
+        <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
+          <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Live · Recent Ohio jobs
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
+            {String(idx + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
+          </span>
+        </div>
+
+        {/* photo stack — cross-fade */}
+        <div className="relative aspect-[4/5] overflow-hidden bg-primary sm:aspect-[4/5]">
+          {photos.map((p, i) => (
+            <img
+              key={p.src}
+              src={p.src}
+              alt={`ChimCrew project — ${p.caption} in ${p.city}`}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out ${i === idx ? "opacity-100" : "opacity-0"}`}
+              width={800}
+              height={1000}
+              fetchPriority={i === 0 ? "high" : "low"}
+              decoding="async"
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
+
+          {/* gradient scrim */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-primary/10" aria-hidden />
+
+          {/* top-left chip */}
+          <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-flame/30 bg-primary/80 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
+            <Clock className="h-3 w-3" /> Same-day slots
+          </div>
+
+          {/* caption card */}
+          <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="truncate font-display text-sm font-bold text-primary-foreground">
+                  {photos[idx].caption}
+                </p>
+                <p className="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                  <MapPin className="h-3 w-3" /> {photos[idx].city}
+                </p>
+              </div>
+              <span className="shrink-0 rounded-full border border-flame/40 bg-flame/15 px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+                Done
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* thumbnail rail */}
+        <div className="flex items-center gap-2 border-t border-white/5 px-4 py-3">
+          {photos.map((p, i) => (
+            <button
+              key={p.src}
+              type="button"
+              onClick={() => setIdx(i)}
+              aria-label={`Show ${p.caption}`}
+              className={`group relative h-10 w-10 shrink-0 overflow-hidden rounded-md border transition ${i === idx ? "border-flame ring-2 ring-flame/40" : "border-white/10 opacity-60 hover:opacity-100"}`}
+            >
+              <img src={p.src} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
+            </button>
+          ))}
+          <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
+            Real jobs
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
@@ -237,90 +335,7 @@ function Hero() {
 
           {/* RIGHT — one strong visual (mobile: on top) */}
           <div className="reveal order-1 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
-            <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-md">
-              {/* glow */}
-              <div className="absolute -inset-6 rounded-[2rem] bg-flame/20 blur-3xl" aria-hidden />
-
-              {/* Mobile-only heritage seal — spinning circular badge pinned to the card's top-right corner */}
-              <div
-                className="pointer-events-none absolute -right-3 -top-6 z-20 h-24 w-24 rotate-[8deg] sm:hidden"
-                aria-label="Serving Ohio since 1975"
-              >
-                <div className="absolute inset-0 rounded-full bg-flame/30 blur-xl" aria-hidden />
-                <div className="relative h-full w-full rounded-full border border-flame/40 bg-gradient-to-br from-[oklch(0.22_0.02_250)] to-[oklch(0.08_0.01_250)] shadow-[0_14px_30px_-6px_oklch(0_0_0/0.75),0_0_0_1px_oklch(0_0_0/0.5),inset_0_1px_0_oklch(1_0_0/0.08)]">
-                  <svg viewBox="0 0 100 100" className="absolute inset-0 h-full w-full animate-[spin_22s_linear_infinite]">
-                    <defs>
-                      <path id="seal-arc" d="M 50,50 m -38,0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
-                    </defs>
-                    <text
-                      fill="oklch(0.82 0.16 70)"
-                      style={{ fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace', fontSize: '10.5px', fontWeight: 700, letterSpacing: '3.2px' }}
-                    >
-                      <textPath href="#seal-arc" startOffset="0">
-                        SERVING OHIO · SINCE 1975 · SERVING OHIO · SINCE 1975 ·
-                      </textPath>
-                    </text>
-                  </svg>
-                  {/* center stamp */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                    <span className="font-display text-[10px] font-extrabold uppercase leading-none tracking-[0.2em] text-flame/70">EST</span>
-                    <span className="font-display text-2xl font-extrabold leading-none tracking-tight text-flame drop-shadow-[0_2px_8px_oklch(0.7_0.18_45/0.6)]">
-                      1975
-                    </span>
-                    <span className="mt-1 h-px w-6 bg-flame/50" aria-hidden />
-                    <span className="mt-1 font-mono text-[7px] font-bold uppercase tracking-[0.25em] text-flame/60">50 YRS</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Main visual card */}
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
-                {/* top meta strip */}
-                <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                    Recent Job · Ohio
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
-                    <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Online now
-                  </span>
-                </div>
-
-                {/* hero image — REAL completed ChimCrew project */}
-                <div className="relative aspect-[16/10] overflow-hidden bg-primary sm:aspect-[4/5]">
-                  <img
-                    src={projectHero}
-                    alt="Real ChimCrew project — rebuilt chimney crown with new caps on an Ohio home"
-                    className="absolute inset-0 h-full w-full object-cover"
-                    width={800}
-                    height={1000}
-                    fetchPriority="high"
-                    decoding="async"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/0 to-primary/40" aria-hidden />
-
-                  <div className="absolute left-4 top-4 hidden items-center gap-2 rounded-full border border-flame/30 bg-primary/85 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur sm:inline-flex">
-                    <Clock className="h-3 w-3" /> Same-day slots open
-                  </div>
-
-                  <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-3 py-2 text-center backdrop-blur">
-                    <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                      ◆ Crown rebuild + new caps · real ChimCrew job
-                    </p>
-                  </div>
-                </div>
-
-                {/* bottom row */}
-                <div className="flex items-center justify-between gap-3 border-t border-white/5 px-5 py-3">
-                  <div className="flex items-center gap-2 text-primary-foreground/70">
-                    <Flame className="h-4 w-4 text-flame" />
-                    <span className="font-mono text-[10px] uppercase tracking-[0.22em]">Safety · Sweeps · Repairs</span>
-                  </div>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
-                    OH
-                  </span>
-                </div>
-              </div>
-            </div>
+            <HeroPhotoCard />
           </div>
         </div>
 
