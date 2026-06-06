@@ -144,6 +144,125 @@ function Index() {
    ============================================================ */
 function Hero() {
   return (
+    <HeroInner />
+  );
+}
+
+const HERO_PHOTOS = [
+  { src: "__P1__", caption: "Crown rebuild + new caps", city: "Columbus, OH" },
+  { src: "__P2__", caption: "Stainless liner install", city: "Dayton, OH" },
+  { src: "__P3__", caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
+  { src: "__P4__", caption: "New cap & flashing", city: "Cleveland, OH" },
+  { src: "__P5__", caption: "On-site sweep & inspect", city: "Westerville, OH" },
+] as const;
+
+function HeroPhotoCard() {
+  const photos = [
+    { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
+    { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH" },
+    { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
+    { src: projectCap, caption: "New cap & flashing", city: "Cleveland, OH" },
+    { src: projectTech, caption: "On-site sweep & inspect", city: "Westerville, OH" },
+  ];
+  const [idx, setIdx] = useState(0);
+  // Auto-advance every 3.8s
+  if (typeof window !== "undefined") {
+    // hook usage requires top-level — use effect inline
+  }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  useHeroRotator(setIdx, photos.length);
+
+  return (
+    <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-md">
+      {/* ambient glow */}
+      <div className="absolute -inset-6 rounded-[2rem] bg-flame/15 blur-3xl" aria-hidden />
+
+      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
+        {/* top meta strip */}
+        <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
+          <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Live · Recent Ohio jobs
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
+            {String(idx + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
+          </span>
+        </div>
+
+        {/* photo stack — cross-fade */}
+        <div className="relative aspect-[4/5] overflow-hidden bg-primary sm:aspect-[4/5]">
+          {photos.map((p, i) => (
+            <img
+              key={p.src}
+              src={p.src}
+              alt={`ChimCrew project — ${p.caption} in ${p.city}`}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out ${i === idx ? "opacity-100" : "opacity-0"}`}
+              width={800}
+              height={1000}
+              fetchPriority={i === 0 ? "high" : "low"}
+              decoding="async"
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+          ))}
+
+          {/* gradient scrim */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-primary/10" aria-hidden />
+
+          {/* top-left chip */}
+          <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full border border-flame/30 bg-primary/80 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
+            <Clock className="h-3 w-3" /> Same-day slots
+          </div>
+
+          {/* caption card */}
+          <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
+            <div className="flex items-center justify-between gap-3">
+              <div className="min-w-0">
+                <p className="truncate font-display text-sm font-bold text-primary-foreground">
+                  {photos[idx].caption}
+                </p>
+                <p className="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                  <MapPin className="h-3 w-3" /> {photos[idx].city}
+                </p>
+              </div>
+              <span className="shrink-0 rounded-full border border-flame/40 bg-flame/15 px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+                Done
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* thumbnail rail */}
+        <div className="flex items-center gap-2 border-t border-white/5 px-4 py-3">
+          {photos.map((p, i) => (
+            <button
+              key={p.src}
+              type="button"
+              onClick={() => setIdx(i)}
+              aria-label={`Show ${p.caption}`}
+              className={`group relative h-10 w-10 shrink-0 overflow-hidden rounded-md border transition ${i === idx ? "border-flame ring-2 ring-flame/40" : "border-white/10 opacity-60 hover:opacity-100"}`}
+            >
+              <img src={p.src} alt="" className="h-full w-full object-cover" loading="lazy" decoding="async" />
+            </button>
+          ))}
+          <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
+            Real jobs
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function useHeroRotator(setIdx: (fn: (n: number) => number) => void, length: number) {
+  // Defer to module-level hook by importing useEffect inline below.
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  _useEffect(() => {
+    const id = setInterval(() => setIdx((n) => (n + 1) % length), 3800);
+    return () => clearInterval(id);
+  }, [setIdx, length]);
+}
+
+function HeroInner() {
+  return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
       {/* Background atmospherics */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,_oklch(0.24_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]" aria-hidden />
