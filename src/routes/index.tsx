@@ -347,15 +347,15 @@ function Hero() {
                 </span>
               ))}
             </div>
-            <p className="text-sm text-primary-foreground/70">
-              <span className="font-display font-extrabold text-primary-foreground">482 Ohio neighbors</span> trusted us this month — your spot opens next.
+            <p className="text-sm text-muted-foreground">
+              <span className="font-display font-extrabold text-foreground">482 Ohio neighbors</span> trusted us this month — your spot opens next.
             </p>
           </div>
           <div className="flex items-center gap-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
               System status: ready
             </span>
-            <div className="h-1.5 w-32 overflow-hidden rounded-full bg-white/10">
+            <div className="h-1.5 w-32 overflow-hidden rounded-full bg-border">
               <div className="h-full w-3/4 rounded-full bg-flame" />
             </div>
           </div>
