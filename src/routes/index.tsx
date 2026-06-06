@@ -265,17 +265,17 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-[2.25rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-primary-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
+            <h1 className="font-display text-[2.25rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
               Chimney Repair, Sweeping
               <br />
-              <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
+              <span className="text-primary">
                 &amp; Fireplace Services.
               </span>
             </h1>
 
-            <p className="max-w-xl text-[15px] leading-relaxed text-primary-foreground/80 md:text-lg">
+            <p className="max-w-xl text-[15px] leading-relaxed text-muted-foreground md:text-lg">
               Protect your home from chimney fires, water leaks, and costly damage.{" "}
-              <span className="font-semibold text-primary-foreground">CSIA-certified inspections, repairs &amp; maintenance</span> — upfront pricing, same-day callback.
+              <span className="font-semibold text-foreground">CSIA-certified inspections, repairs &amp; maintenance</span> — upfront pricing, same-day callback.
             </p>
 
             {/* CTAs — full-width on mobile, inline on desktop */}
@@ -289,7 +289,7 @@ function Hero() {
               </a>
               <a
                 href="tel:6146834422"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.03] px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-border bg-card px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame sm:w-auto"
               >
                 <Phone className="h-4 w-4 text-flame" /> Call (614) 683-4422
               </a>
@@ -303,13 +303,13 @@ function Hero() {
                   Free estimate · 30 sec
                 </span>
               </div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                 Avg reply &lt; 1 hr
               </span>
             </div>
 
             {/* Inline trust row */}
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-xs text-primary-foreground/80">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> CSIA Certified</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> BBB A+ Rated</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Licensed &amp; Insured</span>
