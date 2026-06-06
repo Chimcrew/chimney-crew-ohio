@@ -166,8 +166,8 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 md:px-8 md:py-28">
         {/* ---------- TOP HERO ---------- */}
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-12">
-          {/* LEFT — message */}
-          <div className="reveal order-1 space-y-5 md:space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
+          {/* LEFT — message (mobile: below image) */}
+          <div className="reveal order-2 space-y-5 md:space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
             {/* Trust eyebrow */}
             <div className="flex flex-wrap items-center gap-2">
               {/* Mobile: show "Same-day slots open" here. Desktop: keep "Serving Ohio since 1975". */}
@@ -235,8 +235,8 @@ function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — one strong visual */}
-          <div className="reveal order-2 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
+          {/* RIGHT — one strong visual (mobile: on top) */}
+          <div className="reveal order-1 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
             <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-md">
               {/* glow */}
               <div className="absolute -inset-6 rounded-[2rem] bg-flame/20 blur-3xl" aria-hidden />
