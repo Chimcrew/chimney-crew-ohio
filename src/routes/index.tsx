@@ -160,19 +160,10 @@ function HeroPhotoCard() {
   const activePhoto = photos[idx];
 
   return (
-    <div className="relative mx-auto w-full max-w-[22rem] lg:max-w-md">
-      <div className="relative overflow-hidden rounded-[1.4rem] border border-border bg-card p-3 shadow-[0_24px_70px_oklch(0.18_0.02_250/0.16)]">
-        <div className="flex items-center justify-between px-1 pb-3">
-          <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-            <span className="h-1.5 w-1.5 rounded-full bg-flame" /> Verified job proof
-          </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-            {String(idx + 1).padStart(2, "0")} / {String(photos.length).padStart(2, "0")}
-          </span>
-        </div>
-
-        <div className="relative overflow-hidden rounded-[1rem] border border-border bg-secondary">
-          <div className="relative aspect-[1.08] overflow-hidden">
+    <div className="relative mx-auto w-full max-w-[23rem] lg:max-w-md">
+      <div className="relative overflow-hidden rounded-[1.35rem] border border-border bg-card p-2.5 shadow-[0_18px_55px_oklch(0.18_0.02_250/0.14)]">
+        <div className="relative overflow-hidden rounded-[1rem] bg-secondary">
+          <div className="relative aspect-[1.38] overflow-hidden sm:aspect-[1.12]">
             {photos.map((p, i) => (
               <img
                 key={p.src}
@@ -186,9 +177,12 @@ function HeroPhotoCard() {
                 loading={i === 0 ? "eager" : "lazy"}
               />
             ))}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-primary/55 to-transparent" aria-hidden />
-            <div className="absolute left-3 top-3 rounded-full border border-border bg-card/90 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground backdrop-blur">
-              Before → fixed
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-primary/50 via-primary/15 to-transparent" aria-hidden />
+            <div className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-background/70 bg-card/92 px-3 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.15em] text-foreground shadow-sm backdrop-blur">
+              <ShieldCheck className="h-3 w-3 text-flame" /> Photo verified
+            </div>
+            <div className="absolute right-3 top-3 rounded-full border border-background/70 bg-card/92 px-2.5 py-1.5 font-mono text-[9px] font-bold uppercase tracking-[0.14em] text-muted-foreground shadow-sm backdrop-blur">
+              {String(idx + 1).padStart(2, "0")}/{String(photos.length).padStart(2, "0")}
             </div>
             <div className="absolute bottom-3 left-3 right-3 rounded-xl border border-background/20 bg-card/92 p-3 shadow-sm backdrop-blur">
               <div className="flex items-start justify-between gap-3">
@@ -206,7 +200,7 @@ function HeroPhotoCard() {
           </div>
         </div>
 
-        <div className="mt-3 grid grid-cols-3 overflow-hidden rounded-xl border border-border bg-background text-center">
+        <div className="mt-2.5 grid grid-cols-3 overflow-hidden rounded-xl border border-border bg-background text-center">
           {[
             ["CSIA", "Certified"],
             ["4.9★", "1,836 reviews"],
@@ -219,7 +213,7 @@ function HeroPhotoCard() {
           ))}
         </div>
 
-        <div className="mt-3 flex items-center gap-2 px-1">
+        <div className="mt-2.5 flex items-center gap-2 px-1">
           {photos.map((p, i) => (
             <button
               key={p.src}
@@ -243,26 +237,26 @@ function Hero() {
 
       <div className="relative mx-auto max-w-7xl px-4 pb-12 pt-5 md:px-8 md:py-24">
         {/* ---------- TOP HERO ---------- */}
-        <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+        <div className="grid items-center gap-6 lg:grid-cols-12 lg:gap-12">
           {/* LEFT — message */}
-          <div className="reveal order-1 space-y-5 md:space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
+          <div className="reveal order-2 space-y-4 md:space-y-7 lg:order-none lg:col-span-7" style={{ animationDelay: "0.05s" }}>
             {/* Trust eyebrow */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground shadow-sm">
                 <Star className="h-3 w-3 fill-flame text-flame" /> 4.9 on Google · 1,836 reviews
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground shadow-sm">
+              <span className="hidden items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground shadow-sm sm:inline-flex">
                 <span className="flex h-2 w-2 animate-pulse rounded-full bg-flame" />
                 Same-day callbacks
               </span>
             </div>
 
-            <h1 className="max-w-3xl font-display text-[2.6rem] font-extrabold leading-[0.92] tracking-[-0.035em] text-foreground sm:text-5xl md:text-[3.35rem] lg:text-[4.15rem]">
-              Chimney Repair, Sweeping &amp; Fireplace Services
-              <span className="block text-muted-foreground">done cleanly.</span>
+            <h1 className="max-w-3xl font-display text-[2.2rem] font-extrabold leading-[0.95] tracking-[-0.035em] text-foreground sm:text-5xl md:text-[3.35rem] lg:text-[4.15rem]">
+              Chimney Repair, Sweep &amp; Fireplace Care
+              <span className="block text-muted-foreground">without the guesswork.</span>
             </h1>
 
-            <p className="max-w-2xl text-[15px] leading-relaxed text-muted-foreground md:text-lg">
+            <p className="max-w-2xl text-[14px] leading-relaxed text-muted-foreground md:text-lg">
               We inspect the whole system, show you photo proof, and give you a clear repair plan before any work starts.
               <span className="font-semibold text-foreground"> No scare tactics. No messy house. No mystery pricing.</span>
             </p>
@@ -317,7 +311,7 @@ function Hero() {
           </div>
 
           {/* RIGHT — verified project proof */}
-          <div className="reveal order-2 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
+          <div className="reveal order-1 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
             <HeroPhotoCard />
           </div>
         </div>
