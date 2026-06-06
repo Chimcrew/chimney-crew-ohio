@@ -238,28 +238,12 @@ function HeroPhotoCard() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-primary text-primary-foreground">
-      {/* Background atmospherics */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,_oklch(0.24_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/15 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/10 blur-3xl" aria-hidden />
-
-      {/* Floating ember sparks */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-        {Array.from({ length: 14 }).map((_, i) => (
-          <span
-            key={i}
-            className="absolute block h-1.5 w-1.5 rounded-full bg-flame/70 animate-ember"
-            style={{
-              left: `${(i * 7.3) % 100}%`,
-              bottom: `-${(i % 4) * 12}px`,
-              animationDelay: `${(i * 0.7) % 6}s`,
-              ['--drift' as any]: `${(i % 2 === 0 ? 1 : -1) * (10 + (i % 5) * 6)}px`,
-            }}
-          />
-        ))}
-      </div>
+    <section className="relative overflow-hidden bg-background text-foreground">
+      {/* Soft background atmospherics */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,_oklch(0.99_0.01_230)_0%,_oklch(0.94_0.015_230)_70%)]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.05]" aria-hidden />
+      <div className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/10 blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/[0.06] blur-3xl" aria-hidden />
 
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 md:px-8 md:py-28">
         {/* ---------- TOP HERO ---------- */}
@@ -281,17 +265,17 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-[2.25rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-primary-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
+            <h1 className="font-display text-[2.25rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
               Chimney Repair, Sweeping
               <br />
-              <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
+              <span className="text-primary">
                 &amp; Fireplace Services.
               </span>
             </h1>
 
-            <p className="max-w-xl text-[15px] leading-relaxed text-primary-foreground/80 md:text-lg">
+            <p className="max-w-xl text-[15px] leading-relaxed text-muted-foreground md:text-lg">
               Protect your home from chimney fires, water leaks, and costly damage.{" "}
-              <span className="font-semibold text-primary-foreground">CSIA-certified inspections, repairs &amp; maintenance</span> — upfront pricing, same-day callback.
+              <span className="font-semibold text-foreground">CSIA-certified inspections, repairs &amp; maintenance</span> — upfront pricing, same-day callback.
             </p>
 
             {/* CTAs — full-width on mobile, inline on desktop */}
@@ -305,7 +289,7 @@ function Hero() {
               </a>
               <a
                 href="tel:6146834422"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.03] px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame sm:w-auto"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-border bg-card px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame sm:w-auto"
               >
                 <Phone className="h-4 w-4 text-flame" /> Call (614) 683-4422
               </a>
@@ -319,13 +303,13 @@ function Hero() {
                   Free estimate · 30 sec
                 </span>
               </div>
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
+              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
                 Avg reply &lt; 1 hr
               </span>
             </div>
 
             {/* Inline trust row */}
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-xs text-primary-foreground/80">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1 text-xs text-muted-foreground">
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> CSIA Certified</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> BBB A+ Rated</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Licensed &amp; Insured</span>
@@ -363,15 +347,15 @@ function Hero() {
                 </span>
               ))}
             </div>
-            <p className="text-sm text-primary-foreground/70">
-              <span className="font-display font-extrabold text-primary-foreground">482 Ohio neighbors</span> trusted us this month — your spot opens next.
+            <p className="text-sm text-muted-foreground">
+              <span className="font-display font-extrabold text-foreground">482 Ohio neighbors</span> trusted us this month — your spot opens next.
             </p>
           </div>
           <div className="flex items-center gap-4">
-            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
+            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
               System status: ready
             </span>
-            <div className="h-1.5 w-32 overflow-hidden rounded-full bg-white/10">
+            <div className="h-1.5 w-32 overflow-hidden rounded-full bg-border">
               <div className="h-full w-3/4 rounded-full bg-flame" />
             </div>
           </div>
