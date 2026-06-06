@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   CheckCircle2,
@@ -142,20 +142,6 @@ function Index() {
 /* ============================================================
    HERO  — image LEFT, message RIGHT (as originally requested)
    ============================================================ */
-function Hero() {
-  return (
-    <HeroInner />
-  );
-}
-
-const HERO_PHOTOS = [
-  { src: "__P1__", caption: "Crown rebuild + new caps", city: "Columbus, OH" },
-  { src: "__P2__", caption: "Stainless liner install", city: "Dayton, OH" },
-  { src: "__P3__", caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
-  { src: "__P4__", caption: "New cap & flashing", city: "Cleveland, OH" },
-  { src: "__P5__", caption: "On-site sweep & inspect", city: "Westerville, OH" },
-] as const;
-
 function HeroPhotoCard() {
   const photos = [
     { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
@@ -165,12 +151,10 @@ function HeroPhotoCard() {
     { src: projectTech, caption: "On-site sweep & inspect", city: "Westerville, OH" },
   ];
   const [idx, setIdx] = useState(0);
-  // Auto-advance every 3.8s
-  if (typeof window !== "undefined") {
-    // hook usage requires top-level — use effect inline
-  }
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  useHeroRotator(setIdx, photos.length);
+  useEffect(() => {
+    const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 3800);
+    return () => clearInterval(id);
+  }, [photos.length]);
 
   return (
     <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-md">
@@ -252,16 +236,7 @@ function HeroPhotoCard() {
   );
 }
 
-function useHeroRotator(setIdx: (fn: (n: number) => number) => void, length: number) {
-  // Defer to module-level hook by importing useEffect inline below.
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  _useEffect(() => {
-    const id = setInterval(() => setIdx((n) => (n + 1) % length), 3800);
-    return () => clearInterval(id);
-  }, [setIdx, length]);
-}
-
-function HeroInner() {
+function Hero() {
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
       {/* Background atmospherics */}
