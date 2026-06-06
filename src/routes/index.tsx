@@ -238,28 +238,12 @@ function HeroPhotoCard() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-primary text-primary-foreground">
-      {/* Background atmospherics */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,_oklch(0.24_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/15 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/10 blur-3xl" aria-hidden />
-
-      {/* Floating ember sparks */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-        {Array.from({ length: 14 }).map((_, i) => (
-          <span
-            key={i}
-            className="absolute block h-1.5 w-1.5 rounded-full bg-flame/70 animate-ember"
-            style={{
-              left: `${(i * 7.3) % 100}%`,
-              bottom: `-${(i % 4) * 12}px`,
-              animationDelay: `${(i * 0.7) % 6}s`,
-              ['--drift' as any]: `${(i % 2 === 0 ? 1 : -1) * (10 + (i % 5) * 6)}px`,
-            }}
-          />
-        ))}
-      </div>
+    <section className="relative overflow-hidden bg-background text-foreground">
+      {/* Soft background atmospherics */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,_oklch(0.99_0.01_230)_0%,_oklch(0.94_0.015_230)_70%)]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.05]" aria-hidden />
+      <div className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/10 blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/[0.06] blur-3xl" aria-hidden />
 
       <div className="relative mx-auto max-w-7xl px-4 pb-16 pt-6 md:px-8 md:py-28">
         {/* ---------- TOP HERO ---------- */}
