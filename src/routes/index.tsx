@@ -340,6 +340,39 @@ function Hero() {
       {/* ============ MOBILE HERO — full-bleed photo, premium dark ============ */}
       <MobileHero />
 
+      {/* ============ MOBILE-ONLY social proof bar (brought back per request) ============ */}
+      <div className="lg:hidden">
+        <div className="bg-primary px-4 pb-6">
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-primary/60 p-4 backdrop-blur">
+            <div className="flex items-center gap-4">
+              <div className="flex -space-x-2">
+                {["#fbbf24", "#a3a3a3", "#525252"].map((c, i) => (
+                  <span
+                    key={i}
+                    className="grid h-9 w-9 place-items-center rounded-full border-2 border-primary text-[10px] font-bold text-primary"
+                    style={{ background: c }}
+                  >
+                    {["M", "D", "P"][i]}
+                  </span>
+                ))}
+              </div>
+              <p className="text-sm leading-snug text-primary-foreground/85">
+                <span className="font-display font-extrabold text-flame">482 Ohio neighbors</span>{" "}
+                trusted us this month — your spot opens next.
+              </p>
+            </div>
+            <div className="mt-3 flex items-center gap-3">
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
+                System status: Ready
+              </span>
+              <span className="relative h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
+                <span className="absolute inset-y-0 left-0 w-3/4 rounded-full bg-flame" />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* ============ DESKTOP HERO (unchanged) ============ */}
       <div className="hidden lg:block">
       {/* Background atmospherics */}
