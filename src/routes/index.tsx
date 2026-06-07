@@ -242,7 +242,7 @@ function HeroPhotoCard() {
 }
 
 function MobileHero() {
-  const photos = [projectHero, projectLiner, projectTuck, projectCap, projectTech];
+  const photos = [techScaffold.url, techLiner.url, projectHero, projectLiner, projectTech];
   const [idx, setIdx] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 4200);
