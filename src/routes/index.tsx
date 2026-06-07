@@ -434,6 +434,27 @@ function Hero() {
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Licensed &amp; Insured</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Same-Day Callback</span>
             </div>
+
+            {/* Certification badge — credentialed seal */}
+            <div className="hidden items-center gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-4 sm:flex">
+              <img
+                src={certifiedBadge.url}
+                alt="Certified Chimney Sweep — credentialed seal"
+                width={84}
+                height={84}
+                className="h-20 w-20 shrink-0 rounded-full bg-white p-1.5 ring-2 ring-flame/50"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="min-w-0">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+                  Credentialed by industry standard
+                </p>
+                <p className="mt-1 font-display text-sm font-bold leading-snug text-primary-foreground">
+                  Certified Chimney Sweep — every job inspected to national safety code.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* RIGHT — one strong visual (mobile: on top) */}
