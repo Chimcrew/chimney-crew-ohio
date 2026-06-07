@@ -236,9 +236,97 @@ function HeroPhotoCard() {
   );
 }
 
+function MobileHero() {
+  const photos = [projectHero, projectLiner, projectTuck, projectCap, projectTech];
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 4200);
+    return () => clearInterval(id);
+  }, [photos.length]);
+
+  return (
+    <div className="relative lg:hidden">
+      {/* Full-bleed photo stack */}
+      <div className="relative h-[82vh] min-h-[560px] w-full overflow-hidden">
+        {photos.map((src, i) => (
+          <img
+            key={src}
+            src={src}
+            alt="ChimCrew real Ohio chimney job"
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out ${i === idx ? "opacity-100" : "opacity-0"}`}
+            fetchPriority={i === 0 ? "high" : "low"}
+            decoding="async"
+            loading={i === 0 ? "eager" : "lazy"}
+          />
+        ))}
+
+        {/* Dark gradient overlay for legibility */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(180deg, oklch(0.08 0.01 250 / 0.55) 0%, oklch(0.08 0.01 250 / 0.35) 40%, oklch(0.08 0.01 250 / 0.85) 80%, oklch(0.06 0.01 250) 100%)",
+          }}
+          aria-hidden
+        />
+
+        {/* Content overlay */}
+        <div className="relative z-10 flex h-full flex-col justify-between px-5 pt-6 pb-8">
+          {/* Top label */}
+          <div className="flex justify-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-primary/60 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
+              <span className="flex h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
+              Open Today · Free Inspections
+            </span>
+          </div>
+
+          {/* Headline + CTAs anchored to bottom */}
+          <div className="space-y-5">
+            <h1 className="font-display text-[2.75rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-primary-foreground drop-shadow-[0_4px_16px_oklch(0_0_0/0.6)]">
+              Ohio's Trusted
+              <br />
+              <span className="text-flame">Chimney Team</span>
+            </h1>
+
+            <p className="text-base leading-snug text-primary-foreground/90 drop-shadow">
+              Real technicians. Real jobs.
+              <br />
+              Serving Ohio homeowners every day.
+            </p>
+
+            <div className="flex flex-col gap-3 pt-1">
+              <a
+                href="tel:6146834422"
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0_0_0/0.45)] active:scale-[0.98]"
+              >
+                <Phone className="h-5 w-5" /> Call Now
+              </a>
+              <a
+                href="#quote"
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-primary/40 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground backdrop-blur active:scale-[0.98]"
+              >
+                <CalendarCheck className="h-5 w-5 text-flame" /> Schedule Free Inspection
+              </a>
+            </div>
+
+            <p className="pt-1 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
+              5-Star Service · Fully Insured · Same-Day Slots
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
+      {/* ============ MOBILE HERO — full-bleed photo, premium dark ============ */}
+      <MobileHero />
+
+      {/* ============ DESKTOP HERO (unchanged) ============ */}
+      <div className="hidden lg:block">
       {/* Background atmospherics */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,_oklch(0.24_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]" aria-hidden />
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
@@ -376,6 +464,7 @@ function Hero() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </section>
   );
