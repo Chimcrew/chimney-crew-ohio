@@ -37,7 +37,6 @@ import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
-import { LeadForm } from "@/components/LeadForm";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
@@ -140,7 +139,6 @@ function Index() {
       <FieldNotes />
       <Faq />
       <FinalCta />
-      <LeadForm />
     </>
   );
 }
