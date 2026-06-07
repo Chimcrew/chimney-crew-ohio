@@ -11,11 +11,12 @@ const nav = [
   { to: "/before-after", label: "Before / After" },
   { to: "/gallery", label: "Gallery" },
   { to: "/reviews", label: "Reviews" },
+  { to: "/financing", label: "Financing" },
   { to: "/blog", label: "Blog" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
-const primaryNav = nav.filter((n) => ["/", "/services", "/reviews", "/blog", "/contact"].includes(n.to));
+const primaryNav = nav.filter((n) => ["/", "/services", "/financing", "/reviews", "/blog", "/contact"].includes(n.to));
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
