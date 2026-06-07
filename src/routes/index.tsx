@@ -742,23 +742,34 @@ function ProblemSolver() {
    ============================================================ */
 function LogoDivider() {
   return (
-    <section className="relative overflow-hidden bg-primary py-16 text-primary-foreground">
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_oklch(0.22_0.02_250)_0%,_oklch(0.06_0.01_250)_70%)]" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-flame/20 blur-3xl" aria-hidden />
+    <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28">
+      {/* layered ambience — no boxes, just light */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,_oklch(0.24_0.03_250)_0%,_oklch(0.05_0.01_250)_75%)]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" aria-hidden />
+      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[28rem] w-[28rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-flame/25 blur-[120px]" aria-hidden />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-flame/50 to-transparent" aria-hidden />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-flame/50 to-transparent" aria-hidden />
 
-      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 text-center md:px-8">
+      <div className="relative mx-auto flex max-w-6xl flex-col items-center gap-7 px-4 text-center md:px-8">
         <div className="flex items-center gap-6">
-          <span className="hidden h-px w-24 bg-gradient-to-r from-transparent to-flame/60 md:block" />
-          <div className="relative">
-            <div className="absolute -inset-6 rounded-full bg-flame/20 blur-2xl" aria-hidden />
+          <span className="hidden h-px w-28 bg-gradient-to-r from-transparent to-flame/60 md:block" />
+          <div className="relative [perspective:1000px]">
+            {/* soft golden halo */}
+            <div className="absolute -inset-10 rounded-full bg-flame/30 blur-3xl" aria-hidden />
+            <div className="absolute -inset-4 rounded-full bg-[radial-gradient(circle_at_50%_40%,_oklch(0.85_0.18_85/0.35),_transparent_65%)]" aria-hidden />
+            {/* the badge — transparent PNG, gently tilted for depth */}
             <img
               src={logo}
               alt="ChimCrew — Ohio's chimney crew"
-              className="relative h-28 w-28 animate-float md:h-36 md:w-36"
+              className="relative h-40 w-40 animate-float drop-shadow-[0_25px_45px_oklch(0.78_0.19_92/0.55)] [transform:rotateX(8deg)] md:h-56 md:w-56"
+            />
+            {/* reflective floor */}
+            <div
+              className="pointer-events-none absolute left-1/2 top-full -mt-2 h-10 w-3/4 -translate-x-1/2 rounded-[50%] bg-flame/30 blur-2xl"
+              aria-hidden
             />
           </div>
-          <span className="hidden h-px w-24 bg-gradient-to-l from-transparent to-flame/60 md:block" />
+          <span className="hidden h-px w-28 bg-gradient-to-l from-transparent to-flame/60 md:block" />
         </div>
         <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-flame">
           One crew · One promise · All of Ohio
