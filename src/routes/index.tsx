@@ -40,6 +40,8 @@ import { SERVICES } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
 import { TrustBar } from "@/components/TrustBar";
 import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -123,6 +125,7 @@ function Index() {
       <ServiceAreaSeo />
       <ServiceArea />
       <WhyChooseUs />
+      <BeforeAfterHome />
       <ProblemSolver />
       <FireHazards />
       <LogoDivider />
@@ -289,7 +292,7 @@ function MobileHero() {
             </h1>
 
             <p className="text-base leading-snug text-primary-foreground/90 drop-shadow">
-              Real technicians. Real jobs.
+              <strong className="font-extrabold text-primary-foreground">Certified technicians.</strong> Real jobs.
               <br />
               Serving Ohio homeowners every day.
             </p>
@@ -553,6 +556,56 @@ function WhyChooseUs() {
           >
             <Phone className="h-4 w-4" /> Call Now · (614) 683-4422
           </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   BEFORE / AFTER (home) — drag-to-compare highlights
+   ============================================================ */
+function BeforeAfterHome() {
+  const jobs = BEFORE_AFTER_JOBS.slice(0, 2);
+  return (
+    <section className="relative overflow-hidden border-y-2 border-border bg-primary py-20 text-primary-foreground md:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
+      <div className="pointer-events-none absolute -left-24 top-1/3 h-80 w-80 rounded-full bg-flame/15 blur-3xl" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
+            <Sparkles className="h-3.5 w-3.5" /> Before / After
+          </p>
+          <h2 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl">
+            Drag the slider. <span className="text-flame">See the work.</span>
+          </h2>
+          <p className="mt-3 text-base text-primary-foreground/80">
+            Real Ohio chimneys, real ChimCrew results — drag any photo with
+            your finger to compare.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
+          {jobs.map((j) => (
+            <article key={j.id} className="space-y-3">
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
+                {j.service} · {j.city}
+              </p>
+              <h3 className="font-display text-2xl font-extrabold leading-tight text-primary-foreground md:text-3xl">
+                {j.headline}
+              </h3>
+              <BeforeAfter before={j.before} after={j.after} alt={j.headline} />
+            </article>
+          ))}
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            to="/before-after"
+            className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
+          >
+            See all before & after jobs <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
       </div>
     </section>

@@ -1,97 +1,127 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import before from "@/assets/before-chimney.jpg";
-import after from "@/assets/after-chimney.jpg";
+import { MapPin } from "lucide-react";
 import { LeadForm } from "@/components/LeadForm";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { BEFORE_AFTER_JOBS } from "@/data/before-after";
+import projectCrown from "@/assets/projects/project-01-double-crown.jpg";
+import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg";
+import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
+import projectCap from "@/assets/projects/project-04-cap-install.jpg";
+import projectCrown2 from "@/assets/projects/project-05-crown-rebuild.jpg";
+import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
+import projectCapFin from "@/assets/projects/project-08-cap-finished.jpg";
+import sweepRoof from "@/assets/sweep-rooftop.jpg";
+import leakRoof from "@/assets/leak-chimney-rooftop.jpg";
+import fireplaceCozy from "@/assets/fireplace-cozy.jpg";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
     meta: [
       { title: "Before & After — Real ChimCrew jobs in Ohio" },
-      { name: "description", content: "Drag-to-compare before and after photos from real chimney sweeps and repairs by ChimCrew in Columbus, Cincinnati, and Dayton." },
+      { name: "description", content: "Drag-to-compare before and after photos from real chimney sweeps, crown rebuilds and cap installs by ChimCrew across Ohio." },
     ],
   }),
   component: BeforeAfterPage,
 });
 
-const JOBS = [
-  { city: "Columbus, OH", service: "Sweep + cap install", note: "Heavy creosote, 6 years between cleanings." },
-  { city: "Cincinnati, OH", service: "Crown rebuild", note: "Water intrusion from cracked crown — fully rebuilt." },
-  { city: "Dayton, OH", service: "Stainless liner install", note: "Old clay liner replaced with insulated stainless." },
+const GALLERY = [
+  { src: projectCrown, caption: "Double-crown rebuild, Dublin OH" },
+  { src: projectTuck, caption: "Tuckpointing repair, Bexley OH" },
+  { src: projectLiner, caption: "Stainless liner install, Hilliard OH" },
+  { src: projectCap, caption: "New cap install, Worthington OH" },
+  { src: projectCrown2, caption: "Crown rebuild, Powell OH" },
+  { src: projectTech, caption: "Tech on-site, Upper Arlington OH" },
+  { src: projectCapFin, caption: "Cap & flashing finished, Westerville OH" },
+  { src: sweepRoof, caption: "Rooftop sweep in progress" },
+  { src: leakRoof, caption: "Leak diagnosis, Grandview OH" },
+  { src: fireplaceCozy, caption: "Restored hearth, ready for winter" },
 ];
 
 function BeforeAfterPage() {
   return (
     <>
-      <section className="relative border-b-2 border-primary/30 bg-card/40 py-20">
-        <div className="bg-grid absolute inset-0 opacity-60" />
+      {/* HERO */}
+      <section className="relative overflow-hidden border-b-2 border-primary/30 bg-primary py-20 text-primary-foreground md:py-24">
+        <div className="bg-grid absolute inset-0 opacity-[0.08]" aria-hidden />
+        <div className="pointer-events-none absolute -right-24 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-flame/15 blur-3xl" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-          <p className="font-mono text-xs uppercase tracking-widest text-primary">// Before / After</p>
-          <h1 className="mt-3 text-6xl md:text-7xl">Drag the slider. <span className="text-flame">See the work.</span></h1>
-          <p className="mt-4 max-w-2xl text-muted-foreground">
-            Real jobs from Ohio homes. Every project we finish includes
-            before-and-after photos delivered to your inbox.
+          <p className="font-mono text-xs uppercase tracking-widest text-flame">// Before / After</p>
+          <h1 className="mt-3 font-display text-5xl font-extrabold leading-[1.02] tracking-tight md:text-7xl">
+            Drag the slider. <span className="text-flame">See the work.</span>
+          </h1>
+          <p className="mt-5 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
+            Real Ohio chimneys, real ChimCrew jobs. Drag any photo below with
+            your finger or mouse to compare what it looked like when we
+            arrived — and what your neighbors got back.
           </p>
         </div>
       </section>
 
-      <section className="py-20">
+      {/* BEFORE / AFTER PAIRS */}
+      <section className="bg-background py-16 md:py-20">
         <div className="mx-auto max-w-6xl space-y-16 px-4 md:px-8">
-          {JOBS.map((j, i) => (
-            <article key={i}>
-              <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
-                <div>
-                  <p className="font-mono text-xs uppercase tracking-widest text-primary">{`Job #${1000 + i}`}</p>
-                  <h3 className="mt-1 text-3xl md:text-4xl">{j.service}</h3>
+          {BEFORE_AFTER_JOBS.map((j, i) => (
+            <article key={j.id} className="space-y-5">
+              <div className="flex flex-wrap items-end justify-between gap-4">
+                <div className="min-w-0">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
+                    {`Job #${1000 + i}`} · {j.service}
+                  </p>
+                  <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight text-primary md:text-4xl">
+                    {j.headline}
+                  </h2>
                 </div>
-                <div className="text-right text-sm text-muted-foreground">
-                  <p>{j.city}</p>
-                  <p>{j.note}</p>
+                <div className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs text-muted-foreground">
+                  <MapPin className="h-3.5 w-3.5 text-flame" /> {j.city}
                 </div>
               </div>
-              <Compare before={before} after={after} />
+              <BeforeAfter
+                before={j.before}
+                after={j.after}
+                alt={j.headline}
+              />
+              <p className="text-sm text-muted-foreground md:text-base">{j.note}</p>
             </article>
           ))}
         </div>
       </section>
 
+      {/* GALLERY OF OTHER PROJECT PHOTOS */}
+      <section className="border-t-2 border-border bg-card/40 py-16 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="max-w-3xl">
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-flame">// More finished work</p>
+            <h2 className="mt-2 font-display text-4xl font-extrabold leading-tight text-primary md:text-5xl">
+              The rest of the rooftop.
+            </h2>
+            <p className="mt-3 text-muted-foreground">
+              A few more recent Ohio jobs from the ChimCrew camera roll.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {GALLERY.map((g, i) => (
+              <figure
+                key={i}
+                className="group relative overflow-hidden rounded-xl border-2 border-border bg-primary"
+              >
+                <img
+                  src={g.src}
+                  alt={g.caption}
+                  className="h-64 w-full object-cover transition duration-500 group-hover:scale-[1.04]"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent p-4 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground">
+                  <span className="truncate">{g.caption}</span>
+                  <span className="rounded-full border border-flame/40 bg-flame/15 px-2 py-0.5 text-flame">Done</span>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <LeadForm />
     </>
-  );
-}
-
-function Compare({ before, after }: { before: string; after: string }) {
-  const [pos, setPos] = useState(50);
-  return (
-    <div className="relative aspect-[16/10] w-full overflow-hidden rounded-sm border-2 border-primary/40 shadow-flame">
-      <img src={after} alt="After" className="absolute inset-0 h-full w-full object-cover" loading="lazy" />
-      <div
-        className="absolute inset-y-0 left-0 overflow-hidden"
-        style={{ width: `${pos}%` }}
-      >
-        <img src={before} alt="Before" className="absolute inset-0 h-full w-full object-cover" style={{ width: `${10000 / pos}%`, maxWidth: "none" }} loading="lazy" />
-      </div>
-
-      <span className="absolute left-3 top-3 rounded-sm bg-background/80 px-2 py-1 font-mono text-[10px] uppercase tracking-widest">Before</span>
-      <span className="absolute right-3 top-3 rounded-sm bg-primary px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground">After</span>
-
-      {/* divider */}
-      <div className="pointer-events-none absolute inset-y-0" style={{ left: `${pos}%` }}>
-        <div className="absolute inset-y-0 -ml-px w-0.5 bg-primary" />
-        <div className="absolute left-1/2 top-1/2 grid h-10 w-10 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-primary bg-background font-display text-xs text-primary">
-          ⇆
-        </div>
-      </div>
-
-      <input
-        type="range"
-        min={0}
-        max={100}
-        value={pos}
-        onChange={(e) => setPos(Number(e.target.value))}
-        aria-label="Compare before and after"
-        className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
-      />
-    </div>
   );
 }
