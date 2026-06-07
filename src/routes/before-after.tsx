@@ -10,7 +10,6 @@ import projectCap from "@/assets/projects/project-04-cap-install.jpg";
 import projectCrown2 from "@/assets/projects/project-05-crown-rebuild.jpg";
 import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import projectCapFin from "@/assets/projects/project-08-cap-finished.jpg";
-import sweepRoof from "@/assets/sweep-rooftop.jpg";
 import leakRoof from "@/assets/leak-chimney-rooftop.jpg";
 import fireplaceCozy from "@/assets/fireplace-cozy.jpg";
 
@@ -32,7 +31,6 @@ const GALLERY = [
   { src: projectCrown2, caption: "Crown rebuild, Powell OH" },
   { src: projectTech, caption: "Tech on-site, Upper Arlington OH" },
   { src: projectCapFin, caption: "Cap & flashing finished, Westerville OH" },
-  { src: sweepRoof, caption: "Rooftop sweep in progress" },
   { src: leakRoof, caption: "Leak diagnosis, Grandview OH" },
   { src: fireplaceCozy, caption: "Restored hearth, ready for winter" },
 ];
