@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as GalleryRouteImport } from './routes/gallery'
+import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BeforeAfterRouteImport } from './routes/before-after'
@@ -44,6 +45,11 @@ const ReviewsRoute = ReviewsRouteImport.update({
 const GalleryRoute = GalleryRouteImport.update({
   id: '/gallery',
   path: '/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancingRoute = FinancingRouteImport.update({
+  id: '/financing',
+  path: '/financing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/before-after': typeof BeforeAfterRoute
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
+  '/financing': typeof FinancingRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -168,6 +175,7 @@ export interface FileRoutesByTo {
   '/before-after': typeof BeforeAfterRoute
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
+  '/financing': typeof FinancingRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -192,6 +200,7 @@ export interface FileRoutesById {
   '/before-after': typeof BeforeAfterRoute
   '/blog': typeof BlogRouteWithChildren
   '/contact': typeof ContactRoute
+  '/financing': typeof FinancingRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -217,6 +226,7 @@ export interface FileRouteTypes {
     | '/before-after'
     | '/blog'
     | '/contact'
+    | '/financing'
     | '/gallery'
     | '/reviews'
     | '/sitemap.xml'
@@ -240,6 +250,7 @@ export interface FileRouteTypes {
     | '/before-after'
     | '/blog'
     | '/contact'
+    | '/financing'
     | '/gallery'
     | '/reviews'
     | '/sitemap.xml'
@@ -263,6 +274,7 @@ export interface FileRouteTypes {
     | '/before-after'
     | '/blog'
     | '/contact'
+    | '/financing'
     | '/gallery'
     | '/reviews'
     | '/sitemap.xml'
@@ -287,6 +299,7 @@ export interface RootRouteChildren {
   BeforeAfterRoute: typeof BeforeAfterRoute
   BlogRoute: typeof BlogRouteWithChildren
   ContactRoute: typeof ContactRoute
+  FinancingRoute: typeof FinancingRoute
   GalleryRoute: typeof GalleryRoute
   ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -326,6 +339,13 @@ declare module '@tanstack/react-router' {
       path: '/gallery'
       fullPath: '/gallery'
       preLoaderRoute: typeof GalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financing': {
+      id: '/financing'
+      path: '/financing'
+      fullPath: '/financing'
+      preLoaderRoute: typeof FinancingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -472,6 +492,7 @@ const rootRouteChildren: RootRouteChildren = {
   BeforeAfterRoute: BeforeAfterRoute,
   BlogRoute: BlogRouteWithChildren,
   ContactRoute: ContactRoute,
+  FinancingRoute: FinancingRoute,
   GalleryRoute: GalleryRoute,
   ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,

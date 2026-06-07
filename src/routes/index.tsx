@@ -36,6 +36,7 @@ import projectCap from "@/assets/projects/project-04-cap-install.jpg";
 import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
+import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import { LeadForm } from "@/components/LeadForm";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES } from "@/data/services";
@@ -278,11 +279,20 @@ function MobileHero() {
         {/* Content overlay */}
         <div className="relative z-10 flex h-full flex-col justify-between px-5 pt-6 pb-8">
           {/* Top label */}
-          <div className="flex justify-center">
+          <div className="flex items-center justify-between gap-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-primary/60 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
               <span className="flex h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
               Open Today · Free Inspections
             </span>
+            <img
+              src={certifiedBadge.url}
+              alt="Certified Chimney Sweep — CSIA Credentialed"
+              width={68}
+              height={68}
+              className="h-16 w-16 rounded-full bg-white p-1 shadow-[0_8px_24px_oklch(0_0_0/0.5)] ring-2 ring-flame/60"
+              loading="eager"
+              decoding="async"
+            />
           </div>
 
           {/* Headline + CTAs anchored to bottom */}
@@ -423,6 +433,27 @@ function Hero() {
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> BBB A+ Rated</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Licensed &amp; Insured</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-flame" /> Same-Day Callback</span>
+            </div>
+
+            {/* Certification badge — credentialed seal */}
+            <div className="hidden items-center gap-4 rounded-xl border border-white/10 bg-white/[0.04] p-4 sm:flex">
+              <img
+                src={certifiedBadge.url}
+                alt="Certified Chimney Sweep — credentialed seal"
+                width={84}
+                height={84}
+                className="h-20 w-20 shrink-0 rounded-full bg-white p-1.5 ring-2 ring-flame/50"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="min-w-0">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+                  Credentialed by industry standard
+                </p>
+                <p className="mt-1 font-display text-sm font-bold leading-snug text-primary-foreground">
+                  Certified Chimney Sweep — every job inspected to national safety code.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -568,7 +599,7 @@ function WhyChooseUs() {
    BEFORE / AFTER (home) — drag-to-compare highlights
    ============================================================ */
 function BeforeAfterHome() {
-  const jobs = BEFORE_AFTER_JOBS.slice(0, 2);
+  const jobs = BEFORE_AFTER_JOBS;
   return (
     <section className="relative overflow-hidden border-y-2 border-border bg-primary py-20 text-primary-foreground md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
@@ -1227,7 +1258,13 @@ function ScheduleOnline() {
 
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl border-2 border-flame/40 shadow-flame">
-              <img src={fireplace} alt="Cozy fireplace serviced by ChimCrew" className="block w-full" />
+              <img
+                src={techScaffold.url}
+                alt="ChimCrew crew on-site rebuilding a chimney crown"
+                className="block aspect-[4/5] w-full object-cover sm:aspect-[4/3]"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
