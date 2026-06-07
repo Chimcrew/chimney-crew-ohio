@@ -239,6 +239,11 @@ function HeroPhotoCard() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
+      {/* ============ MOBILE HERO — full-bleed photo, premium dark ============ */}
+      <MobileHero />
+
+      {/* ============ DESKTOP HERO (unchanged) ============ */}
+      <div className="hidden lg:block">
       {/* Background atmospherics */}
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_40%,_oklch(0.24_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]" aria-hidden />
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
