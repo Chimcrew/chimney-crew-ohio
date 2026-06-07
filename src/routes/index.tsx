@@ -1237,7 +1237,13 @@ function ScheduleOnline() {
 
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl border-2 border-flame/40 shadow-flame">
-              <img src={fireplace} alt="Cozy fireplace serviced by ChimCrew" className="block w-full" />
+              <img
+                src={techScaffold.url}
+                alt="ChimCrew crew on-site rebuilding a chimney crown"
+                className="block aspect-[4/5] w-full object-cover sm:aspect-[4/3]"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4">
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
