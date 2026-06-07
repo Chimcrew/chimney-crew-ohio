@@ -289,7 +289,7 @@ function MobileHero() {
             </h1>
 
             <p className="text-base leading-snug text-primary-foreground/90 drop-shadow">
-              Real technicians. Real jobs.
+              <strong className="font-extrabold text-primary-foreground">Certified technicians.</strong> Real jobs.
               <br />
               Serving Ohio homeowners every day.
             </p>
