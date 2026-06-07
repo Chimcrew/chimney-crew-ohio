@@ -34,6 +34,8 @@ import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg";
 import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
 import projectCap from "@/assets/projects/project-04-cap-install.jpg";
 import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
+import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
+import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import { LeadForm } from "@/components/LeadForm";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES } from "@/data/services";
@@ -240,7 +242,7 @@ function HeroPhotoCard() {
 }
 
 function MobileHero() {
-  const photos = [projectHero, projectLiner, projectTuck, projectCap, projectTech];
+  const photos = [techScaffold.url, techLiner.url, projectHero, projectLiner, projectTech];
   const [idx, setIdx] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 4200);

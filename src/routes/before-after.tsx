@@ -12,6 +12,12 @@ import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import projectCapFin from "@/assets/projects/project-08-cap-finished.jpg";
 import leakRoof from "@/assets/leak-chimney-rooftop.jpg";
 import fireplaceCozy from "@/assets/fireplace-cozy.jpg";
+import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
+import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
+import baCrownStone from "@/assets/real/ba-crown-stone.png.asset.json";
+import baSpalledBrick from "@/assets/real/ba-spalled-brick.png.asset.json";
+import baCapCrown from "@/assets/real/ba-cap-crown.png.asset.json";
+import crownDemo from "@/assets/real/crown-demo-inprogress.png.asset.json";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
@@ -24,6 +30,12 @@ export const Route = createFileRoute("/before-after")({
 });
 
 const GALLERY = [
+  { src: baCapCrown.url, caption: "Crown & cap rebuild — before / after" },
+  { src: baSpalledBrick.url, caption: "Spalled brick chimney rebuild — before / after" },
+  { src: baCrownStone.url, caption: "Stone-to-brick crown rebuild — before / after" },
+  { src: techScaffold.url, caption: "Crown rebuild in progress, scaffolded job" },
+  { src: techLiner.url, caption: "Stainless liner install, harnessed on roof" },
+  { src: crownDemo.url, caption: "Old crown demoed, ready for fresh pour" },
   { src: projectCrown, caption: "Double-crown rebuild, Dublin OH" },
   { src: projectTuck, caption: "Tuckpointing repair, Bexley OH" },
   { src: projectLiner, caption: "Stainless liner install, Hilliard OH" },
