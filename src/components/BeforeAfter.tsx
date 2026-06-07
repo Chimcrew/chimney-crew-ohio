@@ -74,7 +74,7 @@ export function BeforeAfter({
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}
       onPointerLeave={endDrag}
-      className="relative aspect-[4/5] w-full select-none overflow-hidden rounded-xl border-2 border-primary/40 bg-primary shadow-flame sm:aspect-[16/10] touch-none"
+      className="relative aspect-[4/3] w-full select-none overflow-hidden rounded-2xl border border-white/10 bg-primary shadow-[0_20px_50px_oklch(0_0_0/0.35)] sm:aspect-[16/10] touch-none"
       role="group"
       aria-label={alt}
     >

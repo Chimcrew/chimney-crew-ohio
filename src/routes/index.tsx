@@ -37,7 +37,6 @@ import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
-import { LeadForm } from "@/components/LeadForm";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
@@ -140,7 +139,6 @@ function Index() {
       <FieldNotes />
       <Faq />
       <FinalCta />
-      <LeadForm />
     </>
   );
 }
@@ -651,16 +649,16 @@ function BeforeAfterHome() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-8 md:grid-cols-2">
+        <div className="mx-auto mt-10 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {jobs.map((j) => (
-            <article key={j.id} className="space-y-3">
-              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
+            <article key={j.id} className="space-y-2.5">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame/80">
                 {j.service} · {j.city}
               </p>
-              <h3 className="font-display text-2xl font-extrabold leading-tight text-primary-foreground md:text-3xl">
+              <BeforeAfter before={j.before} after={j.after} alt={j.headline} />
+              <h3 className="font-display text-base font-bold leading-snug text-primary-foreground/90">
                 {j.headline}
               </h3>
-              <BeforeAfter before={j.before} after={j.after} alt={j.headline} />
             </article>
           ))}
         </div>
