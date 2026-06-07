@@ -88,25 +88,16 @@ export function BeforeAfter({
         decoding="async"
       />
 
-      {/* BEFORE image clipped to the left */}
-      <div
-        className="pointer-events-none absolute inset-y-0 left-0 overflow-hidden"
-        style={{ width: `${pos}%` }}
-      >
-        <div
-          className="absolute inset-y-0 left-0 h-full"
-          style={{ width: ref.current?.clientWidth ? `${ref.current.clientWidth}px` : "100%" }}
-        >
-          <img
-            src={before}
-            alt={`${alt} — before`}
-            className="pointer-events-none h-full w-full object-cover"
-            draggable={false}
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-      </div>
+      {/* BEFORE image — clipped by the divider position */}
+      <img
+        src={before}
+        alt={`${alt} — before`}
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+        draggable={false}
+        loading="lazy"
+        decoding="async"
+      />
 
       {/* Labels */}
       <span className="pointer-events-none absolute left-3 top-3 rounded-md bg-background/85 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground backdrop-blur">
@@ -126,10 +117,10 @@ export function BeforeAfter({
           type="button"
           aria-label="Drag to compare before and after"
           onKeyDown={onKeyDown}
-          className="pointer-events-auto absolute left-1/2 top-1/2 grid h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border-2 border-flame bg-primary text-flame shadow-[0_8px_24px_oklch(0_0_0/0.4)] transition active:scale-95"
+          className="pointer-events-auto absolute left-1/2 top-1/2 flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize items-center justify-center rounded-full border-2 border-flame bg-primary text-flame shadow-[0_8px_24px_oklch(0_0_0/0.4)] transition active:scale-95"
         >
-          <ChevronLeft className="h-4 w-4 -mr-1" />
-          <ChevronRight className="h-4 w-4 -ml-1 absolute right-2" />
+          <ChevronLeft className="h-4 w-4" />
+          <ChevronRight className="h-4 w-4" />
         </button>
       </div>
 
