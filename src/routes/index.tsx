@@ -578,7 +578,7 @@ function WhyChooseUs() {
    BEFORE / AFTER (home) — drag-to-compare highlights
    ============================================================ */
 function BeforeAfterHome() {
-  const jobs = BEFORE_AFTER_JOBS.slice(0, 2);
+  const jobs = BEFORE_AFTER_JOBS;
   return (
     <section className="relative overflow-hidden border-y-2 border-border bg-primary py-20 text-primary-foreground md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
