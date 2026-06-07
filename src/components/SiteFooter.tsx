@@ -6,7 +6,7 @@ import { SERVICES } from "@/data/services";
 import { SERVICE_CITIES } from "@/components/ServiceAreaSeo";
 export function SiteFooter() {
   return (
-    <footer className="relative mt-24 border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
+    <footer className="relative border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
       <div className="stripe-warning h-1.5 w-full opacity-80" />
 
       {/* Local commitment band featuring the wrapped service van */}
