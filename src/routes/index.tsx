@@ -40,6 +40,8 @@ import { SERVICES } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
 import { TrustBar } from "@/components/TrustBar";
 import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -123,6 +125,7 @@ function Index() {
       <ServiceAreaSeo />
       <ServiceArea />
       <WhyChooseUs />
+      <BeforeAfterHome />
       <ProblemSolver />
       <FireHazards />
       <LogoDivider />
