@@ -279,11 +279,20 @@ function MobileHero() {
         {/* Content overlay */}
         <div className="relative z-10 flex h-full flex-col justify-between px-5 pt-6 pb-8">
           {/* Top label */}
-          <div className="flex justify-center">
+          <div className="flex items-center justify-between gap-3">
             <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-primary/60 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
               <span className="flex h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
               Open Today · Free Inspections
             </span>
+            <img
+              src={certifiedBadge.url}
+              alt="Certified Chimney Sweep — CSIA Credentialed"
+              width={68}
+              height={68}
+              className="h-16 w-16 rounded-full bg-white p-1 shadow-[0_8px_24px_oklch(0_0_0/0.5)] ring-2 ring-flame/60"
+              loading="eager"
+              decoding="async"
+            />
           </div>
 
           {/* Headline + CTAs anchored to bottom */}
