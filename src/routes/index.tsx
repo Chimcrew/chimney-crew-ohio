@@ -123,16 +123,23 @@ function Index() {
     <>
       <Hero />
       <TrustBar />
-      <BeforeAfterHome />
+      <TrustMarquee />
+      <RecentProjects />
       <ServiceAreaSeo />
+      <ServiceArea />
       <WhyChooseUs />
+      <BeforeAfterHome />
       <ProblemSolver />
+      <FireHazards />
       <LogoDivider />
       <ServicesGrid />
+      <LeakingChimney />
+      <ScheduleOnline />
       <Process />
       <Testimonials />
+      <FieldNotes />
       <Faq />
-      <ScheduleOnline />
+      <FinalCta />
       <LeadForm />
     </>
   );
