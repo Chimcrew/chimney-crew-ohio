@@ -323,14 +323,14 @@ export function SiteHeader() {
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
                 href="tel:6146834422"
-                className="flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-3 font-display text-xs font-bold uppercase tracking-widest text-primary-foreground transition active:scale-95"
+                className="flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-3 font-mono text-[11px] font-bold uppercase tracking-[0.18em]"
               >
                 <Phone className="h-4 w-4" /> Call
               </a>
               <button
                 type="button"
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
-                className="flex items-center justify-center gap-2 rounded-full bg-primary px-4 py-3 font-display text-xs font-bold uppercase tracking-widest text-flame shadow-flame transition hover:bg-flame hover:text-primary active:scale-95"
+                className="flex items-center justify-center gap-2 rounded-full bg-flame px-3 py-3 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary"
               >
                 <CalendarCheck className="h-4 w-4" /> Book
               </button>
