@@ -1,4 +1,5 @@
 import { CalendarCheck, Camera, ShieldCheck, Zap } from "lucide-react";
+import droneVideo from "@/assets/drone-inspection.mp4.asset.json";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -42,7 +43,7 @@ export function DroneInspection() {
             id="drone-heading"
             className="mt-5 font-display text-5xl font-extrabold leading-[0.98] tracking-tight md:text-6xl"
           >
-            Drone Roof &amp; <span className="text-flame">Chimney Inspection</span>
+            Drone <span className="text-flame">Chimney Inspection</span>
           </h2>
           <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
             Get a detailed aerial inspection without climbing onto your roof. Fast,
