@@ -95,15 +95,17 @@ export function SiteHeader() {
           {/* Brand */}
           <Link
             to="/"
-            className="group flex items-center outline-none [-webkit-tap-highlight-color:transparent] focus-visible:ring-2 focus-visible:ring-flame/60 rounded-md"
+            className="group flex items-center bg-transparent outline-none [-webkit-tap-highlight-color:transparent]"
             aria-label="ChimCrew home"
           >
             <img
               src={logoAsset.url}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className={`relative h-20 w-auto object-contain transition-transform duration-500 ease-out will-change-transform md:h-24 ${
-                scrolled ? "scale-105" : ""
-              } group-hover:scale-110 group-active:scale-105`}
+              className={`relative z-10 h-24 w-auto origin-left object-contain transition-transform duration-500 ease-out will-change-transform md:h-28 ${
+                scrolled
+                  ? "[transform:perspective(900px)_rotateX(-7deg)_rotateY(9deg)_translateY(-3px)_scale(1.08)]"
+                  : "[transform:perspective(900px)_rotateX(0deg)_rotateY(0deg)_translateY(0)_scale(1)]"
+              } group-hover:[transform:perspective(900px)_rotateX(-9deg)_rotateY(11deg)_translateY(-5px)_scale(1.13)] group-active:[transform:perspective(900px)_rotateX(-4deg)_rotateY(6deg)_translateY(-2px)_scale(1.08)]`}
             />
           </Link>
 
