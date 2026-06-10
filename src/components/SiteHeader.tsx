@@ -73,11 +73,11 @@ export function SiteHeader() {
       <div
         className={`transition-all duration-300 ${
           scrolled
-              ? "bg-[oklch(0_0_0)] shadow-[0_8px_30px_oklch(0_0_0/0.35)]"
-              : "bg-[oklch(0_0_0)]"
+            ? "bg-[oklch(0_0_0)] shadow-[0_8px_30px_oklch(0_0_0/0.35)]"
+            : "bg-[oklch(0_0_0)]"
         } text-primary-foreground`}
       >
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-8">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 overflow-hidden px-4 py-2 md:px-8">
           {/* Flashing OPEN NOW button — absolutely centered in the header */}
           <button
             type="button"
@@ -95,17 +95,17 @@ export function SiteHeader() {
           {/* Brand */}
           <Link
             to="/"
-            className="group relative z-40 -my-3 flex items-center bg-transparent outline-none [-webkit-tap-highlight-color:transparent] md:-my-4"
+            className="group relative z-40 flex shrink-0 items-center bg-transparent outline-none [-webkit-tap-highlight-color:transparent]"
             aria-label="ChimCrew home"
           >
             <img
               src={logoHeader}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className={`relative z-10 h-auto w-28 max-w-none origin-left object-contain transition-transform duration-500 ease-out will-change-transform md:w-40 ${
+              className={`relative z-10 h-auto w-24 max-w-none origin-left object-contain transition-transform duration-500 ease-out will-change-transform md:w-32 ${
                 scrolled
-                  ? "[transform:perspective(900px)_rotateX(-7deg)_rotateY(9deg)_translateY(-5px)_scale(1.08)]"
+                  ? "[transform:perspective(900px)_rotateX(-7deg)_rotateY(9deg)_translateY(-2px)_scale(1.06)]"
                   : "[transform:perspective(900px)_rotateX(0deg)_rotateY(0deg)_translateY(0)_scale(1)]"
-              } group-hover:[transform:perspective(900px)_rotateX(-9deg)_rotateY(11deg)_translateY(-7px)_scale(1.13)] group-active:[transform:perspective(900px)_rotateX(-4deg)_rotateY(6deg)_translateY(-3px)_scale(1.08)]`}
+              } group-hover:[transform:perspective(900px)_rotateX(-9deg)_rotateY(11deg)_translateY(-4px)_scale(1.12)] group-active:[transform:perspective(900px)_rotateX(-4deg)_rotateY(6deg)_translateY(-2px)_scale(1.06)]`}
             />
           </Link>
 
