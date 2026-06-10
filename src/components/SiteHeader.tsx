@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown } from "lucide-react";
-import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
+import logoHeader from "@/assets/chimcrew-logo-header-crop-tight.png";
 import { openScheduleDialog } from "@/components/ScheduleWidget";
 import { SERVICES, ACCENT_CLASSES } from "@/data/services";
 
@@ -73,11 +73,11 @@ export function SiteHeader() {
       <div
         className={`transition-all duration-300 ${
           scrolled
-            ? "bg-primary/80 shadow-[0_8px_30px_oklch(0_0_0/0.35)] backdrop-blur-xl"
-            : "bg-primary"
+            ? "bg-[oklch(0_0_0)] shadow-[0_8px_30px_oklch(0_0_0/0.35)]"
+            : "bg-[oklch(0_0_0)]"
         } text-primary-foreground`}
       >
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-6 px-4 py-3 md:px-8">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 overflow-hidden px-4 py-2 md:px-8">
           {/* Flashing OPEN NOW button — absolutely centered in the header */}
           <button
             type="button"
@@ -95,15 +95,17 @@ export function SiteHeader() {
           {/* Brand */}
           <Link
             to="/"
-            className="group flex items-center outline-none [-webkit-tap-highlight-color:transparent] focus-visible:ring-2 focus-visible:ring-flame/60 rounded-md"
+            className="group relative z-40 flex shrink-0 items-center bg-transparent outline-none [-webkit-tap-highlight-color:transparent]"
             aria-label="ChimCrew home"
           >
             <img
-              src={logoAsset.url}
+              src={logoHeader}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className={`relative h-20 w-auto object-contain transition-transform duration-500 ease-out will-change-transform md:h-24 ${
-                scrolled ? "scale-105" : ""
-              } group-hover:scale-110 group-active:scale-105`}
+              className={`relative z-10 h-auto w-24 max-w-none origin-left object-contain transition-transform duration-500 ease-out will-change-transform md:w-32 ${
+                scrolled
+                  ? "[transform:perspective(900px)_rotateX(-7deg)_rotateY(9deg)_translateY(-2px)_scale(1.06)]"
+                  : "[transform:perspective(900px)_rotateX(0deg)_rotateY(0deg)_translateY(0)_scale(1)]"
+              } group-hover:[transform:perspective(900px)_rotateX(-9deg)_rotateY(11deg)_translateY(-4px)_scale(1.12)] group-active:[transform:perspective(900px)_rotateX(-4deg)_rotateY(6deg)_translateY(-2px)_scale(1.06)]`}
             />
           </Link>
 
