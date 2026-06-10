@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
-import { LeadForm } from "@/components/LeadForm";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import projectCrown from "@/assets/projects/project-01-double-crown.jpg";
@@ -131,7 +130,6 @@ function BeforeAfterPage() {
         </div>
       </section>
 
-      <LeadForm />
     </>
   );
 }

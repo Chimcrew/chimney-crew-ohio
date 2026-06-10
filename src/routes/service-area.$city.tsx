@@ -2,7 +2,6 @@ import { createFileRoute, notFound, Link } from "@tanstack/react-router";
 import { Phone, CalendarCheck, MapPin, CheckCircle2, ArrowRight } from "lucide-react";
 import { SERVICE_CITIES } from "@/components/ServiceAreaSeo";
 import { SERVICES } from "@/data/services";
-import { LeadForm } from "@/components/LeadForm";
 
 function getCity(slug: string) {
   return SERVICE_CITIES.find((c) => c.slug === slug);
@@ -154,7 +153,6 @@ function CityPage() {
         </div>
       </section>
 
-      <LeadForm />
     </>
   );
 }

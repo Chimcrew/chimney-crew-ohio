@@ -1,7 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Calendar, Clock, ArrowLeft, Phone } from "lucide-react";
 import { BLOG_POSTS, getPostBySlug, type BlogPost } from "@/data/blog-posts";
-import { LeadForm } from "@/components/LeadForm";
 
 const SITE = "https://chimcrew.com";
 
@@ -196,7 +195,6 @@ function PostPage() {
         </div>
       </section>
 
-      <LeadForm />
     </>
   );
 }

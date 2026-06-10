@@ -20,7 +20,6 @@ import {
   heroImageFor,
   type ServiceSpec,
 } from "@/data/services";
-import { LeadForm } from "@/components/LeadForm";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -77,7 +76,6 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {/* FINAL CTA (dark band) */}
       <FinalServiceCta ctaLabel={ctaLabel} />
 
-      <LeadForm />
     </div>
   );
 }
