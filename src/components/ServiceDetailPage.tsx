@@ -650,7 +650,6 @@ function Related({ service }: { service: ServiceSpec }) {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {items.map((s) => {
             const RIcon = s.icon;
-            const img = heroImageFor(s);
             return (
               <Link
                 key={s.slug}
@@ -658,18 +657,22 @@ function Related({ service }: { service: ServiceSpec }) {
                 params={{ slug: s.slug }}
                 className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-1 hover:border-flame hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.35)]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-primary">
-                  <img
-                    src={img}
-                    alt={s.shortTitle}
-                    className="h-full w-full object-cover opacity-80 transition group-hover:scale-105 group-hover:opacity-100"
-                    loading="lazy"
+                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary via-[oklch(0.16_0.02_250)] to-[oklch(0.10_0.02_250)]">
+                  <div
+                    className="absolute inset-0 opacity-[0.18]"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, oklch(0.78 0.19 92 / 0.4) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.78 0.19 92 / 0.4) 1px, transparent 1px)",
+                      backgroundSize: "24px 24px",
+                      maskImage: "radial-gradient(ellipse at center, black 35%, transparent 75%)",
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent" />
-                  <div className="absolute left-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-flame text-primary">
-                    <RIcon className="h-5 w-5" />
+                  <div className="absolute inset-0 grid place-items-center">
+                    <div className="grid h-20 w-20 place-items-center rounded-full bg-flame text-primary shadow-[0_0_40px_oklch(0.78_0.19_92/0.45)] transition group-hover:scale-110">
+                      <RIcon className="h-9 w-9" />
+                    </div>
                   </div>
-                  <span className="absolute right-4 top-4 rounded-full bg-black/50 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-flame backdrop-blur">
+                  <span className="absolute right-4 top-4 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-flame backdrop-blur">
                     {formatFromPrice(s)}
                   </span>
                 </div>
