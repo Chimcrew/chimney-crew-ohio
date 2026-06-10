@@ -24,6 +24,7 @@ const services = [
   { id: "waterproof", label: "Waterproof & Cap", icon: ShieldCheck, from: "$349" },
   { id: "crown", label: "Crown Seal Repair", icon: HardHat, from: "$489" },
   { id: "leak", label: "Leak Diagnosis", icon: Droplets, from: "$99" },
+  { id: "unsure", label: "I'm not sure yet", icon: Flame, from: "Let us help" },
 ];
 
 const slots = [
