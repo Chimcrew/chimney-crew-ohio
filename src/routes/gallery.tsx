@@ -10,6 +10,13 @@ import p06 from "@/assets/projects/project-06-tech-onsite.jpg";
 import p07 from "@/assets/projects/project-07-flue-before.jpg";
 import p08 from "@/assets/projects/project-08-cap-finished.jpg";
 import p09 from "@/assets/projects/project-09-crown-before.jpg";
+import up4 from "@/assets/uploads/job_4.jpeg.asset.json";
+import up5 from "@/assets/uploads/job_5.jpeg.asset.json";
+import up6 from "@/assets/uploads/job_6.jpeg.asset.json";
+import up0 from "@/assets/uploads/job0.jpeg.asset.json";
+import up1 from "@/assets/uploads/job_1.jpeg.asset.json";
+import up8 from "@/assets/uploads/job_8.jpeg.asset.json";
+import up3 from "@/assets/uploads/job_3.jpeg.asset.json";
 
 const SITE = "https://chimcrew.com";
 
@@ -42,6 +49,13 @@ type Photo = {
 };
 
 const PHOTOS: Photo[] = [
+  { src: up5.url, alt: "Custom stainless chase cover installed on a sided chimney", title: "Custom Chase Cover Install", city: "Westerville, OH", tag: "Cap", size: "tall" },
+  { src: up4.url, alt: "Fresh stainless steel chase cover replacement", title: "New Stainless Chase Cover", city: "Hilliard, OH", tag: "Cap", size: "square" },
+  { src: up8.url, alt: "Brick chimney after tuckpointing with new stainless cap", title: "Tuckpoint + Cap — Finished", city: "Dublin, OH", tag: "Tuckpointing", size: "tall" },
+  { src: up6.url, alt: "Step flashing replacement on a brick chimney", title: "Step Flashing Replacement", city: "Upper Arlington, OH", tag: "Crown", size: "wide" },
+  { src: up1.url, alt: "Crown sealed and new black mesh cap installed on a brick chimney", title: "Crown Seal + Black Mesh Cap", city: "Powell, OH", tag: "Crown", size: "square" },
+  { src: up0.url, alt: "Cracked chimney crown with exposed terracotta flue before repair", title: "Cracked Crown — Before", city: "Powell, OH", tag: "Crown", size: "square" },
+  { src: up3.url, alt: "Freshly waterproofed and coated chimney with new cap", title: "Waterproof Recoat", city: "Columbus, OH", tag: "Waterproof", size: "tall" },
   { src: p01, alt: "Dual crown rebuild with stainless caps on a brick chimney", title: "Dual Crown Rebuild + Caps", city: "Columbus, OH", tag: "Crown", size: "tall" },
   { src: p02, alt: "Tuckpointing restoration finished on chimney masonry", title: "Full Tuckpointing Restoration", city: "Dublin, OH", tag: "Tuckpointing", size: "square" },
   { src: p03, alt: "Stainless steel chimney liner installed from the roof", title: "Stainless Liner Install", city: "Cincinnati, OH", tag: "Liner", size: "wide" },
@@ -53,7 +67,7 @@ const PHOTOS: Photo[] = [
   { src: p09, alt: "Cracked chimney crown before rebuild", title: "Crown Before Rebuild", city: "Grove City, OH", tag: "Crown", size: "square" },
 ];
 
-const FILTERS = ["All", "Crown", "Liner", "Tuckpointing", "Cap", "Crew"] as const;
+const FILTERS = ["All", "Crown", "Liner", "Tuckpointing", "Cap", "Waterproof", "Crew"] as const;
 
 function GalleryPage() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
