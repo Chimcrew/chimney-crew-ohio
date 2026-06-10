@@ -95,17 +95,17 @@ export function SiteHeader() {
           {/* Brand */}
           <Link
             to="/"
-            className="group flex items-center bg-transparent outline-none [-webkit-tap-highlight-color:transparent]"
+            className="group relative z-40 -my-3 flex items-center bg-transparent outline-none [-webkit-tap-highlight-color:transparent] md:-my-4"
             aria-label="ChimCrew home"
           >
             <img
               src={logoAsset.url}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className={`relative z-10 h-24 w-auto origin-left object-contain transition-transform duration-500 ease-out will-change-transform md:h-28 ${
+              className={`relative z-10 h-28 w-auto origin-left object-contain mix-blend-screen transition-transform duration-500 ease-out will-change-transform md:h-32 ${
                 scrolled
-                  ? "[transform:perspective(900px)_rotateX(-7deg)_rotateY(9deg)_translateY(-3px)_scale(1.08)]"
+                  ? "[transform:perspective(900px)_rotateX(-7deg)_rotateY(9deg)_translateY(-5px)_scale(1.08)]"
                   : "[transform:perspective(900px)_rotateX(0deg)_rotateY(0deg)_translateY(0)_scale(1)]"
-              } group-hover:[transform:perspective(900px)_rotateX(-9deg)_rotateY(11deg)_translateY(-5px)_scale(1.13)] group-active:[transform:perspective(900px)_rotateX(-4deg)_rotateY(6deg)_translateY(-2px)_scale(1.08)]`}
+              } group-hover:[transform:perspective(900px)_rotateX(-9deg)_rotateY(11deg)_translateY(-7px)_scale(1.13)] group-active:[transform:perspective(900px)_rotateX(-4deg)_rotateY(6deg)_translateY(-3px)_scale(1.08)]`}
             />
           </Link>
 
