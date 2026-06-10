@@ -16,7 +16,7 @@ const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
-const primaryNav = nav.filter((n) => ["/", "/services", "/financing", "/reviews", "/blog", "/contact"].includes(n.to));
+const primaryNav = nav.filter((n) => ["/", "/services", "/before-after", "/gallery", "/financing", "/reviews", "/blog", "/contact"].includes(n.to));
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
