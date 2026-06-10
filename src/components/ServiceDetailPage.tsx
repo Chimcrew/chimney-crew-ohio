@@ -6,13 +6,11 @@ import {
   CalendarCheck,
   AlertTriangle,
   ArrowRight,
-  ArrowDown,
   ShieldCheck,
   Star,
   MapPin,
   ClipboardCheck,
   BadgeDollarSign,
-  Clock,
   Quote,
 } from "lucide-react";
 import {
@@ -93,23 +91,7 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
 
   return (
     <section className="relative isolate overflow-hidden bg-primary text-primary-foreground">
-      {/* Background photo */}
-      <div className="absolute inset-0" aria-hidden>
-        <img
-          src={img}
-          alt=""
-          className="h-full w-full object-cover"
-          style={{ animation: "hero-zoom 30s ease-out infinite alternate" }}
-        />
-        {/* Dark gradient — heavier from left for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/85 to-primary/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary via-transparent to-primary/30" />
-        {/* Warm flame glow */}
-        <div className="absolute -left-32 bottom-0 h-[40rem] w-[40rem] rounded-full bg-flame/20 blur-[120px]" />
-        <div className="absolute inset-0 bg-grid opacity-[0.04]" />
-      </div>
-
-      {/* Breadcrumb floating on the hero */}
+      {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="relative z-10 border-b border-white/5">
         <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-4 font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60 md:px-8">
           <li><Link to="/" className="hover:text-flame">Home</Link></li>
@@ -120,37 +102,58 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
         </ol>
       </nav>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-16 px-4 pb-24 pt-20 md:px-8 md:pb-32 md:pt-28 lg:grid-cols-12">
-        <div className="lg:col-span-8">
-          {/* Eyebrow with leading rule */}
-          <div className="flex items-center gap-4">
-            <span className="h-px w-12 bg-flame" />
-            <span className="font-mono text-[11px] uppercase tracking-[0.35em] text-flame">
-              {service.hero.eyebrow}
-            </span>
-          </div>
+      <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-12 md:gap-14 md:px-8 md:py-16 lg:grid-cols-12 lg:items-center">
+        {/* LEFT — product copy */}
+        <div className="lg:col-span-6">
+          <span className="inline-flex items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+            <span className="h-1.5 w-1.5 rounded-full bg-flame" />
+            {service.hero.eyebrow}
+          </span>
 
-          {/* Massive editorial headline */}
-          <h1 className="mt-8 font-display text-5xl font-extrabold leading-[0.98] tracking-[-0.02em] md:text-7xl lg:text-[5.5rem]">
+          <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.02] tracking-tight md:text-5xl lg:text-[3.5rem]">
             {service.hero.headline}
           </h1>
 
-          {/* Mono tagline */}
-          <p className="mt-8 max-w-2xl border-l-2 border-flame pl-5 font-mono text-sm uppercase tracking-[0.18em] text-primary-foreground/80 md:text-base">
-            {service.tagline}
-          </p>
-
-          {/* Sub */}
-          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-primary-foreground/75 md:text-xl">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/75 md:text-lg">
             {service.hero.sub}
           </p>
 
-          {/* CTA row */}
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+          {/* Product meta — price + guarantee + reviews. No duration. */}
+          <div className="mt-7 flex flex-wrap items-end gap-x-8 gap-y-4">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
+                {service.quoteOnly ? "Pricing" : "Starting at"}
+              </p>
+              <p className="mt-1 font-display text-3xl font-extrabold text-flame md:text-4xl">
+                {priceLabel}
+              </p>
+            </div>
+            <div className="h-10 w-px bg-white/10" aria-hidden />
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
+                Guarantee
+              </p>
+              <p className="mt-1 font-display text-lg font-bold text-primary-foreground">
+                In writing
+              </p>
+            </div>
+            <div className="hidden h-10 w-px bg-white/10 sm:block" aria-hidden />
+            <div className="hidden sm:block">
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
+                Reviews
+              </p>
+              <p className="mt-1 flex items-center gap-1.5 font-display text-lg font-bold text-primary-foreground">
+                <Star className="h-4 w-4 fill-flame text-flame" /> 4.9 · 1,836
+              </p>
+            </div>
+          </div>
+
+          {/* CTA row — rounded-xl to match homepage */}
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <button
               type="button"
               onClick={openSchedule}
-              className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-flame px-8 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-primary shadow-[0_0_50px_-5px_oklch(0.78_0.19_92/0.55)] transition hover:-translate-y-0.5 hover:bg-white"
+              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white"
             >
               <CalendarCheck className="h-5 w-5" />
               {ctaLabel}
@@ -158,79 +161,62 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
             </button>
             <a
               href="tel:6145491954"
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-8 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-primary-foreground backdrop-blur transition hover:border-white hover:bg-white/10"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.03] px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground backdrop-blur transition hover:border-flame"
             >
-              <Phone className="h-5 w-5" />
+              <Phone className="h-4 w-4 text-flame" />
               (614) 549-1954
             </a>
           </div>
 
-          {/* Trust row */}
-          <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3">
-            {["CSIA Certified", "BBB A+ Rated", "Licensed & Insured", "Same-Day Callback"].map((t) => (
-              <div
+          {/* Trust pills */}
+          <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
+            {["CSIA Certified", "BBB A+", "Licensed & Insured", "Same-Day Callback"].map((t) => (
+              <li
                 key={t}
-                className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground/55"
+                className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/55"
               >
-                <span className="grid h-4 w-4 place-items-center rounded-full bg-flame/15 text-flame">
-                  <CheckCircle2 className="h-3 w-3" />
-                </span>
+                <CheckCircle2 className="h-3 w-3 text-flame" />
                 {t}
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
-        {/* Floating spec card */}
-        <aside className="self-end lg:col-span-4">
-          <div className="relative rounded-3xl border border-white/15 bg-black/40 p-7 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] backdrop-blur-xl">
-            <div className="absolute -top-3 left-7 inline-flex items-center gap-2 rounded-full bg-flame px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-              Service Spec
-            </div>
-            <div className="flex items-baseline justify-between gap-4">
-              <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
-                Investment
+        {/* RIGHT — product visual card */}
+        <div className="relative lg:col-span-6">
+          <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-flame/15 blur-3xl" aria-hidden />
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
+            <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
+              <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
+                Recent Ohio job
               </span>
-              <span className="font-mono text-[10px] text-primary-foreground/40">
-                /{service.slug.slice(0, 14).toUpperCase()}
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
+                {service.shortTitle}
               </span>
             </div>
-            <div className="mt-2 font-display text-4xl font-extrabold text-flame md:text-5xl">
-              {priceLabel}
-            </div>
-            <p className="mt-3 text-sm text-primary-foreground/70">
-              {service.quoteOnly
-                ? "Free on-site inspection. Written flat-rate quote before any work begins."
-                : "Upfront flat-rate. No add-ons, no surprises."}
-            </p>
-
-            <div className="my-6 h-px w-full bg-white/10" />
-
-            <ul className="space-y-3 text-sm">
-              <li className="flex items-start gap-3">
-                <Clock className="mt-0.5 h-4 w-4 shrink-0 text-flame" />
-                <span className="text-primary-foreground/80">
-                  {service.duration || "1–2 day turnaround"}
+            <div className="relative aspect-[5/4] overflow-hidden">
+              <img
+                src={img}
+                alt={`${service.shortTitle} by ChimCrew`}
+                className="h-full w-full object-cover"
+                width={1200}
+                height={960}
+                fetchPriority="high"
+                decoding="async"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-primary/85 px-4 py-2.5 backdrop-blur">
+                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
+                  <MapPin className="h-3 w-3 text-flame" /> Columbus · Dayton · Cincinnati
                 </span>
-              </li>
-              <li className="flex items-start gap-3">
-                <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-flame" />
-                <span className="text-primary-foreground/80">Workmanship guarantee in writing</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <ClipboardCheck className="mt-0.5 h-4 w-4 shrink-0 text-flame" />
-                <span className="text-primary-foreground/80">Photo report emailed same day</span>
-              </li>
-            </ul>
+                <span className="rounded-full border border-flame/40 bg-flame/15 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+                  Verified
+                </span>
+              </div>
+            </div>
           </div>
-
-          {/* Scroll cue */}
-          <div className="mt-10 hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-primary-foreground/40 lg:flex">
-            <ArrowDown className="h-3 w-3 animate-bounce" />
-            Scroll for details
-          </div>
-        </aside>
+        </div>
       </div>
     </section>
   );
