@@ -320,12 +320,13 @@ function MobileHero() {
               >
                 <Phone className="h-5 w-5" /> Call Now
               </a>
-              <a
-                href="#quote"
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
                 className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-primary/40 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground backdrop-blur active:scale-[0.98]"
               >
                 <CalendarCheck className="h-5 w-5 text-flame" /> Schedule Free Inspection
-              </a>
+              </button>
             </div>
 
             <p className="pt-1 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
