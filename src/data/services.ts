@@ -113,6 +113,7 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
 export const SERVICES: ServiceSpec[] = [
   {
     slug: "chimney-sweep",
+    warranty: "Satisfaction Guaranteed",
     title: "Chimney Sweep & Cleaning",
     shortTitle: "Chimney Sweep",
     tagline: "Creosote, soot and ash — gone in under 90 minutes.",
@@ -153,6 +154,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "level-1-inspection",
+    warranty: "100% Accurate Report",
     title: "Level 1 Chimney Inspection",
     shortTitle: "Level 1 Inspection",
     tagline: "The annual check-up the NFPA recommends for every fireplace.",
@@ -193,6 +195,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "level-2-inspection",
+    warranty: "Lender-Accepted Report",
     title: "Level 2 Chimney Inspection",
     shortTitle: "Level 2 Inspection",
     tagline: "Camera-scanned, real-estate-ready documentation.",
@@ -233,6 +236,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "crown-tuckpoint",
+    warranty: "Lifetime Workmanship Warranty",
     title: "Crown Repair & Tuckpointing",
     shortTitle: "Crown & Tuckpoint",
     tagline: "Stop water at the source. Save the chimney.",
@@ -286,6 +290,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "liner-install",
+    warranty: "Lifetime Warranty (Transferable)",
     title: "Stainless Steel Liner Installation",
     shortTitle: "Stainless Liner",
     tagline: "Sized to your appliance. Built to outlive your house.",
@@ -339,6 +344,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "animal-removal",
+    warranty: "Lifetime Cap Warranty",
     title: "Animal Removal & Cap Install",
     shortTitle: "Animal Removal",
     tagline: "Get them out humanely. Keep them out for good.",
@@ -379,6 +385,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "cap-install",
+    warranty: "Lifetime Warranty",
     title: "Chimney Cap Installation",
     shortTitle: "Cap Install",
     tagline: "The cheapest insurance policy on your house.",
@@ -418,6 +425,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "waterproofing",
+    warranty: "10-Year Product Warranty",
     title: "Chimney Waterproofing",
     shortTitle: "Waterproofing",
     tagline: "Breathable seal that stops freeze-thaw damage cold.",
@@ -459,6 +467,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "flashing-repair",
+    warranty: "Lifetime Workmanship Warranty",
     title: "Chimney Flashing Repair",
     shortTitle: "Flashing Repair",
     tagline: "Where the chimney meets the roof — the #1 leak source.",
@@ -512,6 +521,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "firebox-rebuild",
+    warranty: "Lifetime Workmanship Warranty",
     title: "Firebox Rebuild & Refractory Repair",
     shortTitle: "Firebox Rebuild",
     tagline: "Refractory panels, firebrick, and mortar back to spec.",
@@ -553,6 +563,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "smoke-chamber-parging",
+    warranty: "Lifetime Warranty",
     title: "Smoke Chamber Parging",
     shortTitle: "Smoke Chamber Parging",
     tagline: "Smooth the corbel. Tame the smoke. Pass the inspection.",
@@ -594,6 +605,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "damper-repair",
+    warranty: "5-Year Warranty",
     title: "Damper Repair & Top-Sealing Damper",
     shortTitle: "Damper Repair",
     tagline: "Stop the draft, save the heating bill.",
@@ -633,6 +645,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "gas-fireplace-service",
+    warranty: "1-Year Service Warranty",
     title: "Gas Fireplace Service",
     shortTitle: "Gas Fireplace Service",
     tagline: "Tune, clean, and safety-check your gas insert or log set.",
@@ -673,6 +686,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "dryer-vent-cleaning",
+    warranty: "1-Year Warranty",
     title: "Dryer Vent Cleaning",
     shortTitle: "Dryer Vent Cleaning",
     tagline: "The other lint trap nobody empties — until it catches fire.",
@@ -713,6 +727,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "annual-plan",
+    warranty: "Cancel Anytime",
     title: "Annual Chimney Service Plan",
     shortTitle: "Annual Service Plan",
     tagline: "Set it and forget it. We'll remind you when it's time.",
