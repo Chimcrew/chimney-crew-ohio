@@ -108,6 +108,9 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
     setTimeout(() => {
       setSubmitting(false);
       onDone?.();
+      if (typeof window !== "undefined" && "gtag_report_conversion" in window) {
+        (window as any).gtag_report_conversion();
+      }
       toast.success("You're on the schedule!", {
         description: `${svc.label} · ${date ? format(date, "EEE, MMM d") : ""} · ${slt.time}. We'll text ${phone} within an hour to confirm.`,
         duration: 7000,
