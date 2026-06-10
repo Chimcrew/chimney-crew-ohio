@@ -73,7 +73,8 @@ export function formatFromPrice(s: Pick<ServiceSpec, "price" | "quoteOnly">): st
 /** Short warranty/guarantee label per service. Falls back to a sensible default. */
 export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quoteOnly">): string {
   if (s.warranty) return s.warranty;
-  if (s.variant === "install" || (s.variant === "repair" && s.quoteOnly)) return "Lifetime Warranty";
+  if (s.variant === "install") return "10-Year Workmanship Warranty";
+  if (s.variant === "repair" && s.quoteOnly) return "10-Year Workmanship Warranty";
   if (s.variant === "repair") return "5-Year Warranty";
   if (s.variant === "inspection") return "Accurate Report";
   if (s.variant === "plan") return "Cancel Anytime";
@@ -236,7 +237,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "crown-tuckpoint",
-    warranty: "Lifetime Workmanship Warranty",
+    warranty: "10-Year Workmanship Warranty",
     title: "Crown Repair & Tuckpointing",
     shortTitle: "Crown & Tuckpoint",
     tagline: "Stop water at the source. Save the chimney.",
@@ -255,7 +256,7 @@ export const SERVICES: ServiceSpec[] = [
       "Cracked crowns rebuilt with reinforced concrete",
       "Failing mortar ground out and tuckpointed",
       "Color-matched mortar where visible",
-      "5-year workmanship warranty",
+      "10-year workmanship warranty",
     ],
     process: [
       { title: "Assessment", desc: "Drone or rooftop inspection, photos of every defect." },
@@ -467,7 +468,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "flashing-repair",
-    warranty: "Lifetime Workmanship Warranty",
+    warranty: "10-Year Workmanship Warranty",
     title: "Chimney Flashing Repair",
     shortTitle: "Flashing Repair",
     tagline: "Where the chimney meets the roof — the #1 leak source.",
@@ -521,7 +522,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "firebox-rebuild",
-    warranty: "Lifetime Workmanship Warranty",
+    warranty: "10-Year Workmanship Warranty",
     title: "Firebox Rebuild & Refractory Repair",
     shortTitle: "Firebox Rebuild",
     tagline: "Refractory panels, firebrick, and mortar back to spec.",
@@ -563,7 +564,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "smoke-chamber-parging",
-    warranty: "Lifetime Warranty",
+    warranty: "10-Year Workmanship Warranty",
     title: "Smoke Chamber Parging",
     shortTitle: "Smoke Chamber Parging",
     tagline: "Smooth the corbel. Tame the smoke. Pass the inspection.",

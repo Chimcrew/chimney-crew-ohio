@@ -82,6 +82,53 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
 
 /* ---------- HERO ---------- */
 
+function BrickBackdrop() {
+  // Staggered black-brick pattern with subtle mortar lines + soft vignette.
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+      <svg
+        className="absolute inset-0 h-full w-full opacity-[0.55]"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <pattern
+            id="chimney-bricks"
+            x="0"
+            y="0"
+            width="120"
+            height="60"
+            patternUnits="userSpaceOnUse"
+          >
+            {/* Mortar base */}
+            <rect width="120" height="60" fill="oklch(0.06 0.005 250)" />
+            {/* Row 1 bricks */}
+            <rect x="1" y="1" width="58" height="28" rx="1.5" fill="oklch(0.10 0.01 30)" />
+            <rect x="61" y="1" width="58" height="28" rx="1.5" fill="oklch(0.11 0.012 25)" />
+            {/* Row 2 bricks (staggered) */}
+            <rect x="-29" y="31" width="58" height="28" rx="1.5" fill="oklch(0.105 0.011 28)" />
+            <rect x="31" y="31" width="58" height="28" rx="1.5" fill="oklch(0.095 0.009 32)" />
+            <rect x="91" y="31" width="58" height="28" rx="1.5" fill="oklch(0.11 0.012 24)" />
+            {/* Brick highlights — top edge */}
+            <line x1="1" y1="1.5" x2="59" y2="1.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
+            <line x1="61" y1="1.5" x2="119" y2="1.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
+            <line x1="-29" y1="31.5" x2="29" y2="31.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
+            <line x1="31" y1="31.5" x2="89" y2="31.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
+            <line x1="91" y1="31.5" x2="149" y2="31.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
+          </pattern>
+          <radialGradient id="brick-vignette" cx="50%" cy="45%" r="75%">
+            <stop offset="0%" stopColor="oklch(0.18 0.01 250)" stopOpacity="0" />
+            <stop offset="100%" stopColor="oklch(0.18 0.01 250)" stopOpacity="0.9" />
+          </radialGradient>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#chimney-bricks)" />
+        <rect width="100%" height="100%" fill="url(#brick-vignette)" />
+      </svg>
+      {/* Warm flame wash to tie it back to the brand */}
+      <div className="absolute inset-0 bg-gradient-to-br from-flame/[0.06] via-transparent to-transparent" />
+    </div>
+  );
+}
+
 function CinematicHero({ service }: { service: ServiceSpec }) {
   const priceLabel = formatFromPrice(service);
   const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
@@ -89,6 +136,8 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
 
   return (
     <section className="relative isolate overflow-hidden bg-primary text-primary-foreground">
+      {/* Black brick texture — chimney bricks behind content */}
+      <BrickBackdrop />
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="relative z-10 border-b border-white/5">
         <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-4 font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60 md:px-8">
