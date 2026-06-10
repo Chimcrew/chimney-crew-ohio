@@ -222,76 +222,154 @@ function Hero({
   const priceLabel = formatFromPrice(service);
   const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
   void accent;
-  void Icon;
+
+  // Split headline so last word renders in flame italic
+  const headline = service.hero.headline;
+  const words = headline.split(" ");
+  const lastTwo = words.slice(-2).join(" ");
+  const headlineLead = words.slice(0, -2).join(" ");
 
   return (
     <section className="relative overflow-hidden bg-primary text-primary-foreground">
-      {/* Subtle warm ambient glows — readable, not "fire texture" */}
+      {/* Subtle warm ambient glows */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="absolute -left-40 top-1/3 h-[32rem] w-[32rem] rounded-full bg-flame/15 blur-3xl" />
         <div className="absolute -right-40 -bottom-40 h-[36rem] w-[36rem] rounded-full bg-flame/10 blur-3xl" />
-        <div className="absolute inset-0 bg-grid opacity-[0.06]" />
+        <div className="absolute inset-0 bg-grid opacity-[0.05]" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 py-24 md:px-8 md:py-32">
-        {/* Eyebrow pill */}
-        <span className="inline-flex items-center gap-2 rounded-full border border-flame/60 px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-flame">
-          <span className="h-1.5 w-1.5 rounded-full bg-flame" aria-hidden />
-          {service.hero.eyebrow}
-        </span>
+      <div className="relative mx-auto grid max-w-7xl gap-14 px-4 py-20 md:px-8 md:py-28 lg:grid-cols-12 lg:gap-16">
+        <div className="space-y-8 lg:col-span-7">
+          {/* Mono eyebrow with leading line */}
+          <div className="inline-flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
+            <span className="h-px w-8 bg-flame" aria-hidden />
+            {service.hero.eyebrow}
+          </div>
 
-        {/* Headline — service title with flame accent */}
-        <h1 className="mt-6 font-display text-5xl font-extrabold uppercase leading-[1.02] tracking-tight text-primary-foreground md:text-7xl lg:text-8xl">
-          <span>{service.shortTitle.split(" ").slice(0, -1).join(" ") || service.shortTitle}</span>
-          {service.shortTitle.includes(" ") && (
-            <>
-              {" "}
-              <span className="text-flame">{service.shortTitle.split(" ").slice(-1)}</span>
-            </>
-          )}
-        </h1>
+          {/* Headline — last two words in flame italic */}
+          <h1 className="font-display text-5xl font-extrabold leading-[1.02] tracking-tight md:text-6xl lg:text-7xl">
+            {headlineLead ? (
+              <>
+                {headlineLead}{" "}
+                <span className="italic text-flame">{lastTwo}</span>
+              </>
+            ) : (
+              headline
+            )}
+          </h1>
 
-        {/* Tagline — flame colored sub-headline */}
-        <p className="mt-5 max-w-3xl font-display text-xl font-bold text-flame md:text-2xl">
-          {service.tagline}
-        </p>
+          {/* Body sub */}
+          <p className="max-w-xl text-lg leading-relaxed text-primary-foreground/65 md:text-xl">
+            {service.hero.sub}
+          </p>
 
-        {/* Body description */}
-        <p className="mt-5 max-w-3xl text-base leading-relaxed text-primary-foreground/85 md:text-lg">
-          {service.hero.sub}
-        </p>
+          {/* Stat strip — price + duration */}
+          <div className="inline-flex flex-wrap items-center gap-x-8 gap-y-4">
+            <div className="flex flex-col">
+              <span className="mb-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground/45">
+                {service.quoteOnly ? "Estimated Investment" : "Flat rate"}
+              </span>
+              <span className="font-display text-3xl font-extrabold text-flame">{priceLabel}</span>
+            </div>
+            {service.duration && (
+              <>
+                <div className="hidden h-12 w-px bg-white/10 sm:block" aria-hidden />
+                <div className="flex flex-col">
+                  <span className="mb-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground/45">
+                    Completion Time
+                  </span>
+                  <span className="font-display text-3xl font-extrabold">{service.duration}</span>
+                </div>
+              </>
+            )}
+            <div className="hidden h-12 w-px bg-white/10 sm:block" aria-hidden />
+            <div className="flex flex-col">
+              <span className="mb-1 font-mono text-[10px] uppercase tracking-widest text-primary-foreground/45">
+                Guarantee
+              </span>
+              <span className="font-display text-3xl font-extrabold">Workmanship</span>
+            </div>
+          </div>
 
-        {/* Two large equal CTAs */}
-        <div className="mt-10 grid max-w-4xl gap-4 sm:grid-cols-2">
-          <a
-            href="tel:6145491954"
-            className="group inline-flex h-16 w-full items-center justify-center gap-3 rounded-md bg-flame px-6 font-display text-base font-extrabold uppercase tracking-[0.15em] text-primary shadow-[0_18px_40px_oklch(0.78_0.19_92/0.3)] transition hover:bg-white"
-          >
-            <Phone className="h-5 w-5" />
-            Call Us Now
-          </a>
-          <button
-            type="button"
-            onClick={openSchedule}
-            className="inline-flex h-16 w-full items-center justify-center gap-3 rounded-md border-2 border-white bg-transparent px-6 font-display text-base font-extrabold uppercase tracking-[0.15em] text-primary-foreground transition hover:bg-white hover:text-primary"
-          >
-            <CalendarCheck className="h-5 w-5" />
-            {ctaLabel}
-          </button>
+          {/* CTAs — rounded pill, matches homepage */}
+          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center">
+            <button
+              type="button"
+              onClick={openSchedule}
+              className="group inline-flex h-14 items-center justify-center gap-2 rounded-full bg-flame px-8 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-primary shadow-[0_0_40px_-5px_oklch(0.78_0.19_92/0.5)] transition hover:scale-[1.02] hover:bg-white"
+            >
+              <CalendarCheck className="h-5 w-5" />
+              {ctaLabel}
+            </button>
+            <a
+              href="tel:6145491954"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-full border-2 border-white/20 bg-transparent px-8 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-primary-foreground transition hover:border-white hover:bg-white/5"
+            >
+              <Phone className="h-5 w-5" />
+              Call (614) 549-1954
+            </a>
+          </div>
+
+          {/* Trust chips */}
+          <div className="flex flex-wrap gap-x-8 gap-y-3 pt-2">
+            {[
+              "CSIA Certified",
+              "BBB A+ Rated",
+              "Licensed & Insured",
+            ].map((t) => (
+              <div key={t} className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary-foreground/55">
+                <span className="grid h-4 w-4 place-items-center rounded-full bg-flame/15 text-flame">
+                  <CheckCircle2 className="h-3 w-3" />
+                </span>
+                {t}
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Price strip */}
-        <div className="mt-8 inline-flex flex-wrap items-center gap-x-4 gap-y-2 rounded-md border border-white/15 bg-white/5 px-5 py-3 backdrop-blur">
-          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/70">
-            {service.quoteOnly ? "Investment" : "Flat rate"}
-          </span>
-          <span className="h-4 w-px bg-white/20" aria-hidden />
-          <span className="font-display text-2xl font-extrabold text-flame">{priceLabel}</span>
-          <span className="h-4 w-px bg-white/20" aria-hidden />
-          <span className="inline-flex items-center gap-1.5 text-xs text-primary-foreground/70">
-            <ShieldCheck className="h-4 w-4 text-flame" />
-            Workmanship guarantee
-          </span>
+        {/* Right-side service card with glow */}
+        <div className="relative lg:col-span-5">
+          <div className="pointer-events-none absolute -inset-10 rounded-full bg-flame/10 blur-[100px]" aria-hidden />
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] shadow-2xl backdrop-blur">
+            <div className="flex items-center justify-between border-b border-white/10 bg-black/30 p-4">
+              <div className="flex items-center gap-2">
+                <span className="h-2 w-2 animate-pulse rounded-full bg-flame" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
+                  {service.quoteOnly ? "Custom Project" : "Service Spec"}
+                </span>
+              </div>
+              <span className="font-mono text-[10px] text-primary-foreground/40">
+                /{service.slug.toUpperCase().slice(0, 12)}
+              </span>
+            </div>
+            <div className="relative aspect-[5/6] bg-gradient-to-br from-flame/15 via-primary to-black/40">
+              <div className="absolute inset-0 grid place-items-center">
+                <Icon className="h-40 w-40 text-flame opacity-30" strokeWidth={1.2} />
+              </div>
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,oklch(0.78_0.19_92/0.25),transparent_60%)]" />
+              <div className="absolute left-4 top-4">
+                <span className="inline-flex items-center gap-2 rounded-md border border-white/10 bg-black/60 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-flame backdrop-blur">
+                  <span className="h-1.5 w-1.5 rounded-full bg-flame" />
+                  Same-day slots
+                </span>
+              </div>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-6">
+                <p className="font-display text-xl font-extrabold text-flame">{service.shortTitle}</p>
+                <p className="mt-1 font-mono text-[11px] uppercase tracking-widest text-primary-foreground/70">
+                  <MapPin className="mr-1 inline h-3 w-3" />
+                  Columbus · Cincinnati · Dayton
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center justify-between border-t border-white/10 bg-black/20 p-4">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-primary-foreground/60">
+                Tagline
+              </span>
+              <span className="text-right font-display text-sm font-bold text-primary-foreground">
+                {service.tagline}
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
