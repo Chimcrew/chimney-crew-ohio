@@ -200,7 +200,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QY2H753BK9"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18189794318"></script>
-        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QY2H753BK9'); gtag('config', 'AW-18189794318'); function gtag_report_conversion(url){var callback=function(){if(typeof(url)!='undefined'){window.location=url;}}; gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD','event_callback':callback}); return false;}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:6728722,hjsv:6};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r);})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QY2H753BK9'); gtag('config', 'AW-18189794318'); function gtag_report_conversion(url){var callback=function(){if(typeof(url)!='undefined'){window.location=url;}}; gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD','event_callback':callback}); return false;}` }} />
         <HeadContent />
       </head>
       <body>
