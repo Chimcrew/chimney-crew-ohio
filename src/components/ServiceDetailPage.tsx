@@ -14,8 +14,9 @@ import {
   MapPin,
   ClipboardCheck,
 } from "lucide-react";
-import { ACCENT_CLASSES, getService, type ServiceSpec } from "@/data/services";
+import { ACCENT_CLASSES, getService, formatFromPrice, type ServiceSpec } from "@/data/services";
 import { LeadForm } from "@/components/LeadForm";
+import fireplacePoster from "@/assets/fireplace-poster.jpg.asset.json";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -58,7 +59,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
             <h2 className="mt-3 text-4xl">
               {service.quoteOnly
                 ? `Everything included in your ${service.shortTitle.toLowerCase()}.`
-                : `Everything in the ${service.price} price.`}
+                : `Everything in the flat ${service.price} price.`}
             </h2>
             <p className="mt-4 text-muted-foreground">
               {service.quoteOnly
