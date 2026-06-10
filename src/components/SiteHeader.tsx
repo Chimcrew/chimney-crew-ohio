@@ -8,7 +8,7 @@ import { SERVICES, ACCENT_CLASSES } from "@/data/services";
 const nav = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
-  { to: "/before-after", label: "Before / After" },
+  { to: "/before-after", label: "Before & After" },
   { to: "/gallery", label: "Gallery" },
   { to: "/reviews", label: "Reviews" },
   { to: "/financing", label: "Financing" },
