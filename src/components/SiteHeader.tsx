@@ -93,22 +93,21 @@ export function SiteHeader() {
           </button>
 
           {/* Brand */}
-          <Link to="/" className="group flex items-center gap-3" aria-label="ChimCrew home">
-            <span className="relative">
-              <span className="absolute -inset-1 rounded-full bg-flame/30 blur-md transition group-hover:bg-flame/50" aria-hidden />
+          <Link to="/" className="group flex items-center" aria-label="ChimCrew home">
+            <span className="relative inline-block [perspective:600px]">
+              <span
+                className="absolute -inset-2 rounded-full bg-flame/40 blur-xl transition group-hover:bg-flame/60"
+                aria-hidden
+              />
+              <span
+                className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,oklch(1_0_0/0.45),transparent_55%)]"
+                aria-hidden
+              />
               <img
                 src={logoMark}
                 alt="ChimCrew"
-                className="relative h-11 w-11 rounded-full border border-flame/30 object-cover md:h-12 md:w-12"
+                className="relative h-14 w-14 rounded-full object-cover ring-1 ring-flame/40 shadow-[0_10px_25px_oklch(0_0_0/0.55),0_2px_6px_oklch(0_0_0/0.4),inset_0_2px_4px_oklch(1_0_0/0.35),inset_0_-3px_8px_oklch(0_0_0/0.45)] transition-transform duration-300 ease-out [transform:rotateX(8deg)_rotateY(-10deg)] group-hover:[transform:rotateX(4deg)_rotateY(-4deg)_scale(1.05)] md:h-16 md:w-16"
               />
-            </span>
-            <span className="hidden flex-col leading-tight md:flex">
-              <span className="font-display text-base font-extrabold tracking-tight">
-                Chim<span className="text-flame">Crew</span>
-              </span>
-              <span className="font-mono text-[9px] uppercase tracking-[0.24em] text-primary-foreground/80">
-                Ohio's chimney force
-              </span>
             </span>
           </Link>
 
@@ -208,16 +207,16 @@ export function SiteHeader() {
           <div className="hidden items-center gap-2 md:flex">
             <a
               href="tel:6145491954"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition hover:border-flame hover:text-flame"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition hover:border-flame hover:text-flame"
             >
-              <Phone className="h-3.5 w-3.5" /> (614) 549-1954
+              <Phone className="h-3.5 w-3.5 shrink-0" /> (614) 549-1954
             </a>
             <button
               type="button"
               onClick={() => openScheduleDialog()}
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-flame px-5 py-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_8px_24px_oklch(0.78_0.19_92/0.35)] transition hover:bg-white"
+              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-flame px-5 py-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_8px_24px_oklch(0.78_0.19_92/0.35)] transition hover:bg-white"
             >
-              <CalendarCheck className="h-3.5 w-3.5" /> Schedule Online
+              <CalendarCheck className="h-3.5 w-3.5 shrink-0" /> Schedule Online
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </button>
           </div>
