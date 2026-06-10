@@ -22,7 +22,8 @@ import {
   Award,
   HardHat,
 } from "lucide-react";
-import logo from "@/assets/chimcrew-logo.png";
+import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
+const logo = logoAsset.url;
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import svcSweep from "@/assets/svc/svc-sweep.jpg";
