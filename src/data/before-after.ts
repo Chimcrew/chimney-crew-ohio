@@ -6,6 +6,12 @@ import crownBefore from "@/assets/ba/crown-before.jpeg.asset.json";
 import crownAfter from "@/assets/ba/crown-after.jpeg.asset.json";
 import capBefore from "@/assets/ba/cap-before.jpeg.asset.json";
 import capAfter from "@/assets/ba/cap-after.jpeg.asset.json";
+import damperBefore from "@/assets/ba/damper-before.jpg";
+import damperAfter from "@/assets/ba/damper-after.jpg";
+import brickBefore from "@/assets/ba/brick-before.jpg";
+import brickAfter from "@/assets/ba/brick-after.jpg";
+import smokeBefore from "@/assets/ba/smoke-before.jpg";
+import smokeAfter from "@/assets/ba/smoke-after.jpg";
 
 export type BeforeAfterJob = {
   id: string;
@@ -53,5 +59,32 @@ export const BEFORE_AFTER_JOBS: BeforeAfterJob[] = [
     note: "Animal entry, water intrusion — sealed with a stainless cap and new step flashing.",
     before: capBefore.url,
     after: capAfter.url,
+  },
+  {
+    id: "damper",
+    headline: "Rusted-out damper → brand-new top-mount seal",
+    service: "Top-Mount Damper Replacement",
+    city: "Upper Arlington, OH",
+    note: "Cast iron damper seized and corroded — pulled and replaced with a stainless top-mount, sealed airtight.",
+    before: damperBefore,
+    after: damperAfter,
+  },
+  {
+    id: "brick",
+    headline: "Spalled brick stack rebuilt from the roofline up",
+    service: "Full Chimney Rebuild Above Roof",
+    city: "Hilliard, OH",
+    note: "Years of freeze-thaw shed bricks onto the lawn — rebuilt course-by-course with fresh brick and clean joints.",
+    before: brickBefore,
+    after: brickAfter,
+  },
+  {
+    id: "smoke-chamber",
+    headline: "Creosote-caked smoke chamber → smooth parge coat",
+    service: "Smoke Chamber Parge & Seal",
+    city: "Powell, OH",
+    note: "3rd-degree creosote and a rough corbeled chamber — cleaned and parged smooth to code for safer draft.",
+    before: smokeBefore,
+    after: smokeAfter,
   },
 ];
