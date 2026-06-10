@@ -887,6 +887,8 @@ function ServicesGrid() {
       headline: "We pull years of creosote out — without a speck of soot in your living room.",
       body: "Drop cloths corner to corner, HEPA-vacuum sealed at the firebox, every soot line wiped down before we leave. You get a written safety summary and a side-by-side photo.",
       includes: ["HEPA-contained sweep", "Smoke chamber & damper", "Photo safety report", "Free Level 1 visual check"],
+      image: svcSweep,
+      imageCaption: "HEPA-contained sweep, drop cloths corner-to-corner",
     },
     {
       icon: Search,
@@ -898,6 +900,8 @@ function ServicesGrid() {
       headline: "See what's hiding inside your flue — on a tablet, in plain English.",
       body: "Level 1 & Level 2 inspections with a high-res chimney camera. You watch the footage with us, we mark every crack and recommend only what your home actually needs.",
       includes: ["Full-flue HD camera scan", "Written PDF report", "Real-estate compliant", "No upsell — promise"],
+      image: svcInspect,
+      imageCaption: "Live HD chimney camera, reviewed on a tablet with you",
     },
     {
       icon: Wrench,
@@ -909,6 +913,8 @@ function ServicesGrid() {
       headline: "Crowns, mortar, liners — rebuilt to outlast another decade of freeze-thaw.",
       body: "We rebuild crowns with stainless reinforcement, repoint with weather-rated mortar, and reline with insulated stainless. Every job ships with a 5-year written workmanship warranty.",
       includes: ["Stainless-reinforced crowns", "Weather-rated mortar", "Insulated stainless liners", "5-year workmanship warranty"],
+      image: svcTuckpoint,
+      imageCaption: "Tuckpointing in fresh weather-rated mortar",
     },
     {
       icon: ShieldCheck,
@@ -920,6 +926,8 @@ function ServicesGrid() {
       headline: "Seal the chimney once. Keep rain, snow and wildlife out for years.",
       body: "Vapor-permeable waterproofing on the masonry, stainless cap sized to your flue, flashing checked and resealed. We back it with a transferable leak warranty.",
       includes: ["Stainless steel cap install", "Vapor-permeable seal", "Flashing inspection & touch-up", "Transferable leak warranty"],
+      image: svcWaterproof,
+      imageCaption: "Stainless cap sized to your flue, sealed crown",
     },
     {
       icon: HardHat,
@@ -931,10 +939,8 @@ function ServicesGrid() {
       headline: "Cracked, crumbling crown? We rebuild and seal it so water can't sneak in again.",
       body: "We grind out the failed mortar, rebuild the wash with a stainless-reinforced overlay, and finish with a flexible elastomeric seal that flexes through every Ohio freeze-thaw. Real before/after photos with every job.",
       includes: ["Crack-bridging elastomeric seal", "Stainless-reinforced overlay", "10-year crown warranty", "Before/after photo report"],
-      beforeImg: crownBefore,
-      afterImg: crownAfter,
-      beforeLabel: "Cracked & failing",
-      afterLabel: "Rebuilt & sealed",
+      image: svcCrownSeal,
+      imageCaption: "Crown rebuilt with stainless reinforcement, elastomeric sealed",
     },
     {
       icon: Wind,
@@ -946,6 +952,8 @@ function ServicesGrid() {
       headline: "Insulated stainless liner sized to your appliance — installed in a day.",
       body: "We measure your flue and appliance, drop in an insulated stainless liner from the top, and seal it at both ends. Smoke and draft tested before we leave. Lifetime liner warranty.",
       includes: ["Insulated stainless steel", "Sized to your appliance", "Smoke + draft test", "Lifetime liner warranty"],
+      image: svcLiner,
+      imageCaption: "Insulated stainless liner being lowered from the roof",
     },
     {
       icon: AlertTriangle,
@@ -957,6 +965,8 @@ function ServicesGrid() {
       headline: "Squirrels, raccoons, birds — out humanely, then capped so they stay out.",
       body: "We identify what's in the flue, remove them with species-appropriate methods, clear the nesting material, and install a stainless mesh cap so it doesn't happen again.",
       includes: ["Humane species-appropriate removal", "Nest debris cleared", "Stainless mesh cap install", "2-year exclusion warranty"],
+      image: svcAnimal,
+      imageCaption: "Stainless mesh cap installed — wildlife stays out for good",
     },
     {
       icon: Droplets,
@@ -968,6 +978,8 @@ function ServicesGrid() {
       headline: "Leak where the chimney meets the roof? Re-flash it once — done right.",
       body: "We pull the failed flashing, cut new flashing into a fresh mortar joint, and seal every transition with polyurethane — never silicone. Backed by a 5-year leak warranty.",
       includes: ["New step + counter flashing", "Cut into mortar joint", "Polyurethane sealant", "5-year leak warranty"],
+      image: svcFlashing,
+      imageCaption: "New step + counter flashing, polyurethane sealed",
     },
   ];
   const [active, setActive] = useState(0);
