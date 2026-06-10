@@ -11,9 +11,7 @@ const FROM_DOMAIN = 'notify.chimcrew.com'
 const TEMPLATE_NAME = 'new-lead-notification'
 
 const ADMIN_EMAILS = [
-  'razfarag200@gmail.com',
-  'dorelbzns@gmail.com',
-  'igrushineli67@gmail.com',
+  'office@chimcrew.com',
 ]
 
 function generateToken(): string {
