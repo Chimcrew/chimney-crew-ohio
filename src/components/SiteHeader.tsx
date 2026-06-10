@@ -78,7 +78,7 @@ export function SiteHeader() {
             : "bg-[oklch(0_0_0)]"
         } text-primary-foreground`}
       >
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 overflow-hidden px-4 py-2 md:px-8">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 md:px-8">
           {/* Flashing OPEN NOW button — absolutely centered in the header */}
           <button
             type="button"
@@ -102,7 +102,11 @@ export function SiteHeader() {
             <img
               src={logoHeader}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className="relative z-10 h-10 w-auto max-w-none origin-left object-contain transition-transform duration-300 ease-out will-change-transform md:h-12 group-hover:scale-105"
+              className={`relative z-40 h-14 w-auto max-w-none origin-left object-contain drop-shadow-[0_12px_18px_oklch(0_0_0/0.55)] transition-transform duration-500 ease-out will-change-transform md:h-20 md:-mb-6 -mb-3 ${
+                scrolled
+                  ? "[transform:perspective(800px)_rotateX(8deg)_rotateY(-6deg)_translateY(2px)_scale(1)]"
+                  : "[transform:perspective(800px)_rotateX(12deg)_rotateY(-10deg)_translateY(6px)_scale(1.08)]"
+              } group-hover:[transform:perspective(800px)_rotateX(14deg)_rotateY(-12deg)_translateY(8px)_scale(1.12)]`}
             />
           </Link>
 
