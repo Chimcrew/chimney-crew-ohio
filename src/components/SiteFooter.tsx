@@ -116,7 +116,7 @@ export function SiteFooter() {
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 text-primary" />
-                <span>Columbus · Dayton · Cincinnati · Cleveland · Pittsburgh</span>
+                <span>Columbus · Dayton · Cincinnati · Cleveland</span>
               </li>
             </ul>
           </div>

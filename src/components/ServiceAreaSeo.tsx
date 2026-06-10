@@ -30,13 +30,6 @@ export const SERVICE_CITIES = [
     blurb:
       "Chimney inspections, liner installs, and waterproofing serving Cleveland, Lakewood, Parma, Shaker Heights, and the East and West sides.",
   },
-  {
-    slug: "pittsburgh-pa",
-    name: "Pittsburgh",
-    state: "PA",
-    blurb:
-      "Cross-border chimney repair and fireplace service for Pittsburgh and the surrounding boroughs — Shadyside, Squirrel Hill, Mt. Lebanon, and Cranberry.",
-  },
 ] as const;
 
 export function ServiceAreaSeo() {
@@ -49,7 +42,7 @@ export function ServiceAreaSeo() {
             <MapPin className="h-3.5 w-3.5 text-flame" /> Service Area
           </p>
           <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
-            Local chimney service across Ohio &amp; Western PA.
+            Local chimney service across Ohio.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
             ChimCrew provides chimney repair, sweeping, inspections, and fireplace
