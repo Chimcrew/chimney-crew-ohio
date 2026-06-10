@@ -127,82 +127,147 @@ function Drone() {
 
 function ContactPage() {
   return (
-    <div className="bg-background">
-      {/* HERO + INLINE SCHEDULE */}
-      <section className="relative overflow-hidden bg-background text-primary">
-        <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.04]" aria-hidden />
-        <div className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-flame/15 blur-3xl" aria-hidden />
-        <div className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-flame/10 blur-3xl" aria-hidden />
-
-        <div className="relative mx-auto max-w-7xl px-4 pt-12 md:px-8 md:pt-16">
-          <DroneChimneyScene />
-        </div>
-
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pb-16 pt-10 md:px-8 md:pb-24 md:pt-12 lg:grid-cols-[1fr_1.05fr] lg:items-start">
-          {/* Left: intro */}
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-              <Flame className="h-3 w-3" /> Book in 60 seconds
-            </span>
-            <h1 className="mt-5 font-display text-5xl font-extrabold leading-[1.02] tracking-tight md:text-6xl">
-              Talk to a real Ohio <span className="italic text-flame">chimney crew.</span>
+    <div className="bg-background py-8 md:py-12">
+      <div className="mx-auto w-full max-w-7xl px-4 md:px-8">
+        {/* Industrial bordered container */}
+        <div className="grid grid-cols-1 border-4 border-primary bg-card shadow-[12px_12px_0px_0px_var(--color-primary)] md:grid-cols-12">
+          {/* Header / Title Block */}
+          <div className="border-b-4 border-primary bg-primary p-8 text-primary-foreground md:col-span-8 md:border-b-4 md:border-r-4 md:p-12">
+            <div className="mb-6 flex items-center gap-3">
+              <span className="h-3 w-3 animate-pulse rounded-full bg-flame" />
+              <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+                Direct Service Dispatch
+              </span>
+            </div>
+            <h1 className="font-display text-5xl font-black uppercase leading-[0.9] tracking-tight md:text-7xl">
+              Talk to a real
+              <br />
+              <span className="text-flame">Ohio Crew.</span>
             </h1>
-            <p className="mt-5 max-w-xl text-lg text-primary/70">
-              Skip the phone tag. Pick a service, pick a window, and a CSIA-certified tech will confirm with you within the hour.
+            <p className="mt-5 max-w-xl text-base font-medium text-primary-foreground/80 md:text-lg">
+              Skip the call center. Pick your service, select a window, and a CSIA-certified tech handles the rest.
             </p>
-
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              {[
-                { icon: Phone, label: "Call", value: "(614) 549-1954", href: "tel:6145491954" },
-                { icon: Mail, label: "Email", value: "hello@chimcrew.com", href: "mailto:hello@chimcrew.com" },
-                { icon: MapPin, label: "Service area", value: "Columbus · Cincinnati · Dayton · Cleveland" },
-                { icon: Clock, label: "Hours", value: "Sun–Fri · 7a–7p" },
-              ].map((c) => {
-                const Inner = (
-                  <>
-                    <span className="grid h-10 w-10 place-items-center rounded-xl bg-flame/15 text-flame ring-1 ring-flame/40">
-                      <c.icon className="h-4 w-4" />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary/55">{c.label}</p>
-                      <p className="mt-0.5 truncate font-display text-sm font-bold text-primary">{c.value}</p>
-                    </div>
-                  </>
-                );
-                return c.href ? (
-                  <a key={c.label} href={c.href} className="flex items-center gap-3 rounded-xl border-2 border-border bg-card p-3 transition hover:border-flame hover:-translate-y-0.5 hover:shadow-[0_8px_24px_oklch(0.2_0.02_60/0.08)]">
-                    {Inner}
-                  </a>
-                ) : (
-                  <div key={c.label} className="flex items-center gap-3 rounded-xl border-2 border-border bg-card p-3">
-                    {Inner}
-                  </div>
-                );
-              })}
-            </div>
-
-            <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2">
-              {[
-                { icon: ShieldCheck, label: "Licensed & insured" },
-                { icon: CalendarCheck, label: "Same-day callback" },
-                { icon: Flame, label: "Flat-rate quotes in writing" },
-              ].map((t) => (
-                <li key={t.label} className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary/60">
-                  <t.icon className="h-3 w-3 text-flame" /> {t.label}
-                </li>
-              ))}
-            </ul>
           </div>
 
-          {/* Right: inline schedule form */}
-          <div className="relative">
-            <div className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/20 blur-3xl" aria-hidden />
-            <div className="relative">
-              <ScheduleInline />
+          {/* Quick Contact Block */}
+          <div className="flex flex-col justify-between border-b-4 border-primary bg-flame p-8 md:col-span-4">
+            <div className="space-y-6">
+              <div>
+                <p className="mb-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
+                  Emergency Dispatch
+                </p>
+                <a href="tel:6145491954" className="font-display text-2xl font-black text-primary underline-offset-4 hover:underline">
+                  (614) 549-1954
+                </a>
+              </div>
+              <div>
+                <p className="mb-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
+                  Support Email
+                </p>
+                <a href="mailto:hello@chimcrew.com" className="break-all font-display text-xl font-bold text-primary underline-offset-4 hover:underline">
+                  hello@chimcrew.com
+                </a>
+              </div>
+              <div>
+                <p className="mb-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
+                  Hours
+                </p>
+                <p className="font-display text-sm font-bold uppercase text-primary">
+                  Sun – Fri · 7a – 7p
+                </p>
+              </div>
             </div>
+            <div className="mt-8 flex items-center gap-4 border-t border-primary/20 pt-8">
+              <div className="flex -space-x-2">
+                <div className="h-8 w-8 rounded-full border-2 border-flame bg-primary" />
+                <div className="h-8 w-8 rounded-full border-2 border-flame bg-primary" />
+                <div className="h-8 w-8 rounded-full border-2 border-flame bg-primary" />
+              </div>
+              <p className="text-[11px] font-bold uppercase leading-tight text-primary">
+                4 Crews active in
+                <br />
+                Columbus / Dayton
+              </p>
+            </div>
+          </div>
+
+          {/* Sidebar Trust Features */}
+          <div className="hidden border-primary bg-background p-8 md:col-span-4 md:block md:border-r-4">
+            <div className="space-y-10">
+              <div className="relative">
+                <div className="absolute -left-4 top-0 h-full w-1 bg-flame" />
+                <h3 className="mb-3 font-display text-sm font-black uppercase text-primary">
+                  Live Drone Inspection
+                </h3>
+                <p className="text-sm italic leading-relaxed text-primary/70">
+                  Every quote includes high-definition aerial footage of your chimney stack and flashing.
+                </p>
+              </div>
+
+              <DroneChimneyScene />
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="border-2 border-primary p-4 text-center">
+                  <p className="font-display text-2xl font-black text-primary">1.8k</p>
+                  <p className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-primary/70">
+                    Local Homes
+                  </p>
+                </div>
+                <div className="border-2 border-primary bg-primary p-4 text-center text-primary-foreground">
+                  <p className="font-display text-2xl font-black">CSIA</p>
+                  <p className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] opacity-80">
+                    Certified
+                  </p>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <div className="flex items-center gap-2 text-[10px] font-bold uppercase text-primary">
+                  <ShieldCheck className="h-4 w-4 text-flame" /> Fully Insured &amp; Bonded
+                </div>
+                <div className="flex items-center gap-2 text-[10px] font-bold uppercase text-primary">
+                  <CalendarCheck className="h-4 w-4 text-flame" /> Same-Day Callback
+                </div>
+                <div className="flex items-center gap-2 text-[10px] font-bold uppercase text-primary">
+                  <Flame className="h-4 w-4 text-flame" /> Flat-Rate Quotes in Writing
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Scheduler Component Area */}
+          <div className="bg-card p-6 md:col-span-8 md:p-10">
+            <div className="mb-8 flex items-center justify-between border-b-2 border-border pb-4">
+              <div className="flex items-center gap-4">
+                <div className="grid h-10 w-10 place-items-center rounded-sm bg-primary font-display font-black text-primary-foreground">
+                  01
+                </div>
+                <div>
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/55">
+                    Book your visit
+                  </p>
+                  <h2 className="font-display text-xl font-black uppercase text-primary">
+                    Select Your Service
+                  </h2>
+                </div>
+              </div>
+              <span className="hidden rounded-full bg-flame/15 px-3 py-1 font-mono text-[10px] font-black uppercase tracking-[0.18em] text-flame sm:inline-block">
+                <span className="mr-1 inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-flame align-middle" />
+                Live Availability
+              </span>
+            </div>
+
+            <ScheduleInline />
           </div>
         </div>
-      </section>
+
+        {/* Bottom Decorative Coordinates */}
+        <div className="mt-4 flex flex-wrap justify-between gap-2 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-primary/40">
+          <span>39.9612° N, 82.9988° W</span>
+          <span className="hidden sm:inline">Certified OH Chimney Force // Ref: 0092-B</span>
+          <span>Est. 1994</span>
+        </div>
+      </div>
     </div>
   );
 }
