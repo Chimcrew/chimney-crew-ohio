@@ -147,7 +147,7 @@ export function TimedLeadPopup() {
                     type="tel"
                     value={form.phone}
                     onChange={(v) => setForm({ ...form, phone: v })}
-                    placeholder="(614) 555-0123"
+                    placeholder="(614) 549-1954"
                   />
                 </div>
                 <div>
@@ -174,7 +174,7 @@ export function TimedLeadPopup() {
                 </button>
 
                 <a
-                  href="tel:+16145550123"
+                  href="tel:+16145491954"
                   className="flex items-center justify-center gap-2 text-xs text-muted-foreground transition hover:text-primary"
                 >
                   <Phone className="h-3.5 w-3.5" /> Or call us directly

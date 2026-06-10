@@ -68,10 +68,10 @@ export function LeadForm({ id = "quote" }: { id?: string }) {
           </ul>
 
           <a
-            href="tel:6146834422"
+            href="tel:6145491954"
             className="mt-6 inline-flex items-center gap-2 rounded-xl border-2 border-primary px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
-            <Phone className="h-4 w-4" /> Or call now · (614) 683-4422
+            <Phone className="h-4 w-4" /> Or call now · (614) 549-1954
           </a>
 
           <div className="relative mt-8 hidden lg:block">
@@ -105,7 +105,7 @@ export function LeadForm({ id = "quote" }: { id?: string }) {
                 Our crew will call {data.phone} within the hour during business hours.
               </p>
               <a
-                href="tel:6146834422"
+                href="tel:6145491954"
                 className="mt-6 inline-flex items-center gap-2 rounded-xl bg-flame px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary"
               >
                 <Phone className="h-4 w-4" /> Or call us now
@@ -145,7 +145,7 @@ export function LeadForm({ id = "quote" }: { id?: string }) {
                   </p>
                   <div className="mt-6 grid gap-3">
                     <Input id="lead-name" label="Full name" value={data.name} onChange={(v) => setData({ ...data, name: v })} placeholder="Jane Smith" />
-                    <Input id="lead-phone" label="Phone" type="tel" value={data.phone} onChange={(v) => setData({ ...data, phone: v })} placeholder="(614) 555-0123" />
+                    <Input id="lead-phone" label="Phone" type="tel" value={data.phone} onChange={(v) => setData({ ...data, phone: v })} placeholder="(614) 549-1954" />
                     <Input id="lead-zip" label="ZIP (optional)" value={data.zip} onChange={(v) => setData({ ...data, zip: v })} placeholder="43215" />
                   </div>
                 </div>

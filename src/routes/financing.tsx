@@ -179,10 +179,10 @@ function FinancingPage() {
                   <CalendarCheck className="h-5 w-5" /> Schedule Your Free Inspection
                 </Link>
                 <a
-                  href="tel:6146834422"
+                  href="tel:6145491954"
                   className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.04] px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
                 >
-                  <Phone className="h-4 w-4 text-flame" /> Call (614) 683-4422
+                  <Phone className="h-4 w-4 text-flame" /> Call (614) 549-1954
                 </a>
 
                 <p className="mt-4 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
