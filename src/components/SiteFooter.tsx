@@ -113,7 +113,7 @@ export function SiteFooter() {
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 text-primary" />
-                <a href="mailto:hello@chimcrew.com" className="hover:text-primary">hello@chimcrew.com</a>
+                <a href="mailto:office@chimcrew.com" className="hover:text-primary">office@chimcrew.com</a>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="mt-0.5 h-4 w-4 text-primary" />

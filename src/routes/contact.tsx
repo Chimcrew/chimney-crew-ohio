@@ -165,8 +165,8 @@ function ContactPage() {
                 <p className="mb-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
                   Support Email
                 </p>
-                <a href="mailto:hello@chimcrew.com" className="break-all font-display text-xl font-bold text-primary underline-offset-4 hover:underline">
-                  hello@chimcrew.com
+                <a href="mailto:office@chimcrew.com" className="break-all font-display text-xl font-bold text-primary underline-offset-4 hover:underline">
+                  office@chimcrew.com
                 </a>
               </div>
               <div>
