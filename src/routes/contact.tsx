@@ -41,7 +41,7 @@ function ContactPage() {
                 { icon: Phone, label: "Call", value: "(614) 549-1954", href: "tel:6145491954" },
                 { icon: Mail, label: "Email", value: "hello@chimcrew.com", href: "mailto:hello@chimcrew.com" },
                 { icon: MapPin, label: "Service area", value: "Columbus · Cincinnati · Dayton · Cleveland" },
-                { icon: Clock, label: "Hours", value: "Mon–Sat · 7a–7p" },
+                { icon: Clock, label: "Hours", value: "Sun–Fri · 7a–7p" },
               ].map((c) => {
                 const Inner = (
                   <>
