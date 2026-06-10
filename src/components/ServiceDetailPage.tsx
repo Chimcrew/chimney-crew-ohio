@@ -289,9 +289,9 @@ function Hero({
                 <Icon className="h-7 w-7" />
               </div>
               <p className="mt-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                {service.quoteOnly ? "Investment" : "Starting at"}
+                {service.quoteOnly ? "Investment" : "Flat rate"}
               </p>
-              <p className={`mt-1 font-display ${service.quoteOnly ? "text-4xl" : "text-6xl"} ${accent.text}`}>{priceLabel}</p>
+              <p className={`mt-1 font-display ${service.quoteOnly ? "text-4xl" : "text-5xl"} ${accent.text}`}>{priceLabel}</p>
               <p className="mt-2 text-sm text-muted-foreground">{service.tagline}</p>
               <div className="mt-6 flex items-center gap-2 border-t border-border pt-4 text-sm text-muted-foreground">
                 <ShieldCheck className="h-4 w-4 text-flame" /> Workmanship guarantee
@@ -317,8 +317,7 @@ function Hero({
           </p>
           <h1 className="mt-3 text-5xl md:text-7xl">{service.hero.headline}</h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{service.hero.sub}</p>
-          <div className="mt-8 inline-flex items-center gap-3 rounded-sm border-2 border-border bg-card px-5 py-3 font-mono text-sm">
-            <span className="text-muted-foreground">Flat rate</span>
+          <div className="mt-8 inline-flex items-center gap-3 rounded-sm border-2 border-flame/40 bg-card/80 px-5 py-3 font-mono text-sm backdrop-blur">
             <span className={`font-display text-2xl ${accent.text}`}>{priceLabel}</span>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
