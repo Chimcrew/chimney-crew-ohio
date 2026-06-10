@@ -93,13 +93,17 @@ export function SiteHeader() {
           </button>
 
           {/* Brand */}
-          <Link to="/" className="group flex items-center" aria-label="ChimCrew home">
+          <Link
+            to="/"
+            className="group flex items-center outline-none [-webkit-tap-highlight-color:transparent] focus-visible:ring-2 focus-visible:ring-flame/60 rounded-md"
+            aria-label="ChimCrew home"
+          >
             <img
               src={logoAsset.url}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className={`relative h-14 w-auto object-contain transition-transform duration-500 ease-out will-change-transform md:h-16 ${
-                scrolled ? "scale-105 drop-shadow-[0_10px_24px_oklch(0.78_0.19_92/0.45)]" : "drop-shadow-[0_4px_12px_oklch(0_0_0/0.4)]"
-              } group-hover:scale-110 group-hover:drop-shadow-[0_12px_28px_oklch(0.78_0.19_92/0.55)]`}
+              className={`relative h-20 w-auto object-contain transition-transform duration-500 ease-out will-change-transform md:h-24 ${
+                scrolled ? "scale-105" : ""
+              } group-hover:scale-110 group-active:scale-105`}
             />
           </Link>
 
