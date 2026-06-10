@@ -37,6 +37,32 @@ const slots = [
 
 export function ScheduleWidget() {
   const [open, setOpen] = useState(false);
+  useEffect(() => {
+    const onOpen = () => setOpen(true);
+    window.addEventListener(OPEN_EVENT, onOpen);
+    return () => window.removeEventListener(OPEN_EVENT, onOpen);
+  }, []);
+  return (
+    <>
+      <StickyCta onClick={() => setOpen(true)} />
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-h-[92vh] overflow-y-auto border-2 border-flame/30 bg-card p-0 sm:max-w-xl [&>button.absolute]:right-3 [&>button.absolute]:top-3 [&>button.absolute]:z-10 [&>button.absolute]:flex [&>button.absolute]:h-9 [&>button.absolute]:w-9 [&>button.absolute]:items-center [&>button.absolute]:justify-center [&>button.absolute]:rounded-full [&>button.absolute]:border [&>button.absolute]:border-flame/40 [&>button.absolute]:bg-primary/70 [&>button.absolute]:text-primary-foreground [&>button.absolute]:opacity-100 [&>button.absolute]:shadow-[0_4px_12px_oklch(0_0_0/0.4)] [&>button.absolute]:backdrop-blur [&>button.absolute]:transition [&>button.absolute:hover]:bg-flame [&>button.absolute:hover]:text-primary [&>button.absolute_svg]:h-5 [&>button.absolute_svg]:w-5">
+          <ScheduleFlow variant="dialog" onDone={() => setOpen(false)} />
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+}
+
+export function ScheduleInline() {
+  return (
+    <div className="overflow-hidden rounded-2xl border-2 border-flame/30 bg-card shadow-[0_30px_80px_-30px_oklch(0_0_0/0.3)]">
+      <ScheduleFlow variant="inline" />
+    </div>
+  );
+}
+
+function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDone?: () => void }) {
   const [step, setStep] = useState(0);
   const [serviceId, setServiceId] = useState<string>("sweep");
   const [date, setDate] = useState<Date | undefined>();
@@ -47,15 +73,6 @@ export function ScheduleWidget() {
   const [notes, setNotes] = useState("");
   const [rush, setRush] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-
-  useEffect(() => {
-    const onOpen = () => {
-      setStep(0);
-      setOpen(true);
-    };
-    window.addEventListener(OPEN_EVENT, onOpen);
-    return () => window.removeEventListener(OPEN_EVENT, onOpen);
-  }, []);
 
   const svc = services.find((s) => s.id === serviceId)!;
   const slt = slots.find((s) => s.id === slot)!;
@@ -83,7 +100,7 @@ export function ScheduleWidget() {
     }).catch(() => {});
     setTimeout(() => {
       setSubmitting(false);
-      setOpen(false);
+      onDone?.();
       toast.success("You're on the schedule!", {
         description: `${svc.label} · ${date ? format(date, "EEE, MMM d") : ""} · ${slt.time}. We'll text ${phone} within an hour to confirm.`,
         duration: 7000,
@@ -92,19 +109,15 @@ export function ScheduleWidget() {
       setStep(0);
       setName(""); setPhone(""); setAddress(""); setNotes(""); setRush(false);
     }, 700);
-  }, [svc, slt, date, phone]);
+  }, [svc, slt, date, phone, onDone, address, name, notes, rush]);
 
   return (
     <>
-      <StickyCta onClick={() => { setStep(0); setOpen(true); }} />
-
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-h-[92vh] overflow-y-auto border-2 border-flame/30 bg-card p-0 sm:max-w-xl [&>button.absolute]:right-3 [&>button.absolute]:top-3 [&>button.absolute]:z-10 [&>button.absolute]:flex [&>button.absolute]:h-9 [&>button.absolute]:w-9 [&>button.absolute]:items-center [&>button.absolute]:justify-center [&>button.absolute]:rounded-full [&>button.absolute]:border [&>button.absolute]:border-flame/40 [&>button.absolute]:bg-primary/70 [&>button.absolute]:text-primary-foreground [&>button.absolute]:opacity-100 [&>button.absolute]:shadow-[0_4px_12px_oklch(0_0_0/0.4)] [&>button.absolute]:backdrop-blur [&>button.absolute]:transition [&>button.absolute:hover]:bg-flame [&>button.absolute:hover]:text-primary [&>button.absolute_svg]:h-5 [&>button.absolute_svg]:w-5">
           {/* Header bar */}
-          <div className="relative overflow-hidden rounded-t-lg bg-primary px-6 py-5 text-primary-foreground">
+          <div className="relative overflow-hidden bg-primary px-6 py-5 text-primary-foreground">
             <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-flame/30 blur-3xl" />
             <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.07]" />
-            <DialogHeader className="relative space-y-1.5 text-left">
+            <div className="relative space-y-1.5 text-left">
               <div className="flex items-center gap-2">
                 <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/15 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
                   <span className="flex h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Live availability
@@ -113,17 +126,17 @@ export function ScheduleWidget() {
                   Step {step + 1} / 3
                 </span>
               </div>
-              <DialogTitle className="font-display text-2xl font-extrabold tracking-tight md:text-3xl">
+              <h3 className="font-display text-2xl font-extrabold tracking-tight md:text-3xl">
                 {step === 0 && "What do you need handled?"}
                 {step === 1 && "Pick your window."}
                 {step === 2 && "Where should we roll up?"}
-              </DialogTitle>
-              <DialogDescription className="text-primary-foreground/70">
+              </h3>
+              <p className="text-primary-foreground/70">
                 {step === 0 && "Choose the service — we'll confirm a flat-rate quote before any work starts."}
                 {step === 1 && "We text to confirm within the hour. If we're late, your inspection is on us."}
                 {step === 2 && "One quick form. A real Ohio sweep calls you back — no robots."}
-              </DialogDescription>
-            </DialogHeader>
+              </p>
+            </div>
 
             {/* progress bar */}
             <div className="relative mt-4 h-1 w-full overflow-hidden rounded-full bg-white/10">
@@ -297,8 +310,6 @@ export function ScheduleWidget() {
               <span className="inline-flex items-center gap-1.5"><Phone className="h-3 w-3 text-flame" /> (614) 549-1954</span>
             </div>
           </div>
-        </DialogContent>
-      </Dialog>
     </>
   );
 }
