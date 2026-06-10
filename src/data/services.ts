@@ -15,6 +15,13 @@ import {
   Home as HomeIcon,
   type LucideIcon,
 } from "lucide-react";
+import fireplaceCozy from "@/assets/fireplace-cozy.jpg";
+import afterChimney from "@/assets/after-chimney.jpg";
+import beforeChimney from "@/assets/before-chimney.jpg";
+import crownAfter from "@/assets/crown-after.jpg";
+import crownBefore from "@/assets/crown-before.jpg";
+import droneInspection from "@/assets/drone-inspection.jpg";
+import leakRooftop from "@/assets/leak-chimney-rooftop.jpg";
 
 export type ServiceVariant =
   | "maintenance"
@@ -59,6 +66,36 @@ export interface ServiceSpec {
 export function formatFromPrice(s: Pick<ServiceSpec, "price" | "quoteOnly">): string {
   if (s.quoteOnly) return "Custom Quote";
   return `From ${s.price}`;
+}
+
+/** Hero photo for a service — picks the most relevant real photo we have. */
+export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
+  switch (s.slug) {
+    case "crown-tuckpoint":
+      return crownAfter;
+    case "level-1-inspection":
+    case "level-2-inspection":
+      return droneInspection;
+    case "waterproofing":
+    case "flashing-repair":
+      return leakRooftop;
+    case "liner-install":
+    case "firebox-rebuild":
+    case "smoke-chamber-parging":
+      return afterChimney;
+    case "cap-install":
+    case "animal-removal":
+      return beforeChimney;
+    case "gas-fireplace-service":
+    case "chimney-sweep":
+    case "annual-plan":
+    case "damper-repair":
+      return fireplaceCozy;
+    case "dryer-vent-cleaning":
+      return afterChimney;
+    default:
+      return fireplaceCozy;
+  }
 }
 
 export const SERVICES: ServiceSpec[] = [

@@ -285,6 +285,11 @@
   }
   .animate-fire-zoom { animation: fire-zoom 14s ease-in-out infinite; }
 
+  @keyframes hero-zoom {
+    0% { transform: scale(1.02); }
+    100% { transform: scale(1.12); }
+  }
+
   .grain::after {
     content: "";
     position: absolute; inset: 0;
