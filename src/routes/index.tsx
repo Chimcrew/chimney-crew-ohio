@@ -1011,28 +1011,32 @@ function ServicesGrid() {
             key={active}
             className="reveal relative overflow-hidden rounded-3xl border-2 border-primary/15 bg-card shadow-flame"
           >
-            {/* Before / after split */}
-            <div className="relative grid grid-cols-2 overflow-hidden">
-              <div className="relative">
-                <img src={(s as any).beforeImg ?? beforeImg} alt={`${s.title} — before`} className="aspect-[3/4] w-full bg-primary object-contain md:aspect-[4/5]" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
-                <span className="absolute left-2 top-2 rounded-full bg-primary/90 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary-foreground backdrop-blur md:left-3 md:top-3 md:px-2.5 md:py-1 md:text-[10px]">
-                  {(s as any).beforeLabel ?? "Before"}
+            {/* Service hero photo */}
+            <div className="relative overflow-hidden">
+              <img
+                src={s.image}
+                alt={`${s.title} — ${s.imageCaption}`}
+                width={1280}
+                height={960}
+                loading="lazy"
+                className="aspect-[16/10] w-full bg-primary object-cover md:aspect-[16/9]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
+              <div className="absolute inset-x-4 bottom-4 flex flex-wrap items-center justify-between gap-2 md:inset-x-6 md:bottom-6">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/50 bg-primary/85 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-flame backdrop-blur">
+                  <Icon className="h-3 w-3" /> {s.title}
+                </span>
+                <span className="hidden rounded-full bg-flame/95 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-primary backdrop-blur md:inline-flex">
+                  Real ChimCrew job
                 </span>
               </div>
-              <div className="relative">
-                <img src={(s as any).afterImg ?? afterImg} alt={`${s.title} — after`} className="aspect-[3/4] w-full bg-primary object-contain md:aspect-[4/5]" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-flame/10 to-transparent" />
-                <span className="absolute right-2 top-2 rounded-full bg-flame px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary backdrop-blur md:right-3 md:top-3 md:px-2.5 md:py-1 md:text-[10px]">
-                  {(s as any).afterLabel ?? "After"}
-                </span>
-              </div>
-              {/* divider */}
-              <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-flame shadow-[0_0_18px_oklch(0.78_0.19_92/0.7)]" />
-              <div className="pointer-events-none absolute left-1/2 top-1/2 grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-flame bg-primary text-flame md:h-10 md:w-10">
-                <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4" />
-              </div>
+              <p className="absolute inset-x-4 top-4 max-w-[80%] font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/90 drop-shadow md:hidden">
+                {s.imageCaption}
+              </p>
             </div>
+            <p className="hidden border-b border-border bg-card px-6 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground md:block">
+              {s.imageCaption}
+            </p>
             {/* Meta strip — now below images, no overlap */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-secondary/60 px-4 py-2.5">
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
