@@ -4,12 +4,15 @@ import {
   CheckCircle2,
   Phone,
   CalendarCheck,
-  Clock,
   AlertTriangle,
   ArrowRight,
   ShieldCheck,
   Droplets,
   Sparkles,
+  BadgeDollarSign,
+  Star,
+  MapPin,
+  ClipboardCheck,
 } from "lucide-react";
 import { ACCENT_CLASSES, getService, type ServiceSpec } from "@/data/services";
 import { LeadForm } from "@/components/LeadForm";
@@ -24,6 +27,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
   const Icon = service.icon;
   const accent = ACCENT_CLASSES[service.accent];
   const variant = service.variant;
+  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
 
   return (
     <>
@@ -51,14 +55,19 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
         <div className="mx-auto grid max-w-7xl gap-12 px-4 md:grid-cols-[1fr_1.2fr] md:px-8">
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-primary">// What you get</p>
-            <h2 className="mt-3 text-4xl">Everything in the {service.price} price.</h2>
+            <h2 className="mt-3 text-4xl">
+              {service.quoteOnly
+                ? `Everything included in your ${service.shortTitle.toLowerCase()}.`
+                : `Everything in the ${service.price} price.`}
+            </h2>
             <p className="mt-4 text-muted-foreground">
-              No add-ons, no nickel-and-diming. The number you see is the
-              number you pay — and you'll know it before we lift a tool.
+              {service.quoteOnly
+                ? "Every project starts with a free on-site inspection and a written, flat-rate quote. No surprises, no upsells — just the work your home actually needs."
+                : "No add-ons, no nickel-and-diming. The number you see is the number you pay — and you'll know it before we lift a tool."}
             </p>
-            <div className="mt-6 flex items-center gap-6 text-sm">
+            <div className="mt-6 flex flex-wrap items-center gap-6 text-sm">
               <span className="inline-flex items-center gap-2 text-muted-foreground">
-                <Clock className="h-4 w-4" /> {service.duration}
+                <BadgeDollarSign className="h-4 w-4 text-flame" /> Upfront flat-rate pricing
               </span>
               <span className="inline-flex items-center gap-2 text-muted-foreground">
                 <ShieldCheck className="h-4 w-4" /> Workmanship guarantee
@@ -95,6 +104,9 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
         <BenefitsBlock service={service} accent={accent} />
       )}
 
+      {/* Why homeowners choose ChimCrew — universal trust block */}
+      <WhyChimCrew accent={accent} />
+
       {/* FAQs */}
       <section className="border-b border-border py-16">
         <div className="mx-auto max-w-4xl px-4 md:px-8">
@@ -114,57 +126,86 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {/* Related services */}
       <Related service={service} />
 
-      {/* Final CTA */}
-      <section className={`relative overflow-hidden py-20 ${variant === "emergency" ? "bg-flame text-white" : "bg-primary text-primary-foreground"}`}>
-        <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-        <div className="relative mx-auto max-w-5xl px-4 text-center md:px-8">
-          <p className="font-mono text-xs uppercase tracking-widest opacity-70">// Ready when you are</p>
-          <h2 className="mt-3 text-5xl md:text-6xl">{ctaHeadline(variant, service.shortTitle)}</h2>
-          <p className="mx-auto mt-4 max-w-xl opacity-80">
-            Real Ohioans answer the phone. Same-week scheduling, transparent pricing.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <button
-              onClick={openSchedule}
-              className="inline-flex items-center gap-2 rounded-sm border-2 border-current bg-current px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:opacity-90"
-            >
-              <span className={variant === "emergency" ? "text-flame" : "text-primary"}>
-                <CalendarCheck className="h-4 w-4" />
-              </span>
-              <span className={variant === "emergency" ? "text-flame" : "text-primary"}>
-                Schedule free inspection
-              </span>
-            </button>
-            <a
-              href="tel:6146834422"
-              className="inline-flex items-center gap-2 rounded-sm border-2 border-current px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:bg-current/10"
-            >
-              <Phone className="h-4 w-4" /> Call (614) 683-4422
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* Final CTA — unified across all service pages */}
+      <FinalServiceCta ctaLabel={ctaLabel} />
 
       <LeadForm />
     </>
   );
 }
 
-function ctaHeadline(v: ServiceSpec["variant"], title: string) {
-  switch (v) {
-    case "emergency":
-      return `Need ${title.toLowerCase()} today?`;
-    case "plan":
-      return "Lock in your year of peace of mind.";
-    case "inspection":
-      return "Book your inspection. Sleep easier tonight.";
-    case "install":
-      return `Spec your ${title.toLowerCase()} the right way.`;
-    case "repair":
-      return "Stop the damage before winter does more.";
-    default:
-      return `Book your ${title.toLowerCase()}.`;
-  }
+function WhyChimCrew({ accent }: { accent: (typeof ACCENT_CLASSES)[keyof typeof ACCENT_CLASSES] }) {
+  const items = [
+    { icon: ShieldCheck, label: "Licensed & Insured", desc: "Fully covered, CSIA-credentialed crew." },
+    { icon: CalendarCheck, label: "Same-Day Availability", desc: "Call before noon, we'll be there." },
+    { icon: ClipboardCheck, label: "Detailed Inspection Reports", desc: "Photos + written findings every visit." },
+    { icon: BadgeDollarSign, label: "Upfront Pricing", desc: "Flat-rate quote in writing — no surprises." },
+    { icon: Star, label: "5-Star Customer Service", desc: "Hundreds of 5-star reviews from Ohio homeowners." },
+    { icon: MapPin, label: "Locally Owned & Operated", desc: "Family-run from right here in Ohio." },
+  ];
+  return (
+    <section className="relative overflow-hidden border-b-2 border-flame/30 bg-primary py-20 text-primary-foreground">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
+      <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-flame/15 blur-3xl" aria-hidden />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>// Why ChimCrew</p>
+        <h2 className="mt-3 max-w-3xl font-display text-4xl md:text-5xl">
+          Why Ohio Homeowners <span className="text-flame">Choose ChimCrew</span>
+        </h2>
+        <p className="mt-4 max-w-2xl text-primary-foreground/80">
+          One local crew, doing the job right the first time — backed in writing.
+        </p>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((it) => (
+            <div
+              key={it.label}
+              className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.04] p-5 backdrop-blur transition hover:border-flame/60 hover:bg-white/[0.07]"
+            >
+              <div className="absolute inset-x-0 top-0 h-0.5 bg-flame/0 transition group-hover:bg-flame" aria-hidden />
+              <div className="grid h-11 w-11 place-items-center rounded-lg bg-flame/15 text-flame ring-1 ring-flame/30">
+                <it.icon className="h-5 w-5" />
+              </div>
+              <h3 className="mt-4 font-display text-lg font-extrabold">{it.label}</h3>
+              <p className="mt-1 text-sm text-primary-foreground/75">{it.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
+  return (
+    <section className="relative overflow-hidden bg-primary py-24 text-primary-foreground">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
+      <div className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-flame/20 blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute -left-32 -bottom-32 h-[28rem] w-[28rem] rounded-full bg-flame/15 blur-3xl" aria-hidden />
+      <div className="relative mx-auto max-w-4xl px-4 text-center md:px-8">
+        <p className="font-mono text-xs uppercase tracking-[0.22em] text-flame">// Free inspection</p>
+        <h2 className="mt-4 font-display text-5xl font-extrabold leading-[1.02] md:text-6xl">
+          Not Sure What's Wrong With <span className="text-flame">Your Chimney?</span>
+        </h2>
+        <p className="mx-auto mt-5 max-w-2xl text-lg text-primary-foreground/85">
+          Schedule a free inspection and we'll show you exactly what needs attention — with photos and a written report.
+        </p>
+        <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+          <a
+            href="tel:6146834422"
+            className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-white/5 px-7 font-display text-sm font-bold uppercase tracking-widest text-primary-foreground backdrop-blur transition hover:border-flame hover:bg-white/10 sm:w-auto"
+          >
+            <Phone className="h-4 w-4" /> Call Now · (614) 683-4422
+          </a>
+          <button
+            onClick={openSchedule}
+            className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-flame px-7 font-display text-sm font-extrabold uppercase tracking-widest text-primary shadow-[0_18px_40px_oklch(0.78_0.19_92/0.35)] transition hover:bg-white sm:w-auto"
+          >
+            <CalendarCheck className="h-4 w-4" /> {ctaLabel}
+          </button>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function Hero({
@@ -177,6 +218,8 @@ function Hero({
   Icon: ServiceSpec["icon"];
 }) {
   const v = service.variant;
+  const priceLabel = service.quoteOnly ? "Custom Quote" : service.price;
+  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
 
   // Repair / Emergency: red/amber alert hero with split layout
   if (v === "emergency" || v === "repair") {
@@ -196,7 +239,7 @@ function Hero({
                 onClick={openSchedule}
                 className={`inline-flex items-center gap-2 rounded-sm border-2 ${accent.border} ${accent.bg} px-6 py-4 font-display text-sm uppercase tracking-widest text-primary-foreground transition hover:opacity-90`}
               >
-                <CalendarCheck className="h-4 w-4" /> Schedule free inspection
+                <CalendarCheck className="h-4 w-4" /> {ctaLabel}
               </button>
               <a
                 href="tel:6146834422"
@@ -213,11 +256,13 @@ function Hero({
               <div className={`grid h-14 w-14 place-items-center rounded-sm ${accent.bg} text-primary-foreground`}>
                 <Icon className="h-7 w-7" />
               </div>
-              <p className="mt-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">Starting at</p>
-              <p className={`mt-1 font-display text-6xl ${accent.text}`}>{service.price}</p>
+              <p className="mt-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                {service.quoteOnly ? "Investment" : "Starting at"}
+              </p>
+              <p className={`mt-1 font-display ${service.quoteOnly ? "text-4xl" : "text-6xl"} ${accent.text}`}>{priceLabel}</p>
               <p className="mt-2 text-sm text-muted-foreground">{service.tagline}</p>
               <div className="mt-6 flex items-center gap-2 border-t border-border pt-4 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" /> Typical {service.duration}
+                <ShieldCheck className="h-4 w-4 text-flame" /> Workmanship guarantee
               </div>
             </div>
           </div>
@@ -242,16 +287,14 @@ function Hero({
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{service.hero.sub}</p>
           <div className="mt-8 inline-flex items-center gap-3 rounded-sm border-2 border-border bg-card px-5 py-3 font-mono text-sm">
             <span className="text-muted-foreground">Flat rate</span>
-            <span className={`font-display text-2xl ${accent.text}`}>{service.price}</span>
-            <span className="text-muted-foreground">·</span>
-            <span className="text-muted-foreground">{service.duration}</span>
+            <span className={`font-display text-2xl ${accent.text}`}>{priceLabel}</span>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <button
               onClick={openSchedule}
               className={`inline-flex items-center gap-2 rounded-sm border-2 ${accent.border} ${accent.bg} px-6 py-4 font-display text-sm uppercase tracking-widest text-primary-foreground transition hover:opacity-90`}
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule free inspection
+              <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
               href="tel:6146834422"
@@ -280,11 +323,11 @@ function Hero({
           <div className="mt-10 grid gap-4 md:max-w-2xl md:grid-cols-3">
             <div className="rounded-sm border-2 border-white/15 bg-white/5 p-4">
               <p className="font-mono text-[0.65rem] uppercase tracking-widest opacity-70">Investment</p>
-              <p className={`mt-1 font-display text-2xl ${accent.text}`}>{service.price}</p>
+              <p className={`mt-1 font-display text-2xl ${accent.text}`}>{priceLabel}</p>
             </div>
             <div className="rounded-sm border-2 border-white/15 bg-white/5 p-4">
-              <p className="font-mono text-[0.65rem] uppercase tracking-widest opacity-70">Job time</p>
-              <p className="mt-1 font-display text-2xl">{service.duration}</p>
+              <p className="font-mono text-[0.65rem] uppercase tracking-widest opacity-70">Inspection</p>
+              <p className="mt-1 font-display text-2xl">Free</p>
             </div>
             <div className="rounded-sm border-2 border-white/15 bg-white/5 p-4">
               <p className="font-mono text-[0.65rem] uppercase tracking-widest opacity-70">Warranty</p>
@@ -296,7 +339,7 @@ function Hero({
               onClick={openSchedule}
               className={`inline-flex items-center gap-2 rounded-sm border-2 ${accent.border} ${accent.bg} px-6 py-4 font-display text-sm uppercase tracking-widest text-primary-foreground transition hover:opacity-90`}
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule free inspection
+              <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
               href="tel:6146834422"
@@ -326,7 +369,7 @@ function Hero({
               onClick={openSchedule}
               className={`inline-flex items-center gap-2 rounded-sm border-2 ${accent.border} ${accent.bg} px-6 py-4 font-display text-sm uppercase tracking-widest text-primary-foreground transition hover:opacity-90`}
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule free inspection
+              <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
               href="tel:6146834422"
@@ -342,10 +385,7 @@ function Hero({
           </div>
           <p className="mt-6 font-display text-3xl">{service.tagline}</p>
           <div className="mt-6 flex items-baseline gap-3">
-            <span className={`font-display text-5xl ${accent.text}`}>{service.price}</span>
-            <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              {service.duration}
-            </span>
+            <span className={`font-display ${service.quoteOnly ? "text-3xl" : "text-5xl"} ${accent.text}`}>{priceLabel}</span>
           </div>
         </div>
       </div>

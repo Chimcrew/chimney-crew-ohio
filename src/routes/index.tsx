@@ -44,6 +44,7 @@ import { TrustBar } from "@/components/TrustBar";
 import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
+import { DroneInspection } from "@/components/DroneInspection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -124,6 +125,7 @@ function Index() {
       <TrustBar />
       <TrustMarquee />
       <RecentProjects />
+      <DroneInspection />
       <ServiceAreaSeo />
       <ServiceArea />
       <WhyChooseUs />
