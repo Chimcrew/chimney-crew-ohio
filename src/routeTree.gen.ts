@@ -14,6 +14,7 @@ import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ChimneyRepairColumbusRouteImport } from './routes/chimney-repair-columbus'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BeforeAfterRouteImport } from './routes/before-after'
 import { Route as IndexRouteImport } from './routes/index'
@@ -55,6 +56,11 @@ const FinancingRoute = FinancingRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ChimneyRepairColumbusRoute = ChimneyRepairColumbusRouteImport.update({
+  id: '/chimney-repair-columbus',
+  path: '/chimney-repair-columbus',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogRoute = BlogRouteImport.update({
@@ -150,6 +156,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/before-after': typeof BeforeAfterRoute
   '/blog': typeof BlogRouteWithChildren
+  '/chimney-repair-columbus': typeof ChimneyRepairColumbusRoute
   '/contact': typeof ContactRoute
   '/financing': typeof FinancingRoute
   '/gallery': typeof GalleryRoute
@@ -174,6 +181,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/before-after': typeof BeforeAfterRoute
   '/blog': typeof BlogRouteWithChildren
+  '/chimney-repair-columbus': typeof ChimneyRepairColumbusRoute
   '/contact': typeof ContactRoute
   '/financing': typeof FinancingRoute
   '/gallery': typeof GalleryRoute
@@ -199,6 +207,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/before-after': typeof BeforeAfterRoute
   '/blog': typeof BlogRouteWithChildren
+  '/chimney-repair-columbus': typeof ChimneyRepairColumbusRoute
   '/contact': typeof ContactRoute
   '/financing': typeof FinancingRoute
   '/gallery': typeof GalleryRoute
@@ -225,6 +234,7 @@ export interface FileRouteTypes {
     | '/'
     | '/before-after'
     | '/blog'
+    | '/chimney-repair-columbus'
     | '/contact'
     | '/financing'
     | '/gallery'
@@ -249,6 +259,7 @@ export interface FileRouteTypes {
     | '/'
     | '/before-after'
     | '/blog'
+    | '/chimney-repair-columbus'
     | '/contact'
     | '/financing'
     | '/gallery'
@@ -273,6 +284,7 @@ export interface FileRouteTypes {
     | '/'
     | '/before-after'
     | '/blog'
+    | '/chimney-repair-columbus'
     | '/contact'
     | '/financing'
     | '/gallery'
@@ -298,6 +310,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BeforeAfterRoute: typeof BeforeAfterRoute
   BlogRoute: typeof BlogRouteWithChildren
+  ChimneyRepairColumbusRoute: typeof ChimneyRepairColumbusRoute
   ContactRoute: typeof ContactRoute
   FinancingRoute: typeof FinancingRoute
   GalleryRoute: typeof GalleryRoute
@@ -353,6 +366,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/chimney-repair-columbus': {
+      id: '/chimney-repair-columbus'
+      path: '/chimney-repair-columbus'
+      fullPath: '/chimney-repair-columbus'
+      preLoaderRoute: typeof ChimneyRepairColumbusRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog': {
@@ -491,6 +511,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BeforeAfterRoute: BeforeAfterRoute,
   BlogRoute: BlogRouteWithChildren,
+  ChimneyRepairColumbusRoute: ChimneyRepairColumbusRoute,
   ContactRoute: ContactRoute,
   FinancingRoute: FinancingRoute,
   GalleryRoute: GalleryRoute,
