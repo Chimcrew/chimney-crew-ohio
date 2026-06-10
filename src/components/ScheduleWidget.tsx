@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { formatFromPrice, getService } from "@/data/services";
 
 const OPEN_EVENT = "chimcrew:open-schedule";
 
@@ -17,13 +18,19 @@ export function openScheduleDialog() {
   }
 }
 
+// Prices are derived from SERVICES so the widget never drifts from
+// src/data/services.ts. Add a new row by referencing a service slug.
+const priceFromSlug = (slug: string, fallback = "Custom Quote"): string => {
+  const svc = getService(slug);
+  return svc ? formatFromPrice(svc).replace(/^From\s+/, "") : fallback;
+};
 const services = [
-  { id: "sweep", label: "Chimney Sweep", icon: Sparkles, from: "$189" },
-  { id: "inspect", label: "Camera Inspection", icon: Search, from: "$129" },
-  { id: "repair", label: "Repair / Tuckpoint", icon: Wrench, from: "$650" },
-  { id: "waterproof", label: "Waterproof & Cap", icon: ShieldCheck, from: "$349" },
-  { id: "crown", label: "Crown Seal Repair", icon: HardHat, from: "$489" },
-  { id: "leak", label: "Leak Diagnosis", icon: Droplets, from: "$99" },
+  { id: "sweep", label: "Chimney Sweep", icon: Sparkles, from: priceFromSlug("chimney-sweep") },
+  { id: "inspect", label: "Camera Inspection", icon: Search, from: priceFromSlug("level-2-inspection") },
+  { id: "repair", label: "Repair / Tuckpoint", icon: Wrench, from: priceFromSlug("crown-tuckpoint") },
+  { id: "waterproof", label: "Waterproof & Cap", icon: ShieldCheck, from: priceFromSlug("waterproofing") },
+  { id: "crown", label: "Crown Seal Repair", icon: HardHat, from: priceFromSlug("crown-tuckpoint") },
+  { id: "leak", label: "Leak Diagnosis", icon: Droplets, from: priceFromSlug("flashing-repair") },
   { id: "unsure", label: "I'm not sure yet", icon: Flame, from: "Let us help" },
 ];
 

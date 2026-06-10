@@ -38,7 +38,7 @@ import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json"
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import { RecentProjects } from "@/components/RecentProjectsSection";
-import { SERVICES } from "@/data/services";
+import { SERVICES, formatFromPrice, getService } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
 import { TrustBar } from "@/components/TrustBar";
 import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
@@ -99,7 +99,7 @@ export const Route = createFileRoute("/")({
               name: "What does it cost?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Our new-customer inspection is $69. Sweeps start at $179 and most repairs are completed under $600. Honest, flat-rate pricing — no hidden fees.",
+                text: "Our chimney sweep and Level 1 inspection start at $118. Most repairs are completed under $600. Honest, flat-rate pricing — no hidden fees.",
               },
             },
             {
@@ -866,13 +866,19 @@ function FireHazards() {
    SERVICES GRID — with before/after
    ============================================================ */
 function ServicesGrid() {
+  // Single source of truth — pull pricing from src/data/services.ts so the
+  // home grid never drifts from the service detail pages.
+  const priceOf = (slug: string): string => {
+    const svc = getService(slug);
+    return svc ? formatFromPrice(svc) : "Custom Quote";
+  };
   const services = [
     {
       icon: Sparkles,
       title: "Chimney Sweep",
       slug: "chimney-sweep",
       tag: "Most booked",
-      priceFrom: "$189",
+      priceFrom: priceOf("chimney-sweep"),
       duration: "60–90 min",
       headline: "We pull years of creosote out — without a speck of soot in your living room.",
       body: "Drop cloths corner to corner, HEPA-vacuum sealed at the firebox, every soot line wiped down before we leave. You get a written safety summary and a side-by-side photo.",
@@ -883,7 +889,7 @@ function ServicesGrid() {
       title: "Camera Inspection",
       slug: "level-2-inspection",
       tag: "For home sales",
-      priceFrom: "$129",
+      priceFrom: priceOf("level-2-inspection"),
       duration: "45–60 min",
       headline: "See what's hiding inside your flue — on a tablet, in plain English.",
       body: "Level 1 & Level 2 inspections with a high-res chimney camera. You watch the footage with us, we mark every crack and recommend only what your home actually needs.",
@@ -894,7 +900,7 @@ function ServicesGrid() {
       title: "Repair & Tuckpoint",
       slug: "crown-tuckpoint",
       tag: "Built for OH winters",
-      priceFrom: "$650",
+      priceFrom: priceOf("crown-tuckpoint"),
       duration: "1–2 days",
       headline: "Crowns, mortar, liners — rebuilt to outlast another decade of freeze-thaw.",
       body: "We rebuild crowns with stainless reinforcement, repoint with weather-rated mortar, and reline with insulated stainless. Every job ships with a 5-year written workmanship warranty.",
@@ -905,7 +911,7 @@ function ServicesGrid() {
       title: "Waterproof & Cap",
       slug: "waterproofing",
       tag: "Stops leaks for good",
-      priceFrom: "$349",
+      priceFrom: priceOf("waterproofing"),
       duration: "Same day",
       headline: "Seal the chimney once. Keep rain, snow and wildlife out for years.",
       body: "Vapor-permeable waterproofing on the masonry, stainless cap sized to your flue, flashing checked and resealed. We back it with a transferable leak warranty.",
@@ -916,7 +922,7 @@ function ServicesGrid() {
       title: "Crown Seal Repair",
       slug: "crown-tuckpoint",
       tag: "Stops cracks for good",
-      priceFrom: "$489",
+      priceFrom: priceOf("crown-tuckpoint"),
       duration: "Same day",
       headline: "Cracked, crumbling crown? We rebuild and seal it so water can't sneak in again.",
       body: "We grind out the failed mortar, rebuild the wash with a stainless-reinforced overlay, and finish with a flexible elastomeric seal that flexes through every Ohio freeze-thaw. Real before/after photos with every job.",
@@ -931,7 +937,7 @@ function ServicesGrid() {
       title: "Stainless Liner Install",
       slug: "liner-install",
       tag: "Code-compliant",
-      priceFrom: "$1,890",
+      priceFrom: priceOf("liner-install"),
       duration: "1 day",
       headline: "Insulated stainless liner sized to your appliance — installed in a day.",
       body: "We measure your flue and appliance, drop in an insulated stainless liner from the top, and seal it at both ends. Smoke and draft tested before we leave. Lifetime liner warranty.",
@@ -942,7 +948,7 @@ function ServicesGrid() {
       title: "Animal Removal",
       slug: "animal-removal",
       tag: "Humane + capped",
-      priceFrom: "$289",
+      priceFrom: priceOf("animal-removal"),
       duration: "1–2 hours",
       headline: "Squirrels, raccoons, birds — out humanely, then capped so they stay out.",
       body: "We identify what's in the flue, remove them with species-appropriate methods, clear the nesting material, and install a stainless mesh cap so it doesn't happen again.",
@@ -953,7 +959,7 @@ function ServicesGrid() {
       title: "Flashing Repair",
       slug: "flashing-repair",
       tag: "Stops roof leaks",
-      priceFrom: "$425",
+      priceFrom: priceOf("flashing-repair"),
       duration: "Same day",
       headline: "Leak where the chimney meets the roof? Re-flash it once — done right.",
       body: "We pull the failed flashing, cut new flashing into a fresh mortar joint, and seal every transition with polyurethane — never silicone. Backed by a 5-year leak warranty.",
@@ -1055,7 +1061,9 @@ function ServicesGrid() {
                   </p>
                   <p className="mt-1 font-display text-4xl font-extrabold text-primary">
                     {s.priceFrom}
-                    <span className="ml-1 text-sm font-medium text-muted-foreground">+ tax</span>
+                    {/^\$/.test(s.priceFrom) && (
+                      <span className="ml-1 text-sm font-medium text-muted-foreground">+ tax</span>
+                    )}
                   </p>
                   <p className="mt-2 text-xs text-muted-foreground">
                     Quoted in writing before we start. No surprises, ever.
@@ -1315,7 +1323,7 @@ function ScheduleOnline() {
                   Limited-time
                 </p>
                 <p className="font-display text-2xl font-bold text-primary-foreground">
-                  $69 chimney inspection
+                  $118 chimney inspection
                 </p>
                 <p className="mt-1 text-xs text-primary-foreground/80">
                   New Ohio customers only · expires 11/30
@@ -1512,7 +1520,7 @@ function Faq() {
     },
     {
       q: "What does it cost?",
-      a: "Our new-customer inspection is $69. Sweeps start at $179 and most repairs are completed under $600. Honest, flat-rate pricing — no hidden fees.",
+      a: "Our chimney sweep and Level 1 inspection start at $118. Most repairs are completed under $600. Honest, flat-rate pricing — no hidden fees.",
     },
     {
       q: "Are you really local?",
