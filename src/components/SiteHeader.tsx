@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown } from "lucide-react";
-import logoMark from "@/assets/chimcrew-logo.png";
+import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
 import { openScheduleDialog } from "@/components/ScheduleWidget";
 import { SERVICES, ACCENT_CLASSES } from "@/data/services";
 
@@ -94,21 +94,13 @@ export function SiteHeader() {
 
           {/* Brand */}
           <Link to="/" className="group flex items-center" aria-label="ChimCrew home">
-            <span className="relative inline-block [perspective:600px]">
-              <span
-                className="absolute -inset-2 rounded-full bg-flame/40 blur-xl transition group-hover:bg-flame/60"
-                aria-hidden
-              />
-              <span
-                className="absolute inset-0 rounded-full bg-[radial-gradient(circle_at_30%_25%,oklch(1_0_0/0.45),transparent_55%)]"
-                aria-hidden
-              />
-              <img
-                src={logoMark}
-                alt="ChimCrew"
-                className="relative h-14 w-14 rounded-full object-cover ring-1 ring-flame/40 shadow-[0_10px_25px_oklch(0_0_0/0.55),0_2px_6px_oklch(0_0_0/0.4),inset_0_2px_4px_oklch(1_0_0/0.35),inset_0_-3px_8px_oklch(0_0_0/0.45)] transition-transform duration-300 ease-out [transform:rotateX(8deg)_rotateY(-10deg)] group-hover:[transform:rotateX(4deg)_rotateY(-4deg)_scale(1.05)] md:h-16 md:w-16"
-              />
-            </span>
+            <img
+              src={logoAsset.url}
+              alt="ChimCrew — Chimney Repair & Inspection"
+              className={`relative h-14 w-auto object-contain transition-transform duration-500 ease-out will-change-transform md:h-16 ${
+                scrolled ? "scale-105 drop-shadow-[0_10px_24px_oklch(0.78_0.19_92/0.45)]" : "drop-shadow-[0_4px_12px_oklch(0_0_0/0.4)]"
+              } group-hover:scale-110 group-hover:drop-shadow-[0_12px_28px_oklch(0.78_0.19_92/0.55)]`}
+            />
           </Link>
 
           {/* Nav pill */}
