@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Clock, CalendarCheck, ShieldCheck, Flame } from "lucide-react";
 import { ScheduleInline } from "@/components/ScheduleWidget";
+import { TrustBadges } from "@/components/TrustBadges";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -258,6 +259,11 @@ function ContactPage() {
             </div>
 
             <ScheduleInline />
+
+            {/* Trust badges directly under the lead form */}
+            <div className="mt-6">
+              <TrustBadges />
+            </div>
           </div>
         </div>
 
