@@ -67,7 +67,7 @@ const PHOTOS: Photo[] = [
   { src: p09, alt: "Cracked chimney crown before rebuild", title: "Crown Before Rebuild", city: "Grove City, OH", tag: "Crown", size: "square" },
 ];
 
-const FILTERS = ["All", "Crown", "Liner", "Tuckpointing", "Cap", "Crew"] as const;
+const FILTERS = ["All", "Crown", "Liner", "Tuckpointing", "Cap", "Waterproof", "Crew"] as const;
 
 function GalleryPage() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
