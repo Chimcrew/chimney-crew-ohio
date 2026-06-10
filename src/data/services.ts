@@ -344,7 +344,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "animal-removal",
-    warranty: "Lifetime Cap Warranty",
+    warranty: "5-Year Cap Warranty",
     title: "Animal Removal & Cap Install",
     shortTitle: "Animal Removal",
     tagline: "Get them out humanely. Keep them out for good.",
@@ -362,7 +362,7 @@ export const SERVICES: ServiceSpec[] = [
       "Humane removal, no traps left behind",
       "Stainless steel cap installed same visit",
       "Sanitization and odor treatment available",
-      "Lifetime cap warranty",
+      "5-year cap warranty",
     ],
     process: [
       { title: "Locate", desc: "Camera or rooftop look to identify what's in there." },
@@ -385,7 +385,7 @@ export const SERVICES: ServiceSpec[] = [
   },
   {
     slug: "cap-install",
-    warranty: "Lifetime Warranty",
+    warranty: "5-Year Warranty",
     title: "Chimney Cap Installation",
     shortTitle: "Cap Install",
     tagline: "The cheapest insurance policy on your house.",
@@ -403,7 +403,7 @@ export const SERVICES: ServiceSpec[] = [
       "304 or 316 stainless steel only",
       "Bolted, not glued — won't blow off",
       "Mesh spark arrestor included",
-      "Lifetime warranty",
+      "5-year warranty",
     ],
     process: [
       { title: "Measure", desc: "We size to your exact flue opening." },
