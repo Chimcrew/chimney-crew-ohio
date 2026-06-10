@@ -56,14 +56,19 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
         <div className="mx-auto grid max-w-7xl gap-12 px-4 md:grid-cols-[1fr_1.2fr] md:px-8">
           <div>
             <p className="font-mono text-xs uppercase tracking-widest text-primary">// What you get</p>
-            <h2 className="mt-3 text-4xl">Everything in the {service.price} price.</h2>
+            <h2 className="mt-3 text-4xl">
+              {service.quoteOnly
+                ? `Everything included in your ${service.shortTitle.toLowerCase()}.`
+                : `Everything in the ${service.price} price.`}
+            </h2>
             <p className="mt-4 text-muted-foreground">
-              No add-ons, no nickel-and-diming. The number you see is the
-              number you pay — and you'll know it before we lift a tool.
+              {service.quoteOnly
+                ? "Every project starts with a free on-site inspection and a written, flat-rate quote. No surprises, no upsells — just the work your home actually needs."
+                : "No add-ons, no nickel-and-diming. The number you see is the number you pay — and you'll know it before we lift a tool."}
             </p>
-            <div className="mt-6 flex items-center gap-6 text-sm">
+            <div className="mt-6 flex flex-wrap items-center gap-6 text-sm">
               <span className="inline-flex items-center gap-2 text-muted-foreground">
-                <Clock className="h-4 w-4" /> {service.duration}
+                <BadgeDollarSign className="h-4 w-4 text-flame" /> Upfront flat-rate pricing
               </span>
               <span className="inline-flex items-center gap-2 text-muted-foreground">
                 <ShieldCheck className="h-4 w-4" /> Workmanship guarantee
@@ -182,6 +187,8 @@ function Hero({
   Icon: ServiceSpec["icon"];
 }) {
   const v = service.variant;
+  const priceLabel = service.quoteOnly ? "Custom Quote" : service.price;
+  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
 
   // Repair / Emergency: red/amber alert hero with split layout
   if (v === "emergency" || v === "repair") {
@@ -218,11 +225,13 @@ function Hero({
               <div className={`grid h-14 w-14 place-items-center rounded-sm ${accent.bg} text-primary-foreground`}>
                 <Icon className="h-7 w-7" />
               </div>
-              <p className="mt-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">Starting at</p>
-              <p className={`mt-1 font-display text-6xl ${accent.text}`}>{service.price}</p>
+              <p className="mt-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                {service.quoteOnly ? "Investment" : "Starting at"}
+              </p>
+              <p className={`mt-1 font-display ${service.quoteOnly ? "text-4xl" : "text-6xl"} ${accent.text}`}>{priceLabel}</p>
               <p className="mt-2 text-sm text-muted-foreground">{service.tagline}</p>
               <div className="mt-6 flex items-center gap-2 border-t border-border pt-4 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" /> Workmanship guarantee
+                <ShieldCheck className="h-4 w-4 text-flame" /> Workmanship guarantee
               </div>
             </div>
           </div>
@@ -247,9 +256,7 @@ function Hero({
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{service.hero.sub}</p>
           <div className="mt-8 inline-flex items-center gap-3 rounded-sm border-2 border-border bg-card px-5 py-3 font-mono text-sm">
             <span className="text-muted-foreground">Flat rate</span>
-            <span className={`font-display text-2xl ${accent.text}`}>{service.price}</span>
-            <span className="text-muted-foreground">·</span>
-            <span className="text-muted-foreground">{service.duration}</span>
+            <span className={`font-display text-2xl ${accent.text}`}>{priceLabel}</span>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <button
@@ -285,11 +292,11 @@ function Hero({
           <div className="mt-10 grid gap-4 md:max-w-2xl md:grid-cols-3">
             <div className="rounded-sm border-2 border-white/15 bg-white/5 p-4">
               <p className="font-mono text-[0.65rem] uppercase tracking-widest opacity-70">Investment</p>
-              <p className={`mt-1 font-display text-2xl ${accent.text}`}>{service.price}</p>
+              <p className={`mt-1 font-display text-2xl ${accent.text}`}>{priceLabel}</p>
             </div>
             <div className="rounded-sm border-2 border-white/15 bg-white/5 p-4">
-              <p className="font-mono text-[0.65rem] uppercase tracking-widest opacity-70">Job time</p>
-              <p className="mt-1 font-display text-2xl">{service.duration}</p>
+              <p className="font-mono text-[0.65rem] uppercase tracking-widest opacity-70">Inspection</p>
+              <p className="mt-1 font-display text-2xl">Free</p>
             </div>
             <div className="rounded-sm border-2 border-white/15 bg-white/5 p-4">
               <p className="font-mono text-[0.65rem] uppercase tracking-widest opacity-70">Warranty</p>
@@ -347,10 +354,7 @@ function Hero({
           </div>
           <p className="mt-6 font-display text-3xl">{service.tagline}</p>
           <div className="mt-6 flex items-baseline gap-3">
-            <span className={`font-display text-5xl ${accent.text}`}>{service.price}</span>
-            <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              {service.duration}
-            </span>
+            <span className={`font-display ${service.quoteOnly ? "text-3xl" : "text-5xl"} ${accent.text}`}>{priceLabel}</span>
           </div>
         </div>
       </div>
