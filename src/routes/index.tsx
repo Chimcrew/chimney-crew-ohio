@@ -25,10 +25,14 @@ import {
 import logo from "@/assets/chimcrew-logo.png";
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
-import beforeImg from "@/assets/projects/project-07-flue-before.jpg";
-import afterImg from "@/assets/projects/project-08-cap-finished.jpg";
-import crownBefore from "@/assets/projects/project-09-crown-before.jpg";
-import crownAfter from "@/assets/projects/project-05-crown-rebuild.jpg";
+import svcSweep from "@/assets/svc/svc-sweep.jpg";
+import svcInspect from "@/assets/svc/svc-inspect.jpg";
+import svcTuckpoint from "@/assets/svc/svc-tuckpoint.jpg";
+import svcWaterproof from "@/assets/svc/svc-waterproof.jpg";
+import svcCrownSeal from "@/assets/svc/svc-crown-seal.jpg";
+import svcLiner from "@/assets/svc/svc-liner.jpg";
+import svcAnimal from "@/assets/svc/svc-animal.jpg";
+import svcFlashing from "@/assets/svc/svc-flashing.jpg";
 import projectHero from "@/assets/projects/project-01-double-crown.jpg";
 import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg";
 import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
@@ -883,6 +887,8 @@ function ServicesGrid() {
       headline: "We pull years of creosote out — without a speck of soot in your living room.",
       body: "Drop cloths corner to corner, HEPA-vacuum sealed at the firebox, every soot line wiped down before we leave. You get a written safety summary and a side-by-side photo.",
       includes: ["HEPA-contained sweep", "Smoke chamber & damper", "Photo safety report", "Free Level 1 visual check"],
+      image: svcSweep,
+      imageCaption: "HEPA-contained sweep, drop cloths corner-to-corner",
     },
     {
       icon: Search,
@@ -894,6 +900,8 @@ function ServicesGrid() {
       headline: "See what's hiding inside your flue — on a tablet, in plain English.",
       body: "Level 1 & Level 2 inspections with a high-res chimney camera. You watch the footage with us, we mark every crack and recommend only what your home actually needs.",
       includes: ["Full-flue HD camera scan", "Written PDF report", "Real-estate compliant", "No upsell — promise"],
+      image: svcInspect,
+      imageCaption: "Live HD chimney camera, reviewed on a tablet with you",
     },
     {
       icon: Wrench,
@@ -905,6 +913,8 @@ function ServicesGrid() {
       headline: "Crowns, mortar, liners — rebuilt to outlast another decade of freeze-thaw.",
       body: "We rebuild crowns with stainless reinforcement, repoint with weather-rated mortar, and reline with insulated stainless. Every job ships with a 5-year written workmanship warranty.",
       includes: ["Stainless-reinforced crowns", "Weather-rated mortar", "Insulated stainless liners", "5-year workmanship warranty"],
+      image: svcTuckpoint,
+      imageCaption: "Tuckpointing in fresh weather-rated mortar",
     },
     {
       icon: ShieldCheck,
@@ -916,6 +926,8 @@ function ServicesGrid() {
       headline: "Seal the chimney once. Keep rain, snow and wildlife out for years.",
       body: "Vapor-permeable waterproofing on the masonry, stainless cap sized to your flue, flashing checked and resealed. We back it with a transferable leak warranty.",
       includes: ["Stainless steel cap install", "Vapor-permeable seal", "Flashing inspection & touch-up", "Transferable leak warranty"],
+      image: svcWaterproof,
+      imageCaption: "Stainless cap sized to your flue, sealed crown",
     },
     {
       icon: HardHat,
@@ -927,10 +939,8 @@ function ServicesGrid() {
       headline: "Cracked, crumbling crown? We rebuild and seal it so water can't sneak in again.",
       body: "We grind out the failed mortar, rebuild the wash with a stainless-reinforced overlay, and finish with a flexible elastomeric seal that flexes through every Ohio freeze-thaw. Real before/after photos with every job.",
       includes: ["Crack-bridging elastomeric seal", "Stainless-reinforced overlay", "10-year crown warranty", "Before/after photo report"],
-      beforeImg: crownBefore,
-      afterImg: crownAfter,
-      beforeLabel: "Cracked & failing",
-      afterLabel: "Rebuilt & sealed",
+      image: svcCrownSeal,
+      imageCaption: "Crown rebuilt with stainless reinforcement, elastomeric sealed",
     },
     {
       icon: Wind,
@@ -942,6 +952,8 @@ function ServicesGrid() {
       headline: "Insulated stainless liner sized to your appliance — installed in a day.",
       body: "We measure your flue and appliance, drop in an insulated stainless liner from the top, and seal it at both ends. Smoke and draft tested before we leave. Lifetime liner warranty.",
       includes: ["Insulated stainless steel", "Sized to your appliance", "Smoke + draft test", "Lifetime liner warranty"],
+      image: svcLiner,
+      imageCaption: "Insulated stainless liner being lowered from the roof",
     },
     {
       icon: AlertTriangle,
@@ -953,6 +965,8 @@ function ServicesGrid() {
       headline: "Squirrels, raccoons, birds — out humanely, then capped so they stay out.",
       body: "We identify what's in the flue, remove them with species-appropriate methods, clear the nesting material, and install a stainless mesh cap so it doesn't happen again.",
       includes: ["Humane species-appropriate removal", "Nest debris cleared", "Stainless mesh cap install", "2-year exclusion warranty"],
+      image: svcAnimal,
+      imageCaption: "Stainless mesh cap installed — wildlife stays out for good",
     },
     {
       icon: Droplets,
@@ -964,6 +978,8 @@ function ServicesGrid() {
       headline: "Leak where the chimney meets the roof? Re-flash it once — done right.",
       body: "We pull the failed flashing, cut new flashing into a fresh mortar joint, and seal every transition with polyurethane — never silicone. Backed by a 5-year leak warranty.",
       includes: ["New step + counter flashing", "Cut into mortar joint", "Polyurethane sealant", "5-year leak warranty"],
+      image: svcFlashing,
+      imageCaption: "New step + counter flashing, polyurethane sealed",
     },
   ];
   const [active, setActive] = useState(0);
@@ -995,28 +1011,32 @@ function ServicesGrid() {
             key={active}
             className="reveal relative overflow-hidden rounded-3xl border-2 border-primary/15 bg-card shadow-flame"
           >
-            {/* Before / after split */}
-            <div className="relative grid grid-cols-2 overflow-hidden">
-              <div className="relative">
-                <img src={(s as any).beforeImg ?? beforeImg} alt={`${s.title} — before`} className="aspect-[3/4] w-full bg-primary object-contain md:aspect-[4/5]" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent" />
-                <span className="absolute left-2 top-2 rounded-full bg-primary/90 px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary-foreground backdrop-blur md:left-3 md:top-3 md:px-2.5 md:py-1 md:text-[10px]">
-                  {(s as any).beforeLabel ?? "Before"}
+            {/* Service hero photo */}
+            <div className="relative overflow-hidden">
+              <img
+                src={s.image}
+                alt={`${s.title} — ${s.imageCaption}`}
+                width={1280}
+                height={960}
+                loading="lazy"
+                className="aspect-[16/10] w-full bg-primary object-cover md:aspect-[16/9]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/10 to-transparent" />
+              <div className="absolute inset-x-4 bottom-4 flex flex-wrap items-center justify-between gap-2 md:inset-x-6 md:bottom-6">
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/50 bg-primary/85 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-flame backdrop-blur">
+                  <Icon className="h-3 w-3" /> {s.title}
+                </span>
+                <span className="hidden rounded-full bg-flame/95 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-primary backdrop-blur md:inline-flex">
+                  Real ChimCrew job
                 </span>
               </div>
-              <div className="relative">
-                <img src={(s as any).afterImg ?? afterImg} alt={`${s.title} — after`} className="aspect-[3/4] w-full bg-primary object-contain md:aspect-[4/5]" />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-l from-flame/10 to-transparent" />
-                <span className="absolute right-2 top-2 rounded-full bg-flame px-2 py-0.5 font-mono text-[9px] uppercase tracking-widest text-primary backdrop-blur md:right-3 md:top-3 md:px-2.5 md:py-1 md:text-[10px]">
-                  {(s as any).afterLabel ?? "After"}
-                </span>
-              </div>
-              {/* divider */}
-              <div className="pointer-events-none absolute inset-y-0 left-1/2 w-px -translate-x-1/2 bg-flame shadow-[0_0_18px_oklch(0.78_0.19_92/0.7)]" />
-              <div className="pointer-events-none absolute left-1/2 top-1/2 grid h-8 w-8 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-flame bg-primary text-flame md:h-10 md:w-10">
-                <ArrowRight className="h-3.5 w-3.5 md:h-4 md:w-4" />
-              </div>
+              <p className="absolute inset-x-4 top-4 max-w-[80%] font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/90 drop-shadow md:hidden">
+                {s.imageCaption}
+              </p>
             </div>
+            <p className="hidden border-b border-border bg-card px-6 py-2.5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground md:block">
+              {s.imageCaption}
+            </p>
             {/* Meta strip — now below images, no overlap */}
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border bg-secondary/60 px-4 py-2.5">
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
