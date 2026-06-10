@@ -132,7 +132,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
                 <CalendarCheck className="h-4 w-4" />
               </span>
               <span className={variant === "emergency" ? "text-flame" : "text-primary"}>
-                Schedule free inspection
+                {ctaLabel}
               </span>
             </button>
             <a
@@ -196,7 +196,7 @@ function Hero({
                 onClick={openSchedule}
                 className={`inline-flex items-center gap-2 rounded-sm border-2 ${accent.border} ${accent.bg} px-6 py-4 font-display text-sm uppercase tracking-widest text-primary-foreground transition hover:opacity-90`}
               >
-                <CalendarCheck className="h-4 w-4" /> Schedule free inspection
+                <CalendarCheck className="h-4 w-4" /> {ctaLabel}
               </button>
               <a
                 href="tel:6146834422"
@@ -217,7 +217,7 @@ function Hero({
               <p className={`mt-1 font-display text-6xl ${accent.text}`}>{service.price}</p>
               <p className="mt-2 text-sm text-muted-foreground">{service.tagline}</p>
               <div className="mt-6 flex items-center gap-2 border-t border-border pt-4 text-sm text-muted-foreground">
-                <Clock className="h-4 w-4" /> Typical {service.duration}
+                <Clock className="h-4 w-4" /> Workmanship guarantee
               </div>
             </div>
           </div>
@@ -251,7 +251,7 @@ function Hero({
               onClick={openSchedule}
               className={`inline-flex items-center gap-2 rounded-sm border-2 ${accent.border} ${accent.bg} px-6 py-4 font-display text-sm uppercase tracking-widest text-primary-foreground transition hover:opacity-90`}
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule free inspection
+              <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
               href="tel:6146834422"
@@ -296,7 +296,7 @@ function Hero({
               onClick={openSchedule}
               className={`inline-flex items-center gap-2 rounded-sm border-2 ${accent.border} ${accent.bg} px-6 py-4 font-display text-sm uppercase tracking-widest text-primary-foreground transition hover:opacity-90`}
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule free inspection
+              <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
               href="tel:6146834422"
@@ -326,7 +326,7 @@ function Hero({
               onClick={openSchedule}
               className={`inline-flex items-center gap-2 rounded-sm border-2 ${accent.border} ${accent.bg} px-6 py-4 font-display text-sm uppercase tracking-widest text-primary-foreground transition hover:opacity-90`}
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule free inspection
+              <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
               href="tel:6146834422"
