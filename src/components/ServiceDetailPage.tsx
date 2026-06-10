@@ -89,6 +89,8 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
 
   return (
     <section className="relative isolate overflow-hidden bg-primary text-primary-foreground">
+      {/* Black brick texture — chimney bricks behind content */}
+      <BrickBackdrop />
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="relative z-10 border-b border-white/5">
         <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-4 font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60 md:px-8">
