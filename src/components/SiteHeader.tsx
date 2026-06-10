@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown } from "lucide-react";
-import logoCutout from "@/assets/chimcrew-logo-cutout-v2.png";
+import logoHeader from "@/assets/chimcrew-logo-header-crop.png";
 import { openScheduleDialog } from "@/components/ScheduleWidget";
 import { SERVICES, ACCENT_CLASSES } from "@/data/services";
 
@@ -99,9 +99,9 @@ export function SiteHeader() {
             aria-label="ChimCrew home"
           >
             <img
-              src={logoCutout}
+              src={logoHeader}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className={`relative z-10 h-32 w-auto origin-left object-contain transition-transform duration-500 ease-out will-change-transform md:h-36 ${
+              className={`relative z-10 h-auto w-24 max-w-none origin-left object-contain transition-transform duration-500 ease-out will-change-transform md:w-32 ${
                 scrolled
                   ? "[transform:perspective(900px)_rotateX(-7deg)_rotateY(9deg)_translateY(-5px)_scale(1.08)]"
                   : "[transform:perspective(900px)_rotateX(0deg)_rotateY(0deg)_translateY(0)_scale(1)]"
