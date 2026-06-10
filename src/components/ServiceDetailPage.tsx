@@ -17,6 +17,7 @@ import {
   ACCENT_CLASSES,
   getService,
   formatFromPrice,
+  warrantyFor,
   type ServiceSpec,
 } from "@/data/services";
 
@@ -128,10 +129,10 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
             <div className="h-10 w-px bg-white/10" aria-hidden />
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
-                Guarantee
+                Warranty
               </p>
-              <p className="mt-1 font-display text-lg font-bold text-primary-foreground">
-                In writing
+              <p className="mt-1 font-display text-lg font-bold text-flame">
+                {warrantyFor(service)}
               </p>
             </div>
             <div className="hidden h-10 w-px bg-white/10 sm:block" aria-hidden />
@@ -310,7 +311,7 @@ function Overview({ service }: { service: ServiceSpec }) {
           <div className="grid grid-cols-2 gap-6 border-t border-border pt-6 sm:grid-cols-3">
             <Stat label="Price" value={formatFromPrice(service)} />
             <Stat label="Crew Size" value="2 Techs" />
-            <Stat label="Warranty" value="In Writing" />
+            <Stat label="Warranty" value={warrantyFor(service)} />
           </div>
         </div>
       </div>
