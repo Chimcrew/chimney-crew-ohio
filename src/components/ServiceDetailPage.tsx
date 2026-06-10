@@ -20,6 +20,7 @@ import {
   warrantyFor,
   type ServiceSpec,
 } from "@/data/services";
+import { TrustBadges } from "@/components/TrustBadges";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -45,6 +46,9 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {/* WHAT'S INCLUDED — magazine columns with big numerals */}
       <Included service={service} />
 
+      {/* Inline conversion block — keeps CTA reachable without scrolling back up */}
+      <InlineRepairCta />
+
       {/* PROCESS — horizontal stepper with big numerals */}
       <Process service={service} />
 
@@ -60,6 +64,9 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {service.benefits && service.benefits.length > 0 && (
         <BenefitsBlock service={service} />
       )}
+
+      {/* Second inline CTA before final dark band */}
+      <InlineRepairCta variant="flame" />
 
       {/* Pull-quote testimonial */}
       <PullQuote service={service} />
@@ -788,6 +795,67 @@ export function NotFoundService() {
       >
         See all services <ChevronRight className="h-4 w-4" />
       </Link>
+    </section>
+  );
+}
+
+/* ---------- INLINE REPAIR CTA ---------- */
+
+function InlineRepairCta({ variant = "dark" }: { variant?: "dark" | "flame" }) {
+  const flame = variant === "flame";
+  return (
+    <section
+      className={
+        flame
+          ? "border-y-2 border-flame/30 bg-flame py-12 text-primary"
+          : "border-y-2 border-border bg-primary py-12 text-primary-foreground"
+      }
+    >
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-4 md:flex-row md:px-8">
+        <div className="text-center md:text-left">
+          <p
+            className={
+              flame
+                ? "font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-primary/70"
+                : "font-mono text-[11px] font-bold uppercase tracking-[0.3em] text-flame"
+            }
+          >
+            // Don't wait
+          </p>
+          <h3 className="mt-2 font-display text-3xl font-extrabold leading-tight md:text-4xl">
+            Need Chimney Repair?
+          </h3>
+          <p className={flame ? "mt-2 text-sm font-semibold text-primary/80 md:text-base" : "mt-2 text-sm text-primary-foreground/80 md:text-base"}>
+            Book Your Free Chimney Inspection Today.
+          </p>
+        </div>
+        <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <button
+            type="button"
+            onClick={openSchedule}
+            className={
+              flame
+                ? "inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary-foreground shadow-[0_10px_30px_oklch(0_0_0/0.25)] transition hover:-translate-y-0.5"
+                : "inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] transition hover:-translate-y-0.5 hover:bg-white"
+            }
+          >
+            <CalendarCheck className="h-4 w-4" /> Schedule Inspection
+          </button>
+          <a
+            href="tel:6145491954"
+            className={
+              flame
+                ? "inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+                : "inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-white/[0.04] px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
+            }
+          >
+            <Phone className="h-4 w-4 text-flame" /> (614) 549-1954
+          </a>
+        </div>
+      </div>
+      <div className="mx-auto mt-6 max-w-3xl px-4 md:px-8">
+        <TrustBadges variant={flame ? "dark" : "light"} />
+      </div>
     </section>
   );
 }

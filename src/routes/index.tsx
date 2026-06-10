@@ -436,7 +436,7 @@ function Hero() {
                 href="#quote"
                 className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-flame px-8 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white sm:w-auto sm:py-5"
               >
-                <CalendarCheck className="h-5 w-5" /> Get Free Estimate
+                <CalendarCheck className="h-5 w-5" /> Book Free Inspection
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </a>
               <a
@@ -452,7 +452,7 @@ function Hero() {
               <div className="flex items-center gap-2">
                 <span className="flex h-2 w-2 animate-pulse rounded-full bg-flame" />
                 <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
-                  Free estimate · 30 sec
+                  Free inspection · 30 sec
                 </span>
               </div>
               <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
@@ -614,7 +614,7 @@ function WhyChooseUs() {
             to="/contact"
             className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground"
           >
-            <CalendarCheck className="h-4 w-4" /> Get Free Estimate
+            <CalendarCheck className="h-4 w-4" /> Book Free Inspection
           </Link>
           <a
             href="tel:6145491954"
@@ -1442,7 +1442,7 @@ function Testimonials() {
             to="/contact"
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-6 py-3.5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground"
           >
-            <CalendarCheck className="h-4 w-4" /> Get Free Estimate
+            <CalendarCheck className="h-4 w-4" /> Book Free Inspection
           </Link>
         </div>
 
