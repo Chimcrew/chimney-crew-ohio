@@ -436,13 +436,14 @@ function Hero() {
 
             {/* CTAs — full-width on mobile, inline on desktop */}
             <div className="grid grid-cols-1 gap-3 pt-1 sm:flex sm:flex-wrap">
-              <a
-                href="#quote"
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
                 className="group relative inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-xl bg-flame px-8 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white sm:w-auto sm:py-5"
               >
                 <CalendarCheck className="h-5 w-5" /> Book Free Inspection
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              </a>
+              </button>
               <a
                 href="tel:6145491954"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.03] px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame sm:w-auto"
