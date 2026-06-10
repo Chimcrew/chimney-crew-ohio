@@ -20,6 +20,7 @@ import {
   warrantyFor,
   type ServiceSpec,
 } from "@/data/services";
+import { TrustBadges } from "@/components/TrustBadges";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -45,6 +46,9 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {/* WHAT'S INCLUDED — magazine columns with big numerals */}
       <Included service={service} />
 
+      {/* Inline conversion block — keeps CTA reachable without scrolling back up */}
+      <InlineRepairCta />
+
       {/* PROCESS — horizontal stepper with big numerals */}
       <Process service={service} />
 
@@ -60,6 +64,9 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {service.benefits && service.benefits.length > 0 && (
         <BenefitsBlock service={service} />
       )}
+
+      {/* Second inline CTA before final dark band */}
+      <InlineRepairCta variant="flame" />
 
       {/* Pull-quote testimonial */}
       <PullQuote service={service} />
