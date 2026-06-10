@@ -54,6 +54,13 @@ export interface ServiceSpec {
   benefits?: string[];
 }
 
+/** Display label for a service price. Returns "Custom Quote" for quote-only
+ *  services, otherwise prefixes with "From " (e.g. "From $118"). */
+export function formatFromPrice(s: Pick<ServiceSpec, "price" | "quoteOnly">): string {
+  if (s.quoteOnly) return "Custom Quote";
+  return `From ${s.price}`;
+}
+
 export const SERVICES: ServiceSpec[] = [
   {
     slug: "chimney-sweep",
