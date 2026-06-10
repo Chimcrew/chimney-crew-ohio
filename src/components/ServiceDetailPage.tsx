@@ -14,8 +14,41 @@ import {
   MapPin,
   ClipboardCheck,
 } from "lucide-react";
-import { ACCENT_CLASSES, getService, type ServiceSpec } from "@/data/services";
+import { ACCENT_CLASSES, getService, formatFromPrice, type ServiceSpec } from "@/data/services";
 import { LeadForm } from "@/components/LeadForm";
+import fireplacePoster from "@/assets/fireplace-poster.jpg.asset.json";
+
+function FireplaceBackdrop({ intensity = "medium" }: { intensity?: "medium" | "strong" }) {
+  const overlayAlpha = intensity === "strong" ? 0.55 : 0.7;
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+      {/* Fireplace image (LCP — eager) */}
+      <img
+        src={fireplacePoster.url}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover animate-fire-zoom"
+        style={{ filter: "saturate(1.15) contrast(1.05)" }}
+      />
+      {/* Animated flicker layer */}
+      <div
+        className="absolute inset-0 mix-blend-screen animate-fire-flicker"
+        style={{
+          background:
+            "radial-gradient(ellipse at 30% 80%, oklch(0.78 0.19 55 / 0.45) 0%, transparent 55%), radial-gradient(ellipse at 70% 75%, oklch(0.82 0.2 70 / 0.4) 0%, transparent 60%), radial-gradient(ellipse at 50% 90%, oklch(0.7 0.22 35 / 0.5) 0%, transparent 65%)",
+        }}
+      />
+      {/* Dark vignette + readability scrim */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(180deg, oklch(0.08 0.01 250 / ${overlayAlpha}) 0%, oklch(0.08 0.01 250 / ${overlayAlpha - 0.05}) 50%, oklch(0.05 0.01 250 / ${overlayAlpha + 0.1}) 100%)`,
+        }}
+      />
+      <div className="bg-grid absolute inset-0 opacity-30" />
+    </div>
+  );
+}
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -58,7 +91,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
             <h2 className="mt-3 text-4xl">
               {service.quoteOnly
                 ? `Everything included in your ${service.shortTitle.toLowerCase()}.`
-                : `Everything in the ${service.price} price.`}
+                : `Everything in the flat ${service.price} price.`}
             </h2>
             <p className="mt-4 text-muted-foreground">
               {service.quoteOnly
@@ -218,15 +251,14 @@ function Hero({
   Icon: ServiceSpec["icon"];
 }) {
   const v = service.variant;
-  const priceLabel = service.quoteOnly ? "Custom Quote" : service.price;
+  const priceLabel = formatFromPrice(service);
   const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
 
   // Repair / Emergency: red/amber alert hero with split layout
   if (v === "emergency" || v === "repair") {
     return (
-      <section className="relative overflow-hidden border-b-2 border-border bg-card/40 py-20">
-        <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
-        <div className={`pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full ${accent.bg} opacity-10 blur-3xl`} aria-hidden />
+      <section className="relative overflow-hidden border-b-2 border-flame/30 py-24">
+        <FireplaceBackdrop intensity="strong" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-[1.2fr_1fr] md:px-8">
           <div>
             <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>
@@ -257,9 +289,9 @@ function Hero({
                 <Icon className="h-7 w-7" />
               </div>
               <p className="mt-6 font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                {service.quoteOnly ? "Investment" : "Starting at"}
+                {service.quoteOnly ? "Investment" : "Flat rate"}
               </p>
-              <p className={`mt-1 font-display ${service.quoteOnly ? "text-4xl" : "text-6xl"} ${accent.text}`}>{priceLabel}</p>
+              <p className={`mt-1 font-display ${service.quoteOnly ? "text-4xl" : "text-5xl"} ${accent.text}`}>{priceLabel}</p>
               <p className="mt-2 text-sm text-muted-foreground">{service.tagline}</p>
               <div className="mt-6 flex items-center gap-2 border-t border-border pt-4 text-sm text-muted-foreground">
                 <ShieldCheck className="h-4 w-4 text-flame" /> Workmanship guarantee
@@ -274,8 +306,8 @@ function Hero({
   // Inspection: centered, calm, evidence-led
   if (v === "inspection") {
     return (
-      <section className="relative overflow-hidden border-b-2 border-border bg-card/40 py-24">
-        <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
+      <section className="relative overflow-hidden border-b-2 border-flame/30 py-28">
+        <FireplaceBackdrop intensity="medium" />
         <div className="relative mx-auto max-w-4xl px-4 text-center md:px-8">
           <div className={`mx-auto grid h-14 w-14 place-items-center rounded-sm ${accent.bg} text-primary-foreground`}>
             <Icon className="h-7 w-7" />
@@ -285,8 +317,7 @@ function Hero({
           </p>
           <h1 className="mt-3 text-5xl md:text-7xl">{service.hero.headline}</h1>
           <p className="mx-auto mt-5 max-w-2xl text-lg text-muted-foreground">{service.hero.sub}</p>
-          <div className="mt-8 inline-flex items-center gap-3 rounded-sm border-2 border-border bg-card px-5 py-3 font-mono text-sm">
-            <span className="text-muted-foreground">Flat rate</span>
+          <div className="mt-8 inline-flex items-center gap-3 rounded-sm border-2 border-flame/40 bg-card/80 px-5 py-3 font-mono text-sm backdrop-blur">
             <span className={`font-display text-2xl ${accent.text}`}>{priceLabel}</span>
           </div>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -311,9 +342,8 @@ function Hero({
   // Install: bold spec-sheet feel
   if (v === "install") {
     return (
-      <section className="relative overflow-hidden border-b-2 border-border bg-primary py-24 text-primary-foreground">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,_oklch(0.24_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]" aria-hidden />
-        <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
+      <section className="relative overflow-hidden border-b-2 border-flame/30 py-28 text-primary-foreground">
+        <FireplaceBackdrop intensity="strong" />
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
           <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>
             // {service.hero.eyebrow}
@@ -355,8 +385,8 @@ function Hero({
 
   // Maintenance / Plan: warm, friendly split
   return (
-    <section className="relative overflow-hidden border-b-2 border-border bg-card/40 py-20">
-      <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
+    <section className="relative overflow-hidden border-b-2 border-flame/30 py-24">
+      <FireplaceBackdrop intensity="medium" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-[1.3fr_1fr] md:px-8">
         <div>
           <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>
