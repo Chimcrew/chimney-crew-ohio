@@ -1,8 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown } from "lucide-react";
-import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
-const logoHeader = logoAsset.url;
+import logoHeader from "@/assets/chimcrew-logo-transparent.png";
 import { openScheduleDialog } from "@/components/ScheduleWidget";
 import { SERVICES, ACCENT_CLASSES } from "@/data/services";
 
@@ -102,11 +101,7 @@ export function SiteHeader() {
             <img
               src={logoHeader}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className={`relative z-40 h-14 w-auto max-w-none origin-left object-contain drop-shadow-[0_12px_18px_oklch(0_0_0/0.55)] transition-transform duration-500 ease-out will-change-transform md:h-20 md:-mb-6 -mb-3 ${
-                scrolled
-                  ? "[transform:perspective(800px)_rotateX(8deg)_rotateY(-6deg)_translateY(2px)_scale(1)]"
-                  : "[transform:perspective(800px)_rotateX(12deg)_rotateY(-10deg)_translateY(6px)_scale(1.08)]"
-              } group-hover:[transform:perspective(800px)_rotateX(14deg)_rotateY(-12deg)_translateY(8px)_scale(1.12)]`}
+              className="relative z-40 -mb-1 h-11 w-auto max-w-none origin-left object-contain drop-shadow-[0_6px_10px_oklch(0_0_0/0.45)] transition-transform duration-300 ease-out will-change-transform md:-mb-2 md:h-14 group-hover:-translate-y-0.5 group-hover:scale-[1.04]"
             />
           </Link>
 
