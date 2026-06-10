@@ -158,7 +158,7 @@ export function TimedLeadPopup() {
                 id="popup-title"
                 className="mt-5 font-display text-[1.7rem] font-extrabold leading-[1.05] tracking-tight sm:text-3xl"
               >
-                Get your <span className="text-flame">free chimney quote</span> before you go.
+                Get your <span className="text-flame">free drone inspection</span> before you go.
               </h2>
               <p className="mt-2 text-sm text-primary-foreground/70">
                 Drop your number — a real Ohio tech calls back within the hour. No spam, ever.
