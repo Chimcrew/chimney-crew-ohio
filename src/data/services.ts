@@ -59,6 +59,8 @@ export interface ServiceSpec {
   problems?: string[];
   /** Direct benefits of doing the repair / service. */
   benefits?: string[];
+  /** Short warranty/guarantee label shown in hero + overview. */
+  warranty?: string;
 }
 
 /** Display label for a service price. Returns "Custom Quote" for quote-only
@@ -66,6 +68,16 @@ export interface ServiceSpec {
 export function formatFromPrice(s: Pick<ServiceSpec, "price" | "quoteOnly">): string {
   if (s.quoteOnly) return "Custom Quote";
   return `From ${s.price}`;
+}
+
+/** Short warranty/guarantee label per service. Falls back to a sensible default. */
+export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quoteOnly">): string {
+  if (s.warranty) return s.warranty;
+  if (s.variant === "install" || (s.variant === "repair" && s.quoteOnly)) return "Lifetime Warranty";
+  if (s.variant === "repair") return "5-Year Warranty";
+  if (s.variant === "inspection") return "Accurate Report";
+  if (s.variant === "plan") return "Cancel Anytime";
+  return "Satisfaction Guaranteed";
 }
 
 /** Hero photo for a service — picks the most relevant real photo we have. */
