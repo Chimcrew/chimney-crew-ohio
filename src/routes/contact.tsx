@@ -20,7 +20,7 @@ function DroneChimneyScene() {
       {/* soft ground glow */}
       <div className="pointer-events-none absolute bottom-2 left-1/2 h-6 w-72 -translate-x-1/2 rounded-full bg-primary/15 blur-2xl" aria-hidden />
       {/* technical grid panel */}
-      <div className="absolute inset-x-0 bottom-0 h-40 rounded-2xl border-2 border-border bg-gradient-to-b from-transparent via-cream/40 to-cream/70 md:h-52" aria-hidden>
+      <div className="absolute inset-x-0 bottom-0 h-40 rounded-2xl border-2 border-border bg-gradient-to-b from-transparent via-card/60 to-card md:h-52" aria-hidden>
         <div className="absolute inset-0 rounded-2xl bg-grid opacity-[0.08]" />
         <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-card px-2.5 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-flame">
           <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Live drone inspection
