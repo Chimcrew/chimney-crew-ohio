@@ -299,4 +299,37 @@
     mix-blend-mode: multiply;
     opacity: 0.6;
   }
+
+  /* Drone-around-chimney scene */
+  @keyframes chimney-orbit {
+    0%   { transform: rotate(0deg)   translateX(110px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(110px) rotate(-360deg); }
+  }
+  @keyframes orbit-shadow {
+    0%   { transform: rotate(0deg)   translateX(110px) rotate(0deg)   scale(1); opacity: 0.35; }
+    50%  { transform: rotate(180deg) translateX(110px) rotate(-180deg) scale(0.7); opacity: 0.15; }
+    100% { transform: rotate(360deg) translateX(110px) rotate(-360deg) scale(1); opacity: 0.35; }
+  }
+  @keyframes rotor-spin {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes chimney-smoke {
+    0%   { transform: translate(0,0) scale(0.6); opacity: 0; }
+    20%  { opacity: 0.55; }
+    100% { transform: translate(-14px,-90px) scale(1.6); opacity: 0; }
+  }
+  @keyframes scan-sweep {
+    0%, 100% { transform: rotate(-18deg); opacity: 0.85; }
+    50%      { transform: rotate(18deg);  opacity: 0.4; }
+  }
+  @keyframes ring-pulse {
+    0%   { transform: scale(0.6); opacity: 0.5; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  .drone-orbit  { animation: chimney-orbit 9s linear infinite; transform-origin: center; }
+  .drone-shadow { animation: orbit-shadow 9s linear infinite; transform-origin: center; }
+  .drone-rotor  { animation: rotor-spin 0.18s linear infinite; transform-origin: center; transform-box: fill-box; }
+  .chimney-smoke { animation: chimney-smoke 4s ease-out infinite; }
+  .drone-scan   { animation: scan-sweep 2.8s ease-in-out infinite; transform-origin: 50% 0%; }
+  .drone-ring   { animation: ring-pulse 2.6s ease-out infinite; }
 }
