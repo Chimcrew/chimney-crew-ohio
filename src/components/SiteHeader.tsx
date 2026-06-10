@@ -176,7 +176,7 @@ export function SiteHeader() {
                                     {s.shortTitle}
                                   </span>
                                   <span className="mt-0.5 block truncate font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
-                                    {s.price} · {s.duration}
+                                    {s.quoteOnly ? "Custom Quote" : `From ${s.price}`}
                                   </span>
                                 </span>
                               </Link>
@@ -294,7 +294,7 @@ export function SiteHeader() {
                                       {s.shortTitle}
                                     </span>
                                     <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
-                                      {s.price}
+                                      {s.quoteOnly ? "Custom Quote" : `From ${s.price}`}
                                     </span>
                                   </span>
                                 </Link>
