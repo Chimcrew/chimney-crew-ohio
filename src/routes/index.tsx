@@ -311,7 +311,7 @@ function MobileHero() {
 
             <div className="flex flex-col gap-3 pt-1">
               <a
-                href="tel:6146834422"
+                href="tel:6145491954"
                 className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0_0_0/0.45)] active:scale-[0.98]"
               >
                 <Phone className="h-5 w-5" /> Call Now
@@ -440,10 +440,10 @@ function Hero() {
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </a>
               <a
-                href="tel:6146834422"
+                href="tel:6145491954"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.03] px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame sm:w-auto"
               >
-                <Phone className="h-4 w-4 text-flame" /> Call (614) 683-4422
+                <Phone className="h-4 w-4 text-flame" /> Call (614) 549-1954
               </a>
             </div>
 
@@ -617,10 +617,10 @@ function WhyChooseUs() {
             <CalendarCheck className="h-4 w-4" /> Get Free Estimate
           </Link>
           <a
-            href="tel:6146834422"
+            href="tel:6145491954"
             className="inline-flex items-center gap-2 rounded-xl border-2 border-primary px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
-            <Phone className="h-4 w-4" /> Call Now · (614) 683-4422
+            <Phone className="h-4 w-4" /> Call Now · (614) 549-1954
           </a>
         </div>
       </div>
@@ -726,10 +726,10 @@ function ProblemSolver() {
 
         <div className="mt-10 flex items-center justify-center">
           <a
-            href="tel:6146834422"
+            href="tel:6145491954"
             className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
           >
-            <Phone className="h-4 w-4" /> Talk to a tech now · (614) 683-4422
+            <Phone className="h-4 w-4" /> Talk to a tech now · (614) 549-1954
           </a>
         </div>
       </div>
@@ -1071,7 +1071,7 @@ function ServicesGrid() {
                     <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
                   </Link>
                   <a
-                    href="tel:6146834422"
+                    href="tel:6145491954"
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-primary px-5 py-3 font-display text-xs font-semibold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
                   >
                     <Phone className="h-3.5 w-3.5" /> Ask a question first
@@ -1231,10 +1231,10 @@ function LeakingChimney() {
               Book a leak inspection <CalendarCheck className="h-4 w-4" />
             </Link>
             <a
-              href="tel:6146834422"
+              href="tel:6145491954"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-5 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
             >
-              <Phone className="h-4 w-4" /> Call (614) 683-4422
+              <Phone className="h-4 w-4" /> Call (614) 549-1954
             </a>
           </div>
         </div>
@@ -1292,10 +1292,10 @@ function ScheduleOnline() {
                 <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               </Link>
               <a
-                href="tel:6146834422"
+                href="tel:6145491954"
                 className="inline-flex items-center gap-2 rounded-sm border-2 border-flame/70 px-6 py-4 font-display text-base font-semibold text-flame transition hover:bg-flame hover:text-primary"
               >
-                <Phone className="h-5 w-5" /> (614) 683-4422
+                <Phone className="h-5 w-5" /> (614) 549-1954
               </a>
             </div>
           </div>
@@ -1533,10 +1533,10 @@ function Faq() {
             Real Ohioans answer the phone. No call centers, no pressure, no charge for advice.
           </p>
           <a
-            href="tel:6146834422"
+            href="tel:6145491954"
             className="mt-6 inline-flex items-center gap-2 font-display text-sm uppercase tracking-widest text-primary hover:text-flame"
           >
-            <Phone className="h-4 w-4" /> (614) 683-4422
+            <Phone className="h-4 w-4" /> (614) 549-1954
           </a>
         </div>
         <div className="space-y-3">
@@ -1588,10 +1588,10 @@ function FinalCta() {
             Schedule free inspection <CalendarCheck className="h-4 w-4" />
           </Link>
           <a
-            href="tel:6146834422"
+            href="tel:6145491954"
             className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
-            <Phone className="h-4 w-4" /> (614) 683-4422
+            <Phone className="h-4 w-4" /> (614) 549-1954
           </a>
         </div>
       </div>
@@ -1761,10 +1761,10 @@ function ServiceArea() {
             Check my address <ArrowRight className="h-4 w-4" />
           </Link>
           <a
-            href="tel:6146834422"
+            href="tel:6145491954"
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-sm border border-primary-foreground/20 bg-primary-foreground/[0.04] px-6 py-4 font-display text-sm font-semibold uppercase tracking-[0.15em] text-primary-foreground transition hover:bg-primary-foreground/10"
           >
-            <Phone className="h-4 w-4 text-flame" /> (614) 683-4422
+            <Phone className="h-4 w-4 text-flame" /> (614) 549-1954
           </a>
         </div>
 

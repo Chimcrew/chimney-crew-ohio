@@ -28,7 +28,7 @@ function Privacy() {
         <p>This site uses minimal cookies for analytics and basic functionality. You can disable cookies in your browser, but parts of the site may not work as expected.</p>
       </Section>
       <Section title="7. Contact">
-        <p>Questions? Email <a href="mailto:privacy@chimcrew.com" className="text-primary">privacy@chimcrew.com</a> or call (614) 683-4422.</p>
+        <p>Questions? Email <a href="mailto:privacy@chimcrew.com" className="text-primary">privacy@chimcrew.com</a> or call (614) 549-1954.</p>
       </Section>
     </LegalPage>
   );

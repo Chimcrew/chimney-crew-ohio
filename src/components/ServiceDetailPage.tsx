@@ -191,10 +191,10 @@ function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="tel:6146834422"
+            href="tel:6145491954"
             className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-white/5 px-7 font-display text-sm font-bold uppercase tracking-widest text-primary-foreground backdrop-blur transition hover:border-flame hover:bg-white/10 sm:w-auto"
           >
-            <Phone className="h-4 w-4" /> Call Now · (614) 683-4422
+            <Phone className="h-4 w-4" /> Call Now · (614) 549-1954
           </a>
           <button
             onClick={openSchedule}
@@ -242,10 +242,10 @@ function Hero({
                 <CalendarCheck className="h-4 w-4" /> {ctaLabel}
               </button>
               <a
-                href="tel:6146834422"
+                href="tel:6145491954"
                 className="inline-flex items-center gap-2 rounded-sm border-2 border-border px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:border-primary"
               >
-                <Phone className="h-4 w-4" /> Call (614) 683-4422
+                <Phone className="h-4 w-4" /> Call (614) 549-1954
               </a>
             </div>
           </div>
@@ -297,10 +297,10 @@ function Hero({
               <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
-              href="tel:6146834422"
+              href="tel:6145491954"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-border px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:border-primary"
             >
-              <Phone className="h-4 w-4" /> Call (614) 683-4422
+              <Phone className="h-4 w-4" /> Call (614) 549-1954
             </a>
           </div>
         </div>
@@ -342,10 +342,10 @@ function Hero({
               <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
-              href="tel:6146834422"
+              href="tel:6145491954"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-white/30 px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:bg-white/10"
             >
-              <Phone className="h-4 w-4" /> Call (614) 683-4422
+              <Phone className="h-4 w-4" /> Call (614) 549-1954
             </a>
           </div>
         </div>
@@ -372,10 +372,10 @@ function Hero({
               <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
-              href="tel:6146834422"
+              href="tel:6145491954"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-border px-6 py-4 font-display text-sm uppercase tracking-widest transition hover:border-primary"
             >
-              <Phone className="h-4 w-4" /> Call (614) 683-4422
+              <Phone className="h-4 w-4" /> Call (614) 549-1954
             </a>
           </div>
         </div>
@@ -515,10 +515,10 @@ function Signs({
           </div>
           {loud && (
             <a
-              href="tel:6146834422"
+              href="tel:6145491954"
               className="inline-flex items-center gap-2 rounded-sm border-2 border-flame px-5 py-3 font-display text-xs uppercase tracking-widest text-flame transition hover:bg-flame hover:text-white"
             >
-              <Phone className="h-4 w-4" /> Call (614) 683-4422
+              <Phone className="h-4 w-4" /> Call (614) 549-1954
             </a>
           )}
         </div>
