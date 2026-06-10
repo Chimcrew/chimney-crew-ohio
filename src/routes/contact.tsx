@@ -23,7 +23,11 @@ function ContactPage() {
         <div className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-flame/15 blur-3xl" aria-hidden />
         <div className="pointer-events-none absolute -left-32 bottom-0 h-96 w-96 rounded-full bg-flame/10 blur-3xl" aria-hidden />
 
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 py-16 md:px-8 md:py-24 lg:grid-cols-[1fr_1.05fr] lg:items-start">
+        <div className="relative mx-auto max-w-7xl px-4 pt-12 md:px-8 md:pt-16">
+          <DroneChimneyScene />
+        </div>
+
+        <div className="relative mx-auto grid max-w-7xl gap-12 px-4 pb-16 pt-10 md:px-8 md:pb-24 md:pt-12 lg:grid-cols-[1fr_1.05fr] lg:items-start">
           {/* Left: intro */}
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
