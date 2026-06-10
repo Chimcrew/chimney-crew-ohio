@@ -200,7 +200,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QY2H753BK9"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18189794318"></script>
-        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QY2H753BK9'); gtag('config', 'AW-18189794318');` }} />
+        <script dangerouslySetInnerHTML={{ __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QY2H753BK9'); gtag('config', 'AW-18189794318'); function gtag_report_conversion(url){var callback=function(){if(typeof(url)!='undefined'){window.location=url;}}; gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD','event_callback':callback}); return false;}` }} />
         <HeadContent />
       </head>
       <body>
