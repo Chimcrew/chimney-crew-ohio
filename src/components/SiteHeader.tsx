@@ -129,7 +129,7 @@ export function SiteHeader() {
                       onClick={() => setServicesOpen((v) => !v)}
                       aria-expanded={servicesOpen}
                       aria-haspopup="menu"
-                      className={`group relative inline-flex items-center gap-1 px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition ${
+                      className={`group relative inline-flex items-center gap-1 whitespace-nowrap px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition ${
                         servicesOpen ? "text-flame" : "text-primary-foreground/70 hover:text-primary-foreground"
                       }`}
                     >
@@ -193,7 +193,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className="group relative px-4 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground/70 transition hover:text-primary-foreground"
+                  className="group relative whitespace-nowrap px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground/70 transition hover:text-primary-foreground"
                   activeProps={{ className: "text-flame" }}
                   activeOptions={n.to === "/" ? { exact: true } : undefined}
                 >
