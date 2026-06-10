@@ -18,6 +18,38 @@ import { ACCENT_CLASSES, getService, formatFromPrice, type ServiceSpec } from "@
 import { LeadForm } from "@/components/LeadForm";
 import fireplacePoster from "@/assets/fireplace-poster.jpg.asset.json";
 
+function FireplaceBackdrop({ intensity = "medium" }: { intensity?: "medium" | "strong" }) {
+  const overlayAlpha = intensity === "strong" ? 0.55 : 0.7;
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+      {/* Fireplace image (LCP — eager) */}
+      <img
+        src={fireplacePoster.url}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover animate-fire-zoom"
+        style={{ filter: "saturate(1.15) contrast(1.05)" }}
+      />
+      {/* Animated flicker layer */}
+      <div
+        className="absolute inset-0 mix-blend-screen animate-fire-flicker"
+        style={{
+          background:
+            "radial-gradient(ellipse at 30% 80%, oklch(0.78 0.19 55 / 0.45) 0%, transparent 55%), radial-gradient(ellipse at 70% 75%, oklch(0.82 0.2 70 / 0.4) 0%, transparent 60%), radial-gradient(ellipse at 50% 90%, oklch(0.7 0.22 35 / 0.5) 0%, transparent 65%)",
+        }}
+      />
+      {/* Dark vignette + readability scrim */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: `linear-gradient(180deg, oklch(0.08 0.01 250 / ${overlayAlpha}) 0%, oklch(0.08 0.01 250 / ${overlayAlpha - 0.05}) 50%, oklch(0.05 0.01 250 / ${overlayAlpha + 0.1}) 100%)`,
+        }}
+      />
+      <div className="bg-grid absolute inset-0 opacity-30" />
+    </div>
+  );
+}
+
 function openSchedule() {
   if (typeof window !== "undefined") {
     window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"));
