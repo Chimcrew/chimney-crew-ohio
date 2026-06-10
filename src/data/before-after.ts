@@ -12,6 +12,13 @@ import brickBefore from "@/assets/ba/brick-before.jpg";
 import brickAfter from "@/assets/ba/brick-after.jpg";
 import smokeBefore from "@/assets/ba/smoke-before.jpg";
 import smokeAfter from "@/assets/ba/smoke-after.jpg";
+// Real customer jobs (uploaded photos)
+import realCrownBefore from "@/assets/uploads/job0.jpeg.asset.json";
+import realCrownAfter from "@/assets/uploads/job_1.jpeg.asset.json";
+import realStuccoBefore from "@/assets/uploads/job_2.jpeg.asset.json";
+import realStuccoAfter from "@/assets/uploads/job_3.jpeg.asset.json";
+import realTuckBefore from "@/assets/uploads/job_7.jpeg.asset.json";
+import realTuckAfter from "@/assets/uploads/job_8.jpeg.asset.json";
 
 export type BeforeAfterJob = {
   id: string;
@@ -24,6 +31,33 @@ export type BeforeAfterJob = {
 };
 
 export const BEFORE_AFTER_JOBS: BeforeAfterJob[] = [
+  {
+    id: "real-crown-cap",
+    headline: "Cracked crown & open flue → sealed crown + new cap",
+    service: "Crown Seal + Stainless Cap Install",
+    city: "Powell, OH",
+    note: "Crown was split end-to-end with the terra-cotta flue exposed. We sealed every crack with high-temp CrownCoat and locked in a new black mesh cap.",
+    before: realCrownBefore.url,
+    after: realCrownAfter.url,
+  },
+  {
+    id: "real-stucco",
+    headline: "Spalling painted stucco → fresh elastomeric coat",
+    service: "Chimney Waterproofing & Recoat",
+    city: "Columbus, OH",
+    note: "Years of freeze-thaw had blown the old paint right off the stack. We stripped, patched, and recoated with a vapor-permeable waterproof finish.",
+    before: realStuccoBefore.url,
+    after: realStuccoAfter.url,
+  },
+  {
+    id: "real-tuckpoint",
+    headline: "Failed mortar & flashing → fresh tuckpoint + new flashing",
+    service: "Full Tuckpointing + Step Flashing",
+    city: "Dublin, OH",
+    note: "Mortar joints crumbled with a finger. Cut out, repointed every joint, and installed fresh step and counter-flashing before the next storm.",
+    before: realTuckBefore.url,
+    after: realTuckAfter.url,
+  },
   {
     id: "firebox",
     headline: "From sooty firebox to like-new hearth",
