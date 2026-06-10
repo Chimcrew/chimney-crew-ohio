@@ -6,13 +6,11 @@ import {
   CalendarCheck,
   AlertTriangle,
   ArrowRight,
-  ArrowDown,
   ShieldCheck,
   Star,
   MapPin,
   ClipboardCheck,
   BadgeDollarSign,
-  Clock,
   Quote,
 } from "lucide-react";
 import {
