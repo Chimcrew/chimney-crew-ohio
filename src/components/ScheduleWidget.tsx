@@ -186,7 +186,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                     mode="single"
                     selected={date}
                     onSelect={setDate}
-                    disabled={(d) => d < new Date(new Date().setHours(0,0,0,0)) || d.getDay() === 0}
+                    disabled={(d) => d < new Date(new Date().setHours(0,0,0,0)) || d.getDay() === 6}
                     className="pointer-events-auto mx-auto"
                   />
                 </div>
