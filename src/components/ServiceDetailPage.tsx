@@ -378,11 +378,11 @@ function Hero({
 
 function EmergencyBanner() {
   return (
-    <div className="border-b-2 border-flame bg-flame/10">
+    <div className="border-y border-flame/30 bg-flame/[0.08]">
       <div className="mx-auto flex max-w-7xl items-center gap-3 px-4 py-3 text-sm md:px-8">
         <AlertTriangle className="h-4 w-4 text-flame" />
         <span className="font-display uppercase tracking-widest text-flame">Same-day available</span>
-        <span className="text-muted-foreground">— call before noon for next-availability dispatch.</span>
+        <span className="text-primary-foreground/65">— call before noon for next-availability dispatch.</span>
       </div>
     </div>
   );
@@ -391,11 +391,11 @@ function EmergencyBanner() {
 function PlanPerks() {
   const perks = ["Annual reminder", "Priority dispatch", "10% off repairs", "Digital service history"];
   return (
-    <div className="border-b border-border bg-card/30">
+    <div className="border-y border-white/5 bg-white/[0.02]">
       <div className="mx-auto grid max-w-7xl grid-cols-2 gap-3 px-4 py-5 md:grid-cols-4 md:px-8">
         {perks.map((p) => (
-          <div key={p} className="flex items-center gap-2 text-sm">
-            <CheckCircle2 className="h-4 w-4 text-emerald-500" /> {p}
+          <div key={p} className="flex items-center gap-2 text-sm text-primary-foreground/85">
+            <CheckCircle2 className="h-4 w-4 text-flame" /> {p}
           </div>
         ))}
       </div>
@@ -405,13 +405,13 @@ function PlanPerks() {
 
 function InspectionBand({ service }: { service: ServiceSpec }) {
   return (
-    <div className="border-b border-border bg-card/30">
+    <div className="border-y border-white/5 bg-white/[0.02]">
       <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 py-4 text-sm md:px-8">
-        <div className="flex items-center gap-2 text-muted-foreground">
-          <ShieldCheck className="h-4 w-4 text-sky-500" />
+        <div className="flex items-center gap-2 text-primary-foreground/70">
+          <ShieldCheck className="h-4 w-4 text-flame" />
           <span>NFPA 211 compliant · CSIA-credentialed technicians</span>
         </div>
-        <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+        <span className="font-mono text-xs uppercase tracking-widest text-primary-foreground/45">
           // {service.shortTitle}
         </span>
       </div>
@@ -426,46 +426,41 @@ function Process({
   service: ServiceSpec;
   accent: (typeof ACCENT_CLASSES)[keyof typeof ACCENT_CLASSES];
 }) {
+  void accent;
   const v = service.variant;
-
-  // Install/plan get a vertical timeline, others get a horizontal track
-  if (v === "install" || v === "plan") {
-    return (
-      <section className="border-b border-border bg-card/30 py-16">
-        <div className="mx-auto max-w-4xl px-4 md:px-8">
-          <p className="font-mono text-xs uppercase tracking-widest text-primary">// How it goes</p>
-          <h2 className="mt-3 text-4xl">{v === "plan" ? "How the membership works" : "From quote to first burn"}</h2>
-          <ol className="mt-10 space-y-6">
-            {service.process.map((p, i) => (
-              <li key={p.title} className="flex gap-5">
-                <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-sm ${accent.bg} font-display text-xl text-primary-foreground`}>
-                  {i + 1}
-                </div>
-                <div>
-                  <h3 className="font-display text-xl">{p.title}</h3>
-                  <p className="mt-1 text-muted-foreground">{p.desc}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
-    );
-  }
+  const title =
+    v === "plan"
+      ? "How the membership works"
+      : v === "install"
+      ? "From quote to first burn"
+      : "What a visit actually looks like.";
 
   return (
-    <section className="border-b border-border bg-card/30 py-16">
+    <section className="border-b border-white/5 bg-black/30 py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <p className="font-mono text-xs uppercase tracking-widest text-primary">// The process</p>
-        <h2 className="mt-3 text-4xl">What a visit actually looks like.</h2>
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+        <div className="max-w-3xl space-y-3">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-flame">// The process</p>
+          <h2 className="font-display text-4xl font-extrabold md:text-5xl">{title}</h2>
+        </div>
+        <div className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 md:grid-cols-2 lg:grid-cols-4">
           {service.process.map((p, i) => (
-            <div key={p.title} className="relative rounded-sm border-2 border-border bg-card p-5">
-              <span className={`absolute -top-3 left-4 rounded-sm ${accent.bg} px-2 py-0.5 font-mono text-xs uppercase tracking-widest text-primary-foreground`}>
-                Step {i + 1}
-              </span>
-              <h3 className="mt-3 font-display text-xl">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{p.desc}</p>
+            <div
+              key={p.title}
+              className="group flex flex-col gap-4 bg-primary p-8 transition hover:bg-white/[0.04]"
+            >
+              <div className="flex items-center justify-between">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary-foreground/40">
+                  Step_{String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-display text-5xl font-black text-white/5 transition group-hover:text-flame/30">
+                  {i + 1}
+                </span>
+              </div>
+              <div>
+                <h3 className="font-display text-xl font-extrabold uppercase tracking-tight">{p.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-primary-foreground/65">{p.desc}</p>
+              </div>
+              <div className="mt-auto h-px w-10 bg-flame" />
             </div>
           ))}
         </div>
@@ -481,42 +476,45 @@ function Signs({
   service: ServiceSpec;
   accent: (typeof ACCENT_CLASSES)[keyof typeof ACCENT_CLASSES];
 }) {
+  void accent;
   const v = service.variant;
   const loud = v === "repair" || v === "emergency";
 
   return (
-    <section className={`border-b border-border py-16 ${loud ? "bg-flame/5" : ""}`}>
+    <section className={`border-b border-white/5 py-20 ${loud ? "bg-flame/[0.04]" : ""}`}>
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className={`font-mono text-xs uppercase tracking-widest ${loud ? "text-flame" : "text-primary"}`}>
+        <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="max-w-2xl space-y-3">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-flame">
               // {loud ? "Don't ignore" : "Signs you need this"}
             </p>
-            <h2 className="mt-3 text-4xl">
-              {loud ? "If you see any of this, call today." : `When to book a ${service.shortTitle.toLowerCase()}.`}
+            <h2 className="font-display text-4xl font-extrabold md:text-5xl">
+              {loud ? (
+                <>If you see any of this, <span className="text-flame italic">call today.</span></>
+              ) : (
+                <>When to book a <span className="text-flame italic">{service.shortTitle.toLowerCase()}.</span></>
+              )}
             </h2>
           </div>
           {loud && (
             <a
               href="tel:6145491954"
-              className="inline-flex items-center gap-2 rounded-sm border-2 border-flame px-5 py-3 font-display text-xs uppercase tracking-widest text-flame transition hover:bg-flame hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border-2 border-flame px-6 py-3 font-display text-xs font-extrabold uppercase tracking-widest text-flame transition hover:bg-flame hover:text-primary"
             >
               <Phone className="h-4 w-4" /> Call (614) 549-1954
             </a>
           )}
         </div>
-        <ul className="mt-8 grid gap-3 md:grid-cols-2">
-          {service.signs.map((s) => (
+        <ul className="mt-10 grid gap-4 md:grid-cols-2">
+          {service.signs.map((s, i) => (
             <li
               key={s}
-              className={`flex items-start gap-3 rounded-sm border-2 ${loud ? "border-flame/40" : "border-border"} bg-card p-4`}
+              className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-flame/40"
             >
-              {loud ? (
-                <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-flame" />
-              ) : (
-                <CheckCircle2 className={`mt-0.5 h-5 w-5 shrink-0 ${accent.text}`} />
-              )}
-              <span>{s}</span>
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-flame/15 text-flame ring-1 ring-flame/30">
+                {loud ? <AlertTriangle className="h-5 w-5" /> : <span className="font-mono text-xs font-bold">{String(i+1).padStart(2,'0')}</span>}
+              </span>
+              <span className="pt-1.5 text-primary-foreground/90">{s}</span>
             </li>
           ))}
         </ul>
@@ -533,27 +531,26 @@ function Related({ service }: { service: ServiceSpec }) {
   if (!items.length) return null;
 
   return (
-    <section className="border-b border-border py-16">
+    <section className="border-b border-white/5 bg-black/30 py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <p className="font-mono text-xs uppercase tracking-widest text-primary">// Pairs well with</p>
-        <h2 className="mt-3 text-4xl">Related services.</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-flame">// Pairs well with</p>
+        <h2 className="mt-3 font-display text-4xl font-extrabold md:text-5xl">Related <span className="text-flame italic">services.</span></h2>
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
           {items.map((s) => {
             const RIcon = s.icon;
-            const ra = ACCENT_CLASSES[s.accent];
             return (
               <Link
                 key={s.slug}
                 to="/services/$slug"
                 params={{ slug: s.slug }}
-                className="group flex flex-col rounded-sm border-2 border-border bg-card p-6 transition hover:border-primary hover:shadow-flame"
+                className="group relative flex flex-col rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition hover:border-flame/50 hover:bg-white/[0.06]"
               >
-                <div className={`grid h-12 w-12 place-items-center rounded-sm ${ra.bg} text-primary-foreground`}>
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-flame/15 text-flame ring-1 ring-flame/30 transition group-hover:bg-flame group-hover:text-primary">
                   <RIcon className="h-6 w-6" />
                 </div>
-                <h3 className="mt-4 font-display text-2xl">{s.shortTitle}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{s.tagline}</p>
-                <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary">
+                <h3 className="mt-5 font-display text-2xl font-extrabold">{s.shortTitle}</h3>
+                <p className="mt-2 text-sm text-primary-foreground/65">{s.tagline}</p>
+                <span className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-flame">
                   Learn more <ArrowRight className="h-3 w-3 transition group-hover:translate-x-1" />
                 </span>
               </Link>
@@ -572,16 +569,19 @@ function ProblemsBlock({
   service: ServiceSpec;
   accent: (typeof ACCENT_CLASSES)[keyof typeof ACCENT_CLASSES];
 }) {
+  void accent;
   return (
-    <section className="border-b border-border bg-card/30 py-16">
+    <section className="border-b border-white/5 py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>// Common problems</p>
-        <h2 className="mt-3 text-4xl">Problems we see on Ohio homes every week.</h2>
-        <ul className="mt-8 grid gap-3 md:grid-cols-2">
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-flame">// Common problems</p>
+        <h2 className="mt-3 font-display text-4xl font-extrabold md:text-5xl">Problems we see on Ohio homes <span className="text-flame italic">every week.</span></h2>
+        <ul className="mt-10 grid gap-4 md:grid-cols-2">
           {service.problems!.map((p) => (
-            <li key={p} className="flex items-start gap-3 rounded-sm border-2 border-border bg-card p-4">
-              <Droplets className={`mt-0.5 h-5 w-5 shrink-0 ${accent.text}`} />
-              <span>{p}</span>
+            <li key={p} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-flame/40">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-flame/15 text-flame ring-1 ring-flame/30">
+                <Droplets className="h-5 w-5" />
+              </span>
+              <span className="pt-1.5 text-primary-foreground/90">{p}</span>
             </li>
           ))}
         </ul>
@@ -597,16 +597,19 @@ function BenefitsBlock({
   service: ServiceSpec;
   accent: (typeof ACCENT_CLASSES)[keyof typeof ACCENT_CLASSES];
 }) {
+  void accent;
   return (
-    <section className="border-b border-border py-16">
+    <section className="border-b border-white/5 bg-black/30 py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>// Benefits of the repair</p>
-        <h2 className="mt-3 text-4xl">What you get when this is done right.</h2>
-        <ul className="mt-8 grid gap-3 md:grid-cols-2">
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-flame">// Benefits of the repair</p>
+        <h2 className="mt-3 font-display text-4xl font-extrabold md:text-5xl">What you get when this is <span className="text-flame italic">done right.</span></h2>
+        <ul className="mt-10 grid gap-4 md:grid-cols-2">
           {service.benefits!.map((b) => (
-            <li key={b} className="flex items-start gap-3 rounded-sm border-2 border-border bg-card p-4">
-              <Sparkles className={`mt-0.5 h-5 w-5 shrink-0 ${accent.text}`} />
-              <span>{b}</span>
+            <li key={b} className="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-flame/40">
+              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-flame/15 text-flame ring-1 ring-flame/30">
+                <Sparkles className="h-5 w-5" />
+              </span>
+              <span className="pt-1.5 text-primary-foreground/90">{b}</span>
             </li>
           ))}
         </ul>
