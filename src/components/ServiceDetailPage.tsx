@@ -4,12 +4,16 @@ import {
   CheckCircle2,
   Phone,
   CalendarCheck,
-  Clock,
   AlertTriangle,
   ArrowRight,
   ShieldCheck,
   Droplets,
   Sparkles,
+  Award,
+  BadgeDollarSign,
+  Star,
+  MapPin,
+  ClipboardCheck,
 } from "lucide-react";
 import { ACCENT_CLASSES, getService, type ServiceSpec } from "@/data/services";
 import { LeadForm } from "@/components/LeadForm";
@@ -24,6 +28,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
   const Icon = service.icon;
   const accent = ACCENT_CLASSES[service.accent];
   const variant = service.variant;
+  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
 
   return (
     <>
