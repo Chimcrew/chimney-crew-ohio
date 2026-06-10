@@ -271,6 +271,20 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  @keyframes fire-flicker {
+    0%, 100% { opacity: 0.85; transform: translateY(0) scale(1); }
+    25% { opacity: 1; transform: translateY(-0.5%) scale(1.02); }
+    50% { opacity: 0.7; transform: translateY(0.5%) scale(0.99); }
+    75% { opacity: 0.95; transform: translateY(-0.3%) scale(1.01); }
+  }
+  .animate-fire-flicker { animation: fire-flicker 3.2s ease-in-out infinite; }
+
+  @keyframes fire-zoom {
+    0%, 100% { transform: scale(1.05); }
+    50% { transform: scale(1.12); }
+  }
+  .animate-fire-zoom { animation: fire-zoom 14s ease-in-out infinite; }
+
   .grain::after {
     content: "";
     position: absolute; inset: 0;
