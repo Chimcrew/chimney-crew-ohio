@@ -219,15 +219,14 @@ function Hero({
   Icon: ServiceSpec["icon"];
 }) {
   const v = service.variant;
-  const priceLabel = service.quoteOnly ? "Custom Quote" : service.price;
+  const priceLabel = formatFromPrice(service);
   const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
 
   // Repair / Emergency: red/amber alert hero with split layout
   if (v === "emergency" || v === "repair") {
     return (
-      <section className="relative overflow-hidden border-b-2 border-border bg-card/40 py-20">
-        <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
-        <div className={`pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full ${accent.bg} opacity-10 blur-3xl`} aria-hidden />
+      <section className="relative overflow-hidden border-b-2 border-flame/30 py-24">
+        <FireplaceBackdrop intensity="strong" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-[1.2fr_1fr] md:px-8">
           <div>
             <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>
@@ -275,8 +274,8 @@ function Hero({
   // Inspection: centered, calm, evidence-led
   if (v === "inspection") {
     return (
-      <section className="relative overflow-hidden border-b-2 border-border bg-card/40 py-24">
-        <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
+      <section className="relative overflow-hidden border-b-2 border-flame/30 py-28">
+        <FireplaceBackdrop intensity="medium" />
         <div className="relative mx-auto max-w-4xl px-4 text-center md:px-8">
           <div className={`mx-auto grid h-14 w-14 place-items-center rounded-sm ${accent.bg} text-primary-foreground`}>
             <Icon className="h-7 w-7" />
@@ -312,9 +311,8 @@ function Hero({
   // Install: bold spec-sheet feel
   if (v === "install") {
     return (
-      <section className="relative overflow-hidden border-b-2 border-border bg-primary py-24 text-primary-foreground">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_40%,_oklch(0.24_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]" aria-hidden />
-        <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
+      <section className="relative overflow-hidden border-b-2 border-flame/30 py-28 text-primary-foreground">
+        <FireplaceBackdrop intensity="strong" />
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
           <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>
             // {service.hero.eyebrow}
@@ -356,8 +354,8 @@ function Hero({
 
   // Maintenance / Plan: warm, friendly split
   return (
-    <section className="relative overflow-hidden border-b-2 border-border bg-card/40 py-20">
-      <div className="bg-grid absolute inset-0 opacity-60" aria-hidden />
+    <section className="relative overflow-hidden border-b-2 border-flame/30 py-24">
+      <FireplaceBackdrop intensity="medium" />
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 md:grid-cols-[1.3fr_1fr] md:px-8">
         <div>
           <p className={`font-mono text-xs uppercase tracking-widest ${accent.text}`}>
