@@ -9,7 +9,6 @@ import {
   ShieldCheck,
   Droplets,
   Sparkles,
-  Award,
   BadgeDollarSign,
   Star,
   MapPin,
