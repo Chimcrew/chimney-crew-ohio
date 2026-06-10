@@ -785,6 +785,10 @@ function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
 }
 
 export function NotFoundService() {
+  return _notFoundBody();
+}
+
+function _notFoundBody() {
   return (
     <section className="py-24 text-center">
       <h1 className="text-5xl">Service not found</h1>
