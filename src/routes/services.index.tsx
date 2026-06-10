@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronRight, ArrowRight } from "lucide-react";
-import { LeadForm } from "@/components/LeadForm";
 import { SERVICES, ACCENT_CLASSES, formatFromPrice } from "@/data/services";
 
 export const Route = createFileRoute("/services/")({
@@ -66,7 +65,6 @@ function ServicesPage() {
         </div>
       </section>
 
-      <LeadForm />
     </>
   );
 }

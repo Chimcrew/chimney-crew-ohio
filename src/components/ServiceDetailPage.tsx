@@ -17,10 +17,8 @@ import {
   ACCENT_CLASSES,
   getService,
   formatFromPrice,
-  heroImageFor,
   type ServiceSpec,
 } from "@/data/services";
-import { LeadForm } from "@/components/LeadForm";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -77,7 +75,6 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {/* FINAL CTA (dark band) */}
       <FinalServiceCta ctaLabel={ctaLabel} />
 
-      <LeadForm />
     </div>
   );
 }
@@ -85,9 +82,9 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
 /* ---------- HERO ---------- */
 
 function CinematicHero({ service }: { service: ServiceSpec }) {
-  const img = heroImageFor(service);
   const priceLabel = formatFromPrice(service);
   const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
+  const Icon = service.icon;
 
   return (
     <section className="relative isolate overflow-hidden bg-primary text-primary-foreground">
@@ -189,23 +186,48 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
             <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
               <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
-                Recent Ohio job
+                Live · Ohio crew
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
                 {service.shortTitle}
               </span>
             </div>
-            <div className="relative aspect-[5/4] overflow-hidden">
-              <img
-                src={img}
-                alt={`${service.shortTitle} by ChimCrew`}
-                className="h-full w-full object-cover"
-                width={1200}
-                height={960}
-                fetchPriority="high"
-                decoding="async"
+            <div className="relative aspect-[5/4] overflow-hidden bg-gradient-to-br from-[oklch(0.18_0.02_250)] via-[oklch(0.12_0.02_250)] to-[oklch(0.08_0.02_250)]">
+              {/* animated grid */}
+              <div
+                className="absolute inset-0 opacity-[0.18]"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(to right, oklch(0.78 0.19 92 / 0.4) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.78 0.19 92 / 0.4) 1px, transparent 1px)",
+                  backgroundSize: "28px 28px",
+                  maskImage: "radial-gradient(ellipse at center, black 35%, transparent 75%)",
+                }}
               />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent" />
+              {/* pulse rings */}
+              <div className="absolute inset-0 grid place-items-center">
+                <div className="relative grid h-44 w-44 place-items-center">
+                  <span className="absolute inset-0 rounded-full border border-flame/30 service-pulse" />
+                  <span className="absolute inset-0 rounded-full border border-flame/30 service-pulse" style={{ animationDelay: "1s" }} />
+                  <span className="absolute inset-0 rounded-full border border-flame/30 service-pulse" style={{ animationDelay: "2s" }} />
+                  <div className="relative grid h-32 w-32 place-items-center rounded-full bg-flame text-primary shadow-[0_0_60px_oklch(0.78_0.19_92/0.6)] service-float">
+                    <Icon className="h-14 w-14" />
+                  </div>
+                </div>
+              </div>
+              {/* floating spec chips */}
+              <span className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80 backdrop-blur">
+                <span className="h-1.5 w-1.5 rounded-full bg-flame" /> CSIA Certified
+              </span>
+              <span className="absolute right-5 top-5 inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-flame backdrop-blur">
+                {priceLabel}
+              </span>
+              {/* corner brackets */}
+              <span className="pointer-events-none absolute left-3 top-3 h-3 w-3 border-l border-t border-flame/60" />
+              <span className="pointer-events-none absolute right-3 top-3 h-3 w-3 border-r border-t border-flame/60" />
+              <span className="pointer-events-none absolute left-3 bottom-3 h-3 w-3 border-l border-b border-flame/60" />
+              <span className="pointer-events-none absolute right-3 bottom-3 h-3 w-3 border-r border-b border-flame/60" />
+
+              {/* Bottom telemetry bar */}
               <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-primary/85 px-4 py-2.5 backdrop-blur">
                 <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
                   <MapPin className="h-3 w-3 text-flame" /> Columbus · Dayton · Cincinnati
@@ -214,6 +236,19 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
                   Verified
                 </span>
               </div>
+
+              <style>{`
+                @keyframes service-pulse {
+                  0% { transform: scale(0.6); opacity: 0.8; }
+                  100% { transform: scale(1.6); opacity: 0; }
+                }
+                .service-pulse { animation: service-pulse 3s ease-out infinite; }
+                @keyframes service-float {
+                  0%, 100% { transform: translateY(0); }
+                  50% { transform: translateY(-8px); }
+                }
+                .service-float { animation: service-float 4s ease-in-out infinite; }
+              `}</style>
             </div>
           </div>
         </div>
@@ -615,7 +650,6 @@ function Related({ service }: { service: ServiceSpec }) {
         <div className="mt-12 grid gap-6 md:grid-cols-3">
           {items.map((s) => {
             const RIcon = s.icon;
-            const img = heroImageFor(s);
             return (
               <Link
                 key={s.slug}
@@ -623,18 +657,22 @@ function Related({ service }: { service: ServiceSpec }) {
                 params={{ slug: s.slug }}
                 className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-1 hover:border-flame hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.35)]"
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-primary">
-                  <img
-                    src={img}
-                    alt={s.shortTitle}
-                    className="h-full w-full object-cover opacity-80 transition group-hover:scale-105 group-hover:opacity-100"
-                    loading="lazy"
+                <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary via-[oklch(0.16_0.02_250)] to-[oklch(0.10_0.02_250)]">
+                  <div
+                    className="absolute inset-0 opacity-[0.18]"
+                    style={{
+                      backgroundImage:
+                        "linear-gradient(to right, oklch(0.78 0.19 92 / 0.4) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.78 0.19 92 / 0.4) 1px, transparent 1px)",
+                      backgroundSize: "24px 24px",
+                      maskImage: "radial-gradient(ellipse at center, black 35%, transparent 75%)",
+                    }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent" />
-                  <div className="absolute left-4 top-4 grid h-10 w-10 place-items-center rounded-full bg-flame text-primary">
-                    <RIcon className="h-5 w-5" />
+                  <div className="absolute inset-0 grid place-items-center">
+                    <div className="grid h-20 w-20 place-items-center rounded-full bg-flame text-primary shadow-[0_0_40px_oklch(0.78_0.19_92/0.45)] transition group-hover:scale-110">
+                      <RIcon className="h-9 w-9" />
+                    </div>
                   </div>
-                  <span className="absolute right-4 top-4 rounded-full bg-black/50 px-3 py-1 font-mono text-[10px] uppercase tracking-widest text-flame backdrop-blur">
+                  <span className="absolute right-4 top-4 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-flame backdrop-blur">
                     {formatFromPrice(s)}
                   </span>
                 </div>

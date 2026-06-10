@@ -49,7 +49,6 @@ export const Route = createFileRoute("/services/$slug")({
               { "@type": "City", name: "Cincinnati" },
               { "@type": "City", name: "Dayton" },
               { "@type": "City", name: "Cleveland" },
-              { "@type": "City", name: "Pittsburgh" },
             ],
             offers: { "@type": "Offer", price: s.price, priceCurrency: "USD" },
           }),

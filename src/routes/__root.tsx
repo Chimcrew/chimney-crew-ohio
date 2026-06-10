@@ -163,7 +163,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             { "@type": "City", name: "Cincinnati" },
             { "@type": "City", name: "Dayton" },
             { "@type": "City", name: "Cleveland" },
-            { "@type": "City", name: "Pittsburgh" },
             { "@type": "City", name: "Dublin" },
             { "@type": "City", name: "Hilliard" },
             { "@type": "City", name: "Westerville" },
