@@ -30,15 +30,15 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
   const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
 
   return (
-    <>
+    <div className="bg-primary text-primary-foreground">
       {/* Breadcrumbs */}
-      <nav aria-label="Breadcrumb" className="border-b border-border bg-card/40">
-        <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 font-mono text-xs uppercase tracking-widest text-muted-foreground md:px-8">
-          <li><Link to="/" className="hover:text-foreground">Home</Link></li>
+      <nav aria-label="Breadcrumb" className="border-b border-white/5 bg-black/30">
+        <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 font-mono text-xs uppercase tracking-widest text-primary-foreground/60 md:px-8">
+          <li><Link to="/" className="hover:text-flame">Home</Link></li>
           <li aria-hidden>/</li>
-          <li><Link to="/services" className="hover:text-foreground">Services</Link></li>
+          <li><Link to="/services" className="hover:text-flame">Services</Link></li>
           <li aria-hidden>/</li>
-          <li className="text-foreground">{service.shortTitle}</li>
+          <li className="text-flame">{service.shortTitle}</li>
         </ol>
       </nav>
 
@@ -51,37 +51,31 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {variant === "inspection" && <InspectionBand service={service} />}
 
       {/* What's included */}
-      <section className="border-b border-border py-16">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 md:grid-cols-[1fr_1.2fr] md:px-8">
-          <div>
-            <p className="font-mono text-xs uppercase tracking-widest text-primary">// What you get</p>
-            <h2 className="mt-3 text-4xl">
+      <section className="border-b border-white/5 py-20">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="max-w-3xl space-y-3">
+            <p className="font-mono text-xs uppercase tracking-[0.3em] text-flame">// What you get</p>
+            <h2 className="font-display text-4xl font-extrabold md:text-5xl">
               {service.quoteOnly
-                ? `Everything included in your ${service.shortTitle.toLowerCase()}.`
+                ? `Everything in your ${service.shortTitle.toLowerCase()}.`
                 : `Everything in the flat ${service.price} price.`}
             </h2>
-            <p className="mt-4 text-muted-foreground">
+            <p className="text-primary-foreground/65">
               {service.quoteOnly
                 ? "Every project starts with a free on-site inspection and a written, flat-rate quote. No surprises, no upsells — just the work your home actually needs."
                 : "No add-ons, no nickel-and-diming. The number you see is the number you pay — and you'll know it before we lift a tool."}
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-6 text-sm">
-              <span className="inline-flex items-center gap-2 text-muted-foreground">
-                <BadgeDollarSign className="h-4 w-4 text-flame" /> Upfront flat-rate pricing
-              </span>
-              <span className="inline-flex items-center gap-2 text-muted-foreground">
-                <ShieldCheck className="h-4 w-4" /> Workmanship guarantee
-              </span>
-            </div>
           </div>
-          <ul className="space-y-3">
+          <ul className="mt-10 grid gap-4 md:grid-cols-2">
             {service.bullets.map((b) => (
               <li
                 key={b}
-                className="flex items-start gap-3 rounded-sm border-2 border-border bg-card p-4 transition hover:border-primary"
+                className="group flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition hover:border-flame/40 hover:bg-white/[0.05]"
               >
-                <CheckCircle2 className={`mt-0.5 h-5 w-5 shrink-0 ${accent.text}`} />
-                <span>{b}</span>
+                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-flame/15 text-flame ring-1 ring-flame/30 transition group-hover:bg-flame group-hover:text-primary">
+                  <CheckCircle2 className="h-5 w-5" />
+                </span>
+                <span className="pt-1.5 text-primary-foreground/90">{b}</span>
               </li>
             ))}
           </ul>
@@ -108,18 +102,26 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       <WhyChimCrew accent={accent} />
 
       {/* FAQs */}
-      <section className="border-b border-border py-16">
+      <section className="border-b border-white/5 py-20">
         <div className="mx-auto max-w-4xl px-4 md:px-8">
-          <p className="font-mono text-xs uppercase tracking-widest text-primary">// Common questions</p>
-          <h2 className="mt-3 text-4xl">{service.shortTitle} FAQs</h2>
-          <dl className="mt-8 divide-y divide-border border-y border-border">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-flame">// Common questions</p>
+          <h2 className="mt-3 font-display text-4xl font-extrabold md:text-5xl">
+            {service.shortTitle} <span className="text-flame">FAQs</span>
+          </h2>
+          <div className="mt-10 space-y-3">
             {service.faqs.map((f) => (
-              <div key={f.q} className="grid gap-2 py-5 md:grid-cols-[1fr_2fr] md:gap-8">
-                <dt className="font-display text-lg">{f.q}</dt>
-                <dd className="text-muted-foreground">{f.a}</dd>
-              </div>
+              <details
+                key={f.q}
+                className="group rounded-2xl border border-white/10 bg-white/[0.03] p-6 open:border-flame/40 open:bg-white/[0.06] transition"
+              >
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6">
+                  <span className="font-display text-lg font-bold text-primary-foreground">{f.q}</span>
+                  <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-white/15 text-flame transition group-open:rotate-45 group-open:border-flame group-open:bg-flame group-open:text-primary text-xl leading-none">+</span>
+                </summary>
+                <p className="mt-4 border-t border-white/10 pt-4 text-primary-foreground/75 leading-relaxed">{f.a}</p>
+              </details>
             ))}
-          </dl>
+          </div>
         </div>
       </section>
 
@@ -130,7 +132,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       <FinalServiceCta ctaLabel={ctaLabel} />
 
       <LeadForm />
-    </>
+    </div>
   );
 }
 
