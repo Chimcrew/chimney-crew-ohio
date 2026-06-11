@@ -8,8 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { formatFromPrice, getService } from "@/data/services";
-
 const OPEN_EVENT = "chimcrew:open-schedule";
 
 export function openScheduleDialog() {
@@ -18,20 +16,15 @@ export function openScheduleDialog() {
   }
 }
 
-// Prices are derived from SERVICES so the widget never drifts from
-// src/data/services.ts. Add a new row by referencing a service slug.
-const priceFromSlug = (slug: string, fallback = "Custom Quote"): string => {
-  const svc = getService(slug);
-  return svc ? formatFromPrice(svc).replace(/^From\s+/, "") : fallback;
-};
+const FREE_INSPECTION = "Free Inspection";
 const services = [
-  { id: "sweep", label: "Chimney Sweep", icon: Sparkles, from: priceFromSlug("chimney-sweep") },
-  { id: "inspect", label: "Camera Inspection", icon: Search, from: priceFromSlug("level-2-inspection") },
-  { id: "repair", label: "Repair / Tuckpoint", icon: Wrench, from: priceFromSlug("crown-tuckpoint") },
-  { id: "waterproof", label: "Waterproof & Cap", icon: ShieldCheck, from: priceFromSlug("waterproofing") },
-  { id: "crown", label: "Crown Seal Repair", icon: HardHat, from: priceFromSlug("crown-tuckpoint") },
-  { id: "leak", label: "Leak Diagnosis", icon: Droplets, from: priceFromSlug("flashing-repair") },
-  { id: "unsure", label: "I'm not sure yet", icon: Flame, from: "Let us help" },
+  { id: "sweep", label: "Chimney Sweep", icon: Sparkles, from: FREE_INSPECTION },
+  { id: "inspect", label: "Camera Inspection", icon: Search, from: FREE_INSPECTION },
+  { id: "repair", label: "Repair / Tuckpoint", icon: Wrench, from: FREE_INSPECTION },
+  { id: "waterproof", label: "Waterproof & Cap", icon: ShieldCheck, from: FREE_INSPECTION },
+  { id: "crown", label: "Crown Seal Repair", icon: HardHat, from: FREE_INSPECTION },
+  { id: "leak", label: "Leak Diagnosis", icon: Droplets, from: FREE_INSPECTION },
+  { id: "unsure", label: "I'm not sure yet", icon: Flame, from: FREE_INSPECTION },
 ];
 
 const slots = [
@@ -181,7 +174,9 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                       </div>
                       <div className="min-w-0">
                         <p className="font-display text-sm font-bold leading-tight text-primary">{s.label}</p>
-                        <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">From {s.from}</p>
+                        <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
+                          <Sparkles className="h-2.5 w-2.5" /> {s.from}
+                        </p>
                       </div>
                     </button>
                   );
@@ -253,7 +248,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                 <div className="rounded-2xl border-2 border-primary/15 bg-secondary/40 p-4">
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">Your booking</p>
                   <div className="mt-2 grid gap-2 text-sm">
-                    <Row icon={<Sparkles className="h-3.5 w-3.5 text-flame" />} label="Service" value={`${svc.label} · from ${svc.from}`} />
+                    <Row icon={<Sparkles className="h-3.5 w-3.5 text-flame" />} label="Service" value={`${svc.label} · ${svc.from}`} />
                     <Row icon={<CalendarCheck className="h-3.5 w-3.5 text-flame" />} label="Date" value={date ? format(date, "EEEE, MMM d") : "—"} />
                     <Row icon={<Clock className="h-3.5 w-3.5 text-flame" />} label="Window" value={slt.time} />
                     {rush && <Row icon={<Flame className="h-3.5 w-3.5 text-flame" />} label="Priority" value="Rush callback (15 min)" />}
@@ -317,7 +312,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
             <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 border-t border-border pt-4 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
               <span className="inline-flex items-center gap-1.5"><MapPin className="h-3 w-3 text-flame" /> Ohio crew</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-flame" /> CSIA Certified</span>
-              <span className="inline-flex items-center gap-1.5"><Phone className="h-3 w-3 text-flame" /> (614) 549-1954</span>
+              <span className="inline-flex items-center gap-1.5"><Phone className="h-3 w-3 text-flame" /> (614) 683-5763</span>
             </div>
           </div>
     </>
@@ -351,7 +346,7 @@ function StickyCta({ onClick }: { onClick: () => void }) {
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-flame/30 bg-primary/95 px-3 py-2.5 backdrop-blur-xl md:hidden" style={{ paddingBottom: "calc(0.625rem + env(safe-area-inset-bottom))" }}>
         <div className="flex items-center gap-2">
           <a
-            href="tel:6145491954"
+            href="tel:6146835763"
             className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-white/15 bg-white/5 text-primary-foreground"
             aria-label="Call ChimCrew"
           >
