@@ -89,6 +89,23 @@ export const Route = createFileRoute('/api/public/notify-lead')({
 
         const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
+        // Persist the lead so it shows up in the database even if email delivery fails later.
+        const { error: insertError } = await supabase.from('leads').insert({
+          source: data.source,
+          name: data.name,
+          phone: data.phone,
+          email: data.email || null,
+          service: data.service,
+          city: data.city,
+          address: data.address,
+          preferred_date: data.date,
+          time_window: data.timeWindow,
+          notes: data.notes,
+        })
+        if (insertError) {
+          console.error('Lead insert failed', insertError)
+        }
+
         const results = await Promise.all(
           ADMIN_EMAILS.map(async (to) => {
             const messageId = crypto.randomUUID()
