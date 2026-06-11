@@ -71,7 +71,6 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [notes, setNotes] = useState("");
-  const [rush, setRush] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const svc = services.find((s) => s.id === serviceId)!;
@@ -95,7 +94,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
         address,
         date: date ? format(date, 'EEE, MMM d') : undefined,
         timeWindow: slt.time,
-        notes: rush ? `RUSH callback requested. ${notes}` : (notes || undefined),
+        notes: notes || undefined,
       }),
     }).catch(() => {});
     setTimeout(() => {
@@ -110,9 +109,9 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
       });
       // reset
       setStep(0);
-      setName(""); setPhone(""); setAddress(""); setNotes(""); setRush(false);
+      setName(""); setPhone(""); setAddress(""); setNotes("");
     }, 700);
-  }, [svc, slt, date, phone, onDone, address, name, notes, rush]);
+  }, [svc, slt, date, phone, onDone, address, name, notes]);
 
   return (
     <>
@@ -136,7 +135,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
               </h3>
               <p className="text-primary-foreground/70">
                 {step === 0 && "Choose the service — we'll confirm a flat-rate quote before any work starts."}
-                {step === 1 && "We text to confirm within the hour. If we're late, your inspection is on us."}
+                {step === 1 && "Pick a convenient 2-hour window that works for you."}
                 {step === 2 && "One quick form. A real Ohio sweep calls you back — no robots."}
               </p>
             </div>
@@ -220,25 +219,6 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                   </div>
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => setRush(!rush)}
-                  className={cn(
-                    "flex w-full items-center gap-3 rounded-xl border-2 p-3 text-left transition",
-                    rush ? "border-flame bg-flame/10" : "border-border bg-card hover:border-flame/60"
-                  )}
-                >
-                  <div className={cn("grid h-9 w-9 place-items-center rounded-lg transition", rush ? "bg-flame text-primary" : "bg-primary text-flame")}>
-                    <Flame className="h-4 w-4" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-display text-sm font-bold text-primary">Rush me to the front of the line</p>
-                    <p className="text-xs text-muted-foreground">Same-day callback within 15 min · no extra cost</p>
-                  </div>
-                  <div className={cn("grid h-6 w-10 items-center rounded-full p-0.5 transition", rush ? "bg-flame" : "bg-border")}>
-                    <span className={cn("h-5 w-5 rounded-full bg-white shadow transition-transform", rush ? "translate-x-4" : "translate-x-0")} />
-                  </div>
-                </button>
               </div>
             )}
 
@@ -251,7 +231,6 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                     <Row icon={<Sparkles className="h-3.5 w-3.5 text-flame" />} label="Service" value={`${svc.label} · ${svc.from}`} />
                     <Row icon={<CalendarCheck className="h-3.5 w-3.5 text-flame" />} label="Date" value={date ? format(date, "EEEE, MMM d") : "—"} />
                     <Row icon={<Clock className="h-3.5 w-3.5 text-flame" />} label="Window" value={slt.time} />
-                    {rush && <Row icon={<Flame className="h-3.5 w-3.5 text-flame" />} label="Priority" value="Rush callback (15 min)" />}
                   </div>
                 </div>
 
