@@ -8,8 +8,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { formatFromPrice, getService } from "@/data/services";
-
 const OPEN_EVENT = "chimcrew:open-schedule";
 
 export function openScheduleDialog() {
@@ -18,20 +16,15 @@ export function openScheduleDialog() {
   }
 }
 
-// Prices are derived from SERVICES so the widget never drifts from
-// src/data/services.ts. Add a new row by referencing a service slug.
-const priceFromSlug = (slug: string, fallback = "Custom Quote"): string => {
-  const svc = getService(slug);
-  return svc ? formatFromPrice(svc).replace(/^From\s+/, "") : fallback;
-};
+const FREE_INSPECTION = "Free Inspection";
 const services = [
-  { id: "sweep", label: "Chimney Sweep", icon: Sparkles, from: priceFromSlug("chimney-sweep") },
-  { id: "inspect", label: "Camera Inspection", icon: Search, from: priceFromSlug("level-2-inspection") },
-  { id: "repair", label: "Repair / Tuckpoint", icon: Wrench, from: priceFromSlug("crown-tuckpoint") },
-  { id: "waterproof", label: "Waterproof & Cap", icon: ShieldCheck, from: priceFromSlug("waterproofing") },
-  { id: "crown", label: "Crown Seal Repair", icon: HardHat, from: priceFromSlug("crown-tuckpoint") },
-  { id: "leak", label: "Leak Diagnosis", icon: Droplets, from: priceFromSlug("flashing-repair") },
-  { id: "unsure", label: "I'm not sure yet", icon: Flame, from: "Let us help" },
+  { id: "sweep", label: "Chimney Sweep", icon: Sparkles, from: FREE_INSPECTION },
+  { id: "inspect", label: "Camera Inspection", icon: Search, from: FREE_INSPECTION },
+  { id: "repair", label: "Repair / Tuckpoint", icon: Wrench, from: FREE_INSPECTION },
+  { id: "waterproof", label: "Waterproof & Cap", icon: ShieldCheck, from: FREE_INSPECTION },
+  { id: "crown", label: "Crown Seal Repair", icon: HardHat, from: FREE_INSPECTION },
+  { id: "leak", label: "Leak Diagnosis", icon: Droplets, from: FREE_INSPECTION },
+  { id: "unsure", label: "I'm not sure yet", icon: Flame, from: FREE_INSPECTION },
 ];
 
 const slots = [
