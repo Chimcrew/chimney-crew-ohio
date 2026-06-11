@@ -174,7 +174,9 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                       </div>
                       <div className="min-w-0">
                         <p className="font-display text-sm font-bold leading-tight text-primary">{s.label}</p>
-                        <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">From {s.from}</p>
+                        <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
+                          <Sparkles className="h-2.5 w-2.5" /> {s.from}
+                        </p>
                       </div>
                     </button>
                   );
@@ -246,7 +248,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                 <div className="rounded-2xl border-2 border-primary/15 bg-secondary/40 p-4">
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">Your booking</p>
                   <div className="mt-2 grid gap-2 text-sm">
-                    <Row icon={<Sparkles className="h-3.5 w-3.5 text-flame" />} label="Service" value={`${svc.label} · from ${svc.from}`} />
+                    <Row icon={<Sparkles className="h-3.5 w-3.5 text-flame" />} label="Service" value={`${svc.label} · ${svc.from}`} />
                     <Row icon={<CalendarCheck className="h-3.5 w-3.5 text-flame" />} label="Date" value={date ? format(date, "EEEE, MMM d") : "—"} />
                     <Row icon={<Clock className="h-3.5 w-3.5 text-flame" />} label="Window" value={slt.time} />
                     {rush && <Row icon={<Flame className="h-3.5 w-3.5 text-flame" />} label="Priority" value="Rush callback (15 min)" />}
