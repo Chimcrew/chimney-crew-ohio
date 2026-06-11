@@ -302,7 +302,7 @@ function MobileHero() {
 
           {/* Headline + CTAs anchored to bottom */}
           <div className="space-y-5">
-            <h1 className="font-display text-[2.75rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-primary-foreground drop-shadow-[0_4px_16px_oklch(0_0_0/0.6)]">
+            <h1 className="font-display text-[2rem] sm:text-[2.5rem] font-extrabold uppercase leading-[1] tracking-[-0.02em] text-primary-foreground drop-shadow-[0_4px_16px_oklch(0_0_0/0.6)]">
               Ohio's Trusted
               <br />
               <span className="text-flame">Chimney Team</span>
