@@ -302,7 +302,7 @@ function MobileHero() {
 
           {/* Headline + CTAs anchored to bottom */}
           <div className="space-y-5">
-            <h1 className="font-display text-[2.75rem] font-extrabold uppercase leading-[0.95] tracking-[-0.02em] text-primary-foreground drop-shadow-[0_4px_16px_oklch(0_0_0/0.6)]">
+            <h1 className="font-display text-[2rem] sm:text-[2.5rem] font-extrabold uppercase leading-[1] tracking-[-0.02em] text-primary-foreground drop-shadow-[0_4px_16px_oklch(0_0_0/0.6)]">
               Ohio's Trusted
               <br />
               <span className="text-flame">Chimney Team</span>
@@ -595,7 +595,7 @@ function WhyChooseUs() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why Chimcrew
           </p>
-          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             Six reasons Ohio homeowners trust us first.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
@@ -649,7 +649,7 @@ function BeforeAfterHome() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
             <Sparkles className="h-3.5 w-3.5" /> Before / After
           </p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl">
             Drag the slider. <span className="text-flame">See the work.</span>
           </h2>
           <p className="mt-3 text-base text-primary-foreground/80">
@@ -705,7 +705,7 @@ function ProblemSolver() {
           <p className="inline-flex items-center gap-2 rounded-full border border-destructive/40 bg-destructive/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-destructive">
             <AlertTriangle className="h-3.5 w-3.5" /> Sound familiar?
           </p>
-          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             The problem you're searching for — we fix it.
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
@@ -833,7 +833,7 @@ function FireHazards() {
           <p className="inline-flex items-center gap-2 rounded-full border border-destructive/40 bg-destructive/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-destructive">
             <AlertTriangle className="h-3.5 w-3.5" /> Why it matters
           </p>
-          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             What your chimney is hiding right now.
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
@@ -997,7 +997,7 @@ function ServicesGrid() {
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
               <HardHat className="h-3.5 w-3.5 text-flame" /> What we do · all in one visit
             </p>
-            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-6xl">
+            <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-6xl">
               Pick a service.<br/>See the actual work.
             </h2>
             <p className="mt-4 max-w-xl text-base text-muted-foreground">
@@ -1082,7 +1082,7 @@ function ServicesGrid() {
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
                     Flat rate · Ohio neighbors
                   </p>
-                  <p className="mt-1 font-display text-4xl font-extrabold text-primary">
+                  <p className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-primary">
                     {s.priceFrom}
                     {/^\$/.test(s.priceFrom) && (
                       <span className="ml-1 text-sm font-medium text-muted-foreground">+ tax</span>
@@ -1233,7 +1233,7 @@ function LeakingChimney() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Droplets className="h-3.5 w-3.5 text-flame" /> Is your chimney leaking?
           </p>
-          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             One bad Ohio winter and the water wins.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
@@ -1289,7 +1289,7 @@ function ScheduleOnline() {
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
               <CalendarCheck className="h-3.5 w-3.5" /> 60-second booking
             </p>
-            <h2 className="mt-4 font-display text-4xl font-bold md:text-5xl">
+            <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold md:text-5xl">
               Pick a window. <span className="text-flame">We handle everything else.</span>
             </h2>
             <p className="mt-4 max-w-xl text-base text-primary-foreground/80">
@@ -1377,7 +1377,7 @@ function Process() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Clock className="h-3.5 w-3.5 text-flame" /> How it works
           </p>
-            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+            <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
               From "hello" to handshake in four steps.
             </h2>
             <p className="mt-3 text-base text-muted-foreground">
@@ -1482,7 +1482,7 @@ function Testimonials() {
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
               <Star className="h-3.5 w-3.5 text-flame" /> Reviews
             </p>
-            <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+            <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
               Real Ohio neighbors. Honest words.
             </h2>
           </div>
@@ -1557,7 +1557,7 @@ function Faq() {
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             FAQ
           </p>
-          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             Ask us anything — we don't bite.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
@@ -1661,7 +1661,7 @@ function ServiceArea() {
 
         {/* Headline */}
         <div className="mx-auto mt-5 max-w-3xl text-center">
-          <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight md:text-6xl">
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase leading-[1] tracking-tight md:text-6xl">
             Serving the <span className="text-flame">Ohio Heartland</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-primary-foreground/70 md:text-base">
