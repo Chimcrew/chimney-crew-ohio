@@ -29,14 +29,14 @@ export const Route = createFileRoute("/chimney-repair-columbus")({
       {
         name: "description",
         content:
-          "Chimney repair in Columbus, OH. Free chimney inspections, CSIA-certified technicians, fully insured, written warranty. Same-day service available. Call (614) 549-1954.",
+          "Chimney repair in Columbus, OH. Free chimney inspections, CSIA-certified technicians, fully insured, written warranty. Same-day service available. Call (614) 683-5763.",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Chimney Repair Columbus, OH — Free Inspection" },
       {
         property: "og:description",
         content:
-          "Free chimney inspections in Columbus. Certified, insured, written warranty. Book online or call (614) 549-1954.",
+          "Free chimney inspections in Columbus. Certified, insured, written warranty. Book online or call (614) 683-5763.",
       },
     ],
     links: [{ rel: "canonical", href: "https://chimcrew.com/chimney-repair-columbus" }],
@@ -95,7 +95,7 @@ function ChimneyRepairColumbus() {
                 <CalendarCheck className="h-5 w-5" /> Schedule Inspection
               </a>
               <a
-                href="tel:6145491954"
+                href="tel:6146835763"
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.04] px-7 py-4 font-display text-base font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
               >
                 <Phone className="h-5 w-5 text-flame" /> Call Now
@@ -164,10 +164,10 @@ function ChimneyRepairColumbus() {
               <CalendarCheck className="h-4 w-4" /> Book Free Inspection
             </a>
             <a
-              href="tel:6145491954"
+              href="tel:6146835763"
               className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
             >
-              <Phone className="h-4 w-4" /> (614) 549-1954
+              <Phone className="h-4 w-4" /> (614) 683-5763
             </a>
           </div>
         </div>
@@ -247,10 +247,10 @@ function ChimneyRepairColumbus() {
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <a
-                href="tel:6145491954"
+                href="tel:6146835763"
                 className="inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-6 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] transition hover:-translate-y-0.5"
               >
-                <Phone className="h-4 w-4" /> Call (614) 549-1954
+                <Phone className="h-4 w-4" /> Call (614) 683-5763
               </a>
             </div>
 
@@ -291,10 +291,10 @@ function ChimneyRepairColumbus() {
               <CalendarCheck className="h-4 w-4" /> Schedule Inspection
             </a>
             <a
-              href="tel:6145491954"
+              href="tel:6146835763"
               className="inline-flex items-center gap-2 rounded-xl border-2 border-primary px-6 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
             >
-              <Phone className="h-4 w-4" /> (614) 549-1954
+              <Phone className="h-4 w-4" /> (614) 683-5763
             </a>
           </div>
         </div>

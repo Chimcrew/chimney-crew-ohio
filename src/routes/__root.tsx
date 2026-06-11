@@ -149,7 +149,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           description:
             "Locally owned chimney sweep, repair, and inspection company serving Columbus, Cincinnati, and Dayton, Ohio. CSIA-certified technicians.",
           url: "https://chimcrew.com",
-          telephone: "+1-614-549-1954",
+          telephone: "+1-614-683-5763",
           priceRange: "$$",
           image: "https://chimcrew.com/og-cover.jpg",
           address: {

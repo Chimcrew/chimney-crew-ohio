@@ -230,7 +230,7 @@ export const SERVICES: ServiceSpec[] = [
     ],
     faqs: [
       { q: "Is this accepted by lenders?", a: "Yes. Our PDF includes our CSIA credentials and is accepted by every Ohio lender we've worked with." },
-      { q: "Can you do same-day for a closing?", a: "Often yes — call us at (614) 549-1954 and we'll squeeze you in." },
+      { q: "Can you do same-day for a closing?", a: "Often yes — call us at (614) 683-5763 and we'll squeeze you in." },
     ],
     related: ["level-1-inspection", "liner-install", "crown-tuckpoint"],
     metaDescription: "Level 2 chimney inspection with camera scan in Ohio. Lender-ready PDF. Columbus, Cincinnati, Dayton.",

@@ -109,7 +109,7 @@ export function SiteFooter() {
             <ul className="mt-4 space-y-3 text-sm">
               <li className="flex items-start gap-2">
                 <Phone className="mt-0.5 h-4 w-4 text-primary" />
-                <a href="tel:6145491954" className="hover:text-primary">(614) 549-1954</a>
+                <a href="tel:6146835763" className="hover:text-primary">(614) 683-5763</a>
               </li>
               <li className="flex items-start gap-2">
                 <Mail className="mt-0.5 h-4 w-4 text-primary" />

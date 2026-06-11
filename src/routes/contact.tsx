@@ -157,8 +157,8 @@ function ContactPage() {
                 <p className="mb-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
                   Emergency Dispatch
                 </p>
-                <a href="tel:6145491954" className="font-display text-2xl font-black text-primary underline-offset-4 hover:underline">
-                  (614) 549-1954
+                <a href="tel:6146835763" className="font-display text-2xl font-black text-primary underline-offset-4 hover:underline">
+                  (614) 683-5763
                 </a>
               </div>
               <div>

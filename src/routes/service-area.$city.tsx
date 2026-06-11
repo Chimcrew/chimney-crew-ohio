@@ -39,7 +39,7 @@ export const Route = createFileRoute("/service-area/$city")({
             "@type": "LocalBusiness",
             name: `ChimCrew — ${c.name}`,
             url,
-            telephone: "+1-614-549-1954",
+            telephone: "+1-614-683-5763",
             areaServed: { "@type": "City", name: `${c.name}, ${c.state}` },
             address: {
               "@type": "PostalAddress",
@@ -92,10 +92,10 @@ function CityPage() {
               <CalendarCheck className="h-4 w-4" /> Schedule Service
             </Link>
             <a
-              href="tel:6145491954"
+              href="tel:6146835763"
               className="inline-flex items-center gap-2 rounded-xl border-2 border-white/20 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
             >
-              <Phone className="h-4 w-4" /> Call (614) 549-1954
+              <Phone className="h-4 w-4" /> Call (614) 683-5763
             </a>
           </div>
         </div>

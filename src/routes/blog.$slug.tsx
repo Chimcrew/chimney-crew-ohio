@@ -157,10 +157,10 @@ function PostPage() {
                 Schedule online
               </Link>
               <a
-                href="tel:6145491954"
+                href="tel:6146835763"
                 className="inline-flex items-center gap-2 rounded-xl border-2 border-primary px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
               >
-                <Phone className="h-4 w-4" /> (614) 549-1954
+                <Phone className="h-4 w-4" /> (614) 683-5763
               </a>
             </div>
           </div>

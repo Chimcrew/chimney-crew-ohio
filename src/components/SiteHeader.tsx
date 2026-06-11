@@ -64,7 +64,7 @@ export function SiteHeader() {
               <span className="grid h-3.5 w-3.5 place-items-center rounded-full bg-primary text-flame">★</span>
               1,836 5-star reviews
             </span>
-            <a href="tel:6145491954" className="hover:underline">(614) 549-1954</a>
+            <a href="tel:6146835763" className="hover:underline">(614) 683-5763</a>
           </span>
         </div>
       </div>
@@ -200,10 +200,10 @@ export function SiteHeader() {
           {/* CTAs */}
           <div className="hidden items-center gap-2 md:flex">
             <a
-              href="tel:6145491954"
+              href="tel:6146835763"
               className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition hover:border-flame hover:text-flame"
             >
-              <Phone className="h-3.5 w-3.5 shrink-0" /> (614) 549-1954
+              <Phone className="h-3.5 w-3.5 shrink-0" /> (614) 683-5763
             </a>
             <button
               type="button"
@@ -315,7 +315,7 @@ export function SiteHeader() {
             </nav>
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
-                href="tel:6145491954"
+                href="tel:6146835763"
                 className="flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-3 font-mono text-[11px] font-bold uppercase tracking-[0.18em]"
               >
                 <Phone className="h-4 w-4" /> Call

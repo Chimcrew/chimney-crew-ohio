@@ -214,11 +214,11 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
               <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
             </button>
             <a
-              href="tel:6145491954"
+              href="tel:6146835763"
               className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.03] px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground backdrop-blur transition hover:border-flame"
             >
               <Phone className="h-4 w-4 text-flame" />
-              (614) 549-1954
+              (614) 683-5763
             </a>
           </div>
 
@@ -493,10 +493,10 @@ function Signs({ service }: { service: ServiceSpec }) {
           </div>
           {loud && (
             <a
-              href="tel:6145491954"
+              href="tel:6146835763"
               className="inline-flex items-center gap-2 rounded-full bg-flame px-6 py-3 font-display text-xs font-extrabold uppercase tracking-widest text-primary transition hover:bg-primary hover:text-flame"
             >
-              <Phone className="h-4 w-4" /> (614) 549-1954
+              <Phone className="h-4 w-4" /> (614) 683-5763
             </a>
           )}
         </div>
@@ -773,10 +773,10 @@ function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
             <CalendarCheck className="h-5 w-5" /> {ctaLabel}
           </button>
           <a
-            href="tel:6145491954"
+            href="tel:6146835763"
             className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-8 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-primary-foreground backdrop-blur transition hover:border-white hover:bg-white/10 sm:w-auto"
           >
-            <Phone className="h-5 w-5" /> (614) 549-1954
+            <Phone className="h-5 w-5" /> (614) 683-5763
           </a>
         </div>
       </div>
@@ -842,14 +842,14 @@ function InlineRepairCta({ variant = "dark" }: { variant?: "dark" | "flame" }) {
             <CalendarCheck className="h-4 w-4" /> Schedule Inspection
           </button>
           <a
-            href="tel:6145491954"
+            href="tel:6146835763"
             className={
               flame
                 ? "inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
                 : "inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-white/[0.04] px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
             }
           >
-            <Phone className="h-4 w-4 text-flame" /> (614) 549-1954
+            <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
           </a>
         </div>
       </div>
