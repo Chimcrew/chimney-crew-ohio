@@ -1082,7 +1082,7 @@ function ServicesGrid() {
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
                     Flat rate · Ohio neighbors
                   </p>
-                  <p className="mt-1 font-display text-4xl font-extrabold text-primary">
+                  <p className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-primary">
                     {s.priceFrom}
                     {/^\$/.test(s.priceFrom) && (
                       <span className="ml-1 text-sm font-medium text-muted-foreground">+ tax</span>
