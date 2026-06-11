@@ -56,7 +56,7 @@ export function ScheduleWidget() {
 
 export function ScheduleInline() {
   return (
-    <div className="overflow-hidden rounded-2xl border-2 border-flame/30 bg-card shadow-[0_30px_80px_-30px_oklch(0_0_0/0.3)]">
+    <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[0_30px_80px_-30px_oklch(0_0_0/0.25)]">
       <ScheduleFlow variant="inline" />
     </div>
   );
@@ -116,43 +116,54 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
   return (
     <>
           {/* Header bar */}
-          <div className="relative overflow-hidden bg-primary px-6 py-5 text-primary-foreground">
-            <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-flame/30 blur-3xl" />
-            <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.07]" />
-            <div className="relative space-y-1.5 text-left">
+          <div className="relative overflow-hidden bg-primary px-6 py-6 text-primary-foreground md:px-8">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-flame/25 blur-3xl" aria-hidden />
+            <div className="relative">
+              {/* Step indicator */}
               <div className="flex items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/15 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-                  <span className="flex h-1.5 w-1.5 animate-pulse rounded-full bg-flame" /> Live availability
-                </span>
-                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
+                {[0, 1, 2].map((i) => (
+                  <div key={i} className="flex items-center gap-2">
+                    <span
+                      className={cn(
+                        "grid h-7 w-7 place-items-center rounded-full font-mono text-[11px] font-bold transition",
+                        i < step && "bg-flame text-primary",
+                        i === step && "bg-flame text-primary ring-4 ring-flame/25",
+                        i > step && "bg-white/10 text-primary-foreground/60"
+                      )}
+                    >
+                      {i < step ? <CheckCircle2 className="h-4 w-4" /> : i + 1}
+                    </span>
+                    {i < 2 && (
+                      <span
+                        className={cn(
+                          "h-px w-8 transition sm:w-12",
+                          i < step ? "bg-flame" : "bg-white/15"
+                        )}
+                      />
+                    )}
+                  </div>
+                ))}
+                <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
                   Step {step + 1} / 3
                 </span>
               </div>
-              <h3 className="font-display text-2xl font-extrabold tracking-tight md:text-3xl">
+              <h3 className="mt-4 font-display text-2xl font-extrabold tracking-tight md:text-[28px]">
                 {step === 0 && "What do you need handled?"}
                 {step === 1 && "Pick your window."}
                 {step === 2 && "Where should we roll up?"}
               </h3>
-              <p className="text-primary-foreground/70">
-                {step === 0 && "Choose the service — we'll confirm a flat-rate quote before any work starts."}
-                {step === 1 && "Pick a convenient 2-hour window that works for you."}
-                {step === 2 && "One quick form. A real Ohio sweep calls you back — no robots."}
+              <p className="mt-1.5 text-sm text-primary-foreground/70">
+                {step === 0 && "Every visit starts with a free inspection — no pressure, no upsells."}
+                {step === 1 && "Choose any 2-hour window. We text to confirm."}
+                {step === 2 && "One quick form. A real Ohio sweep replies — no robots."}
               </p>
-            </div>
-
-            {/* progress bar */}
-            <div className="relative mt-4 h-1 w-full overflow-hidden rounded-full bg-white/10">
-              <div
-                className="absolute inset-y-0 left-0 bg-flame transition-all duration-500"
-                style={{ width: `${((step + 1) / 3) * 100}%` }}
-              />
             </div>
           </div>
 
           {/* Body */}
-          <div className="p-6">
+          <div className="p-6 md:p-8">
             {step === 0 && (
-              <div className="grid grid-cols-2 gap-2.5">
+              <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                 {services.map((s) => {
                   const Icon = s.icon;
                   const active = s.id === serviceId;
@@ -162,21 +173,22 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                       type="button"
                       onClick={() => setServiceId(s.id)}
                       className={cn(
-                        "group flex items-start gap-3 rounded-xl border-2 p-3 text-left transition",
+                        "group relative flex items-center gap-3 rounded-xl border p-3.5 text-left transition",
                         active
-                          ? "border-flame bg-flame/10 shadow-flame"
-                          : "border-border bg-card hover:border-flame/60 hover:-translate-y-0.5"
+                          ? "border-flame bg-flame/5 shadow-[0_8px_24px_-12px_oklch(0.78_0.19_92/0.5)]"
+                          : "border-border bg-card hover:border-flame/50 hover:bg-flame/[0.03]"
                       )}
                     >
-                      <div className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-lg transition", active ? "bg-flame text-primary" : "bg-primary text-flame")}>
-                        <Icon className="h-5 w-5" />
+                      <div className={cn("grid h-10 w-10 shrink-0 place-items-center rounded-lg transition", active ? "bg-flame text-primary" : "bg-secondary text-primary group-hover:bg-flame/15 group-hover:text-flame")}>
+                        <Icon className="h-4.5 w-4.5" />
                       </div>
-                      <div className="min-w-0">
+                      <div className="min-w-0 flex-1">
                         <p className="font-display text-sm font-bold leading-tight text-primary">{s.label}</p>
-                        <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
-                          <Sparkles className="h-2.5 w-2.5" /> {s.from}
+                        <p className="mt-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
+                          {s.from}
                         </p>
                       </div>
+                      {active && <CheckCircle2 className="h-4 w-4 shrink-0 text-flame" />}
                     </button>
                   );
                 })}
@@ -184,8 +196,8 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
             )}
 
             {step === 1 && (
-              <div className="space-y-5">
-                <div className="rounded-2xl border-2 border-border bg-secondary/40 p-2">
+              <div className="space-y-6">
+                <div className="rounded-2xl border border-border bg-secondary/30 p-2">
                   <Calendar
                     mode="single"
                     selected={date}
@@ -195,7 +207,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                   />
                 </div>
                 <div>
-                  <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Pick a 2-hour window</p>
+                  <p className="mb-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">Pick a 2-hour window</p>
                   <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
                     {slots.map((sl) => {
                       const active = sl.id === slot;
@@ -205,10 +217,10 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                           type="button"
                           onClick={() => setSlot(sl.id)}
                           className={cn(
-                            "rounded-xl border-2 p-3 text-left transition",
+                            "rounded-xl border p-3 text-left transition",
                             active
-                              ? "border-flame bg-flame/10 shadow-flame"
-                              : "border-border bg-card hover:border-flame/60"
+                              ? "border-flame bg-flame/5 shadow-[0_6px_18px_-10px_oklch(0.78_0.19_92/0.5)]"
+                              : "border-border bg-card hover:border-flame/50"
                           )}
                         >
                           <p className="font-display text-sm font-bold text-primary">{sl.label}</p>
@@ -223,10 +235,10 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
             )}
 
             {step === 2 && (
-              <div className="space-y-4">
+              <div className="space-y-5">
                 {/* Summary card */}
-                <div className="rounded-2xl border-2 border-primary/15 bg-secondary/40 p-4">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">Your booking</p>
+                <div className="rounded-2xl border border-flame/20 bg-gradient-to-br from-flame/5 to-transparent p-4">
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">Your booking</p>
                   <div className="mt-2 grid gap-2 text-sm">
                     <Row icon={<Sparkles className="h-3.5 w-3.5 text-flame" />} label="Service" value={`${svc.label} · ${svc.from}`} />
                     <Row icon={<CalendarCheck className="h-3.5 w-3.5 text-flame" />} label="Date" value={date ? format(date, "EEEE, MMM d") : "—"} />
@@ -257,7 +269,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
             )}
 
             {/* Footer */}
-            <div className="mt-6 flex items-center justify-between gap-3">
+            <div className="mt-7 flex items-center justify-between gap-3">
               <button
                 type="button"
                 disabled={step === 0}
@@ -271,7 +283,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                   type="button"
                   disabled={!canAdvance}
                   onClick={() => setStep((s) => s + 1)}
-                  className="inline-flex items-center gap-2 rounded-xl bg-flame px-5 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-flame transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex items-center gap-2 rounded-xl bg-flame px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-flame transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-14px_oklch(0.78_0.19_92/0.7)] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
                 >
                   Continue <ArrowRight className="h-4 w-4" />
                 </button>
@@ -280,7 +292,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
                   type="button"
                   disabled={!canAdvance || submitting}
                   onClick={submit}
-                  className="inline-flex items-center gap-2 rounded-xl bg-flame px-5 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-flame transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="inline-flex items-center gap-2 rounded-xl bg-flame px-6 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-flame transition hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-14px_oklch(0.78_0.19_92/0.7)] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:translate-y-0"
                 >
                   {submitting ? "Booking…" : (<>Lock it in <CalendarCheck className="h-4 w-4" /></>)}
                 </button>
@@ -288,7 +300,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
             </div>
 
             {/* Bottom trust strip */}
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 border-t border-border pt-4 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 border-t border-border pt-5 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
               <span className="inline-flex items-center gap-1.5"><MapPin className="h-3 w-3 text-flame" /> Ohio crew</span>
               <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-flame" /> CSIA Certified</span>
               <span className="inline-flex items-center gap-1.5"><Phone className="h-3 w-3 text-flame" /> (614) 683-5763</span>
