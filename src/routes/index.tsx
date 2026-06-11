@@ -1661,7 +1661,7 @@ function ServiceArea() {
 
         {/* Headline */}
         <div className="mx-auto mt-5 max-w-3xl text-center">
-          <h2 className="font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-tight md:text-6xl">
+          <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase leading-[1] tracking-tight md:text-6xl">
             Serving the <span className="text-flame">Ohio Heartland</span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-primary-foreground/70 md:text-base">
