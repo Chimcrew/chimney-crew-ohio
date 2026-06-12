@@ -24,15 +24,6 @@ export type BeforeAfterJob = {
 
 export const BEFORE_AFTER_JOBS: BeforeAfterJob[] = [
   {
-    id: "real-crown-cap",
-    headline: "Cracked crown & open flue → sealed crown + new cap",
-    service: "Crown Seal + Stainless Cap Install",
-    city: "Powell, OH",
-    note: "Crown was split end-to-end with the terra-cotta flue exposed. We sealed every crack with high-temp CrownCoat and locked in a new black mesh cap.",
-    before: realCrownBefore.url,
-    after: realCrownAfter.url,
-  },
-  {
     id: "real-stucco",
     headline: "Spalling painted stucco → fresh elastomeric coat",
     service: "Chimney Waterproofing & Recoat",
