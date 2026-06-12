@@ -302,14 +302,14 @@ function MobileHero() {
 
           {/* Headline + CTAs anchored to bottom */}
           <div className="space-y-5">
-            <h1 className="font-display text-[2rem] sm:text-[2.5rem] font-extrabold uppercase leading-[1] tracking-[-0.02em] text-primary-foreground drop-shadow-[0_4px_16px_oklch(0_0_0/0.6)]">
+            <h1 className="font-display text-[2rem] sm:text-[2.5rem] font-extrabold uppercase leading-[1] tracking-[-0.02em] text-white drop-shadow-[0_4px_16px_oklch(0_0_0/0.6)]">
               Ohio's Trusted
               <br />
               <span className="text-flame">Chimney Team</span>
             </h1>
 
-            <p className="text-base leading-snug text-primary-foreground/90 drop-shadow">
-              <strong className="font-extrabold text-primary-foreground">Certified technicians.</strong> Real jobs.
+            <p className="text-base leading-snug text-white/90 drop-shadow">
+              <strong className="font-extrabold text-white">Certified technicians.</strong> Real jobs.
               <br />
               Serving Ohio homeowners every day.
             </p>
