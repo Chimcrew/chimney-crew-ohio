@@ -363,7 +363,7 @@ function Hero() {
                 ))}
               </div>
               <p className="text-sm leading-snug text-primary-foreground/85">
-                <span className="font-display font-extrabold text-flame">482 Ohio neighbors</span>{" "}
+                <span className="font-display font-extrabold text-flame">482 Ohio homeowners</span>{" "}
                 trusted us this month — your spot opens next.
               </p>
             </div>
@@ -528,7 +528,7 @@ function Hero() {
               ))}
             </div>
             <p className="text-sm text-primary-foreground/70">
-              <span className="font-display font-extrabold text-primary-foreground">482 Ohio neighbors</span> trusted us this month — your spot opens next.
+              <span className="font-display font-extrabold text-primary-foreground">482 Ohio homeowners</span> trusted us this month — your spot opens next.
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -584,7 +584,7 @@ function WhyChooseUs() {
     { icon: ThumbsUp, title: "Honest Up-Front Pricing", body: "Flat rates quoted in writing before we start. No surprises, no upsell theater, no hidden fees." },
     { icon: Clock, title: "Fast Response · Same-Day Service", body: "Most calls booked within the hour. Same-day slots open on weekdays during chimney season." },
     { icon: ShieldCheck, title: "Licensed, Insured & CSIA Certified", body: "Fully insured Ohio crew with industry-standard certifications. Your home is covered every visit." },
-    { icon: Star, title: "5-Star Rated · 1,800+ Reviews", body: "4.9-star average from Ohio neighbors in Columbus, Cincinnati and Dayton." },
+    { icon: Star, title: "5-Star Rated · 1,800+ Reviews", body: "4.9-star average from Ohio homeowners in Columbus, Cincinnati and Dayton." },
     { icon: Award, title: "Written Workmanship Warranty", body: "Every repair backed in writing — transferable to the next owner. We stand behind every job." },
   ];
   return (
@@ -599,7 +599,7 @@ function WhyChooseUs() {
             Six reasons Ohio homeowners trust us first.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
-            We're not the biggest chimney company in Ohio. We're the one your neighbors keep calling back.
+            We're not the biggest chimney company in Ohio. We're the one your homeowners keep calling back.
           </p>
         </div>
 
@@ -1080,7 +1080,7 @@ function ServicesGrid() {
               <aside className="flex flex-col justify-between gap-4 rounded-2xl border-2 border-primary/10 bg-secondary/60 p-5">
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-                    Flat rate · Ohio neighbors
+                    Flat rate · Ohio homeowners
                   </p>
                   <p className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-primary">
                     {s.priceFrom}
@@ -1483,7 +1483,7 @@ function Testimonials() {
               <Star className="h-3.5 w-3.5 text-flame" /> Reviews
             </p>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-              Real Ohio neighbors. Honest words.
+              Real Ohio homeowners. Honest words.
             </h2>
           </div>
           <Link
@@ -1826,7 +1826,7 @@ function FieldNotes() {
             </h2>
             <p className="mt-4 text-base text-muted-foreground md:text-lg">
               Practical chimney advice written by working Ohio sweeps — not
-              marketers, not AI. Read what we'd tell our own neighbors.
+              marketers, not AI. Read what we'd tell our own family.
             </p>
           </div>
           <Link

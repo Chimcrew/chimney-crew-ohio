@@ -61,7 +61,7 @@ function BeforeAfterPage() {
           <p className="mt-5 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
             Real Ohio chimneys, real ChimCrew jobs. Drag any photo below with
             your finger or mouse to compare what it looked like when we
-            arrived — and what your neighbors got back.
+            arrived — and what other homeowners got back.
           </p>
         </div>
       </section>

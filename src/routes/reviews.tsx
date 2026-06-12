@@ -4,7 +4,7 @@ import { Star, Quote, ShieldCheck, MapPin, BadgeCheck } from "lucide-react";
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "Reviews — What Ohio neighbors say about ChimCrew" },
+      { title: "Reviews — What Ohio homeowners say about ChimCrew" },
       { name: "description", content: "Real reviews from ChimCrew customers across Columbus, Cincinnati and Dayton, Ohio." },
     ],
   }),
@@ -44,7 +44,7 @@ function ReviewsPage() {
         <div className="bg-grid absolute inset-0 opacity-60" />
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
           <p className="font-mono text-xs uppercase tracking-widest text-primary">// Reviews</p>
-          <h1 className="mt-3 text-6xl md:text-7xl">Neighbors <span className="text-flame">talk.</span></h1>
+          <h1 className="mt-3 text-6xl md:text-7xl">Homeowners <span className="text-flame">talk.</span></h1>
           <div className="mt-6 flex items-center gap-4">
             <div className="flex text-primary">
               {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}
