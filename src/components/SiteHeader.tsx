@@ -134,7 +134,7 @@ export function SiteHeader() {
                     {servicesOpen && (
                       <div
                         role="menu"
-                        className="absolute left-1/2 top-full z-50 w-[min(720px,90vw)] -translate-x-1/2 pt-3"
+                        className="absolute left-0 top-full z-50 w-[min(720px,90vw)] pt-3"
                       >
                         <div className="overflow-hidden rounded-2xl border border-white/10 bg-primary text-primary-foreground shadow-[0_30px_60px_oklch(0_0_0/0.5)] backdrop-blur-xl">
                         <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-5 py-3">
