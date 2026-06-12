@@ -261,7 +261,7 @@ function ChimneyRepairColumbus() {
             <div className="mt-6 flex items-center gap-3 text-primary-foreground/80">
               <Users className="h-5 w-5 text-flame" />
               <p className="text-sm">
-                <span className="font-display font-extrabold text-flame">482 Columbus neighbors</span> booked this month.
+                <span className="font-display font-extrabold text-flame">482 Columbus homeowners</span> booked this month.
               </p>
             </div>
           </div>

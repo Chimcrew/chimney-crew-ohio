@@ -62,7 +62,7 @@ function BlogPage() {
           <p className="mt-5 max-w-2xl text-base text-muted-foreground md:text-lg">
             Practical chimney advice from rooftops across Columbus, Cincinnati,
             and Dayton. No fluff, no SEO filler — what we'd tell our own
-            neighbors.
+            homeowners.
           </p>
         </div>
       </section>
