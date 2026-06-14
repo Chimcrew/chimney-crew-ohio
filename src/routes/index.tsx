@@ -252,19 +252,19 @@ function MobileHero() {
   const photos = [projectHero, projectLiner, projectTuck, projectCap, projectTech];
   const [idx, setIdx] = useState(0);
   useEffect(() => {
-    const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 4200);
+    const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 5200);
     return () => clearInterval(id);
   }, [photos.length]);
 
   return (
     <div className="relative lg:hidden">
-      {/* Full-bleed photo stack */}
-      <div className="relative h-[82vh] min-h-[560px] w-full overflow-hidden">
+      {/* Full-bleed editorial photo */}
+      <div className="relative h-[88vh] min-h-[620px] w-full overflow-hidden bg-black">
         {photos.map((src, i) => (
           <img
             key={src}
             src={src}
-            alt="ChimCrew real Ohio chimney job"
+            alt="ChimCrew chimney repair in Columbus, Ohio"
             className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out ${i === idx ? "opacity-100" : "opacity-0"}`}
             fetchPriority={i === 0 ? "high" : "low"}
             decoding="async"
@@ -272,76 +272,119 @@ function MobileHero() {
           />
         ))}
 
-        {/* Dark gradient overlay for legibility */}
+        {/* Premium dark overlay — heavy on the bottom for legibility */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, oklch(0.08 0.01 250 / 0.55) 0%, oklch(0.08 0.01 250 / 0.35) 40%, oklch(0.08 0.01 250 / 0.85) 80%, oklch(0.06 0.01 250) 100%)",
+              "linear-gradient(180deg, oklch(0 0 0 / 0.55) 0%, oklch(0 0 0 / 0.35) 32%, oklch(0 0 0 / 0.78) 72%, oklch(0 0 0 / 0.95) 100%)",
           }}
           aria-hidden
         />
 
         {/* Content overlay */}
         <div className="relative z-10 flex h-full flex-col justify-between px-5 pt-6 pb-8">
-          {/* Top label */}
+          {/* Top: licensed badge — quiet, white, premium */}
           <div className="flex items-center justify-between gap-3">
-            <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-primary/60 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
-              <span className="flex h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
-              Open Today · Free Inspections
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/40 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-white backdrop-blur">
+              <ShieldCheck className="h-3.5 w-3.5 text-white" />
+              Licensed · Insured · Ohio
             </span>
-            <img
-              src={certifiedBadge.url}
-              alt="Certified Chimney Sweep — CSIA Credentialed"
-              width={68}
-              height={68}
-              className="h-16 w-16 rounded-full bg-white p-1 shadow-[0_8px_24px_oklch(0_0_0/0.5)] ring-2 ring-flame/60"
-              loading="eager"
-              decoding="async"
-            />
           </div>
 
-          {/* Headline + CTAs anchored to bottom */}
-          <div className="space-y-5">
-            <h1 className="font-display text-[2.15rem] sm:text-[2.75rem] font-black uppercase leading-[0.95] tracking-[-0.03em] text-white drop-shadow-[0_4px_16px_oklch(0_0_0/0.7)]">
-              Chimney services
-              <br />
-              <span className="text-white">you can trust for</span>
-              <br />
-              <span className="text-flame">over 20 years</span>
-              <br />
-              <span className="text-white/95">in Columbus, Ohio.</span>
-            </h1>
+          {/* Headline + trust + CTAs anchored to bottom */}
+          <div className="space-y-6">
+            <div>
+              <h1 className="font-display text-[2.6rem] xs:text-[2.85rem] sm:text-[3.1rem] font-black leading-[1.0] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
+                Protect Your Home With Trusted Chimney Experts
+              </h1>
+              <p className="mt-4 text-[15px] leading-relaxed text-white/85">
+                Professional chimney inspections, repairs, masonry work, chimney caps, crowns, liners, and leak repairs.
+              </p>
+            </div>
 
-            <p className="text-base leading-snug text-white/90 drop-shadow">
-              <strong className="font-extrabold text-white">Certified technicians.</strong> Real jobs.
-              <br />
-              Serving Ohio homeowners every day.
-            </p>
+            {/* Trust row */}
+            <ul className="grid gap-2 text-[13px] font-semibold text-white">
+              {[
+                "Licensed & Insured",
+                "Same Week Availability",
+                "Serving Columbus & Surrounding Areas",
+              ].map((t) => (
+                <li key={t} className="flex items-center gap-2.5">
+                  <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/40">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-white" />
+                  </span>
+                  {t}
+                </li>
+              ))}
+            </ul>
 
-            <div className="flex flex-col gap-3 pt-1">
+            <div className="flex flex-col gap-3">
               <a
                 href="tel:6146835763"
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0_0_0/0.45)] active:scale-[0.98]"
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame font-display text-base font-black uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0_0_0/0.55)] active:scale-[0.98]"
               >
                 <Phone className="h-5 w-5" /> Call Now
               </a>
               <button
                 type="button"
                 onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-primary/40 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground backdrop-blur active:scale-[0.98]"
+                className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-white/35 bg-white/10 font-display text-sm font-bold uppercase tracking-wider text-white backdrop-blur active:scale-[0.98]"
               >
-                <CalendarCheck className="h-5 w-5 text-flame" /> Schedule Free Inspection
+                <CalendarCheck className="h-5 w-5" /> Schedule Online
               </button>
             </div>
-
-            <p className="pt-1 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
-              5-Star Service · Fully Insured · Same-Day Slots
-            </p>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+/* ============================================================
+   LIMITED OFFER BANNER — sits directly under the hero, high
+   contrast, single CTA. The only price advertised site-wide is
+   the $69 chimney inspection.
+   ============================================================ */
+function LimitedOfferBanner() {
+  return (
+    <section className="relative isolate border-y-2 border-flame/40 bg-[oklch(0.08_0.01_250)] py-10 text-primary-foreground md:py-12">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-50"
+        style={{
+          background:
+            "radial-gradient(ellipse at top, oklch(0.78 0.19 92 / 0.12) 0%, transparent 60%)",
+        }}
+        aria-hidden
+      />
+      <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-5 px-4 text-center md:px-8">
+        <span className="inline-flex items-center gap-2 rounded-full border border-flame/50 bg-flame/15 px-4 py-1.5 font-mono text-[11px] font-extrabold uppercase tracking-[0.28em] text-flame">
+          🔥 Limited Time Offer
+        </span>
+        <h2 className="max-w-3xl font-display text-2xl font-black leading-tight text-white sm:text-3xl md:text-4xl">
+          Schedule Any Chimney Repair Service<br className="hidden sm:block" />
+          And Receive A <span className="text-flame">FREE Chimney Inspection</span>
+        </h2>
+        <p className="max-w-xl text-sm text-white/75 md:text-base">
+          Available for homeowners in Columbus and surrounding areas. No card on file, no obligation.
+        </p>
+        <div className="flex flex-col items-center gap-3 sm:flex-row">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-8 font-display text-base font-black uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] transition active:scale-[0.98]"
+          >
+            <CalendarCheck className="h-5 w-5" /> Claim Offer
+          </button>
+          <a
+            href="tel:6146835763"
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-white/30 bg-white/5 px-6 font-display text-sm font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
+          >
+            <Phone className="h-4 w-4" /> (614) 683-5763
+          </a>
+        </div>
+      </div>
+    </section>
   );
 }
 
