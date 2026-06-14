@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 
 export const Route = createFileRoute("/lp/free-inspection")({
   head: () => ({
@@ -53,6 +55,7 @@ function FreeInspectionLanding() {
       <Hero />
       <ProofBar />
       <Includes />
+      <RecentJobs />
       <Reviews />
       <FinalCta />
       <MinimalFooter />
@@ -90,14 +93,17 @@ function Hero() {
       <div className="mx-auto grid max-w-5xl gap-8 px-4 py-10 md:grid-cols-2 md:py-16">
         {/* Left: pitch */}
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-flame">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary-foreground">
             <BadgeCheck className="h-3.5 w-3.5" /> Columbus, OH · This Month Only
           </div>
           <h1 className="mt-4 font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
             Free Chimney Inspection
-            <span className="block text-flame">(normally $69)</span>
+            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-2xl text-primary-foreground sm:text-3xl md:text-4xl">
+              <span className="opacity-70 line-through decoration-2">$69</span>
+              <span className="ml-2">FREE this month</span>
+            </span>
           </h1>
-          <p className="mt-4 max-w-prose text-base text-muted-foreground sm:text-lg">
+          <p className="mt-4 max-w-prose text-base text-foreground/80 sm:text-lg">
             CSIA-certified Ohio sweeps. Same-day callbacks. Written safety report with
             photos — no pressure, no surprise charges.
           </p>
@@ -119,15 +125,15 @@ function Hero() {
           </div>
 
           {/* Trust strip */}
-          <ul className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-muted-foreground sm:text-sm">
+          <ul className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-foreground/80 sm:text-sm">
             <li className="inline-flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4 text-flame" /> CSIA-certified
+              <ShieldCheck className="h-4 w-4 text-primary" /> CSIA-certified
             </li>
             <li className="inline-flex items-center gap-1.5">
-              <Star className="h-4 w-4 fill-flame text-flame" /> 4.9 · 1,836 reviews
+              <Star className="h-4 w-4 fill-amber-500 text-amber-600" /> 4.9 · 1,836 reviews
             </li>
             <li className="inline-flex items-center gap-1.5">
-              <Clock className="h-4 w-4 text-flame" /> Same-day callbacks
+              <Clock className="h-4 w-4 text-primary" /> Same-day callbacks
             </li>
           </ul>
         </div>
@@ -267,10 +273,10 @@ function ProofBar() {
   ];
   return (
     <section className="border-b border-border/30 bg-card/40 py-5">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 text-sm font-medium text-muted-foreground">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 text-sm font-medium text-foreground/85">
         {items.map((it) => (
           <span key={it.label} className="inline-flex items-center gap-1.5">
-            <it.icon className="h-4 w-4 text-flame" />
+            <it.icon className="h-4 w-4 text-primary" />
             {it.label}
           </span>
         ))}
@@ -296,11 +302,46 @@ function Includes() {
         <ul className="mt-6 grid gap-3">
           {items.map((t) => (
             <li key={t} className="flex items-start gap-3 rounded-2xl border border-border/50 bg-card p-4">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-flame" />
+              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <span className="text-sm sm:text-base">{t}</span>
             </li>
           ))}
         </ul>
+      </div>
+    </section>
+  );
+}
+
+function RecentJobs() {
+  const jobs = BEFORE_AFTER_JOBS.slice(0, 3);
+  return (
+    <section className="border-b border-border/30 py-12 sm:py-16">
+      <div className="mx-auto max-w-5xl px-4">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <h2 className="font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
+              Recent Columbus jobs
+            </h2>
+            <p className="mt-1 text-sm text-foreground/70 sm:text-base">
+              Drag the slider — real homes, real before &amp; after.
+            </p>
+          </div>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {jobs.map((job) => (
+            <figure key={job.id} className="flex flex-col">
+              <BeforeAfter before={job.before} after={job.after} alt={job.headline} />
+              <figcaption className="mt-3">
+                <div className="font-display text-sm font-extrabold leading-snug">
+                  {job.headline}
+                </div>
+                <div className="mt-1 text-xs text-foreground/70">
+                  {job.service} · {job.city}
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   );
