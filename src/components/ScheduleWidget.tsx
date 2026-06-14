@@ -1,11 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
-import { CalendarCheck, Phone, Flame, MapPin, Sparkles, Clock, ArrowRight, Wrench, Search, Droplets, ShieldCheck, HardHat, CheckCircle2 } from "lucide-react";
+import { CalendarCheck, Phone, MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
 import { format } from "date-fns";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 const OPEN_EVENT = "chimcrew:open-schedule";
@@ -16,23 +17,21 @@ export function openScheduleDialog() {
   }
 }
 
-const FREE_INSPECTION = "Free Inspection";
 const services = [
-  { id: "sweep", label: "Chimney Sweep", icon: Sparkles, from: FREE_INSPECTION },
-  { id: "inspect", label: "Camera Inspection", icon: Search, from: FREE_INSPECTION },
-  { id: "repair", label: "Repair / Tuckpoint", icon: Wrench, from: FREE_INSPECTION },
-  { id: "waterproof", label: "Waterproof & Cap", icon: ShieldCheck, from: FREE_INSPECTION },
-  { id: "crown", label: "Crown Seal Repair", icon: HardHat, from: FREE_INSPECTION },
-  { id: "leak", label: "Leak Diagnosis", icon: Droplets, from: FREE_INSPECTION },
-  { id: "unsure", label: "I'm not sure yet", icon: Flame, from: FREE_INSPECTION },
+  "Chimney Sweep",
+  "Camera Inspection",
+  "Repair / Tuckpoint",
+  "Waterproof & Cap",
+  "Crown Seal Repair",
+  "Leak Diagnosis",
+  "I'm not sure yet",
 ];
 
 const slots = [
-  { id: "early", label: "Early", time: "8–10 AM" },
-  { id: "mid",   label: "Mid morning", time: "10 AM – 12 PM" },
-  { id: "lunch", label: "Lunch", time: "12 – 2 PM" },
-  { id: "afternoon", label: "Afternoon", time: "2 – 4 PM" },
-  { id: "evening", label: "Evening", time: "4 – 6 PM" },
+  "8:00 AM – 11:00 AM",
+  "11:00 AM – 2:00 PM",
+  "2:00 PM – 5:00 PM",
+  "5:00 PM – 7:00 PM",
 ];
 
 export function ScheduleWidget() {
