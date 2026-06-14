@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import { reportAdsConversion } from "@/lib/track";
+import { reportLeadFormConversion } from "@/lib/track";
 const OPEN_EVENT = "chimcrew:open-schedule";
 
 export function openScheduleDialog() {
