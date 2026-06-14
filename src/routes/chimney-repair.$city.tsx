@@ -288,7 +288,7 @@ function CityPage() {
             </h2>
           </div>
           <div className="mt-10 divide-y divide-border rounded-2xl border-2 border-border bg-card">
-            {city.faqs.map((f) => (
+            {city.faqs.map((f: { q: string; a: string }) => (
               <details key={f.q} className="group p-6">
                 <summary className="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-extrabold text-primary">
                   {f.q}
