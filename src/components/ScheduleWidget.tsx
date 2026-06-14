@@ -1,14 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { CalendarCheck, Phone, MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
 import { format } from "date-fns";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Calendar } from "@/components/ui/calendar";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { cn } from "@/lib/utils";
 const OPEN_EVENT = "chimcrew:open-schedule";
 
 export function openScheduleDialog() {
