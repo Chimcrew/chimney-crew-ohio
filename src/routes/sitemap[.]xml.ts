@@ -3,6 +3,7 @@ import type {} from "@tanstack/react-start";
 import { BLOG_POSTS } from "@/data/blog-posts";
 import { SERVICES } from "@/data/services";
 import { SERVICE_CITIES } from "@/components/ServiceAreaSeo";
+import { SEO_CITIES } from "@/data/seo-cities";
 
 const BASE_URL = "https://chimcrew.com";
 
@@ -39,7 +40,12 @@ export const Route = createFileRoute("/sitemap.xml")({
           changefreq: "monthly",
           priority: "0.8",
         }));
-        const urls = [...staticPaths, ...serviceUrls, ...cityUrls, ...blogUrls]
+        const seoCityUrls = SEO_CITIES.map((c) => ({
+          path: `/chimney-repair/${c.slug}`,
+          changefreq: "monthly",
+          priority: "0.9",
+        }));
+        const urls = [...staticPaths, ...serviceUrls, ...cityUrls, ...seoCityUrls, ...blogUrls]
           .map((e) => {
             const lastmod = "lastmod" in e && e.lastmod ? `<lastmod>${e.lastmod}</lastmod>` : "";
             return `  <url><loc>${BASE_URL}${e.path}</loc>${lastmod}<changefreq>${e.changefreq}</changefreq><priority>${e.priority}</priority></url>`;
