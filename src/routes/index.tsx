@@ -42,6 +42,8 @@ import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
+import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
+import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES, formatFromPrice, getService } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
@@ -156,6 +158,8 @@ function Index() {
    ============================================================ */
 function HeroPhotoCard() {
   const photos = [
+    { src: jobPhotoA.url, caption: "New caps + crown seal", city: "Columbus, OH" },
+    { src: jobPhotoB.url, caption: "Crown rebuild in progress", city: "Columbus, OH" },
     { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
     { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH" },
     { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
@@ -249,7 +253,7 @@ function HeroPhotoCard() {
 }
 
 function MobileHero() {
-  const photos = [projectHero, projectLiner, projectTuck, projectCap, projectTech];
+  const photos = [jobPhotoA.url, jobPhotoB.url, projectHero, projectLiner, projectTuck, projectCap, projectTech];
   const [idx, setIdx] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 5200);
@@ -296,7 +300,7 @@ function MobileHero() {
           <div className="space-y-6">
             <div>
               <h1 className="font-display text-[2.6rem] sm:text-[3.1rem] font-black leading-[1.0] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
-                Protect Your Home With Trusted Chimney Experts
+                Protect Your Home With <span className="text-flame">Trusted Chimney Experts</span>
               </h1>
               <p className="mt-4 text-[15px] leading-relaxed text-white/85">
                 Professional chimney inspections, repairs, masonry work, chimney caps, crowns, liners, and leak repairs.
@@ -347,41 +351,103 @@ function MobileHero() {
    the $69 chimney inspection.
    ============================================================ */
 function LimitedOfferBanner() {
+  const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 });
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      const end = new Date();
+      end.setHours(23, 59, 59, 999);
+      const diff = Math.max(0, end.getTime() - now.getTime());
+      const h = Math.floor(diff / 3_600_000);
+      const m = Math.floor((diff % 3_600_000) / 60_000);
+      const s = Math.floor((diff % 60_000) / 1000);
+      setTimeLeft({ h, m, s });
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
+  }, []);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  const Box = ({ v, l }: { v: number; l: string }) => (
+    <div className="flex flex-col items-center">
+      <span className="grid h-12 w-12 place-items-center rounded-md bg-primary font-mono text-xl font-black tabular-nums text-flame shadow-inner sm:h-14 sm:w-14 sm:text-2xl">
+        {pad(v)}
+      </span>
+      <span className="mt-1 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-primary/70">
+        {l}
+      </span>
+    </div>
+  );
   return (
-    <section className="relative isolate border-y-2 border-flame/40 bg-[oklch(0.08_0.01_250)] py-10 text-primary-foreground md:py-12">
-      <div
-        className="pointer-events-none absolute inset-0 opacity-50"
-        style={{
-          background:
-            "radial-gradient(ellipse at top, oklch(0.78 0.19 92 / 0.12) 0%, transparent 60%)",
-        }}
-        aria-hidden
-      />
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-5 px-4 text-center md:px-8">
-        <span className="inline-flex items-center gap-2 rounded-full border border-flame/50 bg-flame/15 px-4 py-1.5 font-mono text-[11px] font-extrabold uppercase tracking-[0.28em] text-flame">
-          🔥 Limited Time Offer
-        </span>
-        <h2 className="max-w-3xl font-display text-2xl font-black leading-tight text-white sm:text-3xl md:text-4xl">
-          Schedule Any Chimney Repair Service<br className="hidden sm:block" />
-          And Receive A <span className="text-flame">FREE Chimney Inspection</span>
-        </h2>
-        <p className="max-w-xl text-sm text-white/75 md:text-base">
-          Available for homeowners in Columbus and surrounding areas. No card on file, no obligation.
-        </p>
-        <div className="flex flex-col items-center gap-3 sm:flex-row">
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-            className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-8 font-display text-base font-black uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] transition active:scale-[0.98]"
-          >
-            <CalendarCheck className="h-5 w-5" /> Claim Offer
-          </button>
-          <a
-            href="tel:6146835763"
-            className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-white/30 bg-white/5 px-6 font-display text-sm font-bold uppercase tracking-wider text-white transition hover:bg-white/10"
-          >
-            <Phone className="h-4 w-4" /> (614) 683-5763
-          </a>
+    <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-10 md:py-14">
+      <div className="relative mx-auto max-w-3xl">
+        {/* Coupon card */}
+        <div className="relative rounded-2xl bg-flame text-primary shadow-[0_20px_60px_oklch(0_0_0/0.5)]">
+          {/* perforated edges */}
+          <span className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]" aria-hidden />
+          <span className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]" aria-hidden />
+
+          {/* dashed inner frame */}
+          <div className="m-2 rounded-xl border-2 border-dashed border-primary/40 p-5 sm:p-7">
+            {/* top ribbon */}
+            <div className="flex items-center justify-between gap-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
+                🔥 Limited Time
+              </span>
+              <span className="hidden font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/70 sm:inline">
+                Coupon · Columbus, OH
+              </span>
+            </div>
+
+            {/* main */}
+            <div className="mt-4 flex flex-col items-center text-center sm:mt-5">
+              <p className="font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-primary/80">
+                Get a
+              </p>
+              <h2 className="mt-1 font-display text-3xl font-black uppercase leading-[0.95] tracking-tight text-primary sm:text-5xl">
+                Free Chimney<br />Inspection
+              </h2>
+              <p className="mt-3 max-w-md text-sm font-semibold text-primary/80">
+                With any chimney repair service. No card on file. No obligation.
+              </p>
+
+              {/* countdown */}
+              <div className="mt-5 flex items-center gap-2 rounded-xl border-2 border-primary/30 bg-primary/5 px-4 py-3">
+                <Clock className="h-4 w-4 text-primary" />
+                <span className="font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-primary">
+                  Ends in
+                </span>
+                <div className="ml-1 flex items-center gap-1.5">
+                  <Box v={timeLeft.h} l="Hrs" />
+                  <span className="-mt-3 font-mono text-xl font-black text-primary">:</span>
+                  <Box v={timeLeft.m} l="Min" />
+                  <span className="-mt-3 font-mono text-xl font-black text-primary">:</span>
+                  <Box v={timeLeft.s} l="Sec" />
+                </div>
+              </div>
+
+              {/* CTAs */}
+              <div className="mt-5 grid w-full max-w-md grid-cols-1 gap-2 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
+                >
+                  <CalendarCheck className="h-4 w-4" /> Claim Offer
+                </button>
+                <a
+                  href="tel:6146835763"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
+                >
+                  <Phone className="h-4 w-4" /> Call Now
+                </a>
+              </div>
+
+              <p className="mt-4 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
+                Code: <span className="text-primary">CHIM-FREE</span> · Mention when booking
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
