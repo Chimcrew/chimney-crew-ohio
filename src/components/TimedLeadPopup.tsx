@@ -59,8 +59,9 @@ export function TimedLeadPopup() {
     setTimeout(() => {
       setSubmitting(false);
       setDone(true);
-      if (typeof window !== "undefined" && "gtag_report_conversion" in window) {
-        (window as any).gtag_report_conversion();
+      if (typeof window !== "undefined") {
+        const w = window as unknown as { gtag_report_lead?: () => void; gtag_report_conversion?: () => void };
+        try { (w.gtag_report_lead ?? w.gtag_report_conversion)?.(); } catch { /* ignore */ }
       }
     }, 600);
   }
