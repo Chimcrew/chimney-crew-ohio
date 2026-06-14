@@ -172,17 +172,21 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
             {service.hero.sub}
           </p>
 
-          {/* Product meta — price + guarantee + reviews. No duration. */}
+          {/* Product meta — price (inspection only) + guarantee + reviews. */}
           <div className="mt-7 flex flex-wrap items-end gap-x-8 gap-y-4">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
-                {service.quoteOnly ? "Pricing" : "Starting at"}
-              </p>
-              <p className="mt-1 font-display text-3xl font-extrabold text-flame md:text-4xl">
-                {priceLabel}
-              </p>
-            </div>
-            <div className="h-10 w-px bg-white/10" aria-hidden />
+            {priceLabel && (
+              <>
+                <div>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
+                    Starting at
+                  </p>
+                  <p className="mt-1 font-display text-3xl font-extrabold text-flame md:text-4xl">
+                    {priceLabel}
+                  </p>
+                </div>
+                <div className="h-10 w-px bg-white/10" aria-hidden />
+              </>
+            )}
             <div>
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
                 Warranty
@@ -365,7 +369,11 @@ function Overview({ service }: { service: ServiceSpec }) {
             {service.hero.sub}
           </p>
           <div className="grid grid-cols-2 gap-6 border-t border-border pt-6 sm:grid-cols-3">
-            <Stat label="Price" value={formatFromPrice(service)} />
+            {formatFromPrice(service) ? (
+              <Stat label="Price" value={formatFromPrice(service)} />
+            ) : (
+              <Stat label="Pricing" value="Free Quote" />
+            )}
             <Stat label="Crew Size" value="2 Techs" />
             <Stat label="Warranty" value={warrantyFor(service)} />
           </div>
@@ -729,9 +737,11 @@ function Related({ service }: { service: ServiceSpec }) {
                       <RIcon className="h-9 w-9" />
                     </div>
                   </div>
-                  <span className="absolute right-4 top-4 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-flame backdrop-blur">
-                    {formatFromPrice(s)}
-                  </span>
+                  {formatFromPrice(s) && (
+                    <span className="absolute right-4 top-4 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-widest text-flame backdrop-blur">
+                      {formatFromPrice(s)}
+                    </span>
+                  )}
                 </div>
                 <div className="p-6">
                   <h3 className="font-display text-2xl font-extrabold">{s.shortTitle}</h3>
