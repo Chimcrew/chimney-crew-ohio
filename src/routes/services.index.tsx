@@ -46,7 +46,11 @@ function ServicesPage() {
                   <div className={`grid h-12 w-12 place-items-center rounded-sm ${accent.bg} text-primary-foreground`}>
                     <Icon className="h-6 w-6" />
                   </div>
-                  <span className={`font-display text-2xl ${accent.text}`}>{formatFromPrice(s)}</span>
+                  {formatFromPrice(s) ? (
+                    <span className={`font-display text-2xl ${accent.text}`}>{formatFromPrice(s)}</span>
+                  ) : (
+                    <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Free Quote</span>
+                  )}
                 </div>
                 <h2 className="mt-5 text-2xl">{s.shortTitle}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{s.tagline}</p>

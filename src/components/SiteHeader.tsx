@@ -3,27 +3,73 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown } from "lucide-react";
 import logoHeader from "@/assets/chimcrew-logo-transparent.png";
 import { openScheduleDialog } from "@/components/ScheduleWidget";
-import { SERVICES, ACCENT_CLASSES } from "@/data/services";
 
-const nav = [
-  { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/before-after", label: "Before & After" },
-  { to: "/gallery", label: "Gallery" },
-  { to: "/reviews", label: "Reviews" },
-  { to: "/financing", label: "Financing" },
-  { to: "/blog", label: "Blog" },
-  { to: "/contact", label: "Contact" },
-] as const;
+/* ---------------------------------------------------------------
+   Categorical service menu — modeled on premium U.S. chimney
+   companies (cf. therealchimneyguys.com). Each label maps to the
+   closest existing service detail page; items without a dedicated
+   page route to /contact so the homeowner can request a quote.
+   --------------------------------------------------------------- */
+type MenuLink = { label: string; to: string; slug?: string };
 
-const primaryNav = nav.filter((n) => ["/", "/services", "/before-after", "/gallery", "/financing", "/reviews", "/blog", "/contact"].includes(n.to));
+const REPAIR_MENU: MenuLink[] = [
+  { label: "Chimney Repair", to: "/contact" },
+  { label: "Chimney Leak Repair", to: "/services/$slug", slug: "flashing-repair" },
+  { label: "Chimney Crown Repair", to: "/services/$slug", slug: "crown-tuckpoint" },
+  { label: "Chimney Crown Rebuild", to: "/services/$slug", slug: "crown-tuckpoint" },
+  { label: "Tuckpointing", to: "/services/$slug", slug: "crown-tuckpoint" },
+  { label: "Masonry Repair", to: "/services/$slug", slug: "crown-tuckpoint" },
+  { label: "Flashing Repair", to: "/services/$slug", slug: "flashing-repair" },
+  { label: "Chimney Cap Installation", to: "/services/$slug", slug: "cap-install" },
+  { label: "Chimney Cap Repair", to: "/services/$slug", slug: "cap-install" },
+  { label: "Chimney Rebuild", to: "/contact" },
+  { label: "Chimney Waterproofing", to: "/services/$slug", slug: "waterproofing" },
+  { label: "Chimney Liner Installation", to: "/services/$slug", slug: "liner-install" },
+  { label: "Chimney Liner Repair", to: "/services/$slug", slug: "liner-install" },
+];
+
+const CLEANING_MENU: MenuLink[] = [
+  { label: "Chimney Inspection — $69", to: "/services/$slug", slug: "level-1-inspection" },
+  { label: "Level 1 Inspection", to: "/services/$slug", slug: "level-1-inspection" },
+  { label: "Level 2 Inspection", to: "/services/$slug", slug: "level-2-inspection" },
+  { label: "Level 3 Inspection", to: "/contact" },
+  { label: "Chimney Sweep", to: "/services/$slug", slug: "chimney-sweep" },
+  { label: "Creosote Removal", to: "/services/$slug", slug: "chimney-sweep" },
+  { label: "Chimney Cleaning", to: "/services/$slug", slug: "chimney-sweep" },
+];
+
+const FIREPLACE_MENU: MenuLink[] = [
+  { label: "Gas Fireplace Service", to: "/services/$slug", slug: "gas-fireplace-service" },
+  { label: "Gas Fireplace Repair", to: "/services/$slug", slug: "gas-fireplace-service" },
+  { label: "Fireplace Inspection", to: "/services/$slug", slug: "level-1-inspection" },
+  { label: "Fireplace Repair", to: "/contact" },
+];
+
+type DropdownNav = {
+  kind: "dropdown";
+  key: string;
+  label: string;
+  items: MenuLink[];
+};
+type SimpleNav = { kind: "link"; to: string; label: string };
+
+const PRIMARY_NAV: (SimpleNav | DropdownNav)[] = [
+  { kind: "link", to: "/", label: "Home" },
+  { kind: "dropdown", key: "repair", label: "Chimney Repair", items: REPAIR_MENU },
+  { kind: "dropdown", key: "cleaning", label: "Chimney Cleaning", items: CLEANING_MENU },
+  { kind: "dropdown", key: "fireplace", label: "Fireplace Services", items: FIREPLACE_MENU },
+  { kind: "link", to: "/before-after", label: "Before & After" },
+  { kind: "link", to: "/reviews", label: "Reviews" },
+  { kind: "link", to: "/financing", label: "Financing" },
+  { kind: "link", to: "/contact", label: "Contact" },
+];
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const servicesRef = useRef<HTMLDivElement | null>(null);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
+  const [mobileOpenKey, setMobileOpenKey] = useState<string | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -32,16 +78,16 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close desktop services dropdown on outside click / Escape
+  // Close any open dropdown on outside click / Escape
   useEffect(() => {
-    if (!servicesOpen) return;
+    if (!openMenu) return;
     const onClick = (e: MouseEvent) => {
-      if (servicesRef.current && !servicesRef.current.contains(e.target as Node)) {
-        setServicesOpen(false);
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpenMenu(null);
       }
     };
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setServicesOpen(false);
+      if (e.key === "Escape") setOpenMenu(null);
     };
     document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
@@ -49,22 +95,22 @@ export function SiteHeader() {
       document.removeEventListener("mousedown", onClick);
       document.removeEventListener("keydown", onKey);
     };
-  }, [servicesOpen]);
+  }, [openMenu]);
 
   return (
     <header className="sticky top-0 z-50">
       {/* Tiny utility strip */}
       <div className="hidden bg-flame text-primary md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] md:px-8">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] md:px-8">
           <span className="flex items-center gap-2">
-            <MapPin className="h-3 w-3" /> Columbus · Cincinnati · Dayton — Local Ohio Crew
+            <MapPin className="h-3.5 w-3.5" /> Serving Columbus, Ohio &amp; Surrounding Areas — Licensed &amp; Insured
           </span>
           <span className="flex items-center gap-4">
             <span className="hidden items-center gap-1.5 sm:flex">
-              <span className="grid h-3.5 w-3.5 place-items-center rounded-full bg-primary text-flame">★</span>
-              1,836 5-star reviews
+              <span className="grid h-4 w-4 place-items-center rounded-full bg-primary text-flame">★</span>
+              1,836 Five-Star Reviews
             </span>
-            <a href="tel:6146835763" className="hover:underline">(614) 683-5763</a>
+            <a href="tel:6146835763" className="font-bold hover:underline">(614) 683-5763</a>
           </span>
         </div>
       </div>
@@ -77,7 +123,7 @@ export function SiteHeader() {
             : "bg-[oklch(0_0_0)]"
         } text-primary-foreground`}
       >
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 md:px-8">
+        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 md:px-8 md:py-4">
           {/* Flashing OPEN NOW button — absolutely centered in the header */}
           <button
             type="button"
@@ -101,81 +147,73 @@ export function SiteHeader() {
             <img
               src={logoHeader}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className="relative z-40 -mb-1 h-11 w-auto max-w-none origin-left object-contain drop-shadow-[0_6px_10px_oklch(0_0_0/0.45)] transition-transform duration-300 ease-out will-change-transform md:-mb-2 md:h-14 group-hover:-translate-y-0.5 group-hover:scale-[1.04]"
+              className="relative z-40 -mb-1 h-11 w-auto max-w-none origin-left object-contain drop-shadow-[0_6px_10px_oklch(0_0_0/0.45)] transition-transform duration-300 ease-out will-change-transform md:-mb-3 md:h-20 group-hover:-translate-y-0.5 group-hover:scale-[1.04]"
             />
           </Link>
 
           {/* Nav pill */}
-          <nav className="hidden items-center rounded-full border border-white/10 bg-white/5 px-2 py-1.5 backdrop-blur md:flex">
-            {primaryNav.map((n) => {
-              if (n.to === "/services") {
+          <nav
+            ref={menuRef}
+            className="hidden items-center rounded-full border border-white/10 bg-white/5 px-2 py-2 backdrop-blur md:flex"
+          >
+            {PRIMARY_NAV.map((n) => {
+              if (n.kind === "dropdown") {
+                const isOpen = openMenu === n.key;
                 return (
                   <div
-                    key={n.to}
+                    key={n.key}
                     className="relative"
-                    ref={servicesRef}
-                    onMouseEnter={() => setServicesOpen(true)}
-                    onMouseLeave={() => setServicesOpen(false)}
+                    onMouseEnter={() => setOpenMenu(n.key)}
+                    onMouseLeave={() => setOpenMenu((cur) => (cur === n.key ? null : cur))}
                   >
                     <button
                       type="button"
-                      onClick={() => setServicesOpen((v) => !v)}
-                      aria-expanded={servicesOpen}
+                      onClick={() => setOpenMenu((cur) => (cur === n.key ? null : n.key))}
+                      aria-expanded={isOpen}
                       aria-haspopup="menu"
-                      className={`group relative inline-flex items-center gap-1 whitespace-nowrap px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] transition ${
-                        servicesOpen ? "text-flame" : "text-primary-foreground/70 hover:text-primary-foreground"
+                      className={`group relative inline-flex items-center gap-1 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] transition ${
+                        isOpen ? "text-flame" : "text-primary-foreground/80 hover:text-primary-foreground"
                       }`}
                     >
                       {n.label}
                       <ChevronDown
-                        className={`h-3 w-3 transition-transform duration-200 ${servicesOpen ? "rotate-180" : ""}`}
+                        className={`h-3 w-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
                       />
                     </button>
-                    {servicesOpen && (
-                      <div
-                        role="menu"
-                        className="absolute left-0 top-full z-50 w-[min(720px,90vw)] pt-3"
-                      >
+                    {isOpen && (
+                      <div role="menu" className="absolute left-0 top-full z-50 w-[320px] pt-3">
                         <div className="overflow-hidden rounded-2xl border border-white/10 bg-primary text-primary-foreground shadow-[0_30px_60px_oklch(0_0_0/0.5)] backdrop-blur-xl">
-                        <div className="flex items-center justify-between border-b border-white/10 bg-white/5 px-5 py-3">
-                          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                            All chimney services
-                          </span>
-                          <Link
-                            to="/services"
-                            onClick={() => setServicesOpen(false)}
-                            className="inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70 transition hover:text-flame"
-                          >
-                            View all <ChevronDown className="h-3 w-3 -rotate-90" />
-                          </Link>
-                        </div>
-                        <div className="grid max-h-[60vh] grid-cols-2 gap-1 overflow-auto p-2">
-                          {SERVICES.map((s) => {
-                            const Icon = s.icon;
-                            const accent = ACCENT_CLASSES[s.accent];
-                            return (
-                              <Link
-                                key={s.slug}
-                                to="/services/$slug"
-                                params={{ slug: s.slug }}
-                                onClick={() => setServicesOpen(false)}
-                                className="group flex items-start gap-3 rounded-xl border border-transparent px-3 py-2.5 transition hover:border-white/10 hover:bg-white/5"
-                              >
-                                <span className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg ${accent.bg} text-primary-foreground`}>
-                                  <Icon className="h-4 w-4" />
-                                </span>
-                                <span className="min-w-0">
-                                  <span className="block font-display text-sm font-semibold leading-tight text-primary-foreground">
-                                    {s.shortTitle}
-                                  </span>
-                                  <span className="mt-0.5 block truncate font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
-                                    {s.quoteOnly ? "Custom Quote" : `From ${s.price}`}
-                                  </span>
-                                </span>
-                              </Link>
-                            );
-                          })}
-                        </div>
+                          <div className="border-b border-white/10 bg-white/5 px-5 py-3">
+                            <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                              {n.label}
+                            </span>
+                          </div>
+                          <ul className="grid gap-0.5 p-2">
+                            {n.items.map((item) =>
+                              item.slug ? (
+                                <li key={item.label}>
+                                  <Link
+                                    to="/services/$slug"
+                                    params={{ slug: item.slug }}
+                                    onClick={() => setOpenMenu(null)}
+                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-primary-foreground transition hover:bg-white/10 hover:text-flame"
+                                  >
+                                    {item.label}
+                                  </Link>
+                                </li>
+                              ) : (
+                                <li key={item.label}>
+                                  <Link
+                                    to={item.to}
+                                    onClick={() => setOpenMenu(null)}
+                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-primary-foreground transition hover:bg-white/10 hover:text-flame"
+                                  >
+                                    {item.label}
+                                  </Link>
+                                </li>
+                              ),
+                            )}
+                          </ul>
                         </div>
                       </div>
                     )}
@@ -186,7 +224,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className="group relative whitespace-nowrap px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground/70 transition hover:text-primary-foreground"
+                  className="group relative whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-primary-foreground/80 transition hover:text-primary-foreground"
                   activeProps={{ className: "text-flame" }}
                   activeOptions={n.to === "/" ? { exact: true } : undefined}
                 >
@@ -201,16 +239,16 @@ export function SiteHeader() {
           <div className="hidden items-center gap-2 md:flex">
             <a
               href="tel:6146835763"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition hover:border-flame hover:text-flame"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-4 py-2.5 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition hover:border-flame hover:text-flame"
             >
-              <Phone className="h-3.5 w-3.5 shrink-0" /> (614) 683-5763
+              <Phone className="h-4 w-4 shrink-0" /> (614) 683-5763
             </a>
             <button
               type="button"
               onClick={() => openScheduleDialog()}
-              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-flame px-5 py-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_8px_24px_oklch(0.78_0.19_92/0.35)] transition hover:bg-white"
+              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-flame px-5 py-2.5 font-mono text-[12px] font-extrabold uppercase tracking-[0.18em] text-primary shadow-[0_8px_24px_oklch(0.78_0.19_92/0.35)] transition hover:bg-white"
             >
-              <CalendarCheck className="h-3.5 w-3.5 shrink-0" /> Schedule Online
+              <CalendarCheck className="h-4 w-4 shrink-0" /> Schedule Online
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </button>
           </div>
@@ -234,66 +272,56 @@ export function SiteHeader() {
         <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-white/5 bg-primary text-primary-foreground md:hidden">
           <div className="mx-auto max-w-7xl px-4 py-4 pb-8">
             <nav className="flex flex-col">
-              {nav.map((n) => {
-                if (n.to === "/services") {
+              {PRIMARY_NAV.map((n) => {
+                if (n.kind === "dropdown") {
+                  const isOpen = mobileOpenKey === n.key;
                   return (
-                    <div key={n.to} className="border-b border-white/5">
+                    <div key={n.key} className="border-b border-white/5">
                       <button
                         type="button"
-                        onClick={() => setMobileServicesOpen((v) => !v)}
-                        aria-expanded={mobileServicesOpen}
+                        onClick={() => setMobileOpenKey((cur) => (cur === n.key ? null : n.key))}
+                        aria-expanded={isOpen}
                         className="flex w-full items-center justify-between py-3 font-display text-base font-bold uppercase tracking-wider"
                       >
-                        <span className={mobileServicesOpen ? "text-flame" : ""}>{n.label}</span>
+                        <span className={isOpen ? "text-flame" : ""}>{n.label}</span>
                         <ChevronDown
                           className={`h-5 w-5 text-flame transition-transform duration-200 ${
-                            mobileServicesOpen ? "rotate-180" : ""
+                            isOpen ? "rotate-180" : ""
                           }`}
                         />
                       </button>
-                      {mobileServicesOpen && (
+                      {isOpen && (
                         <ul className="mb-3 grid gap-1 rounded-xl bg-white/5 p-2">
-                          <li>
-                            <Link
-                              to="/services"
-                              onClick={() => {
-                                setOpen(false);
-                                setMobileServicesOpen(false);
-                              }}
-                              className="flex items-center gap-3 rounded-lg px-2 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-flame transition active:bg-white/10"
-                            >
-                              View all services →
-                            </Link>
-                          </li>
-                          {SERVICES.map((s) => {
-                            const Icon = s.icon;
-                            const accent = ACCENT_CLASSES[s.accent];
-                            return (
-                              <li key={s.slug}>
+                          {n.items.map((item) =>
+                            item.slug ? (
+                              <li key={item.label}>
                                 <Link
                                   to="/services/$slug"
-                                  params={{ slug: s.slug }}
+                                  params={{ slug: item.slug }}
                                   onClick={() => {
                                     setOpen(false);
-                                    setMobileServicesOpen(false);
+                                    setMobileOpenKey(null);
                                   }}
-                                  className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm transition active:bg-white/10"
+                                  className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-primary-foreground transition active:bg-white/10"
                                 >
-                                  <span className={`grid h-8 w-8 shrink-0 place-items-center rounded-md ${accent.bg} text-primary-foreground`}>
-                                    <Icon className="h-4 w-4" />
-                                  </span>
-                                  <span className="min-w-0 flex-1">
-                                    <span className="block truncate font-display text-sm font-semibold text-primary-foreground">
-                                      {s.shortTitle}
-                                    </span>
-                                    <span className="mt-0.5 block font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
-                                      {s.quoteOnly ? "Custom Quote" : `From ${s.price}`}
-                                    </span>
-                                  </span>
+                                  {item.label}
                                 </Link>
                               </li>
-                            );
-                          })}
+                            ) : (
+                              <li key={item.label}>
+                                <Link
+                                  to={item.to}
+                                  onClick={() => {
+                                    setOpen(false);
+                                    setMobileOpenKey(null);
+                                  }}
+                                  className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-primary-foreground transition active:bg-white/10"
+                                >
+                                  {item.label}
+                                </Link>
+                              </li>
+                            ),
+                          )}
                         </ul>
                       )}
                     </div>
