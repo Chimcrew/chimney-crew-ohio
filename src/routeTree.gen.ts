@@ -27,6 +27,7 @@ import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
 import { Route as LegalDisclaimerRouteImport } from './routes/legal/disclaimer'
 import { Route as LegalAccessibilityRouteImport } from './routes/legal/accessibility'
 import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe'
+import { Route as ChimneyRepairCityRouteImport } from './routes/chimney-repair.$city'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as ApiPublicNotifyLeadRouteImport } from './routes/api/public/notify-lead'
@@ -124,6 +125,11 @@ const EmailUnsubscribeRoute = EmailUnsubscribeRouteImport.update({
   path: '/email/unsubscribe',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ChimneyRepairCityRoute = ChimneyRepairCityRouteImport.update({
+  id: '/chimney-repair/$city',
+  path: '/chimney-repair/$city',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/chimney-repair/$city': typeof ChimneyRepairCityRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/legal/accessibility': typeof LegalAccessibilityRoute
   '/legal/disclaimer': typeof LegalDisclaimerRoute
@@ -195,6 +202,7 @@ export interface FileRoutesByTo {
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/chimney-repair/$city': typeof ChimneyRepairCityRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/legal/accessibility': typeof LegalAccessibilityRoute
   '/legal/disclaimer': typeof LegalDisclaimerRoute
@@ -222,6 +230,7 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/chimney-repair/$city': typeof ChimneyRepairCityRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
   '/legal/accessibility': typeof LegalAccessibilityRoute
   '/legal/disclaimer': typeof LegalDisclaimerRoute
@@ -250,6 +259,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/chimney-repair/$city'
     | '/email/unsubscribe'
     | '/legal/accessibility'
     | '/legal/disclaimer'
@@ -276,6 +286,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/chimney-repair/$city'
     | '/email/unsubscribe'
     | '/legal/accessibility'
     | '/legal/disclaimer'
@@ -302,6 +313,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/sitemap.xml'
     | '/blog/$slug'
+    | '/chimney-repair/$city'
     | '/email/unsubscribe'
     | '/legal/accessibility'
     | '/legal/disclaimer'
@@ -328,6 +340,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   ReviewsRoute: typeof ReviewsRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ChimneyRepairCityRoute: typeof ChimneyRepairCityRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   LegalAccessibilityRoute: typeof LegalAccessibilityRoute
   LegalDisclaimerRoute: typeof LegalDisclaimerRoute
@@ -472,6 +485,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmailUnsubscribeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/chimney-repair/$city': {
+      id: '/chimney-repair/$city'
+      path: '/chimney-repair/$city'
+      fullPath: '/chimney-repair/$city'
+      preLoaderRoute: typeof ChimneyRepairCityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/$slug'
@@ -537,6 +557,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   ReviewsRoute: ReviewsRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ChimneyRepairCityRoute: ChimneyRepairCityRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   LegalAccessibilityRoute: LegalAccessibilityRoute,
   LegalDisclaimerRoute: LegalDisclaimerRoute,

@@ -57,7 +57,7 @@ export const Route = createFileRoute("/chimney-repair/$city")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            mainEntity: c.faqs.map((f) => ({
+            mainEntity: c.faqs.map((f: { q: string; a: string }) => ({
               "@type": "Question",
               name: f.q,
               acceptedAnswer: { "@type": "Answer", text: f.a },
