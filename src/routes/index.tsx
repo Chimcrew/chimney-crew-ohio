@@ -1393,7 +1393,7 @@ function ScheduleOnline() {
                   Limited-time
                 </p>
                 <p className="font-display text-2xl font-bold text-primary-foreground">
-                  $118 chimney inspection
+                  $69 chimney inspection
                 </p>
                 <p className="mt-1 text-xs text-primary-foreground/80">
                   New Ohio customers only · expires 11/30
@@ -1590,7 +1590,7 @@ function Faq() {
     },
     {
       q: "What does it cost?",
-      a: "Our chimney sweep and Level 1 inspection start at $118. Most repairs are completed under $600. Honest, flat-rate pricing — no hidden fees.",
+      a: "Our chimney inspection is only $69 for Columbus-area homeowners. Repairs are quoted in writing, in plain English, after we see the chimney — no hidden fees.",
     },
     {
       q: "Are you really local?",
