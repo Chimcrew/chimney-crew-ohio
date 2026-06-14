@@ -7,6 +7,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
+import { reportAdsConversion } from "@/lib/track";
 const OPEN_EVENT = "chimcrew:open-schedule";
 
 export function openScheduleDialog() {
@@ -88,40 +90,78 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
     !!date &&
     !!slot;
 
-  const canSubmit = canSubmitStep1 && !!service && address.trim().length > 3;
+  // Address is collected but no longer required — too much friction for paid
+  // traffic. The crew confirms the address by text after the booking lands.
+  const canSubmit = canSubmitStep1 && !!service;
 
-  const submit = useCallback(() => {
+  const submit = useCallback(async () => {
     setSubmitting(true);
-    void fetch("/api/public/notify-lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    const dateStr = date ? format(date, "EEE, MMM d") : undefined;
+    const payload = {
+      source: "Schedule widget",
+      name,
+      phone,
+      service,
+      address: address || undefined,
+      date: dateStr,
+      timeWindow: slot,
+      notes: notes || undefined,
+    };
+
+    let ok = false;
+    // 1) Primary path: server route that also emails the office.
+    try {
+      const res = await fetch("/api/public/notify-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      ok = res.ok;
+    } catch {
+      ok = false;
+    }
+
+    // 2) Safety net: always try a direct insert too so a lead can never be
+    // lost just because the email route is down. RLS allows anon INSERT
+    // with field-length validation.
+    try {
+      await supabase.from("leads").insert({
         source: "Schedule widget",
         name,
         phone,
         service,
-        address,
-        date: date ? format(date, "EEE, MMM d") : undefined,
-        timeWindow: slot,
-        notes: notes || undefined,
-      }),
-    }).catch(() => {});
-    setTimeout(() => {
-      setSubmitting(false);
-      onDone?.();
-      if (typeof window !== "undefined" && "gtag_report_conversion" in window) {
-        (window as any).gtag_report_conversion();
-      }
-      toast.success("You're on the schedule!", {
-        description: `${service} · ${date ? format(date, "EEE, MMM d") : ""} · ${slot}. We'll text ${phone} within an hour to confirm.`,
-        duration: 7000,
+        address: address || null,
+        preferred_date: dateStr ?? null,
+        time_window: slot,
+        notes: notes || null,
       });
-      setStep(0);
-      setName("");
-      setPhone("");
-      setAddress("");
-      setNotes("");
-    }, 700);
+      ok = true;
+    } catch {
+      /* primary already determined ok */
+    }
+
+    setSubmitting(false);
+
+    if (!ok) {
+      toast.error("We couldn't submit your booking.", {
+        description: "Please call (614) 683-5763 and we'll get you on the schedule.",
+        duration: 8000,
+      });
+      return;
+    }
+
+    onDone?.();
+    // Only fire the Google Ads conversion AFTER a real successful lead.
+    reportAdsConversion();
+    toast.success("You're on the schedule!", {
+      description: `${service} · ${dateStr ?? ""} · ${slot}. We'll text ${phone} within an hour to confirm.`,
+      duration: 7000,
+    });
+    setStep(0);
+    setName("");
+    setPhone("");
+    setAddress("");
+    setNotes("");
   }, [service, slot, date, phone, onDone, address, name, notes]);
 
   return (
@@ -216,11 +256,11 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
               </Select>
             </Field>
 
-            <Field label="Service Address" required>
+            <Field label="Service Address">
               <Input
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                placeholder="123 Main St, Columbus OH"
+                placeholder="123 Main St, Columbus OH (optional)"
                 className="h-11"
               />
             </Field>
