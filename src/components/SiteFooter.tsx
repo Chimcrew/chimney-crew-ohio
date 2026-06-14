@@ -5,6 +5,7 @@ const logo = logoAsset.url;
 import van from "@/assets/chimcrew-van.png";
 import { SERVICES } from "@/data/services";
 import { SERVICE_CITIES } from "@/components/ServiceAreaSeo";
+import { SEO_CITIES } from "@/data/seo-cities";
 export function SiteFooter() {
   return (
     <footer className="relative border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
@@ -91,6 +92,17 @@ export function SiteFooter() {
                     className="hover:text-primary"
                   >
                     {c.name}, {c.state}
+                  </Link>
+                </li>
+              ))}
+              {SEO_CITIES.map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    to="/chimney-repair/$city"
+                    params={{ city: c.slug }}
+                    className="hover:text-primary"
+                  >
+                    Chimney Repair {c.name}, {c.state}
                   </Link>
                 </li>
               ))}
