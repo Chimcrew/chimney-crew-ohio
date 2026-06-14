@@ -7,6 +7,8 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { reportAdsConversion } from "@/lib/track";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -213,6 +215,19 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+
+  // Track every click-to-call as a Google Ads conversion.
+  // Without this, phone-call campaigns appear to deliver 0 leads
+  // even when calls are actually happening.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const t = e.target as HTMLElement | null;
+      const a = t?.closest?.("a[href^='tel:']") as HTMLAnchorElement | null;
+      if (a) reportAdsConversion();
+    };
+    document.addEventListener("click", onClick, { capture: true });
+    return () => document.removeEventListener("click", onClick, { capture: true });
+  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
