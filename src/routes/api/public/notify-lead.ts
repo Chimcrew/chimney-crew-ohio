@@ -14,6 +14,8 @@ const ADMIN_EMAILS = [
   'office@chimcrew.com',
 ]
 
+const CONFIRMATION_TEMPLATE_NAME = 'lead-confirmation'
+
 function generateToken(): string {
   const bytes = new Uint8Array(32)
   crypto.getRandomValues(bytes)
