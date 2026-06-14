@@ -281,7 +281,7 @@ export function SiteHeader() {
                         type="button"
                         onClick={() => setMobileOpenKey((cur) => (cur === n.key ? null : n.key))}
                         aria-expanded={isOpen}
-                        className="flex w-full items-center justify-between py-3 font-display text-base font-bold uppercase tracking-wider"
+                        className="flex w-full items-center justify-between py-3.5 font-sans text-[15px] font-semibold tracking-normal"
                       >
                         <span className={isOpen ? "text-flame" : ""}>{n.label}</span>
                         <ChevronDown
@@ -302,7 +302,7 @@ export function SiteHeader() {
                                     setOpen(false);
                                     setMobileOpenKey(null);
                                   }}
-                                  className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-primary-foreground transition active:bg-white/10"
+                                  className="block rounded-lg px-3 py-2.5 font-sans text-sm font-medium text-primary-foreground/80 transition active:bg-white/10 active:text-flame"
                                 >
                                   {item.label}
                                 </Link>
@@ -315,7 +315,7 @@ export function SiteHeader() {
                                     setOpen(false);
                                     setMobileOpenKey(null);
                                   }}
-                                  className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-primary-foreground transition active:bg-white/10"
+                                  className="block rounded-lg px-3 py-2.5 font-sans text-sm font-medium text-primary-foreground/80 transition active:bg-white/10 active:text-flame"
                                 >
                                   {item.label}
                                 </Link>
@@ -332,7 +332,7 @@ export function SiteHeader() {
                     key={n.to}
                     to={n.to}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between border-b border-white/5 py-3 font-display text-base font-bold uppercase tracking-wider"
+                    className="flex items-center justify-between border-b border-white/5 py-3.5 font-sans text-[15px] font-semibold tracking-normal"
                     activeProps={{ className: "text-flame" }}
                     activeOptions={n.to === "/" ? { exact: true } : undefined}
                   >
