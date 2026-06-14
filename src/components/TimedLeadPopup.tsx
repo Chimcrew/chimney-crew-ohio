@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Flame, X, Phone, Check, ArrowRight, ShieldCheck, Clock, Star } from "lucide-react";
 
 const STORAGE_KEY = "chimcrew_popup_seen_v1";
-const DELAY_MS = 40_000;
+const DELAY_MS = 90_000;
 
 export function TimedLeadPopup() {
   const [open, setOpen] = useState(false);
