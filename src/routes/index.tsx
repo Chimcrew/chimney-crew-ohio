@@ -104,7 +104,7 @@ export const Route = createFileRoute("/")({
               name: "What does it cost?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Our chimney sweep and Level 1 inspection start at $118. Most repairs are completed under $600. Honest, flat-rate pricing — no hidden fees.",
+                text: "Our chimney inspection is only $69 for Columbus-area homeowners. Repairs are quoted in writing, in plain English, after we see the chimney. Honest, flat-rate pricing — no hidden fees.",
               },
             },
             {
@@ -127,6 +127,7 @@ function Index() {
   return (
     <>
       <Hero />
+      <LimitedOfferBanner />
       <TrustBar />
       <TrustMarquee />
       <RecentProjects />
