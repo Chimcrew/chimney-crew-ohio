@@ -302,10 +302,14 @@ function MobileHero() {
 
           {/* Headline + CTAs anchored to bottom */}
           <div className="space-y-5">
-            <h1 className="font-display text-[2rem] sm:text-[2.5rem] font-extrabold uppercase leading-[1] tracking-[-0.02em] text-white drop-shadow-[0_4px_16px_oklch(0_0_0/0.6)]">
-              Ohio's Trusted
+            <h1 className="font-display text-[2.15rem] sm:text-[2.75rem] font-black uppercase leading-[0.95] tracking-[-0.03em] text-white drop-shadow-[0_4px_16px_oklch(0_0_0/0.7)]">
+              Chimney services
               <br />
-              <span className="text-flame">Chimney Team</span>
+              <span className="text-white">you can trust for</span>
+              <br />
+              <span className="text-flame">over 20 years</span>
+              <br />
+              <span className="text-white/95">in Columbus, Ohio.</span>
             </h1>
 
             <p className="text-base leading-snug text-white/90 drop-shadow">
@@ -424,10 +428,9 @@ function Hero() {
             </div>
 
             <h1 className="font-display text-[2.25rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-primary-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
-              Chimney Repair, Sweeping
-              <br />
+              Chimney services you can trust for{" "}
               <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
-                &amp; Fireplace Services.
+                over 20 years in Columbus, Ohio.
               </span>
             </h1>
 
