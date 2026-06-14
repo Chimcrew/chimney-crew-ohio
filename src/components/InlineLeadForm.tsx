@@ -113,6 +113,18 @@ export function InlineLeadForm({
           inputMode="tel"
         />
         <div className="relative">
+          <Mail className={"pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 " + (isDark ? "text-primary-foreground/60" : "text-muted-foreground")} />
+          <input
+            type="email"
+            maxLength={200}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Email (optional — for confirmation)"
+            className={inputCls + " w-full pl-9"}
+            aria-label="Email"
+          />
+        </div>
+        <div className="relative">
           <MapPin className={"pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 " + (isDark ? "text-primary-foreground/60" : "text-muted-foreground")} />
           <input
             type="text"
