@@ -171,10 +171,11 @@ export function SiteHeader() {
                       onClick={() => setOpenMenu((cur) => (cur === n.key ? null : n.key))}
                       aria-expanded={isOpen}
                       aria-haspopup="menu"
-                      className={`group relative inline-flex items-center gap-1 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] transition ${
+                      className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] transition ${
                         isOpen ? "text-flame" : "text-primary-foreground/80 hover:text-primary-foreground"
                       }`}
                     >
+                      <span className="h-1.5 w-1.5 rounded-full bg-flame/80 group-hover:bg-flame" />
                       {n.label}
                       <ChevronDown
                         className={`h-3 w-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
@@ -224,10 +225,11 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className="group relative whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-primary-foreground/80 transition hover:text-primary-foreground"
+                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-primary-foreground/80 transition hover:text-primary-foreground"
                   activeProps={{ className: "text-flame" }}
                   activeOptions={n.to === "/" ? { exact: true } : undefined}
                 >
+                  <span className="h-1.5 w-1.5 rounded-full bg-flame/80 group-hover:bg-flame" />
                   {n.label}
                   <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-flame transition-transform duration-300 group-hover:scale-x-100" />
                 </Link>
