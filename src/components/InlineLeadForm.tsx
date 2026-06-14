@@ -21,6 +21,7 @@ export function InlineLeadForm({
 }: Props) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [zip, setZip] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
