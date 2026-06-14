@@ -171,10 +171,11 @@ export function SiteHeader() {
                       onClick={() => setOpenMenu((cur) => (cur === n.key ? null : n.key))}
                       aria-expanded={isOpen}
                       aria-haspopup="menu"
-                      className={`group relative inline-flex items-center gap-1 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] transition ${
+                      className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] transition ${
                         isOpen ? "text-flame" : "text-primary-foreground/80 hover:text-primary-foreground"
                       }`}
                     >
+                      <span className="h-1.5 w-1.5 rounded-full bg-flame/80 group-hover:bg-flame" />
                       {n.label}
                       <ChevronDown
                         className={`h-3 w-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
@@ -224,10 +225,11 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className="group relative whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-primary-foreground/80 transition hover:text-primary-foreground"
+                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-primary-foreground/80 transition hover:text-primary-foreground"
                   activeProps={{ className: "text-flame" }}
                   activeOptions={n.to === "/" ? { exact: true } : undefined}
                 >
+                  <span className="h-1.5 w-1.5 rounded-full bg-flame/80 group-hover:bg-flame" />
                   {n.label}
                   <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-flame transition-transform duration-300 group-hover:scale-x-100" />
                 </Link>
@@ -281,7 +283,7 @@ export function SiteHeader() {
                         type="button"
                         onClick={() => setMobileOpenKey((cur) => (cur === n.key ? null : n.key))}
                         aria-expanded={isOpen}
-                        className="flex w-full items-center justify-between py-3 font-display text-base font-bold uppercase tracking-wider"
+                        className="flex w-full items-center justify-between py-3.5 font-sans text-[15px] font-semibold tracking-normal"
                       >
                         <span className={isOpen ? "text-flame" : ""}>{n.label}</span>
                         <ChevronDown
@@ -302,7 +304,7 @@ export function SiteHeader() {
                                     setOpen(false);
                                     setMobileOpenKey(null);
                                   }}
-                                  className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-primary-foreground transition active:bg-white/10"
+                                  className="block rounded-lg px-3 py-2.5 font-sans text-sm font-medium text-primary-foreground/80 transition active:bg-white/10 active:text-flame"
                                 >
                                   {item.label}
                                 </Link>
@@ -315,7 +317,7 @@ export function SiteHeader() {
                                     setOpen(false);
                                     setMobileOpenKey(null);
                                   }}
-                                  className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-primary-foreground transition active:bg-white/10"
+                                  className="block rounded-lg px-3 py-2.5 font-sans text-sm font-medium text-primary-foreground/80 transition active:bg-white/10 active:text-flame"
                                 >
                                   {item.label}
                                 </Link>
@@ -332,7 +334,7 @@ export function SiteHeader() {
                     key={n.to}
                     to={n.to}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between border-b border-white/5 py-3 font-display text-base font-bold uppercase tracking-wider"
+                    className="flex items-center justify-between border-b border-white/5 py-3.5 font-sans text-[15px] font-semibold tracking-normal"
                     activeProps={{ className: "text-flame" }}
                     activeOptions={n.to === "/" ? { exact: true } : undefined}
                   >
