@@ -4,11 +4,12 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { reportAdsConversion } from "@/lib/track";
+import { reportCallConversion } from "@/lib/track";
 
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -87,12 +88,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:title", content: "ChimCrew — Ohio Chimney Sweep & Repair" },
       { property: "og:description", content: "Locally owned Ohio chimney sweeps. CSIA-certified, flat-rate pricing, same-day callbacks." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "ChimCrew — Ohio Chimney Sweep & Repair" },
       { name: "twitter:description", content: "Locally owned Ohio chimney sweeps. CSIA-certified, flat-rate pricing, same-day callbacks." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6159d1b7-3552-4ec5-824c-865163694f19/id-preview-47a8de52--49851b74-ff19-4902-878c-836b03624bf9.lovable.app-1779390819801.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/6159d1b7-3552-4ec5-824c-865163694f19/id-preview-47a8de52--49851b74-ff19-4902-878c-836b03624bf9.lovable.app-1779390819801.png" },
+      { property: "og:image", content: "https://chimcrew.com/og-cover.jpg" },
+      { name: "twitter:image", content: "https://chimcrew.com/og-cover.jpg" },
+      { property: "og:site_name", content: "ChimCrew" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -202,7 +203,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QY2H753BK9"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18189794318"></script>
-        <script dangerouslySetInnerHTML={{ __html: `(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:6728722,hjsv:6};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r);})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QY2H753BK9'); gtag('config', 'AW-18189794318'); function gtag_report_conversion(url){var callback=function(){if(typeof(url)!='undefined'){window.location=url;}}; gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD','event_callback':callback}); return false;}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:6728722,hjsv:6};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r);})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QY2H753BK9'); gtag('config', 'AW-18189794318'); /* Generic conversion (kept for backwards compatibility). */ function gtag_report_conversion(url){var callback=function(){if(typeof(url)!='undefined'){window.location=url;}}; gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD','event_callback':callback}); return false;} /* Dedicated phone-call conversion. Replace send_to with a Call-specific label in Google Ads when one exists. */ function gtag_report_call(){gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD'}); return false;} /* Dedicated lead-form conversion. Replace send_to with a Form-specific label in Google Ads when one exists. */ function gtag_report_lead(){gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD'}); return false;}` }} />
         <HeadContent />
       </head>
       <body>
@@ -215,6 +216,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  // Dedicated landing pages (/lp/*) render their own header/footer/CTAs.
+  // Hide the main site chrome so paid traffic has zero exit links.
+  const isLanding = pathname.startsWith("/lp/");
 
   // Track every click-to-call as a Google Ads conversion.
   // Without this, phone-call campaigns appear to deliver 0 leads
@@ -223,7 +228,7 @@ function RootComponent() {
     const onClick = (e: MouseEvent) => {
       const t = e.target as HTMLElement | null;
       const a = t?.closest?.("a[href^='tel:']") as HTMLAnchorElement | null;
-      if (a) reportAdsConversion();
+      if (a) reportCallConversion();
     };
     document.addEventListener("click", onClick, { capture: true });
     return () => document.removeEventListener("click", onClick, { capture: true });
@@ -233,14 +238,14 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
         <AmbientEmbers />
-        <SiteHeader />
+        {!isLanding && <SiteHeader />}
         <main className="flex-1">
           <Outlet />
         </main>
-        <SiteFooter />
+        {!isLanding && <SiteFooter />}
         <ScheduleWidget />
-        <TimedLeadPopup />
-        <StickyMobileCta />
+        {!isLanding && <TimedLeadPopup />}
+        {!isLanding && <StickyMobileCta />}
         <Toaster />
       </div>
     </QueryClientProvider>
