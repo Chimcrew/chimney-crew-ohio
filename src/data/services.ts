@@ -769,7 +769,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Does it transfer if I sell?", a: "Yes — and the service history is a great selling point." },
     ],
     related: ["chimney-sweep", "level-1-inspection", "dryer-vent-cleaning"],
-    metaDescription: "Annual chimney service plan in Ohio. $218/yr for sweep, inspection, priority dispatch, and 10% off repairs.",
+    metaDescription: "Annual chimney service plan in Ohio. Yearly sweep, inspection, priority dispatch, and 10% off repairs.",
   },
 ];
 
