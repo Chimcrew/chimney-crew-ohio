@@ -23,6 +23,7 @@ import {
   HardHat,
 } from "lucide-react";
 import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
+import { InlineLeadForm } from "@/components/InlineLeadForm";
 const logo = logoAsset.url;
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
@@ -299,11 +300,14 @@ function MobileHero() {
           {/* Headline + trust + CTAs anchored to bottom */}
           <div className="space-y-6">
             <div>
+              <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-flame px-3 py-1.5 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-primary">
+                <Flame className="h-3 w-3" /> Free Inspection · Normally $69
+              </span>
               <h1 className="font-display text-[2.6rem] sm:text-[3.1rem] font-black leading-[1.0] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
                 Protect Your Home With <span className="text-flame">Trusted Chimney Experts</span>
               </h1>
               <p className="mt-4 text-[15px] leading-relaxed text-white/85">
-                Professional chimney inspections, repairs, masonry work, chimney caps, crowns, liners, and leak repairs.
+                Get a free chimney inspection this month — written photo report, same-day callbacks, zero pressure.
               </p>
             </div>
 
@@ -467,6 +471,16 @@ function Hero() {
       {/* ============ MOBILE HERO — full-bleed photo, premium dark ============ */}
       <MobileHero />
 
+      {/* Mobile-only inline lead form — drops users straight into a 3-field form */}
+      <div className="bg-primary px-4 pb-6 lg:hidden">
+        <InlineLeadForm
+          tone="dark"
+          source="Home mobile hero inline form"
+          title="Claim your free inspection"
+          subtitle="3 quick fields. We text or call within the hour."
+        />
+      </div>
+
       {/* ============ MOBILE-ONLY social proof bar (brought back per request) ============ */}
       <div className="lg:hidden">
         <div className="bg-primary px-4 pb-6">
@@ -551,9 +565,20 @@ function Hero() {
               </span>
             </h1>
 
+            <div className="inline-flex items-center gap-3 rounded-2xl border border-flame/40 bg-flame/[0.08] px-4 py-3">
+              <span className="grid h-9 w-9 place-items-center rounded-lg bg-flame text-primary">
+                <Flame className="h-5 w-5" />
+              </span>
+              <div className="leading-tight">
+                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">This month only</div>
+                <div className="font-display text-lg font-extrabold text-primary-foreground">
+                  Free chimney inspection <span className="text-primary-foreground/60 line-through decoration-2">$69</span>
+                </div>
+              </div>
+            </div>
+
             <p className="max-w-xl text-[15px] leading-relaxed text-primary-foreground/80 md:text-lg">
-              Protect your home from chimney fires, water leaks, and costly damage.{" "}
-              <span className="font-semibold text-primary-foreground">CSIA-certified inspections, repairs &amp; maintenance</span> — upfront pricing, same-day callback.
+              CSIA-certified Ohio sweeps. Written photo report. Same-day callback — no pressure, no surprise charges.
             </p>
 
             {/* CTAs — full-width on mobile, inline on desktop */}
@@ -619,7 +644,12 @@ function Hero() {
 
           {/* RIGHT — one strong visual (mobile: on top) */}
           <div className="reveal order-1 lg:order-none lg:col-span-5" style={{ animationDelay: "0.15s" }}>
-            <HeroPhotoCard />
+            <InlineLeadForm
+              tone="dark"
+              source="Home desktop hero inline form"
+              title="Claim your free inspection"
+              subtitle="3 quick fields — same-day callback."
+            />
           </div>
         </div>
 
