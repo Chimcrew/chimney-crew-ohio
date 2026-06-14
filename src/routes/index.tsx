@@ -295,7 +295,7 @@ function MobileHero() {
           {/* Headline + trust + CTAs anchored to bottom */}
           <div className="space-y-6">
             <div>
-              <h1 className="font-display text-[2.6rem] xs:text-[2.85rem] sm:text-[3.1rem] font-black leading-[1.0] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
+              <h1 className="font-display text-[2.6rem] sm:text-[3.1rem] font-black leading-[1.0] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
                 Protect Your Home With Trusted Chimney Experts
               </h1>
               <p className="mt-4 text-[15px] leading-relaxed text-white/85">
