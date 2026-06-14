@@ -17,6 +17,8 @@ import up0 from "@/assets/uploads/job0.jpeg.asset.json";
 import up1 from "@/assets/uploads/job_1.jpeg.asset.json";
 import up8 from "@/assets/uploads/job_8.jpeg.asset.json";
 import up3 from "@/assets/uploads/job_3.jpeg.asset.json";
+import jobA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
+import jobB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 
 const SITE = "https://chimcrew.com";
 
@@ -49,6 +51,8 @@ type Photo = {
 };
 
 const PHOTOS: Photo[] = [
+  { src: jobA.url, alt: "Brick chimney with new stainless caps and freshly sealed crown", title: "New Caps + Crown Seal", city: "Columbus, OH", tag: "Cap", size: "tall" },
+  { src: jobB.url, alt: "Brick chimney crown rebuild in progress on a metal roof", title: "Crown Rebuild In Progress", city: "Columbus, OH", tag: "Crown", size: "square" },
   { src: up5.url, alt: "Custom stainless chase cover installed on a sided chimney", title: "Custom Chase Cover Install", city: "Westerville, OH", tag: "Cap", size: "tall" },
   { src: up4.url, alt: "Fresh stainless steel chase cover replacement", title: "New Stainless Chase Cover", city: "Hilliard, OH", tag: "Cap", size: "square" },
   { src: up8.url, alt: "Brick chimney after tuckpointing with new stainless cap", title: "Tuckpoint + Cap — Finished", city: "Dublin, OH", tag: "Tuckpointing", size: "tall" },
