@@ -53,6 +53,7 @@ export function InlineLeadForm({
           source,
           name: name.trim(),
           phone: phone.trim(),
+          email: email.trim() || undefined,
           city: zip.trim(),
           service: "Free chimney inspection",
         }),
