@@ -370,17 +370,17 @@ function LimitedOfferBanner() {
   const pad = (n: number) => String(n).padStart(2, "0");
   const Box = ({ v, l }: { v: number; l: string }) => (
     <div className="flex flex-col items-center">
-      <span className="grid h-12 w-12 place-items-center rounded-md bg-primary font-mono text-xl font-black tabular-nums text-flame shadow-inner sm:h-14 sm:w-14 sm:text-2xl">
+      <span className="grid h-9 w-9 place-items-center rounded-md bg-primary font-mono text-base font-black tabular-nums text-flame shadow-inner sm:h-10 sm:w-10 sm:text-lg">
         {pad(v)}
       </span>
-      <span className="mt-1 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-primary/70">
+      <span className="mt-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-primary/70">
         {l}
       </span>
     </div>
   );
   return (
-    <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-10 md:py-14">
-      <div className="relative mx-auto max-w-3xl">
+    <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-8 md:py-10">
+      <div className="relative mx-auto max-w-2xl">
         {/* Coupon card */}
         <div className="relative rounded-2xl bg-flame text-primary shadow-[0_20px_60px_oklch(0_0_0/0.5)]">
           {/* perforated edges */}
@@ -388,46 +388,53 @@ function LimitedOfferBanner() {
           <span className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]" aria-hidden />
 
           {/* dashed inner frame */}
-          <div className="m-2 rounded-xl border-2 border-dashed border-primary/40 p-5 sm:p-7">
+          <div className="m-2 rounded-xl border-2 border-dashed border-primary/40 p-5 sm:p-6">
             {/* top ribbon */}
             <div className="flex items-center justify-between gap-3">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
-                🔥 Limited Time
+                <Flame className="h-3 w-3" /> Limited Time
               </span>
               <span className="hidden font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/70 sm:inline">
-                Coupon · Columbus, OH
+                Columbus, OH
               </span>
             </div>
 
-            {/* main */}
-            <div className="mt-4 flex flex-col items-center text-center sm:mt-5">
-              <p className="font-mono text-[11px] font-bold uppercase tracking-[0.28em] text-primary/80">
-                Get a
-              </p>
-              <h2 className="mt-1 font-display text-3xl font-black uppercase leading-[0.95] tracking-tight text-primary sm:text-5xl">
-                Free Chimney<br />Inspection
-              </h2>
-              <p className="mt-3 max-w-md text-sm font-semibold text-primary/80">
-                With any chimney repair service. No card on file. No obligation.
+            {/* main — clean price comparison */}
+            <div className="mt-5 flex flex-col items-center text-center sm:mt-6">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-primary/80">
+                Chimney Inspection
               </p>
 
-              {/* countdown */}
-              <div className="mt-5 flex items-center gap-2 rounded-xl border-2 border-primary/30 bg-primary/5 px-4 py-3">
-                <Clock className="h-4 w-4 text-primary" />
-                <span className="font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-primary">
-                  Ends in
+              {/* Price comparison */}
+              <div className="mt-2 flex items-baseline gap-3">
+                <span className="relative font-display text-2xl font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
+                  $69
                 </span>
-                <div className="ml-1 flex items-center gap-1.5">
+                <span className="font-display text-5xl font-black uppercase leading-none tracking-tight text-primary sm:text-6xl">
+                  FREE
+                </span>
+              </div>
+              <p className="mt-2 text-xs font-semibold text-primary/80">
+                Instead of $69 — limited to this month only. No card required.
+              </p>
+
+              {/* compact countdown */}
+              <div className="mt-4 flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 px-3 py-2">
+                <Clock className="h-3.5 w-3.5 text-primary/80" />
+                <span className="font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-primary/70">
+                  Ends tonight
+                </span>
+                <div className="ml-1 flex items-center gap-1">
                   <Box v={timeLeft.h} l="Hrs" />
-                  <span className="-mt-3 font-mono text-xl font-black text-primary">:</span>
+                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
                   <Box v={timeLeft.m} l="Min" />
-                  <span className="-mt-3 font-mono text-xl font-black text-primary">:</span>
+                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
                   <Box v={timeLeft.s} l="Sec" />
                 </div>
               </div>
 
               {/* CTAs */}
-              <div className="mt-5 grid w-full max-w-md grid-cols-1 gap-2 sm:grid-cols-2">
+              <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
@@ -443,8 +450,8 @@ function LimitedOfferBanner() {
                 </a>
               </div>
 
-              <p className="mt-4 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
-                Code: <span className="text-primary">CHIM-FREE</span> · Mention when booking
+              <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
+                Code: <span className="text-primary font-extrabold">CHIM-FREE</span> · Mention when booking
               </p>
             </div>
           </div>
