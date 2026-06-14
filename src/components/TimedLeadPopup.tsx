@@ -13,11 +13,21 @@ export function TimedLeadPopup() {
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(STORAGE_KEY)) return;
-    const t = window.setTimeout(() => {
+    const trigger = () => {
+      if (sessionStorage.getItem(STORAGE_KEY)) return;
       setOpen(true);
       sessionStorage.setItem(STORAGE_KEY, "1");
-    }, DELAY_MS);
-    return () => window.clearTimeout(t);
+    };
+    const t = window.setTimeout(trigger, DELAY_MS);
+    // Desktop exit-intent: mouse leaves the top of the viewport.
+    const onMouseOut = (e: MouseEvent) => {
+      if (e.clientY <= 0 && window.innerWidth >= 768) trigger();
+    };
+    document.addEventListener("mouseout", onMouseOut);
+    return () => {
+      window.clearTimeout(t);
+      document.removeEventListener("mouseout", onMouseOut);
+    };
   }, []);
 
   useEffect(() => {
