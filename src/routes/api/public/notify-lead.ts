@@ -14,6 +14,8 @@ const ADMIN_EMAILS = [
   'office@chimcrew.com',
 ]
 
+const CONFIRMATION_TEMPLATE_NAME = 'lead-confirmation'
+
 function generateToken(): string {
   const bytes = new Uint8Array(32)
   crypto.getRandomValues(bytes)
@@ -147,6 +149,60 @@ export const Route = createFileRoute('/api/public/notify-lead')({
             return { to, ok: true }
           })
         )
+
+        // Send confirmation email to the lead if they provided an email
+        if (data.email) {
+          const confirmTemplate = TEMPLATES[CONFIRMATION_TEMPLATE_NAME]
+          if (confirmTemplate) {
+            const confirmElement = React.createElement(confirmTemplate.component, {
+              name: data.name,
+              service: data.service,
+              city: data.city,
+            })
+            const confirmHtml = await render(confirmElement)
+            const confirmPlainText = await render(confirmElement, { plainText: true })
+            const confirmSubject =
+              typeof confirmTemplate.subject === 'function'
+                ? confirmTemplate.subject({ name: data.name, service: data.service, city: data.city })
+                : confirmTemplate.subject
+
+            const confirmMessageId = crypto.randomUUID()
+            const confirmUnsubscribeToken = await getOrCreateUnsubscribeToken(supabase, data.email)
+            await supabase.from('email_send_log').insert({
+              message_id: confirmMessageId,
+              template_name: CONFIRMATION_TEMPLATE_NAME,
+              recipient_email: data.email,
+              status: 'pending',
+            })
+            const { error: confirmEnqueueError } = await supabase.rpc('enqueue_email', {
+              queue_name: 'transactional_emails',
+              payload: {
+                message_id: confirmMessageId,
+                to: data.email,
+                from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
+                sender_domain: SENDER_DOMAIN,
+                subject: confirmSubject,
+                html: confirmHtml,
+                text: confirmPlainText,
+                purpose: 'transactional',
+                label: CONFIRMATION_TEMPLATE_NAME,
+                idempotency_key: `${CONFIRMATION_TEMPLATE_NAME}-${confirmMessageId}`,
+                unsubscribe_token: confirmUnsubscribeToken,
+                queued_at: new Date().toISOString(),
+              },
+            })
+            if (confirmEnqueueError) {
+              console.error('Lead confirmation enqueue failed', { to: data.email, error: confirmEnqueueError })
+              await supabase.from('email_send_log').insert({
+                message_id: confirmMessageId,
+                template_name: CONFIRMATION_TEMPLATE_NAME,
+                recipient_email: data.email,
+                status: 'failed',
+                error_message: confirmEnqueueError.message,
+              })
+            }
+          }
+        }
 
         return Response.json({ success: true, results })
       },
