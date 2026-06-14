@@ -59,10 +59,19 @@ export function ScheduleInline() {
   );
 }
 
+function getDefaultDate(): Date {
+  // Pre-select the nearest available appointment date — 2 days from today —
+  // so homeowners don't have to pick a date from scratch.
+  const d = new Date();
+  d.setDate(d.getDate() + 2);
+  d.setHours(0, 0, 0, 0);
+  return d;
+}
+
 function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDone?: () => void }) {
   const [step, setStep] = useState(0);
   const [service, setService] = useState<string>(services[0]);
-  const [date, setDate] = useState<Date | undefined>();
+  const [date, setDate] = useState<Date | undefined>(() => getDefaultDate());
   const [slot, setSlot] = useState<string>(slots[0]);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
