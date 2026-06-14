@@ -42,6 +42,8 @@ import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
+import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
+import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES, formatFromPrice, getService } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
@@ -156,6 +158,8 @@ function Index() {
    ============================================================ */
 function HeroPhotoCard() {
   const photos = [
+    { src: jobPhotoA.url, caption: "New caps + crown seal", city: "Columbus, OH" },
+    { src: jobPhotoB.url, caption: "Crown rebuild in progress", city: "Columbus, OH" },
     { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
     { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH" },
     { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
@@ -249,7 +253,7 @@ function HeroPhotoCard() {
 }
 
 function MobileHero() {
-  const photos = [projectHero, projectLiner, projectTuck, projectCap, projectTech];
+  const photos = [jobPhotoA.url, jobPhotoB.url, projectHero, projectLiner, projectTuck, projectCap, projectTech];
   const [idx, setIdx] = useState(0);
   useEffect(() => {
     const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 5200);
