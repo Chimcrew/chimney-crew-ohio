@@ -142,14 +142,69 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   h1, h2, h3, .display {
     font-family: var(--font-display);
     letter-spacing: -0.045em;
-    line-height: 0.98;
     font-weight: 700;
     text-transform: none;
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 18px;
+    }
+  }
+}
+
+/*
+ * Global typography system — enforced sitewide.
+ * Uses !important to override inline Tailwind text-size classes that were
+ * previously applied per-section. Goal: every H1/H2/H3 is identical across
+ * pages for a premium, consistent look.
+ *
+ * Mobile:  H1 38 / H2 32 / H3 24 / body 16
+ * Desktop: H1 56 / H2 40 / H3 28 / body 18
+ */
+@layer base {
+  h1 {
+    font-size: 38px !important;
+    line-height: 1.08 !important;
+    letter-spacing: -0.025em !important;
+    margin-bottom: 0.5em;
+  }
+  h2 {
+    font-size: 32px !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 0.5em;
+  }
+  h3 {
+    font-size: 24px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.015em !important;
+    margin-bottom: 0.4em;
+  }
+  p {
+    line-height: 1.65;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 56px !important;
+      line-height: 1.05 !important;
+    }
+    h2 {
+      font-size: 40px !important;
+      line-height: 1.12 !important;
+    }
+    h3 {
+      font-size: 28px !important;
+      line-height: 1.25 !important;
+    }
   }
 }
 
