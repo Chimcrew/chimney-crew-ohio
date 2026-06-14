@@ -558,10 +558,10 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-[2.25rem] font-extrabold leading-[1.02] tracking-[-0.035em] text-primary-foreground sm:text-5xl md:text-[3.25rem] lg:text-[3.75rem]">
-              Chimney services you can trust for{" "}
+            <h1 className="font-display text-[1.55rem] font-extrabold leading-[1.08] tracking-[-0.025em] text-primary-foreground sm:text-[1.85rem] md:text-[2.5rem] lg:text-[3.25rem]">
+              The Chimney Experts You've Trusted for{" "}
               <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
-                over 20 years in Columbus, Ohio.
+                Over 50 Years In Columbus, Ohio
               </span>
             </h1>
 
