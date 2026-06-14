@@ -471,6 +471,16 @@ function Hero() {
       {/* ============ MOBILE HERO — full-bleed photo, premium dark ============ */}
       <MobileHero />
 
+      {/* Mobile-only inline lead form — drops users straight into a 3-field form */}
+      <div className="bg-primary px-4 pb-6 lg:hidden">
+        <InlineLeadForm
+          tone="dark"
+          source="Home mobile hero inline form"
+          title="Claim your free inspection"
+          subtitle="3 quick fields. We text or call within the hour."
+        />
+      </div>
+
       {/* ============ MOBILE-ONLY social proof bar (brought back per request) ============ */}
       <div className="lg:hidden">
         <div className="bg-primary px-4 pb-6">
