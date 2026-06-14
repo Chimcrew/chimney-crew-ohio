@@ -63,11 +63,15 @@ export interface ServiceSpec {
   warranty?: string;
 }
 
-/** Display label for a service price. Returns "Custom Quote" for quote-only
- *  services, otherwise prefixes with "From " (e.g. "From $118"). */
-export function formatFromPrice(s: Pick<ServiceSpec, "price" | "quoteOnly">): string {
-  if (s.quoteOnly) return "Custom Quote";
-  return `From ${s.price}`;
+/** Display label for a service price.
+ *
+ *  Per company policy, the only price advertised anywhere on the public
+ *  website is the $69 chimney inspection. Every other service shows no
+ *  price — the homeowner is asked to request a free quote instead.
+ */
+export function formatFromPrice(s: Pick<ServiceSpec, "slug">): string {
+  if (s.slug === "level-1-inspection") return "Only $69";
+  return "";
 }
 
 /** Short warranty/guarantee label per service. Falls back to a sensible default. */
@@ -157,9 +161,9 @@ export const SERVICES: ServiceSpec[] = [
     slug: "level-1-inspection",
     warranty: "100% Accurate Report",
     title: "Level 1 Chimney Inspection",
-    shortTitle: "Level 1 Inspection",
-    tagline: "The annual check-up the NFPA recommends for every fireplace.",
-    price: "$118",
+    shortTitle: "Chimney Inspection",
+    tagline: "The annual check-up the NFPA recommends for every fireplace — only $69.",
+    price: "$69",
     duration: "",
     icon: Search,
     variant: "inspection",
