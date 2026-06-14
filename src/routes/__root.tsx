@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -215,6 +216,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  // Dedicated landing pages (/lp/*) render their own header/footer/CTAs.
+  // Hide the main site chrome so paid traffic has zero exit links.
+  const isLanding = pathname.startsWith("/lp/");
 
   // Track every click-to-call as a Google Ads conversion.
   // Without this, phone-call campaigns appear to deliver 0 leads
@@ -233,14 +238,14 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col">
         <AmbientEmbers />
-        <SiteHeader />
+        {!isLanding && <SiteHeader />}
         <main className="flex-1">
           <Outlet />
         </main>
-        <SiteFooter />
+        {!isLanding && <SiteFooter />}
         <ScheduleWidget />
-        <TimedLeadPopup />
-        <StickyMobileCta />
+        {!isLanding && <TimedLeadPopup />}
+        {!isLanding && <StickyMobileCta />}
         <Toaster />
       </div>
     </QueryClientProvider>
