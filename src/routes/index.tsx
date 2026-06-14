@@ -300,11 +300,14 @@ function MobileHero() {
           {/* Headline + trust + CTAs anchored to bottom */}
           <div className="space-y-6">
             <div>
+              <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-flame px-3 py-1.5 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-primary">
+                <Flame className="h-3 w-3" /> Free Inspection · Normally $69
+              </span>
               <h1 className="font-display text-[2.6rem] sm:text-[3.1rem] font-black leading-[1.0] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
                 Protect Your Home With <span className="text-flame">Trusted Chimney Experts</span>
               </h1>
               <p className="mt-4 text-[15px] leading-relaxed text-white/85">
-                Professional chimney inspections, repairs, masonry work, chimney caps, crowns, liners, and leak repairs.
+                Get a free chimney inspection this month — written photo report, same-day callbacks, zero pressure.
               </p>
             </div>
 
