@@ -1127,13 +1127,10 @@ function ServicesGrid() {
               <aside className="flex flex-col justify-between gap-4 rounded-2xl border-2 border-primary/10 bg-secondary/60 p-5">
                 <div>
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-                    Flat rate · Ohio homeowners
+                    Ohio homeowners
                   </p>
                   <p className="mt-1 font-display text-3xl sm:text-4xl font-extrabold text-primary">
-                    {s.priceFrom}
-                    {/^\$/.test(s.priceFrom) && (
-                      <span className="ml-1 text-sm font-medium text-muted-foreground">+ tax</span>
-                    )}
+                    {s.priceFrom || "Free Quote"}
                   </p>
                   <p className="mt-2 text-xs text-muted-foreground">
                     Quoted in writing before we start. No surprises, ever.
