@@ -273,10 +273,10 @@ function ProofBar() {
   ];
   return (
     <section className="border-b border-border/30 bg-card/40 py-5">
-      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 text-sm font-medium text-muted-foreground">
+      <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 text-sm font-medium text-foreground/85">
         {items.map((it) => (
           <span key={it.label} className="inline-flex items-center gap-1.5">
-            <it.icon className="h-4 w-4 text-flame" />
+            <it.icon className="h-4 w-4 text-primary" />
             {it.label}
           </span>
         ))}
@@ -302,11 +302,46 @@ function Includes() {
         <ul className="mt-6 grid gap-3">
           {items.map((t) => (
             <li key={t} className="flex items-start gap-3 rounded-2xl border border-border/50 bg-card p-4">
-              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-flame" />
+              <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <span className="text-sm sm:text-base">{t}</span>
             </li>
           ))}
         </ul>
+      </div>
+    </section>
+  );
+}
+
+function RecentJobs() {
+  const jobs = BEFORE_AFTER_JOBS.slice(0, 3);
+  return (
+    <section className="border-b border-border/30 py-12 sm:py-16">
+      <div className="mx-auto max-w-5xl px-4">
+        <div className="mb-6 flex items-end justify-between gap-4">
+          <div>
+            <h2 className="font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
+              Recent Columbus jobs
+            </h2>
+            <p className="mt-1 text-sm text-foreground/70 sm:text-base">
+              Drag the slider — real homes, real before &amp; after.
+            </p>
+          </div>
+        </div>
+        <div className="grid gap-6 md:grid-cols-3">
+          {jobs.map((job) => (
+            <figure key={job.id} className="flex flex-col">
+              <BeforeAfter before={job.before} after={job.after} alt={job.headline} />
+              <figcaption className="mt-3">
+                <div className="font-display text-sm font-extrabold leading-snug">
+                  {job.headline}
+                </div>
+                <div className="mt-1 text-xs text-foreground/70">
+                  {job.service} · {job.city}
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   );
