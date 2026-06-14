@@ -152,7 +152,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
 
     onDone?.();
     // Only fire the Google Ads conversion AFTER a real successful lead.
-    reportAdsConversion();
+    reportLeadFormConversion();
     toast.success("You're on the schedule!", {
       description: `${service} · ${dateStr ?? ""} · ${slot}. We'll text ${phone} within an hour to confirm.`,
       duration: 7000,
