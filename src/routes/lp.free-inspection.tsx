@@ -14,6 +14,8 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 
 export const Route = createFileRoute("/lp/free-inspection")({
   head: () => ({
@@ -53,6 +55,7 @@ function FreeInspectionLanding() {
       <Hero />
       <ProofBar />
       <Includes />
+      <RecentJobs />
       <Reviews />
       <FinalCta />
       <MinimalFooter />
