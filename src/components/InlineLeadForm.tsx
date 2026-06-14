@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CalendarCheck, CheckCircle2, MapPin, Phone } from "lucide-react";
+import { CalendarCheck, CheckCircle2, MapPin, Phone, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 
