@@ -174,13 +174,13 @@ function FinancingPage() {
 
                 <Link
                   to="/contact"
-                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-flame px-6 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] transition hover:-translate-y-0.5 hover:bg-white"
+                  className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
                 >
-                  <CalendarCheck className="h-5 w-5" /> Schedule Your Free Inspection
+                  <CalendarCheck className="h-4 w-4" /> Schedule appointment online
                 </Link>
                 <a
                   href="tel:6146835763"
-                  className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.04] px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
+                  className="mt-3 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-5 font-sans text-[13px] font-medium tracking-normal text-primary-foreground transition hover:border-flame active:scale-95 sm:px-6"
                 >
                   <Phone className="h-4 w-4 text-flame" /> Call (614) 683-5763
                 </a>
