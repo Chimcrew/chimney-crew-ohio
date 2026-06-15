@@ -135,6 +135,7 @@ function Index() {
       <LimitedOfferBanner />
       <TrustBar />
       <TrustMarquee />
+      <EmergencyCallBar />
       <RecentProjects />
       <DroneInspection />
       <ServiceAreaSeo />
