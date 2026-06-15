@@ -819,7 +819,7 @@ export function NotFoundService() {
 
 /* ---------- INLINE REPAIR CTA ---------- */
 
-function InlineRepairCta({ variant = "dark" }: { variant?: "dark" | "flame" }) {
+function InlineRepairCta({ variant = "dark", ctaLabel = "Schedule appointment online" }: { variant?: "dark" | "flame"; ctaLabel?: string }) {
   const flame = variant === "flame";
   return (
     <section
@@ -859,7 +859,7 @@ function InlineRepairCta({ variant = "dark" }: { variant?: "dark" | "flame" }) {
             onClick={openSchedule}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
-            <CalendarCheck className="h-4 w-4" /> Schedule appointment online
+            <CalendarCheck className="h-4 w-4" /> {ctaLabel}
           </button>
           <a
             href="tel:6146835763"
