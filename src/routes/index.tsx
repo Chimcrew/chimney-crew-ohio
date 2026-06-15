@@ -293,7 +293,7 @@ function LimitedOfferBanner() {
       <span className="grid h-7 w-7 place-items-center rounded bg-primary font-mono text-sm font-black tabular-nums text-flame shadow-inner sm:h-8 sm:w-8">
         {pad(v)}
       </span>
-      <span className="mt-0.5 font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-primary/70">
+      <span className="mt-0.5 font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-foreground/60">
         {l}
       </span>
     </div>
