@@ -87,7 +87,7 @@ function ContactPage() {
                   Book online · Takes 60 seconds
                 </p>
                 <h2 className="mt-1 font-display text-2xl font-black tracking-tight text-primary md:text-3xl">
-                  Schedule a free inspection
+                  Schedule an appointment online
                 </h2>
               </div>
             </div>

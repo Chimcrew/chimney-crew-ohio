@@ -32,7 +32,7 @@ function openSchedule() {
 
 export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
   const accent = ACCENT_CLASSES[service.accent];
-  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
+  const ctaLabel = service.quoteOnly ? "Request Appointment Online" : "Schedule Appointment Online";
 
   return (
     <div className="bg-background text-foreground">
@@ -170,7 +170,7 @@ function BrickBackdrop() {
 
 function CinematicHero({ service }: { service: ServiceSpec }) {
   const priceLabel = formatFromPrice(service);
-  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
+  const ctaLabel = service.quoteOnly ? "Request Appointment Online" : "Schedule Appointment Online";
   const Icon = service.icon;
 
   return (
@@ -879,7 +879,7 @@ function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
           Not sure what's wrong with <span className="italic text-flame">your chimney?</span>
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/80">
-          Schedule a free inspection. We'll show you exactly what needs attention — with photos and
+          Schedule an appointment online. We'll show you exactly what needs attention — with photos and
           a written report.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -962,7 +962,7 @@ function InlineRepairCta({ variant = "dark" }: { variant?: "dark" | "flame" }) {
                 : "inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] transition hover:-translate-y-0.5 hover:bg-white"
             }
           >
-            <CalendarCheck className="h-4 w-4" /> Schedule Inspection
+            <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
           </button>
           <a
             href="tel:6146835763"

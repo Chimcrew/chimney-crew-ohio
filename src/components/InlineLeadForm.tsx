@@ -15,7 +15,7 @@ const TEL_DISPLAY = "(614) 683-5763";
 
 export function InlineLeadForm({
   source = "Home hero inline form",
-  title = "Book your free inspection",
+  title = "Book your appointment online",
   subtitle = "Takes ~30 seconds. We text or call within the hour.",
   tone = "light",
 }: Props) {
@@ -143,7 +143,7 @@ export function InlineLeadForm({
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
         >
           <CalendarCheck className="h-5 w-5" />
-          {submitting ? "Sending…" : "Get my free inspection"}
+          {submitting ? "Sending…" : "Get my appointment"}
         </button>
       </div>
     </form>
