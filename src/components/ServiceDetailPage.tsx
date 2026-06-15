@@ -21,6 +21,7 @@ import {
   getService,
   formatFromPrice,
   warrantyFor,
+  heroImageFor,
   type ServiceSpec,
 } from "@/data/services";
 import { TrustBadges } from "@/components/TrustBadges";
@@ -102,12 +103,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
   const priceLabel = formatFromPrice(service);
   const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule appointment online";
   const Icon = service.icon;
-  const heroPhoto =
-    service.slug.includes("inspection") || service.slug.includes("sweep")
-      ? sweepCloseupPhoto.url
-      : service.slug.includes("fireplace") || service.slug.includes("gas")
-        ? fireplaceServicePhoto.url
-        : inspectionRoofPhoto.url;
+  const heroPhoto = heroImageFor(service);
 
   return (
     <section className="relative overflow-hidden border-b border-border/30 bg-gradient-to-b from-primary/[0.04] to-background">
