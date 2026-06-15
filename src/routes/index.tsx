@@ -733,7 +733,10 @@ function BeforeAfterHome() {
             <Sparkles className="h-3.5 w-3.5" /> Before / After
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl">
-            Drag the slider. <span className="text-flame">See the work.</span>
+            Drag the slider.{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              See the work.
+            </span>
           </h2>
           <p className="mt-3 text-base text-primary-foreground/80">
             Real Ohio chimneys, real ChimCrew results — drag any photo with your finger to compare.
@@ -1032,7 +1035,10 @@ function ScheduleOnline() {
               <CalendarCheck className="h-3.5 w-3.5" /> 60-second booking
             </p>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold md:text-5xl">
-              Pick a window. <span className="text-flame">We handle everything else.</span>
+              Pick a window.{" "}
+              <span className="inline-block rounded-lg bg-primary-foreground px-2.5 py-0.5 text-primary">
+                We handle everything else.
+              </span>
             </h2>
             <p className="mt-4 max-w-xl text-base text-primary-foreground/80">
               Tell us your address and pick a 2-hour window. We text to confirm within the hour, and
@@ -1421,7 +1427,10 @@ function ServiceArea() {
         {/* Headline */}
         <div className="mx-auto mt-5 max-w-3xl text-center">
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase leading-[1] tracking-tight md:text-6xl">
-            Serving the <span className="text-flame">Ohio Heartland</span>
+            Serving the{" "}
+            <span className="inline-block rounded-lg bg-primary-foreground px-2.5 py-0.5 text-primary">
+              Ohio Heartland
+            </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-primary-foreground/70 md:text-base">
             From our HQ in <span className="font-semibold text-primary-foreground">Columbus</span>{" "}
