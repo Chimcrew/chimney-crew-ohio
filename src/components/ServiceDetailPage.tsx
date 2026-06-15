@@ -398,7 +398,7 @@ function Included({ service }: { service: ServiceSpec }) {
 
 function Process({ service }: { service: ServiceSpec }) {
   return (
-    <section className="relative border-b border-border bg-primary py-24 text-primary-foreground">
+    <section className="relative border-b border-border bg-background py-24 text-foreground">
       <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-grid" aria-hidden />
       <div
         className="pointer-events-none absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
@@ -413,7 +413,7 @@ function Process({ service }: { service: ServiceSpec }) {
           <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
             From first call to final <span className="italic text-flame">handshake.</span>
           </h2>
-          <p className="mt-5 text-primary-foreground/70">
+          <p className="mt-5 text-muted-foreground">
             No mystery, no upsells. Here's exactly how a visit goes.
           </p>
         </div>
@@ -427,13 +427,13 @@ function Process({ service }: { service: ServiceSpec }) {
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             {service.process.map((p, i) => (
               <div key={p.title} className="relative">
-                <div className="relative z-10 grid h-24 w-24 place-items-center rounded-full border border-flame/40 bg-primary font-display text-4xl font-extrabold italic text-flame shadow-[0_0_30px_-5px_oklch(0.78_0.19_92/0.4)]">
+                <div className="relative z-10 grid h-24 w-24 place-items-center rounded-full border border-flame/40 bg-card font-display text-4xl font-extrabold italic text-flame shadow-[0_0_30px_-5px_oklch(0.78_0.19_92/0.4)]">
                   {i + 1}
                 </div>
                 <h3 className="mt-6 font-display text-2xl font-extrabold uppercase tracking-tight">
                   {p.title}
                 </h3>
-                <p className="mt-3 text-primary-foreground/65 leading-relaxed">{p.desc}</p>
+                <p className="mt-3 text-muted-foreground leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
