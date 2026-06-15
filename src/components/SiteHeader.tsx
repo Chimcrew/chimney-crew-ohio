@@ -122,7 +122,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       {/* Tiny utility strip */}
-      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] xl:block">
+      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] 2xl:block">
         <div className="mx-auto grid max-w-[96rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-2 font-display text-[10px] font-black uppercase tracking-[0.18em] xl:px-8 xl:text-[11px] xl:tracking-[0.22em]">
           <span className="flex min-w-0 items-center gap-2 opacity-90">
             <MapPin className="h-3.5 w-3.5" /> Serving Columbus, Ohio &amp; Surrounding Areas — Licensed &amp; Insured
@@ -151,7 +151,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => openScheduleDialog()}
             aria-label="We're open now — schedule online"
-            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border border-[oklch(0_0_0/0.12)] bg-background/80 px-3.5 py-2 font-display text-[10px] font-black uppercase tracking-[0.12em] text-header-ink shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] sm:inline-flex xl:hidden"
+            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border border-[oklch(0_0_0/0.12)] bg-background/80 px-3.5 py-2 font-display text-[10px] font-black uppercase tracking-[0.12em] text-header-ink shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] sm:inline-flex 2xl:hidden"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-pulse rounded-full bg-[oklch(0.65_0.18_145/0.4)]" />
@@ -176,7 +176,7 @@ export function SiteHeader() {
           {/* Nav pill */}
           <nav
             ref={menuRef}
-            className="mx-auto hidden min-w-0 max-w-full items-center justify-center overflow-hidden rounded-full border border-[oklch(0_0_0/0.1)] bg-background/75 px-1 py-1 shadow-[0_8px_24px_oklch(0.18_0.02_250/0.06)] backdrop-blur xl:flex 2xl:px-1.5 2xl:py-1.5"
+            className="mx-auto hidden min-w-0 max-w-full items-center justify-center overflow-hidden rounded-full border border-[oklch(0_0_0/0.1)] bg-background/75 px-1.5 py-1.5 shadow-[0_8px_24px_oklch(0.18_0.02_250/0.06)] backdrop-blur 2xl:flex"
           >
             {PRIMARY_NAV.map((n) => {
               if (n.kind === "dropdown") {
@@ -193,7 +193,7 @@ export function SiteHeader() {
                       onClick={() => setOpenMenu((cur) => (cur === n.key ? null : n.key))}
                       aria-expanded={isOpen}
                       aria-haspopup="menu"
-                      className={`group relative inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-2 font-display text-[10px] font-black uppercase tracking-[0.08em] transition 2xl:gap-1.5 2xl:px-2.5 2xl:text-[11px] 2xl:tracking-[0.12em] ${
+                      className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 font-display text-[11px] font-black uppercase tracking-[0.12em] transition ${
                         isOpen ? "bg-[oklch(0.88_0.19_92/0.35)] text-header-ink" : "text-header-ink hover:bg-[oklch(0.18_0.02_250/0.04)]"
                       }`}
                     >
@@ -247,7 +247,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className="group relative inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-2 font-display text-[10px] font-black uppercase tracking-[0.08em] text-header-ink transition hover:bg-[oklch(0.18_0.02_250/0.04)] 2xl:gap-1.5 2xl:px-2.5 2xl:text-[11px] 2xl:tracking-[0.12em]"
+                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-2.5 py-2 font-display text-[11px] font-black uppercase tracking-[0.12em] text-header-ink transition hover:bg-[oklch(0.18_0.02_250/0.04)]"
                   activeProps={{ className: "bg-[oklch(0.88_0.19_92/0.35)] text-header-ink" }}
                   activeOptions={n.to === "/" ? { exact: true } : undefined}
                 >
