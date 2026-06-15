@@ -416,7 +416,10 @@ function Hero() {
             <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
               Columbus
             </span>{" "}
-            Homeowners For Chimney Repairs & Inspections
+            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
+              Homeowners
+            </span>{" "}
+            For Chimney Repairs & Inspections
           </h1>
 
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">

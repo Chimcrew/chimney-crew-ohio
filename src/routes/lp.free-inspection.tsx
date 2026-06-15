@@ -17,6 +17,11 @@ import { reportLeadFormConversion } from "@/lib/track";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import teamHero from "@/assets/team/chimcrew-team-hero.png.asset.json";
+import techFireplace from "@/assets/real/tech-fireplace-sweep-hoodie.png.asset.json";
+import techCap from "@/assets/real/tech-chimney-cap-install.jpg.asset.json";
+import crownRebuild from "@/assets/real/chimney-crown-rebuild.jpg.asset.json";
+import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/lp/free-inspection")({
   head: () => ({
@@ -56,11 +61,12 @@ function FreeInspectionLanding() {
       <Hero />
       <ProofBar />
       <MeetTheCrew />
+      <RealJobsStrip />
       <Includes />
       <RecentJobs />
       <Reviews />
       <FinalCta />
-      <MinimalFooter />
+      <SiteFooter />
     </div>
   );
 }
