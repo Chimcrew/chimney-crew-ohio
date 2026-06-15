@@ -267,7 +267,7 @@ export function SiteHeader() {
               className="inline-flex h-10 items-center gap-2 rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 px-4 font-display text-[11px] font-black uppercase tracking-[0.1em] text-header-ink shadow-sm transition hover:border-[oklch(0.78_0.19_92/0.65)] hover:bg-[oklch(0.88_0.19_92/0.28)]"
             >
               <Phone className="h-4 w-4 shrink-0" />
-              <span>(614) 683-5763</span>
+              <span className="hidden xl:inline">(614) 683-5763</span>
             </a>
             <button
               type="button"
