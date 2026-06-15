@@ -368,8 +368,8 @@ function LimitedOfferBanner() {
                 </span>
               </div>
 
-              <p className="mt-2 text-xs font-extrabold text-primary/90">
-                Instead of $69 — limited to this month only. No card required.
+              <p className="mt-2 text-xs font-semibold text-primary/80">
+                Instead of $69 — <span className="font-extrabold text-primary">limited to this month only</span>. No card required.
               </p>
 
               {/* CTAs */}
