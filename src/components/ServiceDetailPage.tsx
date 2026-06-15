@@ -955,20 +955,16 @@ function InlineRepairCta({ variant = "dark" }: { variant?: "dark" | "flame" }) {
           <button
             type="button"
             onClick={openSchedule}
-            className={
-              flame
-                ? "inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary-foreground shadow-[0_10px_30px_oklch(0_0_0/0.25)] transition hover:-translate-y-0.5"
-                : "inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] transition hover:-translate-y-0.5 hover:bg-white"
-            }
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
-            <CalendarCheck className="h-4 w-4" /> Schedule Inspection
+            <CalendarCheck className="h-4 w-4" /> Schedule appointment online
           </button>
           <a
             href="tel:6146835763"
             className={
               flame
-                ? "inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
-                : "inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-white/[0.04] px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
+                ? "inline-flex h-12 items-center justify-center gap-2 rounded-xl border-2 border-primary px-6 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+                : "inline-flex h-12 items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-white/[0.04] px-6 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
             }
           >
             <Phone className="h-4 w-4 text-flame" /> (614) 683-5763

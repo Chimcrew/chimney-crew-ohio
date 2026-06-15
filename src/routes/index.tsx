@@ -735,17 +735,18 @@ function WhyChooseUs() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground"
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
-            <CalendarCheck className="h-4 w-4" /> Book Free Inspection
-          </Link>
+            <CalendarCheck className="h-4 w-4" /> Schedule appointment online
+          </button>
           <a
             href="tel:6146835763"
-            className="inline-flex items-center gap-2 rounded-xl border-2 border-primary px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
           >
-            <Phone className="h-4 w-4" /> Call Now · (614) 683-5763
+            <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
           </a>
         </div>
       </div>
@@ -1048,17 +1049,18 @@ function LeakingChimney() {
           </ul>
 
           <div className="mt-7 flex flex-wrap gap-3">
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-sm bg-primary px-5 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:bg-flame hover:text-primary"
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
-              Book a leak inspection <CalendarCheck className="h-4 w-4" />
-            </Link>
+              <CalendarCheck className="h-4 w-4" /> Schedule appointment online
+            </button>
             <a
               href="tel:6146835763"
-              className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-5 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
             >
-              <Phone className="h-4 w-4" /> Call (614) 683-5763
+              <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
             </a>
           </div>
         </div>
@@ -1117,18 +1119,18 @@ function ScheduleOnline() {
             </ol>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                to="/contact"
-                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-sm bg-flame px-6 py-4 font-display text-base font-semibold text-primary shadow-flame transition hover:brightness-110"
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
               >
-                <CalendarCheck className="h-5 w-5" /> Book my appointment
-                <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-              </Link>
+                <CalendarCheck className="h-4 w-4" /> Schedule appointment online
+              </button>
               <a
                 href="tel:6146835763"
-                className="inline-flex items-center gap-2 rounded-sm border-2 border-flame/70 px-6 py-4 font-display text-base font-semibold text-flame transition hover:bg-flame hover:text-primary"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
               >
-                <Phone className="h-5 w-5" /> (614) 683-5763
+                <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
               </a>
             </div>
           </div>
