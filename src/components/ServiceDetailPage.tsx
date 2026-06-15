@@ -42,11 +42,17 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
 
   return (
     <div className="bg-background text-foreground">
-      {/* CINEMATIC HERO */}
-      <CinematicHero service={service} />
+      {/* HOMEPAGE-STYLE LIGHT HERO */}
+      <ServiceHero service={service} />
 
       {/* Marquee separator — trust strip */}
       <TrustMarquee />
+
+      {/* Emergency call bar — same as homepage */}
+      <EmergencyCallBar />
+
+      {/* Drone inspection block (homepage parity) */}
+      <DroneInspection />
 
       {/* OVERVIEW + spec card (editorial split) */}
       <Overview service={service} />
