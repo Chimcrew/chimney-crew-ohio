@@ -130,7 +130,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
           </div>
 
           <h1 className="mt-5 font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
-            {service.hero.headline}
+            {service.shortTitle}
           </h1>
 
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">
