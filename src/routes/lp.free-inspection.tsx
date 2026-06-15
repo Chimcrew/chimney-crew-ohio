@@ -61,7 +61,7 @@ function FreeInspectionLanding() {
       <Hero />
       <ProofBar />
       <MeetTheCrew />
-      <RealJobsStrip />
+      <JobsStrip />
       <Includes />
       <RecentJobs />
       <Reviews />
