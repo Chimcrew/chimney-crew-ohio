@@ -468,7 +468,7 @@ function Hero() {
 
         {/* RIGHT — photo column. Uncropped, full team visible. */}
         <div className="relative order-1 lg:order-2 lg:col-span-6">
-          <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
+          <div className="relative mx-auto w-full max-w-2xl lg:max-w-none">
             {/* soft ambient glow */}
             <div
               className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/20 blur-3xl"
