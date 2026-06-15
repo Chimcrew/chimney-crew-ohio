@@ -651,7 +651,11 @@ function WhyChooseUs() {
             <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why Chimcrew
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            Six reasons Ohio homeowners trust us first.
+            Six reasons Ohio homeowners{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              trust us first
+            </span>
+            .
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
             We're not the biggest chimney company in Ohio. We're the one your homeowners keep
@@ -821,7 +825,11 @@ function ProblemSolver() {
             <AlertTriangle className="h-3.5 w-3.5" /> Sound familiar?
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            The problem you're searching for — we fix it.
+            The problem you're searching for —{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              we fix it
+            </span>
+            .
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
             Tell us what's wrong. We've already seen it on an Ohio rooftop this week.
@@ -901,7 +909,11 @@ function FireHazards() {
             <AlertTriangle className="h-3.5 w-3.5" /> Why it matters
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            What your chimney is hiding right now.
+            What your chimney is{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              hiding right now
+            </span>
+            .
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
             25,000+ chimney fires hit U.S. homes every year — most start invisible. Two minutes here
@@ -973,7 +985,11 @@ function LeakingChimney() {
             <Droplets className="h-3.5 w-3.5 text-flame" /> Is your chimney leaking?
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            One bad Ohio winter and the water wins.
+            One bad Ohio winter and{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              the water wins
+            </span>
+            .
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
             Freeze-thaw widens hairline cracks until water reaches your firebox, your walls, your
@@ -1142,7 +1158,11 @@ function Process() {
             <Clock className="h-3.5 w-3.5 text-flame" /> How it works
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            From "hello" to handshake in four steps.
+            From "hello" to handshake in{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              four steps
+            </span>
+            .
           </h2>
           <p className="mt-3 text-base text-muted-foreground">
             No quote-bait, no upsells, no surprise invoices. The price you see is the price you pay.
@@ -1252,7 +1272,11 @@ function Testimonials() {
               <Star className="h-3.5 w-3.5 text-flame" /> Reviews
             </p>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-              Real Ohio homeowners. Honest words.
+              Real Ohio homeowners.{" "}
+              <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+                Honest words
+              </span>
+              .
             </h2>
           </div>
           <Link
@@ -1325,7 +1349,11 @@ function Faq() {
             FAQ
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            Ask us anything — we don't bite.
+            Ask us anything —{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              we don't bite
+            </span>
+            .
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
             Real Ohioans answer the phone. No call centers, no pressure, no charge for advice.
