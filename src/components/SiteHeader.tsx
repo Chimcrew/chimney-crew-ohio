@@ -89,6 +89,7 @@ export function SiteHeader() {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [mobileOpenKey, setMobileOpenKey] = useState<string | null>(null);
+  const [mobileOpenCategory, setMobileOpenCategory] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -403,15 +404,13 @@ export function SiteHeader() {
                 {mobileOpenKey === "services" && (
                   <div className="mb-3 grid gap-3">
                     {SERVICE_CATEGORIES.map((cat) => {
-                      const catOpen = mobileOpenKey === `services-${cat.key}`;
+                      const catOpen = mobileOpenCategory === cat.key;
                       return (
                         <div key={cat.key} className="rounded-xl bg-[oklch(0.18_0.02_250/0.03)] p-2">
                           <button
                             type="button"
                             onClick={() =>
-                              setMobileOpenKey((cur) =>
-                                cur === `services-${cat.key}` ? "services" : `services-${cat.key}`
-                              )
+                              setMobileOpenCategory((cur) => (cur === cat.key ? null : cat.key))
                             }
                             className="flex w-full items-center justify-between rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground"
                           >
@@ -436,6 +435,7 @@ export function SiteHeader() {
                                       onClick={() => {
                                         setOpen(false);
                                         setMobileOpenKey(null);
+                                        setMobileOpenCategory(null);
                                       }}
                                       className="block rounded-lg px-3 py-2 font-sans text-sm font-medium text-foreground/80 transition active:bg-[oklch(0.18_0.02_250/0.05)] active:text-[oklch(0.65_0.18_92)]"
                                     >
@@ -449,6 +449,7 @@ export function SiteHeader() {
                                       onClick={() => {
                                         setOpen(false);
                                         setMobileOpenKey(null);
+                                        setMobileOpenCategory(null);
                                       }}
                                       className="block rounded-lg px-3 py-2 font-sans text-sm font-medium text-foreground/80 transition active:bg-[oklch(0.18_0.02_250/0.05)] active:text-[oklch(0.65_0.18_92)]"
                                     >
