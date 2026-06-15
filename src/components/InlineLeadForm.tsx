@@ -46,11 +46,14 @@ export function InlineLeadForm({
     }
     setSubmitting(true);
     try {
+      const path = typeof window !== "undefined" ? window.location.pathname : "";
+      const pageSuffix = path ? ` · ${path}` : "";
+      const sourceLabel = `${source}${pageSuffix}`.slice(0, 60);
       await fetch("/api/public/notify-lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          source,
+          source: sourceLabel,
           name: name.trim(),
           phone: phone.trim(),
           email: email.trim() || undefined,

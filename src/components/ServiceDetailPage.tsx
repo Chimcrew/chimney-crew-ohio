@@ -22,6 +22,7 @@ import {
   formatFromPrice,
   warrantyFor,
   heroImageFor,
+  serviceCtaLabel,
   type ServiceSpec,
 } from "@/data/services";
 import { TrustBadges } from "@/components/TrustBadges";
@@ -35,8 +36,7 @@ function openSchedule() {
 }
 
 export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
-  const accent = ACCENT_CLASSES[service.accent];
-  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Appointment Online";
+  const ctaLabel = serviceCtaLabel(service);
 
   return (
     <div className="bg-background text-foreground">
@@ -59,10 +59,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       <Included service={service} />
 
       {/* Inline conversion block — keeps CTA reachable without scrolling back up */}
-      <InlineRepairCta />
-
-      {/* PROCESS — horizontal stepper with big numerals */}
-      <Process service={service} />
+      <InlineRepairCta ctaLabel={ctaLabel} />
 
       {/* SIGNS — alternating zig-zag list */}
       <Signs service={service} />
@@ -74,13 +71,10 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {service.benefits && service.benefits.length > 0 && <BenefitsBlock service={service} />}
 
       {/* Second inline CTA before final dark band */}
-      <InlineRepairCta variant="flame" />
+      <InlineRepairCta variant="flame" ctaLabel={ctaLabel} />
 
       {/* Pull-quote testimonial */}
       <PullQuote service={service} />
-
-      {/* WHY CHIMCREW (dark band) */}
-      <WhyChimCrew accent={accent} />
 
       {/* FAQ */}
       <Faqs service={service} />
@@ -98,7 +92,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
 
 function ServiceHero({ service }: { service: ServiceSpec }) {
   const priceLabel = formatFromPrice(service);
-  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule appointment online";
+  const ctaLabel = serviceCtaLabel(service);
   const Icon = service.icon;
   const heroPhoto = heroImageFor(service);
 
@@ -389,55 +383,6 @@ function Included({ service }: { service: ServiceSpec }) {
   );
 }
 
-/* ---------- PROCESS ---------- */
-
-function Process({ service }: { service: ServiceSpec }) {
-  return (
-    <section className="relative border-b border-border bg-background py-24 text-foreground">
-      <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-grid" aria-hidden />
-      <div
-        className="pointer-events-none absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
-        aria-hidden
-      />
-
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-3xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
-            // The process
-          </p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
-            From first call to final <span className="italic text-flame">handshake.</span>
-          </h2>
-          <p className="mt-5 text-muted-foreground">
-            No mystery, no upsells. Here's exactly how a visit goes.
-          </p>
-        </div>
-
-        <div className="relative mt-16">
-          {/* Timeline rule */}
-          <div
-            className="absolute left-0 right-0 top-12 hidden h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent md:block"
-            aria-hidden
-          />
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            {service.process.map((p, i) => (
-              <div key={p.title} className="relative">
-                <div className="relative z-10 grid h-24 w-24 place-items-center rounded-full border border-flame/40 bg-card font-display text-4xl font-extrabold italic text-flame shadow-[0_0_30px_-5px_oklch(0.78_0.19_92/0.4)]">
-                  {i + 1}
-                </div>
-                <h3 className="mt-6 font-display text-2xl font-extrabold uppercase tracking-tight">
-                  {p.title}
-                </h3>
-                <p className="mt-3 text-muted-foreground leading-relaxed">{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ---------- SIGNS (alternating zig-zag) ---------- */
 
 function Signs({ service }: { service: ServiceSpec }) {
@@ -587,81 +532,6 @@ function PullQuote({ service }: { service: ServiceSpec }) {
               </span>
             </p>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- WHY CHIMCREW ---------- */
-
-function WhyChimCrew({ accent }: { accent: (typeof ACCENT_CLASSES)[keyof typeof ACCENT_CLASSES] }) {
-  void accent;
-  const items = [
-    {
-      icon: ShieldCheck,
-      label: "Licensed & Insured",
-      desc: "Fully covered, CSIA-credentialed crew.",
-    },
-    {
-      icon: CalendarCheck,
-      label: "Same-Day Availability",
-      desc: "Call before noon, we'll be there.",
-    },
-    {
-      icon: ClipboardCheck,
-      label: "Detailed Reports",
-      desc: "Photos + written findings every visit.",
-    },
-    {
-      icon: BadgeDollarSign,
-      label: "Upfront Pricing",
-      desc: "Flat-rate quote in writing — no surprises.",
-    },
-    {
-      icon: Star,
-      label: "5-Star Customer Service",
-      desc: "Hundreds of 5-star reviews from Ohio homeowners.",
-    },
-    {
-      icon: MapPin,
-      label: "Locally Owned & Operated",
-      desc: "Family-run from right here in Ohio.",
-    },
-  ];
-  return (
-    <section className="relative overflow-hidden border-b border-border bg-background py-24 text-foreground">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
-      <div
-        className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
-        aria-hidden
-      />
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
-            <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why ChimCrew
-          </p>
-          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            Six reasons Ohio homeowners{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
-              trust us first
-            </span>
-            .
-          </h2>
-        </div>
-        <div className="mt-12 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {items.map((it) => (
-            <div
-              key={it.label}
-              className="group rounded-2xl border border-border bg-card p-7 shadow-[0_18px_50px_-20px_oklch(0_0_0/0.12)] transition hover:-translate-y-1 hover:border-flame/40"
-            >
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-flame/15 text-flame ring-1 ring-flame/30 transition group-hover:bg-flame group-hover:text-primary">
-                <it.icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-5 font-display text-xl font-extrabold text-foreground">{it.label}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{it.desc}</p>
-            </div>
-          ))}
         </div>
       </div>
     </section>
@@ -825,7 +695,7 @@ export function NotFoundService() {
 
 /* ---------- INLINE REPAIR CTA ---------- */
 
-function InlineRepairCta({ variant = "dark" }: { variant?: "dark" | "flame" }) {
+function InlineRepairCta({ variant = "dark", ctaLabel = "Schedule appointment online" }: { variant?: "dark" | "flame"; ctaLabel?: string }) {
   const flame = variant === "flame";
   return (
     <section
@@ -865,7 +735,7 @@ function InlineRepairCta({ variant = "dark" }: { variant?: "dark" | "flame" }) {
             onClick={openSchedule}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
-            <CalendarCheck className="h-4 w-4" /> Schedule appointment online
+            <CalendarCheck className="h-4 w-4" /> {ctaLabel}
           </button>
           <a
             href="tel:6146835763"
