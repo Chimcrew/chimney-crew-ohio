@@ -498,9 +498,6 @@ function Hero() {
                     Columbus, Ohio · Established crew
                   </p>
                 </div>
-                <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
-                  Real photos
-                </span>
               </div>
             </div>
 
