@@ -142,6 +142,7 @@ function Index() {
       <ServiceArea />
       <WhyChooseUs />
       <TrustMarquee />
+      <EmergencyCallBar />
       <LeakingChimney />
       <ScheduleOnline />
       <Testimonials />
@@ -440,6 +441,18 @@ function Hero() {
               <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
             </a>
           </div>
+
+          {/* Emergency line micro-CTA */}
+          <a
+            href="tel:6146835763"
+            className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110"
+          >
+            <span className="relative inline-flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+            </span>
+            Emergency line 24/7
+          </a>
 
           {/* Trust strip */}
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
