@@ -103,9 +103,11 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
   const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule appointment online";
   const Icon = service.icon;
   const heroPhoto =
-    service.variant === "inspection" ? sweepCloseupPhoto.url
-    : service.variant === "fireplace" ? fireplaceServicePhoto.url
-    : inspectionRoofPhoto.url;
+    service.slug.includes("inspection") || service.slug.includes("sweep")
+      ? sweepCloseupPhoto.url
+      : service.slug.includes("fireplace") || service.slug.includes("gas")
+        ? fireplaceServicePhoto.url
+        : inspectionRoofPhoto.url;
 
   return (
     <section className="relative overflow-hidden border-b border-border/30 bg-gradient-to-b from-primary/[0.04] to-background">
