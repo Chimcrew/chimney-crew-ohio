@@ -22,6 +22,7 @@ import {
   Award,
   HardHat,
 } from "lucide-react";
+import couponBg from "@/assets/chimney-coupon-bg.jpeg.asset.json";
 import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
 import { InlineLeadForm } from "@/components/InlineLeadForm";
 const logo = logoAsset.url;
