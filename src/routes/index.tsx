@@ -411,7 +411,7 @@ function Hero() {
             </span>
           </div>
 
-          <h1 className="mt-5 font-display text-2xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-3xl md:text-4xl lg:text-5xl">
+          <h1 className="mt-5 font-display text-xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-2xl md:text-3xl lg:text-4xl">
             Trusted By{" "}
             <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
               Columbus
