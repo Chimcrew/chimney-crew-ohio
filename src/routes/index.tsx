@@ -322,33 +322,6 @@ function HeroPhotoCard() {
    the $69 chimney inspection.
    ============================================================ */
 function LimitedOfferBanner() {
-  const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 });
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      const end = new Date();
-      end.setHours(23, 59, 59, 999);
-      const diff = Math.max(0, end.getTime() - now.getTime());
-      const h = Math.floor(diff / 3_600_000);
-      const m = Math.floor((diff % 3_600_000) / 60_000);
-      const s = Math.floor((diff % 60_000) / 1000);
-      setTimeLeft({ h, m, s });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  const Box = ({ v, l }: { v: number; l: string }) => (
-    <div className="flex flex-col items-center">
-      <span className="grid h-9 w-9 place-items-center rounded-md bg-primary font-mono text-base font-black tabular-nums text-flame shadow-inner sm:h-10 sm:w-10 sm:text-lg">
-        {pad(v)}
-      </span>
-      <span className="mt-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-primary/70">
-        {l}
-      </span>
-    </div>
-  );
   return (
     <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-8 md:py-10">
       <div className="relative mx-auto max-w-2xl">
