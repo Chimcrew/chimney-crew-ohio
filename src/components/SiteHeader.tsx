@@ -123,7 +123,8 @@ export function SiteHeader() {
   }, [servicesOpen]);
 
   return (
-    <header className="sticky top-0 z-50">
+    <>
+    <header className="fixed inset-x-0 top-0 z-50 md:sticky md:inset-auto">
       {/* Tiny utility strip */}
       <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] md:px-8">
@@ -509,5 +510,7 @@ export function SiteHeader() {
         </div>
       )}
     </header>
+    <div className="h-[60px] md:hidden" aria-hidden="true" />
+    </>
   );
 }
