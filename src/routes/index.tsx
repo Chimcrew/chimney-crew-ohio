@@ -353,20 +353,22 @@ function LimitedOfferBanner() {
 
             {/* main — clean price comparison */}
             <div className="mt-5 flex flex-col items-center text-center sm:mt-6">
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-primary/80">
-                Chimney Inspection
-              </p>
+              {/* Big headline: FREE INSPECTION */}
+              <span className="font-display text-4xl font-black uppercase leading-none tracking-tight text-primary sm:text-5xl">
+                Free Inspection
+              </span>
 
-              {/* Price comparison */}
-              <div className="mt-2 flex items-baseline gap-3">
-                <span className="relative font-display text-2xl font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
+              {/* Price below */}
+              <div className="mt-2 flex items-baseline gap-2">
+                <span className="relative font-display text-lg font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
                   $69
                 </span>
-                <span className="font-display text-5xl font-black uppercase leading-none tracking-tight text-primary sm:text-6xl">
-                  FREE
+                <span className="font-display text-lg font-bold text-primary">
+                  $0
                 </span>
               </div>
-              <p className="mt-2 text-xs font-semibold text-primary/80">
+
+              <p className="mt-2 text-xs font-extrabold text-primary/90">
                 Instead of $69 — limited to this month only. No card required.
               </p>
 
@@ -377,7 +379,7 @@ function LimitedOfferBanner() {
                   onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
                 >
-                  <CalendarCheck className="h-4 w-4" /> Schedule free inspection now
+                  <CalendarCheck className="h-4 w-4" /> Schedule now
                 </button>
                 <a
                   href="tel:6146835763"
