@@ -176,7 +176,7 @@ function FinancingPage() {
                   to="/contact"
                   className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-flame px-6 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] transition hover:-translate-y-0.5 hover:bg-white"
                 >
-                  <CalendarCheck className="h-5 w-5" /> Schedule Appointment Online
+                  <CalendarCheck className="h-5 w-5" /> Schedule Your Free Inspection
                 </Link>
                 <a
                   href="tel:6146835763"

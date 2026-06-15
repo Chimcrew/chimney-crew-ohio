@@ -22,7 +22,6 @@ import {
   Award,
   HardHat,
 } from "lucide-react";
-import couponBg from "@/assets/chimney-coupon-bg.jpeg.asset.json";
 import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
 import { InlineLeadForm } from "@/components/InlineLeadForm";
 const logo = logoAsset.url;
@@ -289,86 +288,96 @@ function LimitedOfferBanner() {
   }, []);
   const pad = (n: number) => String(n).padStart(2, "0");
   const Box = ({ v, l }: { v: number; l: string }) => (
-    <div className="flex items-center gap-1 rounded-md border border-primary-foreground/15 bg-primary/55 px-2 py-1 backdrop-blur-sm">
-      <span className="font-mono text-sm font-black tabular-nums text-primary-foreground">
+    <div className="flex flex-col items-center">
+      <span className="grid h-9 w-9 place-items-center rounded-md bg-primary font-mono text-base font-black tabular-nums text-flame shadow-inner sm:h-10 sm:w-10 sm:text-lg">
         {pad(v)}
       </span>
-      <span className="font-mono text-[8px] font-bold uppercase tracking-[0.18em] text-primary-foreground/65">
+      <span className="mt-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-primary/70">
         {l}
       </span>
     </div>
   );
   return (
-    <section className="relative isolate min-h-[410px] overflow-hidden sm:min-h-[450px]">
-      {/* background photo */}
-      <img
-        src={couponBg.url}
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover"
-        aria-hidden
-      />
-      {/* gentle bottom-weighted scrim so the photo stays visible */}
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/55 via-45% to-transparent"
-        aria-hidden
-      />
+    <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-8 md:py-10">
+      <div className="relative mx-auto max-w-2xl">
+        {/* Coupon card */}
+        <div className="relative rounded-2xl bg-flame text-primary shadow-[0_20px_60px_oklch(0_0_0/0.5)]">
+          {/* perforated edges */}
+          <span
+            className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
+            aria-hidden
+          />
+          <span
+            className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
+            aria-hidden
+          />
 
-      <div className="relative mx-auto flex min-h-[410px] max-w-7xl flex-col justify-end px-4 py-6 sm:min-h-[450px] sm:px-6 sm:py-9 lg:px-8">
-        <div className="max-w-5xl">
-          <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-extrabold uppercase tracking-[0.18em] text-flame">
-            <Flame className="h-3 w-3" /> Limited Time · Columbus, OH
-          </span>
-
-          <div className="mt-3 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div>
-              <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
-                <span className="font-display text-xl font-bold text-primary-foreground/55 line-through decoration-primary-foreground/45 decoration-2">
-                  $69
-                </span>
-                <span className="font-display text-6xl font-black uppercase leading-none text-flame [text-shadow:0_3px_18px_oklch(0_0_0/0.7)] sm:text-7xl md:text-8xl">
-                  Free
-                </span>
-                <span className="pb-1 font-display text-3xl font-black uppercase leading-none text-primary-foreground [text-shadow:0_3px_16px_oklch(0_0_0/0.75)] sm:text-4xl md:text-5xl">
-                  Inspection
-                </span>
-              </div>
-              <p className="mt-2 max-w-xl text-base font-semibold leading-relaxed text-primary-foreground/90">
-                Chimney inspection this month only. No credit card required.
-              </p>
+          {/* dashed inner frame */}
+          <div className="m-2 rounded-xl border-2 border-dashed border-primary/40 p-5 sm:p-6">
+            {/* top ribbon */}
+            <div className="flex items-center justify-between gap-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
+                <Flame className="h-3 w-3" /> Limited Time
+              </span>
+              <span className="hidden font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/70 sm:inline">
+                Columbus, OH
+              </span>
             </div>
 
-            <div className="flex flex-col gap-3 lg:items-end">
-              <div className="flex flex-wrap items-center gap-2">
-                <span className="inline-flex items-center gap-1.5 font-mono text-[9px] font-extrabold uppercase tracking-[0.2em] text-primary-foreground/70">
-                  <Clock className="h-3.5 w-3.5 text-flame" /> Ends tonight
+            {/* main — clean price comparison */}
+            <div className="mt-5 flex flex-col items-center text-center sm:mt-6">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-primary/80">
+                Chimney Inspection
+              </p>
+
+              {/* Price comparison */}
+              <div className="mt-2 flex items-baseline gap-3">
+                <span className="relative font-display text-2xl font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
+                  $69
                 </span>
-                <div className="flex items-center gap-1">
+                <span className="font-display text-5xl font-black uppercase leading-none tracking-tight text-primary sm:text-6xl">
+                  FREE
+                </span>
+              </div>
+              <p className="mt-2 text-xs font-semibold text-primary/80">
+                Instead of $69 — limited to this month only. No card required.
+              </p>
+
+              {/* compact countdown */}
+              <div className="mt-4 flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 px-3 py-2">
+                <Clock className="h-3.5 w-3.5 text-primary/80" />
+                <span className="font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-primary/70">
+                  Ends tonight
+                </span>
+                <div className="ml-1 flex items-center gap-1">
                   <Box v={timeLeft.h} l="Hrs" />
-                  <span className="font-mono text-xs font-black text-primary-foreground/60">:</span>
+                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
                   <Box v={timeLeft.m} l="Min" />
-                  <span className="font-mono text-xs font-black text-primary-foreground/60">:</span>
+                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
                   <Box v={timeLeft.s} l="Sec" />
                 </div>
               </div>
 
-              <div className="flex flex-col gap-3 sm:flex-row">
+              {/* CTAs */}
+              <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-flame px-6 font-display text-sm font-black uppercase tracking-wider text-primary shadow-lg shadow-primary/30 transition active:scale-95"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
                 >
                   <CalendarCheck className="h-4 w-4" /> Claim Offer
                 </button>
                 <a
                   href="tel:6146835763"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-primary-foreground/25 bg-primary/45 px-6 font-display text-sm font-black uppercase tracking-wider text-primary-foreground backdrop-blur-sm transition hover:bg-primary/60 active:scale-95"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
                 >
-                  <Phone className="h-4 w-4" /> (614) 683-5763
+                  <Phone className="h-4 w-4" /> Call Now
                 </a>
               </div>
 
-              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-primary-foreground/55">
-                Code: <span className="font-extrabold text-flame">CHIM-FREE</span> · Mention when booking
+              <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
+                Code: <span className="text-primary font-extrabold">CHIM-FREE</span> · Mention when
+                booking
               </p>
             </div>
           </div>
@@ -418,7 +427,7 @@ function Hero() {
               onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
               className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-7"
             >
-                  <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
+              <CalendarCheck className="h-4 w-4" /> Schedule Free Inspection
             </button>
             <a
               href="tel:6146835763"
@@ -449,7 +458,7 @@ function Hero() {
 
         {/* RIGHT — photo column. Uncropped, full team visible. */}
         <div className="relative order-1 lg:order-2 lg:col-span-6">
-          <div className="relative mx-auto w-full lg:mx-0">
+          <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
             {/* soft ambient glow */}
             <div
               className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/20 blur-3xl"
@@ -479,6 +488,9 @@ function Hero() {
                     Columbus, Ohio · Established crew
                   </p>
                 </div>
+                <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
+                  Real photos
+                </span>
               </div>
             </div>
 
@@ -633,7 +645,7 @@ function WhyChooseUs() {
             to="/contact"
             className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground"
           >
-            <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
+            <CalendarCheck className="h-4 w-4" /> Book Free Inspection
           </Link>
           <a
             href="tel:6146835763"
@@ -1168,7 +1180,7 @@ function Testimonials() {
             to="/contact"
             className="inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-6 py-3.5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-primary hover:text-primary-foreground"
           >
-            <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
+            <CalendarCheck className="h-4 w-4" /> Book Free Inspection
           </Link>
         </div>
 
@@ -1307,7 +1319,7 @@ function FinalCta() {
             to="/contact"
             className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:brightness-110"
           >
-            Schedule Appointment Online <CalendarCheck className="h-4 w-4" />
+            Schedule free inspection <CalendarCheck className="h-4 w-4" />
           </Link>
           <a
             href="tel:6146835763"

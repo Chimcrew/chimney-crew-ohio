@@ -92,7 +92,7 @@ function ChimneyRepairColumbus() {
                 href="#book"
                 className="group inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white"
               >
-                <CalendarCheck className="h-5 w-5" /> Schedule Appointment Online
+                <CalendarCheck className="h-5 w-5" /> Schedule Inspection
               </a>
               <a
                 href="tel:6146835763"
@@ -161,7 +161,7 @@ function ChimneyRepairColumbus() {
               href="#book"
               className="inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] transition hover:-translate-y-0.5"
             >
-              <CalendarCheck className="h-4 w-4" /> Book Appointment Online
+              <CalendarCheck className="h-4 w-4" /> Book Free Inspection
             </a>
             <a
               href="tel:6146835763"
@@ -288,7 +288,7 @@ function ChimneyRepairColumbus() {
               href="#book"
               className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 font-display text-sm font-extrabold uppercase tracking-wider text-primary-foreground transition hover:brightness-110"
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
+              <CalendarCheck className="h-4 w-4" /> Schedule Inspection
             </a>
             <a
               href="tel:6146835763"

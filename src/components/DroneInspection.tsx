@@ -1,7 +1,6 @@
 import { CalendarCheck, Camera, ShieldCheck, Zap } from "lucide-react";
 import droneVideo from "@/assets/drone-inspection.mp4.asset.json";
 import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
-import brickWall from "@/assets/brick-wall-texture.jpg.asset.json";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -13,17 +12,11 @@ export function DroneInspection() {
   return (
     <section
       aria-labelledby="drone-heading"
-      className="relative overflow-hidden py-20 text-primary-foreground md:py-28"
+      className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28"
     >
-      {/* Brick wall background */}
+      {/* Atmospheric background */}
       <div
-        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${brickWall.url})` }}
-        aria-hidden
-      />
-      {/* Dark overlay for readability */}
-      <div
-        className="pointer-events-none absolute inset-0 bg-primary/75"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,_oklch(0.22_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]"
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
@@ -33,6 +26,17 @@ export function DroneInspection() {
       />
       <div
         className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/10 blur-3xl"
+        aria-hidden
+      />
+
+      {/* Subtle scan-line grid overlay */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
+        }}
         aria-hidden
       />
 
@@ -78,7 +82,7 @@ export function DroneInspection() {
               onClick={openSchedule}
               className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-7 font-display text-sm font-extrabold uppercase tracking-widest text-primary shadow-[0_18px_40px_oklch(0.78_0.19_92/0.35)] transition hover:bg-white"
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
+              <CalendarCheck className="h-4 w-4" /> Schedule Free Inspection
             </button>
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60">
               No roof access required · FAA-compliant pilots

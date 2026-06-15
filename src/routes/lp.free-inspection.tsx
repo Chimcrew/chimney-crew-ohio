@@ -209,7 +209,7 @@ function InlineLeadForm() {
       className="rounded-3xl border border-border/60 bg-card p-5 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)] sm:p-6"
     >
       <h2 className="font-display text-xl font-extrabold tracking-tight">
-        Book your appointment online
+        Book your free inspection
       </h2>
       <p className="mt-1 text-sm text-muted-foreground">Takes ~30 seconds.</p>
 
@@ -254,7 +254,7 @@ function InlineLeadForm() {
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
         >
           <CalendarCheck className="h-5 w-5" />
-          {submitting ? "Sending…" : "Get my appointment"}
+          {submitting ? "Sending…" : "Get my free inspection"}
         </button>
         <p className="text-center text-xs text-muted-foreground">
           No spam. We text or call within the hour.

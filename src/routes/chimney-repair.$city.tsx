@@ -116,7 +116,7 @@ function CityPage() {
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a href="#book" className="group inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white">
-                <CalendarCheck className="h-5 w-5" /> Schedule Appointment Online
+                <CalendarCheck className="h-5 w-5" /> Free Inspection
               </a>
               <a href="tel:6146835763" className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.04] px-7 py-4 font-display text-base font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame">
                 <Phone className="h-5 w-5 text-flame" /> (614) 683-5763
@@ -340,12 +340,12 @@ function CityPage() {
           <div className="flex items-center gap-4">
             <Flame className="h-8 w-8" />
             <p className="font-display text-xl font-extrabold md:text-2xl">
-              Need a chimney pro in {city.name}? Book your appointment online.
+              Need a chimney pro in {city.name}? Book your free inspection.
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a href="#book" className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 font-display text-sm font-extrabold uppercase tracking-wider text-primary-foreground transition hover:brightness-110">
-              <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
+              <CalendarCheck className="h-4 w-4" /> Schedule Inspection
             </a>
             <a href="tel:6146835763" className="inline-flex items-center gap-2 rounded-xl border-2 border-primary px-6 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground">
               <Phone className="h-4 w-4" /> (614) 683-5763
