@@ -21,6 +21,8 @@ import {
   type ServiceSpec,
 } from "@/data/services";
 import { TrustBadges } from "@/components/TrustBadges";
+import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
+import fireplaceServicePhoto from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -242,74 +244,65 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
 
         {/* RIGHT — product visual card */}
         <div className="relative lg:col-span-6">
-          <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-flame/15 blur-3xl" aria-hidden />
+          <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-flame/10 blur-3xl" aria-hidden />
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
             <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
               <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
-                Live · Ohio crew
+                <span className="h-1.5 w-1.5 rounded-full bg-flame" /> Ohio field crew
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
                 {service.shortTitle}
               </span>
             </div>
-            <div className="relative aspect-[5/4] overflow-hidden bg-gradient-to-br from-[oklch(0.18_0.02_250)] via-[oklch(0.12_0.02_250)] to-[oklch(0.08_0.02_250)]">
-              {/* animated grid */}
-              <div
-                className="absolute inset-0 opacity-[0.18]"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, oklch(0.78 0.19 92 / 0.4) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.78 0.19 92 / 0.4) 1px, transparent 1px)",
-                  backgroundSize: "28px 28px",
-                  maskImage: "radial-gradient(ellipse at center, black 35%, transparent 75%)",
-                }}
-              />
-              {/* pulse rings */}
-              <div className="absolute inset-0 grid place-items-center">
-                <div className="relative grid h-44 w-44 place-items-center">
-                  <span className="absolute inset-0 rounded-full border border-flame/30 service-pulse" />
-                  <span className="absolute inset-0 rounded-full border border-flame/30 service-pulse" style={{ animationDelay: "1s" }} />
-                  <span className="absolute inset-0 rounded-full border border-flame/30 service-pulse" style={{ animationDelay: "2s" }} />
-                  <div className="relative grid h-32 w-32 place-items-center rounded-full bg-flame text-primary shadow-[0_0_60px_oklch(0.78_0.19_92/0.6)] service-float">
-                    <Icon className="h-14 w-14" />
-                  </div>
+
+            <div className="grid gap-0 md:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)]">
+              <div className="relative aspect-[5/4] overflow-hidden bg-black">
+                <img
+                  src={service.variant === "inspection" ? sweepCloseupPhoto.url : fireplaceServicePhoto.url}
+                  alt={service.variant === "inspection"
+                    ? "A ChimCrew technician inspecting and sweeping a chimney on a roof"
+                    : "A ChimCrew technician servicing a fireplace inside an Ohio home"}
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/78 via-transparent to-transparent" aria-hidden />
+                <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
+                  <p className="font-display text-sm font-bold text-primary-foreground">Real technicians handling this work every week across Ohio.</p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">Inspection photos · clean work area · written findings</p>
                 </div>
               </div>
-              {/* floating spec chips */}
-              <span className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80 backdrop-blur">
-                <span className="h-1.5 w-1.5 rounded-full bg-flame" /> CSIA Certified
-              </span>
-              <span className="absolute right-5 top-5 inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-flame backdrop-blur">
-                {priceLabel}
-              </span>
-              {/* corner brackets */}
-              <span className="pointer-events-none absolute left-3 top-3 h-3 w-3 border-l border-t border-flame/60" />
-              <span className="pointer-events-none absolute right-3 top-3 h-3 w-3 border-r border-t border-flame/60" />
-              <span className="pointer-events-none absolute left-3 bottom-3 h-3 w-3 border-l border-b border-flame/60" />
-              <span className="pointer-events-none absolute right-3 bottom-3 h-3 w-3 border-r border-b border-flame/60" />
 
-              {/* Bottom telemetry bar */}
-              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-primary/85 px-4 py-2.5 backdrop-blur">
-                <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80">
-                  <MapPin className="h-3 w-3 text-flame" /> Columbus · Dayton · Cincinnati
-                </span>
-                <span className="rounded-full border border-flame/40 bg-flame/15 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-                  Verified
-                </span>
+              <div className="grid content-between gap-4 border-t border-white/5 bg-white/[0.03] p-5 md:border-l md:border-t-0">
+                <div>
+                  <div className="grid h-12 w-12 place-items-center rounded-xl bg-flame/12 ring-1 ring-flame/25 text-flame">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">What to expect</p>
+                  <p className="mt-2 text-sm leading-relaxed text-primary-foreground/76">
+                    A local crew, a documented process, and a clear explanation of what we found before any repair work is recommended.
+                  </p>
+                </div>
+
+                <div className="space-y-3">
+                  {[
+                    priceLabel || "Free quote",
+                    warrantyFor(service),
+                    "Same-day callback",
+                  ].map((item) => (
+                    <div key={item} className="rounded-lg border border-white/10 bg-primary/40 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="rounded-xl border border-white/10 bg-primary/50 px-4 py-3">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">Service area</p>
+                  <p className="mt-1 inline-flex items-center gap-2 text-sm text-primary-foreground/74">
+                    <MapPin className="h-3.5 w-3.5 text-flame" /> Columbus · Dayton · Cincinnati
+                  </p>
+                </div>
               </div>
-
-              <style>{`
-                @keyframes service-pulse {
-                  0% { transform: scale(0.6); opacity: 0.8; }
-                  100% { transform: scale(1.6); opacity: 0; }
-                }
-                .service-pulse { animation: service-pulse 3s ease-out infinite; }
-                @keyframes service-float {
-                  0%, 100% { transform: translateY(0); }
-                  50% { transform: translateY(-8px); }
-                }
-                .service-float { animation: service-float 4s ease-in-out infinite; }
-              `}</style>
             </div>
           </div>
         </div>
