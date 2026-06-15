@@ -122,7 +122,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       {/* Tiny utility strip */}
-      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] 2xl:block">
+      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] lg:block">
         <div className="mx-auto grid max-w-[96rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-2 font-display text-[10px] font-black uppercase tracking-[0.18em] xl:px-8 xl:text-[11px] xl:tracking-[0.22em]">
           <span className="flex min-w-0 items-center gap-2 opacity-90">
             <MapPin className="h-3.5 w-3.5" /> Serving Columbus, Ohio &amp; Surrounding Areas — Licensed &amp; Insured
@@ -151,7 +151,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => openScheduleDialog()}
             aria-label="We're open now — schedule online"
-            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border border-[oklch(0_0_0/0.12)] bg-background/80 px-3.5 py-2 font-display text-[10px] font-black uppercase tracking-[0.12em] text-header-ink shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] sm:inline-flex 2xl:hidden"
+            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border border-[oklch(0_0_0/0.12)] bg-background/80 px-3.5 py-2 font-display text-[10px] font-black uppercase tracking-[0.12em] text-header-ink shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] sm:inline-flex lg:hidden"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-pulse rounded-full bg-[oklch(0.65_0.18_145/0.4)]" />
@@ -176,7 +176,7 @@ export function SiteHeader() {
           {/* Nav pill */}
           <nav
             ref={menuRef}
-            className="mx-auto hidden min-w-0 max-w-full items-center justify-center overflow-hidden rounded-full border border-[oklch(0_0_0/0.1)] bg-background/75 px-1.5 py-1.5 shadow-[0_8px_24px_oklch(0.18_0.02_250/0.06)] backdrop-blur 2xl:flex"
+            className="mx-auto hidden min-w-0 max-w-full items-center justify-center overflow-hidden rounded-full border border-[oklch(0_0_0/0.1)] bg-background/75 px-1.5 py-1.5 shadow-[0_8px_24px_oklch(0.18_0.02_250/0.06)] backdrop-blur lg:flex"
           >
             {PRIMARY_NAV.map((n) => {
               if (n.kind === "dropdown") {
@@ -260,14 +260,14 @@ export function SiteHeader() {
           </nav>
 
           {/* CTAs */}
-          <div className="hidden shrink-0 items-center justify-end gap-2 2xl:flex">
+          <div className="hidden shrink-0 items-center justify-end gap-2 lg:flex">
             <a
               href="tel:6146835763"
               aria-label="Call (614) 683-5763"
               className="inline-flex h-10 items-center gap-2 rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 px-4 font-display text-[11px] font-black uppercase tracking-[0.1em] text-header-ink shadow-sm transition hover:border-[oklch(0.78_0.19_92/0.65)] hover:bg-[oklch(0.88_0.19_92/0.28)]"
             >
               <Phone className="h-4 w-4 shrink-0" />
-              <span>(614) 683-5763</span>
+              <span className="hidden xl:inline">(614) 683-5763</span>
             </a>
             <button
               type="button"
@@ -281,7 +281,7 @@ export function SiteHeader() {
           </div>
 
           {/* Compact header actions */}
-          <div className="relative z-40 ml-auto flex shrink-0 items-center gap-2 2xl:hidden">
+          <div className="relative z-40 ml-auto flex shrink-0 items-center gap-2 lg:hidden">
             <a
               href="tel:6146835763"
               aria-label="Call (614) 683-5763"
@@ -307,7 +307,7 @@ export function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background text-foreground 2xl:hidden">
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background text-foreground lg:hidden">
           <div className="mx-auto max-w-7xl px-4 py-4 pb-8">
             <nav className="flex flex-col">
               {PRIMARY_NAV.map((n) => {
