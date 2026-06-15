@@ -27,7 +27,7 @@ export function SiteFooter() {
                 "Local Ohio family business",
                 "Same-day local dispatch",
                 "Licensed in Ohio · Fully insured",
-                "Trusted by 1,836 local homes",
+                "Trusted by Ohio homeowners",
               ].map((line) => (
                 <li key={line} className="flex items-center gap-2 text-sm font-semibold text-primary-foreground/90">
                   <CheckCircle2 className="h-4 w-4 shrink-0 text-flame" /> {line}

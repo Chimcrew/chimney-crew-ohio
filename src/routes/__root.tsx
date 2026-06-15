@@ -181,11 +181,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               closes: "18:00",
             },
           ],
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "180",
-          },
           sameAs: ["https://chimcrew.com"],
         }),
       },
