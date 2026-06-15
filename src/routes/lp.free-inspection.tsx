@@ -61,7 +61,7 @@ function FreeInspectionLanding() {
       <Hero />
       <ProofBar />
       <MeetTheCrew />
-      <RealJobsStrip />
+      <JobsStrip />
       <Includes />
       <RecentJobs />
       <Reviews />
@@ -370,7 +370,7 @@ function RecentJobs() {
               Recent Columbus jobs
             </h2>
             <p className="mt-1 text-sm text-foreground/70 sm:text-base">
-              Drag the slider — real homes, real before &amp; after.
+              Drag the slider — homes, before &amp; after.
             </p>
           </div>
         </div>
@@ -406,7 +406,7 @@ function Reviews() {
     },
     {
       name: "Priya N., Westerville",
-      text: "Same-day callback, fair price, and a real photo report. Hard to find this kind of service anymore.",
+      text: "Same-day callback, fair price, and a photo report. Hard to find this kind of service anymore.",
     },
   ];
   return (
@@ -482,7 +482,7 @@ function MinimalFooter() {
   );
 }
 
-function RealJobsStrip() {
+function JobsStrip() {
   const shots = [
     {
       src: techFireplace.url,
@@ -492,7 +492,7 @@ function RealJobsStrip() {
     {
       src: techLiner.url,
       caption: "Stainless liner install",
-      tag: "Real Ohio job",
+      tag: "Ohio job",
     },
     {
       src: techCap.url,
@@ -510,7 +510,7 @@ function RealJobsStrip() {
       <div className="mx-auto max-w-5xl px-4">
         <div className="mb-6 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-flame/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-flame">
-            <BadgeCheck className="h-3.5 w-3.5" /> Real photos, real Columbus jobs
+            <BadgeCheck className="h-3.5 w-3.5" /> Photos, Columbus jobs
           </div>
           <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
             This is what shows up at your door.

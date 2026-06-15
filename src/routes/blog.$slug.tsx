@@ -147,7 +147,7 @@ function PostPage() {
               ◆ Live in Columbus, Cincinnati, or Dayton?
             </p>
             <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-primary md:text-3xl">
-              Book a free inspection with a real ChimCrew tech.
+              Book a free inspection with a ChimCrew tech.
             </h3>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link

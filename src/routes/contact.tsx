@@ -28,7 +28,7 @@ function ContactPage() {
             Same-day callback · Ohio crew
           </span>
           <h1 className="mt-5 max-w-3xl font-display text-4xl font-black leading-[1.02] tracking-tight md:text-6xl">
-            Talk to a real <span className="text-flame">Ohio chimney crew</span>.
+            Talk to an <span className="text-flame">Ohio chimney crew</span>.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
             Pick the easiest way to reach us. We answer fast, quote in writing, and never sell what you don't need.

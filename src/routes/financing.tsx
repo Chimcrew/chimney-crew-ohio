@@ -61,7 +61,7 @@ function FinancingPage() {
             Repair now. <span className="text-flame">Pay monthly.</span>
           </h1>
           <p className="mt-4 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
-            Move the sliders. See your real monthly payment in seconds — no
+            Move the sliders. See your monthly payment in seconds — no
             credit pull, no email required. When you're ready, we'll lock the
             quote at your free on-site inspection.
           </p>

@@ -21,8 +21,8 @@ import crownDemo from "@/assets/real/crown-demo-inprogress.png.asset.json";
 export const Route = createFileRoute("/before-after")({
   head: () => ({
     meta: [
-      { title: "Before & After — Real ChimCrew jobs in Ohio" },
-      { name: "description", content: "Drag-to-compare before and after photos from real chimney sweeps, crown rebuilds and cap installs by ChimCrew across Ohio." },
+      { title: "Before & After — ChimCrew jobs in Ohio" },
+      { name: "description", content: "Drag-to-compare before and after photos from chimney sweeps, crown rebuilds and cap installs by ChimCrew across Ohio." },
     ],
   }),
   component: BeforeAfterPage,
@@ -59,7 +59,7 @@ function BeforeAfterPage() {
             Drag the slider. <span className="text-flame">See the work.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
-            Real Ohio chimneys, real ChimCrew jobs. Drag any photo below with
+            Ohio chimneys, ChimCrew jobs. Drag any photo below with
             your finger or mouse to compare what it looked like when we
             arrived — and what other homeowners got back.
           </p>

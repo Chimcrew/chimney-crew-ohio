@@ -5,7 +5,7 @@ export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
       { title: "Reviews — What Ohio homeowners say about ChimCrew" },
-      { name: "description", content: "Real reviews from ChimCrew customers across Columbus, Cincinnati and Dayton, Ohio." },
+      { name: "description", content: "Reviews from ChimCrew customers across Columbus, Cincinnati and Dayton, Ohio." },
     ],
   }),
   component: ReviewsPage,
@@ -25,7 +25,7 @@ const REVIEWS = [
   { name: "Rachel M.", city: "Cincinnati", rating: 5, source: "Yelp", text: "First-time fireplace owner. They walked me through everything, even sent a follow-up email with tips. Five stars easy." },
   { name: "Tom & Linda V.", city: "Beavercreek", rating: 5, source: "Google", text: "Smoke was backing into our living room. ChimCrew diagnosed a draft issue and fixed it same visit. Lifesavers." },
   { name: "Olivia P.", city: "Worthington", rating: 5, source: "Angi", text: "Booked a sweep, ended up with a new cap and damper too — all priced fair and explained up front. Great local company." },
-  { name: "DeShawn K.", city: "West Chester", rating: 5, source: "Google", text: "These guys are the real deal. Clean, professional, and they actually love what they do. The crew makes it fun." },
+  { name: "DeShawn K.", city: "West Chester", rating: 5, source: "Google", text: "These guys are legit. Clean, professional, and they actually love what they do. The crew makes it fun." },
   { name: "Hannah F.", city: "Springfield", rating: 5, source: "Facebook", text: "Snowed the morning of our appointment and they STILL showed up on time. Got our flue inspected and ready for winter." },
   { name: "Greg N.", city: "Upper Arlington", rating: 5, source: "Google", text: "I run a property management company — ChimCrew handles 14 of my rentals now. Consistent, insured, fairly priced." },
 ];

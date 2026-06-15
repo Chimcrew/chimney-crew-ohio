@@ -308,7 +308,7 @@ function ScheduleFlow({ variant, sourcePath = "", onDone }: { variant: "dialog" 
 
             <p className="flex items-center justify-center gap-2 pt-2 text-[11px] text-muted-foreground">
               <CheckCircle2 className="h-3.5 w-3.5 text-flame" />
-              No card. No spam. A real Ohio sweep texts you in &lt; 60 minutes.
+              No card. No spam. An Ohio sweep texts you in &lt; 60 minutes.
             </p>
           </div>
         )}
