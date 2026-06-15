@@ -557,10 +557,15 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-[1.55rem] font-extrabold leading-[1.08] tracking-[-0.025em] text-primary-foreground sm:text-[1.85rem] md:text-[2.5rem] lg:text-[3.25rem]">
-              The Chimney Experts You've Trusted for{" "}
-              <span className="text-white">
-                Over 50 Years In Columbus, Ohio
+            <h1 className="mt-4 font-display text-[1.3rem] font-extrabold leading-[1.12] tracking-[-0.025em] text-primary-foreground sm:text-[1.55rem] md:mt-6 md:text-[2rem] lg:text-[2.5rem]">
+              <span className="mb-2 inline-block rounded-md border-2 border-flame/80 bg-flame/10 px-2.5 py-1 text-primary-foreground">
+                The Chimney Experts
+              </span>
+              <span className="block">
+                You've Trusted for{" "}
+                <span className="text-white">
+                  Over 50 Years In Columbus, Ohio
+                </span>
               </span>
             </h1>
 
