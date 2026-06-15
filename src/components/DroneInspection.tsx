@@ -13,11 +13,17 @@ export function DroneInspection() {
   return (
     <section
       aria-labelledby="drone-heading"
-      className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28"
+      className="relative overflow-hidden py-20 text-primary-foreground md:py-28"
     >
-      {/* Atmospheric background */}
+      {/* Brick wall background */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,_oklch(0.22_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]"
+        className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${brickWall.url})` }}
+        aria-hidden
+      />
+      {/* Dark overlay for readability */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-primary/75"
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
@@ -27,17 +33,6 @@ export function DroneInspection() {
       />
       <div
         className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/10 blur-3xl"
-        aria-hidden
-      />
-
-      {/* Subtle scan-line grid overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
         aria-hidden
       />
 
