@@ -1,5 +1,6 @@
 import { CalendarCheck, Camera, ShieldCheck, Zap } from "lucide-react";
 import droneVideo from "@/assets/drone-inspection.mp4.asset.json";
+import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -19,8 +20,14 @@ export function DroneInspection() {
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/20 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/10 blur-3xl" aria-hidden />
+      <div
+        className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/20 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/10 blur-3xl"
+        aria-hidden
+      />
 
       {/* Subtle scan-line grid overlay */}
       <div
@@ -46,8 +53,8 @@ export function DroneInspection() {
             Drone <span className="text-flame">Chimney Inspection</span>
           </h2>
           <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
-            Get a detailed aerial inspection without climbing onto your roof. Fast,
-            safe, and accurate chimney diagnostics using professional drone technology.
+            Get a detailed aerial inspection without climbing onto your roof. Fast, safe, and
+            accurate chimney diagnostics using professional drone technology.
           </p>
 
           <ul className="mt-7 grid gap-3 sm:grid-cols-2">
@@ -85,97 +92,50 @@ export function DroneInspection() {
 
         {/* Visual */}
         <div className="relative">
-          {/* Ambient glow */}
-          <div className="absolute -inset-6 rounded-[2rem] bg-flame/20 blur-3xl" aria-hidden />
+          <div className="absolute -inset-6 rounded-[2rem] bg-flame/12 blur-3xl" aria-hidden />
 
           <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
-            {/* Top status bar */}
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
-              <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-                <span className="relative inline-flex h-2 w-2">
-                  <span className="absolute inset-0 animate-ping rounded-full bg-flame/60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-flame" />
-                </span>
-                Drone Feed · Live
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
-                ALT 42 ft · GPS lock
-              </span>
-            </div>
-
-            {/* Real drone footage */}
-            <div className="relative aspect-[5/4] overflow-hidden bg-black">
-              <video
-                src={droneVideo.url}
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="metadata"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
-              {/* Corner brackets */}
-              <span className="pointer-events-none absolute left-3 top-3 h-4 w-4 border-l-2 border-t-2 border-flame" />
-              <span className="pointer-events-none absolute right-3 top-3 h-4 w-4 border-r-2 border-t-2 border-flame" />
-              <span className="pointer-events-none absolute left-3 bottom-3 h-4 w-4 border-l-2 border-b-2 border-flame" />
-              <span className="pointer-events-none absolute right-3 bottom-3 h-4 w-4 border-r-2 border-b-2 border-flame" />
-              {/* Bottom telemetry */}
-              <div className="absolute inset-x-3 bottom-3 flex items-center justify-between rounded-lg border border-white/15 bg-primary/70 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/85 backdrop-blur">
-                <span>CHIMNEY · CROWN SCAN</span>
-                <span className="text-flame">REC ●</span>
+            <div className="grid gap-0 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.9fr)]">
+              <div className="relative aspect-[5/4] overflow-hidden bg-black">
+                <video
+                  src={droneVideo.url}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"
+                  aria-hidden
+                />
+                <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-primary/70 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/82 backdrop-blur">
+                  <Camera className="h-3 w-3 text-flame" /> 4K drone footage
+                </div>
+                <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
+                  <p className="font-display text-sm font-bold text-primary-foreground">
+                    Roofline, crown, chase cover, flashing, and masonry documented in one visit.
+                  </p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">
+                    Photo report · safer roof access · faster diagnosis
+                  </p>
+                </div>
               </div>
-            </div>
 
-            {/* Footer chips */}
-            <div className="flex items-center gap-2 border-t border-white/10 px-5 py-3">
-              <span className="rounded-full border border-flame/40 bg-flame/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-                4K
-              </span>
-              <span className="rounded-full border border-white/15 bg-white/5 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
-                Thermal-ready
-              </span>
-              <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
-                ChimCrew Aerial Ops
-              </span>
+              <div className="border-t border-white/10 lg:border-l lg:border-t-0">
+                <img
+                  src={inspectionRoofPhoto.url}
+                  alt="A ChimCrew technician inspecting a chimney on a roof in Ohio"
+                  className="aspect-[5/4] w-full object-cover lg:aspect-auto lg:h-full"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes drone-fly {
-          0%, 100% { transform: translate(-50%, 0) rotate(-2deg); }
-          25% { transform: translate(-58%, -6px) rotate(-3deg); }
-          50% { transform: translate(-50%, 4px) rotate(2deg); }
-          75% { transform: translate(-42%, -4px) rotate(3deg); }
-        }
-        .drone-fly { animation: drone-fly 6s ease-in-out infinite; }
-        @keyframes drone-rotor {
-          0% { opacity: 0.25; transform: scaleY(0.4); }
-          50% { opacity: 0.85; transform: scaleY(1); }
-          100% { opacity: 0.25; transform: scaleY(0.4); }
-        }
-        .drone-rotor { transform-origin: center; transform-box: fill-box; animation: drone-rotor 0.18s linear infinite; }
-        @keyframes drone-scan {
-          0% { transform: translateY(0); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(100%); opacity: 0; }
-        }
-        .drone-scan { animation: drone-scan 3.5s linear infinite; }
-        @keyframes drone-beam {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.9; }
-        }
-        .drone-beam { animation: drone-beam 2.4s ease-in-out infinite; }
-        @keyframes drone-smoke {
-          0% { transform: translateY(0); opacity: 0.6; }
-          100% { transform: translateY(-30px); opacity: 0; }
-        }
-        .drone-smoke circle { animation: drone-smoke 4s ease-out infinite; }
-        .drone-smoke circle:nth-child(2) { animation-delay: 1.3s; }
-        .drone-smoke circle:nth-child(3) { animation-delay: 2.6s; }
-      `}</style>
     </section>
   );
 }
