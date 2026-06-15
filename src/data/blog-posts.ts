@@ -137,7 +137,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "chimney-leak-causes",
     title: "Why is my chimney leaking? 4 causes we see every spring in Ohio",
     excerpt:
-      "Ohio's freeze-thaw cycle is brutal on brick chimneys. Here's where the water actually gets in — and what a real fix looks like.",
+      "Ohio's freeze-thaw cycle is brutal on brick chimneys. Here's where the water actually gets in — and what a fix looks like.",
     date: "Mar 22, 2026",
     dateISO: "2026-03-22",
     cover: projectTuckpointing,

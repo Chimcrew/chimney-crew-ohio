@@ -122,7 +122,7 @@ function ChimneyRepairColumbus() {
               <ScheduleInline />
             </div>
             <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
-              No card · No spam · A real Ohio sweep texts you in &lt; 60 minutes
+              No card · No spam · An Ohio sweep texts you in &lt; 60 minutes
             </p>
           </div>
         </div>
