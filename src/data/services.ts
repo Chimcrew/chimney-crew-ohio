@@ -22,6 +22,28 @@ import crownAfter from "@/assets/crown-after.jpg";
 import crownBefore from "@/assets/crown-before.jpg";
 import droneInspection from "@/assets/drone-inspection.jpg";
 import leakRooftop from "@/assets/leak-chimney-rooftop.jpg";
+// Real photos sent by the team — use these on the service pages.
+import techLinerInstallAsset from "@/assets/real/tech-liner-install.png.asset.json";
+import techScaffoldingRebuildAsset from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
+import baCapCrownAsset from "@/assets/real/ba-cap-crown.png.asset.json";
+import baCrownStoneAsset from "@/assets/real/ba-crown-stone.png.asset.json";
+import baSpalledBrickAsset from "@/assets/real/ba-spalled-brick.png.asset.json";
+import crownDemoInProgressAsset from "@/assets/real/crown-demo-inprogress.png.asset.json";
+import chimneyJobAAsset from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
+import chimneyJobBAsset from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
+import fireplaceServiceAsset from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
+import sweepCloseupAsset from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
+
+const techLinerInstall = techLinerInstallAsset.url;
+const techScaffoldingRebuild = techScaffoldingRebuildAsset.url;
+const baCapCrown = baCapCrownAsset.url;
+const baCrownStone = baCrownStoneAsset.url;
+const baSpalledBrick = baSpalledBrickAsset.url;
+const crownDemoInProgress = crownDemoInProgressAsset.url;
+const chimneyJobA = chimneyJobAAsset.url;
+const chimneyJobB = chimneyJobBAsset.url;
+const fireplaceServicePhoto = fireplaceServiceAsset.url;
+const sweepCloseupPhoto = sweepCloseupAsset.url;
 
 export type ServiceVariant =
   | "maintenance"
@@ -44,6 +66,8 @@ export interface ServiceSpec {
   /** When true, the service is too custom/expensive to show a price.
    *  UI should show a "Custom Quote" label and "Request Free Inspection" CTA. */
   quoteOnly?: boolean;
+  /** Optional override for the primary CTA button label on the page. */
+  ctaLabel?: string;
   hero: {
     eyebrow: string;
     headline: string;
@@ -61,6 +85,30 @@ export interface ServiceSpec {
   benefits?: string[];
   /** Short warranty/guarantee label shown in hero + overview. */
   warranty?: string;
+}
+
+/** Primary CTA label for a service page. Falls back to a sensible
+ *  service-specific phrase derived from variant + shortTitle. */
+export function serviceCtaLabel(s: Pick<ServiceSpec, "ctaLabel" | "shortTitle" | "variant" | "quoteOnly">): string {
+  if (s.ctaLabel) return s.ctaLabel;
+  const t = s.shortTitle.toLowerCase();
+  if (s.quoteOnly) return `Book your ${t} inspection`;
+  switch (s.variant) {
+    case "inspection":
+      return `Book your ${t}`;
+    case "repair":
+      return `Book your ${t}`;
+    case "install":
+      return `Book your ${t}`;
+    case "maintenance":
+      return `Book your ${t}`;
+    case "emergency":
+      return `Get emergency ${t}`;
+    case "plan":
+      return `Start your ${t}`;
+    default:
+      return `Book your ${t}`;
+  }
 }
 
 /** Display label for a service price.
@@ -89,25 +137,32 @@ export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quote
 export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
   switch (s.slug) {
     case "crown-tuckpoint":
-      return crownAfter;
+      return baCrownStone;
     case "level-1-inspection":
     case "level-2-inspection":
-      return droneInspection;
+      return sweepCloseupPhoto;
     case "waterproofing":
+      return baSpalledBrick;
     case "flashing-repair":
       return leakRooftop;
     case "liner-install":
+      return techLinerInstall;
     case "firebox-rebuild":
+      return techScaffoldingRebuild;
     case "smoke-chamber-parging":
-      return afterChimney;
+      return crownDemoInProgress;
     case "cap-install":
+      return baCapCrown;
     case "animal-removal":
       return beforeChimney;
     case "gas-fireplace-service":
+      return fireplaceServicePhoto;
     case "chimney-sweep":
+      return chimneyJobA;
     case "annual-plan":
+      return chimneyJobB;
     case "damper-repair":
-      return fireplaceCozy;
+      return crownAfter;
     case "dryer-vent-cleaning":
       return afterChimney;
     default:
