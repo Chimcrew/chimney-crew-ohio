@@ -46,6 +46,10 @@ import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
+import teamRooftopDuo from "@/assets/team/team-rooftop-duo.png.asset.json";
+import teamFullCrew from "@/assets/team/team-full-crew.png.asset.json";
+import teamWorkingTriptych from "@/assets/team/team-working-triptych.png.asset.json";
+import teamFireplaceTech from "@/assets/team/team-fireplace-tech.png.asset.json";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES, formatFromPrice, getService } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
@@ -134,6 +138,7 @@ function Index() {
       <LimitedOfferBanner />
       <TrustBar />
       <TrustMarquee />
+      <MeetTheCrew />
       <RecentProjects />
       <DroneInspection />
       <ServiceAreaSeo />
@@ -1002,6 +1007,116 @@ function FireHazards() {
               </p>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   MEET THE CREW — real ChimCrew faces (uses all 4 team photos)
+   ============================================================ */
+function MeetTheCrew() {
+  return (
+    <section className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-24">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.07]" aria-hidden />
+      <div className="pointer-events-none absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-flame/15 blur-3xl" aria-hidden />
+
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
+            <HardHat className="h-3.5 w-3.5" /> Meet the crew
+          </p>
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl">
+            Real people. <span className="text-flame">Real ChimCrew uniforms.</span>{" "}
+            <span className="text-primary-foreground/70">On your roof tomorrow.</span>
+          </h2>
+          <p className="mt-4 text-base text-primary-foreground/80">
+            No subcontractors. No call-center middlemen. Every job is run by
+            a CSIA-trained ChimCrew technician — the same faces you see here.
+          </p>
+        </div>
+
+        <div className="mt-12 grid gap-5 md:grid-cols-12 md:gap-6">
+          {/* big featured: full crew */}
+          <figure className="group relative overflow-hidden rounded-2xl border border-flame/20 bg-black/30 md:col-span-8">
+            <img
+              src={teamFullCrew.url}
+              alt="The full ChimCrew team in front of company vans and box truck"
+              loading="lazy"
+              className="aspect-[16/9] w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <figcaption className="absolute bottom-4 left-5 right-5 flex flex-wrap items-end justify-between gap-2">
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">The ChimCrew team</p>
+                <p className="font-display text-lg font-bold text-white md:text-xl">9 technicians · 1 yellow fleet · all Ohio</p>
+              </div>
+              <span className="rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                Family-owned
+              </span>
+            </figcaption>
+          </figure>
+
+          {/* rooftop duo */}
+          <figure className="group relative overflow-hidden rounded-2xl border border-flame/20 bg-black/30 md:col-span-4">
+            <img
+              src={teamRooftopDuo.url}
+              alt="Two ChimCrew technicians on a rooftop next to a brick chimney"
+              loading="lazy"
+              className="aspect-[3/4] w-full object-cover transition duration-700 group-hover:scale-[1.02] md:aspect-auto md:h-full"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <figcaption className="absolute bottom-4 left-5 right-5">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">On the roof</p>
+              <p className="font-display text-base font-bold text-white">Harnessed, insured, ladder-certified</p>
+            </figcaption>
+          </figure>
+
+          {/* triptych — working */}
+          <figure className="group relative overflow-hidden rounded-2xl border border-flame/20 bg-black/30 md:col-span-7">
+            <img
+              src={teamWorkingTriptych.url}
+              alt="ChimCrew technicians sweeping a chimney, brushing a firebox, and capping a flue"
+              loading="lazy"
+              className="aspect-[16/8] w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <figcaption className="absolute bottom-4 left-5 right-5">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">On the job</p>
+              <p className="font-display text-base font-bold text-white">Sweep · Inspect · Cap — done the same day when we can</p>
+            </figcaption>
+          </figure>
+
+          {/* fireplace tech */}
+          <figure className="group relative overflow-hidden rounded-2xl border border-flame/20 bg-black/30 md:col-span-5">
+            <img
+              src={teamFireplaceTech.url}
+              alt="ChimCrew technician cleaning a residential fireplace with a Milwaukee PACKOUT tool bag"
+              loading="lazy"
+              className="aspect-[4/3] w-full object-cover transition duration-700 group-hover:scale-[1.02]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+            <figcaption className="absolute bottom-4 left-5 right-5">
+              <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">Inside your home</p>
+              <p className="font-display text-base font-bold text-white">Drop cloths down, boots covered, dust contained</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
+          >
+            <CalendarCheck className="h-4 w-4" /> Book your ChimCrew visit
+          </Link>
+          <a
+            href="tel:6146835763"
+            className="inline-flex items-center gap-2 rounded-xl border-2 border-flame/40 bg-black/30 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-flame transition hover:bg-flame hover:text-primary"
+          >
+            <Phone className="h-4 w-4" /> (614) 683-5763
+          </a>
         </div>
       </div>
     </section>
