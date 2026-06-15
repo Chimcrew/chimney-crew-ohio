@@ -1,6 +1,7 @@
 import { CalendarCheck, Camera, ShieldCheck, Zap } from "lucide-react";
 import droneVideo from "@/assets/drone-inspection.mp4.asset.json";
 import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
+import brickWall from "@/assets/brick-wall-texture.jpg.asset.json";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
