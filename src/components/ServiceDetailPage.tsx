@@ -775,40 +775,32 @@ function Related({ service }: { service: ServiceSpec }) {
 
 function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
   return (
-    <section className="relative overflow-hidden bg-primary py-24 text-primary-foreground">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-      <div
-        className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-flame/25 blur-3xl"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -left-32 -bottom-32 h-[28rem] w-[28rem] rounded-full bg-flame/15 blur-3xl"
-        aria-hidden
-      />
-      <div className="relative mx-auto max-w-4xl px-4 text-center md:px-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
-          // Free inspection
-        </p>
-        <h2 className="mt-4 font-display text-5xl font-extrabold leading-[1.02] md:text-7xl">
-          Not sure what's wrong with <span className="italic text-flame">your chimney?</span>
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/80">
-          Schedule a free inspection. We'll show you exactly what needs attention — with photos and
-          a written report.
-        </p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+    <section className="relative overflow-hidden bg-flame py-12 text-primary">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 text-center md:flex-row md:text-left md:px-8">
+        <div className="flex items-center gap-4">
+          <Flame className="h-10 w-10" />
+          <div>
+            <p className="font-display text-2xl font-bold md:text-3xl">
+              One quick form. A safer home tonight.
+            </p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] opacity-80">
+              Same-day callback · No card · 100% Ohio crew
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <button
             type="button"
             onClick={openSchedule}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0_0_0/0.25)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> {ctaLabel}
           </button>
           <a
             href="tel:6146835763"
-            className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-8 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-primary-foreground backdrop-blur transition hover:border-white hover:bg-white/10 sm:w-auto"
+            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
-            <Phone className="h-5 w-5" /> (614) 683-5763
+            <Phone className="h-4 w-4" /> (614) 683-5763
           </a>
         </div>
       </div>
