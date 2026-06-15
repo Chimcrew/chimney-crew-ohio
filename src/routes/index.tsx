@@ -289,93 +289,93 @@ function LimitedOfferBanner() {
   const pad = (n: number) => String(n).padStart(2, "0");
   const Box = ({ v, l }: { v: number; l: string }) => (
     <div className="flex flex-col items-center">
-      <span className="grid h-9 w-9 place-items-center rounded-md bg-primary font-mono text-base font-black tabular-nums text-flame shadow-inner sm:h-10 sm:w-10 sm:text-lg">
+      <span className="grid h-7 w-7 place-items-center rounded bg-primary font-mono text-sm font-black tabular-nums text-flame shadow-inner sm:h-8 sm:w-8">
         {pad(v)}
       </span>
-      <span className="mt-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-primary/70">
+      <span className="mt-0.5 font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-primary/70">
         {l}
       </span>
     </div>
   );
   return (
-    <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-8 md:py-10">
-      <div className="relative mx-auto max-w-2xl">
+    <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-5 md:py-6">
+      <div className="relative mx-auto max-w-xl">
         {/* Coupon card */}
-        <div className="relative rounded-2xl bg-flame text-primary shadow-[0_20px_60px_oklch(0_0_0/0.5)]">
+        <div className="relative rounded-xl bg-flame text-primary shadow-[0_12px_40px_oklch(0_0_0/0.4)]">
           {/* perforated edges */}
           <span
-            className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
+            className="absolute -left-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
             aria-hidden
           />
           <span
-            className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
+            className="absolute -right-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
             aria-hidden
           />
 
           {/* dashed inner frame */}
-          <div className="m-2 rounded-xl border-2 border-dashed border-primary/40 p-5 sm:p-6">
+          <div className="m-1.5 rounded-lg border-2 border-dashed border-primary/40 p-3 sm:p-4">
             {/* top ribbon */}
             <div className="flex items-center justify-between gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
-                <Flame className="h-3 w-3" /> Limited Time
+              <span className="inline-flex items-center gap-1 rounded-full bg-primary px-2.5 py-0.5 font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-flame">
+                <Flame className="h-2.5 w-2.5" /> Limited Time
               </span>
-              <span className="hidden font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/70 sm:inline">
+              <span className="hidden font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-primary/70 sm:inline">
                 Columbus, OH
               </span>
             </div>
 
             {/* main — clean price comparison */}
-            <div className="mt-5 flex flex-col items-center text-center sm:mt-6">
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-primary/80">
+            <div className="mt-3 flex flex-col items-center text-center sm:mt-4">
+              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.28em] text-primary/80">
                 Chimney Inspection
               </p>
 
               {/* Price comparison */}
-              <div className="mt-2 flex items-baseline gap-3">
-                <span className="relative font-display text-2xl font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
+              <div className="mt-1.5 flex items-baseline gap-2">
+                <span className="relative font-display text-lg font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
                   $69
                 </span>
-                <span className="font-display text-5xl font-black uppercase leading-none tracking-tight text-primary sm:text-6xl">
+                <span className="font-display text-4xl font-black uppercase leading-none tracking-tight text-primary sm:text-5xl">
                   FREE
                 </span>
               </div>
-              <p className="mt-2 text-xs font-semibold text-primary/80">
+              <p className="mt-1 text-[11px] font-semibold text-primary/80">
                 Instead of $69 — limited to this month only. No card required.
               </p>
 
               {/* compact countdown */}
-              <div className="mt-4 flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 px-3 py-2">
-                <Clock className="h-3.5 w-3.5 text-primary/80" />
-                <span className="font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-primary/70">
+              <div className="mt-3 flex items-center gap-2 rounded-md border border-primary/30 bg-primary/5 px-2.5 py-1.5">
+                <Clock className="h-3 w-3 text-primary/80" />
+                <span className="font-mono text-[8px] font-extrabold uppercase tracking-[0.22em] text-primary/70">
                   Ends tonight
                 </span>
                 <div className="ml-1 flex items-center gap-1">
                   <Box v={timeLeft.h} l="Hrs" />
-                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
+                  <span className="-mt-1.5 font-mono text-xs font-black text-primary/80">:</span>
                   <Box v={timeLeft.m} l="Min" />
-                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
+                  <span className="-mt-1.5 font-mono text-xs font-black text-primary/80">:</span>
                   <Box v={timeLeft.s} l="Sec" />
                 </div>
               </div>
 
               {/* CTAs */}
-              <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
+              <div className="mt-3 grid w-full max-w-xs grid-cols-2 gap-2">
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
+                  className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg bg-primary font-display text-xs font-black uppercase tracking-wider text-flame shadow-sm transition active:scale-[0.98]"
                 >
-                  <CalendarCheck className="h-4 w-4" /> Claim Offer
+                  <CalendarCheck className="h-3.5 w-3.5" /> Claim Offer
                 </button>
                 <a
                   href="tel:6146835763"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
+                  className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg border-2 border-primary/70 bg-transparent font-display text-xs font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
                 >
-                  <Phone className="h-4 w-4" /> Call Now
+                  <Phone className="h-3.5 w-3.5" /> Call Now
                 </a>
               </div>
 
-              <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
+              <p className="mt-2 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-primary/60">
                 Code: <span className="text-primary font-extrabold">CHIM-FREE</span> · Mention when
                 booking
               </p>
