@@ -399,12 +399,7 @@ function LimitedOfferBanner() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-primary text-primary-foreground">
-      {/* Ambient backdrop */}
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_70%_20%,_oklch(0.16_0.02_250)_0%,_oklch(0.08_0.01_250)_65%)]"
-        aria-hidden
-      />
+    <section className="relative overflow-hidden border-b border-border/30 bg-gradient-to-b from-primary/[0.04] to-background">
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent"
         aria-hidden
@@ -414,20 +409,23 @@ function Hero() {
         {/* LEFT — message column */}
         <div className="order-2 lg:order-1 lg:col-span-6 lg:pt-4">
           <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground/80">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
               <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/25 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
               <Star className="h-3 w-3 fill-flame text-flame" /> 1,836 ★ reviews
             </span>
           </div>
 
-          <h1 className="mt-5 font-display text-primary-foreground">
+          <h1 className="mt-5 font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
             Ohio's trusted chimney crew — for over{" "}
-            <span className="text-flame">50 years</span>.
+            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
+              50 years
+            </span>
+            .
           </h1>
 
-          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-primary-foreground/75 sm:text-base lg:text-lg">
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">
             Inspections, cleaning, and masonry repair from a local Columbus crew that
             shows up on time, explains the work clearly, and documents everything with
             photos.
@@ -437,20 +435,20 @@ function Hero() {
             <button
               type="button"
               onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_12px_30px_oklch(0.78_0.19_92/0.28)] transition hover:bg-white sm:px-7"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-7"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule Free Inspection
             </button>
             <a
               href="tel:6146835763"
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border border-white/15 bg-white/[0.03] px-6 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame sm:px-7"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-foreground/15 bg-background px-6 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame active:scale-95 sm:px-7"
             >
               <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
             </a>
           </div>
 
           {/* Trust strip */}
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-white/8 pt-6">
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
             {[
               { icon: CheckCircle2, label: "CSIA-certified" },
               { icon: ShieldCheck, label: "Fully insured" },
@@ -459,7 +457,7 @@ function Hero() {
             ].map(({ icon: Icon, label }) => (
               <span
                 key={label}
-                className="inline-flex items-center gap-2 text-xs font-medium text-primary-foreground/78 sm:text-[13px]"
+                className="inline-flex items-center gap-2 text-xs font-medium text-foreground/80 sm:text-[13px]"
               >
                 <Icon className="h-4 w-4 text-flame" />
                 {label}
@@ -473,11 +471,11 @@ function Hero() {
           <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
             {/* soft ambient glow */}
             <div
-              className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/10 blur-3xl"
+              className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/20 blur-3xl"
               aria-hidden
             />
 
-            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
+            <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
               <img
                 src={teamHeroPhoto.url}
                 alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
@@ -507,7 +505,7 @@ function Hero() {
             </div>
 
             {/* Credential chip below image */}
-            <div className="mt-4 flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3">
+            <div className="mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm">
               <img
                 src={certifiedBadge.url}
                 alt="Certified chimney sweep credential"
@@ -521,7 +519,7 @@ function Hero() {
                 <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
                   Certified chimney professionals
                 </p>
-                <p className="mt-0.5 text-xs text-primary-foreground/75 sm:text-[13px]">
+                <p className="mt-0.5 text-xs text-foreground/75 sm:text-[13px]">
                   Every inspection documented with written photo reports.
                 </p>
               </div>
