@@ -1,6 +1,5 @@
-import { CalendarCheck, Camera, ShieldCheck, Zap } from "lucide-react";
+import { CalendarCheck, Camera, ShieldCheck, Zap, Flame } from "lucide-react";
 import droneVideo from "@/assets/drone-inspection.mp4.asset.json";
-import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -12,47 +11,44 @@ export function DroneInspection() {
   return (
     <section
       aria-labelledby="drone-heading"
-      className="relative overflow-hidden bg-primary py-20 text-primary-foreground md:py-28"
+      className="relative overflow-hidden bg-[oklch(0.96_0.02_70)] py-20 text-foreground md:py-28"
     >
-      {/* Atmospheric background */}
+      {/* Warm hearth atmosphere */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_30%_30%,_oklch(0.22_0.02_250)_0%,_oklch(0.08_0.01_250)_70%)]"
-        aria-hidden
-      />
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-      <div
-        className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/20 blur-3xl"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_oklch(0.92_0.08_70/0.6)_0%,_transparent_60%)]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/10 blur-3xl"
+        className="pointer-events-none absolute -left-24 top-1/3 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
         aria-hidden
       />
-
-      {/* Subtle scan-line grid overlay */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.05]"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
+        className="pointer-events-none absolute -right-20 -bottom-20 h-80 w-80 rounded-full bg-flame/10 blur-3xl"
+        aria-hidden
+      />
+      {/* Top + bottom brick-tone hairlines */}
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-flame/50 to-transparent"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent"
         aria-hidden
       />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 md:px-8 lg:grid-cols-[1.05fr_1fr]">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 md:px-8 lg:grid-cols-2">
         {/* Copy */}
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
+          <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
             <Zap className="h-3 w-3" /> New · High-Tech Inspection
           </span>
           <h2
             id="drone-heading"
-            className="mt-5 font-display text-5xl font-extrabold leading-[0.98] tracking-tight md:text-6xl"
+            className="mt-5 font-display text-4xl font-extrabold leading-[1.02] tracking-tight text-foreground md:text-5xl lg:text-6xl"
           >
             Drone <span className="text-flame">Chimney Inspection</span>
           </h2>
-          <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
+          <p className="mt-5 max-w-xl text-base text-foreground/75 md:text-lg">
             Get a detailed aerial inspection without climbing onto your roof. Fast, safe, and
             accurate chimney diagnostics using professional drone technology.
           </p>
@@ -66,12 +62,12 @@ export function DroneInspection() {
             ].map((b) => (
               <li
                 key={b.label}
-                className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 backdrop-blur"
+                className="flex items-center gap-3 rounded-xl border border-foreground/10 bg-background/70 px-4 py-3 shadow-sm backdrop-blur"
               >
-                <span className="grid h-9 w-9 place-items-center rounded-lg bg-flame/15 text-flame ring-1 ring-flame/30">
+                <span className="grid h-9 w-9 place-items-center rounded-lg bg-flame/20 text-flame ring-1 ring-flame/40">
                   <b.icon className="h-4 w-4" />
                 </span>
-                <span className="text-sm font-medium text-primary-foreground/90">{b.label}</span>
+                <span className="text-sm font-medium text-foreground/85">{b.label}</span>
               </li>
             ))}
           </ul>
@@ -80,23 +76,47 @@ export function DroneInspection() {
             <button
               type="button"
               onClick={openSchedule}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-7 font-display text-sm font-extrabold uppercase tracking-widest text-primary shadow-[0_18px_40px_oklch(0.78_0.19_92/0.35)] transition hover:bg-white"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-7 font-display text-sm font-extrabold uppercase tracking-widest text-primary shadow-[0_18px_40px_oklch(0.78_0.19_92/0.35)] transition hover:brightness-110"
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule Free Inspection
+              <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
             </button>
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60">
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/55">
               No roof access required · FAA-compliant pilots
             </span>
           </div>
         </div>
 
-        {/* Visual */}
+        {/* Video — framed like a hearth window */}
         <div className="relative">
-          <div className="absolute -inset-6 rounded-[2rem] bg-flame/12 blur-3xl" aria-hidden />
+          {/* warm glow halo */}
+          <div className="absolute -inset-6 rounded-[2rem] bg-flame/25 blur-3xl" aria-hidden />
 
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
-            <div className="grid gap-0 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.9fr)]">
-              <div className="relative aspect-[5/4] overflow-hidden bg-black">
+          {/* Mantel header */}
+          <div className="relative mx-auto max-w-md rounded-t-2xl bg-[oklch(0.32_0.04_45)] px-5 py-3 shadow-[0_6px_0_oklch(0.22_0.03_45)]">
+            <div className="flex items-center justify-between">
+              <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+                <Flame className="h-3 w-3" /> Live drone feed
+              </span>
+              <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-[oklch(0.92_0.06_70)]">
+                <Camera className="h-3 w-3" /> 4K
+              </span>
+            </div>
+          </div>
+
+          {/* Brick frame around video */}
+          <div className="relative mx-auto max-w-md overflow-hidden rounded-b-2xl bg-[oklch(0.45_0.09_40)] p-3 shadow-[0_30px_60px_-20px_oklch(0_0_0/0.4)]">
+            {/* faux brick pattern */}
+            <div
+              className="pointer-events-none absolute inset-0 opacity-30"
+              aria-hidden
+              style={{
+                backgroundImage:
+                  "linear-gradient(oklch(0.35_0.08_40) 2px, transparent 2px), linear-gradient(90deg, oklch(0.35_0.08_40) 2px, transparent 2px)",
+                backgroundSize: "44px 22px",
+              }}
+            />
+            <div className="relative overflow-hidden rounded-lg ring-2 ring-[oklch(0.28_0.04_40)]">
+              <div className="relative aspect-video bg-black">
                 <video
                   src={droneVideo.url}
                   autoPlay
@@ -106,34 +126,16 @@ export function DroneInspection() {
                   preload="metadata"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"
-                  aria-hidden
-                />
-                <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-primary/70 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/82 backdrop-blur">
-                  <Camera className="h-3 w-3 text-flame" /> 4K drone footage
-                </div>
-                <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
-                  <p className="font-display text-sm font-bold text-primary-foreground">
-                    Roofline, crown, chase cover, flashing, and masonry documented in one visit.
-                  </p>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">
-                    Photo report · safer roof access · faster diagnosis
-                  </p>
-                </div>
-              </div>
-
-              <div className="border-t border-white/10 lg:border-l lg:border-t-0">
-                <img
-                  src={inspectionRoofPhoto.url}
-                  alt="A ChimCrew technician inspecting a chimney on a roof in Ohio"
-                  className="aspect-[5/4] w-full object-cover lg:aspect-auto lg:h-full"
-                  loading="lazy"
-                  decoding="async"
-                />
               </div>
             </div>
           </div>
+
+          {/* Hearth base / mantel ledge */}
+          <div className="relative mx-auto h-3 max-w-[28rem] -mt-px rounded-b-md bg-[oklch(0.28_0.04_45)] shadow-[0_4px_10px_oklch(0_0_0/0.25)]" />
+
+          <p className="mt-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/60">
+            Roofline · crown · flashing · masonry — documented in one visit
+          </p>
         </div>
       </div>
     </section>

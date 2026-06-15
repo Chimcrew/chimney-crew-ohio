@@ -49,15 +49,16 @@ type DropdownNav = {
   kind: "dropdown";
   key: string;
   label: string;
+  emoji: string;
   items: MenuLink[];
 };
 type SimpleNav = { kind: "link"; to: string; label: string };
 
 const PRIMARY_NAV: (SimpleNav | DropdownNav)[] = [
   { kind: "link", to: "/", label: "Home" },
-  { kind: "dropdown", key: "repair", label: "Chimney Repair", items: REPAIR_MENU },
-  { kind: "dropdown", key: "cleaning", label: "Chimney Cleaning", items: CLEANING_MENU },
-  { kind: "dropdown", key: "fireplace", label: "Fireplace Services", items: FIREPLACE_MENU },
+  { kind: "dropdown", key: "repair", label: "Chimney Repair", emoji: "🧱", items: REPAIR_MENU },
+  { kind: "dropdown", key: "cleaning", label: "Chimney Cleaning", emoji: "🧹", items: CLEANING_MENU },
+  { kind: "dropdown", key: "fireplace", label: "Fireplace Services", emoji: "🔥", items: FIREPLACE_MENU },
   { kind: "link", to: "/before-after", label: "Before & After" },
   { kind: "link", to: "/reviews", label: "Reviews" },
   { kind: "link", to: "/financing", label: "Financing" },
@@ -285,7 +286,10 @@ export function SiteHeader() {
                         aria-expanded={isOpen}
                         className="flex w-full items-center justify-between py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
                       >
-                        <span className={isOpen ? "text-[oklch(0.65_0.18_92)]" : ""}>{n.label}</span>
+                        <span className={`inline-flex items-center gap-2 ${isOpen ? "text-[oklch(0.65_0.18_92)]" : ""}`}>
+                          <span aria-hidden className="text-lg leading-none">{n.emoji}</span>
+                          {n.label}
+                        </span>
                         <ChevronDown
                           className={`h-5 w-5 text-[oklch(0.78_0.19_92)] transition-transform duration-200 ${
                             isOpen ? "rotate-180" : ""
@@ -294,6 +298,10 @@ export function SiteHeader() {
                       </button>
                       {isOpen && (
                         <ul className="mb-3 grid gap-1 rounded-xl bg-[oklch(0.18_0.02_250/0.03)] p-2">
+                          <li className="mb-1 flex items-center gap-2 px-3 pt-1 pb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-[oklch(0.65_0.18_92)]">
+                            <span aria-hidden className="text-base leading-none">{n.emoji}</span>
+                            {n.label}
+                          </li>
                           {n.items.map((item) =>
                             item.slug ? (
                               <li key={item.label}>
