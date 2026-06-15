@@ -131,6 +131,7 @@ function Index() {
   return (
     <>
       <Hero />
+      <HeroToOfferBridge />
       <LimitedOfferBanner />
       <TrustBar />
       <TrustMarquee />
@@ -150,6 +151,61 @@ function Index() {
       <Faq />
       <FinalCta />
     </>
+  );
+}
+
+/* ============================================================
+   HERO → OFFER BRIDGE
+   A floating, 3D-tilted photo card that straddles the seam
+   between the hero and the dark coupon banner.
+   ============================================================ */
+function HeroToOfferBridge() {
+  return (
+    <div
+      aria-hidden={false}
+      className="relative z-20 mx-auto -mb-20 -mt-12 flex max-w-7xl justify-center px-4 sm:-mb-24 sm:-mt-16 md:px-8"
+      style={{ perspective: "1200px" }}
+    >
+      <div
+        className="group relative w-[min(92%,420px)]"
+        style={{
+          transform: "rotateX(8deg) rotateY(-6deg) rotateZ(-2deg)",
+          transformStyle: "preserve-3d",
+        }}
+      >
+        {/* soft halo */}
+        <div
+          className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-flame/25 blur-3xl"
+          aria-hidden
+        />
+        {/* photo card */}
+        <div className="relative overflow-hidden rounded-2xl border-4 border-background bg-card shadow-[0_30px_60px_-15px_oklch(0_0_0/0.55),0_10px_25px_-10px_oklch(0_0_0/0.4)] ring-1 ring-foreground/10">
+          <img
+            src={inspectionRoofPhoto.url}
+            alt="ChimCrew technician inspecting a chimney on a rooftop"
+            className="block aspect-[5/4] w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+          {/* caption ribbon */}
+          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent px-4 pb-3 pt-10">
+            <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
+              On the roof · Columbus, OH
+            </span>
+            <span className="rounded-full border border-flame/40 bg-flame/15 px-2 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
+              Today
+            </span>
+          </div>
+        </div>
+        {/* under-shadow plate to sell the 3D float */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-6 left-6 right-6 h-8 rounded-full bg-black/40 blur-2xl"
+          style={{ transform: "translateZ(-40px)" }}
+        />
+      </div>
+    </div>
   );
 }
 
