@@ -251,11 +251,9 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
             <button
               type="button"
               onClick={openSchedule}
-              className="group inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
-              <CalendarCheck className="h-5 w-5" />
-              {ctaLabel}
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
               href="tel:6146835763"
@@ -884,10 +882,11 @@ function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <button
+            type="button"
             onClick={openSchedule}
-            className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full bg-flame px-8 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-primary shadow-[0_0_40px_-5px_oklch(0.78_0.19_92/0.5)] transition hover:scale-[1.02] hover:bg-white sm:w-auto"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
-            <CalendarCheck className="h-5 w-5" /> {ctaLabel}
+            <CalendarCheck className="h-4 w-4" /> {ctaLabel}
           </button>
           <a
             href="tel:6146835763"
