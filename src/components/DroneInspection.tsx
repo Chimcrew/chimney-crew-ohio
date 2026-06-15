@@ -11,11 +11,11 @@ export function DroneInspection() {
   return (
     <section
       aria-labelledby="drone-heading"
-      className="relative overflow-hidden bg-[oklch(0.96_0.02_70)] py-20 text-foreground md:py-28"
+      className="relative overflow-hidden bg-background py-20 text-foreground md:py-28"
     >
       {/* Warm hearth atmosphere */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_oklch(0.92_0.08_70/0.6)_0%,_transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_oklch(0.78_0.19_92/0.12)_0%,_transparent_60%)]"
         aria-hidden
       />
       <div
@@ -43,7 +43,7 @@ export function DroneInspection() {
             id="drone-heading"
             className="font-display text-4xl font-extrabold leading-[1.02] tracking-tight text-foreground md:text-5xl lg:text-6xl"
           >
-            Drone <span className="text-primary">Chimney Inspection</span>
+            Drone <span className="text-primary">Inspection</span> only $69
           </h2>
           <p className="mt-5 max-w-xl text-base text-foreground md:text-lg">
             Get a detailed aerial inspection without climbing onto your roof. Fast, safe, and

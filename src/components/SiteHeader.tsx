@@ -1,6 +1,28 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown, BrickWall } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+// Custom broom icon (lucide doesn't include a broom)
+const Broom: LucideIcon = (({ className, ...props }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M19 3l-7 7" />
+    <path d="M14 8l2 2" />
+    <path d="M5 21l4-9 8 4-2 5z" />
+    <path d="M9 17l-2 4" />
+    <path d="M13 18l-1 3" />
+    <path d="M16 19l0 2" />
+  </svg>
+)) as unknown as LucideIcon;
 import logoHeader from "@/assets/chimcrew-logo-transparent.png";
 import { openScheduleDialog } from "@/components/ScheduleWidget";
 
@@ -49,16 +71,16 @@ type DropdownNav = {
   kind: "dropdown";
   key: string;
   label: string;
-  emoji: string;
+  Icon: LucideIcon;
   items: MenuLink[];
 };
 type SimpleNav = { kind: "link"; to: string; label: string };
 
 const PRIMARY_NAV: (SimpleNav | DropdownNav)[] = [
   { kind: "link", to: "/", label: "Home" },
-  { kind: "dropdown", key: "repair", label: "Chimney Repair", emoji: "🧱", items: REPAIR_MENU },
-  { kind: "dropdown", key: "cleaning", label: "Chimney Cleaning", emoji: "🧹", items: CLEANING_MENU },
-  { kind: "dropdown", key: "fireplace", label: "Fireplace Services", emoji: "🔥", items: FIREPLACE_MENU },
+  { kind: "dropdown", key: "repair", label: "Chimney Repair", Icon: BrickWall, items: REPAIR_MENU },
+  { kind: "dropdown", key: "cleaning", label: "Chimney Cleaning", Icon: Broom, items: CLEANING_MENU },
+  { kind: "dropdown", key: "fireplace", label: "Fireplace Services", Icon: Flame, items: FIREPLACE_MENU },
   { kind: "link", to: "/before-after", label: "Before & After" },
   { kind: "link", to: "/reviews", label: "Reviews" },
   { kind: "link", to: "/financing", label: "Financing" },
@@ -172,7 +194,7 @@ export function SiteHeader() {
                       onClick={() => setOpenMenu((cur) => (cur === n.key ? null : n.key))}
                       aria-expanded={isOpen}
                       aria-haspopup="menu"
-                      className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] transition ${
+                      className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-sans text-[14px] font-semibold tracking-normal transition ${
                         isOpen ? "text-[oklch(0.65_0.18_92)]" : "text-foreground/70 hover:text-foreground"
                       }`}
                     >
@@ -226,7 +248,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground/70 transition hover:text-foreground"
+                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-sans text-[14px] font-semibold tracking-normal text-foreground/70 transition hover:text-foreground"
                   activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
                   activeOptions={n.to === "/" ? { exact: true } : undefined}
                 >
@@ -242,14 +264,14 @@ export function SiteHeader() {
           <div className="hidden items-center gap-2 md:flex">
             <a
               href="tel:6146835763"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2.5 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)]"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2.5 font-sans text-[13px] font-semibold tracking-normal text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)]"
             >
               <Phone className="h-4 w-4 shrink-0" /> (614) 683-5763
             </a>
             <button
               type="button"
               onClick={() => openScheduleDialog()}
-              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[oklch(0.78_0.19_92)] px-5 py-2.5 font-mono text-[12px] font-extrabold uppercase tracking-[0.18em] text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)]"
+              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[oklch(0.78_0.19_92)] px-5 py-2.5 font-sans text-[13px] font-bold tracking-normal text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)]"
             >
               <CalendarCheck className="h-4 w-4 shrink-0" /> Schedule Online
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -287,7 +309,7 @@ export function SiteHeader() {
                         className="flex w-full items-center justify-between py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
                       >
                         <span className={`inline-flex items-center gap-2 ${isOpen ? "text-[oklch(0.65_0.18_92)]" : ""}`}>
-                          <span aria-hidden className="text-lg leading-none">{n.emoji}</span>
+                          <n.Icon className="h-5 w-5 text-[oklch(0.65_0.18_92)]" aria-hidden />
                           {n.label}
                         </span>
                         <ChevronDown
@@ -299,7 +321,7 @@ export function SiteHeader() {
                       {isOpen && (
                         <ul className="mb-3 grid gap-1 rounded-xl bg-[oklch(0.18_0.02_250/0.03)] p-2">
                           <li className="mb-1 flex items-center gap-2 px-3 pt-1 pb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-[oklch(0.65_0.18_92)]">
-                            <span aria-hidden className="text-base leading-none">{n.emoji}</span>
+                            <n.Icon className="h-4 w-4" aria-hidden />
                             {n.label}
                           </li>
                           {n.items.map((item) =>
@@ -363,7 +385,7 @@ export function SiteHeader() {
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
                 className="flex items-center justify-center gap-2 rounded-full bg-[oklch(0.78_0.19_92)] px-3 py-3 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-[oklch(0.18_0.02_250)]"
               >
-                <CalendarCheck className="h-4 w-4" /> Book
+                <CalendarCheck className="h-4 w-4" /> Schedule online
               </button>
             </div>
           </div>
