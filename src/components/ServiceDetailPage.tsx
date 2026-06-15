@@ -170,7 +170,7 @@ function BrickBackdrop() {
 
 function CinematicHero({ service }: { service: ServiceSpec }) {
   const priceLabel = formatFromPrice(service);
-  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Free Inspection";
+  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Appointment Online";
   const Icon = service.icon;
 
   return (

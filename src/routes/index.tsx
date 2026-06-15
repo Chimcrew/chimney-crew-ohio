@@ -427,7 +427,7 @@ function Hero() {
               onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
               className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-7"
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule Free Inspection
+              <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
             </button>
             <a
               href="tel:6146835763"
@@ -1319,7 +1319,7 @@ function FinalCta() {
             to="/contact"
             className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:brightness-110"
           >
-            Schedule free inspection <CalendarCheck className="h-4 w-4" />
+            Schedule Appointment Online <CalendarCheck className="h-4 w-4" />
           </Link>
           <a
             href="tel:6146835763"
