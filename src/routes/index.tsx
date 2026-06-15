@@ -1446,43 +1446,6 @@ function Faq() {
 }
 
 /* ============================================================
-   FINAL CTA strip
-   ============================================================ */
-function FinalCta() {
-  return (
-    <section className="relative overflow-hidden bg-flame py-12 text-primary">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 text-center md:flex-row md:text-left md:px-8">
-        <div className="flex items-center gap-4">
-          <Flame className="h-10 w-10" />
-          <div>
-            <p className="font-display text-2xl font-bold md:text-3xl">
-              One quick form. A safer home tonight.
-            </p>
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] opacity-80">
-              Same-day callback · No card · 100% Ohio crew
-            </p>
-          </div>
-        </div>
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0_0_0/0.25)] transition active:scale-95 sm:px-6"
-          >
-            <CalendarCheck className="h-4 w-4" /> Schedule appointment online
-          </button>
-          <a
-            href="tel:6146835763"
-            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
-          >
-            <Phone className="h-4 w-4" /> (614) 683-5763
-          </a>
-        </div>
-      </div>
-    </section>
-  );
-}
-/* ============================================================
    SERVICE AREA — Central Ohio cities we cover
    ============================================================ */
 function ServiceArea() {
