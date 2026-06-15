@@ -92,7 +92,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
 
 function ServiceHero({ service }: { service: ServiceSpec }) {
   const priceLabel = formatFromPrice(service);
-  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule appointment online";
+  const ctaLabel = serviceCtaLabel(service);
   const Icon = service.icon;
   const heroPhoto = heroImageFor(service);
 
