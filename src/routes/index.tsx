@@ -41,6 +41,7 @@ import teamHeroPhoto from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
 import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import fireplaceServicePhoto from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
+import techFireplaceSweepPhoto from "@/assets/tech-fireplace-sweep.png.asset.json";
 import rooftopTechsPhoto from "@/assets/team/chimcrew-techs-rooftop.png.asset.json";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES, formatFromPrice, getService } from "@/data/services";
