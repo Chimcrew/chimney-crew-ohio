@@ -412,7 +412,7 @@ function Hero() {
 
       <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-12 pt-8 sm:px-6 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:px-8 lg:pb-20 lg:pt-16">
         {/* LEFT — message column */}
-        <div className="lg:col-span-6 lg:pt-4">
+        <div className="order-2 lg:order-1 lg:col-span-6 lg:pt-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground/80">
               <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
@@ -469,7 +469,7 @@ function Hero() {
         </div>
 
         {/* RIGHT — photo column. Uncropped, full team visible. */}
-        <div className="relative lg:col-span-6">
+        <div className="relative order-1 lg:order-2 lg:col-span-6">
           <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
             {/* soft ambient glow */}
             <div
