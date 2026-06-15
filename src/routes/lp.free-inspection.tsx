@@ -288,6 +288,45 @@ function ProofBar() {
 }
 
 function Includes() {
+  return _Includes();
+}
+
+function MeetTheCrew() {
+  return (
+    <section className="border-b border-border/30 bg-card/30 py-10 sm:py-14">
+      <div className="mx-auto grid max-w-5xl items-center gap-6 px-4 md:grid-cols-[1.1fr_1fr] md:gap-10">
+        <div className="relative">
+          <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-flame/30 to-primary/10 blur-2xl" />
+          <img
+            src={teamHero.url}
+            alt="The ChimCrew family crew standing in front of their yellow van"
+            loading="lazy"
+            className="w-full rounded-2xl border-4 border-background object-cover shadow-[0_20px_60px_-20px_oklch(0_0_0/0.45)]"
+          />
+        </div>
+        <div>
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary-foreground">
+            <BadgeCheck className="h-3.5 w-3.5" /> Meet your crew
+          </div>
+          <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
+            Same yellow van.{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              same family crew
+            </span>{" "}
+            — every visit.
+          </h2>
+          <p className="mt-3 text-sm text-foreground/80 sm:text-base">
+            We're a CSIA-certified, family-owned Ohio crew. No call centers, no
+            subcontractors — just the same friendly faces on your roof and at your
+            fireplace.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function _Includes() {
   const items = [
     "Level 1 visual inspection of your flue, damper & smoke chamber",
     "Exterior crown, cap, flashing & chase check",
