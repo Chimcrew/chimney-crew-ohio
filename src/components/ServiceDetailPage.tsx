@@ -26,9 +26,6 @@ import {
 } from "@/data/services";
 import { TrustBadges } from "@/components/TrustBadges";
 import { DroneInspection } from "@/components/DroneInspection";
-import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
-import fireplaceServicePhoto from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
-import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 
 function openSchedule() {
