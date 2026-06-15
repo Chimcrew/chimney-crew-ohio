@@ -142,7 +142,6 @@ function Index() {
       <ServiceArea />
       <WhyChooseUs />
       <TrustMarquee />
-      <ProblemSolver />
       <LeakingChimney />
       <ScheduleOnline />
       <Testimonials />
@@ -1444,12 +1443,13 @@ function FinalCta() {
           </div>
         </div>
         <div className="flex flex-wrap items-center justify-center gap-3">
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-sm bg-primary px-6 py-3 font-display text-sm font-semibold text-primary-foreground transition hover:brightness-110"
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0_0_0/0.25)] transition active:scale-95 sm:px-6"
           >
-            Schedule Appointment Online <CalendarCheck className="h-4 w-4" />
-          </Link>
+            <CalendarCheck className="h-4 w-4" /> Schedule appointment online
+          </button>
           <a
             href="tel:6146835763"
             className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"

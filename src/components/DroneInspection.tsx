@@ -39,14 +39,11 @@ export function DroneInspection() {
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-4 md:px-8 lg:grid-cols-2">
         {/* Copy */}
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-            <Zap className="h-3 w-3" /> New
-          </span>
           <h2
             id="drone-heading"
-            className="mt-5 font-display text-4xl font-extrabold leading-[1.02] tracking-tight text-foreground md:text-5xl lg:text-6xl"
+            className="font-display text-4xl font-extrabold leading-[1.02] tracking-tight text-foreground md:text-5xl lg:text-6xl"
           >
-            Drone <span className="text-flame">Chimney Inspection</span>
+            Drone <span className="text-primary">Chimney Inspection</span>
           </h2>
           <p className="mt-5 max-w-xl text-base text-foreground md:text-lg">
             Get a detailed aerial inspection without climbing onto your roof. Fast, safe, and
@@ -76,9 +73,9 @@ export function DroneInspection() {
             <button
               type="button"
               onClick={openSchedule}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-7 font-display text-sm font-extrabold uppercase tracking-widest text-primary shadow-[0_18px_40px_oklch(0.78_0.19_92/0.35)] transition hover:brightness-110"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
+              <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </button>
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
               No roof access required · FAA-compliant pilots
