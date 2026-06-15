@@ -82,7 +82,7 @@ export function DroneInspection() {
               onClick={openSchedule}
               className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-7 font-display text-sm font-extrabold uppercase tracking-widest text-primary shadow-[0_18px_40px_oklch(0.78_0.19_92/0.35)] transition hover:bg-white"
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule Free Inspection
+              <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
             </button>
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60">
               No roof access required · FAA-compliant pilots
