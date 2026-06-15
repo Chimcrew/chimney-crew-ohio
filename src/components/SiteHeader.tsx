@@ -271,29 +271,29 @@ export function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-white/5 bg-primary text-primary-foreground md:hidden">
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background text-foreground md:hidden">
           <div className="mx-auto max-w-7xl px-4 py-4 pb-8">
             <nav className="flex flex-col">
               {PRIMARY_NAV.map((n) => {
                 if (n.kind === "dropdown") {
                   const isOpen = mobileOpenKey === n.key;
                   return (
-                    <div key={n.key} className="border-b border-white/5">
+                    <div key={n.key} className="border-b border-border/30">
                       <button
                         type="button"
                         onClick={() => setMobileOpenKey((cur) => (cur === n.key ? null : n.key))}
                         aria-expanded={isOpen}
-                        className="flex w-full items-center justify-between py-3.5 font-sans text-[15px] font-semibold tracking-normal"
+                        className="flex w-full items-center justify-between py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
                       >
-                        <span className={isOpen ? "text-flame" : ""}>{n.label}</span>
+                        <span className={isOpen ? "text-[oklch(0.65_0.18_92)]" : ""}>{n.label}</span>
                         <ChevronDown
-                          className={`h-5 w-5 text-flame transition-transform duration-200 ${
+                          className={`h-5 w-5 text-[oklch(0.78_0.19_92)] transition-transform duration-200 ${
                             isOpen ? "rotate-180" : ""
                           }`}
                         />
                       </button>
                       {isOpen && (
-                        <ul className="mb-3 grid gap-1 rounded-xl bg-white/5 p-2">
+                        <ul className="mb-3 grid gap-1 rounded-xl bg-[oklch(0.18_0.02_250/0.03)] p-2">
                           {n.items.map((item) =>
                             item.slug ? (
                               <li key={item.label}>
@@ -304,7 +304,7 @@ export function SiteHeader() {
                                     setOpen(false);
                                     setMobileOpenKey(null);
                                   }}
-                                  className="block rounded-lg px-3 py-2.5 font-sans text-sm font-medium text-primary-foreground/80 transition active:bg-white/10 active:text-flame"
+                                  className="block rounded-lg px-3 py-2.5 font-sans text-sm font-medium text-foreground/80 transition active:bg-[oklch(0.18_0.02_250/0.05)] active:text-[oklch(0.65_0.18_92)]"
                                 >
                                   {item.label}
                                 </Link>
@@ -317,7 +317,7 @@ export function SiteHeader() {
                                     setOpen(false);
                                     setMobileOpenKey(null);
                                   }}
-                                  className="block rounded-lg px-3 py-2.5 font-sans text-sm font-medium text-primary-foreground/80 transition active:bg-white/10 active:text-flame"
+                                  className="block rounded-lg px-3 py-2.5 font-sans text-sm font-medium text-foreground/80 transition active:bg-[oklch(0.18_0.02_250/0.05)] active:text-[oklch(0.65_0.18_92)]"
                                 >
                                   {item.label}
                                 </Link>
@@ -334,11 +334,11 @@ export function SiteHeader() {
                     key={n.to}
                     to={n.to}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between border-b border-white/5 py-3.5 font-sans text-[15px] font-semibold tracking-normal"
-                    activeProps={{ className: "text-flame" }}
+                    className="flex items-center justify-between border-b border-border/30 py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
+                    activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
                     activeOptions={n.to === "/" ? { exact: true } : undefined}
                   >
-                    {n.label} <Flame className="h-4 w-4 text-flame" />
+                    {n.label} <Flame className="h-4 w-4 text-[oklch(0.78_0.19_92)]" />
                   </Link>
                 );
               })}
@@ -346,14 +346,14 @@ export function SiteHeader() {
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
                 href="tel:6146835763"
-                className="flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-3 font-mono text-[11px] font-bold uppercase tracking-[0.18em]"
+                className="flex items-center justify-center gap-2 rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-3 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-foreground"
               >
                 <Phone className="h-4 w-4" /> Call
               </a>
               <button
                 type="button"
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
-                className="flex items-center justify-center gap-2 rounded-full bg-flame px-3 py-3 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-primary"
+                className="flex items-center justify-center gap-2 rounded-full bg-[oklch(0.78_0.19_92)] px-3 py-3 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-[oklch(0.18_0.02_250)]"
               >
                 <CalendarCheck className="h-4 w-4" /> Book
               </button>
