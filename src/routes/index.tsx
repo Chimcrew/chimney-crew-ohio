@@ -141,7 +141,7 @@ function Index() {
       <ServiceAreaSeo />
       <ServiceArea />
       <WhyChooseUs />
-      <BeforeAfterHome />
+      <TrustMarquee />
       <ProblemSolver />
       <LeakingChimney />
       <ScheduleOnline />
