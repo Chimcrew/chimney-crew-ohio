@@ -108,7 +108,7 @@ function ChimneyRepairColumbus() {
 
             <div className="mt-6 flex flex-wrap items-center gap-4 text-primary-foreground/80">
               <span className="inline-flex items-center gap-1.5 font-display text-sm font-bold">
-                <Star className="h-4 w-4 fill-flame text-flame" /> 4.9 · 1,836 reviews
+                <Star className="h-4 w-4 fill-flame text-flame" /> 5-Star Rated · Verified Reviews
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.22em]">
                 CSIA Certified · BBB A+ · Licensed & Insured

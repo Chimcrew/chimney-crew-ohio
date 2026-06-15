@@ -412,22 +412,22 @@ function Hero() {
               <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
-              <Star className="h-3 w-3 fill-flame text-flame" /> 1,836 ★ reviews
+              <Star className="h-3 w-3 fill-flame text-flame" /> 5-Star Reviews
             </span>
           </div>
 
           <h1 className="mt-5 font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
-            Ohio's trusted chimney crew — for over{" "}
+            Trusted By{" "}
             <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
-              50 years
-            </span>
-            .
+              Columbus
+            </span>{" "}
+            Homeowners For Chimney Repairs & Inspections
           </h1>
 
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">
             Inspections, cleaning, and masonry repair from a local Columbus crew that
-            shows up on time, explains the work clearly, and documents everything with
-            photos.
+            shows up on time, explains the work clearly, and documents every finding
+            with photos and video before any repair is recommended.
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -464,7 +464,7 @@ function Hero() {
               { icon: CheckCircle2, label: "CSIA-certified" },
               { icon: ShieldCheck, label: "Fully insured" },
               { icon: Clock, label: "Same-day callback" },
-              { icon: Award, label: "Family owned since 1975" },
+              { icon: Award, label: "Family owned & operated" },
             ].map(({ icon: Icon, label }) => (
               <span
                 key={label}
@@ -620,7 +620,7 @@ function TrustMarquee() {
       className="relative overflow-hidden border-y border-border bg-secondary/60 py-4"
     >
       <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
-        ★ 5-Star · Based on 1,836 reviews
+        ★ 5-Star Rated · Google · Yelp · Angi · BBB
       </p>
       <div className="flex w-max animate-marquee items-center gap-3 whitespace-nowrap px-3">
         {loop.map((c, i) => (
@@ -680,8 +680,8 @@ function WhyChooseUs() {
     },
     {
       icon: Star,
-      title: "5-Star Rated · 1,800+ Reviews",
-      body: "4.9-star average from Ohio homeowners in Columbus, Cincinnati and Dayton.",
+      title: "5-Star Rated by Ohio Homeowners",
+      body: "Consistently top-rated on Google, Yelp, Angi and Facebook by Columbus, Cincinnati and Dayton homeowners.",
     },
     {
       icon: Award,
@@ -1305,10 +1305,10 @@ function Testimonials() {
             </div>
             <div>
               <p className="font-display text-3xl font-extrabold text-primary md:text-4xl">
-                4.9 / 5
+                5-Star
               </p>
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-                1,836 verified reviews
+                Verified Ohio reviews
               </p>
             </div>
           </div>

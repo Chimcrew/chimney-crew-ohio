@@ -134,7 +134,7 @@ export function SiteHeader() {
           <span className="flex items-center gap-4">
             <span className="hidden items-center gap-1.5 sm:flex opacity-80">
               <span className="grid h-4 w-4 place-items-center rounded-full bg-[oklch(0.92_0.18_95)] text-[oklch(0.18_0.02_250)] text-[10px] font-bold">★</span>
-              1,836 Five-Star Reviews
+              5-Star Rated · Google · Yelp · Angi
             </span>
             <a href="tel:6146835763" className="font-bold hover:underline text-[oklch(0.92_0.18_95)]">(614) 683-5763</a>
           </span>

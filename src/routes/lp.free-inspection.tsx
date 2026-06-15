@@ -132,7 +132,7 @@ function Hero() {
               <ShieldCheck className="h-4 w-4 text-primary" /> CSIA-certified
             </li>
             <li className="inline-flex items-center gap-1.5">
-              <Star className="h-4 w-4 fill-amber-500 text-amber-600" /> 4.9 · 1,836 reviews
+              <Star className="h-4 w-4 fill-amber-500 text-amber-600" /> 5-Star Rated
             </li>
             <li className="inline-flex items-center gap-1.5">
               <Clock className="h-4 w-4 text-primary" /> Same-day callbacks
@@ -269,7 +269,7 @@ function InlineLeadForm() {
 function ProofBar() {
   const items = [
     { icon: ShieldCheck, label: "CSIA-Certified" },
-    { icon: Star, label: "4.9 / 5 · 1,836 reviews" },
+    { icon: Star, label: "5-Star Rated" },
     { icon: Clock, label: "Same-day callbacks" },
     { icon: BadgeCheck, label: "Licensed & Insured" },
   ];

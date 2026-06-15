@@ -31,10 +31,10 @@ const REVIEWS = [
 ];
 
 const SOURCES = [
-  { name: "Google", rating: "4.9", count: "210+" },
-  { name: "Yelp", rating: "5.0", count: "78" },
-  { name: "Angi", rating: "4.9", count: "54" },
-  { name: "Facebook", rating: "5.0", count: "42" },
+  { name: "Google", label: "5-Star Rated" },
+  { name: "Yelp", label: "5-Star Rated" },
+  { name: "Angi", label: "5-Star Rated" },
+  { name: "Facebook", label: "5-Star Rated" },
 ];
 
 function ReviewsPage() {
@@ -50,7 +50,7 @@ function ReviewsPage() {
               {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}
             </div>
             <p className="font-mono text-sm text-muted-foreground">
-              4.9 average from 380+ verified reviews across Google, Yelp, Angi & Facebook
+              5-star rated across Google, Yelp, Angi & Facebook
             </p>
           </div>
 
@@ -86,7 +86,7 @@ function ReviewsPage() {
                   <span className="flex text-primary">
                     {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3 w-3 fill-current" />)}
                   </span>
-                  {s.rating} · {s.count}
+                  {s.label}
                 </span>
               </div>
             ))}

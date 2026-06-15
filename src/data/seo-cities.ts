@@ -96,7 +96,7 @@ export const SEO_CITIES: SeoCity[] = [
     homeStyles: "executive 1985–2010 brick homes with full masonry fireplaces and 30-foot stone or brick stacks",
     climateNote: "Dublin's mature tree canopy drops heavy leaf and squirrel-nest debris into uncapped flues every fall.",
     intro:
-      "Dublin's housing stock is heavy on full-masonry chimneys — Muirfield Village, Tartan Fields, and Llewellyn Farms in particular — and that means real brick, real mortar, and real freeze-thaw damage after 25+ Ohio winters. ChimCrew has been the go-to chimney company for Dublin (43017) homeowners since 1974, with CSIA-certified technicians and a 1,800+ five-star review track record across Franklin County.",
+      "Dublin's housing stock is heavy on full-masonry chimneys — Muirfield Village, Tartan Fields, and Llewellyn Farms in particular — and that means real brick, real mortar, and real freeze-thaw damage after 25+ Ohio winters. ChimCrew is the go-to chimney company for Dublin (43017) homeowners, with CSIA-certified technicians and a 5-star rated track record across Franklin County.",
     whyUs:
       "When a Dublin homeowner calls us, they usually want two things: an honest answer about whether the crown actually needs replacing, and a crew that won't track soot through the foyer. We bring HEPA vacuums, drop cloths, and a written Level 2 inspection with drone photos of the crown and flashing — so you see exactly what we see.",
     localProof:

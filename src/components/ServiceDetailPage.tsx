@@ -122,7 +122,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
               <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
-              <Star className="h-3 w-3 fill-flame text-flame" /> 1,836 ★ reviews
+              <Star className="h-3 w-3 fill-flame text-flame" /> 5-Star Reviews
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-background px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
               <Icon className="h-3 w-3 text-flame" /> {service.hero.eyebrow}
@@ -152,7 +152,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
             <div className="hidden sm:block">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/55">Reviews</p>
               <p className="mt-1 inline-flex items-center gap-1.5 font-display text-lg font-bold text-foreground">
-                <Star className="h-4 w-4 fill-flame text-flame" /> 4.9 · 1,836
+                <Star className="h-4 w-4 fill-flame text-flame" /> 5-Star Rated
               </p>
             </div>
           </div>
@@ -191,7 +191,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
               { icon: CheckCircle2, label: "CSIA-certified" },
               { icon: ShieldCheck, label: "Fully insured" },
               { icon: Clock, label: "Same-day callback" },
-              { icon: Award, label: "Family owned since 1975" },
+              { icon: Award, label: "Family owned & operated" },
             ].map(({ icon: I, label }) => (
               <span key={label} className="inline-flex items-center gap-2 text-xs font-medium text-foreground/80 sm:text-[13px]">
                 <I className="h-4 w-4 text-flame" /> {label}
@@ -353,7 +353,7 @@ function TrustMarquee() {
       className="relative overflow-hidden border-y border-border bg-secondary/60 py-4"
     >
       <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
-        ★ 5-Star · Based on 1,836 reviews
+        ★ 5-Star Rated · Google · Yelp · Angi · BBB
       </p>
       <div className="flex w-max animate-marquee items-center gap-3 whitespace-nowrap px-3">
         {loop.map((c, i) => (
