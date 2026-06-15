@@ -255,35 +255,24 @@ function HeroPhotoCard() {
 }
 
 function MobileHero() {
-  const photos = [jobPhotoA.url, jobPhotoB.url, projectHero, projectLiner, projectTuck, projectCap, projectTech];
-  const [idx, setIdx] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setIdx((n) => (n + 1) % photos.length), 5200);
-    return () => clearInterval(id);
-  }, [photos.length]);
-
   return (
     <div className="relative lg:hidden">
-      {/* Full-bleed editorial photo */}
+      {/* Full-bleed team photo */}
       <div className="relative h-[88vh] min-h-[620px] w-full overflow-hidden bg-black">
-        {photos.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt="ChimCrew chimney repair in Columbus, Ohio"
-            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1400ms] ease-out ${i === idx ? "opacity-100" : "opacity-0"}`}
-            fetchPriority={i === 0 ? "high" : "low"}
-            decoding="async"
-            loading={i === 0 ? "eager" : "lazy"}
-          />
-        ))}
+        <img
+          src={teamHeroBg.url}
+          alt="ChimCrew team at work"
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="eager"
+          decoding="async"
+        />
 
-        {/* Premium dark overlay — heavy on the bottom for legibility */}
+        {/* Lighter overlay for legibility */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(180deg, oklch(0 0 0 / 0.55) 0%, oklch(0 0 0 / 0.35) 32%, oklch(0 0 0 / 0.78) 72%, oklch(0 0 0 / 0.95) 100%)",
+              "linear-gradient(180deg, oklch(0 0 0 / 0.45) 0%, oklch(0 0 0 / 0.25) 32%, oklch(0 0 0 / 0.55) 72%, oklch(0 0 0 / 0.75) 100%)",
           }}
           aria-hidden
         />
