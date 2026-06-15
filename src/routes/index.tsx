@@ -560,7 +560,7 @@ function Hero() {
 
             <h1 className="font-display text-[1.55rem] font-extrabold leading-[1.08] tracking-[-0.025em] text-primary-foreground sm:text-[1.85rem] md:text-[2.5rem] lg:text-[3.25rem]">
               The Chimney Experts You've Trusted for{" "}
-              <span className="bg-gradient-to-r from-flame via-[oklch(0.94_0.16_92)] to-white bg-clip-text text-transparent">
+              <span className="text-white">
                 Over 50 Years In Columbus, Ohio
               </span>
             </h1>
