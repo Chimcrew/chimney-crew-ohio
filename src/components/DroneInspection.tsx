@@ -40,7 +40,7 @@ export function DroneInspection() {
         {/* Copy */}
         <div>
           <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-            <Zap className="h-3 w-3" /> New · High-Tech Inspection
+            <Zap className="h-3 w-3" /> New
           </span>
           <h2
             id="drone-heading"
@@ -48,7 +48,7 @@ export function DroneInspection() {
           >
             Drone <span className="text-flame">Chimney Inspection</span>
           </h2>
-          <p className="mt-5 max-w-xl text-base text-foreground/75 md:text-lg">
+          <p className="mt-5 max-w-xl text-base text-foreground md:text-lg">
             Get a detailed aerial inspection without climbing onto your roof. Fast, safe, and
             accurate chimney diagnostics using professional drone technology.
           </p>
@@ -62,12 +62,12 @@ export function DroneInspection() {
             ].map((b) => (
               <li
                 key={b.label}
-                className="flex items-center gap-3 rounded-xl border border-foreground/10 bg-background/70 px-4 py-3 shadow-sm backdrop-blur"
+                className="flex items-center gap-3 rounded-xl border border-foreground/15 bg-background/80 px-4 py-3 shadow-sm backdrop-blur"
               >
-                <span className="grid h-9 w-9 place-items-center rounded-lg bg-flame/20 text-flame ring-1 ring-flame/40">
+                <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground ring-1 ring-primary/40">
                   <b.icon className="h-4 w-4" />
                 </span>
-                <span className="text-sm font-medium text-foreground/85">{b.label}</span>
+                <span className="text-sm font-semibold text-foreground">{b.label}</span>
               </li>
             ))}
           </ul>
@@ -80,7 +80,7 @@ export function DroneInspection() {
             >
               <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
             </button>
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/55">
+            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
               No roof access required · FAA-compliant pilots
             </span>
           </div>
@@ -133,7 +133,7 @@ export function DroneInspection() {
           {/* Hearth base / mantel ledge */}
           <div className="relative mx-auto h-3 max-w-[28rem] -mt-px rounded-b-md bg-[oklch(0.28_0.04_45)] shadow-[0_4px_10px_oklch(0_0_0/0.25)]" />
 
-          <p className="mt-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/60">
+          <p className="mt-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             Roofline · crown · flashing · masonry — documented in one visit
           </p>
         </div>

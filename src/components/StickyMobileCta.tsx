@@ -32,7 +32,7 @@ export function StickyMobileCta() {
             className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-flame px-2 py-3 font-display text-[11px] font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95"
             aria-label="Book a free inspection"
           >
-            <CalendarCheck className="h-4 w-4" /> Free Inspection
+            <CalendarCheck className="h-4 w-4" /> Schedule online
           </button>
         </div>
       </div>
