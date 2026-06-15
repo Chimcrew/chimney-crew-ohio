@@ -22,6 +22,7 @@ import {
   Award,
   HardHat,
 } from "lucide-react";
+import couponBg from "@/assets/chimney-coupon-bg.jpeg.asset.json";
 import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
 import { InlineLeadForm } from "@/components/InlineLeadForm";
 const logo = logoAsset.url;
@@ -298,22 +299,31 @@ function LimitedOfferBanner() {
     </div>
   );
   return (
-    <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-5 md:py-6">
+    <section className="relative isolate overflow-hidden px-4 py-5 md:py-6">
+      {/* background photo */}
+      <img
+        src={couponBg.url}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+        aria-hidden
+      />
+      <div className="absolute inset-0 bg-primary/80" aria-hidden />
+
       <div className="relative mx-auto max-w-xl">
         {/* Coupon card */}
-        <div className="relative rounded-xl border border-flame/30 bg-[oklch(0.14_0.02_250)] text-primary-foreground shadow-[0_12px_40px_oklch(0_0_0/0.4)]">
+        <div className="relative rounded-xl border border-white/10 bg-black/40 text-primary-foreground shadow-[0_12px_40px_oklch(0_0_0/0.4)] backdrop-blur-sm">
           {/* perforated edges */}
           <span
-            className="absolute -left-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
+            className="absolute -left-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-primary"
             aria-hidden
           />
           <span
-            className="absolute -right-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
+            className="absolute -right-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-primary"
             aria-hidden
           />
 
           {/* dashed inner frame */}
-          <div className="m-1.5 rounded-lg border-2 border-dashed border-flame/30 p-3 sm:p-4">
+          <div className="m-1.5 rounded-lg border-2 border-dashed border-white/20 p-3 sm:p-4">
             {/* top ribbon */}
             <div className="flex items-center justify-between gap-3">
               <span className="inline-flex items-center gap-1 rounded-full border border-flame/40 bg-flame/15 px-2.5 py-0.5 font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-flame">
@@ -335,8 +345,8 @@ function LimitedOfferBanner() {
                 <span className="relative font-display text-lg font-bold text-primary-foreground/60 line-through decoration-primary-foreground/80 decoration-2">
                   $69
                 </span>
-                <span className="font-display text-4xl font-black uppercase leading-none tracking-tight text-flame sm:text-5xl">
-                  FREE
+                <span className="font-display text-3xl font-black uppercase leading-none tracking-tight text-flame sm:text-4xl">
+                  FREE INSPECTION
                 </span>
               </div>
               <p className="mt-1 text-[11px] font-semibold text-primary-foreground/80">
@@ -344,7 +354,7 @@ function LimitedOfferBanner() {
               </p>
 
               {/* compact countdown */}
-              <div className="mt-3 flex items-center gap-2 rounded-md border border-flame/20 bg-primary/20 px-2.5 py-1.5">
+              <div className="mt-3 flex items-center gap-2 rounded-md border border-white/10 bg-black/30 px-2.5 py-1.5">
                 <Clock className="h-3 w-3 text-flame" />
                 <span className="font-mono text-[8px] font-extrabold uppercase tracking-[0.22em] text-primary-foreground/70">
                   Ends tonight
@@ -369,7 +379,7 @@ function LimitedOfferBanner() {
                 </button>
                 <a
                   href="tel:6146835763"
-                  className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg border-2 border-primary-foreground/30 bg-transparent font-display text-xs font-black uppercase tracking-wider text-primary-foreground transition active:scale-[0.98]"
+                  className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg border-2 border-white/30 bg-transparent font-display text-xs font-black uppercase tracking-wider text-primary-foreground transition active:scale-[0.98]"
                 >
                   <Phone className="h-3.5 w-3.5" /> Call Now
                 </a>
