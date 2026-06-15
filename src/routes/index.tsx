@@ -322,33 +322,6 @@ function HeroPhotoCard() {
    the $69 chimney inspection.
    ============================================================ */
 function LimitedOfferBanner() {
-  const [timeLeft, setTimeLeft] = useState({ h: 0, m: 0, s: 0 });
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      const end = new Date();
-      end.setHours(23, 59, 59, 999);
-      const diff = Math.max(0, end.getTime() - now.getTime());
-      const h = Math.floor(diff / 3_600_000);
-      const m = Math.floor((diff % 3_600_000) / 60_000);
-      const s = Math.floor((diff % 60_000) / 1000);
-      setTimeLeft({ h, m, s });
-    };
-    tick();
-    const id = setInterval(tick, 1000);
-    return () => clearInterval(id);
-  }, []);
-  const pad = (n: number) => String(n).padStart(2, "0");
-  const Box = ({ v, l }: { v: number; l: string }) => (
-    <div className="flex flex-col items-center">
-      <span className="grid h-9 w-9 place-items-center rounded-md bg-primary font-mono text-base font-black tabular-nums text-flame shadow-inner sm:h-10 sm:w-10 sm:text-lg">
-        {pad(v)}
-      </span>
-      <span className="mt-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-primary/70">
-        {l}
-      </span>
-    </div>
-  );
   return (
     <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-8 md:py-10">
       <div className="relative mx-auto max-w-2xl">
@@ -395,21 +368,6 @@ function LimitedOfferBanner() {
                 Instead of $69 — limited to this month only. No card required.
               </p>
 
-              {/* compact countdown */}
-              <div className="mt-4 flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 px-3 py-2">
-                <Clock className="h-3.5 w-3.5 text-primary/80" />
-                <span className="font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-primary/70">
-                  Ends tonight
-                </span>
-                <div className="ml-1 flex items-center gap-1">
-                  <Box v={timeLeft.h} l="Hrs" />
-                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
-                  <Box v={timeLeft.m} l="Min" />
-                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
-                  <Box v={timeLeft.s} l="Sec" />
-                </div>
-              </div>
-
               {/* CTAs */}
               <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
                 <button
@@ -417,7 +375,7 @@ function LimitedOfferBanner() {
                   onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
                 >
-                  <CalendarCheck className="h-4 w-4" /> Claim Offer
+                  <CalendarCheck className="h-4 w-4" /> Schedule free inspection now
                 </button>
                 <a
                   href="tel:6146835763"
@@ -426,11 +384,6 @@ function LimitedOfferBanner() {
                   <Phone className="h-4 w-4" /> Call Now
                 </a>
               </div>
-
-              <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
-                Code: <span className="text-primary font-extrabold">CHIM-FREE</span> · Mention when
-                booking
-              </p>
             </div>
           </div>
         </div>
@@ -477,7 +430,7 @@ function Hero() {
             <button
               type="button"
               onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-medium tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </button>
