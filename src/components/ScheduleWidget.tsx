@@ -36,17 +36,26 @@ const slots = [
 
 export function ScheduleWidget() {
   const [open, setOpen] = useState(false);
+  const [openedFromPath, setOpenedFromPath] = useState<string>("");
   useEffect(() => {
-    const onOpen = () => setOpen(true);
+    const onOpen = () => {
+      if (typeof window !== "undefined") setOpenedFromPath(window.location.pathname);
+      setOpen(true);
+    };
     window.addEventListener(OPEN_EVENT, onOpen);
     return () => window.removeEventListener(OPEN_EVENT, onOpen);
   }, []);
   return (
     <>
-      <StickyCta onClick={() => setOpen(true)} />
+      <StickyCta
+        onClick={() => {
+          if (typeof window !== "undefined") setOpenedFromPath(window.location.pathname);
+          setOpen(true);
+        }}
+      />
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-h-[92vh] overflow-y-auto border-2 border-flame/30 bg-card p-0 sm:max-w-xl [&>button.absolute]:right-3 [&>button.absolute]:top-3 [&>button.absolute]:z-10 [&>button.absolute]:flex [&>button.absolute]:h-9 [&>button.absolute]:w-9 [&>button.absolute]:items-center [&>button.absolute]:justify-center [&>button.absolute]:rounded-full [&>button.absolute]:border [&>button.absolute]:border-flame/40 [&>button.absolute]:bg-primary/70 [&>button.absolute]:text-primary-foreground [&>button.absolute]:opacity-100 [&>button.absolute]:shadow-[0_4px_12px_oklch(0_0_0/0.4)] [&>button.absolute]:backdrop-blur [&>button.absolute]:transition [&>button.absolute:hover]:bg-flame [&>button.absolute:hover]:text-primary [&>button.absolute_svg]:h-5 [&>button.absolute_svg]:w-5">
-          <ScheduleFlow variant="dialog" onDone={() => setOpen(false)} />
+          <ScheduleFlow variant="dialog" sourcePath={openedFromPath} onDone={() => setOpen(false)} />
         </DialogContent>
       </Dialog>
     </>
@@ -54,9 +63,10 @@ export function ScheduleWidget() {
 }
 
 export function ScheduleInline() {
+  const path = typeof window !== "undefined" ? window.location.pathname : "";
   return (
     <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[0_30px_80px_-30px_oklch(0_0_0/0.25)]">
-      <ScheduleFlow variant="inline" />
+      <ScheduleFlow variant="inline" sourcePath={path} />
     </div>
   );
 }
@@ -70,7 +80,7 @@ function getDefaultDate(): Date {
   return d;
 }
 
-function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDone?: () => void }) {
+function ScheduleFlow({ variant, sourcePath = "", onDone }: { variant: "dialog" | "inline"; sourcePath?: string; onDone?: () => void }) {
   const [step, setStep] = useState(0);
   const [service, setService] = useState<string>(services[0]);
   const [date, setDate] = useState<Date | undefined>(() => getDefaultDate());
@@ -97,8 +107,12 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
   const submit = useCallback(async () => {
     setSubmitting(true);
     const dateStr = date ? format(date, "EEE, MMM d") : undefined;
+    // Source includes the page the user opened the form from so we
+    // can see which page generated the lead.
+    const pageSuffix = sourcePath ? ` · ${sourcePath}` : "";
+    const sourceLabel = `Schedule widget${pageSuffix}`.slice(0, 60);
     const payload = {
-      source: "Schedule widget",
+      source: sourceLabel,
       name,
       phone,
       service,
@@ -126,7 +140,7 @@ function ScheduleFlow({ variant, onDone }: { variant: "dialog" | "inline"; onDon
     // with field-length validation.
     try {
       await supabase.from("leads").insert({
-        source: "Schedule widget",
+        source: sourceLabel,
         name,
         phone,
         service,
