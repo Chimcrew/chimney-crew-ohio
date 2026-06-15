@@ -557,8 +557,8 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="mt-4 font-display text-[1.3rem] font-extrabold leading-[1.12] tracking-[-0.025em] text-primary-foreground sm:text-[1.55rem] md:mt-6 md:text-[2rem] lg:text-[2.5rem]">
-              <span className="mb-2 inline-block rounded-md border-2 border-flame/80 bg-flame/10 px-2.5 py-1 text-primary-foreground">
+            <h1 className="mt-4 text-center font-display text-[1.55rem] font-extrabold leading-[1.1] tracking-[-0.025em] text-primary-foreground sm:text-[1.75rem] sm:text-left md:mt-6 md:text-[2.1rem] lg:text-[2.6rem]">
+              <span className="mb-2 block rounded-md border-2 border-flame/80 bg-flame/10 px-2.5 py-1 text-primary-foreground sm:inline-block">
                 The Chimney Experts
               </span>
               <span className="block">
