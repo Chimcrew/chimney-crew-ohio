@@ -22,6 +22,7 @@ import {
   formatFromPrice,
   warrantyFor,
   heroImageFor,
+  serviceCtaLabel,
   type ServiceSpec,
 } from "@/data/services";
 import { TrustBadges } from "@/components/TrustBadges";
@@ -35,8 +36,7 @@ function openSchedule() {
 }
 
 export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
-  const accent = ACCENT_CLASSES[service.accent];
-  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Appointment Online";
+  const ctaLabel = serviceCtaLabel(service);
 
   return (
     <div className="bg-background text-foreground">
@@ -59,10 +59,7 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       <Included service={service} />
 
       {/* Inline conversion block — keeps CTA reachable without scrolling back up */}
-      <InlineRepairCta />
-
-      {/* PROCESS — horizontal stepper with big numerals */}
-      <Process service={service} />
+      <InlineRepairCta ctaLabel={ctaLabel} />
 
       {/* SIGNS — alternating zig-zag list */}
       <Signs service={service} />
@@ -74,13 +71,10 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {service.benefits && service.benefits.length > 0 && <BenefitsBlock service={service} />}
 
       {/* Second inline CTA before final dark band */}
-      <InlineRepairCta variant="flame" />
+      <InlineRepairCta variant="flame" ctaLabel={ctaLabel} />
 
       {/* Pull-quote testimonial */}
       <PullQuote service={service} />
-
-      {/* WHY CHIMCREW (dark band) */}
-      <WhyChimCrew accent={accent} />
 
       {/* FAQ */}
       <Faqs service={service} />
