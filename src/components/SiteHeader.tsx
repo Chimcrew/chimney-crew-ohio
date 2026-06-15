@@ -181,6 +181,18 @@ export function SiteHeader() {
             ref={menuRef}
             className="hidden items-center rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-2 py-2 backdrop-blur md:flex"
           >
+            {/* Home first */}
+            <Link
+              to="/"
+              className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-sans text-[14px] font-semibold tracking-normal text-foreground/70 transition hover:text-foreground"
+              activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
+              activeOptions={{ exact: true }}
+            >
+              <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.78_0.19_92/0.8)] group-hover:bg-[oklch(0.78_0.19_92)]" />
+              Home
+              <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-[oklch(0.78_0.19_92)] transition-transform duration-300 group-hover:scale-x-100" />
+            </Link>
+
             {/* Services mega-dropdown */}
             <div
               className="relative"
@@ -318,7 +330,7 @@ export function SiteHeader() {
               )}
             </div>
 
-            {PRIMARY_NAV.map((n) => (
+            {PRIMARY_NAV.slice(1).map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
@@ -370,18 +382,16 @@ export function SiteHeader() {
         <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background text-foreground md:hidden">
           <div className="mx-auto max-w-7xl px-4 py-4 pb-8">
             <nav className="flex flex-col">
-              {PRIMARY_NAV.map((n) => (
-                <Link
-                  key={n.to}
-                  to={n.to}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-between border-b border-border/30 py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
-                  activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
-                  activeOptions={n.to === "/" ? { exact: true } : undefined}
-                >
-                  {n.label} <Flame className="h-4 w-4 text-[oklch(0.78_0.19_92)]" />
-                </Link>
-              ))}
+              {/* Home first */}
+              <Link
+                to="/"
+                onClick={() => setOpen(false)}
+                className="flex items-center justify-between border-b border-border/30 py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
+                activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
+                activeOptions={{ exact: true }}
+              >
+                Home <Flame className="h-4 w-4 text-[oklch(0.78_0.19_92)]" />
+              </Link>
 
               {/* Services mega-item */}
               <div className="border-b border-border/30">
@@ -466,6 +476,19 @@ export function SiteHeader() {
                   </div>
                 )}
               </div>
+
+              {PRIMARY_NAV.slice(1).map((n) => (
+                <Link
+                  key={n.to}
+                  to={n.to}
+                  onClick={() => setOpen(false)}
+                  className="flex items-center justify-between border-b border-border/30 py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
+                  activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
+                  activeOptions={n.to === "/" ? { exact: true } : undefined}
+                >
+                  {n.label} <Flame className="h-4 w-4 text-[oklch(0.78_0.19_92)]" />
+                </Link>
+              ))}
             </nav>
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
