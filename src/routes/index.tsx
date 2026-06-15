@@ -295,7 +295,7 @@ function MobileHero() {
               </span>
               <h1 className="font-display text-[1.5rem] sm:text-[1.85rem] font-black leading-[1.08] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
                 The Chimney Experts You've Trusted for{" "}
-                <span className="text-flame">Over 50 Years In Columbus, Ohio</span>
+                <span className="text-white">Over 50 Years In Columbus, Ohio</span>
               </h1>
               <p className="mt-4 text-[15px] leading-relaxed text-white/85">
                 Get a free chimney inspection this month — written photo report, same-day callbacks, zero pressure.
