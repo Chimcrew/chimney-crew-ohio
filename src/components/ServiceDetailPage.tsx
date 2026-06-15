@@ -58,14 +58,10 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       <Signs service={service} />
 
       {/* PROBLEMS (optional) */}
-      {service.problems && service.problems.length > 0 && (
-        <ProblemsBlock service={service} />
-      )}
+      {service.problems && service.problems.length > 0 && <ProblemsBlock service={service} />}
 
       {/* BENEFITS (optional) */}
-      {service.benefits && service.benefits.length > 0 && (
-        <BenefitsBlock service={service} />
-      )}
+      {service.benefits && service.benefits.length > 0 && <BenefitsBlock service={service} />}
 
       {/* Second inline CTA before final dark band */}
       <InlineRepairCta variant="flame" />
@@ -84,7 +80,6 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
 
       {/* FINAL CTA (dark band) */}
       <FinalServiceCta ctaLabel={ctaLabel} />
-
     </div>
   );
 }
@@ -118,11 +113,46 @@ function BrickBackdrop() {
             <rect x="31" y="31" width="58" height="28" rx="1.5" fill="oklch(0.095 0.009 32)" />
             <rect x="91" y="31" width="58" height="28" rx="1.5" fill="oklch(0.11 0.012 24)" />
             {/* Brick highlights — top edge */}
-            <line x1="1" y1="1.5" x2="59" y2="1.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
-            <line x1="61" y1="1.5" x2="119" y2="1.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
-            <line x1="-29" y1="31.5" x2="29" y2="31.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
-            <line x1="31" y1="31.5" x2="89" y2="31.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
-            <line x1="91" y1="31.5" x2="149" y2="31.5" stroke="oklch(0.18 0.015 30 / 0.4)" strokeWidth="0.5" />
+            <line
+              x1="1"
+              y1="1.5"
+              x2="59"
+              y2="1.5"
+              stroke="oklch(0.18 0.015 30 / 0.4)"
+              strokeWidth="0.5"
+            />
+            <line
+              x1="61"
+              y1="1.5"
+              x2="119"
+              y2="1.5"
+              stroke="oklch(0.18 0.015 30 / 0.4)"
+              strokeWidth="0.5"
+            />
+            <line
+              x1="-29"
+              y1="31.5"
+              x2="29"
+              y2="31.5"
+              stroke="oklch(0.18 0.015 30 / 0.4)"
+              strokeWidth="0.5"
+            />
+            <line
+              x1="31"
+              y1="31.5"
+              x2="89"
+              y2="31.5"
+              stroke="oklch(0.18 0.015 30 / 0.4)"
+              strokeWidth="0.5"
+            />
+            <line
+              x1="91"
+              y1="31.5"
+              x2="149"
+              y2="31.5"
+              stroke="oklch(0.18 0.015 30 / 0.4)"
+              strokeWidth="0.5"
+            />
           </pattern>
           <radialGradient id="brick-vignette" cx="50%" cy="45%" r="75%">
             <stop offset="0%" stopColor="oklch(0.18 0.01 250)" stopOpacity="0" />
@@ -150,9 +180,17 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="relative z-10 border-b border-white/5">
         <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-4 font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60 md:px-8">
-          <li><Link to="/" className="hover:text-flame">Home</Link></li>
+          <li>
+            <Link to="/" className="hover:text-flame">
+              Home
+            </Link>
+          </li>
           <li aria-hidden>/</li>
-          <li><Link to="/services" className="hover:text-flame">Services</Link></li>
+          <li>
+            <Link to="/services" className="hover:text-flame">
+              Services
+            </Link>
+          </li>
           <li aria-hidden>/</li>
           <li className="text-flame">{service.shortTitle}</li>
         </ol>
@@ -244,7 +282,10 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
 
         {/* RIGHT — product visual card */}
         <div className="relative lg:col-span-6">
-          <div className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-flame/10 blur-3xl" aria-hidden />
+          <div
+            className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-flame/10 blur-3xl"
+            aria-hidden
+          />
           <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
             <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
               <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
@@ -258,18 +299,31 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
             <div className="grid gap-0 md:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)]">
               <div className="relative aspect-[5/4] overflow-hidden bg-black">
                 <img
-                  src={service.variant === "inspection" ? sweepCloseupPhoto.url : fireplaceServicePhoto.url}
-                  alt={service.variant === "inspection"
-                    ? "A ChimCrew technician inspecting and sweeping a chimney on a roof"
-                    : "A ChimCrew technician servicing a fireplace inside an Ohio home"}
+                  src={
+                    service.variant === "inspection"
+                      ? sweepCloseupPhoto.url
+                      : fireplaceServicePhoto.url
+                  }
+                  alt={
+                    service.variant === "inspection"
+                      ? "A ChimCrew technician inspecting and sweeping a chimney on a roof"
+                      : "A ChimCrew technician servicing a fireplace inside an Ohio home"
+                  }
                   className="h-full w-full object-cover"
                   loading="lazy"
                   decoding="async"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/78 via-transparent to-transparent" aria-hidden />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-primary/78 via-transparent to-transparent"
+                  aria-hidden
+                />
                 <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
-                  <p className="font-display text-sm font-bold text-primary-foreground">Real technicians handling this work every week across Ohio.</p>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">Inspection photos · clean work area · written findings</p>
+                  <p className="font-display text-sm font-bold text-primary-foreground">
+                    Real technicians handling this work every week across Ohio.
+                  </p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">
+                    Inspection photos · clean work area · written findings
+                  </p>
                 </div>
               </div>
 
@@ -278,26 +332,32 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
                   <div className="grid h-12 w-12 place-items-center rounded-xl bg-flame/12 ring-1 ring-flame/25 text-flame">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">What to expect</p>
+                  <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                    What to expect
+                  </p>
                   <p className="mt-2 text-sm leading-relaxed text-primary-foreground/76">
-                    A local crew, a documented process, and a clear explanation of what we found before any repair work is recommended.
+                    A local crew, a documented process, and a clear explanation of what we found
+                    before any repair work is recommended.
                   </p>
                 </div>
 
                 <div className="space-y-3">
-                  {[
-                    priceLabel || "Free quote",
-                    warrantyFor(service),
-                    "Same-day callback",
-                  ].map((item) => (
-                    <div key={item} className="rounded-lg border border-white/10 bg-primary/40 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
-                      {item}
-                    </div>
-                  ))}
+                  {[priceLabel || "Free quote", warrantyFor(service), "Same-day callback"].map(
+                    (item) => (
+                      <div
+                        key={item}
+                        className="rounded-lg border border-white/10 bg-primary/40 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80"
+                      >
+                        {item}
+                      </div>
+                    ),
+                  )}
                 </div>
 
                 <div className="rounded-xl border border-white/10 bg-primary/50 px-4 py-3">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">Service area</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                    Service area
+                  </p>
                   <p className="mt-1 inline-flex items-center gap-2 text-sm text-primary-foreground/74">
                     <MapPin className="h-3.5 w-3.5 text-flame" /> Columbus · Dayton · Cincinnati
                   </p>
@@ -350,9 +410,7 @@ function Overview({ service }: { service: ServiceSpec }) {
     <section className="border-b border-border py-24">
       <div className="mx-auto grid max-w-7xl gap-16 px-4 md:px-8 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
-            // The job
-          </p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// The job</p>
           <h2 className="mt-4 font-display text-5xl font-extrabold leading-[1.02] tracking-tight md:text-6xl">
             {service.shortTitle}, done <span className="italic text-flame">right.</span>
           </h2>
@@ -432,7 +490,10 @@ function Process({ service }: { service: ServiceSpec }) {
   return (
     <section className="relative border-b border-border bg-primary py-24 text-primary-foreground">
       <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-grid" aria-hidden />
-      <div className="pointer-events-none absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-flame/15 blur-3xl" aria-hidden />
+      <div
+        className="pointer-events-none absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
+        aria-hidden
+      />
 
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl">
@@ -477,7 +538,9 @@ function Process({ service }: { service: ServiceSpec }) {
 function Signs({ service }: { service: ServiceSpec }) {
   const loud = service.variant === "repair" || service.variant === "emergency";
   return (
-    <section className={`border-b border-border py-24 ${loud ? "bg-flame/[0.04]" : "bg-background"}`}>
+    <section
+      className={`border-b border-border py-24 ${loud ? "bg-flame/[0.04]" : "bg-background"}`}
+    >
       <div className="mx-auto max-w-5xl px-4 md:px-8">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
@@ -486,9 +549,13 @@ function Signs({ service }: { service: ServiceSpec }) {
             </p>
             <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
               {loud ? (
-                <>If you see any of this, <span className="italic text-flame">call today.</span></>
+                <>
+                  If you see any of this, <span className="italic text-flame">call today.</span>
+                </>
               ) : (
-                <>When to <span className="italic text-flame">book it.</span></>
+                <>
+                  When to <span className="italic text-flame">book it.</span>
+                </>
               )}
             </h2>
           </div>
@@ -504,10 +571,7 @@ function Signs({ service }: { service: ServiceSpec }) {
 
         <ul className="mt-14 divide-y divide-border border-y border-border">
           {service.signs.map((s, i) => (
-            <li
-              key={s}
-              className="group grid items-center gap-6 py-8 md:grid-cols-[auto_1fr_auto]"
-            >
+            <li key={s} className="group grid items-center gap-6 py-8 md:grid-cols-[auto_1fr_auto]">
               <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-muted-foreground md:w-20">
                 No. {String(i + 1).padStart(2, "0")}
               </span>
@@ -536,7 +600,9 @@ function ProblemsBlock({ service }: { service: ServiceSpec }) {
     <section className="border-b border-border bg-secondary/30 py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Common problems</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
+            // Common problems
+          </p>
           <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
             Problems we see <span className="italic text-flame">every week.</span>
           </h2>
@@ -564,7 +630,9 @@ function BenefitsBlock({ service }: { service: ServiceSpec }) {
     <section className="border-b border-border bg-background py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// The payoff</p>
+          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
+            // The payoff
+          </p>
           <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
             What you get when it's <span className="italic text-flame">done right.</span>
           </h2>
@@ -595,7 +663,9 @@ function PullQuote({ service }: { service: ServiceSpec }) {
       <div className="mx-auto max-w-4xl px-4 text-center md:px-8">
         <Quote className="mx-auto h-10 w-10 text-flame" />
         <p className="mt-6 font-display text-3xl font-bold leading-snug text-foreground md:text-4xl lg:text-5xl">
-          “They showed up on time, explained everything with photos, and the {service.shortTitle.toLowerCase()} held up through the worst winter we've had. <span className="italic text-flame">Best contractor we've hired.</span>”
+          “They showed up on time, explained everything with photos, and the{" "}
+          {service.shortTitle.toLowerCase()} held up through the worst winter we've had.{" "}
+          <span className="italic text-flame">Best contractor we've hired.</span>”
         </p>
         <div className="mt-8 flex items-center justify-center gap-4">
           <div className="grid h-12 w-12 place-items-center rounded-full bg-flame font-display text-lg font-extrabold text-primary">
@@ -607,7 +677,9 @@ function PullQuote({ service }: { service: ServiceSpec }) {
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="h-3 w-3 fill-flame text-flame" />
               ))}
-              <span className="ml-2 font-mono uppercase tracking-widest">Verified Google review</span>
+              <span className="ml-2 font-mono uppercase tracking-widest">
+                Verified Google review
+              </span>
             </p>
           </div>
         </div>
@@ -621,28 +693,54 @@ function PullQuote({ service }: { service: ServiceSpec }) {
 function WhyChimCrew({ accent }: { accent: (typeof ACCENT_CLASSES)[keyof typeof ACCENT_CLASSES] }) {
   void accent;
   const items = [
-    { icon: ShieldCheck, label: "Licensed & Insured", desc: "Fully covered, CSIA-credentialed crew." },
-    { icon: CalendarCheck, label: "Same-Day Availability", desc: "Call before noon, we'll be there." },
-    { icon: ClipboardCheck, label: "Detailed Reports", desc: "Photos + written findings every visit." },
-    { icon: BadgeDollarSign, label: "Upfront Pricing", desc: "Flat-rate quote in writing — no surprises." },
-    { icon: Star, label: "5-Star Customer Service", desc: "Hundreds of 5-star reviews from Ohio homeowners." },
-    { icon: MapPin, label: "Locally Owned & Operated", desc: "Family-run from right here in Ohio." },
+    {
+      icon: ShieldCheck,
+      label: "Licensed & Insured",
+      desc: "Fully covered, CSIA-credentialed crew.",
+    },
+    {
+      icon: CalendarCheck,
+      label: "Same-Day Availability",
+      desc: "Call before noon, we'll be there.",
+    },
+    {
+      icon: ClipboardCheck,
+      label: "Detailed Reports",
+      desc: "Photos + written findings every visit.",
+    },
+    {
+      icon: BadgeDollarSign,
+      label: "Upfront Pricing",
+      desc: "Flat-rate quote in writing — no surprises.",
+    },
+    {
+      icon: Star,
+      label: "5-Star Customer Service",
+      desc: "Hundreds of 5-star reviews from Ohio homeowners.",
+    },
+    {
+      icon: MapPin,
+      label: "Locally Owned & Operated",
+      desc: "Family-run from right here in Ohio.",
+    },
   ];
   return (
     <section className="relative overflow-hidden border-b border-border bg-primary py-24 text-primary-foreground">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" aria-hidden />
-      <div className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-flame/15 blur-3xl" aria-hidden />
+      <div
+        className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
+        aria-hidden
+      />
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Why ChimCrew</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
+          // Why ChimCrew
+        </p>
         <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-5xl">
           One local crew. <span className="italic text-flame">Six reasons to call us.</span>
         </h2>
         <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it) => (
-            <div
-              key={it.label}
-              className="group bg-primary p-7 transition hover:bg-white/[0.04]"
-            >
+            <div key={it.label} className="group bg-primary p-7 transition hover:bg-white/[0.04]">
               <div className="grid h-11 w-11 place-items-center rounded-xl bg-flame/15 text-flame ring-1 ring-flame/30 transition group-hover:bg-flame group-hover:text-primary">
                 <it.icon className="h-5 w-5" />
               </div>
@@ -662,7 +760,9 @@ function Faqs({ service }: { service: ServiceSpec }) {
   return (
     <section className="border-b border-border bg-background py-24">
       <div className="mx-auto max-w-4xl px-4 md:px-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Common questions</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
+          // Common questions
+        </p>
         <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
           {service.shortTitle} <span className="italic text-flame">FAQs.</span>
         </h2>
@@ -673,7 +773,9 @@ function Faqs({ service }: { service: ServiceSpec }) {
               className="group rounded-2xl border border-border bg-card p-6 transition open:border-flame open:shadow-[0_15px_40px_-15px_oklch(0.78_0.19_92/0.35)]"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6">
-                <span className="font-display text-lg font-bold text-foreground md:text-xl">{f.q}</span>
+                <span className="font-display text-lg font-bold text-foreground md:text-xl">
+                  {f.q}
+                </span>
                 <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border text-flame transition group-open:rotate-45 group-open:border-flame group-open:bg-flame group-open:text-primary text-xl leading-none">
                   +
                 </span>
@@ -701,7 +803,9 @@ function Related({ service }: { service: ServiceSpec }) {
   return (
     <section className="border-b border-border bg-secondary/30 py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Pairs well with</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
+          // Pairs well with
+        </p>
         <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
           Related <span className="italic text-flame">services.</span>
         </h2>
@@ -740,7 +844,8 @@ function Related({ service }: { service: ServiceSpec }) {
                   <h3 className="font-display text-2xl font-extrabold">{s.shortTitle}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{s.tagline}</p>
                   <span className="mt-5 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-flame">
-                    Learn more <ArrowRight className="h-3 w-3 transition group-hover:translate-x-1" />
+                    Learn more{" "}
+                    <ArrowRight className="h-3 w-3 transition group-hover:translate-x-1" />
                   </span>
                 </div>
               </Link>
@@ -758,15 +863,24 @@ function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
   return (
     <section className="relative overflow-hidden bg-primary py-24 text-primary-foreground">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-      <div className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-flame/25 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -left-32 -bottom-32 h-[28rem] w-[28rem] rounded-full bg-flame/15 blur-3xl" aria-hidden />
+      <div
+        className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-flame/25 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -left-32 -bottom-32 h-[28rem] w-[28rem] rounded-full bg-flame/15 blur-3xl"
+        aria-hidden
+      />
       <div className="relative mx-auto max-w-4xl px-4 text-center md:px-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Free inspection</p>
+        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
+          // Free inspection
+        </p>
         <h2 className="mt-4 font-display text-5xl font-extrabold leading-[1.02] md:text-7xl">
           Not sure what's wrong with <span className="italic text-flame">your chimney?</span>
         </h2>
         <p className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/80">
-          Schedule a free inspection. We'll show you exactly what needs attention — with photos and a written report.
+          Schedule a free inspection. We'll show you exactly what needs attention — with photos and
+          a written report.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <button
@@ -828,7 +942,13 @@ function InlineRepairCta({ variant = "dark" }: { variant?: "dark" | "flame" }) {
           <h3 className="mt-2 font-display text-3xl font-extrabold leading-tight md:text-4xl">
             Need Chimney Repair?
           </h3>
-          <p className={flame ? "mt-2 text-sm font-semibold text-primary/80 md:text-base" : "mt-2 text-sm text-primary-foreground/80 md:text-base"}>
+          <p
+            className={
+              flame
+                ? "mt-2 text-sm font-semibold text-primary/80 md:text-base"
+                : "mt-2 text-sm text-primary-foreground/80 md:text-base"
+            }
+          >
             Book Your Free Chimney Inspection Today.
           </p>
         </div>

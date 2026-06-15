@@ -20,8 +20,14 @@ export function DroneInspection() {
         aria-hidden
       />
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-      <div className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/20 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/10 blur-3xl" aria-hidden />
+      <div
+        className="pointer-events-none absolute -left-32 top-1/4 h-[28rem] w-[28rem] rounded-full bg-flame/20 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-flame/10 blur-3xl"
+        aria-hidden
+      />
 
       {/* Subtle scan-line grid overlay */}
       <div
@@ -47,8 +53,8 @@ export function DroneInspection() {
             Drone <span className="text-flame">Chimney Inspection</span>
           </h2>
           <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
-            Get a detailed aerial inspection without climbing onto your roof. Fast,
-            safe, and accurate chimney diagnostics using professional drone technology.
+            Get a detailed aerial inspection without climbing onto your roof. Fast, safe, and
+            accurate chimney diagnostics using professional drone technology.
           </p>
 
           <ul className="mt-7 grid gap-3 sm:grid-cols-2">
@@ -100,13 +106,20 @@ export function DroneInspection() {
                   preload="metadata"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" aria-hidden />
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"
+                  aria-hidden
+                />
                 <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-primary/70 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/82 backdrop-blur">
                   <Camera className="h-3 w-3 text-flame" /> 4K drone footage
                 </div>
                 <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
-                  <p className="font-display text-sm font-bold text-primary-foreground">Roofline, crown, chase cover, flashing, and masonry documented in one visit.</p>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">Photo report · safer roof access · faster diagnosis</p>
+                  <p className="font-display text-sm font-bold text-primary-foreground">
+                    Roofline, crown, chase cover, flashing, and masonry documented in one visit.
+                  </p>
+                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">
+                    Photo report · safer roof access · faster diagnosis
+                  </p>
                 </div>
               </div>
 
