@@ -185,7 +185,7 @@ function HeroToOfferBridge() {
           {/* live badge */}
           <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-flame px-2.5 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-primary shadow-sm">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-            Real Ohio Job
+            Ohio Job
           </span>
           {/* caption ribbon */}
           <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent px-4 pb-3 pt-8">
@@ -303,7 +303,7 @@ function HeroPhotoCard() {
             </button>
           ))}
           <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
-            Real jobs
+            Jobs
           </span>
         </div>
       </div>
@@ -504,7 +504,7 @@ function Hero() {
                   </p>
                 </div>
                 <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
-                  Real photos
+                  On the job
                 </span>
               </div>
             </div>
@@ -919,7 +919,7 @@ function BeforeAfterHome() {
             </span>
           </h2>
           <p className="mt-3 text-base text-primary-foreground/80">
-            Real Ohio chimneys, real ChimCrew results — drag any photo with your finger to compare.
+            Ohio chimneys, ChimCrew results — drag any photo with your finger to compare.
           </p>
         </div>
 
@@ -1453,7 +1453,7 @@ function Testimonials() {
               <Star className="h-3.5 w-3.5 text-flame" /> Reviews
             </p>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-              Real Ohio homeowners.{" "}
+              Ohio homeowners.{" "}
               <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
                 Honest words
               </span>
@@ -1518,7 +1518,7 @@ function Faq() {
       a: "Our chimney inspection is only $69 for Columbus-area homeowners. Repairs are quoted in writing, in plain English, after we see the chimney — no hidden fees.",
     },
     {
-      q: "Are you really local?",
+      q: "Are you local?",
       a: "Born and raised in Ohio. Our crew lives in Columbus, Cincinnati and Dayton — same neighborhoods we service.",
     },
   ];
@@ -1537,7 +1537,7 @@ function Faq() {
             .
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
-            Real Ohioans answer the phone. No call centers, no pressure, no charge for advice.
+            Ohioans answer the phone. No call centers, no pressure, no charge for advice.
           </p>
           <a
             href="tel:6146835763"
@@ -1610,7 +1610,7 @@ function ServiceArea() {
             to the streets of{" "}
             <span className="font-semibold text-primary-foreground">Cincinnati</span> and{" "}
             <span className="font-semibold text-primary-foreground">Dayton</span> — three metros,
-            one local crew, real same-day dispatch.
+            one local crew, same-day dispatch.
           </p>
         </div>
 
