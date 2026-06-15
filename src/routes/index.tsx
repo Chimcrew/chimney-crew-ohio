@@ -21,6 +21,8 @@ import {
   ThumbsUp,
   Award,
   HardHat,
+  Camera,
+  Video,
 } from "lucide-react";
 import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
 import { InlineLeadForm } from "@/components/InlineLeadForm";
@@ -137,6 +139,8 @@ function Index() {
       <TrustBar />
       <TrustMarquee />
       <EmergencyCallBar />
+      <CommonProblems />
+      <PhotoVideoTrust />
       <RecentProjects />
       <DroneInspection />
       <ServiceAreaSeo />
