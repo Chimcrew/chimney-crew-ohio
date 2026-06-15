@@ -122,13 +122,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       {/* Tiny utility strip */}
-      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] md:block">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] md:px-8">
-          <span className="flex items-center gap-2 opacity-80">
+      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] lg:block">
+        <div className="mx-auto grid max-w-[96rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 py-2 font-display text-[10px] font-black uppercase tracking-[0.18em] xl:px-8 xl:text-[11px] xl:tracking-[0.22em]">
+          <span className="flex min-w-0 items-center gap-2 opacity-90">
             <MapPin className="h-3.5 w-3.5" /> Serving Columbus, Ohio &amp; Surrounding Areas — Licensed &amp; Insured
           </span>
-          <span className="flex items-center gap-4">
-            <span className="hidden items-center gap-1.5 sm:flex opacity-80">
+          <span className="flex shrink-0 items-center gap-4">
+            <span className="hidden items-center gap-1.5 xl:flex opacity-90">
               <span className="grid h-4 w-4 place-items-center rounded-full bg-[oklch(0.92_0.18_95)] text-[oklch(0.18_0.02_250)] text-[10px] font-bold">★</span>
               1,836 Five-Star Reviews
             </span>
@@ -145,13 +145,13 @@ export function SiteHeader() {
             : "bg-background/70"
         } backdrop-blur-xl text-foreground`}
       >
-        <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 md:px-8 md:py-3">
+        <div className="relative mx-auto grid max-w-[96rem] grid-cols-[auto_1fr_auto] items-center gap-2 px-3 py-2 sm:px-5 md:py-3 xl:px-8">
           {/* Flashing OPEN NOW button — absolutely centered in the header */}
           <button
             type="button"
             onClick={() => openScheduleDialog()}
             aria-label="We're open now — schedule online"
-            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-foreground/80 shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] lg:hidden"
+            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border border-[oklch(0_0_0/0.12)] bg-background/80 px-3.5 py-2 font-display text-[10px] font-black uppercase tracking-[0.12em] text-header-ink shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] sm:inline-flex lg:hidden"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-pulse rounded-full bg-[oklch(0.65_0.18_145/0.4)]" />
@@ -169,14 +169,14 @@ export function SiteHeader() {
             <img
               src={logoHeader}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className="relative z-40 -mb-1 h-11 w-auto max-w-none origin-left object-contain drop-shadow-[0_4px_8px_oklch(0.18_0.02_250/0.12)] transition-transform duration-300 ease-out will-change-transform md:-mb-2 md:h-16 group-hover:-translate-y-0.5 group-hover:scale-[1.04]"
+              className="relative z-40 -mb-1 h-10 w-auto max-w-none origin-left object-contain drop-shadow-[0_4px_8px_oklch(0.18_0.02_250/0.12)] transition-transform duration-300 ease-out will-change-transform sm:h-12 md:-mb-2 md:h-14 xl:h-16 group-hover:-translate-y-0.5 group-hover:scale-[1.04]"
             />
           </Link>
 
           {/* Nav pill */}
           <nav
             ref={menuRef}
-            className="hidden items-center rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-1.5 py-1.5 backdrop-blur lg:flex"
+            className="mx-auto hidden min-w-0 max-w-full items-center justify-center overflow-hidden rounded-full border border-[oklch(0_0_0/0.1)] bg-background/75 px-1 py-1 shadow-[0_8px_24px_oklch(0.18_0.02_250/0.06)] backdrop-blur lg:flex xl:px-1.5 xl:py-1.5"
           >
             {PRIMARY_NAV.map((n) => {
               if (n.kind === "dropdown") {
@@ -193,11 +193,11 @@ export function SiteHeader() {
                       onClick={() => setOpenMenu((cur) => (cur === n.key ? null : n.key))}
                       aria-expanded={isOpen}
                       aria-haspopup="menu"
-                      className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] transition xl:text-[12px] xl:tracking-[0.18em] ${
-                        isOpen ? "text-[oklch(0.65_0.18_92)]" : "text-foreground/70 hover:text-foreground"
+                      className={`group relative inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-2 font-display text-[10px] font-black uppercase tracking-[0.08em] transition xl:gap-1.5 xl:px-2.5 xl:text-[11px] xl:tracking-[0.12em] 2xl:text-[12px] ${
+                        isOpen ? "bg-[oklch(0.88_0.19_92/0.35)] text-header-ink" : "text-header-ink hover:bg-[oklch(0.18_0.02_250/0.04)]"
                       }`}
                     >
-                      <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.78_0.19_92/0.8)] group-hover:bg-[oklch(0.78_0.19_92)]" />
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[oklch(0.78_0.19_92/0.9)] group-hover:bg-[oklch(0.78_0.19_92)]" />
                       {n.label}
                       <ChevronDown
                         className={`h-3 w-3 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
@@ -247,11 +247,11 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-foreground/70 transition hover:text-foreground xl:text-[12px] xl:tracking-[0.18em]"
-                  activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
+                  className="group relative inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2 py-2 font-display text-[10px] font-black uppercase tracking-[0.08em] text-header-ink transition hover:bg-[oklch(0.18_0.02_250/0.04)] xl:gap-1.5 xl:px-2.5 xl:text-[11px] xl:tracking-[0.12em] 2xl:text-[12px]"
+                  activeProps={{ className: "bg-[oklch(0.88_0.19_92/0.35)] text-header-ink" }}
                   activeOptions={n.to === "/" ? { exact: true } : undefined}
                 >
-                  <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.78_0.19_92/0.8)] group-hover:bg-[oklch(0.78_0.19_92)]" />
+                  <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[oklch(0.78_0.19_92/0.9)] group-hover:bg-[oklch(0.78_0.19_92)]" />
                   {n.label}
                   <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-[oklch(0.78_0.19_92)] transition-transform duration-300 group-hover:scale-x-100" />
                 </Link>
