@@ -90,15 +90,15 @@ function ChimneyRepairColumbus() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#book"
-                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_14px_40px_oklch(0.78_0.19_92/0.45)] ring-2 ring-flame/40 transition hover:-translate-y-0.5 hover:bg-white"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
               >
-                <CalendarCheck className="h-5 w-5" /> Schedule Inspection
+                <CalendarCheck className="h-4 w-4" /> Schedule appointment online
               </a>
               <a
                 href="tel:6146835763"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.04] px-7 py-4 font-display text-base font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-5 font-sans text-[13px] font-medium tracking-normal text-primary-foreground transition hover:border-flame active:scale-95 sm:px-6"
               >
-                <Phone className="h-5 w-5 text-flame" /> Call Now
+                <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
               </a>
             </div>
 
@@ -159,13 +159,13 @@ function ChimneyRepairColumbus() {
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <a
               href="#book"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.35)] transition hover:-translate-y-0.5"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
-              <CalendarCheck className="h-4 w-4" /> Book Free Inspection
+              <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </a>
             <a
               href="tel:6146835763"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-primary px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-primary px-5 font-sans text-[13px] font-medium tracking-normal text-primary transition hover:bg-primary hover:text-primary-foreground active:scale-95 sm:px-6"
             >
               <Phone className="h-4 w-4" /> (614) 683-5763
             </a>
@@ -286,13 +286,13 @@ function ChimneyRepairColumbus() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a
               href="#book"
-              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3.5 font-display text-sm font-extrabold uppercase tracking-wider text-primary-foreground transition hover:brightness-110"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0.18_0.02_250/0.25)] transition active:scale-95 sm:px-6"
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule Inspection
+              <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </a>
             <a
               href="tel:6146835763"
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-primary px-6 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-primary px-5 font-sans text-[13px] font-medium tracking-normal text-primary transition hover:bg-primary hover:text-primary-foreground active:scale-95 sm:px-6"
             >
               <Phone className="h-4 w-4" /> (614) 683-5763
             </a>
