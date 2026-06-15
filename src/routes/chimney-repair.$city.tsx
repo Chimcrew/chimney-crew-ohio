@@ -141,7 +141,7 @@ function CityPage() {
               <ScheduleInline />
             </div>
             <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
-              No card · No spam · A real {city.name} tech texts you in &lt; 60 minutes
+              No card · No spam · A {city.name} tech texts you in &lt; 60 minutes
             </p>
           </div>
         </div>

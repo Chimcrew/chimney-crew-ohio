@@ -15,7 +15,7 @@ export const Route = createFileRoute("/blog")({
       },
       { name: "keywords", content: "chimney sweep Ohio, chimney repair Columbus, creosote, chimney liner, chimney inspection Cincinnati, chimney crown Dayton" },
       { property: "og:title", content: "ChimCrew Blog — Ohio Chimney Tips & Safety" },
-      { property: "og:description", content: "Real advice from the rooftops — written by sweeps, not marketers." },
+      { property: "og:description", content: "Advice from the rooftops — written by sweeps, not marketers." },
       { property: "og:url", content: `${SITE}/blog` },
       { property: "og:type", content: "website" },
     ],

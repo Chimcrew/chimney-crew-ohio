@@ -207,7 +207,7 @@ function ChimneyRepairColumbus() {
       <section className="border-y border-border bg-background py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Real Columbus jobs</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Columbus jobs</p>
             <h2 className="mt-3 font-display text-3xl font-extrabold text-primary md:text-5xl">
               Before &amp; After
             </h2>

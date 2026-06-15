@@ -25,13 +25,13 @@ const SITE = "https://chimcrew.com";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — Real ChimCrew Jobs in Columbus, Cincinnati & Dayton" },
+      { title: "Gallery — ChimCrew Jobs in Columbus, Cincinnati & Dayton" },
       {
         name: "description",
         content:
-          "Real photos from ChimCrew jobs across Ohio — crown rebuilds, stainless liner installs, tuckpointing, caps, and waterproofing. No stock imagery, no AI.",
+          "Photos from ChimCrew jobs across Ohio — crown rebuilds, stainless liner installs, tuckpointing, caps, and waterproofing. No stock imagery, no AI.",
       },
-      { property: "og:title", content: "ChimCrew Gallery — Real Ohio Chimney Work" },
+      { property: "og:title", content: "ChimCrew Gallery — Ohio Chimney Work" },
       { property: "og:description", content: "Every photo is a job we finished. No stock. No AI." },
       { property: "og:url", content: `${SITE}/gallery` },
       { property: "og:image", content: `${SITE}${p01}` },
@@ -93,13 +93,13 @@ function GalleryPage() {
         <div className="pointer-events-none absolute -right-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-flame/20 blur-3xl" aria-hidden />
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
           <p className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
-            ◆ Real Work · Real Ohio Homes
+            ◆ Work · Ohio Homes
           </p>
           <h1 className="mt-4 font-display text-5xl font-extrabold leading-[1] tracking-tight md:text-7xl">
             On the <span className="text-flame">job</span>.
           </h1>
           <p className="mt-5 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
-            Every photo below is a real ChimCrew job we finished this season —
+            Every photo below is a ChimCrew job we finished this season —
             shot on a phone from the roof or the truck. No stock. No AI. No
             staged before-and-afters.
           </p>
