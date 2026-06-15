@@ -468,7 +468,7 @@ function Hero() {
 
         {/* RIGHT — photo column. Uncropped, full team visible. */}
         <div className="relative order-1 lg:order-2 lg:col-span-6">
-          <div className="relative mx-auto w-full max-w-2xl lg:max-w-none">
+          <div className="relative -mx-4 w-full sm:mx-auto sm:max-w-2xl lg:mx-0 lg:max-w-none">
             {/* soft ambient glow */}
             <div
               className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/20 blur-3xl"
@@ -498,9 +498,6 @@ function Hero() {
                     Columbus, Ohio · Established crew
                   </p>
                 </div>
-                <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
-                  Real photos
-                </span>
               </div>
             </div>
 
