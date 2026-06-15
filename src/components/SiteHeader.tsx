@@ -151,7 +151,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => openScheduleDialog()}
             aria-label="We're open now — schedule online"
-            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-foreground/80 shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] md:hidden"
+            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2.5 rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-foreground/80 shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] lg:hidden"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-pulse rounded-full bg-[oklch(0.65_0.18_145/0.4)]" />
@@ -176,7 +176,7 @@ export function SiteHeader() {
           {/* Nav pill */}
           <nav
             ref={menuRef}
-            className="hidden items-center rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-2 py-2 backdrop-blur md:flex"
+            className="hidden items-center rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-1.5 py-1.5 backdrop-blur lg:flex"
           >
             {PRIMARY_NAV.map((n) => {
               if (n.kind === "dropdown") {
@@ -193,7 +193,7 @@ export function SiteHeader() {
                       onClick={() => setOpenMenu((cur) => (cur === n.key ? null : n.key))}
                       aria-expanded={isOpen}
                       aria-haspopup="menu"
-                      className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-sans text-[14px] font-semibold tracking-normal transition ${
+                      className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] transition xl:text-[12px] xl:tracking-[0.18em] ${
                         isOpen ? "text-[oklch(0.65_0.18_92)]" : "text-foreground/70 hover:text-foreground"
                       }`}
                     >
@@ -247,7 +247,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-sans text-[14px] font-semibold tracking-normal text-foreground/70 transition hover:text-foreground"
+                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-foreground/70 transition hover:text-foreground xl:text-[12px] xl:tracking-[0.18em]"
                   activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
                   activeOptions={n.to === "/" ? { exact: true } : undefined}
                 >
@@ -260,26 +260,29 @@ export function SiteHeader() {
           </nav>
 
           {/* CTAs */}
-          <div className="hidden items-center gap-2 md:flex">
+          <div className="hidden items-center gap-2 lg:flex">
             <a
               href="tel:6146835763"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2.5 font-sans text-[13px] font-semibold tracking-normal text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)]"
+              aria-label="Call (614) 683-5763"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)] xl:px-4"
             >
-              <Phone className="h-4 w-4 shrink-0" /> (614) 683-5763
+              <Phone className="h-4 w-4 shrink-0" />
+              <span className="hidden xl:inline">(614) 683-5763</span>
             </a>
             <button
               type="button"
               onClick={() => openScheduleDialog()}
-              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[oklch(0.78_0.19_92)] px-5 py-2.5 font-sans text-[13px] font-bold tracking-normal text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)]"
+              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[oklch(0.78_0.19_92)] px-4 py-2.5 font-mono text-[11px] font-extrabold uppercase tracking-[0.16em] text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)] xl:px-5 xl:tracking-[0.18em]"
             >
-              <CalendarCheck className="h-4 w-4 shrink-0" /> Schedule Online
+              <CalendarCheck className="h-4 w-4 shrink-0" /> Schedule
+              <span className="hidden xl:inline">&nbsp;Online</span>
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </button>
           </div>
 
           {/* Mobile toggle */}
           <button
-            className="grid h-10 w-10 place-items-center rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] md:hidden"
+            className="grid h-10 w-10 place-items-center rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] lg:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -293,7 +296,7 @@ export function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background text-foreground md:hidden">
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background text-foreground lg:hidden">
           <div className="mx-auto max-w-7xl px-4 py-4 pb-8">
             <nav className="flex flex-col">
               {PRIMARY_NAV.map((n) => {
@@ -305,7 +308,7 @@ export function SiteHeader() {
                         type="button"
                         onClick={() => setMobileOpenKey((cur) => (cur === n.key ? null : n.key))}
                         aria-expanded={isOpen}
-                        className="flex w-full items-center justify-between py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
+                        className="flex w-full items-center justify-between py-3.5 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground"
                       >
                         <span className={`inline-flex items-center gap-2 ${isOpen ? "text-[oklch(0.65_0.18_92)]" : ""}`}>
                           <n.Icon className="h-5 w-5 text-[oklch(0.65_0.18_92)]" aria-hidden />
@@ -363,7 +366,7 @@ export function SiteHeader() {
                     key={n.to}
                     to={n.to}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between border-b border-border/30 py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
+                    className="flex items-center justify-between border-b border-border/30 py-3.5 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground"
                     activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
                     activeOptions={n.to === "/" ? { exact: true } : undefined}
                   >
