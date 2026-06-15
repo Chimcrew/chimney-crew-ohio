@@ -36,7 +36,7 @@ type ServiceCategory = {
 };
 
 const REPAIR_MENU: MenuLink[] = [
-  { label: "Chimney Repair", to: "/contact" },
+  { label: "Chimney Repair", to: "/chimney-repair-columbus" },
   { label: "Chimney Leak Repair", to: "/services/$slug", slug: "flashing-repair" },
   { label: "Chimney Crown Repair", to: "/services/$slug", slug: "crown-tuckpoint" },
   { label: "Chimney Crown Rebuild", to: "/services/$slug", slug: "crown-tuckpoint" },
