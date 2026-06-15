@@ -630,27 +630,36 @@ function WhyChimCrew({ accent }: { accent: (typeof ACCENT_CLASSES)[keyof typeof 
     },
   ];
   return (
-    <section className="relative overflow-hidden border-b border-border bg-primary py-24 text-primary-foreground">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" aria-hidden />
+    <section className="relative overflow-hidden border-b border-border bg-background py-24 text-foreground">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
       <div
         className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
         aria-hidden
       />
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
-          // Why ChimCrew
-        </p>
-        <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-5xl">
-          One local crew. <span className="italic text-flame">Six reasons to call us.</span>
-        </h2>
-        <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
+            <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why ChimCrew
+          </p>
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
+            Six reasons Ohio homeowners{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              trust us first
+            </span>
+            .
+          </h2>
+        </div>
+        <div className="mt-12 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it) => (
-            <div key={it.label} className="group bg-primary p-7 transition hover:bg-white/[0.04]">
+            <div
+              key={it.label}
+              className="group rounded-2xl border border-border bg-card p-7 shadow-[0_18px_50px_-20px_oklch(0_0_0/0.12)] transition hover:-translate-y-1 hover:border-flame/40"
+            >
               <div className="grid h-11 w-11 place-items-center rounded-xl bg-flame/15 text-flame ring-1 ring-flame/30 transition group-hover:bg-flame group-hover:text-primary">
                 <it.icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 font-display text-xl font-extrabold">{it.label}</h3>
-              <p className="mt-2 text-sm text-primary-foreground/70">{it.desc}</p>
+              <h3 className="mt-5 font-display text-xl font-extrabold text-foreground">{it.label}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{it.desc}</p>
             </div>
           ))}
         </div>
