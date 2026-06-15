@@ -570,28 +570,116 @@ function Hero() {
    TRUST MARQUEE
    ============================================================ */
 function TrustMarquee() {
-  const items = [
-    "CSIA Certified",
-    "BBB A+ Rated",
-    "Licensed in Ohio",
-    "Fully Insured",
-    "Family-Owned Since 1975",
-    "1,836 ★★★★★ Reviews",
-    "Same-Day Callback",
-    "24/7 Emergency Service",
+  // Review-platform chips. Brand-styled inline so we don't ship 3rd-party logo files.
+  const chips = [
+    {
+      label: "Google",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-medium">
+          <span className="text-[#4285F4]">G</span>
+          <span className="text-[#EA4335]">o</span>
+          <span className="text-[#FBBC05]">o</span>
+          <span className="text-[#4285F4]">g</span>
+          <span className="text-[#34A853]">l</span>
+          <span className="text-[#EA4335]">e</span>
+          <span className="ml-1 text-[#FBBC05]">★★★★★</span>
+        </span>
+      ),
+    },
+    {
+      label: "Yelp",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="rounded bg-[#D32323] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+            yelp
+          </span>
+          <span className="text-[#D32323]">★★★★★</span>
+        </span>
+      ),
+    },
+    {
+      label: "Angi",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="rounded bg-[#F26F21] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+            Angi
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
+            Super Service '24
+          </span>
+        </span>
+      ),
+    },
+    {
+      label: "HomeAdvisor",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="text-[#F68B1F]">Home</span>
+          <span className="text-foreground/80">Advisor</span>
+          <span className="text-[#F68B1F]">★★★★★</span>
+        </span>
+      ),
+    },
+    {
+      label: "BBB",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="rounded bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+            BBB
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
+            A+ Accredited
+          </span>
+        </span>
+      ),
+    },
+    {
+      label: "Porch",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="text-[#1A75BB]">▲ Porch</span>
+          <span className="text-[#D32323]">★★★★★</span>
+        </span>
+      ),
+    },
   ];
-  const loop = [...items, ...items];
+  const loop = [...chips, ...chips];
   return (
-    <section className="relative overflow-hidden border-y border-border bg-secondary/60 py-5">
-      <div className="flex w-max animate-marquee gap-12 whitespace-nowrap px-6 font-mono text-xs uppercase tracking-[0.25em] text-foreground/80">
-        {loop.map((t, i) => (
-          <span key={i} className="flex items-center gap-3">
-            <Flame className="h-3.5 w-3.5 text-flame" />
-            {t}
+    <section
+      aria-label="Trusted on review platforms"
+      className="relative overflow-hidden border-y border-border bg-secondary/60 py-4"
+    >
+      <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
+        ★ 5-Star · Based on 1,836 reviews
+      </p>
+      <div className="flex w-max animate-marquee items-center gap-3 whitespace-nowrap px-3">
+        {loop.map((c, i) => (
+          <span
+            key={`${c.label}-${i}`}
+            className="inline-flex items-center rounded-lg border border-border bg-background px-3 py-2 shadow-sm"
+          >
+            {c.node}
           </span>
         ))}
       </div>
     </section>
+  );
+}
+
+/* ============================================================
+   EMERGENCY CALL BAR — bright red strip with the crew phone
+   ============================================================ */
+function EmergencyCallBar() {
+  return (
+    <a
+      href="tel:6146835763"
+      className="block w-full bg-[#E63A1F] py-3 text-center text-primary-foreground transition hover:brightness-110"
+    >
+      <span className="inline-flex items-center gap-2 font-display text-sm font-bold underline decoration-2 underline-offset-4 sm:text-base">
+        <Phone className="h-4 w-4" />
+        For emergency service Call: (614) 683-5763
+      </span>
+    </a>
   );
 }
 
