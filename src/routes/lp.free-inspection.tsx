@@ -17,6 +17,11 @@ import { reportLeadFormConversion } from "@/lib/track";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import teamHero from "@/assets/team/chimcrew-team-hero.png.asset.json";
+import techFireplace from "@/assets/real/tech-fireplace-sweep-hoodie.png.asset.json";
+import techCap from "@/assets/real/tech-chimney-cap-install.jpg.asset.json";
+import crownRebuild from "@/assets/real/chimney-crown-rebuild.jpg.asset.json";
+import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
+import { SiteFooter } from "@/components/SiteFooter";
 
 export const Route = createFileRoute("/lp/free-inspection")({
   head: () => ({
@@ -56,11 +61,12 @@ function FreeInspectionLanding() {
       <Hero />
       <ProofBar />
       <MeetTheCrew />
+      <RealJobsStrip />
       <Includes />
       <RecentJobs />
       <Reviews />
       <FinalCta />
-      <MinimalFooter />
+      <SiteFooter />
     </div>
   );
 }
@@ -473,5 +479,70 @@ function MinimalFooter() {
         </a>
       </div>
     </footer>
+  );
+}
+
+function RealJobsStrip() {
+  const shots = [
+    {
+      src: techFireplace.url,
+      caption: "Fireplace sweep — Columbus, OH",
+      tag: "On the job",
+    },
+    {
+      src: techLiner.url,
+      caption: "Stainless liner install",
+      tag: "Real Ohio job",
+    },
+    {
+      src: techCap.url,
+      caption: "New chimney cap & flashing",
+      tag: "On the roof",
+    },
+    {
+      src: crownRebuild.url,
+      caption: "Crown rebuild — finished",
+      tag: "Completed",
+    },
+  ];
+  return (
+    <section className="border-b border-border/30 bg-background py-12 sm:py-16">
+      <div className="mx-auto max-w-5xl px-4">
+        <div className="mb-6 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-flame/15 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-flame">
+            <BadgeCheck className="h-3.5 w-3.5" /> Real photos, real Columbus jobs
+          </div>
+          <h2 className="mt-3 font-display text-2xl font-extrabold tracking-tight sm:text-3xl">
+            This is what shows up at your door.
+          </h2>
+          <p className="mx-auto mt-2 max-w-xl text-sm text-foreground/70 sm:text-base">
+            Branded hoodies, branded tools, branded van — no subcontractors, no surprises.
+          </p>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {shots.map((s) => (
+            <figure
+              key={s.caption}
+              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm"
+            >
+              <div className="relative aspect-[4/5] w-full overflow-hidden">
+                <img
+                  src={s.src}
+                  alt={s.caption}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                />
+                <span className="absolute left-2 top-2 rounded-md bg-flame px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary shadow">
+                  {s.tag}
+                </span>
+              </div>
+              <figcaption className="px-3 py-2 text-xs font-semibold text-foreground/80">
+                {s.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
