@@ -77,10 +77,10 @@ type SimpleNav = { kind: "link"; to: string; label: string };
 
 const PRIMARY_NAV: SimpleNav[] = [
   { kind: "link", to: "/", label: "Home" },
-  { kind: "link", to: "/before-after", label: "Before & After" },
   { kind: "link", to: "/reviews", label: "Reviews" },
   { kind: "link", to: "/financing", label: "Financing" },
   { kind: "link", to: "/contact", label: "Contact" },
+  { kind: "link", to: "/before-after", label: "Before & After" },
 ];
 
 export function SiteHeader() {
