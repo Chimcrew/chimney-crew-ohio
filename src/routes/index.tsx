@@ -313,7 +313,7 @@ function MobileHero() {
             </div>
 
             {/* Trust row */}
-            <ul className="grid gap-2 text-[13px] font-semibold text-white">
+            <ul className="flex flex-col items-center gap-2 text-[13px] font-semibold text-white">
               {[
                 "Licensed & Insured",
                 "Same Week Availability",
