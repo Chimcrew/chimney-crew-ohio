@@ -1,5 +1,6 @@
 import { CalendarCheck, Camera, ShieldCheck, Zap, Flame } from "lucide-react";
 import droneVideo from "@/assets/drone-inspection.mp4.asset.json";
+import dronePhoto from "@/assets/drone-chimney-sunset.png.asset.json";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -125,6 +126,23 @@ export function DroneInspection() {
                 />
               </div>
             </div>
+          </div>
+
+          {/* Floating drone photo — captured-on-the-job */}
+          <div
+            className="absolute -bottom-10 -left-6 hidden w-48 rotate-[-6deg] overflow-hidden rounded-xl border-4 border-background bg-background shadow-[0_20px_40px_-15px_oklch(0_0_0/0.5)] sm:block md:w-56"
+            aria-hidden
+          >
+            <img
+              src={dronePhoto.url}
+              alt="Drone capturing a brick chimney at sunset over an Ohio rooftop"
+              className="block aspect-[4/3] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <p className="px-2 py-1 font-mono text-[9px] uppercase tracking-[0.22em] text-foreground">
+              Field capture · Columbus, OH
+            </p>
           </div>
 
           {/* Hearth base / mantel ledge */}
