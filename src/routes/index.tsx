@@ -299,7 +299,7 @@ function LimitedOfferBanner() {
     </div>
   );
   return (
-    <section className="relative isolate min-h-[430px] overflow-hidden sm:min-h-[460px]">
+    <section className="relative isolate min-h-[410px] overflow-hidden sm:min-h-[450px]">
       {/* background photo */}
       <img
         src={couponBg.url}
@@ -309,34 +309,31 @@ function LimitedOfferBanner() {
       />
       {/* gentle bottom-weighted scrim so the photo stays visible */}
       <div
-        className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/45 to-primary/5"
+        className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/55 via-45% to-transparent"
         aria-hidden
       />
 
-      <div className="relative mx-auto flex min-h-[430px] max-w-7xl flex-col justify-end px-4 py-7 sm:min-h-[460px] sm:px-6 sm:py-10 lg:px-8">
-        <div className="max-w-5xl border-l-4 border-flame pl-4 sm:pl-6">
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/35 bg-primary/45 px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.2em] text-flame backdrop-blur-sm">
+      <div className="relative mx-auto flex min-h-[410px] max-w-7xl flex-col justify-end px-4 py-6 sm:min-h-[450px] sm:px-6 sm:py-9 lg:px-8">
+        <div className="max-w-5xl">
+          <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-extrabold uppercase tracking-[0.18em] text-flame">
             <Flame className="h-3 w-3" /> Limited Time · Columbus, OH
           </span>
 
-          <div className="mt-4 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
+          <div className="mt-3 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-primary-foreground/75">
-                Chimney inspection offer
-              </p>
-              <div className="mt-2 flex flex-wrap items-end gap-x-3 gap-y-1">
+              <div className="flex flex-wrap items-end gap-x-3 gap-y-1">
                 <span className="font-display text-xl font-bold text-primary-foreground/55 line-through decoration-primary-foreground/45 decoration-2">
                   $69
                 </span>
-                <span className="font-display text-5xl font-black uppercase leading-none text-flame [text-shadow:0_2px_18px_oklch(0_0_0/0.55)] sm:text-6xl md:text-7xl">
+                <span className="font-display text-6xl font-black uppercase leading-none text-flame [text-shadow:0_3px_18px_oklch(0_0_0/0.7)] sm:text-7xl md:text-8xl">
                   Free
                 </span>
-                <span className="pb-1 font-display text-2xl font-black uppercase leading-none text-primary-foreground [text-shadow:0_2px_16px_oklch(0_0_0/0.65)] sm:text-3xl md:text-4xl">
+                <span className="pb-1 font-display text-3xl font-black uppercase leading-none text-primary-foreground [text-shadow:0_3px_16px_oklch(0_0_0/0.75)] sm:text-4xl md:text-5xl">
                   Inspection
                 </span>
               </div>
-              <p className="mt-3 max-w-xl text-sm font-semibold leading-relaxed text-primary-foreground/85 sm:text-base">
-                Instead of $69 — limited to this month only. No credit card required.
+              <p className="mt-2 max-w-xl text-base font-semibold leading-relaxed text-primary-foreground/90">
+                Chimney inspection this month only. No credit card required.
               </p>
             </div>
 
