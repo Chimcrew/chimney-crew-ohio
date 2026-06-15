@@ -289,17 +289,17 @@ function LimitedOfferBanner() {
   }, []);
   const pad = (n: number) => String(n).padStart(2, "0");
   const Box = ({ v, l }: { v: number; l: string }) => (
-    <div className="flex flex-col items-center">
-      <span className="grid h-7 w-7 place-items-center rounded bg-white/15 font-mono text-sm font-black tabular-nums text-white shadow-inner ring-1 ring-white/20 sm:h-8 sm:w-8">
+    <div className="flex items-center gap-1 rounded-md border border-primary-foreground/15 bg-primary/55 px-2 py-1 backdrop-blur-sm">
+      <span className="font-mono text-sm font-black tabular-nums text-primary-foreground">
         {pad(v)}
       </span>
-      <span className="mt-0.5 font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-white/60">
+      <span className="font-mono text-[8px] font-bold uppercase tracking-[0.18em] text-primary-foreground/65">
         {l}
       </span>
     </div>
   );
   return (
-    <section className="relative isolate overflow-hidden">
+    <section className="relative isolate min-h-[430px] overflow-hidden sm:min-h-[460px]">
       {/* background photo */}
       <img
         src={couponBg.url}
@@ -309,67 +309,73 @@ function LimitedOfferBanner() {
       />
       {/* gentle bottom-weighted scrim so the photo stays visible */}
       <div
-        className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10"
+        className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/45 to-primary/5"
         aria-hidden
       />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center px-4 py-10 text-center sm:py-14 md:py-16">
-        {/* subtle badge */}
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/15 px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
-          <Flame className="h-3 w-3" /> Limited Time — Columbus, OH
-        </span>
+      <div className="relative mx-auto flex min-h-[430px] max-w-7xl flex-col justify-end px-4 py-7 sm:min-h-[460px] sm:px-6 sm:py-10 lg:px-8">
+        <div className="max-w-5xl border-l-4 border-flame pl-4 sm:pl-6">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/35 bg-primary/45 px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.2em] text-flame backdrop-blur-sm">
+            <Flame className="h-3 w-3" /> Limited Time · Columbus, OH
+          </span>
 
-        {/* headline on the photo */}
-        <p className="mt-4 font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-white/80">
-          Chimney Inspection
-        </p>
-        <div className="mt-2 flex items-baseline gap-3">
-          <span className="relative font-display text-xl font-bold text-white/50 line-through decoration-white/40 decoration-2">
-            $69
-          </span>
-          <span className="font-display text-4xl font-black uppercase leading-none tracking-tight text-flame sm:text-5xl md:text-6xl">
-            FREE INSPECTION
-          </span>
-        </div>
-        <p className="mt-2 max-w-md text-sm text-white/80">
-          Instead of $69 — limited to this month only. No credit card required.
-        </p>
+          <div className="mt-4 grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
+            <div>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-primary-foreground/75">
+                Chimney inspection offer
+              </p>
+              <div className="mt-2 flex flex-wrap items-end gap-x-3 gap-y-1">
+                <span className="font-display text-xl font-bold text-primary-foreground/55 line-through decoration-primary-foreground/45 decoration-2">
+                  $69
+                </span>
+                <span className="font-display text-5xl font-black uppercase leading-none text-flame [text-shadow:0_2px_18px_oklch(0_0_0/0.55)] sm:text-6xl md:text-7xl">
+                  Free
+                </span>
+                <span className="pb-1 font-display text-2xl font-black uppercase leading-none text-primary-foreground [text-shadow:0_2px_16px_oklch(0_0_0/0.65)] sm:text-3xl md:text-4xl">
+                  Inspection
+                </span>
+              </div>
+              <p className="mt-3 max-w-xl text-sm font-semibold leading-relaxed text-primary-foreground/85 sm:text-base">
+                Instead of $69 — limited to this month only. No credit card required.
+              </p>
+            </div>
 
-        {/* countdown strip */}
-        <div className="mt-5 flex items-center gap-3 rounded-full border border-white/10 bg-white/10 px-4 py-2 backdrop-blur-sm">
-          <Clock className="h-3.5 w-3.5 text-flame" />
-          <span className="font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-white/70">
-            Ends tonight
-          </span>
-          <div className="flex items-center gap-1">
-            <Box v={timeLeft.h} l="Hrs" />
-            <span className="-mt-1.5 font-mono text-xs font-black text-white/70">:</span>
-            <Box v={timeLeft.m} l="Min" />
-            <span className="-mt-1.5 font-mono text-xs font-black text-white/70">:</span>
-            <Box v={timeLeft.s} l="Sec" />
+            <div className="flex flex-col gap-3 lg:items-end">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 font-mono text-[9px] font-extrabold uppercase tracking-[0.2em] text-primary-foreground/70">
+                  <Clock className="h-3.5 w-3.5 text-flame" /> Ends tonight
+                </span>
+                <div className="flex items-center gap-1">
+                  <Box v={timeLeft.h} l="Hrs" />
+                  <span className="font-mono text-xs font-black text-primary-foreground/60">:</span>
+                  <Box v={timeLeft.m} l="Min" />
+                  <span className="font-mono text-xs font-black text-primary-foreground/60">:</span>
+                  <Box v={timeLeft.s} l="Sec" />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-flame px-6 font-display text-sm font-black uppercase tracking-wider text-primary shadow-lg shadow-primary/30 transition active:scale-95"
+                >
+                  <CalendarCheck className="h-4 w-4" /> Claim Offer
+                </button>
+                <a
+                  href="tel:6146835763"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border border-primary-foreground/25 bg-primary/45 px-6 font-display text-sm font-black uppercase tracking-wider text-primary-foreground backdrop-blur-sm transition hover:bg-primary/60 active:scale-95"
+                >
+                  <Phone className="h-4 w-4" /> (614) 683-5763
+                </a>
+              </div>
+
+              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-primary-foreground/55">
+                Code: <span className="font-extrabold text-flame">CHIM-FREE</span> · Mention when booking
+              </p>
+            </div>
           </div>
         </div>
-
-        {/* CTAs */}
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-flame px-6 font-display text-sm font-black uppercase tracking-wider text-primary shadow-lg shadow-flame/25 transition active:scale-95"
-          >
-            <CalendarCheck className="h-4 w-4" /> Claim Offer
-          </button>
-          <a
-            href="tel:6146835763"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-white/30 bg-white/10 px-6 font-display text-sm font-black uppercase tracking-wider text-white backdrop-blur-sm transition hover:bg-white/20 active:scale-95"
-          >
-            <Phone className="h-4 w-4" /> (614) 683-5763
-          </a>
-        </div>
-
-        <p className="mt-4 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-white/50">
-          Code: <span className="text-flame font-extrabold">CHIM-FREE</span> · Mention when booking
-        </p>
       </div>
     </section>
   );
