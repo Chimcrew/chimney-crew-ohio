@@ -370,7 +370,7 @@ function RecentJobs() {
               Recent Columbus jobs
             </h2>
             <p className="mt-1 text-sm text-foreground/70 sm:text-base">
-              Drag the slider — real homes, real before &amp; after.
+              Drag the slider — homes, before &amp; after.
             </p>
           </div>
         </div>
