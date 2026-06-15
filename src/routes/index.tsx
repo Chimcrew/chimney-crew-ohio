@@ -293,13 +293,13 @@ function MobileHero() {
           </div>
 
           {/* Headline + trust + CTAs anchored to bottom */}
-          <div className="space-y-6">
+          <div className="space-y-5 text-center">
             <div>
               <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-flame px-3 py-1.5 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-primary">
                 <Flame className="h-3 w-3" /> Free Inspection · Normally $69
               </span>
-              <h1 className="mt-5 font-display text-[1.25rem] sm:text-[1.55rem] font-black leading-[1.12] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
-                <span className="mb-2 inline-block rounded-md border-2 border-flame/80 bg-black/40 px-2.5 py-1 text-white">
+              <h1 className="mt-4 font-display text-[1.6rem] font-black leading-[1.1] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)] sm:text-[1.85rem]">
+                <span className="mb-3 block rounded-md border-2 border-flame/80 bg-black/40 px-3 py-1.5 text-white">
                   The Chimney Experts
                 </span>
                 <span className="block">
