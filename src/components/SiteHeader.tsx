@@ -260,34 +260,45 @@ export function SiteHeader() {
           </nav>
 
           {/* CTAs */}
-          <div className="hidden shrink-0 items-center justify-end gap-1.5 xl:flex 2xl:gap-2">
+          <div className="hidden shrink-0 items-center justify-end gap-2 2xl:flex">
             <a
               href="tel:6146835763"
               aria-label="Call (614) 683-5763"
-              className="inline-grid h-10 w-10 place-items-center rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 font-display text-header-ink shadow-sm transition hover:border-[oklch(0.78_0.19_92/0.65)] hover:bg-[oklch(0.88_0.19_92/0.28)] 2xl:inline-flex 2xl:w-auto 2xl:gap-2 2xl:px-4 2xl:text-[11px] 2xl:font-black 2xl:uppercase 2xl:tracking-[0.1em]"
+              className="inline-flex h-10 items-center gap-2 rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 px-4 font-display text-[11px] font-black uppercase tracking-[0.1em] text-header-ink shadow-sm transition hover:border-[oklch(0.78_0.19_92/0.65)] hover:bg-[oklch(0.88_0.19_92/0.28)]"
             >
               <Phone className="h-4 w-4 shrink-0" />
-              <span className="hidden 2xl:inline">(614) 683-5763</span>
+              <span>(614) 683-5763</span>
             </a>
             <button
               type="button"
               onClick={() => openScheduleDialog()}
-              className="group relative inline-flex h-10 items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-[oklch(0.78_0.19_92)] px-3 font-display text-[10px] font-black uppercase tracking-[0.08em] text-header-ink shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)] 2xl:gap-2 2xl:px-5 2xl:text-[11px] 2xl:tracking-[0.1em]"
+              className="group relative inline-flex h-10 items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[oklch(0.78_0.19_92)] px-5 font-display text-[11px] font-black uppercase tracking-[0.1em] text-header-ink shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)]"
             >
               <CalendarCheck className="h-4 w-4 shrink-0" /> Schedule
-              <span className="hidden 2xl:inline">&nbsp;Online</span>
+              <span>&nbsp;Online</span>
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </button>
           </div>
 
-          {/* Mobile toggle */}
-          <button
-            className="relative z-40 ml-auto grid h-10 w-10 place-items-center rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 text-header-ink shadow-sm xl:hidden"
-            onClick={() => setOpen(!open)}
-            aria-label="Menu"
-          >
-            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </button>
+          {/* Compact header actions */}
+          <div className="relative z-40 ml-auto flex shrink-0 items-center gap-2 2xl:hidden">
+            <a
+              href="tel:6146835763"
+              aria-label="Call (614) 683-5763"
+              className="grid h-10 w-10 place-items-center rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 text-header-ink shadow-sm transition hover:bg-[oklch(0.88_0.19_92/0.28)]"
+            >
+              <Phone className="h-4 w-4" />
+            </a>
+
+            {/* Mobile toggle */}
+            <button
+              className="grid h-10 w-10 place-items-center rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 text-header-ink shadow-sm"
+              onClick={() => setOpen(!open)}
+              aria-label="Menu"
+            >
+              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Hairline accent */}
@@ -296,7 +307,7 @@ export function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background text-foreground xl:hidden">
+        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background text-foreground 2xl:hidden">
           <div className="mx-auto max-w-7xl px-4 py-4 pb-8">
             <nav className="flex flex-col">
               {PRIMARY_NAV.map((n) => {
