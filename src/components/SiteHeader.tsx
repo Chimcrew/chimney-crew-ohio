@@ -260,11 +260,11 @@ export function SiteHeader() {
           </nav>
 
           {/* CTAs */}
-          <div className="hidden items-center gap-2 lg:flex">
+          <div className="hidden shrink-0 items-center justify-end gap-1.5 lg:flex xl:gap-2">
             <a
               href="tel:6146835763"
               aria-label="Call (614) 683-5763"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.16em] text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)] xl:px-4"
+              className="inline-grid h-10 w-10 place-items-center rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 font-display text-header-ink shadow-sm transition hover:border-[oklch(0.78_0.19_92/0.65)] hover:bg-[oklch(0.88_0.19_92/0.28)] xl:inline-flex xl:w-auto xl:gap-2 xl:px-3 xl:text-[11px] xl:font-black xl:uppercase xl:tracking-[0.1em] 2xl:px-4"
             >
               <Phone className="h-4 w-4 shrink-0" />
               <span className="hidden xl:inline">(614) 683-5763</span>
@@ -272,7 +272,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => openScheduleDialog()}
-              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[oklch(0.78_0.19_92)] px-4 py-2.5 font-mono text-[11px] font-extrabold uppercase tracking-[0.16em] text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)] xl:px-5 xl:tracking-[0.18em]"
+              className="group relative inline-flex h-10 items-center gap-1.5 overflow-hidden whitespace-nowrap rounded-full bg-[oklch(0.78_0.19_92)] px-3 font-display text-[10px] font-black uppercase tracking-[0.08em] text-header-ink shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)] xl:gap-2 xl:px-4 xl:text-[11px] xl:tracking-[0.1em] 2xl:px-5"
             >
               <CalendarCheck className="h-4 w-4 shrink-0" /> Schedule
               <span className="hidden xl:inline">&nbsp;Online</span>
@@ -282,7 +282,7 @@ export function SiteHeader() {
 
           {/* Mobile toggle */}
           <button
-            className="grid h-10 w-10 place-items-center rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] lg:hidden"
+            className="relative z-40 ml-auto grid h-10 w-10 place-items-center rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 text-header-ink shadow-sm lg:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -308,7 +308,7 @@ export function SiteHeader() {
                         type="button"
                         onClick={() => setMobileOpenKey((cur) => (cur === n.key ? null : n.key))}
                         aria-expanded={isOpen}
-                        className="flex w-full items-center justify-between py-3.5 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground"
+                        className="flex w-full items-center justify-between py-3.5 font-display text-[15px] font-black uppercase tracking-[0.04em] text-header-ink"
                       >
                         <span className={`inline-flex items-center gap-2 ${isOpen ? "text-[oklch(0.65_0.18_92)]" : ""}`}>
                           <n.Icon className="h-5 w-5 text-[oklch(0.65_0.18_92)]" aria-hidden />
@@ -366,8 +366,8 @@ export function SiteHeader() {
                     key={n.to}
                     to={n.to}
                     onClick={() => setOpen(false)}
-                    className="flex items-center justify-between border-b border-border/30 py-3.5 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground"
-                    activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
+                    className="flex items-center justify-between border-b border-border/30 py-3.5 font-display text-[15px] font-black uppercase tracking-[0.04em] text-header-ink"
+                    activeProps={{ className: "text-header-ink" }}
                     activeOptions={n.to === "/" ? { exact: true } : undefined}
                   >
                     {n.label} <Flame className="h-4 w-4 text-[oklch(0.78_0.19_92)]" />
@@ -378,14 +378,14 @@ export function SiteHeader() {
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
                 href="tel:6146835763"
-                className="flex items-center justify-center gap-2 rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-3 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-foreground"
+                className="flex items-center justify-center gap-2 rounded-full border border-[oklch(0_0_0/0.14)] bg-background/80 px-3 py-3 font-display text-[12px] font-black uppercase tracking-[0.08em] text-header-ink"
               >
                 <Phone className="h-4 w-4" /> Call
               </a>
               <button
                 type="button"
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
-                className="flex items-center justify-center gap-2 rounded-full bg-[oklch(0.78_0.19_92)] px-3 py-3 font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-[oklch(0.18_0.02_250)]"
+                className="flex items-center justify-center gap-2 rounded-full bg-[oklch(0.78_0.19_92)] px-3 py-3 font-display text-[12px] font-black uppercase tracking-[0.08em] text-header-ink"
               >
                 <CalendarCheck className="h-4 w-4" /> Schedule online
               </button>
