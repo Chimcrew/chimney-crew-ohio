@@ -395,21 +395,6 @@ function LimitedOfferBanner() {
                 Instead of $69 — limited to this month only. No card required.
               </p>
 
-              {/* compact countdown */}
-              <div className="mt-4 flex items-center gap-2 rounded-lg border border-primary/30 bg-primary/5 px-3 py-2">
-                <Clock className="h-3.5 w-3.5 text-primary/80" />
-                <span className="font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-primary/70">
-                  Ends tonight
-                </span>
-                <div className="ml-1 flex items-center gap-1">
-                  <Box v={timeLeft.h} l="Hrs" />
-                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
-                  <Box v={timeLeft.m} l="Min" />
-                  <span className="-mt-2 font-mono text-sm font-black text-primary/80">:</span>
-                  <Box v={timeLeft.s} l="Sec" />
-                </div>
-              </div>
-
               {/* CTAs */}
               <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
                 <button
@@ -417,7 +402,7 @@ function LimitedOfferBanner() {
                   onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
                 >
-                  <CalendarCheck className="h-4 w-4" /> Claim Offer
+                  <CalendarCheck className="h-4 w-4" /> Schedule free inspection now
                 </button>
                 <a
                   href="tel:6146835763"
@@ -426,11 +411,6 @@ function LimitedOfferBanner() {
                   <Phone className="h-4 w-4" /> Call Now
                 </a>
               </div>
-
-              <p className="mt-3 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/60">
-                Code: <span className="text-primary font-extrabold">CHIM-FREE</span> · Mention when
-                booking
-              </p>
             </div>
           </div>
         </div>
@@ -477,7 +457,7 @@ function Hero() {
             <button
               type="button"
               onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-medium tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </button>
