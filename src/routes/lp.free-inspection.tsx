@@ -16,6 +16,7 @@ import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
+import teamHero from "@/assets/team/chimcrew-team-hero.png.asset.json";
 
 export const Route = createFileRoute("/lp/free-inspection")({
   head: () => ({
@@ -54,6 +55,7 @@ function FreeInspectionLanding() {
       <MinimalHeader />
       <Hero />
       <ProofBar />
+      <MeetTheCrew />
       <Includes />
       <RecentJobs />
       <Reviews />
