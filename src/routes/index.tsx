@@ -708,10 +708,14 @@ function WhyChooseUs() {
         </div>
 
         <div className="mt-10 grid gap-4 sm:gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start">
-          <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_18px_50px_-20px_oklch(0_0_0/0.18)]">
+          <div
+            className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-[0_30px_70px_-25px_oklch(0_0_0/0.45)] transition-transform duration-500 hover:-translate-y-1 hover:rotate-0 [transform:perspective(1400px)_rotateY(-8deg)_rotateX(2deg)]"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[2.5rem] bg-flame/25 blur-3xl" aria-hidden />
             <img
-              src={fireplaceServicePhoto.url}
-              alt="A ChimCrew technician servicing a fireplace inside an Ohio home"
+              src={techFireplaceSweepPhoto.url}
+              alt="A ChimCrew technician sweeping a fireplace inside an Ohio home"
               className="aspect-[4/5] w-full object-cover"
               loading="lazy"
               decoding="async"
