@@ -100,13 +100,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       {/* Tiny utility strip */}
-      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] md:block">
+      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] md:block md:text-white/90">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] md:px-8">
-          <span className="flex items-center gap-2 opacity-80">
+          <span className="flex items-center gap-2 opacity-80 md:opacity-100">
             <MapPin className="h-3.5 w-3.5" /> Serving Columbus, Ohio &amp; Surrounding Areas — Licensed &amp; Insured
           </span>
           <span className="flex items-center gap-4">
-            <span className="hidden items-center gap-1.5 sm:flex opacity-80">
+            <span className="hidden items-center gap-1.5 sm:flex opacity-80 md:opacity-100">
               <span className="grid h-4 w-4 place-items-center rounded-full bg-[oklch(0.92_0.18_95)] text-[oklch(0.18_0.02_250)] text-[10px] font-bold">★</span>
               1,836 Five-Star Reviews
             </span>
@@ -121,7 +121,7 @@ export function SiteHeader() {
           scrolled
             ? "bg-background/95 shadow-[0_4px_20px_oklch(0.18_0.02_250/0.08)] border-b border-border/60"
             : "bg-background/70"
-        } backdrop-blur-xl text-foreground`}
+        } backdrop-blur-xl text-foreground md:text-black`}
       >
         <div className="relative mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 md:px-8 md:py-3">
           {/* Flashing OPEN NOW button — absolutely centered in the header */}
@@ -172,7 +172,7 @@ export function SiteHeader() {
                       aria-expanded={isOpen}
                       aria-haspopup="menu"
                       className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] transition ${
-                        isOpen ? "text-[oklch(0.65_0.18_92)]" : "text-foreground/70 hover:text-foreground"
+                        isOpen ? "text-[oklch(0.65_0.18_92)]" : "text-foreground/70 hover:text-foreground md:text-black/70 md:hover:text-black"
                       }`}
                     >
                       <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.78_0.19_92/0.8)] group-hover:bg-[oklch(0.78_0.19_92)]" />
@@ -197,7 +197,7 @@ export function SiteHeader() {
                                     to="/services/$slug"
                                     params={{ slug: item.slug }}
                                     onClick={() => setOpenMenu(null)}
-                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
+                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)] md:text-black md:hover:text-black"
                                   >
                                     {item.label}
                                   </Link>
@@ -207,7 +207,7 @@ export function SiteHeader() {
                                   <Link
                                     to={item.to}
                                     onClick={() => setOpenMenu(null)}
-                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
+                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)] md:text-black md:hover:text-black"
                                   >
                                     {item.label}
                                   </Link>
@@ -225,7 +225,7 @@ export function SiteHeader() {
                 <Link
                   key={n.to}
                   to={n.to}
-                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground/70 transition hover:text-foreground"
+                  className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground/70 transition hover:text-foreground md:text-black/70 md:hover:text-black"
                   activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
                   activeOptions={n.to === "/" ? { exact: true } : undefined}
                 >
@@ -241,7 +241,7 @@ export function SiteHeader() {
           <div className="hidden items-center gap-2 md:flex">
             <a
               href="tel:6146835763"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2.5 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)]"
+              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2.5 font-mono text-[12px] font-bold uppercase tracking-[0.18em] text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)] md:text-black/80"
             >
               <Phone className="h-4 w-4 shrink-0" /> (614) 683-5763
             </a>
