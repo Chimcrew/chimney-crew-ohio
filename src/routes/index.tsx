@@ -166,47 +166,38 @@ function Index() {
    ============================================================ */
 function HeroToOfferBridge() {
   return (
-    <div
-      aria-hidden={false}
-      className="relative z-20 mx-auto -mb-10 -mt-6 flex max-w-7xl justify-center px-4 sm:-mb-14 sm:-mt-10 md:px-8"
-      style={{ perspective: "1200px" }}
-    >
-      <div
-        className="group relative w-[min(60%,240px)] sm:w-[min(50%,260px)]"
-        style={{
-          transform: "rotateX(8deg) rotateY(-6deg) rotateZ(-2deg)",
-          transformStyle: "preserve-3d",
-        }}
-      >
-        {/* soft halo */}
+    <div className="relative z-10 mx-auto flex max-w-7xl justify-center px-4 py-8 md:px-8 md:py-10">
+      <figure className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl">
+        {/* soft warm halo */}
         <div
-          className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/25 blur-2xl"
+          className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-flame/20 blur-2xl"
           aria-hidden
         />
         {/* photo card */}
-        <div className="relative overflow-hidden rounded-xl border-[3px] border-background bg-card shadow-[0_20px_40px_-12px_oklch(0_0_0/0.5),0_6px_18px_-8px_oklch(0_0_0/0.35)] ring-1 ring-foreground/10">
+        <div className="relative overflow-hidden rounded-2xl border-[3px] border-background bg-card shadow-[0_24px_50px_-18px_oklch(0_0_0/0.45),0_8px_20px_-10px_oklch(0_0_0/0.3)] ring-1 ring-foreground/10">
           <img
             src={inspectionRoofPhoto.url}
-            alt="ChimCrew technician inspecting a chimney on a rooftop"
-            className="block aspect-[5/4] w-full object-cover"
+            alt="ChimCrew technicians installing a stainless chimney liner on a Columbus rooftop"
+            className="block aspect-[16/10] w-full object-cover"
             loading="lazy"
             decoding="async"
           />
+          {/* live badge */}
+          <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-flame px-2.5 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-primary shadow-sm">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
+            Real Ohio Job
+          </span>
           {/* caption ribbon */}
-          <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent px-2.5 pb-1.5 pt-6">
-            <span className="inline-flex items-center gap-1.5 font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-flame">
-              <span className="h-1 w-1 animate-pulse rounded-full bg-flame" />
+          <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent px-4 pb-3 pt-8">
+            <span className="font-display text-sm font-bold text-primary-foreground sm:text-base">
+              Stainless Liner Install — Columbus, OH
+            </span>
+            <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80 sm:inline">
               On the roof
             </span>
-          </div>
+          </figcaption>
         </div>
-        {/* under-shadow plate to sell the 3D float */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-3 left-4 right-4 h-5 rounded-full bg-black/40 blur-xl"
-          style={{ transform: "translateZ(-40px)" }}
-        />
-      </div>
+      </figure>
     </div>
   );
 }
