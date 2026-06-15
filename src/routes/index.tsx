@@ -163,11 +163,11 @@ function HeroToOfferBridge() {
   return (
     <div
       aria-hidden={false}
-      className="relative z-20 mx-auto -mb-20 -mt-12 flex max-w-7xl justify-center px-4 sm:-mb-24 sm:-mt-16 md:px-8"
+      className="relative z-20 mx-auto -mb-10 -mt-6 flex max-w-7xl justify-center px-4 sm:-mb-14 sm:-mt-10 md:px-8"
       style={{ perspective: "1200px" }}
     >
       <div
-        className="group relative w-[min(92%,420px)]"
+        className="group relative w-[min(60%,240px)] sm:w-[min(50%,260px)]"
         style={{
           transform: "rotateX(8deg) rotateY(-6deg) rotateZ(-2deg)",
           transformStyle: "preserve-3d",
@@ -175,11 +175,11 @@ function HeroToOfferBridge() {
       >
         {/* soft halo */}
         <div
-          className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-flame/25 blur-3xl"
+          className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/25 blur-2xl"
           aria-hidden
         />
         {/* photo card */}
-        <div className="relative overflow-hidden rounded-2xl border-4 border-background bg-card shadow-[0_30px_60px_-15px_oklch(0_0_0/0.55),0_10px_25px_-10px_oklch(0_0_0/0.4)] ring-1 ring-foreground/10">
+        <div className="relative overflow-hidden rounded-xl border-[3px] border-background bg-card shadow-[0_20px_40px_-12px_oklch(0_0_0/0.5),0_6px_18px_-8px_oklch(0_0_0/0.35)] ring-1 ring-foreground/10">
           <img
             src={inspectionRoofPhoto.url}
             alt="ChimCrew technician inspecting a chimney on a rooftop"
@@ -188,20 +188,17 @@ function HeroToOfferBridge() {
             decoding="async"
           />
           {/* caption ribbon */}
-          <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent px-4 pb-3 pt-10">
-            <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
-              On the roof · Columbus, OH
-            </span>
-            <span className="rounded-full border border-flame/40 bg-flame/15 px-2 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
-              Today
+          <div className="absolute inset-x-0 bottom-0 flex items-center gap-2 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent px-2.5 pb-1.5 pt-6">
+            <span className="inline-flex items-center gap-1.5 font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-flame">
+              <span className="h-1 w-1 animate-pulse rounded-full bg-flame" />
+              On the roof
             </span>
           </div>
         </div>
         {/* under-shadow plate to sell the 3D float */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-6 left-6 right-6 h-8 rounded-full bg-black/40 blur-2xl"
+          className="pointer-events-none absolute -bottom-3 left-4 right-4 h-5 rounded-full bg-black/40 blur-xl"
           style={{ transform: "translateZ(-40px)" }}
         />
       </div>
@@ -481,13 +478,13 @@ function Hero() {
             <button
               type="button"
               onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-7"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-medium tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
-              <CalendarCheck className="h-4 w-4" /> Schedule Appointment Online
+              <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </button>
             <a
               href="tel:6146835763"
-              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-foreground/15 bg-background px-6 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame active:scale-95 sm:px-7"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
             >
               <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
             </a>
@@ -651,7 +648,11 @@ function WhyChooseUs() {
             <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why Chimcrew
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            Six reasons Ohio homeowners trust us first.
+            Six reasons Ohio homeowners{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              trust us first
+            </span>
+            .
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
             We're not the biggest chimney company in Ohio. We're the one your homeowners keep
@@ -733,7 +734,10 @@ function BeforeAfterHome() {
             <Sparkles className="h-3.5 w-3.5" /> Before / After
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl">
-            Drag the slider. <span className="text-flame">See the work.</span>
+            Drag the slider.{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              See the work.
+            </span>
           </h2>
           <p className="mt-3 text-base text-primary-foreground/80">
             Real Ohio chimneys, real ChimCrew results — drag any photo with your finger to compare.
@@ -818,7 +822,11 @@ function ProblemSolver() {
             <AlertTriangle className="h-3.5 w-3.5" /> Sound familiar?
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            The problem you're searching for — we fix it.
+            The problem you're searching for —{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              we fix it
+            </span>
+            .
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
             Tell us what's wrong. We've already seen it on an Ohio rooftop this week.
@@ -898,7 +906,11 @@ function FireHazards() {
             <AlertTriangle className="h-3.5 w-3.5" /> Why it matters
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            What your chimney is hiding right now.
+            What your chimney is{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              hiding right now
+            </span>
+            .
           </h2>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
             25,000+ chimney fires hit U.S. homes every year — most start invisible. Two minutes here
@@ -970,7 +982,11 @@ function LeakingChimney() {
             <Droplets className="h-3.5 w-3.5 text-flame" /> Is your chimney leaking?
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            One bad Ohio winter and the water wins.
+            One bad Ohio winter and{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              the water wins
+            </span>
+            .
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
             Freeze-thaw widens hairline cracks until water reaches your firebox, your walls, your
@@ -1032,7 +1048,10 @@ function ScheduleOnline() {
               <CalendarCheck className="h-3.5 w-3.5" /> 60-second booking
             </p>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold md:text-5xl">
-              Pick a window. <span className="text-flame">We handle everything else.</span>
+              Pick a window.{" "}
+              <span className="inline-block rounded-lg bg-primary-foreground px-2.5 py-0.5 text-primary">
+                We handle everything else.
+              </span>
             </h2>
             <p className="mt-4 max-w-xl text-base text-primary-foreground/80">
               Tell us your address and pick a 2-hour window. We text to confirm within the hour, and
@@ -1136,7 +1155,11 @@ function Process() {
             <Clock className="h-3.5 w-3.5 text-flame" /> How it works
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            From "hello" to handshake in four steps.
+            From "hello" to handshake in{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              four steps
+            </span>
+            .
           </h2>
           <p className="mt-3 text-base text-muted-foreground">
             No quote-bait, no upsells, no surprise invoices. The price you see is the price you pay.
@@ -1246,7 +1269,11 @@ function Testimonials() {
               <Star className="h-3.5 w-3.5 text-flame" /> Reviews
             </p>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-              Real Ohio homeowners. Honest words.
+              Real Ohio homeowners.{" "}
+              <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+                Honest words
+              </span>
+              .
             </h2>
           </div>
           <Link
@@ -1319,7 +1346,11 @@ function Faq() {
             FAQ
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            Ask us anything — we don't bite.
+            Ask us anything —{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              we don't bite
+            </span>
+            .
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
             Real Ohioans answer the phone. No call centers, no pressure, no charge for advice.
@@ -1421,7 +1452,10 @@ function ServiceArea() {
         {/* Headline */}
         <div className="mx-auto mt-5 max-w-3xl text-center">
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold uppercase leading-[1] tracking-tight md:text-6xl">
-            Serving the <span className="text-flame">Ohio Heartland</span>
+            Serving the{" "}
+            <span className="inline-block rounded-lg bg-primary-foreground px-2.5 py-0.5 text-primary">
+              Ohio Heartland
+            </span>
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed text-primary-foreground/70 md:text-base">
             From our HQ in <span className="font-semibold text-primary-foreground">Columbus</span>{" "}

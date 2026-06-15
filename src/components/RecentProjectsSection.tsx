@@ -29,7 +29,11 @@ export function RecentProjects() {
               ◆ Real Work · Real Ohio Homes
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-foreground md:text-5xl">
-              Recent projects from <span className="text-flame">our crew</span>.
+              Recent projects from{" "}
+              <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+                our crew
+              </span>
+              .
             </h2>
             <p className="mt-4 text-base text-muted-foreground md:text-lg">
               Every photo below is a job we completed this season — no stock images, no AI, no
