@@ -533,7 +533,7 @@ function Hero() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "linear-gradient(90deg, oklch(0 0 0 / 0.82) 0%, oklch(0 0 0 / 0.68) 45%, oklch(0 0 0 / 0.35) 70%, oklch(0 0 0 / 0.25) 100%)",
+              "linear-gradient(90deg, oklch(0 0 0 / 0.65) 0%, oklch(0 0 0 / 0.40) 40%, oklch(0 0 0 / 0.15) 70%, oklch(0 0 0 / 0.08) 100%)",
           }}
           aria-hidden
         />
