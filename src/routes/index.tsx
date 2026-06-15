@@ -658,6 +658,126 @@ function EmergencyCallBar() {
 }
 
 /* ============================================================
+   COMMON CHIMNEY PROBLEMS WE FIX — homeowner-language list
+   ============================================================ */
+function CommonProblems() {
+  const problems = [
+    { icon: Droplets, label: "Chimney Leaks", body: "Water stains, ceiling drips, and damp brick after every rain.", slug: "flashing-repair" },
+    { icon: AlertTriangle, label: "Cracked Chimney Crowns", body: "Hairline cracks letting water sit on top of the chimney.", slug: "crown-tuckpoint" },
+    { icon: ShieldCheck, label: "Missing or Damaged Chimney Caps", body: "Open flues let in rain, debris, and animals.", slug: "cap-install" },
+    { icon: BrickIcon, label: "Brick & Mortar Damage", body: "Spalling brick and washed-out mortar joints.", slug: "crown-tuckpoint" },
+    { icon: Droplets, label: "Chimney Water Damage", body: "Stained masonry, efflorescence, and rotting framing inside.", slug: "waterproofing" },
+    { icon: Wrench, label: "Damaged Chimney Liners", body: "Cracked clay tiles or rusted-out metal liners hurting draft and safety.", slug: "liner-install" },
+    { icon: Wind, label: "Draft & Ventilation Problems", body: "Smoke spilling into the room, cold downdrafts, hard-to-start fires.", slug: "damper-repair" },
+  ];
+  return (
+    <section className="relative bg-background py-14 md:py-20">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
+            <Wrench className="h-3.5 w-3.5 text-flame" /> What We Fix
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
+            Common Chimney Problems <span className="text-flame">We Fix</span>
+          </h2>
+          <p className="mt-3 text-base text-foreground/75 md:text-lg">
+            If any of these sound familiar, we can take a look — most are far cheaper to fix
+            now than after they cause water or fire damage.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {problems.map(({ icon: Icon, label, body, slug }) => (
+            <Link
+              key={label}
+              to="/services/$slug"
+              params={{ slug }}
+              className="group flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-flame hover:shadow-md"
+            >
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-flame/15 text-flame">
+                <Icon className="h-5 w-5" />
+              </span>
+              <div className="min-w-0">
+                <p className="font-display text-base font-bold text-primary group-hover:text-flame">
+                  {label}
+                </p>
+                <p className="mt-1 text-sm leading-snug text-foreground/75">{body}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.3)] transition active:scale-95"
+          >
+            <CalendarCheck className="h-4 w-4" /> Schedule Free Inspection
+          </button>
+          <a
+            href="tel:6146835763"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-6 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame active:scale-95"
+          >
+            <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// Simple inline brick icon (lucide doesn't ship one we want here).
+function BrickIcon(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}
+      strokeLinecap="round" strokeLinejoin="round" {...props}>
+      <rect x="3" y="5" width="18" height="14" rx="1" />
+      <path d="M3 12h18M9 5v3.5M15 8.5V12M9 15.5V19M15 12v3.5" />
+    </svg>
+  );
+}
+
+/* ============================================================
+   PHOTO & VIDEO DOCUMENTATION TRUST CALLOUT
+   ============================================================ */
+function PhotoVideoTrust() {
+  return (
+    <section className="relative overflow-hidden border-y border-border bg-primary py-12 text-primary-foreground md:py-16">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 md:grid-cols-[auto_1fr_auto] md:px-8">
+        <div className="flex gap-3">
+          <span className="grid h-12 w-12 place-items-center rounded-xl bg-flame/20 text-flame">
+            <Camera className="h-6 w-6" />
+          </span>
+          <span className="grid h-12 w-12 place-items-center rounded-xl bg-flame/20 text-flame">
+            <Video className="h-6 w-6" />
+          </span>
+        </div>
+        <div>
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-flame">
+            Transparent inspections
+          </p>
+          <h3 className="mt-2 font-display text-2xl font-extrabold leading-snug md:text-3xl">
+            Every job documented with photo & video — before we recommend any repair.
+          </h3>
+          <p className="mt-2 text-sm text-primary-foreground/80 md:text-base">
+            You see exactly what we see on the roof and inside the flue. No upsell theater,
+            no "trust us" — just clear evidence and a written quote.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+          className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-md transition active:scale-95"
+        >
+          <CalendarCheck className="h-4 w-4" /> Book Inspection
+        </button>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
    WHY CHOOSE CHIMCREW — trust + benefit cards
    ============================================================ */
 function WhyChooseUs() {
