@@ -899,7 +899,7 @@ function ProblemSolver() {
     },
   ];
   return (
-    <section className="relative overflow-hidden bg-secondary/40 py-20 md:py-24">
+    <section className="relative overflow-hidden bg-secondary/40 py-14 md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-20" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl">
@@ -918,20 +918,24 @@ function ProblemSolver() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {problems.map(({ icon: Icon, problem, solution, cta }) => (
             <article
               key={problem}
-              className="group flex flex-col rounded-xl border-2 border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
+              className="group flex flex-col rounded-xl border-2 border-border bg-card p-4 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame sm:p-6"
             >
-              <div className="grid h-11 w-11 place-items-center rounded-lg bg-destructive/10 text-destructive ring-1 ring-destructive/30">
-                <Icon className="h-5 w-5" />
+              <div className="grid h-9 w-9 place-items-center rounded-lg bg-destructive/10 text-destructive ring-1 ring-destructive/30 sm:h-11 sm:w-11">
+                <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
-              <h3 className="mt-4 font-display text-lg font-bold text-primary">{problem}</h3>
-              <p className="mt-2 flex-1 text-sm text-muted-foreground">{solution}</p>
+              <h3 className="mt-3 font-display text-base font-bold text-primary sm:mt-4 sm:text-lg">
+                {problem}
+              </h3>
+              <p className="mt-1.5 flex-1 text-[13px] leading-relaxed text-muted-foreground sm:mt-2 sm:text-sm">
+                {solution}
+              </p>
               <Link
                 to="/contact"
-                className="mt-5 inline-flex items-center gap-2 self-start rounded-lg border-2 border-primary bg-primary px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary"
+                className="mt-3 inline-flex items-center gap-2 self-start rounded-lg border-2 border-primary bg-primary px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-primary-foreground transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary sm:mt-5 sm:px-4 sm:py-2.5 sm:text-[11px]"
               >
                 {cta} <ArrowRight className="h-3.5 w-3.5" />
               </Link>
