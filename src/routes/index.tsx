@@ -307,63 +307,67 @@ function LimitedOfferBanner() {
         className="absolute inset-0 h-full w-full object-cover"
         aria-hidden
       />
-      <div className="absolute inset-0 bg-primary/80" aria-hidden />
+      {/* light airy overlay — photo stays visible */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/30 to-white/60"
+        aria-hidden
+      />
 
       <div className="relative mx-auto max-w-xl">
-        {/* Coupon card */}
-        <div className="relative rounded-xl border border-white/10 bg-black/40 text-primary-foreground shadow-[0_12px_40px_oklch(0_0_0/0.4)] backdrop-blur-sm">
+        {/* Coupon card — light, premium glass */}
+        <div className="relative rounded-xl border border-white/60 bg-white/85 text-foreground shadow-[0_12px_40px_oklch(0_0_0/0.15)] backdrop-blur-md">
           {/* perforated edges */}
           <span
-            className="absolute -left-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-primary"
+            className="absolute -left-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-white"
             aria-hidden
           />
           <span
-            className="absolute -right-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-primary"
+            className="absolute -right-2.5 top-1/2 h-5 w-5 -translate-y-1/2 rounded-full bg-white"
             aria-hidden
           />
 
           {/* dashed inner frame */}
-          <div className="m-1.5 rounded-lg border-2 border-dashed border-white/20 p-3 sm:p-4">
+          <div className="m-1.5 rounded-lg border-2 border-dashed border-primary/15 p-3 sm:p-4">
             {/* top ribbon */}
             <div className="flex items-center justify-between gap-3">
               <span className="inline-flex items-center gap-1 rounded-full border border-flame/40 bg-flame/15 px-2.5 py-0.5 font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-flame">
                 <Flame className="h-2.5 w-2.5" /> Limited Time
               </span>
-              <span className="hidden font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-primary-foreground/70 sm:inline">
+              <span className="hidden font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-foreground/70 sm:inline">
                 Columbus, OH
               </span>
             </div>
 
             {/* main — clean price comparison */}
             <div className="mt-3 flex flex-col items-center text-center sm:mt-4">
-              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.28em] text-primary-foreground/80">
+              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.28em] text-foreground/80">
                 Chimney Inspection
               </p>
 
               {/* Price comparison */}
               <div className="mt-1.5 flex items-baseline gap-2">
-                <span className="relative font-display text-lg font-bold text-primary-foreground/60 line-through decoration-primary-foreground/80 decoration-2">
+                <span className="relative font-display text-lg font-bold text-foreground/50 line-through decoration-foreground/40 decoration-2">
                   $69
                 </span>
                 <span className="font-display text-3xl font-black uppercase leading-none tracking-tight text-flame sm:text-4xl">
                   FREE INSPECTION
                 </span>
               </div>
-              <p className="mt-1 text-[11px] font-semibold text-primary-foreground/80">
+              <p className="mt-1 text-[11px] font-semibold text-foreground/80">
                 Instead of $69 — limited to this month only. No card required.
               </p>
 
               {/* compact countdown */}
-              <div className="mt-3 flex items-center gap-2 rounded-md border border-white/10 bg-black/30 px-2.5 py-1.5">
+              <div className="mt-3 flex items-center gap-2 rounded-md border border-primary/10 bg-white/70 px-2.5 py-1.5">
                 <Clock className="h-3 w-3 text-flame" />
-                <span className="font-mono text-[8px] font-extrabold uppercase tracking-[0.22em] text-primary-foreground/70">
+                <span className="font-mono text-[8px] font-extrabold uppercase tracking-[0.22em] text-foreground/70">
                   Ends tonight
                 </span>
                 <div className="ml-1 flex items-center gap-1">
                   <Box v={timeLeft.h} l="Hrs" />
-                  <span className="-mt-1.5 font-mono text-xs font-black text-primary-foreground/80">:</span>
+                  <span className="-mt-1.5 font-mono text-xs font-black text-foreground/80">:</span>
                   <Box v={timeLeft.m} l="Min" />
-                  <span className="-mt-1.5 font-mono text-xs font-black text-primary-foreground/80">:</span>
+                  <span className="-mt-1.5 font-mono text-xs font-black text-foreground/80">:</span>
                   <Box v={timeLeft.s} l="Sec" />
                 </div>
               </div>
@@ -379,13 +383,13 @@ function LimitedOfferBanner() {
                 </button>
                 <a
                   href="tel:6146835763"
-                  className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg border-2 border-white/30 bg-transparent font-display text-xs font-black uppercase tracking-wider text-primary-foreground transition active:scale-[0.98]"
+                  className="inline-flex h-10 items-center justify-center gap-1.5 rounded-lg border-2 border-primary/20 bg-white/70 font-display text-xs font-black uppercase tracking-wider text-foreground transition hover:bg-white active:scale-[0.98]"
                 >
                   <Phone className="h-3.5 w-3.5" /> Call Now
                 </a>
               </div>
 
-              <p className="mt-2 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-primary-foreground/60">
+              <p className="mt-2 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-foreground/60">
                 Code: <span className="text-flame font-extrabold">CHIM-FREE</span> · Mention when
                 booking
               </p>
