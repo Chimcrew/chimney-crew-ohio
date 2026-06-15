@@ -1,6 +1,28 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown } from "lucide-react";
+import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown, BrickWall } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+// Custom broom icon (lucide doesn't include a broom)
+const Broom: LucideIcon = (({ className, ...props }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    {...props}
+  >
+    <path d="M19 3l-7 7" />
+    <path d="M14 8l2 2" />
+    <path d="M5 21l4-9 8 4-2 5z" />
+    <path d="M9 17l-2 4" />
+    <path d="M13 18l-1 3" />
+    <path d="M16 19l0 2" />
+  </svg>
+)) as unknown as LucideIcon;
 import logoHeader from "@/assets/chimcrew-logo-transparent.png";
 import { openScheduleDialog } from "@/components/ScheduleWidget";
 
@@ -49,16 +71,16 @@ type DropdownNav = {
   kind: "dropdown";
   key: string;
   label: string;
-  emoji: string;
+  Icon: LucideIcon;
   items: MenuLink[];
 };
 type SimpleNav = { kind: "link"; to: string; label: string };
 
 const PRIMARY_NAV: (SimpleNav | DropdownNav)[] = [
   { kind: "link", to: "/", label: "Home" },
-  { kind: "dropdown", key: "repair", label: "Chimney Repair", emoji: "🧱", items: REPAIR_MENU },
-  { kind: "dropdown", key: "cleaning", label: "Chimney Cleaning", emoji: "🧹", items: CLEANING_MENU },
-  { kind: "dropdown", key: "fireplace", label: "Fireplace Services", emoji: "🔥", items: FIREPLACE_MENU },
+  { kind: "dropdown", key: "repair", label: "Chimney Repair", Icon: BrickWall, items: REPAIR_MENU },
+  { kind: "dropdown", key: "cleaning", label: "Chimney Cleaning", Icon: Broom, items: CLEANING_MENU },
+  { kind: "dropdown", key: "fireplace", label: "Fireplace Services", Icon: Flame, items: FIREPLACE_MENU },
   { kind: "link", to: "/before-after", label: "Before & After" },
   { kind: "link", to: "/reviews", label: "Reviews" },
   { kind: "link", to: "/financing", label: "Financing" },
