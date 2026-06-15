@@ -148,8 +148,9 @@ function Index() {
       <ScheduleOnline />
       <Testimonials />
       <FieldNotes />
+      <TrustMarquee />
+      <EmergencyCallBar />
       <Faq />
-      <FinalCta />
     </>
   );
 }
