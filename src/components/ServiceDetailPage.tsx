@@ -12,17 +12,21 @@ import {
   ClipboardCheck,
   BadgeDollarSign,
   Quote,
+  Clock,
+  Award,
+  Flame,
 } from "lucide-react";
 import {
   ACCENT_CLASSES,
   getService,
   formatFromPrice,
   warrantyFor,
+  heroImageFor,
   type ServiceSpec,
 } from "@/data/services";
 import { TrustBadges } from "@/components/TrustBadges";
-import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
-import fireplaceServicePhoto from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
+import { DroneInspection } from "@/components/DroneInspection";
+import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -36,11 +40,17 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
 
   return (
     <div className="bg-background text-foreground">
-      {/* CINEMATIC HERO */}
-      <CinematicHero service={service} />
+      {/* HOMEPAGE-STYLE LIGHT HERO */}
+      <ServiceHero service={service} />
 
       {/* Marquee separator — trust strip */}
       <TrustMarquee />
+
+      {/* Emergency call bar — same as homepage */}
+      <EmergencyCallBar />
+
+      {/* Drone inspection block (homepage parity) */}
+      <DroneInspection />
 
       {/* OVERVIEW + spec card (editorial split) */}
       <Overview service={service} />
@@ -84,170 +94,76 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
   );
 }
 
-/* ---------- HERO ---------- */
+/* ---------- HERO (homepage-style light hero) ---------- */
 
-function BrickBackdrop() {
-  // Staggered black-brick pattern with subtle mortar lines + soft vignette.
-  return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
-      <svg
-        className="absolute inset-0 h-full w-full opacity-[0.55]"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <pattern
-            id="chimney-bricks"
-            x="0"
-            y="0"
-            width="120"
-            height="60"
-            patternUnits="userSpaceOnUse"
-          >
-            {/* Mortar base */}
-            <rect width="120" height="60" fill="oklch(0.06 0.005 250)" />
-            {/* Row 1 bricks */}
-            <rect x="1" y="1" width="58" height="28" rx="1.5" fill="oklch(0.10 0.01 30)" />
-            <rect x="61" y="1" width="58" height="28" rx="1.5" fill="oklch(0.11 0.012 25)" />
-            {/* Row 2 bricks (staggered) */}
-            <rect x="-29" y="31" width="58" height="28" rx="1.5" fill="oklch(0.105 0.011 28)" />
-            <rect x="31" y="31" width="58" height="28" rx="1.5" fill="oklch(0.095 0.009 32)" />
-            <rect x="91" y="31" width="58" height="28" rx="1.5" fill="oklch(0.11 0.012 24)" />
-            {/* Brick highlights — top edge */}
-            <line
-              x1="1"
-              y1="1.5"
-              x2="59"
-              y2="1.5"
-              stroke="oklch(0.18 0.015 30 / 0.4)"
-              strokeWidth="0.5"
-            />
-            <line
-              x1="61"
-              y1="1.5"
-              x2="119"
-              y2="1.5"
-              stroke="oklch(0.18 0.015 30 / 0.4)"
-              strokeWidth="0.5"
-            />
-            <line
-              x1="-29"
-              y1="31.5"
-              x2="29"
-              y2="31.5"
-              stroke="oklch(0.18 0.015 30 / 0.4)"
-              strokeWidth="0.5"
-            />
-            <line
-              x1="31"
-              y1="31.5"
-              x2="89"
-              y2="31.5"
-              stroke="oklch(0.18 0.015 30 / 0.4)"
-              strokeWidth="0.5"
-            />
-            <line
-              x1="91"
-              y1="31.5"
-              x2="149"
-              y2="31.5"
-              stroke="oklch(0.18 0.015 30 / 0.4)"
-              strokeWidth="0.5"
-            />
-          </pattern>
-          <radialGradient id="brick-vignette" cx="50%" cy="45%" r="75%">
-            <stop offset="0%" stopColor="oklch(0.18 0.01 250)" stopOpacity="0" />
-            <stop offset="100%" stopColor="oklch(0.18 0.01 250)" stopOpacity="0.9" />
-          </radialGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#chimney-bricks)" />
-        <rect width="100%" height="100%" fill="url(#brick-vignette)" />
-      </svg>
-      {/* Warm flame wash to tie it back to the brand */}
-      <div className="absolute inset-0 bg-gradient-to-br from-flame/[0.06] via-transparent to-transparent" />
-    </div>
-  );
-}
-
-function CinematicHero({ service }: { service: ServiceSpec }) {
+function ServiceHero({ service }: { service: ServiceSpec }) {
   const priceLabel = formatFromPrice(service);
-  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule Appointment Online";
+  const ctaLabel = service.quoteOnly ? "Request Free Inspection" : "Schedule appointment online";
   const Icon = service.icon;
+  const heroPhoto = heroImageFor(service);
 
   return (
-    <section className="relative isolate overflow-hidden bg-primary text-primary-foreground">
-      {/* Black brick texture — chimney bricks behind content */}
-      <BrickBackdrop />
+    <section className="relative overflow-hidden border-b border-border/30 bg-gradient-to-b from-primary/[0.04] to-background">
       {/* Breadcrumb */}
-      <nav aria-label="Breadcrumb" className="relative z-10 border-b border-white/5">
-        <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-4 font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60 md:px-8">
-          <li>
-            <Link to="/" className="hover:text-flame">
-              Home
-            </Link>
-          </li>
+      <nav aria-label="Breadcrumb" className="relative z-10 border-b border-border/40">
+        <ol className="mx-auto flex max-w-7xl items-center gap-2 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground/55 md:px-8">
+          <li><Link to="/" className="hover:text-flame">Home</Link></li>
           <li aria-hidden>/</li>
-          <li>
-            <Link to="/services" className="hover:text-flame">
-              Services
-            </Link>
-          </li>
+          <li><Link to="/services" className="hover:text-flame">Services</Link></li>
           <li aria-hidden>/</li>
           <li className="text-flame">{service.shortTitle}</li>
         </ol>
       </nav>
 
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-10 px-4 py-12 md:gap-14 md:px-8 md:py-16 lg:grid-cols-12 lg:items-center">
-        {/* LEFT — product copy */}
-        <div className="lg:col-span-6">
-          <span className="inline-flex items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-            <span className="h-1.5 w-1.5 rounded-full bg-flame" />
-            {service.hero.eyebrow}
-          </span>
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent"
+        aria-hidden
+      />
 
-          <h1 className="mt-5 font-display text-4xl font-extrabold leading-[1.02] tracking-tight md:text-5xl lg:text-[3.5rem]">
+      <div className="relative mx-auto grid max-w-7xl gap-8 pb-12 pt-8 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:pb-20 lg:pt-16">
+        {/* LEFT — message column */}
+        <div className="px-4 sm:px-6 lg:order-1 lg:col-span-6 lg:px-8 lg:pt-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
+              <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
+              <Star className="h-3 w-3 fill-flame text-flame" /> 1,836 ★ reviews
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-foreground/15 bg-background px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
+              <Icon className="h-3 w-3 text-flame" /> {service.hero.eyebrow}
+            </span>
+          </div>
+
+          <h1 className="mt-5 font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl">
             {service.hero.headline}
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/75 md:text-lg">
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">
             {service.hero.sub}
           </p>
 
-          {/* Product meta — price (inspection only) + guarantee + reviews. */}
-          <div className="mt-7 flex flex-wrap items-end gap-x-8 gap-y-4">
+          {/* Price / warranty / reviews strip */}
+          <div className="mt-6 flex flex-wrap items-end gap-x-8 gap-y-4">
             {priceLabel && (
-              <>
-                <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
-                    Starting at
-                  </p>
-                  <p className="mt-1 font-display text-3xl font-extrabold text-flame md:text-4xl">
-                    {priceLabel}
-                  </p>
-                </div>
-                <div className="h-10 w-px bg-white/10" aria-hidden />
-              </>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/55">Starting at</p>
+                <p className="mt-1 font-display text-3xl font-extrabold text-flame md:text-4xl">{priceLabel}</p>
+              </div>
             )}
             <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
-                Warranty
-              </p>
-              <p className="mt-1 font-display text-lg font-bold text-flame">
-                {warrantyFor(service)}
-              </p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/55">Warranty</p>
+              <p className="mt-1 font-display text-lg font-bold text-foreground">{warrantyFor(service)}</p>
             </div>
-            <div className="hidden h-10 w-px bg-white/10 sm:block" aria-hidden />
             <div className="hidden sm:block">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary-foreground/55">
-                Reviews
-              </p>
-              <p className="mt-1 flex items-center gap-1.5 font-display text-lg font-bold text-primary-foreground">
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/55">Reviews</p>
+              <p className="mt-1 inline-flex items-center gap-1.5 font-display text-lg font-bold text-foreground">
                 <Star className="h-4 w-4 fill-flame text-flame" /> 4.9 · 1,836
               </p>
             </div>
           </div>
 
-          {/* CTA row — rounded-xl to match homepage */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button
               type="button"
               onClick={openSchedule}
@@ -257,115 +173,106 @@ function CinematicHero({ service }: { service: ServiceSpec }) {
             </button>
             <a
               href="tel:6146835763"
-              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-white/20 bg-white/[0.03] px-6 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground backdrop-blur transition hover:border-flame"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
             >
-              <Phone className="h-4 w-4 text-flame" />
-              (614) 683-5763
+              <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
             </a>
           </div>
 
-          {/* Trust pills */}
-          <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
-            {["CSIA Certified", "BBB A+", "Licensed & Insured", "Same-Day Callback"].map((t) => (
-              <li
-                key={t}
-                className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/55"
-              >
-                <CheckCircle2 className="h-3 w-3 text-flame" />
-                {t}
-              </li>
+          {/* Emergency line micro-CTA */}
+          <a
+            href="tel:6146835763"
+            className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110"
+          >
+            <span className="relative inline-flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+            </span>
+            Emergency line 24/7
+          </a>
+
+          {/* Trust strip */}
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
+            {[
+              { icon: CheckCircle2, label: "CSIA-certified" },
+              { icon: ShieldCheck, label: "Fully insured" },
+              { icon: Clock, label: "Same-day callback" },
+              { icon: Award, label: "Family owned since 1975" },
+            ].map(({ icon: I, label }) => (
+              <span key={label} className="inline-flex items-center gap-2 text-xs font-medium text-foreground/80 sm:text-[13px]">
+                <I className="h-4 w-4 text-flame" /> {label}
+              </span>
             ))}
-          </ul>
+          </div>
         </div>
 
-        {/* RIGHT — product visual card */}
-        <div className="relative lg:col-span-6">
-          <div
-            className="pointer-events-none absolute -inset-6 rounded-[2rem] bg-flame/10 blur-3xl"
-            aria-hidden
-          />
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
-            <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
-              <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                <span className="h-1.5 w-1.5 rounded-full bg-flame" /> Ohio field crew
-              </span>
-              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
-                {service.shortTitle}
-              </span>
+        {/* RIGHT — photo card */}
+        <div className="relative lg:order-2 lg:col-span-6 lg:px-8">
+          <div className="relative mx-auto w-full lg:max-w-none">
+            <div className="relative overflow-hidden rounded-b-3xl bg-card lg:rounded-2xl lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+              <img
+                src={heroPhoto}
+                alt={`ChimCrew ${service.shortTitle.toLowerCase()} — Ohio crew on the job`}
+                className="block aspect-[5/4] h-auto w-full object-cover"
+                fetchPriority="high"
+                decoding="async"
+                loading="eager"
+              />
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
+                aria-hidden
+              />
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 sm:inset-x-5 sm:bottom-5">
+                <div className="min-w-0">
+                  <p className="font-display text-sm font-bold text-primary-foreground sm:text-base">
+                    {service.shortTitle} · ChimCrew Ohio
+                  </p>
+                  <p className="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/70">
+                    <MapPin className="h-3 w-3 text-flame" /> Columbus · Dayton · Cincinnati
+                  </p>
+                </div>
+                <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
+                  Real photos
+                </span>
+              </div>
             </div>
 
-            <div className="grid gap-0 md:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)]">
-              <div className="relative aspect-[5/4] overflow-hidden bg-black">
-                <img
-                  src={
-                    service.variant === "inspection"
-                      ? sweepCloseupPhoto.url
-                      : fireplaceServicePhoto.url
-                  }
-                  alt={
-                    service.variant === "inspection"
-                      ? "A ChimCrew technician inspecting and sweeping a chimney on a roof"
-                      : "A ChimCrew technician servicing a fireplace inside an Ohio home"
-                  }
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div
-                  className="absolute inset-0 bg-gradient-to-t from-primary/78 via-transparent to-transparent"
-                  aria-hidden
-                />
-                <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
-                  <p className="font-display text-sm font-bold text-primary-foreground">
-                    Real technicians handling this work every week across Ohio.
-                  </p>
-                  <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/60">
-                    Inspection photos · clean work area · written findings
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid content-between gap-4 border-t border-white/5 bg-white/[0.03] p-5 md:border-l md:border-t-0">
-                <div>
-                  <div className="grid h-12 w-12 place-items-center rounded-xl bg-flame/12 ring-1 ring-flame/25 text-flame">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                    What to expect
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-primary-foreground/76">
-                    A local crew, a documented process, and a clear explanation of what we found
-                    before any repair work is recommended.
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  {[priceLabel || "Free quote", warrantyFor(service), "Same-day callback"].map(
-                    (item) => (
-                      <div
-                        key={item}
-                        className="rounded-lg border border-white/10 bg-primary/40 px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80"
-                      >
-                        {item}
-                      </div>
-                    ),
-                  )}
-                </div>
-
-                <div className="rounded-xl border border-white/10 bg-primary/50 px-4 py-3">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                    Service area
-                  </p>
-                  <p className="mt-1 inline-flex items-center gap-2 text-sm text-primary-foreground/74">
-                    <MapPin className="h-3.5 w-3.5 text-flame" /> Columbus · Dayton · Cincinnati
-                  </p>
-                </div>
+            {/* Credential chip below image */}
+            <div className="mx-4 mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
+              <img
+                src={certifiedBadge.url}
+                alt="Certified chimney sweep credential"
+                width={56}
+                height={56}
+                className="h-12 w-12 shrink-0 rounded-full bg-white p-1.5"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="min-w-0">
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">Certified chimney professionals</p>
+                <p className="mt-0.5 text-xs text-foreground/75 sm:text-[13px]">Every inspection documented with written photo reports.</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+  );
+}
+
+/* ---------- EMERGENCY CALL BAR ---------- */
+
+function EmergencyCallBar() {
+  return (
+    <a
+      href="tel:6146835763"
+      className="block w-full bg-[#E63A1F] py-3 text-center text-primary-foreground transition hover:brightness-110"
+    >
+      <span className="inline-flex items-center gap-2 font-display text-sm font-bold underline decoration-2 underline-offset-4 sm:text-base">
+        <Phone className="h-4 w-4" />
+        For emergency service Call: (614) 683-5763
+      </span>
+    </a>
   );
 }
 
@@ -486,7 +393,7 @@ function Included({ service }: { service: ServiceSpec }) {
 
 function Process({ service }: { service: ServiceSpec }) {
   return (
-    <section className="relative border-b border-border bg-primary py-24 text-primary-foreground">
+    <section className="relative border-b border-border bg-background py-24 text-foreground">
       <div className="pointer-events-none absolute inset-0 opacity-[0.05] bg-grid" aria-hidden />
       <div
         className="pointer-events-none absolute -right-32 top-1/4 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
@@ -501,7 +408,7 @@ function Process({ service }: { service: ServiceSpec }) {
           <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
             From first call to final <span className="italic text-flame">handshake.</span>
           </h2>
-          <p className="mt-5 text-primary-foreground/70">
+          <p className="mt-5 text-muted-foreground">
             No mystery, no upsells. Here's exactly how a visit goes.
           </p>
         </div>
@@ -515,13 +422,13 @@ function Process({ service }: { service: ServiceSpec }) {
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             {service.process.map((p, i) => (
               <div key={p.title} className="relative">
-                <div className="relative z-10 grid h-24 w-24 place-items-center rounded-full border border-flame/40 bg-primary font-display text-4xl font-extrabold italic text-flame shadow-[0_0_30px_-5px_oklch(0.78_0.19_92/0.4)]">
+                <div className="relative z-10 grid h-24 w-24 place-items-center rounded-full border border-flame/40 bg-card font-display text-4xl font-extrabold italic text-flame shadow-[0_0_30px_-5px_oklch(0.78_0.19_92/0.4)]">
                   {i + 1}
                 </div>
                 <h3 className="mt-6 font-display text-2xl font-extrabold uppercase tracking-tight">
                   {p.title}
                 </h3>
-                <p className="mt-3 text-primary-foreground/65 leading-relaxed">{p.desc}</p>
+                <p className="mt-3 text-muted-foreground leading-relaxed">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -723,27 +630,36 @@ function WhyChimCrew({ accent }: { accent: (typeof ACCENT_CLASSES)[keyof typeof 
     },
   ];
   return (
-    <section className="relative overflow-hidden border-b border-border bg-primary py-24 text-primary-foreground">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" aria-hidden />
+    <section className="relative overflow-hidden border-b border-border bg-background py-24 text-foreground">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
       <div
         className="pointer-events-none absolute -left-32 top-1/3 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
         aria-hidden
       />
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
-          // Why ChimCrew
-        </p>
-        <h2 className="mt-4 max-w-3xl font-display text-4xl font-extrabold leading-tight md:text-5xl">
-          One local crew. <span className="italic text-flame">Six reasons to call us.</span>
-        </h2>
-        <div className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
+            <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why ChimCrew
+          </p>
+          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
+            Six reasons Ohio homeowners{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              trust us first
+            </span>
+            .
+          </h2>
+        </div>
+        <div className="mt-12 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((it) => (
-            <div key={it.label} className="group bg-primary p-7 transition hover:bg-white/[0.04]">
+            <div
+              key={it.label}
+              className="group rounded-2xl border border-border bg-card p-7 shadow-[0_18px_50px_-20px_oklch(0_0_0/0.12)] transition hover:-translate-y-1 hover:border-flame/40"
+            >
               <div className="grid h-11 w-11 place-items-center rounded-xl bg-flame/15 text-flame ring-1 ring-flame/30 transition group-hover:bg-flame group-hover:text-primary">
                 <it.icon className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 font-display text-xl font-extrabold">{it.label}</h3>
-              <p className="mt-2 text-sm text-primary-foreground/70">{it.desc}</p>
+              <h3 className="mt-5 font-display text-xl font-extrabold text-foreground">{it.label}</h3>
+              <p className="mt-2 text-sm text-muted-foreground">{it.desc}</p>
             </div>
           ))}
         </div>
@@ -859,40 +775,32 @@ function Related({ service }: { service: ServiceSpec }) {
 
 function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
   return (
-    <section className="relative overflow-hidden bg-primary py-24 text-primary-foreground">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
-      <div
-        className="pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-flame/25 blur-3xl"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute -left-32 -bottom-32 h-[28rem] w-[28rem] rounded-full bg-flame/15 blur-3xl"
-        aria-hidden
-      />
-      <div className="relative mx-auto max-w-4xl px-4 text-center md:px-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
-          // Free inspection
-        </p>
-        <h2 className="mt-4 font-display text-5xl font-extrabold leading-[1.02] md:text-7xl">
-          Not sure what's wrong with <span className="italic text-flame">your chimney?</span>
-        </h2>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-primary-foreground/80">
-          Schedule a free inspection. We'll show you exactly what needs attention — with photos and
-          a written report.
-        </p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+    <section className="relative overflow-hidden bg-flame py-12 text-primary">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-5 px-4 text-center md:flex-row md:text-left md:px-8">
+        <div className="flex items-center gap-4">
+          <Flame className="h-10 w-10" />
+          <div>
+            <p className="font-display text-2xl font-bold md:text-3xl">
+              One quick form. A safer home tonight.
+            </p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] opacity-80">
+              Same-day callback · No card · 100% Ohio crew
+            </p>
+          </div>
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-3">
           <button
             type="button"
             onClick={openSchedule}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0_0_0/0.25)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> {ctaLabel}
           </button>
           <a
             href="tel:6146835763"
-            className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 px-8 font-display text-sm font-extrabold uppercase tracking-[0.15em] text-primary-foreground backdrop-blur transition hover:border-white hover:bg-white/10 sm:w-auto"
+            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
-            <Phone className="h-5 w-5" /> (614) 683-5763
+            <Phone className="h-4 w-4" /> (614) 683-5763
           </a>
         </div>
       </div>
