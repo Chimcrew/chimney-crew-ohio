@@ -100,13 +100,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       {/* Tiny utility strip */}
-      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] md:block">
+      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] md:block md:text-white/90">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] md:px-8">
-          <span className="flex items-center gap-2 opacity-80">
+          <span className="flex items-center gap-2 opacity-80 md:opacity-100">
             <MapPin className="h-3.5 w-3.5" /> Serving Columbus, Ohio &amp; Surrounding Areas — Licensed &amp; Insured
           </span>
           <span className="flex items-center gap-4">
-            <span className="hidden items-center gap-1.5 sm:flex opacity-80">
+            <span className="hidden items-center gap-1.5 sm:flex opacity-80 md:opacity-100">
               <span className="grid h-4 w-4 place-items-center rounded-full bg-[oklch(0.92_0.18_95)] text-[oklch(0.18_0.02_250)] text-[10px] font-bold">★</span>
               1,836 Five-Star Reviews
             </span>
@@ -197,7 +197,7 @@ export function SiteHeader() {
                                     to="/services/$slug"
                                     params={{ slug: item.slug }}
                                     onClick={() => setOpenMenu(null)}
-                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
+                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)] md:text-black md:hover:text-black"
                                   >
                                     {item.label}
                                   </Link>
@@ -207,7 +207,7 @@ export function SiteHeader() {
                                   <Link
                                     to={item.to}
                                     onClick={() => setOpenMenu(null)}
-                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
+                                    className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)] md:text-black md:hover:text-black"
                                   >
                                     {item.label}
                                   </Link>
