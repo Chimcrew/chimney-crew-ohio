@@ -19,7 +19,6 @@ import fireplaceCozy from "@/assets/fireplace-cozy.jpg";
 import afterChimney from "@/assets/after-chimney.jpg";
 import beforeChimney from "@/assets/before-chimney.jpg";
 import crownAfter from "@/assets/crown-after.jpg";
-import crownBefore from "@/assets/crown-before.jpg";
 import droneInspection from "@/assets/drone-inspection.jpg";
 import leakRooftop from "@/assets/leak-chimney-rooftop.jpg";
 // Real photos sent by the team — use these on the service pages.
