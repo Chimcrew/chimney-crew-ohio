@@ -25,6 +25,7 @@ import {
 import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
 import { InlineLeadForm } from "@/components/InlineLeadForm";
 const logo = logoAsset.url;
+import teamHeroBg from "@/assets/team-hero-bg.jpg.asset.json";
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import svcSweep from "@/assets/svc/svc-sweep.jpg";
