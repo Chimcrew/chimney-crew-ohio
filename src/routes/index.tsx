@@ -721,7 +721,7 @@ function WhyChooseUs() {
     },
   ];
   return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-24">
+    <section className="relative overflow-hidden bg-background py-14 md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <div className="mx-auto max-w-3xl text-center">
@@ -741,7 +741,7 @@ function WhyChooseUs() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start">
+        <div className="mt-10 grid gap-4 sm:gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_18px_50px_-20px_oklch(0_0_0/0.18)]">
             <img
               src={fireplaceServicePhoto.url}
@@ -761,18 +761,22 @@ function WhyChooseUs() {
             </div>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-5">
             {reasons.map(({ icon: Icon, title, body }) => (
               <article
                 key={title}
-                className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
+                className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-4 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame sm:p-6"
               >
                 <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-flame/10 blur-2xl transition group-hover:bg-flame/30" />
-                <div className="relative grid h-12 w-12 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
-                  <Icon className="h-5 w-5" />
+                <div className="relative grid h-10 w-10 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40 sm:h-12 sm:w-12">
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <h3 className="mt-5 font-display text-lg font-semibold text-primary">{title}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{body}</p>
+                <h3 className="mt-3 font-display text-base font-semibold text-primary sm:mt-5 sm:text-lg">
+                  {title}
+                </h3>
+                <p className="mt-1.5 flex-1 text-[13px] leading-relaxed text-muted-foreground sm:mt-2 sm:text-sm">
+                  {body}
+                </p>
               </article>
             ))}
           </div>
