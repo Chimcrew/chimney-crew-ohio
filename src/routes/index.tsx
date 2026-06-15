@@ -138,6 +138,7 @@ function Index() {
       <LimitedOfferBanner />
       <TrustBar />
       <TrustMarquee />
+      <MeetTheCrew />
       <RecentProjects />
       <DroneInspection />
       <ServiceAreaSeo />
