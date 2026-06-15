@@ -126,17 +126,17 @@ export function SiteHeader() {
     <>
     <header className="fixed inset-x-0 top-0 z-50 md:sticky md:inset-auto">
       {/* Tiny utility strip */}
-      <div className="hidden bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] md:block">
+      <div className="hidden bg-[oklch(0.78_0.19_92)] text-[oklch(0.18_0.02_250)] md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] md:px-8">
-          <span className="flex items-center gap-2 opacity-80">
+          <span className="flex items-center gap-2 opacity-90">
             <MapPin className="h-3.5 w-3.5" /> Serving Columbus, Ohio &amp; Surrounding Areas — Licensed &amp; Insured
           </span>
           <span className="flex items-center gap-4">
             <span className="hidden items-center gap-1.5 sm:flex opacity-80">
-              <span className="grid h-4 w-4 place-items-center rounded-full bg-[oklch(0.92_0.18_95)] text-[oklch(0.18_0.02_250)] text-[10px] font-bold">★</span>
+              <span className="grid h-4 w-4 place-items-center rounded-full bg-[oklch(0.18_0.02_250)] text-[oklch(0.92_0.18_95)] text-[10px] font-bold">★</span>
               5-Star Rated · Google · Yelp · Angi
             </span>
-            <a href="tel:6146835763" className="font-bold hover:underline text-[oklch(0.92_0.18_95)]">(614) 683-5763</a>
+            <a href="tel:6146835763" className="font-bold hover:underline text-[oklch(0.18_0.02_250)]">(614) 683-5763</a>
           </span>
         </div>
       </div>
