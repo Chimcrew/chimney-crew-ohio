@@ -429,19 +429,21 @@ function Hero() {
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            {/* CALL — primary on mobile, secondary on desktop */}
+            <a
+              href="tel:6146835763"
+              className="order-1 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
+            >
+              <Phone className="h-4 w-4 text-primary sm:text-flame" /> (614) 683-5763
+            </a>
+            {/* SCHEDULE — secondary on mobile, primary on desktop */}
             <button
               type="button"
               onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+              className="order-2 inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-6 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </button>
-            <a
-              href="tel:6146835763"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
-            >
-              <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
-            </a>
           </div>
 
           {/* Emergency line micro-CTA */}
