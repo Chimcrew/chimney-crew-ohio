@@ -135,6 +135,7 @@ function Index() {
       <LimitedOfferBanner />
       <TrustBar />
       <TrustMarquee />
+      <EmergencyCallBar />
       <RecentProjects />
       <DroneInspection />
       <ServiceAreaSeo />
@@ -142,10 +143,8 @@ function Index() {
       <WhyChooseUs />
       <BeforeAfterHome />
       <ProblemSolver />
-      <FireHazards />
       <LeakingChimney />
       <ScheduleOnline />
-      <Process />
       <Testimonials />
       <FieldNotes />
       <Faq />
@@ -448,9 +447,9 @@ function Hero() {
         aria-hidden
       />
 
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-12 pt-8 sm:px-6 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:px-8 lg:pb-20 lg:pt-16">
+      <div className="relative mx-auto grid max-w-7xl gap-8 pb-12 pt-8 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:pb-20 lg:pt-16">
         {/* LEFT — message column */}
-        <div className="order-2 lg:order-1 lg:col-span-6 lg:pt-4">
+        <div className="px-4 sm:px-6 lg:order-1 lg:col-span-6 lg:px-8 lg:pt-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
               <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
@@ -509,16 +508,10 @@ function Hero() {
           </div>
         </div>
 
-        {/* RIGHT — photo column. Uncropped, full team visible. */}
-        <div className="relative order-1 lg:order-2 lg:col-span-6">
-          <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
-            {/* soft ambient glow */}
-            <div
-              className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/20 blur-3xl"
-              aria-hidden
-            />
-
-            <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+        {/* RIGHT — photo column. Full-bleed on mobile, rounded only at the bottom. */}
+        <div className="relative lg:order-2 lg:col-span-6 lg:px-8">
+          <div className="relative mx-auto w-full lg:max-w-none">
+            <div className="relative overflow-hidden rounded-b-3xl bg-card lg:rounded-2xl lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
               <img
                 src={teamHeroPhoto.url}
                 alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
@@ -548,7 +541,7 @@ function Hero() {
             </div>
 
             {/* Credential chip below image */}
-            <div className="mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm">
+            <div className="mx-4 mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
               <img
                 src={certifiedBadge.url}
                 alt="Certified chimney sweep credential"
@@ -578,28 +571,116 @@ function Hero() {
    TRUST MARQUEE
    ============================================================ */
 function TrustMarquee() {
-  const items = [
-    "CSIA Certified",
-    "BBB A+ Rated",
-    "Licensed in Ohio",
-    "Fully Insured",
-    "Family-Owned Since 1975",
-    "1,836 ★★★★★ Reviews",
-    "Same-Day Callback",
-    "24/7 Emergency Service",
+  // Review-platform chips. Brand-styled inline so we don't ship 3rd-party logo files.
+  const chips = [
+    {
+      label: "Google",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-medium">
+          <span className="text-[#4285F4]">G</span>
+          <span className="text-[#EA4335]">o</span>
+          <span className="text-[#FBBC05]">o</span>
+          <span className="text-[#4285F4]">g</span>
+          <span className="text-[#34A853]">l</span>
+          <span className="text-[#EA4335]">e</span>
+          <span className="ml-1 text-[#FBBC05]">★★★★★</span>
+        </span>
+      ),
+    },
+    {
+      label: "Yelp",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="rounded bg-[#D32323] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+            yelp
+          </span>
+          <span className="text-[#D32323]">★★★★★</span>
+        </span>
+      ),
+    },
+    {
+      label: "Angi",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="rounded bg-[#F26F21] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+            Angi
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
+            Super Service '24
+          </span>
+        </span>
+      ),
+    },
+    {
+      label: "HomeAdvisor",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="text-[#F68B1F]">Home</span>
+          <span className="text-foreground/80">Advisor</span>
+          <span className="text-[#F68B1F]">★★★★★</span>
+        </span>
+      ),
+    },
+    {
+      label: "BBB",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="rounded bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+            BBB
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
+            A+ Accredited
+          </span>
+        </span>
+      ),
+    },
+    {
+      label: "Porch",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="text-[#1A75BB]">▲ Porch</span>
+          <span className="text-[#D32323]">★★★★★</span>
+        </span>
+      ),
+    },
   ];
-  const loop = [...items, ...items];
+  const loop = [...chips, ...chips];
   return (
-    <section className="relative overflow-hidden border-y border-border bg-secondary/60 py-5">
-      <div className="flex w-max animate-marquee gap-12 whitespace-nowrap px-6 font-mono text-xs uppercase tracking-[0.25em] text-foreground/80">
-        {loop.map((t, i) => (
-          <span key={i} className="flex items-center gap-3">
-            <Flame className="h-3.5 w-3.5 text-flame" />
-            {t}
+    <section
+      aria-label="Trusted on review platforms"
+      className="relative overflow-hidden border-y border-border bg-secondary/60 py-4"
+    >
+      <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
+        ★ 5-Star · Based on 1,836 reviews
+      </p>
+      <div className="flex w-max animate-marquee items-center gap-3 whitespace-nowrap px-3">
+        {loop.map((c, i) => (
+          <span
+            key={`${c.label}-${i}`}
+            className="inline-flex items-center rounded-lg border border-border bg-background px-3 py-2 shadow-sm"
+          >
+            {c.node}
           </span>
         ))}
       </div>
     </section>
+  );
+}
+
+/* ============================================================
+   EMERGENCY CALL BAR — bright red strip with the crew phone
+   ============================================================ */
+function EmergencyCallBar() {
+  return (
+    <a
+      href="tel:6146835763"
+      className="block w-full bg-[#E63A1F] py-3 text-center text-primary-foreground transition hover:brightness-110"
+    >
+      <span className="inline-flex items-center gap-2 font-display text-sm font-bold underline decoration-2 underline-offset-4 sm:text-base">
+        <Phone className="h-4 w-4" />
+        For emergency service Call: (614) 683-5763
+      </span>
+    </a>
   );
 }
 
@@ -640,7 +721,7 @@ function WhyChooseUs() {
     },
   ];
   return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-24">
+    <section className="relative overflow-hidden bg-background py-14 md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <div className="mx-auto max-w-3xl text-center">
@@ -660,7 +741,7 @@ function WhyChooseUs() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start">
+        <div className="mt-10 grid gap-4 sm:gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start">
           <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-[0_18px_50px_-20px_oklch(0_0_0/0.18)]">
             <img
               src={fireplaceServicePhoto.url}
@@ -680,18 +761,22 @@ function WhyChooseUs() {
             </div>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-5">
             {reasons.map(({ icon: Icon, title, body }) => (
               <article
                 key={title}
-                className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
+                className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-4 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame sm:p-6"
               >
                 <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-flame/10 blur-2xl transition group-hover:bg-flame/30" />
-                <div className="relative grid h-12 w-12 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
-                  <Icon className="h-5 w-5" />
+                <div className="relative grid h-10 w-10 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40 sm:h-12 sm:w-12">
+                  <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <h3 className="mt-5 font-display text-lg font-semibold text-primary">{title}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{body}</p>
+                <h3 className="mt-3 font-display text-base font-semibold text-primary sm:mt-5 sm:text-lg">
+                  {title}
+                </h3>
+                <p className="mt-1.5 flex-1 text-[13px] leading-relaxed text-muted-foreground sm:mt-2 sm:text-sm">
+                  {body}
+                </p>
               </article>
             ))}
           </div>
@@ -814,7 +899,7 @@ function ProblemSolver() {
     },
   ];
   return (
-    <section className="relative overflow-hidden bg-secondary/40 py-20 md:py-24">
+    <section className="relative overflow-hidden bg-secondary/40 py-14 md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-20" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl">
@@ -833,20 +918,24 @@ function ProblemSolver() {
           </p>
         </div>
 
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {problems.map(({ icon: Icon, problem, solution, cta }) => (
             <article
               key={problem}
-              className="group flex flex-col rounded-xl border-2 border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
+              className="group flex flex-col rounded-xl border-2 border-border bg-card p-4 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame sm:p-6"
             >
-              <div className="grid h-11 w-11 place-items-center rounded-lg bg-destructive/10 text-destructive ring-1 ring-destructive/30">
-                <Icon className="h-5 w-5" />
+              <div className="grid h-9 w-9 place-items-center rounded-lg bg-destructive/10 text-destructive ring-1 ring-destructive/30 sm:h-11 sm:w-11">
+                <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
-              <h3 className="mt-4 font-display text-lg font-bold text-primary">{problem}</h3>
-              <p className="mt-2 flex-1 text-sm text-muted-foreground">{solution}</p>
+              <h3 className="mt-3 font-display text-base font-bold text-primary sm:mt-4 sm:text-lg">
+                {problem}
+              </h3>
+              <p className="mt-1.5 flex-1 text-[13px] leading-relaxed text-muted-foreground sm:mt-2 sm:text-sm">
+                {solution}
+              </p>
               <Link
                 to="/contact"
-                className="mt-5 inline-flex items-center gap-2 self-start rounded-lg border-2 border-primary bg-primary px-4 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-primary-foreground transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary"
+                className="mt-3 inline-flex items-center gap-2 self-start rounded-lg border-2 border-primary bg-primary px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-primary-foreground transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary sm:mt-5 sm:px-4 sm:py-2.5 sm:text-[11px]"
               >
                 {cta} <ArrowRight className="h-3.5 w-3.5" />
               </Link>
