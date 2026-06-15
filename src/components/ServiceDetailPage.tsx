@@ -273,32 +273,99 @@ function EmergencyCallBar() {
 /* ---------- TRUST MARQUEE ---------- */
 
 function TrustMarquee() {
-  const items = [
-    "★ 1,836 5-Star Reviews",
-    "CSIA Certified Crew",
-    "BBB A+ Accredited",
-    "Licensed & Insured",
-    "Serving Ohio Since 1975",
-    "Same-Day Callback",
-    "Flat-Rate Pricing",
-    "Workmanship Guarantee",
+  // Review-platform chips — matches the homepage TrustMarquee.
+  const chips = [
+    {
+      label: "Google",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-medium">
+          <span className="text-[#4285F4]">G</span>
+          <span className="text-[#EA4335]">o</span>
+          <span className="text-[#FBBC05]">o</span>
+          <span className="text-[#4285F4]">g</span>
+          <span className="text-[#34A853]">l</span>
+          <span className="text-[#EA4335]">e</span>
+          <span className="ml-1 text-[#FBBC05]">★★★★★</span>
+        </span>
+      ),
+    },
+    {
+      label: "Yelp",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="rounded bg-[#D32323] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+            yelp
+          </span>
+          <span className="text-[#D32323]">★★★★★</span>
+        </span>
+      ),
+    },
+    {
+      label: "Angi",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="rounded bg-[#F26F21] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+            Angi
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
+            Super Service '24
+          </span>
+        </span>
+      ),
+    },
+    {
+      label: "HomeAdvisor",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="text-[#F68B1F]">Home</span>
+          <span className="text-foreground/80">Advisor</span>
+          <span className="text-[#F68B1F]">★★★★★</span>
+        </span>
+      ),
+    },
+    {
+      label: "BBB",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="rounded bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+            BBB
+          </span>
+          <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
+            A+ Accredited
+          </span>
+        </span>
+      ),
+    },
+    {
+      label: "Porch",
+      node: (
+        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
+          <span className="text-[#1A75BB]">▲ Porch</span>
+          <span className="text-[#D32323]">★★★★★</span>
+        </span>
+      ),
+    },
   ];
+  const loop = [...chips, ...chips];
   return (
-    <div className="overflow-hidden border-y border-border bg-primary text-primary-foreground">
-      <div
-        className="flex w-max gap-12 whitespace-nowrap py-4"
-        style={{ animation: "marquee 35s linear infinite" }}
-      >
-        {[...items, ...items].map((it, i) => (
+    <section
+      aria-label="Trusted on review platforms"
+      className="relative overflow-hidden border-y border-border bg-secondary/60 py-4"
+    >
+      <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
+        ★ 5-Star · Based on 1,836 reviews
+      </p>
+      <div className="flex w-max animate-marquee items-center gap-3 whitespace-nowrap px-3">
+        {loop.map((c, i) => (
           <span
-            key={i}
-            className="font-mono text-xs uppercase tracking-[0.3em] text-primary-foreground/70"
+            key={`${c.label}-${i}`}
+            className="inline-flex items-center rounded-lg border border-border bg-background px-3 py-2 shadow-sm"
           >
-            {it} <span className="ml-12 text-flame">/</span>
+            {c.node}
           </span>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
