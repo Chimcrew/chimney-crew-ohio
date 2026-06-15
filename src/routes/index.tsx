@@ -142,10 +142,8 @@ function Index() {
       <WhyChooseUs />
       <BeforeAfterHome />
       <ProblemSolver />
-      <FireHazards />
       <LeakingChimney />
       <ScheduleOnline />
-      <Process />
       <Testimonials />
       <FieldNotes />
       <Faq />
