@@ -28,14 +28,14 @@ export function InlineLeadForm({
 
   const isDark = tone === "dark";
   const cardCls = isDark
-    ? "rounded-3xl border border-white/20 bg-black/50 p-5 backdrop-blur sm:p-6 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.55)]"
+    ? "rounded-3xl border border-white/15 bg-white/[0.06] p-5 backdrop-blur sm:p-6 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.55)]"
     : "rounded-3xl border border-border/60 bg-card p-5 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)] sm:p-6";
   const titleCls = isDark
     ? "font-display text-xl font-extrabold tracking-tight text-primary-foreground"
     : "font-display text-xl font-extrabold tracking-tight";
   const subCls = isDark ? "mt-1 text-sm text-primary-foreground/70" : "mt-1 text-sm text-muted-foreground";
   const inputCls = isDark
-    ? "h-12 rounded-xl border border-white/25 bg-black/40 px-4 text-base text-primary-foreground placeholder:text-primary-foreground/50 outline-none focus:border-flame"
+    ? "h-12 rounded-xl border border-white/20 bg-white/[0.06] px-4 text-base text-primary-foreground placeholder:text-primary-foreground/50 outline-none focus:border-flame"
     : "h-12 rounded-xl border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame";
 
   async function onSubmit(e: React.FormEvent) {
