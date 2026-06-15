@@ -446,9 +446,9 @@ function Hero() {
         aria-hidden
       />
 
-      <div className="relative mx-auto grid max-w-7xl gap-10 px-4 pb-12 pt-8 sm:px-6 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:px-8 lg:pb-20 lg:pt-16">
+      <div className="relative mx-auto grid max-w-7xl gap-8 pb-12 pt-8 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:pb-20 lg:pt-16">
         {/* LEFT — message column */}
-        <div className="order-2 lg:order-1 lg:col-span-6 lg:pt-4">
+        <div className="px-4 sm:px-6 lg:order-1 lg:col-span-6 lg:px-8 lg:pt-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
               <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
@@ -507,16 +507,10 @@ function Hero() {
           </div>
         </div>
 
-        {/* RIGHT — photo column. Uncropped, full team visible. */}
-        <div className="relative order-1 lg:order-2 lg:col-span-6">
-          <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
-            {/* soft ambient glow */}
-            <div
-              className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-flame/20 blur-3xl"
-              aria-hidden
-            />
-
-            <div className="relative overflow-hidden rounded-2xl border border-border/60 bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+        {/* RIGHT — photo column. Full-bleed on mobile, rounded only at the bottom. */}
+        <div className="relative lg:order-2 lg:col-span-6 lg:px-8">
+          <div className="relative mx-auto w-full lg:max-w-none">
+            <div className="relative overflow-hidden rounded-b-3xl bg-card lg:rounded-2xl lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
               <img
                 src={teamHeroPhoto.url}
                 alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
@@ -546,7 +540,7 @@ function Hero() {
             </div>
 
             {/* Credential chip below image */}
-            <div className="mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm">
+            <div className="mx-4 mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
               <img
                 src={certifiedBadge.url}
                 alt="Certified chimney sweep credential"
