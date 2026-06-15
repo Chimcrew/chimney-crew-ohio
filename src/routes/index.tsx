@@ -298,9 +298,14 @@ function MobileHero() {
               <span className="mb-3 inline-flex items-center gap-2 rounded-full bg-flame px-3 py-1.5 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-primary">
                 <Flame className="h-3 w-3" /> Free Inspection · Normally $69
               </span>
-              <h1 className="font-display text-[1.5rem] sm:text-[1.85rem] font-black leading-[1.08] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
-                The Chimney Experts You've Trusted for{" "}
-                <span className="text-white">Over 50 Years In Columbus, Ohio</span>
+              <h1 className="mt-5 font-display text-[1.25rem] sm:text-[1.55rem] font-black leading-[1.12] tracking-[-0.02em] text-white drop-shadow-[0_4px_20px_oklch(0_0_0/0.85)]">
+                <span className="mb-2 inline-block rounded-md border-2 border-flame/80 bg-black/40 px-2.5 py-1 text-white">
+                  The Chimney Experts
+                </span>
+                <span className="block">
+                  You've Trusted for{" "}
+                  <span className="text-white">Over 50 Years In Columbus, Ohio</span>
+                </span>
               </h1>
               <p className="mt-4 text-[15px] leading-relaxed text-white/85">
                 Get a free chimney inspection this month — written photo report, same-day callbacks, zero pressure.
@@ -552,10 +557,15 @@ function Hero() {
               </span>
             </div>
 
-            <h1 className="font-display text-[1.55rem] font-extrabold leading-[1.08] tracking-[-0.025em] text-primary-foreground sm:text-[1.85rem] md:text-[2.5rem] lg:text-[3.25rem]">
-              The Chimney Experts You've Trusted for{" "}
-              <span className="text-white">
-                Over 50 Years In Columbus, Ohio
+            <h1 className="mt-4 font-display text-[1.3rem] font-extrabold leading-[1.12] tracking-[-0.025em] text-primary-foreground sm:text-[1.55rem] md:mt-6 md:text-[2rem] lg:text-[2.5rem]">
+              <span className="mb-2 inline-block rounded-md border-2 border-flame/80 bg-flame/10 px-2.5 py-1 text-primary-foreground">
+                The Chimney Experts
+              </span>
+              <span className="block">
+                You've Trusted for{" "}
+                <span className="text-white">
+                  Over 50 Years In Columbus, Ohio
+                </span>
               </span>
             </h1>
 
