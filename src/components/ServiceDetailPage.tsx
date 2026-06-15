@@ -348,33 +348,59 @@ function Stat({ label, value }: { label: string; value: string }) {
 
 function Included({ service }: { service: ServiceSpec }) {
   return (
-    <section className="border-b border-border bg-secondary/30 py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-2xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
-              // What you get
-            </p>
-            <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
-              Everything's <span className="italic text-flame">included.</span>
-            </h2>
-          </div>
-          <div className="flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-foreground">
+    <section className="relative overflow-hidden border-b border-border bg-background py-20 md:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
+      <div
+        className="pointer-events-none absolute -left-32 top-10 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-flame/10 blur-3xl"
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <div className="mx-auto max-w-3xl text-center">
+          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
+            <ClipboardCheck className="h-3.5 w-3.5 text-flame" /> What's included
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-primary sm:text-4xl md:text-5xl">
+            Everything you need —{" "}
+            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              nothing extra to pay
+            </span>
+            .
+          </h2>
+          <p className="mt-4 text-base text-muted-foreground">
+            One {service.quoteOnly ? "written quote" : "flat-rate price"}. Every step below is part
+            of your {service.shortTitle.toLowerCase()} — no upsells on the truck.
+          </p>
+          <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 font-mono text-[11px] uppercase tracking-widest text-foreground shadow-sm">
             <BadgeDollarSign className="h-4 w-4 text-flame" />
-            {service.quoteOnly ? "Flat-rate quote in writing" : "Flat-rate pricing"}
+            {service.quoteOnly ? "Flat-rate quote in writing" : "Flat-rate pricing · no surprises"}
           </div>
         </div>
 
-        <ul className="mt-12 grid gap-px overflow-hidden rounded-3xl border border-border bg-border md:grid-cols-2">
+        <ul className="mt-12 grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
           {service.bullets.map((b, i) => (
             <li
               key={b}
-              className="group flex items-start gap-6 bg-card p-7 transition hover:bg-flame/[0.08]"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-[0_10px_30px_-15px_oklch(0_0_0/0.18)] transition hover:-translate-y-1 hover:border-flame hover:shadow-[0_22px_50px_-20px_oklch(0.78_0.19_92/0.45)]"
             >
-              <span className="font-display text-5xl font-extrabold italic leading-none text-flame/30 transition group-hover:text-flame md:text-6xl">
-                {String(i + 1).padStart(2, "0")}
-              </span>
-              <span className="pt-2 text-lg font-medium leading-snug text-foreground">{b}</span>
+              <div
+                className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-flame/10 blur-2xl transition group-hover:bg-flame/30"
+                aria-hidden
+              />
+              <div className="relative flex items-center gap-3">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary text-flame ring-1 ring-flame/40">
+                  <CheckCircle2 className="h-5 w-5" />
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                  Step · {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <p className="relative mt-4 text-[15px] font-medium leading-snug text-foreground">
+                {b}
+              </p>
             </li>
           ))}
         </ul>
@@ -477,26 +503,65 @@ function ProblemsBlock({ service }: { service: ServiceSpec }) {
 
 function BenefitsBlock({ service }: { service: ServiceSpec }) {
   return (
-    <section className="border-b border-border bg-background py-24">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-3xl">
-          <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">
-            // The payoff
-          </p>
-          <h2 className="mt-4 font-display text-4xl font-extrabold leading-tight md:text-5xl">
-            What you get when it's <span className="italic text-flame">done right.</span>
-          </h2>
+    <section className="relative overflow-hidden border-b border-border bg-primary py-20 text-primary-foreground md:py-28">
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.08]" aria-hidden />
+      <div
+        className="pointer-events-none absolute -right-24 top-1/4 h-80 w-80 rounded-full bg-flame/25 blur-3xl"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute -left-20 bottom-0 h-72 w-72 rounded-full bg-flame/15 blur-3xl"
+        aria-hidden
+      />
+      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+        <div className="grid items-end gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+          <div className="max-w-2xl">
+            <p className="inline-flex items-center gap-2 rounded-full border border-flame/50 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-primary-foreground">
+              <Flame className="h-3.5 w-3.5 text-flame" /> The payoff
+            </p>
+            <h2 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+              What you get when{" "}
+              <span className="inline-block rounded-lg bg-flame px-2.5 py-0.5 text-primary">
+                it's done right
+              </span>
+              .
+            </h2>
+            <p className="mt-4 max-w-xl text-base text-primary-foreground/80">
+              A {service.shortTitle.toLowerCase()} that holds up — backed in writing, documented
+              with photos, and built to last past the next Ohio winter.
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center gap-3 lg:justify-end">
+            <span className="inline-flex items-center gap-2 rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em]">
+              <ShieldCheck className="h-3.5 w-3.5 text-flame" /> {warrantyFor(service)} warranty
+            </span>
+            <span className="inline-flex items-center gap-2 rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em]">
+              <Award className="h-3.5 w-3.5 text-flame" /> CSIA-certified
+            </span>
+          </div>
         </div>
-        <ul className="mt-12 grid gap-5 md:grid-cols-2">
-          {service.benefits!.map((b) => (
+
+        <ul className="mt-12 grid gap-4 sm:gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {service.benefits!.map((b, i) => (
             <li
               key={b}
-              className="flex items-start gap-5 rounded-2xl border border-border bg-card p-6 transition hover:border-flame hover:shadow-[0_15px_40px_-15px_oklch(0.78_0.19_92/0.4)]"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.04] p-6 backdrop-blur transition hover:-translate-y-1 hover:border-flame hover:bg-primary-foreground/[0.08]"
             >
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-flame text-primary">
-                <CheckCircle2 className="h-5 w-5" />
-              </span>
-              <span className="pt-1.5 text-foreground/85">{b}</span>
+              <div
+                className="pointer-events-none absolute -left-10 -bottom-10 h-28 w-28 rounded-full bg-flame/15 blur-2xl transition group-hover:bg-flame/35"
+                aria-hidden
+              />
+              <div className="relative flex items-center justify-between">
+                <span className="grid h-11 w-11 place-items-center rounded-xl bg-flame text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]">
+                  <CheckCircle2 className="h-5 w-5" />
+                </span>
+                <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                  / {String(i + 1).padStart(2, "0")}
+                </span>
+              </div>
+              <p className="relative mt-5 text-[15px] font-medium leading-snug text-primary-foreground">
+                {b}
+              </p>
             </li>
           ))}
         </ul>
