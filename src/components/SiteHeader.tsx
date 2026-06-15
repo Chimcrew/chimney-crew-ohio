@@ -49,15 +49,16 @@ type DropdownNav = {
   kind: "dropdown";
   key: string;
   label: string;
+  emoji: string;
   items: MenuLink[];
 };
 type SimpleNav = { kind: "link"; to: string; label: string };
 
 const PRIMARY_NAV: (SimpleNav | DropdownNav)[] = [
   { kind: "link", to: "/", label: "Home" },
-  { kind: "dropdown", key: "repair", label: "Chimney Repair", items: REPAIR_MENU },
-  { kind: "dropdown", key: "cleaning", label: "Chimney Cleaning", items: CLEANING_MENU },
-  { kind: "dropdown", key: "fireplace", label: "Fireplace Services", items: FIREPLACE_MENU },
+  { kind: "dropdown", key: "repair", label: "Chimney Repair", emoji: "🧱", items: REPAIR_MENU },
+  { kind: "dropdown", key: "cleaning", label: "Chimney Cleaning", emoji: "🧹", items: CLEANING_MENU },
+  { kind: "dropdown", key: "fireplace", label: "Fireplace Services", emoji: "🔥", items: FIREPLACE_MENU },
   { kind: "link", to: "/before-after", label: "Before & After" },
   { kind: "link", to: "/reviews", label: "Reviews" },
   { kind: "link", to: "/financing", label: "Financing" },
