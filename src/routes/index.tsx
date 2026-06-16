@@ -636,9 +636,9 @@ function EmergencyCallBar() {
 function CommonProblems() {
   const problems = [
     { icon: Droplets, label: "Chimney Leaks", body: "Water stains, ceiling drips, and damp brick after every rain.", slug: "flashing-repair" },
-    { icon: AlertTriangle, label: "Cracked Chimney Crowns", body: "Hairline cracks letting water sit on top of the chimney.", slug: "crown-tuckpoint" },
+    { icon: AlertTriangle, label: "Cracked Chimney Crowns", body: "Hairline cracks letting water sit on top of the chimney.", slug: "crown-repair" },
     { icon: ShieldCheck, label: "Missing or Damaged Chimney Caps", body: "Open flues let in rain, debris, and animals.", slug: "cap-install" },
-    { icon: BrickIcon, label: "Brick & Mortar Damage", body: "Spalling brick and washed-out mortar joints.", slug: "crown-tuckpoint" },
+    { icon: BrickIcon, label: "Brick & Mortar Damage", body: "Spalling brick and washed-out mortar joints.", slug: "tuckpointing" },
     { icon: Droplets, label: "Chimney Water Damage", body: "Stained masonry, efflorescence, and rotting framing inside.", slug: "waterproofing" },
     { icon: Wrench, label: "Damaged Chimney Liners", body: "Cracked clay tiles or rusted-out metal liners hurting draft and safety.", slug: "liner-install" },
     { icon: Wind, label: "Draft & Ventilation Problems", body: "Smoke spilling into the room, cold downdrafts, hard-to-start fires.", slug: "damper-repair" },
