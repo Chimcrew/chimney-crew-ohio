@@ -349,25 +349,13 @@ function LimitedOfferBanner() {
               </span>
             </div>
 
-            {/* main — clean price comparison */}
+            {/* main — clean offer */}
             <div className="mt-5 flex flex-col items-center text-center sm:mt-6">
-              {/* Big headline: FREE INSPECTION */}
               <span className="font-display text-4xl font-black uppercase leading-none tracking-tight text-primary sm:text-5xl">
-                Free Inspection
+                Free Chimney Inspection
               </span>
-
-              {/* Price below */}
-              <div className="mt-2 flex items-baseline gap-2">
-                <span className="relative font-display text-lg font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
-                  $69
-                </span>
-                <span className="font-display text-lg font-bold text-primary">
-                  $0
-                </span>
-              </div>
-
-              <p className="mt-2 text-xs font-semibold text-primary/80">
-                Instead of $69 — <span className="font-extrabold text-primary">limited to this month only</span>. No card required.
+              <p className="mt-3 max-w-sm text-sm font-semibold text-primary/85 sm:text-base">
+                CSIA-certified · Same-day callbacks · <span className="font-extrabold text-primary">No card required</span>. Limited to this month.
               </p>
 
               {/* CTAs */}
