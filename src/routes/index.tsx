@@ -134,11 +134,13 @@ function Index() {
   return (
     <>
       <Hero />
-      <HeroToOfferBridge />
+      <WhyHomeownersChoose />
       <LimitedOfferBanner />
+      <HeroToOfferBridge />
       <TrustBar />
       <TrustMarquee />
       <EmergencyCallBar />
+      <ProblemChecklist />
       <CommonProblems />
       <PhotoVideoTrust />
       <RecentProjects />
@@ -150,6 +152,7 @@ function Index() {
       <EmergencyCallBar />
       <LeakingChimney />
       <ScheduleOnline />
+      <TrustCounters />
       <Testimonials />
       <FieldNotes />
       <TrustMarquee />
