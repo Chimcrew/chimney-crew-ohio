@@ -237,7 +237,7 @@ function RootComponent() {
         <main className="flex-1">
           <Outlet />
         </main>
-        {!isLanding && <SiteFooter minimal={pathname === "/"} />}
+        {!isLanding && <SiteFooter />}
         <ScheduleWidget />
         {!isLanding && <TimedLeadPopup />}
         {!isLanding && <StickyMobileCta />}

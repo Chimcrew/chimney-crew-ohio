@@ -111,7 +111,7 @@ export const Route = createFileRoute("/")({
               name: "What does it cost?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "Your chimney inspection is free this month for Columbus-area homeowners — no card required. Repairs are quoted in writing, in plain English, after we see the chimney. Honest, flat-rate pricing — no hidden fees.",
+                text: "Our chimney inspection is only $69 for Columbus-area homeowners. Repairs are quoted in writing, in plain English, after we see the chimney. Honest, flat-rate pricing — no hidden fees.",
               },
             },
             {
@@ -134,13 +134,27 @@ function Index() {
   return (
     <>
       <Hero />
-      <TrustCounters />
-      <ProblemChecklist />
-      <WhyHomeownersChoose />
+      <HeroToOfferBridge />
+      <LimitedOfferBanner />
+      <TrustBar />
+      <TrustMarquee />
+      <EmergencyCallBar />
+      <CommonProblems />
+      <PhotoVideoTrust />
       <RecentProjects />
-      <Testimonials />
-      <Faq />
+      <DroneInspection />
       <ServiceAreaSeo />
+      <ServiceArea />
+      <WhyChooseUs />
+      <TrustMarquee />
+      <EmergencyCallBar />
+      <LeakingChimney />
+      <ScheduleOnline />
+      <Testimonials />
+      <FieldNotes />
+      <TrustMarquee />
+      <EmergencyCallBar />
+      <Faq />
     </>
   );
 }
@@ -176,7 +190,7 @@ function HeroToOfferBridge() {
           {/* caption ribbon */}
           <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent px-4 pb-3 pt-8">
             <span className="font-display text-sm font-bold text-primary-foreground sm:text-base">
-              Stainless Steel Liner Install — Columbus, OH
+              Stainless Liner Install — Columbus, OH
             </span>
             <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80 sm:inline">
               On the roof
@@ -196,7 +210,7 @@ function HeroPhotoCard() {
     { src: jobPhotoA.url, caption: "New caps + crown seal", city: "Columbus, OH" },
     { src: jobPhotoB.url, caption: "Crown rebuild in progress", city: "Columbus, OH" },
     { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
-    { src: projectLiner, caption: "Stainless steel liner install", city: "Dayton, OH" },
+    { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH" },
     { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
     { src: projectCap, caption: "New cap & flashing", city: "Cleveland, OH" },
     { src: projectTech, caption: "On-site sweep & inspect", city: "Westerville, OH" },
@@ -332,30 +346,42 @@ function LimitedOfferBanner() {
               </span>
             </div>
 
-            {/* main — clean offer */}
+            {/* main — clean price comparison */}
             <div className="mt-5 flex flex-col items-center text-center sm:mt-6">
+              {/* Big headline: FREE INSPECTION */}
               <span className="font-display text-4xl font-black uppercase leading-none tracking-tight text-primary sm:text-5xl">
-                Free Chimney Inspection
+                Free Inspection
               </span>
-              <p className="mt-3 max-w-sm text-sm font-semibold text-primary/85 sm:text-base">
-                CSIA-certified · Same-day callbacks · <span className="font-extrabold text-primary">No card required</span>. Limited to this month.
+
+              {/* Price below */}
+              <div className="mt-2 flex items-baseline gap-2">
+                <span className="relative font-display text-lg font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
+                  $69
+                </span>
+                <span className="font-display text-lg font-bold text-primary">
+                  $0
+                </span>
+              </div>
+
+              <p className="mt-2 text-xs font-semibold text-primary/80">
+                Instead of $69 — <span className="font-extrabold text-primary">limited to this month only</span>. No card required.
               </p>
 
-              {/* CTAs — mobile: yellow Call Now, desktop: yellow Schedule */}
+              {/* CTAs */}
               <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
-                <a
-                  href="tel:6146835763"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98] sm:order-2 sm:bg-transparent sm:font-display sm:text-sm sm:font-black sm:uppercase sm:tracking-wider sm:text-primary sm:shadow-none sm:border-2 sm:border-primary/70"
-                >
-                  <Phone className="h-4 w-4" /> Call Now
-                </a>
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98] sm:order-1 sm:bg-primary sm:text-flame sm:shadow-md sm:border-0"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
                 >
                   <CalendarCheck className="h-4 w-4" /> Schedule now
                 </button>
+                <a
+                  href="tel:6146835763"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
+                >
+                  <Phone className="h-4 w-4" /> Call Now
+                </a>
               </div>
             </div>
           </div>
@@ -366,141 +392,6 @@ function LimitedOfferBanner() {
 }
 
 function Hero() {
-  return _Hero();
-}
-
-/* ============================================================
-   WHY HOMEOWNERS CHOOSE CHIMCREW — 5 trust badges under hero
-   ============================================================ */
-function WhyHomeownersChoose() {
-  const badges = [
-    { icon: ShieldCheck, title: "CSIA-Certified", body: "Industry-leading chimney safety certification." },
-    { icon: Award, title: "Licensed & Insured", body: "Ohio licensed, fully insured — your home is covered." },
-    { icon: Star, title: "5-Star Rated", body: "Hundreds of verified Google & BBB reviews." },
-    { icon: Clock, title: "Same-Day Callbacks", body: "Local Ohio crew answers fast — no call centers." },
-    { icon: ThumbsUp, title: "Family Owned", body: "Three Ohio brothers. We answer the phone ourselves." },
-  ];
-  return (
-    <section className="border-b border-border/40 bg-secondary/40 py-12 md:py-16">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
-            <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why Choose Us
-          </p>
-          <h2 className="mt-3 font-display text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-            Why Homeowners Choose <span className="text-flame">ChimCrew</span>
-          </h2>
-        </div>
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {badges.map(({ icon: Icon, title, body }) => (
-            <li
-              key={title}
-              className="flex flex-col items-center rounded-2xl border border-border bg-card p-5 text-center shadow-sm"
-            >
-              <span className="grid h-12 w-12 place-items-center rounded-xl bg-flame/15 text-flame">
-                <Icon className="h-6 w-6" />
-              </span>
-              <p className="mt-3 font-display text-sm font-bold uppercase tracking-wide text-primary">
-                {title}
-              </p>
-              <p className="mt-1 text-xs leading-snug text-foreground/75">{body}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   HOMEOWNER PROBLEM CHECKLIST
-   ============================================================ */
-function ProblemChecklist() {
-  const items = [
-    { icon: Droplets, label: "Water stains on ceilings or walls" },
-    { icon: Wind, label: "Smoke issues when you light a fire" },
-    { icon: AlertTriangle, label: "Animal noises in the chimney" },
-    { icon: HomeIcon, label: "Loose or missing chimney cap" },
-    { icon: Droplets, label: "Chimney leaks after rain" },
-  ];
-  return (
-    <section className="bg-secondary/40 py-12 md:py-16">
-      <div className="mx-auto max-w-5xl px-4 md:px-8">
-        <div className="rounded-3xl border-2 border-flame/30 bg-card p-6 shadow-sm md:p-10">
-          <div className="text-center">
-            <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
-              <AlertTriangle className="h-3.5 w-3.5 text-flame" /> Notice any of these?
-            </p>
-            <h2 className="mt-3 font-display text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-              If you spot <span className="text-flame">any one</span> of these — book a free inspection
-            </h2>
-            <p className="mt-3 text-sm text-foreground/75 sm:text-base">
-              Catching these early saves thousands in water and fire damage.
-            </p>
-          </div>
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {items.map(({ icon: Icon, label }) => (
-              <li
-                key={label}
-                className="flex items-start gap-3 rounded-2xl border border-border bg-background p-4"
-              >
-                <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-flame/15 text-flame">
-                  <Icon className="h-5 w-5" />
-                </span>
-                <span className="text-sm font-semibold text-foreground/90">{label}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <button
-              type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95"
-            >
-              <CalendarCheck className="h-4 w-4" /> Book Free Inspection
-            </button>
-            <a
-              href="tel:6146835763"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-6 font-sans text-[13px] font-medium text-foreground transition hover:border-flame active:scale-95"
-            >
-              <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   TRUST COUNTERS — above testimonials
-   ============================================================ */
-function TrustCounters() {
-  const stats = [
-    { value: "10,000+", label: "Ohio chimneys serviced" },
-    { value: "15+", label: "Years on local roofs" },
-    { value: "4.9★", label: "Average Google rating" },
-    { value: "100%", label: "Licensed & insured" },
-  ];
-  return (
-    <section className="bg-primary py-10 text-primary-foreground md:py-12">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 text-center md:grid-cols-4 md:px-8">
-        {stats.map((s) => (
-          <div key={s.label}>
-            <p className="font-display text-3xl font-black text-flame sm:text-4xl md:text-5xl">
-              {s.value}
-            </p>
-            <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/75 sm:text-xs">
-              {s.label}
-            </p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function _Hero() {
   return (
     <section className="relative overflow-hidden border-b border-border/30 bg-gradient-to-b from-primary/[0.04] to-background">
       <div
