@@ -343,6 +343,94 @@ function HeroPhotoCard() {
 /* (MobileHero removed — unified responsive Hero below) */
 
 /* ============================================================
+   $99 CHIMNEY SWEEP PROMO — homepage section
+   ============================================================ */
+function SweepNinetyNineSection() {
+  return (
+    <section className="relative overflow-hidden bg-background py-12 md:py-16">
+      <div className="mx-auto max-w-6xl px-4 md:px-8">
+        <div className="relative grid gap-0 overflow-hidden rounded-3xl border border-border/60 bg-card shadow-[0_20px_60px_-24px_oklch(0_0_0/0.25)] md:grid-cols-5">
+          {/* LEFT — content */}
+          <div className="relative z-10 flex flex-col justify-center gap-4 p-6 sm:p-8 md:col-span-3 md:p-10">
+            <span className="inline-flex w-fit items-center gap-2 rounded-full bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+              <Sparkles className="h-3 w-3" /> Seasonal Special
+            </span>
+
+            <h2 className="font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-[44px]">
+              Chimney sweep, just{" "}
+              <span className="relative inline-block whitespace-nowrap">
+                <span className="relative z-10 text-primary">$99</span>
+                <span className="absolute inset-x-0 bottom-1 -z-0 h-3 bg-flame/60 sm:h-4" aria-hidden />
+              </span>
+              .
+            </h2>
+
+            <p className="max-w-lg text-[15px] leading-relaxed text-foreground/75 sm:text-base">
+              HEPA‑contained cleaning, drop cloths, and a written photo report
+              — done in under 90 minutes. No mess, no surprises.
+            </p>
+
+            <ul className="grid gap-2 text-sm text-foreground/85 sm:grid-cols-2">
+              {[
+                "HEPA vacuum + drop cloths",
+                "Free Level 1 visual check",
+                "Photo report emailed same day",
+                "CSIA-certified technician",
+              ].map((item) => (
+                <li key={item} className="inline-flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-flame" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-2 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="tel:6146835763"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-display text-sm font-extrabold tracking-tight text-primary shadow-[0_10px_28px_-10px_oklch(0.78_0.19_92/0.7)] transition hover:brightness-105 active:scale-[0.98]"
+              >
+                <Phone className="h-4 w-4" /> Book the $99 sweep
+              </a>
+              <Link
+                to="/services/$slug"
+                params={{ slug: "chimney-sweep" }}
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border-2 border-foreground/15 bg-background px-5 font-sans text-sm font-semibold text-foreground transition hover:border-flame hover:bg-flame/5"
+              >
+                See what's included <ArrowRight className="h-4 w-4 text-flame" />
+              </Link>
+            </div>
+
+            <p className="text-xs text-foreground/55">
+              Standard single-flue residential sweep. Some homes may require
+              additional work — quoted upfront, never surprise charges.
+            </p>
+          </div>
+
+          {/* RIGHT — price badge / photo */}
+          <div className="relative md:col-span-2">
+            <img
+              src={sweepCloseupPhoto.url}
+              alt="ChimCrew technician sweeping a chimney"
+              className="h-56 w-full object-cover md:h-full"
+              loading="lazy"
+              decoding="async"
+            />
+            <div
+              className="absolute inset-0 bg-gradient-to-t from-primary/50 via-transparent to-transparent md:bg-gradient-to-l md:from-transparent md:to-card/40"
+              aria-hidden
+            />
+            <div className="absolute right-4 top-4 rounded-2xl bg-flame px-4 py-3 text-primary shadow-lg md:right-6 md:top-6">
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em]">From</p>
+              <p className="font-display text-3xl font-extrabold leading-none">$99</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
    LIMITED OFFER BANNER — sits directly under the hero, high
    contrast, single CTA. The only price advertised site-wide is
    the $69 chimney inspection.
