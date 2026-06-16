@@ -598,7 +598,7 @@ function _Hero() {
 
           {/* RIGHT — photo */}
           <div className="flex-1 p-4 lg:p-6">
-            <div className="relative flex flex-col overflow-hidden rounded-2xl aspect-[3/4] lg:aspect-[2/3]">
+            <div className="relative flex flex-col overflow-hidden rounded-2xl aspect-[3/4] lg:aspect-[1/1]">
               <div className="absolute inset-0">
                 <img
                   src={teamHeroPhoto.url}
