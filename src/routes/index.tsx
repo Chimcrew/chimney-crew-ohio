@@ -598,12 +598,12 @@ function _Hero() {
 
           {/* RIGHT — photo */}
           <div className="flex-1 p-4 lg:p-6">
-            <div className="relative flex flex-col overflow-hidden rounded-2xl aspect-[3/4] lg:aspect-[1/1]">
+            <div className="relative flex flex-col overflow-hidden rounded-2xl aspect-[3/4] lg:aspect-[1/1] bg-black/50">
               <div className="absolute inset-0">
                 <img
                   src={teamHeroPhoto.url}
                   alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                   fetchPriority="high"
                   decoding="async"
                   loading="eager"
