@@ -117,6 +117,7 @@ export function serviceCtaLabel(s: Pick<ServiceSpec, "ctaLabel" | "shortTitle" |
  */
 export function formatFromPrice(s: Pick<ServiceSpec, "slug">): string {
   if (s.slug === "level-1-inspection") return "Only $69";
+  if (s.slug === "gas-fireplace-inspection") return "Only $49";
   return "";
 }
 
@@ -135,10 +136,16 @@ export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quote
 export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
   switch (s.slug) {
     case "crown-tuckpoint":
+    case "crown-repair":
       return baCrownStone;
+    case "crown-rebuild":
+      return techScaffoldingRebuild;
+    case "tuckpointing":
+      return chimneyJobB;
     case "level-1-inspection":
-    case "level-2-inspection":
       return sweepCloseupPhoto;
+    case "gas-fireplace-inspection":
+      return fireplaceServicePhoto;
     case "waterproofing":
       return baSpalledBrick;
     case "flashing-repair":
