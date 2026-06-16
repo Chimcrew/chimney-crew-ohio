@@ -510,115 +510,143 @@ function LimitedOfferBanner() {
 
 function Hero() {
   return (
-    <section className="relative bg-[oklch(0.96_0.01_250)]">
-      {/* Sub-bar with SCHEDULE + CALL — sits right under the global header */}
-      <div className="bg-[oklch(0.96_0.01_250)] px-4 pt-3 sm:px-6">
-        <div className="mx-auto flex max-w-7xl items-center justify-end gap-2">
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-            className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-primary px-4 font-display text-[12px] font-extrabold uppercase tracking-wider text-primary-foreground shadow-sm transition active:scale-95"
-          >
-            Schedule <CalendarCheck className="h-4 w-4 text-flame" />
-          </button>
-          <a
-            href="tel:6146835763"
-            className="inline-flex h-10 items-center justify-center gap-2 rounded-md bg-flame px-4 font-display text-[12px] font-extrabold uppercase tracking-wider text-primary shadow-sm transition active:scale-95"
-          >
-            Call <Phone className="h-4 w-4" />
-          </a>
+    <>
+      <section className="relative bg-[oklch(0.96_0.01_250)]">
+        {/* Sub-bar — CONTACT US / BLOG on left, SCHEDULE + CALL on right (BHO style) */}
+        <div className="border-b border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.96_0.01_250)] px-4 py-3 sm:px-6">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
+            <div className="hidden items-center gap-5 font-display text-[13px] font-extrabold uppercase tracking-wider text-primary sm:flex">
+              <Link to="/contact" className="hover:text-flame">Contact Us</Link>
+              <Link to="/blog" className="hover:text-flame">Blog</Link>
+            </div>
+            <div className="flex flex-1 items-center justify-end gap-2 sm:flex-none">
+              <button
+                type="button"
+                onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+                className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-md bg-primary px-4 font-display text-[12px] font-extrabold uppercase tracking-wider text-primary-foreground shadow-sm transition active:scale-95 sm:flex-none"
+              >
+                Schedule Online <CalendarCheck className="h-4 w-4" />
+              </button>
+              <a
+                href="tel:6146835763"
+                className="inline-flex h-11 flex-1 items-center justify-center gap-2 rounded-md bg-flame px-4 font-display text-[12px] font-extrabold uppercase tracking-wider text-white shadow-sm transition active:scale-95 sm:flex-none"
+              >
+                <Phone className="h-4 w-4" /> Call (614) 683-5763
+              </a>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="relative mx-auto max-w-7xl px-5 pb-10 pt-6 sm:px-6 md:pb-14 md:pt-10 lg:grid lg:grid-cols-12 lg:gap-12 lg:px-8 lg:pb-20 lg:pt-14">
-        {/* LEFT — message column */}
-        <div className="lg:col-span-7">
-          {/* Headline */}
-          <h1 className="font-display text-[34px] font-extrabold leading-[1.1] tracking-tight text-primary sm:text-5xl lg:text-[56px]">
-            The Chimney Experts You&apos;ve Trusted in{" "}
-            <span className="text-flame">Columbus</span> for Over a Decade
-          </h1>
+        {/* Hero body — mobile: mascot top, text below. Desktop: mascot left, text right */}
+        <div className="relative mx-auto max-w-7xl px-5 pb-10 pt-8 sm:px-6 md:pb-16 md:pt-12 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10 lg:px-8 lg:pb-20 lg:pt-16">
+          {/* Mascot / logo */}
+          <div className="relative lg:col-span-5">
+            <div className="relative mx-auto flex max-w-[420px] items-center justify-center">
+              <div
+                className="absolute inset-0 -z-10 rounded-full bg-flame/10 blur-3xl"
+                aria-hidden
+              />
+              {/* floating decorative dots like BHO */}
+              <span className="absolute -bottom-2 left-6 h-16 w-16 rounded-full bg-primary/10 blur-md" aria-hidden />
+              <span className="absolute -bottom-6 right-10 h-10 w-10 rounded-full bg-flame/15 blur-sm" aria-hidden />
+              <img
+                src={logo}
+                alt="ChimCrew — Columbus chimney experts"
+                className="relative block h-auto w-full max-w-[320px] object-contain drop-shadow-[0_20px_40px_oklch(0.18_0.02_250/0.3)] sm:max-w-[380px]"
+                fetchPriority="high"
+                decoding="async"
+                loading="eager"
+              />
+            </div>
+          </div>
 
-          {/* Subheading */}
-          <p className="mt-5 max-w-2xl text-[17px] leading-relaxed text-foreground/80 sm:text-lg">
-            Servicing Columbus &amp; Surrounding Areas · Chimney Inspections,
-            Repairs, and Cleaning Near You.
-          </p>
+          {/* Message column */}
+          <div className="mt-10 lg:col-span-7 lg:mt-0">
+            <h1 className="text-center font-display text-[30px] font-extrabold leading-[1.1] tracking-tight text-primary sm:text-5xl lg:text-left lg:text-[52px]">
+              The Chimney Experts You&apos;ve Trusted in{" "}
+              <span className="text-flame">Columbus</span> for Over a Decade
+            </h1>
 
-          {/* Bullet list — BHO style with circular check badges */}
-          <ul className="mt-7 space-y-4">
-            {[
-              "Locally Owned & Operated",
-              "Certified | Licensed | Insured",
-              "Satisfaction Guaranteed",
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-3">
-                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary text-flame shadow-sm">
-                  <CheckCircle2 className="h-4 w-4" strokeWidth={3} />
-                </span>
-                <span className="font-display text-lg font-extrabold text-primary sm:text-xl">
-                  {item}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          {/* Call us now block */}
-          <div className="mt-8">
-            <p className="font-display text-3xl font-extrabold text-flame sm:text-4xl">
-              Call Us Now!
+            <p className="mt-5 text-center text-[16px] leading-relaxed text-foreground/75 sm:text-lg lg:text-left">
+              Servicing Columbus &amp; Surrounding Areas · Chimney Inspections,
+              Repairs, and Cleaning Near You.
             </p>
-            <a
-              href="tel:6146835763"
-              className="mt-1 inline-block font-display text-3xl font-extrabold tracking-tight text-primary hover:underline sm:text-4xl"
+
+            <ul className="mt-7 space-y-4">
+              {[
+                "Locally Owned & Operated",
+                "Certified | Licensed | Insured",
+                "Satisfaction Guaranteed",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-primary text-white shadow-sm">
+                    <CheckCircle2 className="h-4 w-4" strokeWidth={3} />
+                  </span>
+                  <span className="font-display text-lg font-extrabold text-primary sm:text-xl">
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-8 text-center lg:text-left">
+              <p className="font-display text-3xl font-extrabold text-flame sm:text-4xl">
+                Call Us Now!
+              </p>
+              <a
+                href="tel:6146835763"
+                className="mt-1 inline-block font-display text-3xl font-extrabold tracking-tight text-primary hover:underline sm:text-4xl"
+              >
+                (614) 683-5763
+              </a>
+            </div>
+
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+              className="mt-6 inline-flex h-16 w-full items-center justify-center gap-3 rounded-md bg-primary px-6 font-display text-lg font-extrabold uppercase tracking-wider text-primary-foreground shadow-[0_10px_24px_-10px_oklch(0.18_0.02_250/0.5)] transition hover:brightness-110 active:scale-[0.98] sm:text-xl lg:max-w-md"
             >
-              (614) 683-5763
-            </a>
-          </div>
-
-          {/* Big Schedule Online button */}
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-            className="mt-6 inline-flex h-16 w-full max-w-md items-center justify-center gap-3 rounded-md bg-primary px-6 font-display text-lg font-extrabold uppercase tracking-wider text-primary-foreground shadow-[0_10px_24px_-10px_oklch(0.18_0.02_250/0.5)] transition hover:brightness-110 active:scale-[0.98] sm:text-xl"
-          >
-            Schedule Online <CalendarCheck className="h-6 w-6 text-flame" />
-          </button>
-
-          {/* Trust row */}
-          <div className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border/40 pt-5">
-            <span className="inline-flex items-center gap-2">
-              <span className="text-flame text-base" aria-hidden>★★★★★</span>
-              <span className="font-sans text-sm font-semibold text-primary">
-                5.0 on Google
-              </span>
-            </span>
-            <span className="text-foreground/30">·</span>
-            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/70">
-              500+ Ohio homes served
-            </span>
+              Schedule Online <CalendarCheck className="h-6 w-6" />
+            </button>
           </div>
         </div>
+      </section>
 
-        {/* RIGHT — mascot/logo image */}
-        <div className="relative mt-10 lg:col-span-5 lg:mt-0">
-          <div className="relative mx-auto flex max-w-md items-center justify-center">
-            <div
-              className="absolute inset-0 -z-10 rounded-full bg-flame/10 blur-3xl"
-              aria-hidden
-            />
-            <img
-              src={logo}
-              alt="ChimCrew — Columbus chimney experts"
-              className="block h-auto w-full max-w-[360px] object-contain drop-shadow-[0_20px_40px_oklch(0.18_0.02_250/0.25)]"
-              fetchPriority="high"
-              decoding="async"
-              loading="eager"
-            />
+      {/* Dark navy reviews band — exactly like BHO */}
+      <section className="bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-5 py-8 sm:px-6 md:py-10 lg:px-8">
+          <p className="font-display text-lg font-extrabold tracking-wide sm:text-xl">
+            <span className="text-flame">5 STAR</span> — Based On 500+ Reviews
+          </p>
+          <div className="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-6">
+            {[
+              { name: "Yelp", color: "#D32323", sub: "5-Star Business" },
+              { name: "Angi", color: "#F26F21", sub: "Super Service 2024" },
+              { name: "HomeAdvisor", color: "#F68B1F", sub: "Five Star Rating" },
+              { name: "Google", color: "#4285F4", sub: "5.0 ★★★★★" },
+              { name: "Porch", color: "#1A75BB", sub: "5/5 Stars" },
+              { name: "BBB", color: "#005DAA", sub: "A+ Accredited" },
+            ].map((b) => (
+              <div
+                key={b.name}
+                className="flex flex-col items-center justify-center gap-1 rounded-lg bg-white px-2 py-3 text-center shadow-sm"
+              >
+                <span
+                  className="font-display text-sm font-extrabold uppercase tracking-wide sm:text-base"
+                  style={{ color: b.color }}
+                >
+                  {b.name}
+                </span>
+                <span className="text-[10px] font-bold uppercase tracking-wider text-primary/70">
+                  {b.sub}
+                </span>
+                <span className="text-flame text-xs">★★★★★</span>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
