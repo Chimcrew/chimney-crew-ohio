@@ -502,140 +502,140 @@ function TrustCounters() {
 
 function _Hero() {
   return (
-    <section className="bg-secondary/40 px-3 py-4 md:px-6 md:py-8">
-      <div className="mx-auto flex max-w-7xl flex-col overflow-hidden rounded-3xl border border-border/60 bg-card shadow-[0_30px_80px_-30px_oklch(0_0_0/0.35)]">
-        {/* Utility bar */}
-        <div className="flex flex-wrap items-center justify-between gap-2 bg-primary px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground md:px-6 md:text-xs">
-          <span className="flex items-center gap-1.5">
-            <MapPin className="h-3 w-3 text-flame" />
-            Serving Columbus, OH &amp; surrounding areas
-            <span className="ml-2 hidden opacity-40 sm:inline">|</span>
-            <span className="ml-2 hidden sm:inline">Licensed &amp; Insured</span>
-          </span>
-          <span className="flex items-center gap-1.5">
-            <span className="text-flame">★★★★★</span> 5-Star Rated · Google &amp; Angi
-          </span>
-        </div>
+    <section className="relative overflow-hidden border-b border-border/30 bg-gradient-to-b from-primary/[0.04] to-background">
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent"
+        aria-hidden
+      />
 
-        {/* Hero split */}
-        <div className="flex flex-col lg:flex-row">
-          {/* LEFT — message */}
-          <div className="flex-1 p-6 md:p-12 lg:pr-6">
-            <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-flame" />
-              Available for service in Columbus
+      <div className="relative mx-auto grid max-w-7xl gap-8 pb-12 pt-8 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:pb-20 lg:pt-16">
+        {/* LEFT — message column */}
+        <div className="px-4 sm:px-6 lg:order-1 lg:col-span-6 lg:px-8 lg:pt-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
+              <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
             </span>
-
-            <h1 className="mt-5 font-display text-4xl font-black leading-[0.95] tracking-tight text-primary md:text-5xl lg:text-6xl">
-              Trusted by{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10">Columbus</span>
-                <span className="absolute bottom-1 left-0 -z-0 h-3 w-full bg-flame/40" />
-              </span>{" "}
-              homeowners for{" "}
-              <span className="text-muted-foreground">chimney repairs &amp; inspections</span>
-            </h1>
-
-            <p className="mt-5 max-w-lg text-base leading-relaxed text-foreground/75 md:text-lg">
-              From structural masonry to annual sweepings, the ChimCrew team delivers
-              certified safety for your family — every inspection comes with a digital
-              photo report.
-            </p>
-
-            {/* Feature grid */}
-            <div className="mt-7 grid grid-cols-1 gap-3 sm:grid-cols-2">
-              <div className="flex items-center gap-3 rounded-2xl border border-border bg-secondary/60 p-4">
-                <img
-                  src={certifiedBadge.url}
-                  alt="CSIA certified"
-                  className="h-12 w-12 shrink-0 rounded-lg bg-white p-1"
-                  loading="eager"
-                  decoding="async"
-                />
-                <div>
-                  <div className="font-display text-xs font-black uppercase text-primary">
-                    Certified
-                  </div>
-                  <div className="font-mono text-[10px] font-bold uppercase tracking-wide text-muted-foreground">
-                    CSIA Professionals
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-4 rounded-2xl border border-border bg-secondary/60 p-4">
-                <div className="flex flex-col">
-                  <div className="flex text-flame text-sm">★★★★★</div>
-                  <div className="mt-1 font-display text-xs font-black uppercase text-primary">
-                    500+ Reviews
-                  </div>
-                  <div className="font-mono text-[10px] font-bold uppercase tracking-wide text-muted-foreground">
-                    Top rated locally
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* CTAs */}
-            <div className="mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-              <button
-                type="button"
-                onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-primary px-7 font-display text-sm font-black uppercase tracking-widest text-primary-foreground transition hover:opacity-90 active:scale-[0.98]"
-              >
-                <CalendarCheck className="h-4 w-4 text-flame" /> Book Free Inspection
-              </button>
-              <a
-                href="tel:6146835763"
-                className="inline-flex h-14 items-center justify-center gap-2 rounded-2xl border border-foreground/15 bg-background px-6 font-display text-sm font-bold text-foreground transition hover:border-flame"
-              >
-                <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
-              </a>
-            </div>
-
-            <p className="mt-5 inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-muted-foreground">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-500" /> Same-day callbacks · No card required
-            </p>
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
+              <Star className="h-3 w-3 fill-flame text-flame" /> 5-Star Reviews
+            </span>
           </div>
 
-          {/* RIGHT — photo */}
-          <div className="flex-1 p-4 lg:p-6">
-            <div className="relative flex flex-col overflow-hidden rounded-2xl aspect-[3/4] lg:aspect-[1/1] bg-black/50">
-              <div className="absolute inset-0">
-                <img
-                  src={teamHeroPhoto.url}
-                  alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
-                  className="h-full w-full object-contain"
-                  fetchPriority="high"
-                  decoding="async"
-                  loading="eager"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/10 to-transparent" />
-              </div>
+          <h1 className="mt-5 font-display !text-xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:!text-2xl md:!text-3xl">
+            Trusted By{" "}
+            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
+              Columbus
+            </span>{" "}
+            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
+              Homeowners
+            </span>{" "}
+            For Chimney Repairs & Inspections
+          </h1>
 
-              {/* Floating response badge */}
-              <div className="absolute right-5 top-5">
-                <div className="flex flex-col items-center rounded-2xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
-                  <span className="font-display text-2xl font-black leading-none text-flame">24h</span>
-                  <span className="mt-1 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-primary-foreground/80">
-                    Response Time
-                  </span>
-                </div>
-              </div>
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">
+            Inspections, cleaning, and masonry repair from a local Columbus crew that
+            shows up on time, explains the work clearly, and documents every finding
+            with photos and video before any repair is recommended.
+          </p>
 
-              {/* Bottom stat card */}
-              <div className="relative mt-auto p-5 md:p-8">
-                <div className="flex items-center gap-4 rounded-2xl border border-border bg-card p-5 shadow-xl">
-                  <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-flame">
-                    <CheckCircle2 className="h-6 w-6 text-primary" />
-                  </div>
-                  <div>
-                    <h4 className="font-display text-sm font-black uppercase tracking-wide text-primary">
-                      Certified Safety Checks
-                    </h4>
-                    <p className="mt-1 text-xs font-medium text-muted-foreground">
-                      Every inspection includes a full digital photo report for your records.
-                    </p>
-                  </div>
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            {/* CALL — primary on mobile, secondary on desktop */}
+            <a
+              href="tel:6146835763"
+              className="order-1 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
+            >
+              <Phone className="h-4 w-4 text-primary sm:text-flame" /> (614) 683-5763
+            </a>
+            {/* SCHEDULE — secondary on mobile, primary on desktop */}
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+              className="order-2 inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-6 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
+            >
+              <CalendarCheck className="h-4 w-4" /> Schedule appointment online
+            </button>
+          </div>
+
+          {/* Emergency line micro-CTA */}
+          <a
+            href="tel:6146835763"
+            className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110"
+          >
+            <span className="relative inline-flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+            </span>
+            Emergency line 24/7
+          </a>
+
+          {/* Trust strip */}
+          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
+            {[
+              { icon: CheckCircle2, label: "CSIA-certified" },
+              { icon: ShieldCheck, label: "Fully insured" },
+              { icon: Clock, label: "Same-day callback" },
+              { icon: Award, label: "Family owned & operated" },
+            ].map(({ icon: Icon, label }) => (
+              <span
+                key={label}
+                className="inline-flex items-center gap-2 text-xs font-medium text-foreground/80 sm:text-[13px]"
+              >
+                <Icon className="h-4 w-4 text-flame" />
+                {label}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT — photo column. Full-bleed on mobile, rounded only at the bottom. */}
+        <div className="relative lg:order-2 lg:col-span-6 lg:px-8">
+          <div className="relative mx-auto w-full lg:max-w-none">
+            <div className="relative overflow-hidden rounded-b-3xl bg-card lg:rounded-2xl lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+              <img
+                src={teamHeroPhoto.url}
+                alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
+                className="block h-auto w-full object-contain"
+                fetchPriority="high"
+                decoding="async"
+                loading="eager"
+              />
+              {/* subtle bottom scrim for caption legibility */}
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
+                aria-hidden
+              />
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 sm:inset-x-5 sm:bottom-5">
+                <div className="min-w-0">
+                  <p className="font-display text-sm font-bold text-primary-foreground sm:text-base">
+                    Meet the ChimCrew team.
+                  </p>
+                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/70">
+                    Columbus, Ohio · Established crew
+                  </p>
                 </div>
+                <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
+                  On the job
+                </span>
+              </div>
+            </div>
+
+            {/* Credential chip below image */}
+            <div className="mx-4 mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
+              <img
+                src={certifiedBadge.url}
+                alt="Certified chimney sweep credential"
+                width={56}
+                height={56}
+                className="h-12 w-12 shrink-0 rounded-full bg-white p-1.5"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="min-w-0">
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                  Certified chimney professionals
+                </p>
+                <p className="mt-0.5 text-xs text-foreground/75 sm:text-[13px]">
+                  Every inspection documented with written photo reports.
+                </p>
               </div>
             </div>
           </div>
