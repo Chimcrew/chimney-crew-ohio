@@ -29,6 +29,7 @@ import { InlineLeadForm } from "@/components/InlineLeadForm";
 const logo = logoAsset.url;
 import usaFlag from "@/assets/flags/usa-flag-badge.png";
 import ohioFlag from "@/assets/flags/ohio-flag-badge.png";
+import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import projectHero from "@/assets/projects/project-01-double-crown.jpg";
 import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg";
