@@ -177,7 +177,7 @@ function HeroToOfferBridge() {
         {/* photo card */}
         <div className="relative overflow-hidden rounded-2xl border-[3px] border-background bg-card shadow-[0_24px_50px_-18px_oklch(0_0_0/0.45),0_8px_20px_-10px_oklch(0_0_0/0.3)] ring-1 ring-foreground/10">
           <img
-            src={triptychPhoto.url}
+            src={triptychPhoto}
             alt="ChimCrew crew on a Columbus job — chimney sweep, fireplace cleaning and cap install"
             className="block aspect-[2/1] w-full object-cover"
             loading="lazy"
