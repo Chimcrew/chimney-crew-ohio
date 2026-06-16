@@ -420,108 +420,138 @@ function LimitedOfferBanner() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-primary text-primary-foreground">
-      {/* Background image with darkening overlay */}
-      <img
-        src={teamHeroPhoto.url}
-        alt="The ChimCrew team on a Columbus, Ohio rooftop"
-        className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.35]"
-        fetchPriority="high"
-        decoding="async"
-        loading="eager"
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/80 to-primary"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-flame/60 to-transparent"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent"
-        aria-hidden
-      />
+    <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-flame/[0.10] via-background to-background">
+      {/* warm decorative glows */}
+      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-flame/20 blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-primary/15 blur-3xl" aria-hidden />
 
-      <div className="relative mx-auto max-w-3xl px-5 pb-14 pt-10 sm:px-6 sm:pb-20 sm:pt-14 lg:max-w-4xl lg:pb-24 lg:pt-20">
-        {/* Live availability pill */}
-        <div className="flex items-center justify-center gap-2">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
-          </span>
-          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-300">
-            Available Now · Columbus, OH
-          </span>
-        </div>
-
-        {/* Headline */}
-        <h1 className="mt-6 text-center font-display text-[34px] font-extrabold leading-[1.05] tracking-tight text-primary-foreground sm:text-5xl lg:text-[64px]">
-          Columbus&apos;s most trusted{" "}
-          <span className="text-flame">chimney crew.</span>
-        </h1>
-
-        <p className="mx-auto mt-5 max-w-xl text-center text-[15px] leading-relaxed text-primary-foreground/75 sm:text-lg">
-          On‑time arrival. Honest pricing. A written photo report after every visit —
-          so you know exactly what we did, and why.
-        </p>
-
-        {/* CTAs */}
-        <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:mt-9 sm:flex-row sm:items-center">
-          <a
-            href="tel:6146835763"
-            className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-base font-extrabold tracking-tight text-primary shadow-[0_10px_30px_-8px_oklch(0.78_0.19_92/0.7)] transition hover:brightness-105 active:scale-[0.98] sm:text-lg"
-          >
-            <Phone className="h-5 w-5" /> (614) 683-5763
-          </a>
-          <button
-            type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-            className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border border-primary-foreground/25 bg-primary-foreground/[0.06] px-6 font-sans text-base font-semibold text-primary-foreground backdrop-blur-sm transition hover:border-flame hover:bg-primary-foreground/10 active:scale-[0.98]"
-          >
-            <CalendarCheck className="h-5 w-5 text-flame" /> Schedule online
-          </button>
-        </div>
-
-        {/* Inline social proof: rating */}
-        <div className="mx-auto mt-6 flex items-center justify-center gap-2 text-primary-foreground/85">
-          <span className="text-flame tracking-tight" aria-hidden>
-            ★★★★★
-          </span>
-          <span className="font-sans text-sm font-semibold">
-            5.0 on Google
-          </span>
-          <span className="text-primary-foreground/30">·</span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground/70">
-            500+ Ohio homes served
-          </span>
-        </div>
-
-        {/* Trust strip */}
-        <div className="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-x-4 gap-y-3 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.04] p-4 backdrop-blur-sm sm:grid-cols-4 sm:gap-x-2">
-          {[
-            { icon: CheckCircle2, label: "CSIA-certified" },
-            { icon: ShieldCheck, label: "Fully insured" },
-            { icon: Camera, label: "Photo reports" },
-            { icon: Clock, label: "Same-day callback" },
-          ].map(({ icon: Icon, label }) => (
-            <span
-              key={label}
-              className="inline-flex items-center justify-start gap-2 text-[12px] font-medium text-primary-foreground/90 sm:justify-center sm:text-[13px]"
-            >
-              <Icon className="h-4 w-4 shrink-0 text-flame" />
-              {label}
+      <div className="relative mx-auto grid max-w-7xl gap-8 px-4 pb-12 pt-8 sm:px-6 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:px-8 lg:pb-20 lg:pt-16">
+        {/* LEFT — message column */}
+        <div className="lg:order-1 lg:col-span-6 lg:pt-2">
+          {/* Live availability pill */}
+          <span className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-emerald-700">
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
             </span>
-          ))}
+            Available Today · Columbus, OH
+          </span>
+
+          <h1 className="mt-5 font-display text-[32px] font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-[60px]">
+            Columbus&apos;s most trusted{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 text-primary">chimney crew.</span>
+              <span
+                className="absolute inset-x-0 bottom-1 -z-0 h-3 bg-flame/60 sm:h-4"
+                aria-hidden
+              />
+            </span>
+          </h1>
+
+          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/75 sm:text-lg">
+            On‑time arrival. Honest pricing. A written photo report after every
+            visit — so you know exactly what we did, and why.
+          </p>
+
+          {/* Inline rating */}
+          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-1">
+            <span className="text-flame text-lg leading-none" aria-hidden>★★★★★</span>
+            <span className="font-sans text-sm font-semibold text-foreground">
+              5.0 on Google
+            </span>
+            <span className="text-foreground/30">·</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/70">
+              500+ Ohio homes served
+            </span>
+          </div>
+
+          {/* CTAs */}
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <a
+              href="tel:6146835763"
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-base font-extrabold tracking-tight text-primary shadow-[0_12px_32px_-10px_oklch(0.78_0.19_92/0.7)] transition hover:brightness-105 active:scale-[0.98]"
+            >
+              <Phone className="h-5 w-5" /> (614) 683-5763
+            </a>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+              className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border-2 border-foreground/15 bg-background px-6 font-sans text-base font-semibold text-foreground transition hover:border-flame hover:bg-flame/5 active:scale-[0.98]"
+            >
+              <CalendarCheck className="h-5 w-5 text-flame" /> Schedule online
+            </button>
+          </div>
+
+          {/* Trust strip */}
+          <div className="mt-7 grid grid-cols-2 gap-x-4 gap-y-3 border-t border-border/50 pt-5 sm:grid-cols-4">
+            {[
+              { icon: CheckCircle2, label: "CSIA-certified" },
+              { icon: ShieldCheck, label: "Fully insured" },
+              { icon: Camera, label: "Photo reports" },
+              { icon: Clock, label: "Same-day callback" },
+            ].map(({ icon: Icon, label }) => (
+              <span
+                key={label}
+                className="inline-flex items-center gap-2 text-[12px] font-medium text-foreground/80 sm:text-[13px]"
+              >
+                <Icon className="h-4 w-4 shrink-0 text-flame" />
+                {label}
+              </span>
+            ))}
+          </div>
+
+          {/* Flag row */}
+          <div className="mt-5 flex items-center gap-2">
+            <img src={usaFlag} alt="USA flag" className="h-5 w-5 rounded-full object-cover shadow-sm" loading="eager" />
+            <img src={ohioFlag} alt="Ohio flag" className="h-5 w-5 rounded-full object-cover shadow-sm" loading="eager" />
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
+              American Owned · Ohio Based · Licensed · Insured
+            </span>
+          </div>
         </div>
 
-        {/* Local-owned flags row */}
-        <div className="mt-6 flex items-center justify-center gap-2">
-          <img src={usaFlag} alt="USA flag" className="h-5 w-5 rounded-full object-cover shadow-sm ring-1 ring-primary-foreground/20" loading="eager" />
-          <img src={ohioFlag} alt="Ohio flag" className="h-5 w-5 rounded-full object-cover shadow-sm ring-1 ring-primary-foreground/20" loading="eager" />
-          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-            American Owned · Ohio Based · Licensed · Insured
-          </span>
+        {/* RIGHT — photo column */}
+        <div className="relative lg:order-2 lg:col-span-6">
+          <div className="relative">
+            <CertifiedBanner />
+
+            <div className="relative overflow-hidden rounded-3xl border border-border/60 bg-card shadow-[0_24px_60px_-24px_oklch(0_0_0/0.3)]">
+              <img
+                src={teamHeroPhoto.url}
+                alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
+                className="block h-auto w-full object-cover"
+                fetchPriority="high"
+                decoding="async"
+                loading="eager"
+              />
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent"
+                aria-hidden
+              />
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3">
+                <div className="min-w-0">
+                  <p className="font-display text-sm font-bold text-primary-foreground sm:text-base">
+                    Meet the ChimCrew team.
+                  </p>
+                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/75">
+                    Columbus, Ohio · Established crew
+                  </p>
+                </div>
+                <span className="shrink-0 rounded-full border border-flame/40 bg-flame/20 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+                  On the job
+                </span>
+              </div>
+            </div>
+
+            {/* Floating proof chip */}
+            <div className="absolute -left-2 -bottom-4 hidden items-center gap-2 rounded-2xl border border-border/60 bg-background px-3 py-2 shadow-lg sm:flex">
+              <Camera className="h-5 w-5 text-flame" />
+              <div className="leading-tight">
+                <p className="font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-foreground/60">Every visit</p>
+                <p className="text-xs font-semibold text-foreground">Photo report included</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
