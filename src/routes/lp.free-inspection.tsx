@@ -106,11 +106,29 @@ function Hero() {
           </div>
           <h1 className="mt-4 font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
             Free Chimney Inspection
-            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-2xl text-primary-foreground sm:text-3xl md:text-4xl">
-              <span className="opacity-70 line-through decoration-2">$69</span>
-              <span className="ml-2">FREE this month</span>
-            </span>
           </h1>
+
+          {/* Clear price callout — old price crossed out, new price in flame yellow */}
+          <div className="mt-4 inline-flex items-center gap-3 rounded-2xl border border-flame/40 bg-flame/10 px-4 py-3">
+            <div className="flex flex-col items-start">
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/60">
+                Normally
+              </span>
+              <span className="font-display text-xl font-bold text-foreground/60 line-through decoration-foreground/60 decoration-2">
+                $69
+              </span>
+            </div>
+            <span className="text-2xl font-bold text-foreground/40">→</span>
+            <div className="flex flex-col items-start">
+              <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                This month
+              </span>
+              <span className="font-display text-3xl font-black text-flame sm:text-4xl">
+                FREE
+              </span>
+            </div>
+          </div>
+
           <p className="mt-4 max-w-prose text-base text-foreground/80 sm:text-lg">
             CSIA-certified Ohio sweeps. Same-day callbacks. Written safety report with
             photos — no pressure, no surprise charges.
