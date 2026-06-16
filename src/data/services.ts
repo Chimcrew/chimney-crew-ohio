@@ -350,7 +350,7 @@ export const SERVICES: ServiceSpec[] = [
     slug: "liner-install",
     warranty: "Lifetime Warranty (Transferable)",
     title: "Stainless Steel Liner Installation",
-    shortTitle: "Stainless Liner",
+    shortTitle: "Stainless Steel Liner",
     tagline: "Sized to your appliance. Built to outlive your house.",
     price: "Custom Quote",
     duration: "",
@@ -361,7 +361,7 @@ export const SERVICES: ServiceSpec[] = [
     hero: {
       eyebrow: "Lifetime warranty",
       headline: "The right liner is the difference between safe and sorry.",
-      sub: "A properly-sized stainless liner improves draft, contains heat, and protects your home from creosote-fueled fires.",
+      sub: "A properly-sized stainless steel liner improves draft, contains heat, and protects your home from creosote-fueled fires.",
     },
     bullets: [
       "316Ti stainless — the industry's best alloy",
