@@ -341,21 +341,21 @@ function LimitedOfferBanner() {
                 CSIA-certified · Same-day callbacks · <span className="font-extrabold text-primary">No card required</span>. Limited to this month.
               </p>
 
-              {/* CTAs */}
+              {/* CTAs — mobile: yellow Call Now, desktop: yellow Schedule */}
               <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
-                >
-                  <CalendarCheck className="h-4 w-4" /> Schedule now
-                </button>
                 <a
                   href="tel:6146835763"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98] sm:order-2 sm:bg-transparent sm:font-display sm:text-sm sm:font-black sm:uppercase sm:tracking-wider sm:text-primary sm:shadow-none sm:border-2 sm:border-primary/70"
                 >
                   <Phone className="h-4 w-4" /> Call Now
                 </a>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98] sm:order-1 sm:bg-primary sm:text-flame sm:shadow-md sm:border-0"
+                >
+                  <CalendarCheck className="h-4 w-4" /> Schedule now
+                </button>
               </div>
             </div>
           </div>
