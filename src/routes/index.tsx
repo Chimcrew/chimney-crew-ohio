@@ -176,7 +176,7 @@ function HeroToOfferBridge() {
           {/* caption ribbon */}
           <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent px-4 pb-3 pt-8">
             <span className="font-display text-sm font-bold text-primary-foreground sm:text-base">
-              Stainless Liner Install — Columbus, OH
+              Stainless Steel Liner Install — Columbus, OH
             </span>
             <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80 sm:inline">
               On the roof
@@ -196,7 +196,7 @@ function HeroPhotoCard() {
     { src: jobPhotoA.url, caption: "New caps + crown seal", city: "Columbus, OH" },
     { src: jobPhotoB.url, caption: "Crown rebuild in progress", city: "Columbus, OH" },
     { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
-    { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH" },
+    { src: projectLiner, caption: "Stainless steel liner install", city: "Dayton, OH" },
     { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
     { src: projectCap, caption: "New cap & flashing", city: "Cleveland, OH" },
     { src: projectTech, caption: "On-site sweep & inspect", city: "Westerville, OH" },
