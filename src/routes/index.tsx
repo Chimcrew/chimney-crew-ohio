@@ -176,9 +176,9 @@ function HeroToOfferBridge() {
         {/* photo card */}
         <div className="relative overflow-hidden rounded-2xl border-[3px] border-background bg-card shadow-[0_24px_50px_-18px_oklch(0_0_0/0.45),0_8px_20px_-10px_oklch(0_0_0/0.3)] ring-1 ring-foreground/10">
           <img
-            src={inspectionRoofPhoto.url}
-            alt="ChimCrew technicians installing a stainless chimney liner on a Columbus rooftop"
-            className="block aspect-[16/10] w-full object-cover"
+            src={triptychPhoto.url}
+            alt="ChimCrew crew on a Columbus job — chimney sweep, fireplace cleaning and cap install"
+            className="block aspect-[2/1] w-full object-cover"
             loading="lazy"
             decoding="async"
           />
@@ -190,10 +190,10 @@ function HeroToOfferBridge() {
           {/* caption ribbon */}
           <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent px-4 pb-3 pt-8">
             <span className="font-display text-sm font-bold text-primary-foreground sm:text-base">
-              Stainless Liner Install — Columbus, OH
+              On the job in Columbus, OH
             </span>
             <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80 sm:inline">
-              On the roof
+              Sweep · Fireplace · Cap
             </span>
           </figcaption>
         </div>
