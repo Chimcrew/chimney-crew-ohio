@@ -421,10 +421,22 @@ function LimitedOfferBanner() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-border/40 bg-gradient-to-b from-flame/[0.10] via-background to-background">
-      {/* warm decorative glows */}
-      <div className="pointer-events-none absolute -top-24 -left-24 h-72 w-72 rounded-full bg-flame/20 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -bottom-24 -right-16 h-72 w-72 rounded-full bg-primary/15 blur-3xl" aria-hidden />
+    <section className="relative overflow-hidden border-b border-border/40">
+      {/* Chimney photo background */}
+      <img
+        src={heroChimney.url}
+        alt=""
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover object-center"
+        fetchPriority="high"
+        decoding="async"
+        loading="eager"
+      />
+      {/* Light wash so text stays readable without going dark */}
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/55 lg:from-background/92 lg:via-background/75 lg:to-background/20"
+        aria-hidden
+      />
 
       <div className="relative mx-auto grid max-w-7xl gap-8 px-4 pb-12 pt-8 sm:px-6 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:px-8 lg:pb-20 lg:pt-16">
         {/* LEFT — message column */}
