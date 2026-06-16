@@ -134,30 +134,13 @@ function Index() {
   return (
     <>
       <Hero />
-      <WhyHomeownersChoose />
-      <LimitedOfferBanner />
-      <HeroToOfferBridge />
-      <TrustBar />
-      <TrustMarquee />
-      <EmergencyCallBar />
-      <ProblemChecklist />
-      <CommonProblems />
-      <PhotoVideoTrust />
-      <RecentProjects />
-      <DroneInspection />
-      <ServiceAreaSeo />
-      <ServiceArea />
-      <WhyChooseUs />
-      <TrustMarquee />
-      <EmergencyCallBar />
-      <LeakingChimney />
-      <ScheduleOnline />
       <TrustCounters />
+      <ProblemChecklist />
+      <WhyHomeownersChoose />
+      <RecentProjects />
       <Testimonials />
-      <FieldNotes />
-      <TrustMarquee />
-      <EmergencyCallBar />
       <Faq />
+      <ServiceAreaSeo />
     </>
   );
 }
