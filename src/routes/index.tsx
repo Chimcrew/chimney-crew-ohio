@@ -163,6 +163,7 @@ function Index() {
     <>
       <Hero />
       <HeroToOfferBridge />
+      <SweepNinetyNineSection />
       <LimitedOfferBanner />
       <TrustBar />
       <TrustMarquee />
@@ -434,7 +435,7 @@ function Hero() {
       />
       {/* Light wash so text stays readable without going dark */}
       <div
-        className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/85 to-background/55 lg:from-background/92 lg:via-background/75 lg:to-background/20"
+        className="absolute inset-0 bg-gradient-to-r from-background/85 via-background/60 to-background/25 lg:from-background/80 lg:via-background/45 lg:to-background/10"
         aria-hidden
       />
 

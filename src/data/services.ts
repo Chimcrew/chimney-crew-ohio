@@ -182,7 +182,7 @@ export const SERVICES: ServiceSpec[] = [
     title: "Chimney Sweep & Cleaning",
     shortTitle: "Chimney Sweep",
     tagline: "Creosote, soot and ash — gone in under 90 minutes.",
-    price: "$118",
+    price: "$99",
     duration: "",
     icon: Wind,
     variant: "maintenance",
