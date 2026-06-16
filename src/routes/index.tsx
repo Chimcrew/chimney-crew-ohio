@@ -420,110 +420,108 @@ function LimitedOfferBanner() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-border/30 bg-gradient-to-b from-primary/[0.04] to-background">
+    <section className="relative overflow-hidden bg-primary text-primary-foreground">
+      {/* Background image with darkening overlay */}
+      <img
+        src={teamHeroPhoto.url}
+        alt="The ChimCrew team on a Columbus, Ohio rooftop"
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.35]"
+        fetchPriority="high"
+        decoding="async"
+        loading="eager"
+      />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/80 to-primary"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-flame/60 to-transparent"
+        aria-hidden
+      />
       <div
         className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent"
         aria-hidden
       />
 
-      <div className="relative mx-auto grid max-w-7xl gap-8 pb-12 pt-8 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:pb-20 lg:pt-16">
-        {/* LEFT — message column */}
-        <div className="px-4 sm:px-6 lg:order-1 lg:col-span-6 lg:px-8 lg:pt-4">
-          <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
-            <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
+      <div className="relative mx-auto max-w-3xl px-5 pb-14 pt-10 sm:px-6 sm:pb-20 sm:pt-14 lg:max-w-4xl lg:pb-24 lg:pt-20">
+        {/* Live availability pill */}
+        <div className="flex items-center justify-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
           </span>
-
-          {/* American / Ohio owned flag badges */}
-          <div className="mt-2 flex items-center gap-2">
-            <img src={usaFlag} alt="USA flag" className="h-5 w-5 rounded-full object-cover shadow-sm" loading="eager" />
-            <img src={ohioFlag} alt="Ohio flag" className="h-5 w-5 rounded-full object-cover shadow-sm" loading="eager" />
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
-              American Owned · Ohio Based
-            </span>
-          </div>
-
-          <h1 className="mt-4 font-display !text-[22px] font-extrabold leading-[1.15] tracking-tight text-foreground sm:!text-3xl md:!text-4xl lg:!text-[44px]">
-            Columbus chimney repairs &amp; inspections,{" "}
-            <span className="text-primary">done right.</span>
-          </h1>
-
-          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-foreground/75 sm:text-base">
-            A local crew that shows up on time, explains the work clearly, and sends a
-            written photo report after every visit.
-          </p>
-
-          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            {/* CALL — primary on mobile, secondary on desktop */}
-            <a
-              href="tel:6146835763"
-              className="order-1 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
-            >
-              <Phone className="h-4 w-4 text-primary sm:text-flame" /> (614) 683-5763
-            </a>
-            {/* SCHEDULE — secondary on mobile, primary on desktop */}
-            <button
-              type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-              className="order-2 inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-6 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
-            >
-              <CalendarCheck className="h-4 w-4" /> Schedule appointment online
-            </button>
-          </div>
-
-          {/* Trust strip */}
-          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border/50 pt-5">
-            {[
-              { icon: CheckCircle2, label: "CSIA-certified" },
-              { icon: ShieldCheck, label: "Fully insured" },
-              { icon: Star, label: "5-Star Rated" },
-              { icon: Clock, label: "Same-day callback" },
-            ].map(({ icon: Icon, label }) => (
-              <span
-                key={label}
-                className="inline-flex items-center gap-2 text-xs font-medium text-foreground/80 sm:text-[13px]"
-              >
-                <Icon className="h-4 w-4 text-flame" />
-                {label}
-              </span>
-            ))}
-          </div>
+          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-300">
+            Available Now · Columbus, OH
+          </span>
         </div>
 
-        {/* RIGHT — photo column. Full-bleed on mobile, rounded only at the bottom. */}
-        <div className="relative lg:order-2 lg:col-span-6 lg:px-8">
-          <div className="relative mx-auto w-full lg:max-w-none">
-            {/* Credential chip above image */}
-            <CertifiedBanner />
+        {/* Headline */}
+        <h1 className="mt-6 text-center font-display text-[34px] font-extrabold leading-[1.05] tracking-tight text-primary-foreground sm:text-5xl lg:text-[64px]">
+          Columbus&apos;s most trusted{" "}
+          <span className="text-flame">chimney crew.</span>
+        </h1>
 
-            <div className="relative overflow-hidden rounded-b-3xl bg-card lg:rounded-2xl lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
-              <img
-                src={teamHeroPhoto.url}
-                alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
-                className="block h-auto w-full object-contain"
-                fetchPriority="high"
-                decoding="async"
-                loading="eager"
-              />
-              {/* subtle bottom scrim for caption legibility */}
-              <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
-                aria-hidden
-              />
-              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 sm:inset-x-5 sm:bottom-5">
-                <div className="min-w-0">
-                  <p className="font-display text-sm font-bold text-primary-foreground sm:text-base">
-                    Meet the ChimCrew team.
-                  </p>
-                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/70">
-                    Columbus, Ohio · Established crew
-                  </p>
-                </div>
-                <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
-                  On the job
-                </span>
-              </div>
-            </div>
-          </div>
+        <p className="mx-auto mt-5 max-w-xl text-center text-[15px] leading-relaxed text-primary-foreground/75 sm:text-lg">
+          On‑time arrival. Honest pricing. A written photo report after every visit —
+          so you know exactly what we did, and why.
+        </p>
+
+        {/* CTAs */}
+        <div className="mt-7 flex flex-col items-stretch justify-center gap-3 sm:mt-9 sm:flex-row sm:items-center">
+          <a
+            href="tel:6146835763"
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-xl bg-flame px-6 font-display text-base font-extrabold tracking-tight text-primary shadow-[0_10px_30px_-8px_oklch(0.78_0.19_92/0.7)] transition hover:brightness-105 active:scale-[0.98] sm:text-lg"
+          >
+            <Phone className="h-5 w-5" /> (614) 683-5763
+          </a>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-xl border border-primary-foreground/25 bg-primary-foreground/[0.06] px-6 font-sans text-base font-semibold text-primary-foreground backdrop-blur-sm transition hover:border-flame hover:bg-primary-foreground/10 active:scale-[0.98]"
+          >
+            <CalendarCheck className="h-5 w-5 text-flame" /> Schedule online
+          </button>
+        </div>
+
+        {/* Inline social proof: rating */}
+        <div className="mx-auto mt-6 flex items-center justify-center gap-2 text-primary-foreground/85">
+          <span className="text-flame tracking-tight" aria-hidden>
+            ★★★★★
+          </span>
+          <span className="font-sans text-sm font-semibold">
+            5.0 on Google
+          </span>
+          <span className="text-primary-foreground/30">·</span>
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground/70">
+            500+ Ohio homes served
+          </span>
+        </div>
+
+        {/* Trust strip */}
+        <div className="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-x-4 gap-y-3 rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.04] p-4 backdrop-blur-sm sm:grid-cols-4 sm:gap-x-2">
+          {[
+            { icon: CheckCircle2, label: "CSIA-certified" },
+            { icon: ShieldCheck, label: "Fully insured" },
+            { icon: Camera, label: "Photo reports" },
+            { icon: Clock, label: "Same-day callback" },
+          ].map(({ icon: Icon, label }) => (
+            <span
+              key={label}
+              className="inline-flex items-center justify-start gap-2 text-[12px] font-medium text-primary-foreground/90 sm:justify-center sm:text-[13px]"
+            >
+              <Icon className="h-4 w-4 shrink-0 text-flame" />
+              {label}
+            </span>
+          ))}
+        </div>
+
+        {/* Local-owned flags row */}
+        <div className="mt-6 flex items-center justify-center gap-2">
+          <img src={usaFlag} alt="USA flag" className="h-5 w-5 rounded-full object-cover shadow-sm ring-1 ring-primary-foreground/20" loading="eager" />
+          <img src={ohioFlag} alt="Ohio flag" className="h-5 w-5 rounded-full object-cover shadow-sm ring-1 ring-primary-foreground/20" loading="eager" />
+          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+            American Owned · Ohio Based · Licensed · Insured
+          </span>
         </div>
       </div>
     </section>
