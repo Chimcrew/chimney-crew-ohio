@@ -457,6 +457,27 @@ function Hero() {
         {/* RIGHT — photo column. Full-bleed on mobile, rounded only at the bottom. */}
         <div className="relative lg:order-2 lg:col-span-6 lg:px-8">
           <div className="relative mx-auto w-full lg:max-w-none">
+            {/* Credential chip above image */}
+            <div className="mx-4 mb-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
+              <img
+                src={certifiedBadge.url}
+                alt="Certified chimney sweep credential"
+                width={56}
+                height={56}
+                className="h-12 w-12 shrink-0 rounded-full bg-white p-1.5"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="min-w-0">
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+                  Certified chimney professionals
+                </p>
+                <p className="mt-0.5 text-xs text-foreground/75 sm:text-[13px]">
+                  Every inspection documented with written photo reports.
+                </p>
+              </div>
+            </div>
+
             <div className="relative overflow-hidden rounded-b-3xl bg-card lg:rounded-2xl lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
               <img
                 src={teamHeroPhoto.url}
@@ -483,27 +504,6 @@ function Hero() {
                 <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
                   On the job
                 </span>
-              </div>
-            </div>
-
-            {/* Credential chip below image */}
-            <div className="mx-4 mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
-              <img
-                src={certifiedBadge.url}
-                alt="Certified chimney sweep credential"
-                width={56}
-                height={56}
-                className="h-12 w-12 shrink-0 rounded-full bg-white p-1.5"
-                loading="eager"
-                decoding="async"
-              />
-              <div className="min-w-0">
-                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                  Certified chimney professionals
-                </p>
-                <p className="mt-0.5 text-xs text-foreground/75 sm:text-[13px]">
-                  Every inspection documented with written photo reports.
-                </p>
               </div>
             </div>
           </div>
