@@ -117,6 +117,7 @@ export function serviceCtaLabel(s: Pick<ServiceSpec, "ctaLabel" | "shortTitle" |
  */
 export function formatFromPrice(s: Pick<ServiceSpec, "slug">): string {
   if (s.slug === "level-1-inspection") return "Only $69";
+  if (s.slug === "gas-fireplace-inspection") return "Only $49";
   return "";
 }
 
@@ -135,10 +136,16 @@ export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quote
 export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
   switch (s.slug) {
     case "crown-tuckpoint":
+    case "crown-repair":
       return baCrownStone;
+    case "crown-rebuild":
+      return techScaffoldingRebuild;
+    case "tuckpointing":
+      return chimneyJobB;
     case "level-1-inspection":
-    case "level-2-inspection":
       return sweepCloseupPhoto;
+    case "gas-fireplace-inspection":
+      return fireplaceServicePhoto;
     case "waterproofing":
       return baSpalledBrick;
     case "flashing-repair":
@@ -213,7 +220,7 @@ export const SERVICES: ServiceSpec[] = [
   {
     slug: "level-1-inspection",
     warranty: "100% Accurate Report",
-    title: "Level 1 Chimney Inspection",
+    title: "Chimney Inspection — $69",
     shortTitle: "Chimney Inspection",
     tagline: "The annual check-up the NFPA recommends for every fireplace — only $69.",
     price: "$69",
@@ -248,49 +255,8 @@ export const SERVICES: ServiceSpec[] = [
       { q: "What's the difference vs Level 2?", a: "Level 1 is visual only. Level 2 adds a camera scan and is required after a sale, fire, or appliance change." },
       { q: "How long does it take?", a: "About 45 minutes including the walkthrough." },
     ],
-    related: ["level-2-inspection", "chimney-sweep", "annual-plan"],
+    related: ["chimney-sweep", "crown-repair", "annual-plan"],
     metaDescription: "NFPA Level 1 chimney inspection in Ohio with photo report. Bundle free with a sweep. Columbus, Cincinnati, Dayton.",
-  },
-  {
-    slug: "level-2-inspection",
-    warranty: "Lender-Accepted Report",
-    title: "Level 2 Chimney Inspection",
-    shortTitle: "Level 2 Inspection",
-    tagline: "Camera-scanned, real-estate-ready documentation.",
-    price: "$318",
-    duration: "",
-    icon: Search,
-    variant: "inspection",
-    accent: "sky",
-    hero: {
-      eyebrow: "Required for closings",
-      headline: "Every inch of your flue, on camera.",
-      sub: "Required after a chimney fire, before a home sale, or any time you change appliances. Compliant with NFPA 211.",
-    },
-    bullets: [
-      "Internal camera scan of the entire flue",
-      "Includes everything in a Level 1",
-      "Written documentation accepted by lenders",
-      "Bundles all findings into a single PDF",
-    ],
-    process: [
-      { title: "Level 1 sweep", desc: "All accessible interior and exterior areas." },
-      { title: "Camera scan", desc: "We feed a calibrated camera down the entire flue." },
-      { title: "Defect review", desc: "Cracked tiles, gaps, blockages — all flagged." },
-      { title: "PDF report", desc: "Real-estate-ready documentation in your inbox." },
-    ],
-    signs: [
-      "You're buying or selling the home",
-      "There was a chimney fire (even a small one)",
-      "You're swapping a wood stove or insert",
-      "Lender or insurer is asking for documentation",
-    ],
-    faqs: [
-      { q: "Is this accepted by lenders?", a: "Yes. Our PDF includes our CSIA credentials and is accepted by every Ohio lender we've worked with." },
-      { q: "Can you do same-day for a closing?", a: "Often yes — call us at (614) 683-5763 and we'll squeeze you in." },
-    ],
-    related: ["level-1-inspection", "liner-install", "crown-tuckpoint"],
-    metaDescription: "Level 2 chimney inspection with camera scan in Ohio. Lender-ready PDF. Columbus, Cincinnati, Dayton.",
   },
   {
     slug: "crown-tuckpoint",
@@ -331,7 +297,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Crown repair vs full rebuild?", a: "If cracks are under 1/4\" we can resurface. Wider than that and we recommend a full re-pour." },
       { q: "Do you waterproof too?", a: "Yes — included on every crown job. We use ChimneySaver, the industry standard." },
     ],
-    related: ["waterproofing", "flashing-repair", "level-2-inspection"],
+    related: ["waterproofing", "flashing-repair", "level-1-inspection"],
     metaDescription: "Chimney crown repair and tuckpointing in Ohio. 5-year warranty. Stop leaks before they become rebuilds.",
     problems: [
       "Hairline cracks in the crown letting water seep into the chimney structure",
@@ -349,8 +315,8 @@ export const SERVICES: ServiceSpec[] = [
   {
     slug: "liner-install",
     warranty: "Lifetime Warranty (Transferable)",
-    title: "Stainless Steel Liner Installation",
-    shortTitle: "Stainless Liner",
+    title: "Chimney Liner Installation",
+    shortTitle: "Chimney Liner Installation",
     tagline: "Sized to your appliance. Built to outlive your house.",
     price: "Custom Quote",
     duration: "",
@@ -385,7 +351,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Why stainless?", a: "Clay tiles crack under thermal shock. Stainless flexes and lasts the life of the home." },
       { q: "Will my draft improve?", a: "Almost always. A properly-sized liner is the single biggest fix for poor draft." },
     ],
-    related: ["level-2-inspection", "smoke-chamber-parging", "gas-fireplace-service"],
+    related: ["level-1-inspection", "smoke-chamber-parging", "gas-fireplace-service"],
     metaDescription: "Stainless steel chimney liner installation in Ohio. 316Ti, lifetime warranty. Columbus, Cincinnati, Dayton.",
     problems: [
       "Cracked clay tiles allowing heat and combustion gases into the wall cavity",
@@ -562,7 +528,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Will you reuse the old flashing?", a: "Almost never — if it failed once, it'll fail again." },
       { q: "Do you do the roof too?", a: "We handle the chimney side. We have roofer partners for the rest." },
     ],
-    related: ["crown-tuckpoint", "waterproofing", "level-2-inspection"],
+    related: ["crown-tuckpoint", "waterproofing", "level-1-inspection"],
     metaDescription: "Chimney flashing repair in Ohio. Stop ceiling leaks with proper step + counter-flashing.",
     problems: [
       "Roof leak symptoms appearing only after heavy rain or snowmelt",
@@ -616,7 +582,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Can I just patch it?", a: "Hairline cracks, maybe. Anything wider needs proper firebrick — caulk burns out." },
       { q: "Will it look the same?", a: "Yes, we match the existing brick pattern and color where possible." },
     ],
-    related: ["smoke-chamber-parging", "liner-install", "level-2-inspection"],
+    related: ["smoke-chamber-parging", "liner-install", "level-1-inspection"],
     metaDescription: "Firebox rebuild and refractory repair in Ohio. Code-compliant firebrick and panels.",
   },
   {
@@ -658,7 +624,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Will this fix my smoking fireplace?", a: "Often, yes — combined with a properly-sized liner, almost always." },
       { q: "How long does it last?", a: "Indefinitely, if your flue stays in good shape." },
     ],
-    related: ["liner-install", "firebox-rebuild", "level-2-inspection"],
+    related: ["liner-install", "firebox-rebuild", "level-1-inspection"],
     metaDescription: "Smoke chamber parging in Ohio. Refractory parge coat to fix smoke spillage and pass inspection.",
   },
   {
@@ -823,6 +789,173 @@ export const SERVICES: ServiceSpec[] = [
     ],
     related: ["chimney-sweep", "level-1-inspection", "dryer-vent-cleaning"],
     metaDescription: "Annual chimney service plan in Ohio. Yearly sweep, inspection, priority dispatch, and 10% off repairs.",
+  },
+  {
+    slug: "crown-repair",
+    warranty: "10-Year Workmanship Warranty",
+    title: "Chimney Crown Repair",
+    shortTitle: "Crown Repair",
+    tagline: "Seal hairline cracks before they let water destroy your chimney.",
+    price: "Custom Quote",
+    duration: "",
+    quoteOnly: true,
+    icon: Hammer,
+    variant: "repair",
+    accent: "amber",
+    hero: {
+      eyebrow: "Stop water at the top",
+      headline: "Small crown cracks become five-figure rebuilds.",
+      sub: "We resurface or patch cracked chimney crowns with a flexible, waterproof crown coat that bridges hairline cracks and stops freeze-thaw damage cold.",
+    },
+    bullets: [
+      "CrownCoat or CrownSeal flexible membrane",
+      "Bridges cracks up to 1/4 inch wide",
+      "Stops water before it reaches the brick",
+      "10-year workmanship warranty",
+    ],
+    process: [
+      { title: "Inspect", desc: "Rooftop photos of every crack and joint." },
+      { title: "Prep", desc: "Clean and prime the existing crown." },
+      { title: "Coat", desc: "Trowel-apply a flexible waterproof membrane." },
+      { title: "Document", desc: "Before / after photos and your written warranty." },
+    ],
+    signs: [
+      "Visible hairline cracks across the crown",
+      "White efflorescence staining on the brick",
+      "Recent water stains on the ceiling near the chimney",
+      "Crown was poured more than 15 years ago",
+    ],
+    faqs: [
+      { q: "Repair or rebuild?", a: "If cracks are under 1/4 inch we can repair. Wider than that and we recommend a full crown rebuild." },
+      { q: "How long does the coating last?", a: "10–15 years when applied over a structurally sound crown." },
+    ],
+    related: ["crown-rebuild", "tuckpointing", "waterproofing"],
+    metaDescription: "Chimney crown repair in Ohio. Flexible waterproof crown coat with a 10-year warranty. Columbus, Cincinnati, Dayton.",
+  },
+  {
+    slug: "crown-rebuild",
+    warranty: "10-Year Workmanship Warranty",
+    title: "Chimney Crown Rebuild",
+    shortTitle: "Crown Rebuild",
+    tagline: "Full demo and re-pour with a proper overhang and drip edge.",
+    price: "Custom Quote",
+    duration: "",
+    quoteOnly: true,
+    icon: HardHat,
+    variant: "repair",
+    accent: "amber",
+    hero: {
+      eyebrow: "Full structural rebuild",
+      headline: "When a crown is past patching, we rebuild it right.",
+      sub: "Cracked or crumbling crowns demolished and re-poured with stainless-reinforced concrete, proper overhang, and a real drip edge — engineered to outlast the chimney.",
+    },
+    bullets: [
+      "Failed crown fully demoed down to the top course",
+      "Stainless-reinforced concrete poured to spec",
+      "2-inch overhang with a drip edge cut in",
+      "10-year workmanship warranty",
+    ],
+    process: [
+      { title: "Assess", desc: "Drone or rooftop inspection, photos of every defect." },
+      { title: "Demo", desc: "Failing crown carefully removed without disturbing the brick." },
+      { title: "Form & pour", desc: "Stainless-reinforced concrete poured with proper overhang." },
+      { title: "Cure & seal", desc: "Cured under cover, then sealed with breathable waterproofing." },
+    ],
+    signs: [
+      "Cracks wider than 1/4 inch across the crown",
+      "Whole pieces of crown missing or crumbling",
+      "No overhang past the brick (water sheets down the face)",
+      "Recent interior water damage near the chimney",
+    ],
+    faqs: [
+      { q: "How long does a new crown last?", a: "Properly built with stainless reinforcement and an overhang, 30+ years." },
+      { q: "Do you waterproof it too?", a: "Yes — every rebuild includes breathable ChimneySaver waterproofing on the new crown and surrounding brick." },
+    ],
+    related: ["crown-repair", "tuckpointing", "waterproofing"],
+    metaDescription: "Chimney crown rebuild in Ohio. Stainless-reinforced re-pour with proper overhang and drip edge. 10-year warranty.",
+  },
+  {
+    slug: "tuckpointing",
+    warranty: "10-Year Workmanship Warranty",
+    title: "Chimney Tuckpointing",
+    shortTitle: "Tuckpointing",
+    tagline: "Grind out failed mortar. Repoint with a color-matched mix that lasts.",
+    price: "Custom Quote",
+    duration: "",
+    quoteOnly: true,
+    icon: Wrench,
+    variant: "repair",
+    accent: "amber",
+    hero: {
+      eyebrow: "Masonry restoration",
+      headline: "Failed mortar joints are how water finds the framing.",
+      sub: "We grind out crumbling mortar to a proper depth and repoint with a color-matched mix that locks the brick back together and stops water intrusion.",
+    },
+    bullets: [
+      "Old mortar ground out to 3/4-inch minimum depth",
+      "Color-matched mortar mix, blended on site",
+      "Joints tooled to match existing style",
+      "10-year workmanship warranty",
+    ],
+    process: [
+      { title: "Assess", desc: "Identify every failed joint and document it." },
+      { title: "Grind", desc: "Failed mortar removed to a proper depth, brick faces protected." },
+      { title: "Repoint", desc: "Color-matched mortar packed and tooled to match." },
+      { title: "Clean", desc: "Brick faces cleaned and the area left tidier than we found it." },
+    ],
+    signs: [
+      "Mortar joints crumbling or missing chunks",
+      "Mortar that turns to sand when you scratch it",
+      "Gaps you can see daylight through from inside the attic",
+      "Chimney was last pointed more than 30 years ago",
+    ],
+    faqs: [
+      { q: "Will the new mortar match?", a: "Yes — we mix on site to match the existing color and joint profile." },
+      { q: "How long does tuckpointing last?", a: "25–30 years when properly ground and repointed (not surface-smeared)." },
+    ],
+    related: ["crown-repair", "crown-rebuild", "waterproofing"],
+    metaDescription: "Chimney tuckpointing in Ohio. Color-matched mortar, ground to depth, 10-year warranty. Columbus, Cincinnati, Dayton.",
+  },
+  {
+    slug: "gas-fireplace-inspection",
+    warranty: "Accurate Report",
+    title: "Gas Fireplace Inspection — $49",
+    shortTitle: "Gas Fireplace Inspection",
+    tagline: "A safety check for your gas insert or log set — only $49.",
+    price: "$49",
+    duration: "",
+    icon: Search,
+    variant: "inspection",
+    accent: "flame",
+    hero: {
+      eyebrow: "Annual safety check",
+      headline: "Gas doesn't smoke — it leaks carbon monoxide.",
+      sub: "A complete visual inspection of your vented gas insert, log set, or direct-vent unit. Pilot, burner, venting, seals — and a CO check at the appliance.",
+    },
+    bullets: [
+      "Full visual of pilot, burner, venting, and seals",
+      "Carbon monoxide test at the appliance",
+      "Log placement verified against manufacturer spec",
+      "Written photo report emailed same day",
+    ],
+    process: [
+      { title: "Shutdown", desc: "Gas off, components allowed to cool." },
+      { title: "Inspect", desc: "Pilot, burner, glass, gaskets, venting, and ignition checked." },
+      { title: "CO test", desc: "Carbon monoxide reading taken in front of the unit." },
+      { title: "Report", desc: "Findings ranked by urgency, in your inbox same day." },
+    ],
+    signs: [
+      "Hasn't been inspected in 12+ months",
+      "Pilot won't stay lit",
+      "Yellow flame or soot on a gas unit",
+      "Faint odor when the unit runs",
+    ],
+    faqs: [
+      { q: "Is $49 the full price?", a: "Yes. $49 flat for a single vented gas appliance inspection — no upsell required." },
+      { q: "What if you find something?", a: "You get a flat-rate quote in writing. Repairs are optional and never pressured." },
+    ],
+    related: ["gas-fireplace-service", "level-1-inspection", "annual-plan"],
+    metaDescription: "Gas fireplace inspection in Ohio for only $49. CO check, photo report, CSIA-certified. Columbus, Cincinnati, Dayton.",
   },
 ];
 

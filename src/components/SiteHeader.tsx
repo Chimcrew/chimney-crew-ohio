@@ -38,9 +38,9 @@ type ServiceCategory = {
 const REPAIR_MENU: MenuLink[] = [
   { label: "Chimney Repair", to: "/chimney-repair-columbus" },
   { label: "Chimney Leak Repair", to: "/services/$slug", slug: "flashing-repair" },
-  { label: "Chimney Crown Repair", to: "/services/$slug", slug: "crown-tuckpoint" },
-  { label: "Chimney Crown Rebuild", to: "/services/$slug", slug: "crown-tuckpoint" },
-  { label: "Tuckpointing", to: "/services/$slug", slug: "crown-tuckpoint" },
+  { label: "Chimney Crown Repair", to: "/services/$slug", slug: "crown-repair" },
+  { label: "Chimney Crown Rebuild", to: "/services/$slug", slug: "crown-rebuild" },
+  { label: "Tuckpointing", to: "/services/$slug", slug: "tuckpointing" },
   { label: "Masonry Repair", to: "/services/$slug", slug: "crown-tuckpoint" },
   { label: "Flashing Repair", to: "/services/$slug", slug: "flashing-repair" },
   { label: "Chimney Cap Installation", to: "/services/$slug", slug: "cap-install" },
@@ -53,17 +53,15 @@ const REPAIR_MENU: MenuLink[] = [
 
 const CLEANING_MENU: MenuLink[] = [
   { label: "Chimney Inspection — $69", to: "/services/$slug", slug: "level-1-inspection" },
-  { label: "Level 1 Inspection", to: "/services/$slug", slug: "level-1-inspection" },
-  { label: "Level 2 Inspection", to: "/services/$slug", slug: "level-2-inspection" },
   { label: "Chimney Sweep", to: "/services/$slug", slug: "chimney-sweep" },
   { label: "Creosote Removal", to: "/services/$slug", slug: "chimney-sweep" },
   { label: "Chimney Cleaning", to: "/services/$slug", slug: "chimney-sweep" },
 ];
 
 const FIREPLACE_MENU: MenuLink[] = [
+  { label: "Gas Fireplace Inspection — $49", to: "/services/$slug", slug: "gas-fireplace-inspection" },
   { label: "Gas Fireplace Service", to: "/services/$slug", slug: "gas-fireplace-service" },
   { label: "Gas Fireplace Repair", to: "/services/$slug", slug: "gas-fireplace-service" },
-  { label: "Fireplace Inspection", to: "/services/$slug", slug: "level-1-inspection" },
   { label: "Fireplace Repair", to: "/services/$slug", slug: "firebox-rebuild" },
 ];
 

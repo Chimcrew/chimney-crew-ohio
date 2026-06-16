@@ -36,6 +36,7 @@ import projectCap from "@/assets/projects/project-04-cap-install.jpg";
 import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
+import triptychPhoto from "@/assets/real/chimcrew-job-triptych.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
@@ -176,9 +177,9 @@ function HeroToOfferBridge() {
         {/* photo card */}
         <div className="relative overflow-hidden rounded-2xl border-[3px] border-background bg-card shadow-[0_24px_50px_-18px_oklch(0_0_0/0.45),0_8px_20px_-10px_oklch(0_0_0/0.3)] ring-1 ring-foreground/10">
           <img
-            src={inspectionRoofPhoto.url}
-            alt="ChimCrew technicians installing a stainless chimney liner on a Columbus rooftop"
-            className="block aspect-[16/10] w-full object-cover"
+            src={triptychPhoto.url}
+            alt="ChimCrew crew on a Columbus job — chimney sweep, fireplace cleaning and cap install"
+            className="block aspect-[2/1] w-full object-cover"
             loading="lazy"
             decoding="async"
           />
@@ -190,10 +191,10 @@ function HeroToOfferBridge() {
           {/* caption ribbon */}
           <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent px-4 pb-3 pt-8">
             <span className="font-display text-sm font-bold text-primary-foreground sm:text-base">
-              Stainless Liner Install — Columbus, OH
+              On the job in Columbus, OH
             </span>
             <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80 sm:inline">
-              On the roof
+              Sweep · Fireplace · Cap
             </span>
           </figcaption>
         </div>
@@ -402,33 +403,21 @@ function Hero() {
       <div className="relative mx-auto grid max-w-7xl gap-8 pb-12 pt-8 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:pb-20 lg:pt-16">
         {/* LEFT — message column */}
         <div className="px-4 sm:px-6 lg:order-1 lg:col-span-6 lg:px-8 lg:pt-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
-              <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
-              <Star className="h-3 w-3 fill-flame text-flame" /> 5-Star Reviews
-            </span>
-          </div>
+          <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
+            <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
+          </span>
 
-          <h1 className="mt-5 font-display !text-xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:!text-2xl md:!text-3xl">
-            Trusted By{" "}
-            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
-              Columbus
-            </span>{" "}
-            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
-              Homeowners
-            </span>{" "}
-            For Chimney Repairs & Inspections
+          <h1 className="mt-4 font-display !text-[22px] font-extrabold leading-[1.15] tracking-tight text-foreground sm:!text-3xl md:!text-4xl lg:!text-[44px]">
+            Columbus chimney repairs &amp; inspections,{" "}
+            <span className="text-primary">done right.</span>
           </h1>
 
-          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">
-            Inspections, cleaning, and masonry repair from a local Columbus crew that
-            shows up on time, explains the work clearly, and documents every finding
-            with photos and video before any repair is recommended.
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-foreground/75 sm:text-base">
+            A local crew that shows up on time, explains the work clearly, and sends a
+            written photo report after every visit.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {/* CALL — primary on mobile, secondary on desktop */}
             <a
               href="tel:6146835763"
@@ -446,25 +435,13 @@ function Hero() {
             </button>
           </div>
 
-          {/* Emergency line micro-CTA */}
-          <a
-            href="tel:6146835763"
-            className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110"
-          >
-            <span className="relative inline-flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-            </span>
-            Emergency line 24/7
-          </a>
-
           {/* Trust strip */}
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border/50 pt-5">
             {[
               { icon: CheckCircle2, label: "CSIA-certified" },
               { icon: ShieldCheck, label: "Fully insured" },
+              { icon: Star, label: "5-Star Rated" },
               { icon: Clock, label: "Same-day callback" },
-              { icon: Award, label: "Family owned & operated" },
             ].map(({ icon: Icon, label }) => (
               <span
                 key={label}
@@ -659,9 +636,9 @@ function EmergencyCallBar() {
 function CommonProblems() {
   const problems = [
     { icon: Droplets, label: "Chimney Leaks", body: "Water stains, ceiling drips, and damp brick after every rain.", slug: "flashing-repair" },
-    { icon: AlertTriangle, label: "Cracked Chimney Crowns", body: "Hairline cracks letting water sit on top of the chimney.", slug: "crown-tuckpoint" },
+    { icon: AlertTriangle, label: "Cracked Chimney Crowns", body: "Hairline cracks letting water sit on top of the chimney.", slug: "crown-repair" },
     { icon: ShieldCheck, label: "Missing or Damaged Chimney Caps", body: "Open flues let in rain, debris, and animals.", slug: "cap-install" },
-    { icon: BrickIcon, label: "Brick & Mortar Damage", body: "Spalling brick and washed-out mortar joints.", slug: "crown-tuckpoint" },
+    { icon: BrickIcon, label: "Brick & Mortar Damage", body: "Spalling brick and washed-out mortar joints.", slug: "tuckpointing" },
     { icon: Droplets, label: "Chimney Water Damage", body: "Stained masonry, efflorescence, and rotting framing inside.", slug: "waterproofing" },
     { icon: Wrench, label: "Damaged Chimney Liners", body: "Cracked clay tiles or rusted-out metal liners hurting draft and safety.", slug: "liner-install" },
     { icon: Wind, label: "Draft & Ventilation Problems", body: "Smoke spilling into the room, cold downdrafts, hard-to-start fires.", slug: "damper-repair" },
