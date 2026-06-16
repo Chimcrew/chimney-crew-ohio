@@ -36,7 +36,7 @@ import projectCap from "@/assets/projects/project-04-cap-install.jpg";
 import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
-import triptychPhoto from "@/assets/real/chimcrew-job-triptych.png.asset.json";
+import triptychPhoto from "@/assets/real/chimcrew-job-triptych-clean.png";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
@@ -177,7 +177,7 @@ function HeroToOfferBridge() {
         {/* photo card */}
         <div className="relative overflow-hidden rounded-2xl border-[3px] border-background bg-card shadow-[0_24px_50px_-18px_oklch(0_0_0/0.45),0_8px_20px_-10px_oklch(0_0_0/0.3)] ring-1 ring-foreground/10">
           <img
-            src={triptychPhoto.url}
+            src={triptychPhoto}
             alt="ChimCrew crew on a Columbus job — chimney sweep, fireplace cleaning and cap install"
             className="block aspect-[2/1] w-full object-cover"
             loading="lazy"
