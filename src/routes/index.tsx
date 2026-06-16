@@ -131,6 +131,30 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+function CertifiedBanner() {
+  return (
+    <div className="mx-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
+      <img
+        src={certifiedBadge.url}
+        alt="Certified chimney sweep credential"
+        width={56}
+        height={56}
+        className="h-12 w-12 shrink-0 rounded-full bg-white p-1.5"
+        loading="eager"
+        decoding="async"
+      />
+      <div className="min-w-0">
+        <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
+          Certified chimney professionals
+        </p>
+        <p className="mt-0.5 text-xs text-foreground/75 sm:text-[13px]">
+          Every inspection documented with written photo reports.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function Index() {
   return (
     <>
@@ -156,6 +180,11 @@ function Index() {
       <TrustMarquee />
       <EmergencyCallBar />
       <Faq />
+      <section className="relative bg-background pb-12 pt-6 md:pb-16 md:pt-8">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <CertifiedBanner />
+        </div>
+      </section>
     </>
   );
 }
