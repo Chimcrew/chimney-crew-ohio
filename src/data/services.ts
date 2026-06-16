@@ -297,7 +297,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Crown repair vs full rebuild?", a: "If cracks are under 1/4\" we can resurface. Wider than that and we recommend a full re-pour." },
       { q: "Do you waterproof too?", a: "Yes — included on every crown job. We use ChimneySaver, the industry standard." },
     ],
-    related: ["waterproofing", "flashing-repair", "level-2-inspection"],
+    related: ["waterproofing", "flashing-repair", "level-1-inspection"],
     metaDescription: "Chimney crown repair and tuckpointing in Ohio. 5-year warranty. Stop leaks before they become rebuilds.",
     problems: [
       "Hairline cracks in the crown letting water seep into the chimney structure",
@@ -316,7 +316,7 @@ export const SERVICES: ServiceSpec[] = [
     slug: "liner-install",
     warranty: "Lifetime Warranty (Transferable)",
     title: "Stainless Steel Liner Installation",
-    shortTitle: "Stainless Liner",
+    shortTitle: "Chimney Liner Installation",
     tagline: "Sized to your appliance. Built to outlive your house.",
     price: "Custom Quote",
     duration: "",
@@ -351,7 +351,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Why stainless?", a: "Clay tiles crack under thermal shock. Stainless flexes and lasts the life of the home." },
       { q: "Will my draft improve?", a: "Almost always. A properly-sized liner is the single biggest fix for poor draft." },
     ],
-    related: ["level-2-inspection", "smoke-chamber-parging", "gas-fireplace-service"],
+    related: ["level-1-inspection", "smoke-chamber-parging", "gas-fireplace-service"],
     metaDescription: "Stainless steel chimney liner installation in Ohio. 316Ti, lifetime warranty. Columbus, Cincinnati, Dayton.",
     problems: [
       "Cracked clay tiles allowing heat and combustion gases into the wall cavity",
@@ -528,7 +528,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Will you reuse the old flashing?", a: "Almost never — if it failed once, it'll fail again." },
       { q: "Do you do the roof too?", a: "We handle the chimney side. We have roofer partners for the rest." },
     ],
-    related: ["crown-tuckpoint", "waterproofing", "level-2-inspection"],
+    related: ["crown-tuckpoint", "waterproofing", "level-1-inspection"],
     metaDescription: "Chimney flashing repair in Ohio. Stop ceiling leaks with proper step + counter-flashing.",
     problems: [
       "Roof leak symptoms appearing only after heavy rain or snowmelt",
@@ -582,7 +582,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Can I just patch it?", a: "Hairline cracks, maybe. Anything wider needs proper firebrick — caulk burns out." },
       { q: "Will it look the same?", a: "Yes, we match the existing brick pattern and color where possible." },
     ],
-    related: ["smoke-chamber-parging", "liner-install", "level-2-inspection"],
+    related: ["smoke-chamber-parging", "liner-install", "level-1-inspection"],
     metaDescription: "Firebox rebuild and refractory repair in Ohio. Code-compliant firebrick and panels.",
   },
   {
@@ -624,7 +624,7 @@ export const SERVICES: ServiceSpec[] = [
       { q: "Will this fix my smoking fireplace?", a: "Often, yes — combined with a properly-sized liner, almost always." },
       { q: "How long does it last?", a: "Indefinitely, if your flue stays in good shape." },
     ],
-    related: ["liner-install", "firebox-rebuild", "level-2-inspection"],
+    related: ["liner-install", "firebox-rebuild", "level-1-inspection"],
     metaDescription: "Smoke chamber parging in Ohio. Refractory parge coat to fix smoke spillage and pass inspection.",
   },
   {
