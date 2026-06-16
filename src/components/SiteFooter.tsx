@@ -6,7 +6,55 @@ import van from "@/assets/chimcrew-van.png";
 import { SERVICES } from "@/data/services";
 import { SERVICE_CITIES } from "@/components/ServiceAreaSeo";
 import { SEO_CITIES } from "@/data/seo-cities";
-export function SiteFooter() {
+export function SiteFooter({ minimal = false }: { minimal?: boolean } = {}) {
+  if (minimal) {
+    return (
+      <footer className="relative border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
+        <div className="stripe-warning h-1.5 w-full opacity-80" />
+        <div className="mx-auto max-w-5xl px-4 py-10 md:px-8">
+          <div className="grid gap-8 sm:grid-cols-[1.2fr_1fr_1fr] sm:items-start">
+            <div>
+              <img src={logo} alt="ChimCrew" className="h-12 w-auto" />
+              <p className="mt-3 max-w-sm text-sm text-muted-foreground">
+                Local, CSIA-certified chimney crew serving Columbus, Dayton & Cincinnati.
+              </p>
+            </div>
+            <div>
+              <h4 className="font-display text-sm uppercase tracking-widest text-primary">Contact</h4>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li className="flex items-start gap-2">
+                  <Phone className="mt-0.5 h-4 w-4 text-primary" />
+                  <a href="tel:6146835763" className="hover:text-primary">(614) 683-5763</a>
+                </li>
+                <li className="flex items-start gap-2">
+                  <Mail className="mt-0.5 h-4 w-4 text-primary" />
+                  <a href="mailto:office@chimcrew.com" className="hover:text-primary">office@chimcrew.com</a>
+                </li>
+                <li className="flex items-start gap-2">
+                  <MapPin className="mt-0.5 h-4 w-4 text-primary" />
+                  <span>Columbus · Dayton · Cincinnati</span>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-display text-sm uppercase tracking-widest text-primary">Legal</h4>
+              <ul className="mt-3 space-y-2 text-sm">
+                <li><Link to="/legal/privacy" className="hover:text-primary">Privacy Policy</Link></li>
+                <li><Link to="/legal/terms" className="hover:text-primary">Terms &amp; Conditions</Link></li>
+                <li><Link to="/legal/disclaimer" className="hover:text-primary">Disclaimer</Link></li>
+                <li><Link to="/legal/accessibility" className="hover:text-primary">Accessibility</Link></li>
+                <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-8 flex flex-col items-start justify-between gap-2 border-t border-border pt-5 text-xs text-muted-foreground md:flex-row md:items-center">
+            <p>© {new Date().getFullYear()} ChimCrew Chimney Services. All rights reserved.</p>
+            <p className="font-mono">CSIA Certified · Fully Insured · OH License #CHM-OH-0421</p>
+          </div>
+        </div>
+      </footer>
+    );
+  }
   return (
     <footer className="relative border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
       <div className="stripe-warning h-1.5 w-full opacity-80" />
