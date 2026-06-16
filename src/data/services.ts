@@ -315,7 +315,7 @@ export const SERVICES: ServiceSpec[] = [
   {
     slug: "liner-install",
     warranty: "Lifetime Warranty (Transferable)",
-    title: "Stainless Steel Liner Installation",
+    title: "Chimney Liner Installation",
     shortTitle: "Chimney Liner Installation",
     tagline: "Sized to your appliance. Built to outlive your house.",
     price: "Custom Quote",
