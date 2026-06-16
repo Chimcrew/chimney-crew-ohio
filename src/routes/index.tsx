@@ -403,33 +403,21 @@ function Hero() {
       <div className="relative mx-auto grid max-w-7xl gap-8 pb-12 pt-8 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:pb-20 lg:pt-16">
         {/* LEFT — message column */}
         <div className="px-4 sm:px-6 lg:order-1 lg:col-span-6 lg:px-8 lg:pt-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
-              <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
-              <Star className="h-3 w-3 fill-flame text-flame" /> 5-Star Reviews
-            </span>
-          </div>
+          <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
+            <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
+          </span>
 
-          <h1 className="mt-5 font-display !text-xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:!text-2xl md:!text-3xl">
-            Trusted By{" "}
-            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
-              Columbus
-            </span>{" "}
-            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
-              Homeowners
-            </span>{" "}
-            For Chimney Repairs & Inspections
+          <h1 className="mt-4 font-display !text-[22px] font-extrabold leading-[1.15] tracking-tight text-foreground sm:!text-3xl md:!text-4xl lg:!text-[44px]">
+            Columbus chimney repairs &amp; inspections,{" "}
+            <span className="text-primary">done right.</span>
           </h1>
 
-          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">
-            Inspections, cleaning, and masonry repair from a local Columbus crew that
-            shows up on time, explains the work clearly, and documents every finding
-            with photos and video before any repair is recommended.
+          <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-foreground/75 sm:text-base">
+            A local crew that shows up on time, explains the work clearly, and sends a
+            written photo report after every visit.
           </p>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {/* CALL — primary on mobile, secondary on desktop */}
             <a
               href="tel:6146835763"
@@ -447,25 +435,13 @@ function Hero() {
             </button>
           </div>
 
-          {/* Emergency line micro-CTA */}
-          <a
-            href="tel:6146835763"
-            className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110"
-          >
-            <span className="relative inline-flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-            </span>
-            Emergency line 24/7
-          </a>
-
           {/* Trust strip */}
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
+          <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-border/50 pt-5">
             {[
               { icon: CheckCircle2, label: "CSIA-certified" },
               { icon: ShieldCheck, label: "Fully insured" },
+              { icon: Star, label: "5-Star Rated" },
               { icon: Clock, label: "Same-day callback" },
-              { icon: Award, label: "Family owned & operated" },
             ].map(({ icon: Icon, label }) => (
               <span
                 key={label}
