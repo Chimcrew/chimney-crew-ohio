@@ -27,6 +27,8 @@ import {
 import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
 import { InlineLeadForm } from "@/components/InlineLeadForm";
 const logo = logoAsset.url;
+import usaFlag from "@/assets/flags/usa-flag-badge.png";
+import ohioFlag from "@/assets/flags/ohio-flag-badge.png";
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import projectHero from "@/assets/projects/project-01-double-crown.jpg";
@@ -435,6 +437,15 @@ function Hero() {
           <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
             <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
           </span>
+
+          {/* American / Ohio owned flag badges */}
+          <div className="mt-2 flex items-center gap-2">
+            <img src={usaFlag} alt="USA flag" className="h-5 w-5 rounded-full object-cover shadow-sm" loading="eager" />
+            <img src={ohioFlag} alt="Ohio flag" className="h-5 w-5 rounded-full object-cover shadow-sm" loading="eager" />
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
+              American Owned · Ohio Based
+            </span>
+          </div>
 
           <h1 className="mt-4 font-display !text-[22px] font-extrabold leading-[1.15] tracking-tight text-foreground sm:!text-3xl md:!text-4xl lg:!text-[44px]">
             Columbus chimney repairs &amp; inspections,{" "}
