@@ -36,7 +36,7 @@ import projectCap from "@/assets/projects/project-04-cap-install.jpg";
 import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
-import triptychPhoto from "@/assets/real/chimcrew-job-triptych.png.asset.json";
+import triptychPhoto from "@/assets/real/chimcrew-job-triptych-clean.png";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
