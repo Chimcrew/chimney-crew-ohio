@@ -24,7 +24,7 @@ import {
   Camera,
   Video,
 } from "lucide-react";
-import logoAsset from "@/assets/chimcrew-logo-crew.png.asset.json";
+import logoAsset from "@/assets/chimcrew-logo-header.png.asset.json";
 import { InlineLeadForm } from "@/components/InlineLeadForm";
 const logo = logoAsset.url;
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
