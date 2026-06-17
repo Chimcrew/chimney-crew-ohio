@@ -135,7 +135,6 @@ function Index() {
     <>
       <Hero />
       <HeroToOfferBridge />
-      <LimitedOfferBanner />
       <TrustBar />
       <TrustMarquee />
       <EmergencyCallBar />
