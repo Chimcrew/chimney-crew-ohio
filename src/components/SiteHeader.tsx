@@ -23,7 +23,8 @@ const Broom: LucideIcon = (({ className, ...props }: { className?: string }) => 
     <path d="M16 19l0 2" />
   </svg>
 )) as unknown as LucideIcon;
-import logoHeader from "@/assets/chimcrew-logo-transparent.png";
+import logoHeaderAsset from "@/assets/chimcrew-logo-crew.png.asset.json";
+const logoHeader = logoHeaderAsset.url;
 import { openScheduleDialog } from "@/components/ScheduleWidget";
 
 type MenuLink = { label: string; to: string; slug?: string };
@@ -173,7 +174,7 @@ export function SiteHeader() {
             <img
               src={logoHeader}
               alt="ChimCrew — Chimney Repair & Inspection"
-              className="relative z-40 -mb-1 h-11 w-auto max-w-none origin-left object-contain drop-shadow-[0_4px_8px_oklch(0.18_0.02_250/0.12)] transition-transform duration-300 ease-out will-change-transform md:-mb-2 md:h-16 group-hover:-translate-y-0.5 group-hover:scale-[1.04]"
+              className="relative z-40 -mb-1 h-16 w-auto max-w-none origin-left object-contain drop-shadow-[0_4px_8px_oklch(0.18_0.02_250/0.12)] transition-transform duration-300 ease-out will-change-transform md:-mb-2 md:h-20 group-hover:-translate-y-0.5 group-hover:scale-[1.04]"
             />
           </Link>
 
