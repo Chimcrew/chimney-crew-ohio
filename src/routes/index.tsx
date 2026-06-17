@@ -433,7 +433,7 @@ function Hero() {
               Certified chimney professionals
             </p>
             <div className="mt-1 flex flex-wrap gap-1">
-              <span className="inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-primary-foreground">
+              <span className="ml-1 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-primary-foreground">
                 <ShieldCheck className="h-2.5 w-2.5 text-flame" /> Licensed · Insured
               </span>
               <span className="inline-flex items-center gap-1 rounded-full border border-flame/40 bg-flame/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-foreground">
