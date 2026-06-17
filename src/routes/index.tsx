@@ -135,7 +135,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <MeetTheTeam />
       <Hero />
       <HeroToOfferBridge />
       <TrustBar />
