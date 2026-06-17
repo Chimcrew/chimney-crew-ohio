@@ -54,6 +54,7 @@ import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import { DroneInspection } from "@/components/DroneInspection";
+import { ScheduleInline } from "@/components/ScheduleWidget";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -134,28 +135,70 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
+      <MeetTheTeam />
       <Hero />
       <HeroToOfferBridge />
       <TrustBar />
-      <TrustMarquee />
-      <EmergencyCallBar />
       <CommonProblems />
       <PhotoVideoTrust />
       <RecentProjects />
       <DroneInspection />
+      <ScheduleSection />
       <ServiceAreaSeo />
-      <ServiceArea />
       <WhyChooseUs />
       <TrustMarquee />
       <EmergencyCallBar />
       <LeakingChimney />
-      <ScheduleOnline />
       <Testimonials />
       <FieldNotes />
+      <Faq />
       <TrustMarquee />
       <EmergencyCallBar />
-      <Faq />
     </>
+  );
+}
+
+/* ============================================================
+   MEET THE TEAM — photo strip directly below the site header
+   ============================================================ */
+function MeetTheTeam() {
+  return (
+    <section className="relative overflow-hidden border-b border-border bg-background">
+      <div className="mx-auto max-w-7xl px-4 pt-6 md:px-8 md:pt-10">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+          <img
+            src={teamHeroPhoto.url}
+            alt="Meet the ChimCrew team — Columbus, Ohio"
+            className="block h-auto w-full object-cover"
+            fetchPriority="high"
+            decoding="async"
+            loading="eager"
+          />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" aria-hidden />
+          <div className="absolute inset-x-5 bottom-5">
+            <p className="font-display text-lg font-bold text-primary-foreground md:text-2xl">
+              Meet the ChimCrew team.
+            </p>
+            <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/75 md:text-[11px]">
+              Columbus · Dayton · Cincinnati — your local Ohio chimney crew
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   SCHEDULE SECTION — main form on the homepage
+   ============================================================ */
+function ScheduleSection() {
+  return (
+    <section className="relative bg-background py-16 md:py-20">
+      <div className="mx-auto max-w-3xl px-4 md:px-8">
+        <ScheduleInline />
+      </div>
+    </section>
   );
 }
 
