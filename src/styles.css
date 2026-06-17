@@ -143,14 +143,17 @@
     -webkit-font-smoothing: antialiased;
     font-size: 16px;
     line-height: 1.6;
+    font-weight: 500;
   }
 
-  h1, h2, h3, .display {
+  h1, h2, h3, h4, .display {
     font-family: var(--font-display);
-    letter-spacing: -0.045em;
+    letter-spacing: -0.025em;
     font-weight: 700;
     text-transform: none;
   }
+  h3, h4 { font-weight: 600; }
+  button, [role="button"], a[data-cta] { font-weight: 600; }
 
   @media (min-width: 768px) {
     body {
