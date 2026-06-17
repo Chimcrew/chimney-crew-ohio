@@ -23,7 +23,7 @@ const Broom: LucideIcon = (({ className, ...props }: { className?: string }) => 
     <path d="M16 19l0 2" />
   </svg>
 )) as unknown as LucideIcon;
-import logoHeaderAsset from "@/assets/chimcrew-logo-header.png.asset.json";
+import logoHeaderAsset from "@/assets/chimcrew-logo-sharp.png.asset.json";
 const logoHeader = logoHeaderAsset.url;
 import { openScheduleDialog } from "@/components/ScheduleWidget";
 
