@@ -17,6 +17,9 @@ export interface SeoCity {
   region: "Columbus" | "Dayton" | "Cincinnati";
   zip: string;
   drive: string;
+  population: string;
+  homeStyles: string;
+  climateNote: string;
   neighborhoods: string[];
   intro: string;
   whyUs: string;
@@ -106,6 +109,9 @@ function buildCity(s: CitySeed): SeoCity {
     region: s.region,
     zip: s.zip,
     drive: s.drive,
+    population: `${s.name} area homeowners`,
+    homeStyles: `a mix of mid-century to modern Ohio homes — both full masonry and prefab fireplace chimneys`,
+    climateNote: `Ohio freeze-thaw cycles and wind-driven rain are tough on every ${s.name} chimney crown, cap and flashing seam.`,
     neighborhoods: s.neighborhoods,
     intro:
       `${s.name}, Ohio (${s.zip}) homeowners trust ChimCrew for chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning across ${hood} and the wider ${s.region} metro. We're a CSIA-certified, family-owned Ohio crew serving ${s.drive} every week — same neighborhoods, same trucks, same techs on every callback.`,
