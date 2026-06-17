@@ -8,8 +8,7 @@ import { openScheduleDialog } from "@/components/ScheduleWidget";
 export function StickyMobileCta() {
   return (
     <>
-      {/* Spacer matches header (~60px) + bar (~36px) so page content isn't hidden */}
-      <div className="h-[36px] md:hidden" aria-hidden />
+      {/* Top spacing is reserved by SiteHeader's combined spacer */}
       <div className="fixed inset-x-0 top-[60px] z-40 border-y border-flame/40 bg-primary text-primary-foreground shadow-[0_6px_20px_oklch(0_0_0/0.35)] md:hidden">
         <div className="grid grid-cols-3">
           <a
