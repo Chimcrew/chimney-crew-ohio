@@ -140,19 +140,46 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     <div className="bg-background text-foreground">
       {/* Compact header */}
       <div className="mb-4 border-b border-border pb-4">
-        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
+        <span className="inline-flex items-center gap-1.5 bg-black px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
           <Flame className="h-3 w-3" /> ChimCrew · 60-second booking
         </span>
-        <h2 className="mt-1 font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight md:text-2xl">
+        <h2 className="mt-2 font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight md:text-2xl">
           Schedule Service Online
         </h2>
         <p className="mt-1 text-xs text-foreground/70 md:text-sm">
           Servicing your area and surrounding neighborhoods.
         </p>
-        <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-[0.2em] text-foreground/50">
-          <ShieldCheck className="h-3 w-3 text-flame" /> No extra charge nights · weekends · holidays
-        </p>
+        <div className="mt-2 space-y-0.5">
+          <p className="text-[10px] uppercase tracking-[0.15em] text-foreground/50">
+            <ShieldCheck className="mr-1 inline h-3 w-3 text-flame" />
+            No extra charge
+          </p>
+          <p
+            className="text-[11px] font-bold uppercase tracking-[0.15em] text-foreground/80 opacity-0"
+            style={{ animation: "revealUp 0.7s ease-out 0.3s forwards" }}
+          >
+            nights
+          </p>
+          <p
+            className="text-[11px] font-bold uppercase tracking-[0.15em] text-foreground/80 opacity-0"
+            style={{ animation: "revealUp 0.7s ease-out 0.7s forwards" }}
+          >
+            weekends
+          </p>
+          <p
+            className="text-[11px] font-bold uppercase tracking-[0.15em] text-foreground/80 opacity-0"
+            style={{ animation: "revealUp 0.7s ease-out 1.1s forwards" }}
+          >
+            holidays
+          </p>
+        </div>
       </div>
+      <style>{`
+        @keyframes revealUp {
+          0% { opacity: 0; transform: translateY(8px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+      `}</style>
 
       {/* Compact single-page form */}
       <div className="space-y-3">
