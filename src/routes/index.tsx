@@ -361,13 +361,13 @@ function LimitedOfferBanner() {
                 <span className="relative font-display text-lg font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
                   $69
                 </span>
-                <span className="font-display text-lg font-bold text-primary">
-                  $0
-                </span>
+                <span className="font-display text-lg font-bold text-primary">$0</span>
               </div>
 
               <p className="mt-2 text-xs font-semibold text-primary/80">
-                Instead of $69 — <span className="font-extrabold text-primary">limited to this month only</span>. No card required.
+                Instead of $69 —{" "}
+                <span className="font-extrabold text-primary">limited to this month only</span>. No
+                card required.
               </p>
 
               {/* CTAs */}
@@ -453,57 +453,58 @@ function Hero() {
         </h1>
 
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
-          Servicing <span className="font-extrabold text-foreground">your area</span> and surrounding neighborhoods — chimney inspections, repair and cleaning near you.
+          Servicing <span className="font-extrabold text-foreground">your area</span> and
+          surrounding neighborhoods — chimney inspections, repair and cleaning near you.
         </p>
 
         <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
-            {/* CALL — primary on mobile, secondary on desktop */}
-            <a
-              href="tel:6146835763"
-              data-cta
-              className="order-1 inline-flex h-11 items-center justify-start gap-2 bg-flame px-4 text-left font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
-            >
-              <Phone className="h-4 w-4 text-primary sm:text-flame" /> Call Now (614) 683-5763
-            </a>
-            {/* SCHEDULE — secondary on mobile, primary on desktop */}
-            <Link
-              to="/schedule"
-              data-cta
-              className="order-2 inline-flex h-11 items-center justify-start gap-2 border border-foreground/20 bg-background px-4 text-left font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-5 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
-            >
-              <CalendarCheck className="h-4 w-4" /> Schedule appointment online
-            </Link>
-          </div>
-
-          {/* Emergency line micro-CTA */}
+          {/* CALL — primary on mobile, secondary on desktop */}
           <a
             href="tel:6146835763"
-            className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110"
+            data-cta
+            className="order-1 inline-flex h-11 items-center justify-start gap-2 bg-flame px-4 text-left font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
           >
-            <span className="relative inline-flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-            </span>
-            Emergency line 24/7
+            <Phone className="h-4 w-4 text-primary sm:text-flame" /> Call Now (614) 683-5763
           </a>
+          {/* SCHEDULE — secondary on mobile, primary on desktop */}
+          <Link
+            to="/schedule"
+            data-cta
+            className="order-2 inline-flex h-11 items-center justify-start gap-2 border border-foreground/20 bg-background px-4 text-left font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-5 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
+          >
+            <CalendarCheck className="h-4 w-4" /> Schedule appointment online
+          </Link>
+        </div>
 
-          {/* Trust strip */}
-          <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
-            {[
-              { icon: CheckCircle2, label: "CSIA-certified" },
-              { icon: ShieldCheck, label: "Fully insured" },
-              { icon: Clock, label: "Same-day callback" },
-              { icon: Award, label: "Family owned & operated" },
-            ].map(({ icon: Icon, label }) => (
-              <span
-                key={label}
-                className="inline-flex items-center gap-2 text-xs font-medium text-foreground/80 sm:text-[13px]"
-              >
-                <Icon className="h-4 w-4 text-flame" />
-                {label}
-              </span>
-            ))}
-          </div>
+        {/* Emergency line micro-CTA */}
+        <a
+          href="tel:6146835763"
+          className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110"
+        >
+          <span className="relative inline-flex h-2 w-2">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
+          </span>
+          Emergency line 24/7
+        </a>
+
+        {/* Trust strip */}
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
+          {[
+            { icon: CheckCircle2, label: "CSIA-certified" },
+            { icon: ShieldCheck, label: "Fully insured" },
+            { icon: Clock, label: "Same-day callback" },
+            { icon: Award, label: "Family owned & operated" },
+          ].map(({ icon: Icon, label }) => (
+            <span
+              key={label}
+              className="inline-flex items-center gap-2 text-xs font-medium text-foreground/80 sm:text-[13px]"
+            >
+              <Icon className="h-4 w-4 text-flame" />
+              {label}
+            </span>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -692,8 +693,8 @@ function CommonProblems() {
             Common Chimney Problems <span className="text-flame">We Fix</span>
           </h2>
           <p className="mt-3 text-base text-foreground/75 md:text-lg">
-            If any of these sound familiar, we can take a look — most are far cheaper to fix
-            now than after they cause water or fire damage.
+            If any of these sound familiar, we can take a look — most are far cheaper to fix now
+            than after they cause water or fire damage.
           </p>
         </div>
 
@@ -774,8 +775,8 @@ function PhotoVideoTrust() {
             Every job documented with photo & video — before we recommend any repair.
           </h3>
           <p className="mt-2 text-sm text-primary-foreground/80 md:text-base">
-            You see exactly what we see on the roof and inside the flue. No upsell theater,
-            no "trust us" — just clear evidence and a written quote.
+            You see exactly what we see on the roof and inside the flue. No upsell theater, no
+            "trust us" — just clear evidence and a written quote.
           </p>
           <button
             type="button"
@@ -852,7 +853,10 @@ function WhyChooseUs() {
             className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-[0_30px_70px_-25px_oklch(0_0_0/0.45)] transition-transform duration-500 hover:-translate-y-1 hover:rotate-0 [transform:perspective(1400px)_rotateY(-8deg)_rotateX(2deg)]"
             style={{ transformStyle: "preserve-3d" }}
           >
-            <div className="pointer-events-none absolute -inset-8 -z-10 rounded-[2.5rem] bg-flame/25 blur-3xl" aria-hidden />
+            <div
+              className="pointer-events-none absolute -inset-8 -z-10 rounded-[2.5rem] bg-flame/25 blur-3xl"
+              aria-hidden
+            />
             <img
               src={techFireplaceSweepPhoto.url}
               alt="A ChimCrew technician sweeping a fireplace inside an Ohio home"
@@ -1600,8 +1604,7 @@ function ServiceArea() {
             <MapPin className="h-3 w-3" /> Local Dispatch
           </span>
           <h2 className="mx-auto mt-4 max-w-2xl font-display text-2xl font-extrabold uppercase leading-[1.1] tracking-tight sm:text-3xl md:text-4xl">
-            Serving the{" "}
-            <span className="text-primary-foreground/90">Ohio Heartland</span>
+            Serving the <span className="text-primary-foreground/90">Ohio Heartland</span>
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-primary-foreground/60">
             From Columbus to Cincinnati and Dayton — one local crew, same-day dispatch.
@@ -1633,10 +1636,7 @@ function ServiceArea() {
           </p>
           <div className="mt-2 flex flex-wrap justify-center gap-2">
             {suburbs.map((s) => (
-              <span
-                key={s}
-                className="font-mono text-[12px] text-primary-foreground/60"
-              >
+              <span key={s} className="font-mono text-[12px] text-primary-foreground/60">
                 {s}
               </span>
             ))}
