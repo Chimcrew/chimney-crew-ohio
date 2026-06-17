@@ -10,7 +10,9 @@ export const Route = createFileRoute("/services/")({
       { name: "description", content: "Sweeps, inspections, liners, crowns, caps, waterproofing, flashing, firebox rebuilds, animal removal, gas service, and more — all flat-rate." },
       { property: "og:title", content: "Chimney Services in Ohio — ChimCrew" },
       { property: "og:description", content: "14 chimney services, every one flat-rate, every one with a photo report." },
+      { property: "og:url", content: "https://chimcrew.com/services" },
     ],
+    links: [{ rel: "canonical", href: "https://chimcrew.com/services" }],
   }),
   component: ServicesPage,
 });

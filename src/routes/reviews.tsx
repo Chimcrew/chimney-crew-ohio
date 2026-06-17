@@ -6,7 +6,11 @@ export const Route = createFileRoute("/reviews")({
     meta: [
       { title: "Reviews — What Ohio homeowners say about ChimCrew" },
       { name: "description", content: "Reviews from ChimCrew customers across Columbus, Cincinnati and Dayton, Ohio." },
+      { property: "og:title", content: "ChimCrew Reviews — Ohio Homeowners" },
+      { property: "og:description", content: "Real reviews from real customers across Columbus, Cincinnati and Dayton." },
+      { property: "og:url", content: "https://chimcrew.com/reviews" },
     ],
+    links: [{ rel: "canonical", href: "https://chimcrew.com/reviews" }],
   }),
   component: ReviewsPage,
 });

@@ -10,7 +10,9 @@ export const Route = createFileRoute("/contact")({
       { name: "description", content: "Call, email, or request a quote from ChimCrew. Local chimney sweeps serving Columbus, Cincinnati, and Dayton, OH." },
       { property: "og:title", content: "Contact ChimCrew" },
       { property: "og:description", content: "Reach Ohio's fired-up chimney crew. Same-day callbacks." },
+      { property: "og:url", content: "https://chimcrew.com/contact" },
     ],
+    links: [{ rel: "canonical", href: "https://chimcrew.com/contact" }],
   }),
   component: ContactPage,
 });
