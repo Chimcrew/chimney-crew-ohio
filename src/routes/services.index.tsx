@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { SERVICES, ACCENT_CLASSES, formatFromPrice } from "@/data/services";
+import { ScheduleInline } from "@/components/ScheduleWidget";
 
 export const Route = createFileRoute("/services/")({
   head: () => ({
@@ -66,6 +67,12 @@ function ServicesPage() {
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      <section className="bg-secondary/40 py-16 md:py-20">
+        <div className="mx-auto max-w-3xl px-4 md:px-8">
+          <ScheduleInline />
         </div>
       </section>
 
