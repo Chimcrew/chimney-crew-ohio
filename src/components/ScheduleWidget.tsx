@@ -84,6 +84,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       notes: notes || undefined,
     };
 
+    // Primary path: server route (saves lead + sends email notification).
     let ok = false;
     try {
       const res = await fetch("/api/public/notify-lead", {
@@ -95,9 +96,11 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     } catch {
       ok = false;
     }
-    try {
-      await supabase.from("leads").insert({
-        source: sourceLabel,
+    // Fallback: if the server route failed (network/500), still capture the
+    // lead directly so it shows up in the database even though no email went out.
+    if (!ok) {
+      const { error: fallbackError } = await supabase.from("leads").insert({
+        source: `${sourceLabel} [NO EMAIL SENT]`.slice(0, 60),
         name,
         phone,
         service,
@@ -105,11 +108,9 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         address: address || null,
         preferred_date: dateStr ?? null,
         time_window: slot,
-        notes: notes || null,
+        notes: notes ? `${notes}\n\n[Auto: server submission failed]` : "[Auto: server submission failed]",
       });
-      ok = true;
-    } catch {
-      /* primary already determined ok */
+      ok = !fallbackError;
     }
 
     setSubmitting(false);
