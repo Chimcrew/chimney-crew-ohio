@@ -86,8 +86,8 @@ export function DroneInspection() {
 
         {/* Video — framed like a hearth window */}
         <div className="relative">
-          {/* warm glow halo */}
-          <div className="absolute -inset-6 rounded-[2rem] bg-flame/25 blur-3xl" aria-hidden />
+          {/* subtle cool glow halo */}
+          <div className="absolute -inset-6 rounded-[2rem] bg-primary/10 blur-3xl" aria-hidden />
 
           {/* Mantel header */}
           <div className="relative mx-auto max-w-md rounded-t-2xl bg-[oklch(0.32_0.04_45)] px-5 py-3 shadow-[0_6px_0_oklch(0.22_0.03_45)]">
