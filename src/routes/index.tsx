@@ -43,6 +43,7 @@ import teamHeroPhoto from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
 import chimcrewLogoCrew from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
+import beforeAfterPhoto from "@/assets/chimney-before-after.png.asset.json";
 import fireplaceServicePhoto from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 import techFireplaceSweepPhoto from "@/assets/tech-fireplace-sweep.png.asset.json";
 import rooftopTechsPhoto from "@/assets/team/chimcrew-techs-rooftop.png.asset.json";
@@ -705,15 +706,22 @@ function BrickIcon(props: React.SVGProps<SVGSVGElement>) {
 function PhotoVideoTrust() {
   return (
     <section className="relative overflow-hidden border-y border-border bg-primary py-12 text-primary-foreground md:py-16">
-      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 md:grid-cols-[auto_1fr_auto] md:px-8">
-        <div className="flex gap-3">
-          <span className="grid h-12 w-12 place-items-center rounded-xl bg-flame/20 text-flame">
-            <Camera className="h-6 w-6" />
-          </span>
-          <span className="grid h-12 w-12 place-items-center rounded-xl bg-flame/20 text-flame">
-            <Video className="h-6 w-6" />
-          </span>
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 md:grid-cols-[1fr_1fr] md:px-8">
+        {/* Image — modest size, rounded */}
+        <div className="order-1 md:order-none">
+          <img
+            src={beforeAfterPhoto.url}
+            alt="Chimney crown rebuild — before and after comparison by ChimCrew"
+            className="w-full max-w-sm rounded-lg border border-white/10 shadow-lg md:max-w-md"
+            loading="lazy"
+            decoding="async"
+          />
+          <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
+            <Camera className="mr-1 inline h-3 w-3 text-flame" /> Before & After — Crown Rebuild
+          </p>
         </div>
+
+        {/* Text + CTA */}
         <div>
           <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-flame">
             Transparent inspections
@@ -725,14 +733,14 @@ function PhotoVideoTrust() {
             You see exactly what we see on the roof and inside the flue. No upsell theater,
             no "trust us" — just clear evidence and a written quote.
           </p>
+          <button
+            type="button"
+            onClick={() => (window.location.href = "/schedule")}
+            className="mt-5 inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-md transition active:scale-95"
+          >
+            <CalendarCheck className="h-4 w-4" /> Book Inspection
+          </button>
         </div>
-        <button
-          type="button"
-          onClick={() => (window.location.href = "/schedule")}
-          className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-md transition active:scale-95"
-        >
-          <CalendarCheck className="h-4 w-4" /> Book Inspection
-        </button>
       </div>
     </section>
   );
