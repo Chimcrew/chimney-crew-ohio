@@ -30,12 +30,6 @@ export const SCHEDULE_SERVICES = [
 
 const SLOTS = ["8:00AM-11:00AM", "11:00AM-2:00PM", "2:00PM-5:00PM"];
 
-const STEPS = [
-  { n: 1, label: "Information" },
-  { n: 2, label: "Address" },
-  { n: 3, label: "Note" },
-];
-
 export function ScheduleInline() {
   const path = typeof window !== "undefined" ? window.location.pathname : "";
   return <ScheduleFlow sourcePath={path} />;
@@ -49,7 +43,6 @@ function getDefaultDate(): Date {
 }
 
 function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone?: () => void }) {
-  const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [date, setDate] = useState<Date | undefined>(() => getDefaultDate());
@@ -64,13 +57,14 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   const todayStr = date ? format(date, "yyyy-MM-dd") : "";
   const minDateStr = format(new Date(), "yyyy-MM-dd");
 
-  const canStep1 =
+  const canSubmit =
     name.trim().length > 1 &&
     phone.replace(/\D/g, "").length >= 7 &&
     !!date &&
-    !!slot;
-  const canStep2 = street.trim().length > 1 && city.trim().length > 1;
-  const canSubmit = canStep1 && canStep2 && !!service;
+    !!slot &&
+    street.trim().length > 1 &&
+    city.trim().length > 1 &&
+    !!service;
 
   const submit = useCallback(async () => {
     setSubmitting(true);
@@ -134,7 +128,6 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       duration: 7000,
     });
     onDone?.();
-    setStep(1);
     setName("");
     setPhone("");
     setStreet("");
@@ -144,136 +137,110 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   }, [date, street, city, zip, sourcePath, name, phone, service, slot, notes, onDone]);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-flame/30 bg-primary text-primary-foreground shadow-[0_30px_80px_-30px_oklch(0_0_0/0.6)]">
-      {/* Branded header */}
-      <div className="relative overflow-hidden px-6 pt-8 pb-6 md:px-10 md:pt-10">
-        <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-flame/20 blur-3xl" aria-hidden />
-        <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+    <div className="bg-background text-foreground">
+      {/* Compact header */}
+      <div className="mb-4 border-b border-border pb-4">
+        <span className="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
           <Flame className="h-3 w-3" /> ChimCrew · 60-second booking
         </span>
-        <h2 className="mt-3 font-display text-2xl font-extrabold uppercase leading-[1.05] tracking-tight text-white md:text-3xl">
+        <h2 className="mt-1 font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight md:text-2xl">
           Schedule Service Online
         </h2>
-        <p className="mt-3 text-sm text-white/85 md:text-base">
-          Servicing{" "}
-          <span className="inline-block rounded-md bg-flame px-1.5 py-0.5 font-bold text-primary">
-            your area
-          </span>{" "}
-          and surrounding neighborhoods.
+        <p className="mt-1 text-xs text-foreground/70 md:text-sm">
+          Servicing your area and surrounding neighborhoods.
         </p>
-        <p className="mt-1 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
+        <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-[0.2em] text-foreground/50">
           <ShieldCheck className="h-3 w-3 text-flame" /> No extra charge nights · weekends · holidays
         </p>
-
-        <div className="mt-6 grid grid-cols-3 gap-0 border-b border-white/15">
-          {STEPS.map((s) => {
-            const active = step === s.n;
-            return (
-              <div
-                key={s.n}
-                className={`pb-3 text-left font-mono text-[11px] uppercase tracking-[0.18em] transition ${
-                  active
-                    ? "border-b-2 border-flame font-bold text-white"
-                    : "border-b-2 border-transparent text-white/55"
-                }`}
-              >
-                {s.n}. {s.label}
-              </div>
-            );
-          })}
-        </div>
       </div>
 
-      <div className="mx-6 mb-8 rounded-xl bg-white p-6 text-foreground md:mx-10 md:p-8">
-        {step === 1 && (
-          <div className="space-y-5">
-            <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="Full Name" required>
-                <Input value={name} onChange={(e) => setName(e.target.value)} className="h-12 rounded-md border-foreground/20 text-base" />
-              </Field>
-              <Field label="Phone Number" required>
-                <Input value={phone} onChange={(e) => setPhone(e.target.value)} inputMode="tel" className="h-12 rounded-md border-foreground/20 text-base" />
-              </Field>
-              <Field label="Appointment Date" required>
-                <Input
-                  type="date"
-                  value={todayStr}
-                  min={minDateStr}
-                  onChange={(e) => setDate(e.target.value ? new Date(e.target.value + "T00:00:00") : undefined)}
-                  className="h-12 rounded-md border-foreground/20 text-base"
-                />
-              </Field>
-              <Field label="Appointment Time" required>
-                <Select value={slot} onValueChange={setSlot}>
-                  <SelectTrigger className="h-12 rounded-md border-foreground/20 text-base text-[#1d4ed8]">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {SLOTS.map((s) => (
-                      <SelectItem key={s} value={s}>{s}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </Field>
-            </div>
-            <NextButton disabled={!canStep1} onClick={() => setStep(2)} label="Next" />
-          </div>
-        )}
+      {/* Compact single-page form */}
+      <div className="space-y-3">
+        {/* Service — full width, most important */}
+        <Field label="Service Needed" required>
+          <Select value={service} onValueChange={setService}>
+            <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent className="rounded-none">
+              {SCHEDULE_SERVICES.map((s) => (
+                <SelectItem key={s.value} value={s.value} className="rounded-none">
+                  {s.label} — {s.price}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </Field>
 
-        {step === 2 && (
-          <div className="space-y-5">
-            <Field label="Street Address" required>
-              <Input value={street} onChange={(e) => setStreet(e.target.value)} placeholder="123 Main St" className="h-12 rounded-md border-foreground/20 text-base" />
-            </Field>
-            <div className="grid gap-5 sm:grid-cols-2">
-              <Field label="City" required>
-                <Input value={city} onChange={(e) => setCity(e.target.value)} placeholder="Columbus" className="h-12 rounded-md border-foreground/20 text-base" />
-              </Field>
-              <Field label="ZIP Code">
-                <Input value={zip} onChange={(e) => setZip(e.target.value)} inputMode="numeric" maxLength={10} placeholder="43215" className="h-12 rounded-md border-foreground/20 text-base" />
-              </Field>
-            </div>
-            <div className="flex items-center gap-3">
-              <BackButton onClick={() => setStep(1)} />
-              <NextButton disabled={!canStep2} onClick={() => setStep(3)} label="Next" className="flex-1" />
-            </div>
-          </div>
-        )}
+        {/* Name + Phone */}
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Field label="Full Name" required>
+            <Input value={name} onChange={(e) => setName(e.target.value)} className="h-10 rounded-none border-foreground/20 text-sm" />
+          </Field>
+          <Field label="Phone Number" required>
+            <Input value={phone} onChange={(e) => setPhone(e.target.value)} inputMode="tel" className="h-10 rounded-none border-foreground/20 text-sm" />
+          </Field>
+        </div>
 
-        {step === 3 && (
-          <div className="space-y-5">
-            <Field label="Service Needed" required>
-              <Select value={service} onValueChange={setService}>
-                <SelectTrigger className="h-12 rounded-md border-foreground/20 text-base">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {SCHEDULE_SERVICES.map((s) => (
-                    <SelectItem key={s.value} value={s.value}>
-                      {s.label} — {s.price}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </Field>
-            <Field label="Note (optional)">
-              <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Anything we should know?" rows={4} className="rounded-md border-foreground/20 text-base" />
-            </Field>
-            <div className="flex items-center gap-3">
-              <BackButton onClick={() => setStep(2)} />
-              <NextButton
-                disabled={!canSubmit || submitting}
-                onClick={submit}
-                label={submitting ? "Booking…" : "Submit Booking"}
-                className="flex-1"
-              />
-            </div>
-            <p className="flex items-center justify-center gap-2 pt-1 text-[11px] text-muted-foreground">
-              <CheckCircle2 className="h-3.5 w-3.5 text-[#E63A1F]" />
-              No card. No spam. We call within the hour.
-            </p>
-          </div>
-        )}
+        {/* Date + Time */}
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Field label="Appointment Date" required>
+            <Input
+              type="date"
+              value={todayStr}
+              min={minDateStr}
+              onChange={(e) => setDate(e.target.value ? new Date(e.target.value + "T00:00:00") : undefined)}
+              className="h-10 rounded-none border-foreground/20 text-sm"
+            />
+          </Field>
+          <Field label="Appointment Time" required>
+            <Select value={slot} onValueChange={setSlot}>
+              <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="rounded-none">
+                {SLOTS.map((s) => (
+                  <SelectItem key={s} value={s} className="rounded-none">{s}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </Field>
+        </div>
+
+        {/* Address */}
+        <Field label="Street Address" required>
+          <Input value={street} onChange={(e) => setStreet(e.target.value)} placeholder="123 Main St" className="h-10 rounded-none border-foreground/20 text-sm" />
+        </Field>
+
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Field label="City" required>
+            <Input value={city} onChange={(e) => setCity(e.target.value)} placeholder="Columbus" className="h-10 rounded-none border-foreground/20 text-sm" />
+          </Field>
+          <Field label="ZIP Code">
+            <Input value={zip} onChange={(e) => setZip(e.target.value)} inputMode="numeric" maxLength={10} placeholder="43215" className="h-10 rounded-none border-foreground/20 text-sm" />
+          </Field>
+        </div>
+
+        {/* Notes */}
+        <Field label="Note (optional)">
+          <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Anything we should know?" rows={2} className="rounded-none border-foreground/20 text-sm" />
+        </Field>
+
+        {/* Submit */}
+        <button
+          type="button"
+          disabled={!canSubmit || submitting}
+          onClick={submit}
+          className="inline-flex h-12 w-full items-center justify-center gap-2 bg-flame font-display text-sm font-bold uppercase tracking-wider text-primary shadow-[0_6px_16px_oklch(0.78_0.19_92/0.3)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+        >
+          <CalendarCheck className="h-4 w-4" />
+          {submitting ? "Booking…" : "Submit Booking"}
+        </button>
+
+        <p className="flex items-center justify-center gap-1.5 pt-0.5 text-[11px] text-muted-foreground">
+          <CheckCircle2 className="h-3.5 w-3.5 text-[#E63A1F]" />
+          No card. No spam. We call within the hour.
+        </p>
       </div>
     </div>
   );
@@ -281,47 +248,11 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
-    <div className="space-y-2">
-      <Label className="text-sm font-semibold text-foreground">
+    <div className="space-y-1">
+      <Label className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
         {label} {required && <span className="text-[#E63A1F]">*</span>}
       </Label>
       {children}
     </div>
   );
 }
-
-function NextButton({
-  onClick,
-  disabled,
-  label,
-  className = "",
-}: {
-  onClick: () => void;
-  disabled?: boolean;
-  label: string;
-  className?: string;
-}) {
-  return (
-    <button
-      type="button"
-      disabled={disabled}
-      onClick={onClick}
-      className={`inline-flex h-14 w-full items-center justify-center gap-2 rounded-md bg-flame font-display text-base font-bold uppercase tracking-wider text-primary shadow-[0_10px_24px_oklch(0.78_0.19_92/0.35)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
-    >
-      {label}
-    </button>
-  );
-}
-
-function BackButton({ onClick }: { onClick: () => void }) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="inline-flex h-14 shrink-0 items-center justify-center rounded-md border-2 border-foreground/20 px-5 text-sm font-semibold text-foreground transition hover:border-foreground/40"
-    >
-      ← Back
-    </button>
-  );
-}
-
