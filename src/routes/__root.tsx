@@ -15,8 +15,8 @@ import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { AmbientEmbers } from "@/components/ChimneyDecor";
-import { ScheduleWidget } from "@/components/ScheduleWidget";
-import { TimedLeadPopup } from "@/components/TimedLeadPopup";
+// ScheduleWidget popup removed — scheduling lives on /schedule.
+// TimedLeadPopup removed — no pop-ups per product direction.
 import { StickyMobileCta } from "@/components/StickyMobileCta";
 import { Toaster } from "@/components/ui/sonner";
 
@@ -238,8 +238,6 @@ function RootComponent() {
           <Outlet />
         </main>
         {!isLanding && <SiteFooter />}
-        <ScheduleWidget />
-        {!isLanding && <TimedLeadPopup />}
         {!isLanding && <StickyMobileCta />}
         <Toaster />
       </div>
