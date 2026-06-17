@@ -32,7 +32,7 @@ import { ScheduleInline } from "@/components/ScheduleWidget";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
-    window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"));
+    (window.location.href = "/schedule");
   }
 }
 

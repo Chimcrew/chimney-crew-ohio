@@ -398,7 +398,7 @@ function LimitedOfferBanner() {
               <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
                 <button
                   type="button"
-                  onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+                  onClick={() => (window.location.href = "/schedule")}
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
                 >
                   <CalendarCheck className="h-4 w-4" /> Schedule now
@@ -464,7 +464,7 @@ function Hero() {
             {/* SCHEDULE — secondary on mobile, primary on desktop */}
             <button
               type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+              onClick={() => (window.location.href = "/schedule")}
               className="order-2 inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-6 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
@@ -731,7 +731,7 @@ function CommonProblems() {
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+            onClick={() => (window.location.href = "/schedule")}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule appointment online
@@ -788,7 +788,7 @@ function PhotoVideoTrust() {
         </div>
         <button
           type="button"
-          onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+          onClick={() => (window.location.href = "/schedule")}
           className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-md transition active:scale-95"
         >
           <CalendarCheck className="h-4 w-4" /> Book Inspection
@@ -903,7 +903,7 @@ function WhyChooseUs() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+            onClick={() => (window.location.href = "/schedule")}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule appointment online
@@ -1217,7 +1217,7 @@ function LeakingChimney() {
           <div className="mt-7 flex flex-wrap gap-3">
             <button
               type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+              onClick={() => (window.location.href = "/schedule")}
               className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
@@ -1287,7 +1287,7 @@ function ScheduleOnline() {
             <div className="mt-8 flex flex-wrap gap-3">
               <button
                 type="button"
-                onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+                onClick={() => (window.location.href = "/schedule")}
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
               >
                 <CalendarCheck className="h-4 w-4" /> Schedule appointment online
