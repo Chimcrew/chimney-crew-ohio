@@ -19,9 +19,6 @@ export function SiteFooter() {
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.2em] text-flame">
               <MapPin className="h-3 w-3" /> Your local Ohio chimney crew
             </p>
-            <h3 className="mt-4 font-display text-3xl uppercase tracking-wider md:text-4xl">
-              Your local <span className="text-flame">ChimCrew</span> — chimney repair across Ohio.
-            </h3>
             <ul className="mt-5 grid gap-2 sm:grid-cols-2">
               {[
                 "Local Ohio family business",
