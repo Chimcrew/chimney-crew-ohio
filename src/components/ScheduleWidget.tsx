@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { CalendarCheck, Phone, MapPin, ArrowRight, CheckCircle2 } from "lucide-react";
+import { CheckCircle2, CalendarCheck, Phone } from "lucide-react";
 import { format } from "date-fns";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { reportLeadFormConversion } from "@/lib/track";
+
 const OPEN_EVENT = "chimcrew:open-schedule";
 
 export function openScheduleDialog() {
@@ -17,21 +18,20 @@ export function openScheduleDialog() {
   }
 }
 
-const services = [
-  "Chimney Sweep",
-  "Camera Inspection",
-  "Repair / Tuckpoint",
-  "Waterproof & Cap",
-  "Crown Seal Repair",
-  "Leak Diagnosis",
-  "I'm not sure yet",
-];
+export const SCHEDULE_SERVICES = [
+  { value: "Gas Fireplace Inspection — $49", label: "Gas Fireplace Inspection", price: "$49" },
+  { value: "Chimney/Fireplace Inspection — $69", label: "Chimney/Fireplace Inspection", price: "$69" },
+  { value: "Chimney Sweep — $99", label: "Chimney Sweep", price: "$99" },
+  { value: "Dryer Vent Cleaning — $79", label: "Dryer Vent Cleaning", price: "$79" },
+  { value: "Chimney Drone Inspection — Free", label: "Chimney Drone Inspection", price: "Free" },
+] as const;
 
-const slots = [
-  "8:00 AM – 11:00 AM",
-  "11:00 AM – 2:00 PM",
-  "2:00 PM – 5:00 PM",
-  "5:00 PM – 7:00 PM",
+const SLOTS = ["8:00AM-11:00AM", "11:00AM-2:00PM", "2:00PM-5:00PM"];
+
+const STEPS = [
+  { n: 1, label: "Information" },
+  { n: 2, label: "Address" },
+  { n: 3, label: "Note" },
 ];
 
 export function ScheduleWidget() {
@@ -54,8 +54,8 @@ export function ScheduleWidget() {
         }}
       />
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-h-[92vh] overflow-y-auto border-2 border-flame/30 bg-card p-0 sm:max-w-xl [&>button.absolute]:right-3 [&>button.absolute]:top-3 [&>button.absolute]:z-10 [&>button.absolute]:flex [&>button.absolute]:h-9 [&>button.absolute]:w-9 [&>button.absolute]:items-center [&>button.absolute]:justify-center [&>button.absolute]:rounded-full [&>button.absolute]:border [&>button.absolute]:border-flame/40 [&>button.absolute]:bg-primary/70 [&>button.absolute]:text-primary-foreground [&>button.absolute]:opacity-100 [&>button.absolute]:shadow-[0_4px_12px_oklch(0_0_0/0.4)] [&>button.absolute]:backdrop-blur [&>button.absolute]:transition [&>button.absolute:hover]:bg-flame [&>button.absolute:hover]:text-primary [&>button.absolute_svg]:h-5 [&>button.absolute_svg]:w-5">
-          <ScheduleFlow variant="dialog" sourcePath={openedFromPath} onDone={() => setOpen(false)} />
+        <DialogContent className="max-h-[92vh] overflow-y-auto border-0 bg-transparent p-0 sm:max-w-xl [&>button.absolute]:right-3 [&>button.absolute]:top-3 [&>button.absolute]:z-10 [&>button.absolute]:flex [&>button.absolute]:h-9 [&>button.absolute]:w-9 [&>button.absolute]:items-center [&>button.absolute]:justify-center [&>button.absolute]:rounded-full [&>button.absolute]:bg-white/95 [&>button.absolute]:text-primary [&>button.absolute]:opacity-100 [&>button.absolute]:shadow-md [&>button.absolute:hover]:bg-white [&>button.absolute_svg]:h-5 [&>button.absolute_svg]:w-5">
+          <ScheduleFlow sourcePath={openedFromPath} onDone={() => setOpen(false)} />
         </DialogContent>
       </Dialog>
     </>
@@ -64,58 +64,52 @@ export function ScheduleWidget() {
 
 export function ScheduleInline() {
   const path = typeof window !== "undefined" ? window.location.pathname : "";
-  return (
-    <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[0_30px_80px_-30px_oklch(0_0_0/0.25)]">
-      <ScheduleFlow variant="inline" sourcePath={path} />
-    </div>
-  );
+  return <ScheduleFlow sourcePath={path} />;
 }
 
 function getDefaultDate(): Date {
-  // Pre-select the nearest available appointment date — 2 days from today —
-  // so homeowners don't have to pick a date from scratch.
   const d = new Date();
   d.setDate(d.getDate() + 2);
   d.setHours(0, 0, 0, 0);
   return d;
 }
 
-function ScheduleFlow({ variant, sourcePath = "", onDone }: { variant: "dialog" | "inline"; sourcePath?: string; onDone?: () => void }) {
-  const [step, setStep] = useState(0);
-  const [service, setService] = useState<string>(services[0]);
-  const [date, setDate] = useState<Date | undefined>(() => getDefaultDate());
-  const [slot, setSlot] = useState<string>(slots[0]);
+function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone?: () => void }) {
+  const [step, setStep] = useState(1);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
+  const [date, setDate] = useState<Date | undefined>(() => getDefaultDate());
+  const [slot, setSlot] = useState<string>(SLOTS[0]);
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState("");
+  const [service, setService] = useState<string>(SCHEDULE_SERVICES[1].value);
   const [notes, setNotes] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const todayStr = date ? format(date, "yyyy-MM-dd") : "";
   const minDateStr = format(new Date(), "yyyy-MM-dd");
 
-  const canSubmitStep1 =
+  const canStep1 =
     name.trim().length > 1 &&
     phone.replace(/\D/g, "").length >= 7 &&
     !!date &&
     !!slot;
-
-  // Address is collected but no longer required — too much friction for paid
-  // traffic. The crew confirms the address by text after the booking lands.
-  const canSubmit = canSubmitStep1 && !!service;
+  const canStep2 = street.trim().length > 1 && city.trim().length > 1;
+  const canSubmit = canStep1 && canStep2 && !!service;
 
   const submit = useCallback(async () => {
     setSubmitting(true);
     const dateStr = date ? format(date, "EEE, MMM d") : undefined;
-    // Source includes the page the user opened the form from so we
-    // can see which page generated the lead.
+    const address = [street, city, zip].filter(Boolean).join(", ");
     const pageSuffix = sourcePath ? ` · ${sourcePath}` : "";
-    const sourceLabel = `Schedule widget${pageSuffix}`.slice(0, 60);
+    const sourceLabel = `Schedule form${pageSuffix}`.slice(0, 60);
     const payload = {
       source: sourceLabel,
       name,
       phone,
       service,
+      city: city || undefined,
       address: address || undefined,
       date: dateStr,
       timeWindow: slot,
@@ -123,7 +117,6 @@ function ScheduleFlow({ variant, sourcePath = "", onDone }: { variant: "dialog" 
     };
 
     let ok = false;
-    // 1) Primary path: server route that also emails the office.
     try {
       const res = await fetch("/api/public/notify-lead", {
         method: "POST",
@@ -134,16 +127,13 @@ function ScheduleFlow({ variant, sourcePath = "", onDone }: { variant: "dialog" 
     } catch {
       ok = false;
     }
-
-    // 2) Safety net: always try a direct insert too so a lead can never be
-    // lost just because the email route is down. RLS allows anon INSERT
-    // with field-length validation.
     try {
       await supabase.from("leads").insert({
         source: sourceLabel,
         name,
         phone,
         service,
+        city: city || null,
         address: address || null,
         preferred_date: dateStr ?? null,
         time_window: slot,
@@ -164,161 +154,143 @@ function ScheduleFlow({ variant, sourcePath = "", onDone }: { variant: "dialog" 
       return;
     }
 
-    onDone?.();
-    // Only fire the Google Ads conversion AFTER a real successful lead.
     reportLeadFormConversion();
     toast.success("You're on the schedule!", {
-      description: `${service} · ${dateStr ?? ""} · ${slot}. We'll text ${phone} within an hour to confirm.`,
+      description: `${service} · ${dateStr ?? ""} · ${slot}. We'll call ${phone} within the hour.`,
       duration: 7000,
     });
-    setStep(0);
+    onDone?.();
+    setStep(1);
     setName("");
     setPhone("");
-    setAddress("");
+    setStreet("");
+    setCity("");
+    setZip("");
     setNotes("");
-  }, [service, slot, date, phone, onDone, address, name, notes]);
+  }, [date, street, city, zip, sourcePath, name, phone, service, slot, notes, onDone]);
 
   return (
-    <div className="bg-card">
-      {/* Flame-yellow header — minimal & bold */}
-      <div className="bg-flame px-6 py-7 text-primary md:px-8">
-        <h3 className="font-display text-2xl font-black uppercase tracking-tight md:text-3xl">
+    <div className="overflow-hidden rounded-2xl bg-primary text-primary-foreground shadow-[0_20px_60px_-20px_oklch(0_0_0/0.55)]">
+      <div className="px-6 pt-8 pb-6 md:px-10 md:pt-10">
+        <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-white md:text-4xl">
           Schedule Service Online
-        </h3>
-        <p className="mt-2 text-sm font-medium text-primary/85">
-          Serving <span className="font-extrabold">Columbus, Ohio</span> and surrounding areas — ChimCrew
+        </h2>
+        <p className="mt-3 text-sm text-white/85 md:text-base">
+          Servicing <span className="font-bold text-white">Your Area</span> And Surrounding Areas — CHIMCREW
         </p>
-        <p className="mt-1 text-sm text-primary/75">
-          No extra charge for evenings, weekends or holidays.
+        <p className="mt-2 text-sm text-white/70">
+          No extra charge for appointments on nights, weekends or holidays
         </p>
+
+        <div className="mt-6 grid grid-cols-3 gap-0 border-b border-white/15">
+          {STEPS.map((s) => {
+            const active = step === s.n;
+            return (
+              <div
+                key={s.n}
+                className={`pb-3 text-left text-sm transition ${
+                  active
+                    ? "border-b-2 border-[#E63A1F] font-semibold text-white"
+                    : "border-b-2 border-transparent text-white/55"
+                }`}
+              >
+                {s.n}. {s.label}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
-      {/* Body */}
-      <div className="p-6 md:p-8">
-        {step === 0 && (
+      <div className="mx-6 mb-8 rounded-xl bg-white p-6 text-foreground md:mx-10 md:p-8">
+        {step === 1 && (
           <div className="space-y-5">
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-5 sm:grid-cols-2">
               <Field label="Full Name" required>
-                <Input
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  placeholder="John Smith"
-                  className="h-11"
-                />
+                <Input value={name} onChange={(e) => setName(e.target.value)} className="h-12 rounded-md border-foreground/20 text-base" />
               </Field>
               <Field label="Phone Number" required>
-                <Input
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="(555) 123-4567"
-                  inputMode="tel"
-                  className="h-11"
-                />
+                <Input value={phone} onChange={(e) => setPhone(e.target.value)} inputMode="tel" className="h-12 rounded-md border-foreground/20 text-base" />
               </Field>
               <Field label="Appointment Date" required>
                 <Input
                   type="date"
                   value={todayStr}
                   min={minDateStr}
-                  onChange={(e) =>
-                    setDate(e.target.value ? new Date(e.target.value + "T00:00:00") : undefined)
-                  }
-                  className="h-11"
+                  onChange={(e) => setDate(e.target.value ? new Date(e.target.value + "T00:00:00") : undefined)}
+                  className="h-12 rounded-md border-foreground/20 text-base"
                 />
               </Field>
               <Field label="Appointment Time" required>
                 <Select value={slot} onValueChange={setSlot}>
-                  <SelectTrigger className="h-11">
-                    <SelectValue placeholder="Select a time" />
+                  <SelectTrigger className="h-12 rounded-md border-foreground/20 text-base text-[#1d4ed8]">
+                    <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    {slots.map((s) => (
-                      <SelectItem key={s} value={s}>
-                        {s}
-                      </SelectItem>
+                    {SLOTS.map((s) => (
+                      <SelectItem key={s} value={s}>{s}</SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </Field>
             </div>
-
-            <button
-              type="button"
-              disabled={!canSubmitStep1}
-              onClick={() => setStep(1)}
-              className="mt-2 inline-flex h-12 w-full items-center justify-center gap-2 rounded-md bg-primary font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              Next <ArrowRight className="h-4 w-4" />
-            </button>
+            <NextButton disabled={!canStep1} onClick={() => setStep(2)} label="Next" />
           </div>
         )}
 
-        {step === 1 && (
+        {step === 2 && (
+          <div className="space-y-5">
+            <Field label="Street Address" required>
+              <Input value={street} onChange={(e) => setStreet(e.target.value)} placeholder="123 Main St" className="h-12 rounded-md border-foreground/20 text-base" />
+            </Field>
+            <div className="grid gap-5 sm:grid-cols-2">
+              <Field label="City" required>
+                <Input value={city} onChange={(e) => setCity(e.target.value)} placeholder="Columbus" className="h-12 rounded-md border-foreground/20 text-base" />
+              </Field>
+              <Field label="ZIP Code">
+                <Input value={zip} onChange={(e) => setZip(e.target.value)} inputMode="numeric" maxLength={10} placeholder="43215" className="h-12 rounded-md border-foreground/20 text-base" />
+              </Field>
+            </div>
+            <div className="flex items-center gap-3">
+              <BackButton onClick={() => setStep(1)} />
+              <NextButton disabled={!canStep2} onClick={() => setStep(3)} label="Next" className="flex-1" />
+            </div>
+          </div>
+        )}
+
+        {step === 3 && (
           <div className="space-y-5">
             <Field label="Service Needed" required>
               <Select value={service} onValueChange={setService}>
-                <SelectTrigger className="h-11">
+                <SelectTrigger className="h-12 rounded-md border-foreground/20 text-base">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
-                  {services.map((s) => (
-                    <SelectItem key={s} value={s}>
-                      {s}
+                  {SCHEDULE_SERVICES.map((s) => (
+                    <SelectItem key={s.value} value={s.value}>
+                      {s.label} — {s.price}
                     </SelectItem>
                   ))}
                 </SelectContent>
               </Select>
             </Field>
-
-            <Field label="Service Address">
-              <Input
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                placeholder="123 Main St, Columbus OH (optional)"
-                className="h-11"
-              />
+            <Field label="Note (optional)">
+              <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Anything we should know?" rows={4} className="rounded-md border-foreground/20 text-base" />
             </Field>
-
-            <Field label="Notes (optional)">
-              <Textarea
-                value={notes}
-                onChange={(e) => setNotes(e.target.value)}
-                placeholder="Anything we should know?"
-                rows={3}
-              />
-            </Field>
-
-            <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <button
-                type="button"
-                onClick={() => setStep(0)}
-                className="text-sm font-semibold text-muted-foreground transition hover:text-primary"
-              >
-                ← Back
-              </button>
-              <button
-                type="button"
+            <div className="flex items-center gap-3">
+              <BackButton onClick={() => setStep(2)} />
+              <NextButton
                 disabled={!canSubmit || submitting}
                 onClick={submit}
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-primary px-8 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:opacity-50"
-              >
-                {submitting ? "Booking…" : (<>Confirm Booking <CalendarCheck className="h-4 w-4" /></>)}
-              </button>
+                label={submitting ? "Booking…" : "Submit Booking"}
+                className="flex-1"
+              />
             </div>
-
-            <p className="flex items-center justify-center gap-2 pt-2 text-[11px] text-muted-foreground">
-              <CheckCircle2 className="h-3.5 w-3.5 text-flame" />
-              No card. No spam. An Ohio sweep texts you in &lt; 60 minutes.
+            <p className="flex items-center justify-center gap-2 pt-1 text-[11px] text-muted-foreground">
+              <CheckCircle2 className="h-3.5 w-3.5 text-[#E63A1F]" />
+              No card. No spam. We call within the hour.
             </p>
           </div>
         )}
-
-        {/* Trust strip */}
-        <div className="mt-7 flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 border-t border-border pt-5 text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
-          <span className="inline-flex items-center gap-1.5"><MapPin className="h-3 w-3 text-flame" /> Ohio crew</span>
-          <span className="inline-flex items-center gap-1.5"><CheckCircle2 className="h-3 w-3 text-flame" /> CSIA Certified</span>
-          <span className="inline-flex items-center gap-1.5"><Phone className="h-3 w-3 text-flame" /> (614) 683-5763</span>
-        </div>
       </div>
     </div>
   );
@@ -326,19 +298,53 @@ function ScheduleFlow({ variant, sourcePath = "", onDone }: { variant: "dialog" 
 
 function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
   return (
-    <div className="space-y-1.5">
-      <Label className="text-sm font-semibold text-primary">
-        {label} {required && <span className="text-flame">*</span>}
+    <div className="space-y-2">
+      <Label className="text-sm font-semibold text-foreground">
+        {label} {required && <span className="text-[#E63A1F]">*</span>}
       </Label>
       {children}
     </div>
   );
 }
 
+function NextButton({
+  onClick,
+  disabled,
+  label,
+  className = "",
+}: {
+  onClick: () => void;
+  disabled?: boolean;
+  label: string;
+  className?: string;
+}) {
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      className={`inline-flex h-14 w-full items-center justify-center gap-2 rounded-md bg-[#E63A1F] font-display text-base font-bold uppercase tracking-wider text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+    >
+      {label}
+    </button>
+  );
+}
+
+function BackButton({ onClick }: { onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="inline-flex h-14 shrink-0 items-center justify-center rounded-md border-2 border-foreground/20 px-5 text-sm font-semibold text-foreground transition hover:border-foreground/40"
+    >
+      ← Back
+    </button>
+  );
+}
+
 function StickyCta({ onClick }: { onClick: () => void }) {
   return (
     <>
-      {/* Mobile — bottom sticky bar */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-flame/30 bg-primary/95 px-3 py-2.5 backdrop-blur-xl md:hidden" style={{ paddingBottom: "calc(0.625rem + env(safe-area-inset-bottom))" }}>
         <div className="flex items-center gap-2">
           <a
@@ -351,24 +357,21 @@ function StickyCta({ onClick }: { onClick: () => void }) {
           <button
             type="button"
             onClick={onClick}
-            className="group relative flex h-12 flex-1 items-center justify-center gap-2 overflow-hidden rounded-xl bg-flame px-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-flame"
+            className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#E63A1F] px-4 font-display text-sm font-extrabold uppercase tracking-wider text-white shadow-md"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule online
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
           </button>
         </div>
       </div>
-      {/* Mobile spacer so content isn't hidden under the bar */}
       <div className="h-20 md:hidden" aria-hidden />
 
-      {/* Desktop — floating side rail */}
       <button
         type="button"
         onClick={onClick}
-        className="group fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 translate-x-0 items-center gap-2 rounded-l-2xl bg-flame px-3 py-5 font-mono text-[11px] font-extrabold uppercase tracking-[0.22em] text-primary shadow-[0_20px_50px_oklch(0_0_0/0.35)] transition hover:px-4 md:inline-flex"
+        className="group fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 items-center gap-2 rounded-l-2xl bg-[#E63A1F] px-3 py-5 font-mono text-[11px] font-extrabold uppercase tracking-[0.22em] text-white shadow-[0_20px_50px_oklch(0_0_0/0.35)] transition hover:px-4 md:inline-flex"
         aria-label="Schedule online"
       >
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-flame transition group-hover:rotate-12">
+        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#E63A1F]">
           <CalendarCheck className="h-4 w-4" />
         </span>
         <span className="vertical-writing">Schedule online</span>
