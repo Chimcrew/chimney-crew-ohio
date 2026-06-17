@@ -443,7 +443,7 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-6 font-sans text-[38px] font-bold leading-[1.1] tracking-[-1.5px] text-foreground sm:text-[52px] sm:leading-[1.08] md:text-[64px] md:leading-[1.05]">
+        <h1 className="mt-10 font-sans text-[38px] font-bold leading-[1.1] tracking-[-1.5px] text-foreground sm:text-[52px] sm:leading-[1.08] md:text-[64px] md:leading-[1.05]">
           #1 Trusted Chimney Repair Team In Central Ohio
         </h1>
 
