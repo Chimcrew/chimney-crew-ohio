@@ -418,37 +418,33 @@ function Hero() {
       {/* MESSAGE — single column under the photo */}
       <div className="relative mx-auto max-w-3xl px-4 pb-12 pt-8 sm:px-6 md:pb-16 md:pt-12 lg:px-8">
         {/* Certified badge — pulled above the headline, larger */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-start gap-1.5">
           <img
             src={certifiedBadge.url}
             alt="Certified chimney sweep credential"
-            width={72}
-            height={72}
-            className="h-16 w-16 shrink-0 rounded-full bg-white p-1.5 ring-1 ring-border sm:h-20 sm:w-20"
+            width={80}
+            height={80}
+            className="h-[68px] w-[68px] shrink-0 rounded-full bg-white p-1 ring-1 ring-border sm:h-20 sm:w-20"
             loading="eager"
             decoding="async"
           />
-          <div className="min-w-0">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:text-[11px]">
+          <div className="min-w-0 pt-0.5 -ml-1">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame sm:text-[11px]">
               Certified chimney professionals
             </p>
-            <div className="mt-1 flex flex-wrap gap-1.5">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary-foreground">
-                <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured
+            <div className="mt-1 flex flex-wrap gap-1">
+              <span className="inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-primary-foreground">
+                <ShieldCheck className="h-2.5 w-2.5 text-flame" /> Licensed · Insured
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground">
-                <Star className="h-3 w-3 fill-flame text-flame" /> 5-Star Reviews
+              <span className="inline-flex items-center gap-1 rounded-full border border-flame/40 bg-flame/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-foreground">
+                <Star className="h-2.5 w-2.5 fill-flame text-flame" /> 5-Star Reviews
               </span>
             </div>
           </div>
         </div>
 
-        <h1 className="mt-5 font-sans text-[18px] font-extrabold leading-[1.2] tracking-tight text-foreground sm:text-2xl md:text-[28px]">
-          Trusted by{" "}
-          <span className="inline-block rounded-none bg-primary px-2 py-0.5 text-primary-foreground">
-            Columbus
-          </span>{" "}
-          homeowners for chimney repairs &amp; inspections.
+        <h1 className="mt-4 font-sans text-[16px] font-extrabold leading-[1.25] tracking-tight text-foreground sm:text-lg md:text-xl">
+          #1 Trusted Chimney Repair Team In Central Ohio
         </h1>
 
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
