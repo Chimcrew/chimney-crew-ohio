@@ -443,34 +443,32 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-5 font-display text-[22px] font-bold leading-[1.15] tracking-tight text-foreground sm:text-3xl md:text-4xl">
+        <h1 className="mt-5 font-sans text-[18px] font-extrabold leading-[1.2] tracking-tight text-foreground sm:text-2xl md:text-[28px]">
           Trusted by{" "}
-          <span className="inline-block rounded-md bg-primary px-2 py-0.5 text-primary-foreground">
+          <span className="inline-block rounded-none bg-primary px-2 py-0.5 text-primary-foreground">
             Columbus
           </span>{" "}
           homeowners for chimney repairs &amp; inspections.
         </h1>
 
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
-          Servicing{" "}
-          <span className="inline-block rounded-md bg-primary px-1.5 py-0.5 font-semibold text-primary-foreground">
-            your area
-          </span>{" "}
-          and surrounding neighborhoods — chimney inspections, repair and cleaning near you.
+          Servicing <span className="font-extrabold text-foreground">your area</span> and surrounding neighborhoods — chimney inspections, repair and cleaning near you.
         </p>
 
-        <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap">
+        <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
             {/* CALL — primary on mobile, secondary on desktop */}
             <a
               href="tel:6146835763"
-              className="order-1 inline-flex h-12 items-center justify-start gap-2 rounded-xl bg-flame px-5 text-left font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
+              data-cta
+              className="order-1 inline-flex h-11 items-center justify-start gap-2 bg-flame px-4 text-left font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
             >
               <Phone className="h-4 w-4 text-primary sm:text-flame" /> Call Now (614) 683-5763
             </a>
             {/* SCHEDULE — secondary on mobile, primary on desktop */}
             <Link
               to="/schedule"
-              className="order-2 inline-flex h-12 items-center justify-start gap-2 rounded-xl border border-foreground/20 bg-background px-5 text-left font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-6 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
+              data-cta
+              className="order-2 inline-flex h-11 items-center justify-start gap-2 border border-foreground/20 bg-background px-4 text-left font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-5 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </Link>
