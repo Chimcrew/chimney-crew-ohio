@@ -211,6 +211,14 @@
   .font-inline { font-family: var(--font-inline); }
   .font-mono { font-family: var(--font-mono); }
 
+  /* Global square corners on all interactive buttons (and elements opted-in via data-cta).
+     Opt-out with the `keep-radius` class or a `data-keep-radius` attribute. */
+  button:not(.keep-radius):not([data-keep-radius]),
+  [role="button"]:not(.keep-radius):not([data-keep-radius]),
+  a[data-cta]:not(.keep-radius) {
+    border-radius: 0 !important;
+  }
+
   .bg-grid {
     background-image:
       linear-gradient(oklch(0.18 0.02 250 / 0.06) 1px, transparent 1px),
