@@ -407,9 +407,7 @@ function Hero() {
           </h1>
 
           <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">
-            Inspections, cleaning, and masonry repair from a local Columbus crew that
-            shows up on time, explains the work clearly, and documents every finding
-            with photos and video before any repair is recommended.
+            Servicing Your Area And Surrounding Areas • Chimney Inspections, Repair And Cleaning Near Me
           </p>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
