@@ -397,10 +397,10 @@ function Hero() {
 
           <h1 className="mt-5 font-display !text-xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:!text-2xl md:!text-3xl">
             Trusted By{" "}
-            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
+            <span className="mt-2 inline-block rounded-md bg-primary px-2 py-0.5 text-primary-foreground">
               Columbus
             </span>{" "}
-            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-primary-foreground">
+            <span className="mt-2 inline-block rounded-md bg-primary px-2 py-0.5 text-primary-foreground">
               Homeowners
             </span>{" "}
             For Chimney Repairs & Inspections
