@@ -1,53 +1,58 @@
-## Goal
-Lift conversions and local SEO across ChimCrew while preserving the current dark/flame branding, fonts, and layout language.
 
-## Scope of changes
+## 1. New "Schedule Service Online" form (global)
 
-### 1. Homepage hero (`src/routes/index.tsx`)
-- Rework H1 to clearly name the three core offerings: **Chimney Repair · Chimney Sweeping · Fireplace Services** (Ohio + Pittsburgh).
-- New subheadline: "Protect your home from chimney fires, water leaks, and costly structural damage with professional chimney inspections, repairs, and maintenance."
-- Make the **Schedule Service** CTA visually dominant (large flame button); demote **Call Now** to secondary outline button.
+Build one shared component `ScheduleServiceForm` matching the reference photo (bold uppercase headline, left-aligned, white inputs on deep navy background, red NEXT button, 3-step tabs: Information → Address → Note).
 
-### 2. Trust bar (new `src/components/TrustBar.tsx`)
-- Mounted directly under the hero.
-- Five badges with lucide icons: Family Owned & Operated · Fast Response Times · Upfront Pricing · Experienced Technicians · Fully Insured.
+**Step 1 — Information:** Full Name, Phone Number, Appointment Date, Appointment Time (8AM-11AM / 11AM-2PM / 2PM-5PM).
+**Step 2 — Address:** Street, City, State (OH), ZIP.
+**Step 3 — Note:** Service Needed (dropdown) + optional message.
 
-### 3. Service area SEO section (new `src/components/ServiceAreaSeo.tsx`)
-- Cities: Columbus OH, Dayton OH, Cincinnati OH, Cleveland OH, Pittsburgh PA.
-- Each city is a `<Link to="/service-area/$city">` for future landing pages (route stub created, generic template page so links don't 404; per-city SEO content placeholder).
-- Adds `src/routes/service-area.$city.tsx` with proper `head()` per city and Service schema.
-- Updates `sitemap.xml` to include the 5 city URLs.
+Service Needed options (replace all air-duct items everywhere):
+- Gas Fireplace Inspection — $49
+- Chimney/Fireplace Inspection — $69
+- Chimney Sweep — $99
+- Dryer Vent Cleaning — $79
+- Chimney Drone Inspection — Free
 
-### 4. Service page enrichment (`src/data/services.ts` + `src/components/ServiceDetailPage.tsx`)
-- Extend `Service` type with: `commonProblems`, `warningSigns`, `repairBenefits`, `faqs` (Q/A pairs).
-- Populate all services, with deeper content for crown repair, flashing repair, relining (the examples called out).
-- Render new sections on the service detail page; emit `FAQPage` JSON-LD per service.
-- Add internal-linking "Related services" block at the bottom of each service page.
+Submits through existing lead pipeline (`notify-lead` route / Supabase leads table — keeping current backend wiring).
 
-### 5. Reviews section (`src/components/SocialProofSection.tsx`)
-- New section on homepage with 6 customer reviews, star ratings, and a small job photo per review (reuses existing gallery assets).
-- Aggregate stars summary up top; visible on mobile (stacked) and desktop (grid).
+Place this form on:
+- Home page (new section — currently has none)
+- Every service detail page (`/services/$slug`)
+- Services index, Contact, Service-area city pages
+- Replaces the current `InlineLeadForm` / `ScheduleWidget` usage where applicable
 
-### 6. Mobile sticky CTA
-- Already exists (`StickyMobileCta`) — verify both buttons present and labels match (**Call Now** + **Schedule Service**). Tweak labels/icons if needed.
+## 2. Service Area section + SEO city pages
 
-### 7. Footer (`src/components/SiteFooter.tsx`)
-- Replace current 4-column grid with expanded version: full Services list (from `SERVICES`), Service Areas list (5 cities), Contact (phone, email, address), Legal (Privacy, Terms, Disclaimer, Accessibility).
-- Keep van band + branding intact.
+Remove current map section entirely. Replace with a clean grid of ~30 rectangle tiles (4–5 per row, 6–8 rows) listing cities around Columbus, Dayton, Cincinnati. Each tile links to `/service-area/$city`.
 
-### 8. SEO / schema / performance
-- Homepage `head()`: title/description tuned to the three core services + 5 city footprint; add `Service` JSON-LD entries and breadcrumbs.
-- Root LocalBusiness schema already exists — extend `areaServed` to include Cleveland + Pittsburgh.
-- Add `loading="lazy"` and `decoding="async"` to non-hero `<img>` tags across new components.
-- Tighten heading hierarchy (single H1 per page, H2 for sections, H3 for cards) on homepage + service pages.
-- Add internal links: hero → services index, trust bar → about-style anchors, service cards → related services.
-- Update `sitemap.xml` with new city + (already-existing) blog routes.
+Cities (30):
+Columbus, Dublin, Westerville, Worthington, Hilliard, Upper Arlington, Gahanna, Reynoldsburg, Grove City, Pickerington, Powell, New Albany, Delaware, Lewis Center, Pataskala, Dayton, Kettering, Beavercreek, Centerville, Huber Heights, Miamisburg, Springboro, Fairborn, Cincinnati, Mason, West Chester, Loveland, Blue Ash, Milford, Hamilton.
 
-## Out of scope
-- No backend/data model changes, no new dependencies.
-- No redesign of color tokens or typography.
-- No real per-city copywriting beyond solid SEO-quality boilerplate (user can refine later).
+Each city gets a unique SEO page at `/service-area/$city` with:
+- H1 "Chimney Services in {City}, OH"
+- 3–4 paragraphs of localized chimney/area copy (keywords: chimney sweep, chimney inspection, fireplace cleaning, dryer vent, drone inspection, {city}, suburb references)
+- Services list, trust badges
+- The new ScheduleServiceForm
 
-## Files touched (approx.)
-- New: `src/components/TrustBar.tsx`, `src/components/ServiceAreaSeo.tsx`, `src/components/SocialProofSection.tsx`, `src/routes/service-area.$city.tsx`
-- Edited: `src/routes/index.tsx`, `src/routes/__root.tsx`, `src/data/services.ts`, `src/components/ServiceDetailPage.tsx`, `src/components/SiteFooter.tsx`, `src/components/StickyMobileCta.tsx`, `src/routes/sitemap[.]xml.ts`
+(Route file already exists at `src/routes/service-area.$city.tsx` — update its data + content.)
+
+## 3. Global layout / cleanup
+
+- **Left-align all headlines** site-wide. Remove `text-center` from all section headings/subheadings; standardize on left alignment.
+- **Remove van & logo section** above footer + the thin divider line above it.
+- **Remove the "Reviews & Emergency" line** above "Ask us anything"; move it down to sit just above the footer.
+- **"Ask us anything"**: remove the "we don't bite" subtext.
+- **Add "Meet the ChimCrew team." photo** directly below the site header on the home page (using existing team hero asset).
+
+## 4. Typography pass
+
+Scan all pages/components and unify on the existing font stack already defined in `src/styles.css` (display + body tokens). Fix one-off `font-*` overrides on service pages, blog, legal, etc. so every heading uses the display font and every body block uses the body font at consistent sizes.
+
+## Technical notes
+
+- New file: `src/components/ScheduleServiceForm.tsx` (shared, 3-step, validated with zod, submits via existing lead server function).
+- Updated: `src/routes/index.tsx`, `src/routes/services.index.tsx`, `src/routes/services.$slug.tsx`, `src/routes/service-area.$city.tsx`, `src/routes/contact.tsx`, `src/components/SiteFooter.tsx`, `src/components/ServiceAreaMap.tsx` (or replaced), `src/data/seo-cities.ts` (expanded city list with copy).
+- Removed/retired: old map section, van+logo strip, reviews/emergency banner above CTA.
+
+Approve and I'll build it.

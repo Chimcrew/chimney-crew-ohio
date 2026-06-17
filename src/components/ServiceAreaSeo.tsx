@@ -1,81 +1,65 @@
 import { Link } from "@tanstack/react-router";
-import { MapPin, ArrowRight } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { SEO_CITIES } from "@/data/seo-cities";
 
-export const SERVICE_CITIES = [
-  {
-    slug: "columbus-oh",
-    name: "Columbus",
-    state: "OH",
-    blurb:
-      "Full-service chimney sweep, inspection, and repair across Columbus and the I-270 outerbelt — including Dublin, Hilliard, Westerville, Powell, Worthington and Grove City.",
-  },
-  {
-    slug: "dayton-oh",
-    name: "Dayton",
-    state: "OH",
-    blurb:
-      "Trusted chimney repair, flashing, and crown work for Dayton, Kettering, Beavercreek, Centerville, and Huber Heights — same-week scheduling.",
-  },
-  {
-    slug: "cincinnati-oh",
-    name: "Cincinnati",
-    state: "OH",
-    blurb:
-      "CSIA-certified sweeps, fireplace tune-ups, and masonry restoration throughout Cincinnati, Mason, West Chester, Anderson, and Hyde Park.",
-  },
-  {
-    slug: "cleveland-oh",
-    name: "Cleveland",
-    state: "OH",
-    blurb:
-      "Chimney inspections, liner installs, and waterproofing serving Cleveland, Lakewood, Parma, Shaker Heights, and the East and West sides.",
-  },
-] as const;
+// Kept for backward compatibility — old SERVICE_CITIES export used by SiteFooter & city route fallback.
+export const SERVICE_CITIES = SEO_CITIES.map((c) => ({
+  slug: c.slug,
+  name: c.name,
+  state: c.state,
+  blurb: c.description,
+}));
 
 export function ServiceAreaSeo() {
+  const byRegion: Record<string, typeof SEO_CITIES> = {
+    Columbus: [],
+    Dayton: [],
+    Cincinnati: [],
+  };
+  SEO_CITIES.forEach((c) => byRegion[c.region].push(c));
+
   return (
-    <section className="relative border-y border-border bg-background py-20 md:py-24">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mx-auto max-w-3xl text-center">
+    <section className="border-y border-border bg-secondary/40 py-16 md:py-20">
+      <div className="mx-auto max-w-6xl px-4 md:px-8">
+        <div>
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <MapPin className="h-3.5 w-3.5 text-flame" /> Service Area
           </p>
-          <h2 className="mt-4 font-display text-4xl font-bold text-primary md:text-5xl">
-            Local chimney service across Ohio.
+          <h2 className="mt-4 font-display text-3xl font-bold text-primary md:text-4xl">
+            Cities we serve across Ohio.
           </h2>
-          <p className="mt-4 text-base text-muted-foreground">
-            ChimCrew provides chimney repair, sweeping, inspections, and fireplace
-            services to homeowners throughout these regions. Tap your city for
-            local pricing, response times, and recent jobs.
+          <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+            ChimCrew serves homeowners throughout the Columbus, Dayton and Cincinnati
+            metros — over 30 cities in central and southwest Ohio. Tap your city for
+            local pricing, service details, and recent jobs.
           </p>
         </div>
 
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICE_CITIES.map((c) => (
-            <li key={c.slug}>
-              <Link
-                to="/service-area/$city"
-                params={{ city: c.slug }}
-                className="group block h-full rounded-xl border-2 border-border bg-card p-6 transition hover:border-flame hover:shadow-flame"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
-                    <MapPin className="h-3.5 w-3.5" /> {c.state}
-                  </span>
-                  <ArrowRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-1 group-hover:text-flame" />
-                </div>
-                <h3 className="mt-3 font-display text-2xl font-bold text-foreground">
-                  Chimney Services in {c.name}, {c.state}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{c.blurb}</p>
-                <span className="mt-5 inline-flex items-center gap-2 border-t border-border pt-4 font-mono text-[11px] uppercase tracking-widest text-primary">
-                  View {c.name} services
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {(["Columbus", "Dayton", "Cincinnati"] as const).map((region) => (
+          <div key={region} className="mt-10">
+            <h3 className="font-display text-lg font-bold uppercase tracking-wide text-flame">
+              {region} Metro
+            </h3>
+            <ul className="mt-4 grid grid-cols-2 gap-2.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+              {byRegion[region].map((c) => (
+                <li key={c.slug}>
+                  <Link
+                    to="/service-area/$city"
+                    params={{ city: c.slug }}
+                    className="group flex h-full items-center justify-between gap-1 rounded-md border border-border bg-card px-3 py-3 text-left transition hover:border-flame hover:bg-flame/5"
+                  >
+                    <span className="font-display text-sm font-semibold text-foreground group-hover:text-primary">
+                      {c.name}
+                    </span>
+                    <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted-foreground">
+                      OH
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   );
