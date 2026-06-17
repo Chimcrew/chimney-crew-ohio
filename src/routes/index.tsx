@@ -395,7 +395,7 @@ function Hero() {
           <img
             src={teamHeroPhoto.url}
             alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
-            className="block h-auto w-full object-cover"
+            className="block h-auto w-full object-cover lg:max-h-[520px]"
             fetchPriority="high"
             decoding="async"
             loading="eager"
@@ -443,7 +443,7 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-6 font-sans text-[14px] font-extrabold leading-[1.25] tracking-tight text-foreground sm:text-[15px] md:text-[16px]">
+        <h1 className="mt-6 font-sans text-[38px] font-bold leading-[1.1] tracking-[-1.5px] text-foreground sm:text-[52px] sm:leading-[1.08] md:text-[64px] md:leading-[1.05]">
           #1 Trusted Chimney Repair Team In Central Ohio
         </h1>
 
