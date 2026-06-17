@@ -41,7 +41,7 @@ import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import teamHeroPhoto from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
-import chimcrewLogoCrew from "@/assets/chimcrew-logo-crew.png.asset.json";
+import chimcrewLogoCrew from "@/assets/chimcrew-logo-header.png.asset.json";
 import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import fireplaceServicePhoto from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 import techFireplaceSweepPhoto from "@/assets/tech-fireplace-sweep.png.asset.json";
