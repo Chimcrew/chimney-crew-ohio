@@ -157,7 +157,7 @@ export function SiteHeader() {
             type="button"
             onClick={() => openScheduleDialog()}
             aria-label="We're available now — schedule online"
-            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-1.5 font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-foreground/80 shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] md:hidden"
+            className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-1.5 font-mono text-[9px] font-extrabold uppercase tracking-[0.22em] text-foreground/80 shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] md:hidden"
           >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-pulse rounded-full bg-[oklch(0.65_0.18_145/0.4)]" />
@@ -182,7 +182,7 @@ export function SiteHeader() {
           {/* Nav */}
           <nav
             ref={menuRef}
-            className="hidden items-center rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-2 py-2 backdrop-blur md:flex"
+            className="hidden items-center border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-2 py-2 backdrop-blur md:flex"
           >
             {/* Home first */}
             <Link
@@ -230,7 +230,7 @@ export function SiteHeader() {
                     setHoveredCategory(null);
                   }}
                 >
-                  <div className="overflow-hidden rounded-2xl border border-[oklch(0.18_0.02_250/0.08)] bg-background shadow-[0_20px_40px_oklch(0.18_0.02_250/0.12)] backdrop-blur-xl">
+                  <div className="overflow-hidden border border-[oklch(0.18_0.02_250/0.08)] bg-background shadow-[0_20px_40px_oklch(0.18_0.02_250/0.12)] backdrop-blur-xl">
                     {/* Header */}
                     <div className="border-b border-[oklch(0.18_0.02_250/0.06)] bg-[oklch(0.18_0.02_250/0.03)] px-5 py-3">
                       <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[oklch(0.65_0.18_92)]">
@@ -249,7 +249,7 @@ export function SiteHeader() {
                               <li key={cat.key}>
                                 <button
                                   type="button"
-                                  className={`flex w-full items-center justify-between gap-2 rounded-lg px-3 py-2.5 text-left font-display text-sm font-semibold transition ${
+                                  className={`flex w-full items-center justify-between gap-2 px-3 py-2.5 text-left font-display text-sm font-semibold transition ${
                                     isHovered
                                       ? "bg-[oklch(0.18_0.02_250/0.05)] text-[oklch(0.65_0.18_92)]"
                                       : "text-foreground hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
@@ -294,7 +294,7 @@ export function SiteHeader() {
                                               setServicesOpen(false);
                                               setHoveredCategory(null);
                                             }}
-                                            className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
+                                            className="block px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
                                           >
                                             {item.label}
                                           </Link>
@@ -307,7 +307,7 @@ export function SiteHeader() {
                                               setServicesOpen(false);
                                               setHoveredCategory(null);
                                             }}
-                                            className="block rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
+                                            className="block px-3 py-2 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
                                           >
                                             {item.label}
                                           </Link>
@@ -352,14 +352,14 @@ export function SiteHeader() {
           <div className="hidden items-center gap-2 md:flex">
             <a
               href="tel:6146835763"
-              className="inline-flex items-center gap-2 whitespace-nowrap rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2.5 font-sans text-[13px] font-semibold tracking-normal text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)]"
+              className="inline-flex items-center gap-2 whitespace-nowrap border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2.5 font-sans text-[13px] font-semibold tracking-normal text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)]"
             >
               <Phone className="h-4 w-4 shrink-0" /> (614) 683-5763
             </a>
             <button
               type="button"
               onClick={() => openScheduleDialog()}
-              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap rounded-full bg-[oklch(0.78_0.19_92)] px-5 py-2.5 font-sans text-[13px] font-bold tracking-normal text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)]"
+              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap bg-[oklch(0.78_0.19_92)] px-5 py-2.5 font-sans text-[13px] font-bold tracking-normal text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)]"
             >
               <CalendarCheck className="h-4 w-4 shrink-0" /> Schedule Online
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -368,7 +368,7 @@ export function SiteHeader() {
 
           {/* Mobile toggle */}
           <button
-            className="grid h-10 w-10 place-items-center rounded-full border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] md:hidden"
+            className="grid h-10 w-10 place-items-center border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] md:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
@@ -419,13 +419,13 @@ export function SiteHeader() {
                     {SERVICE_CATEGORIES.map((cat) => {
                       const catOpen = mobileOpenCategory === cat.key;
                       return (
-                        <div key={cat.key} className="rounded-xl bg-[oklch(0.18_0.02_250/0.03)] p-2">
+                        <div key={cat.key} className="bg-[oklch(0.18_0.02_250/0.03)] p-2">
                           <button
                             type="button"
                             onClick={() =>
                               setMobileOpenCategory((cur) => (cur === cat.key ? null : cat.key))
                             }
-                            className="flex w-full items-center justify-between rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground"
+                            className="flex w-full items-center justify-between px-3 py-2 font-display text-sm font-semibold text-foreground"
                           >
                             <span className="inline-flex items-center gap-2">
                               <cat.Icon className="h-4 w-4 text-[#E63A1F]" />
@@ -450,7 +450,7 @@ export function SiteHeader() {
                                         setMobileOpenKey(null);
                                         setMobileOpenCategory(null);
                                       }}
-                                      className="block rounded-lg px-3 py-2 font-sans text-sm font-medium text-foreground/80 transition active:bg-[oklch(0.18_0.02_250/0.05)] active:text-[oklch(0.65_0.18_92)]"
+                                      className="block px-3 py-2 font-sans text-sm font-medium text-foreground/80 transition active:bg-[oklch(0.18_0.02_250/0.05)] active:text-[oklch(0.65_0.18_92)]"
                                     >
                                       {item.label}
                                     </Link>
@@ -464,7 +464,7 @@ export function SiteHeader() {
                                         setMobileOpenKey(null);
                                         setMobileOpenCategory(null);
                                       }}
-                                      className="block rounded-lg px-3 py-2 font-sans text-sm font-medium text-foreground/80 transition active:bg-[oklch(0.18_0.02_250/0.05)] active:text-[oklch(0.65_0.18_92)]"
+                                      className="block px-3 py-2 font-sans text-sm font-medium text-foreground/80 transition active:bg-[oklch(0.18_0.02_250/0.05)] active:text-[oklch(0.65_0.18_92)]"
                                     >
                                       {item.label}
                                     </Link>
@@ -496,14 +496,14 @@ export function SiteHeader() {
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
                 href="tel:6146835763"
-                className="flex items-center justify-center gap-2 rounded-full border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-3 font-sans text-[12px] font-semibold tracking-normal text-foreground/80"
+                className="flex items-center justify-center gap-2 border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-3 font-sans text-[12px] font-semibold tracking-normal text-foreground/80"
               >
                 <Phone className="h-4 w-4" /> Call
               </a>
               <button
                 type="button"
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
-                className="flex items-center justify-center gap-2 rounded-full bg-[oklch(0.78_0.19_92)] px-3 py-3 font-sans text-[12px] font-bold tracking-normal text-[oklch(0.18_0.02_250)]"
+                className="flex items-center justify-center gap-2 bg-[oklch(0.78_0.19_92)] px-3 py-3 font-sans text-[12px] font-bold tracking-normal text-[oklch(0.18_0.02_250)]"
               >
                 <CalendarCheck className="h-4 w-4" /> Schedule online
               </button>
