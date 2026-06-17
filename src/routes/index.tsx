@@ -1555,11 +1555,7 @@ function Faq() {
             FAQ
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            Ask us anything —{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
-              we don't bite
-            </span>
-            .
+            Ask us anything.
           </h2>
           <p className="mt-4 text-base text-muted-foreground">
             Ohioans answer the phone. No call centers, no pressure, no charge for advice.
