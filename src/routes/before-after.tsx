@@ -23,7 +23,11 @@ export const Route = createFileRoute("/before-after")({
     meta: [
       { title: "Before & After — ChimCrew jobs in Ohio" },
       { name: "description", content: "Drag-to-compare before and after photos from chimney sweeps, crown rebuilds and cap installs by ChimCrew across Ohio." },
+      { property: "og:title", content: "ChimCrew Before & After — Ohio Chimney Work" },
+      { property: "og:description", content: "Real before and after photos from chimney jobs across Ohio. No stock imagery." },
+      { property: "og:url", content: "https://chimcrew.com/before-after" },
     ],
+    links: [{ rel: "canonical", href: "https://chimcrew.com/before-after" }],
   }),
   component: BeforeAfterPage,
 });
