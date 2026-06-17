@@ -408,9 +408,6 @@ function Hero() {
             <p className="font-display text-base font-bold text-primary-foreground sm:text-lg md:text-2xl">
               Meet the ChimCrew team.
             </p>
-            <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/75 md:text-[11px]">
-              Columbus · Dayton · Cincinnati — your local Ohio chimney crew
-            </p>
           </div>
         </div>
       </div>
