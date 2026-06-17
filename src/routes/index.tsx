@@ -24,7 +24,7 @@ import {
   Camera,
   Video,
 } from "lucide-react";
-import logoAsset from "@/assets/chimcrew-logo-transparent.png.asset.json";
+import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import { InlineLeadForm } from "@/components/InlineLeadForm";
 const logo = logoAsset.url;
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
@@ -41,7 +41,7 @@ import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import teamHeroPhoto from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
-import chimcrewLogoCrew from "@/assets/chimcrew-logo-transparent.png.asset.json";
+import chimcrewLogoCrew from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import fireplaceServicePhoto from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 import techFireplaceSweepPhoto from "@/assets/tech-fireplace-sweep.png.asset.json";
