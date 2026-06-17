@@ -28,6 +28,7 @@ import {
 import { TrustBadges } from "@/components/TrustBadges";
 import { DroneInspection } from "@/components/DroneInspection";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
+import { ScheduleInline } from "@/components/ScheduleWidget";
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -81,6 +82,13 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
 
       {/* RELATED */}
       <Related service={service} />
+
+      {/* SCHEDULE FORM — global lead form on every service page */}
+      <section className="border-y border-border bg-secondary/30 py-16 md:py-20">
+        <div className="mx-auto max-w-3xl px-4 md:px-8">
+          <ScheduleInline />
+        </div>
+      </section>
 
       {/* FINAL CTA (dark band) */}
       <FinalServiceCta ctaLabel={ctaLabel} />
