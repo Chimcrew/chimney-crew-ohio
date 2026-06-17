@@ -14,26 +14,26 @@ export function DroneInspection() {
       aria-labelledby="drone-heading"
       className="relative overflow-hidden bg-background py-20 text-foreground md:py-28"
     >
-      {/* Warm hearth atmosphere */}
+      {/* Subtle cool atmosphere */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_oklch(0.78_0.19_92/0.12)_0%,_transparent_60%)]"
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_0%,_oklch(0.92_0.02_235/0.08)_0%,_transparent_60%)]"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -left-24 top-1/3 h-96 w-96 rounded-full bg-flame/15 blur-3xl"
+        className="pointer-events-none absolute -left-24 top-1/3 h-96 w-96 rounded-full bg-primary/[0.04] blur-3xl"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute -right-20 -bottom-20 h-80 w-80 rounded-full bg-flame/10 blur-3xl"
+        className="pointer-events-none absolute -right-20 -bottom-20 h-80 w-80 rounded-full bg-primary/[0.03] blur-3xl"
         aria-hidden
       />
-      {/* Top + bottom brick-tone hairlines */}
+      {/* Top + bottom subtle hairlines */}
       <div
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-flame/50 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-border to-transparent"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-border/70 to-transparent"
         aria-hidden
       />
 
