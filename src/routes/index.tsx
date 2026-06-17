@@ -166,36 +166,20 @@ function Index() {
 function HeroToOfferBridge() {
   return (
     <div className="relative z-10 mx-auto flex max-w-7xl justify-center px-4 py-8 md:px-8 md:py-10">
-      <figure className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl">
+      <figure className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
         {/* soft warm halo */}
         <div
           className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-flame/20 blur-2xl"
           aria-hidden
         />
-        {/* photo card */}
-        <div className="relative overflow-hidden rounded-2xl border-[3px] border-background bg-card shadow-[0_24px_50px_-18px_oklch(0_0_0/0.45),0_8px_20px_-10px_oklch(0_0_0/0.3)] ring-1 ring-foreground/10">
-          <img
-            src={inspectionRoofPhoto.url}
-            alt="ChimCrew technicians installing a stainless chimney liner on a Columbus rooftop"
-            className="block aspect-[16/10] w-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-          {/* live badge */}
-          <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-flame px-2.5 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-primary shadow-sm">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
-            Ohio Job
-          </span>
-          {/* caption ribbon */}
-          <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent px-4 pb-3 pt-8">
-            <span className="font-display text-sm font-bold text-primary-foreground sm:text-base">
-              Stainless Liner Install — Columbus, OH
-            </span>
-            <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/80 sm:inline">
-              On the roof
-            </span>
-          </figcaption>
-        </div>
+        {/* logo */}
+        <img
+          src={chimcrewLogoCrew.url}
+          alt="ChimCrew — Chimney Repair & Inspection USA"
+          className="relative block w-full h-auto"
+          loading="lazy"
+          decoding="async"
+        />
       </figure>
     </div>
   );
