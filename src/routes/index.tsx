@@ -694,7 +694,7 @@ function CommonProblems() {
   return (
     <section className="relative bg-background py-14 md:py-20">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-3xl">
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Wrench className="h-3.5 w-3.5 text-flame" /> What We Fix
           </p>
@@ -838,7 +838,7 @@ function WhyChooseUs() {
     <section className="relative overflow-hidden bg-background py-14 md:py-24">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="max-w-3xl">
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why Chimcrew
           </p>
