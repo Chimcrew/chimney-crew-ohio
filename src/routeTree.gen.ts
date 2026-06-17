@@ -16,10 +16,10 @@ import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ChimneyRepairColumbusRouteImport } from './routes/chimney-repair-columbus'
-import { Route as BlogRouteImport } from './routes/blog'
 import { Route as BeforeAfterRouteImport } from './routes/before-after'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as BlogIndexRouteImport } from './routes/blog.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 import { Route as ServiceAreaCityRouteImport } from './routes/service-area.$city'
 import { Route as LpFreeInspectionRouteImport } from './routes/lp.free-inspection'
@@ -71,11 +71,6 @@ const ChimneyRepairColumbusRoute = ChimneyRepairColumbusRouteImport.update({
   path: '/chimney-repair-columbus',
   getParentRoute: () => rootRouteImport,
 } as any)
-const BlogRoute = BlogRouteImport.update({
-  id: '/blog',
-  path: '/blog',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const BeforeAfterRoute = BeforeAfterRouteImport.update({
   id: '/before-after',
   path: '/before-after',
@@ -89,6 +84,11 @@ const IndexRoute = IndexRouteImport.update({
 const ServicesIndexRoute = ServicesIndexRouteImport.update({
   id: '/services/',
   path: '/services/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesSlugRoute = ServicesSlugRouteImport.update({
@@ -137,9 +137,9 @@ const ChimneyRepairCityRoute = ChimneyRepairCityRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => BlogRoute,
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
   id: '/lovable/email/suppression',
@@ -173,7 +173,6 @@ const LovableEmailQueueProcessRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/before-after': typeof BeforeAfterRoute
-  '/blog': typeof BlogRouteWithChildren
   '/chimney-repair-columbus': typeof ChimneyRepairColumbusRoute
   '/contact': typeof ContactRoute
   '/financing': typeof FinancingRoute
@@ -191,6 +190,7 @@ export interface FileRoutesByFullPath {
   '/lp/free-inspection': typeof LpFreeInspectionRoute
   '/service-area/$city': typeof ServiceAreaCityRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/api/public/notify-lead': typeof ApiPublicNotifyLeadRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -201,7 +201,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/before-after': typeof BeforeAfterRoute
-  '/blog': typeof BlogRouteWithChildren
   '/chimney-repair-columbus': typeof ChimneyRepairColumbusRoute
   '/contact': typeof ContactRoute
   '/financing': typeof FinancingRoute
@@ -219,6 +218,7 @@ export interface FileRoutesByTo {
   '/lp/free-inspection': typeof LpFreeInspectionRoute
   '/service-area/$city': typeof ServiceAreaCityRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/services': typeof ServicesIndexRoute
   '/api/public/notify-lead': typeof ApiPublicNotifyLeadRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -230,7 +230,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/before-after': typeof BeforeAfterRoute
-  '/blog': typeof BlogRouteWithChildren
   '/chimney-repair-columbus': typeof ChimneyRepairColumbusRoute
   '/contact': typeof ContactRoute
   '/financing': typeof FinancingRoute
@@ -248,6 +247,7 @@ export interface FileRoutesById {
   '/lp/free-inspection': typeof LpFreeInspectionRoute
   '/service-area/$city': typeof ServiceAreaCityRoute
   '/services/$slug': typeof ServicesSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/services/': typeof ServicesIndexRoute
   '/api/public/notify-lead': typeof ApiPublicNotifyLeadRoute
   '/lovable/email/suppression': typeof LovableEmailSuppressionRoute
@@ -260,7 +260,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/before-after'
-    | '/blog'
     | '/chimney-repair-columbus'
     | '/contact'
     | '/financing'
@@ -278,6 +277,7 @@ export interface FileRouteTypes {
     | '/lp/free-inspection'
     | '/service-area/$city'
     | '/services/$slug'
+    | '/blog/'
     | '/services/'
     | '/api/public/notify-lead'
     | '/lovable/email/suppression'
@@ -288,7 +288,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/before-after'
-    | '/blog'
     | '/chimney-repair-columbus'
     | '/contact'
     | '/financing'
@@ -306,6 +305,7 @@ export interface FileRouteTypes {
     | '/lp/free-inspection'
     | '/service-area/$city'
     | '/services/$slug'
+    | '/blog'
     | '/services'
     | '/api/public/notify-lead'
     | '/lovable/email/suppression'
@@ -316,7 +316,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/before-after'
-    | '/blog'
     | '/chimney-repair-columbus'
     | '/contact'
     | '/financing'
@@ -334,6 +333,7 @@ export interface FileRouteTypes {
     | '/lp/free-inspection'
     | '/service-area/$city'
     | '/services/$slug'
+    | '/blog/'
     | '/services/'
     | '/api/public/notify-lead'
     | '/lovable/email/suppression'
@@ -345,7 +345,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BeforeAfterRoute: typeof BeforeAfterRoute
-  BlogRoute: typeof BlogRouteWithChildren
   ChimneyRepairColumbusRoute: typeof ChimneyRepairColumbusRoute
   ContactRoute: typeof ContactRoute
   FinancingRoute: typeof FinancingRoute
@@ -353,6 +352,7 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   ChimneyRepairCityRoute: typeof ChimneyRepairCityRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
   LegalAccessibilityRoute: typeof LegalAccessibilityRoute
@@ -362,6 +362,7 @@ export interface RootRouteChildren {
   LpFreeInspectionRoute: typeof LpFreeInspectionRoute
   ServiceAreaCityRoute: typeof ServiceAreaCityRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
   ApiPublicNotifyLeadRoute: typeof ApiPublicNotifyLeadRoute
   LovableEmailSuppressionRoute: typeof LovableEmailSuppressionRoute
@@ -421,13 +422,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChimneyRepairColumbusRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/blog': {
-      id: '/blog'
-      path: '/blog'
-      fullPath: '/blog'
-      preLoaderRoute: typeof BlogRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/before-after': {
       id: '/before-after'
       path: '/before-after'
@@ -447,6 +441,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services/'
       preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services/$slug': {
@@ -514,10 +515,10 @@ declare module '@tanstack/react-router' {
     }
     '/blog/$slug': {
       id: '/blog/$slug'
-      path: '/$slug'
+      path: '/blog/$slug'
       fullPath: '/blog/$slug'
       preLoaderRoute: typeof BlogSlugRouteImport
-      parentRoute: typeof BlogRoute
+      parentRoute: typeof rootRouteImport
     }
     '/lovable/email/suppression': {
       id: '/lovable/email/suppression'
@@ -557,20 +558,9 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface BlogRouteChildren {
-  BlogSlugRoute: typeof BlogSlugRoute
-}
-
-const BlogRouteChildren: BlogRouteChildren = {
-  BlogSlugRoute: BlogSlugRoute,
-}
-
-const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BeforeAfterRoute: BeforeAfterRoute,
-  BlogRoute: BlogRouteWithChildren,
   ChimneyRepairColumbusRoute: ChimneyRepairColumbusRoute,
   ContactRoute: ContactRoute,
   FinancingRoute: FinancingRoute,
@@ -578,6 +568,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  BlogSlugRoute: BlogSlugRoute,
   ChimneyRepairCityRoute: ChimneyRepairCityRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
   LegalAccessibilityRoute: LegalAccessibilityRoute,
@@ -587,6 +578,7 @@ const rootRouteChildren: RootRouteChildren = {
   LpFreeInspectionRoute: LpFreeInspectionRoute,
   ServiceAreaCityRoute: ServiceAreaCityRoute,
   ServicesSlugRoute: ServicesSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
   ApiPublicNotifyLeadRoute: ApiPublicNotifyLeadRoute,
   LovableEmailSuppressionRoute: LovableEmailSuppressionRoute,

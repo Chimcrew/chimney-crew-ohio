@@ -4,7 +4,7 @@ import { BLOG_POSTS } from "@/data/blog-posts";
 
 const SITE = "https://chimcrew.com";
 
-export const Route = createFileRoute("/blog")({
+export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
       { title: "Ohio Chimney Blog — Sweep, Repair & Safety Tips | ChimCrew" },
