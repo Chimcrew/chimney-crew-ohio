@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FinancingRouteImport } from './routes/financing'
@@ -38,6 +39,11 @@ import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/e
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScheduleRoute = ScheduleRouteImport.update({
+  id: '/schedule',
+  path: '/schedule',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReviewsRoute = ReviewsRouteImport.update({
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/financing': typeof FinancingRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
+  '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/chimney-repair/$city': typeof ChimneyRepairCityRoute
@@ -200,6 +207,7 @@ export interface FileRoutesByTo {
   '/financing': typeof FinancingRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
+  '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/chimney-repair/$city': typeof ChimneyRepairCityRoute
@@ -228,6 +236,7 @@ export interface FileRoutesById {
   '/financing': typeof FinancingRoute
   '/gallery': typeof GalleryRoute
   '/reviews': typeof ReviewsRoute
+  '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/chimney-repair/$city': typeof ChimneyRepairCityRoute
@@ -257,6 +266,7 @@ export interface FileRouteTypes {
     | '/financing'
     | '/gallery'
     | '/reviews'
+    | '/schedule'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/chimney-repair/$city'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
     | '/financing'
     | '/gallery'
     | '/reviews'
+    | '/schedule'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/chimney-repair/$city'
@@ -311,6 +322,7 @@ export interface FileRouteTypes {
     | '/financing'
     | '/gallery'
     | '/reviews'
+    | '/schedule'
     | '/sitemap.xml'
     | '/blog/$slug'
     | '/chimney-repair/$city'
@@ -339,6 +351,7 @@ export interface RootRouteChildren {
   FinancingRoute: typeof FinancingRoute
   GalleryRoute: typeof GalleryRoute
   ReviewsRoute: typeof ReviewsRoute
+  ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ChimneyRepairCityRoute: typeof ChimneyRepairCityRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
@@ -364,6 +377,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/schedule': {
+      id: '/schedule'
+      path: '/schedule'
+      fullPath: '/schedule'
+      preLoaderRoute: typeof ScheduleRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reviews': {
@@ -556,6 +576,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinancingRoute: FinancingRoute,
   GalleryRoute: GalleryRoute,
   ReviewsRoute: ReviewsRoute,
+  ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ChimneyRepairCityRoute: ChimneyRepairCityRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,

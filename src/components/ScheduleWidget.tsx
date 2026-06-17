@@ -1,7 +1,6 @@
-import { useState, useEffect, useCallback } from "react";
-import { CheckCircle2, CalendarCheck, Phone } from "lucide-react";
+import { useState, useCallback } from "react";
+import { CheckCircle2, CalendarCheck, Flame, ShieldCheck } from "lucide-react";
 import { format } from "date-fns";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -10,11 +9,14 @@ import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { reportLeadFormConversion } from "@/lib/track";
 
-const OPEN_EVENT = "chimcrew:open-schedule";
-
+/**
+ * Schedule "trigger" — instead of opening a modal, we navigate to the
+ * dedicated /schedule page. Kept as a function so existing call sites
+ * (header, sticky CTA, etc.) keep working unchanged.
+ */
 export function openScheduleDialog() {
-  if (typeof window !== "undefined") {
-    window.dispatchEvent(new CustomEvent(OPEN_EVENT));
+  if (typeof window !== "undefined" && window.location.pathname !== "/schedule") {
+    window.location.href = "/schedule";
   }
 }
 
@@ -33,34 +35,6 @@ const STEPS = [
   { n: 2, label: "Address" },
   { n: 3, label: "Note" },
 ];
-
-export function ScheduleWidget() {
-  const [open, setOpen] = useState(false);
-  const [openedFromPath, setOpenedFromPath] = useState<string>("");
-  useEffect(() => {
-    const onOpen = () => {
-      if (typeof window !== "undefined") setOpenedFromPath(window.location.pathname);
-      setOpen(true);
-    };
-    window.addEventListener(OPEN_EVENT, onOpen);
-    return () => window.removeEventListener(OPEN_EVENT, onOpen);
-  }, []);
-  return (
-    <>
-      <StickyCta
-        onClick={() => {
-          if (typeof window !== "undefined") setOpenedFromPath(window.location.pathname);
-          setOpen(true);
-        }}
-      />
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-h-[92vh] overflow-y-auto border-0 bg-transparent p-0 sm:max-w-xl [&>button.absolute]:right-3 [&>button.absolute]:top-3 [&>button.absolute]:z-10 [&>button.absolute]:flex [&>button.absolute]:h-9 [&>button.absolute]:w-9 [&>button.absolute]:items-center [&>button.absolute]:justify-center [&>button.absolute]:rounded-full [&>button.absolute]:bg-white/95 [&>button.absolute]:text-primary [&>button.absolute]:opacity-100 [&>button.absolute]:shadow-md [&>button.absolute:hover]:bg-white [&>button.absolute_svg]:h-5 [&>button.absolute_svg]:w-5">
-          <ScheduleFlow sourcePath={openedFromPath} onDone={() => setOpen(false)} />
-        </DialogContent>
-      </Dialog>
-    </>
-  );
-}
 
 export function ScheduleInline() {
   const path = typeof window !== "undefined" ? window.location.pathname : "";
@@ -170,16 +144,25 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   }, [date, street, city, zip, sourcePath, name, phone, service, slot, notes, onDone]);
 
   return (
-    <div className="overflow-hidden rounded-2xl bg-primary text-primary-foreground shadow-[0_20px_60px_-20px_oklch(0_0_0/0.55)]">
-      <div className="px-6 pt-8 pb-6 md:px-10 md:pt-10">
-        <h2 className="font-display text-3xl font-extrabold uppercase tracking-tight text-white md:text-4xl">
+    <div className="overflow-hidden rounded-2xl border border-flame/30 bg-primary text-primary-foreground shadow-[0_30px_80px_-30px_oklch(0_0_0/0.6)]">
+      {/* Branded header */}
+      <div className="relative overflow-hidden px-6 pt-8 pb-6 md:px-10 md:pt-10">
+        <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-flame/20 blur-3xl" aria-hidden />
+        <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+          <Flame className="h-3 w-3" /> ChimCrew · 60-second booking
+        </span>
+        <h2 className="mt-3 font-display text-2xl font-extrabold uppercase leading-[1.05] tracking-tight text-white md:text-3xl">
           Schedule Service Online
         </h2>
         <p className="mt-3 text-sm text-white/85 md:text-base">
-          Servicing <span className="font-bold text-white">Your Area</span> And Surrounding Areas — CHIMCREW
+          Servicing{" "}
+          <span className="inline-block rounded-md bg-flame px-1.5 py-0.5 font-bold text-primary">
+            your area
+          </span>{" "}
+          and surrounding neighborhoods.
         </p>
-        <p className="mt-2 text-sm text-white/70">
-          No extra charge for appointments on nights, weekends or holidays
+        <p className="mt-1 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-white/60">
+          <ShieldCheck className="h-3 w-3 text-flame" /> No extra charge nights · weekends · holidays
         </p>
 
         <div className="mt-6 grid grid-cols-3 gap-0 border-b border-white/15">
@@ -188,9 +171,9 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
             return (
               <div
                 key={s.n}
-                className={`pb-3 text-left text-sm transition ${
+                className={`pb-3 text-left font-mono text-[11px] uppercase tracking-[0.18em] transition ${
                   active
-                    ? "border-b-2 border-[#E63A1F] font-semibold text-white"
+                    ? "border-b-2 border-flame font-bold text-white"
                     : "border-b-2 border-transparent text-white/55"
                 }`}
               >
@@ -323,7 +306,7 @@ function NextButton({
       type="button"
       disabled={disabled}
       onClick={onClick}
-      className={`inline-flex h-14 w-full items-center justify-center gap-2 rounded-md bg-[#E63A1F] font-display text-base font-bold uppercase tracking-wider text-white transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
+      className={`inline-flex h-14 w-full items-center justify-center gap-2 rounded-md bg-flame font-display text-base font-bold uppercase tracking-wider text-primary shadow-[0_10px_24px_oklch(0.78_0.19_92/0.35)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50 ${className}`}
     >
       {label}
     </button>
@@ -342,40 +325,3 @@ function BackButton({ onClick }: { onClick: () => void }) {
   );
 }
 
-function StickyCta({ onClick }: { onClick: () => void }) {
-  return (
-    <>
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-flame/30 bg-primary/95 px-3 py-2.5 backdrop-blur-xl md:hidden" style={{ paddingBottom: "calc(0.625rem + env(safe-area-inset-bottom))" }}>
-        <div className="flex items-center gap-2">
-          <a
-            href="tel:6146835763"
-            className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-white/15 bg-white/5 text-primary-foreground"
-            aria-label="Call ChimCrew"
-          >
-            <Phone className="h-5 w-5" />
-          </a>
-          <button
-            type="button"
-            onClick={onClick}
-            className="flex h-12 flex-1 items-center justify-center gap-2 rounded-xl bg-[#E63A1F] px-4 font-display text-sm font-extrabold uppercase tracking-wider text-white shadow-md"
-          >
-            <CalendarCheck className="h-4 w-4" /> Schedule online
-          </button>
-        </div>
-      </div>
-      <div className="h-20 md:hidden" aria-hidden />
-
-      <button
-        type="button"
-        onClick={onClick}
-        className="group fixed right-0 top-1/2 z-40 hidden -translate-y-1/2 items-center gap-2 rounded-l-2xl bg-[#E63A1F] px-3 py-5 font-mono text-[11px] font-extrabold uppercase tracking-[0.22em] text-white shadow-[0_20px_50px_oklch(0_0_0/0.35)] transition hover:px-4 md:inline-flex"
-        aria-label="Schedule online"
-      >
-        <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#E63A1F]">
-          <CalendarCheck className="h-4 w-4" />
-        </span>
-        <span className="vertical-writing">Schedule online</span>
-      </button>
-    </>
-  );
-}

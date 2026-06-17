@@ -135,7 +135,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <MeetTheTeam />
       <Hero />
       <HeroToOfferBridge />
       <TrustBar />
@@ -155,37 +154,6 @@ function Index() {
       <TrustMarquee />
       <EmergencyCallBar />
     </>
-  );
-}
-
-/* ============================================================
-   MEET THE TEAM — photo strip directly below the site header
-   ============================================================ */
-function MeetTheTeam() {
-  return (
-    <section className="relative overflow-hidden border-b border-border bg-background">
-      <div className="mx-auto max-w-7xl px-4 pt-6 md:px-8 md:pt-10">
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
-          <img
-            src={teamHeroPhoto.url}
-            alt="Meet the ChimCrew team — Columbus, Ohio"
-            className="block h-auto w-full object-cover"
-            fetchPriority="high"
-            decoding="async"
-            loading="eager"
-          />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent" aria-hidden />
-          <div className="absolute inset-x-5 bottom-5">
-            <p className="font-display text-lg font-bold text-primary-foreground md:text-2xl">
-              Meet the ChimCrew team.
-            </p>
-            <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/75 md:text-[11px]">
-              Columbus · Dayton · Cincinnati — your local Ohio chimney crew
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -398,7 +366,7 @@ function LimitedOfferBanner() {
               <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
                 <button
                   type="button"
-                  onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+                  onClick={() => (window.location.href = "/schedule")}
                   className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
                 >
                   <CalendarCheck className="h-4 w-4" /> Schedule now
@@ -420,55 +388,92 @@ function LimitedOfferBanner() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden border-b border-border/30 bg-gradient-to-b from-primary/[0.04] to-background">
-      <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-flame/40 to-transparent"
-        aria-hidden
-      />
-
-      <div className="relative mx-auto grid max-w-7xl gap-8 pb-12 pt-8 sm:gap-10 md:pt-12 lg:grid-cols-12 lg:gap-14 lg:pb-20 lg:pt-16">
-        {/* LEFT — message column */}
-        <div className="px-4 sm:px-6 lg:order-1 lg:col-span-6 lg:px-8 lg:pt-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
-              <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured · Ohio
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
-              <Star className="h-3 w-3 fill-flame text-flame" /> 5-Star Reviews
-            </span>
+    <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
+      {/* PHOTO — flush to header, rounded only at the bottom (full-bleed) */}
+      <div className="relative">
+        <div className="relative overflow-hidden rounded-b-3xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+          <img
+            src={teamHeroPhoto.url}
+            alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
+            className="block h-auto w-full object-cover"
+            fetchPriority="high"
+            decoding="async"
+            loading="eager"
+          />
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
+            aria-hidden
+          />
+          <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
+            <p className="font-display text-base font-bold text-primary-foreground sm:text-lg md:text-2xl">
+              Meet the ChimCrew team.
+            </p>
+            <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/75 md:text-[11px]">
+              Columbus · Dayton · Cincinnati — your local Ohio chimney crew
+            </p>
           </div>
+        </div>
+      </div>
 
-          <h1 className="mt-5 font-display !text-xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:!text-2xl md:!text-3xl">
-            Trusted By{" "}
-            <span className="mt-2 inline-block rounded-md bg-primary px-2 py-0.5 text-primary-foreground">
-              Columbus
-            </span>{" "}
-            <span className="mt-2 inline-block rounded-md bg-primary px-2 py-0.5 text-primary-foreground">
-              Homeowners
-            </span>{" "}
-            For Chimney Repairs & Inspections
-          </h1>
+      {/* MESSAGE — single column under the photo */}
+      <div className="relative mx-auto max-w-3xl px-4 pb-12 pt-8 sm:px-6 md:pb-16 md:pt-12 lg:px-8">
+        {/* Certified badge — pulled above the headline, larger */}
+        <div className="flex items-center gap-3">
+          <img
+            src={certifiedBadge.url}
+            alt="Certified chimney sweep credential"
+            width={72}
+            height={72}
+            className="h-16 w-16 shrink-0 rounded-full bg-white p-1.5 ring-1 ring-border sm:h-20 sm:w-20"
+            loading="eager"
+            decoding="async"
+          />
+          <div className="min-w-0">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:text-[11px]">
+              Certified chimney professionals
+            </p>
+            <div className="mt-1 flex flex-wrap gap-1.5">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary-foreground">
+                <ShieldCheck className="h-3 w-3 text-flame" /> Licensed · Insured
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-flame/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-foreground">
+                <Star className="h-3 w-3 fill-flame text-flame" /> 5-Star Reviews
+              </span>
+            </div>
+          </div>
+        </div>
 
-          <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base lg:text-lg">
-            Servicing Your Area And Surrounding Areas • Chimney Inspections, Repair And Cleaning Near Me
-          </p>
+        <h1 className="mt-5 font-display text-[22px] font-bold leading-[1.15] tracking-tight text-foreground sm:text-3xl md:text-4xl">
+          Trusted by{" "}
+          <span className="inline-block rounded-md bg-primary px-2 py-0.5 text-primary-foreground">
+            Columbus
+          </span>{" "}
+          homeowners for chimney repairs &amp; inspections.
+        </h1>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
+          Servicing{" "}
+          <span className="inline-block rounded-md bg-primary px-1.5 py-0.5 font-semibold text-primary-foreground">
+            your area
+          </span>{" "}
+          and surrounding neighborhoods — chimney inspections, repair and cleaning near you.
+        </p>
+
+        <div className="mt-6 flex flex-col items-stretch gap-3 sm:flex-row sm:flex-wrap">
             {/* CALL — primary on mobile, secondary on desktop */}
             <a
               href="tel:6146835763"
-              className="order-1 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
+              className="order-1 inline-flex h-12 items-center justify-start gap-2 rounded-xl bg-flame px-5 text-left font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
             >
               <Phone className="h-4 w-4 text-primary sm:text-flame" /> Call Now (614) 683-5763
             </a>
             {/* SCHEDULE — secondary on mobile, primary on desktop */}
-            <button
-              type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
-              className="order-2 inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-6 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
+            <Link
+              to="/schedule"
+              className="order-2 inline-flex h-12 items-center justify-start gap-2 rounded-xl border border-foreground/20 bg-background px-5 text-left font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-6 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
-            </button>
+            </Link>
           </div>
 
           {/* Emergency line micro-CTA */}
@@ -500,62 +505,6 @@ function Hero() {
               </span>
             ))}
           </div>
-        </div>
-
-        {/* RIGHT — photo column. Full-bleed on mobile, rounded only at the bottom. */}
-        <div className="relative lg:order-2 lg:col-span-6 lg:px-8">
-          <div className="relative mx-auto w-full lg:max-w-none">
-            <div className="relative overflow-hidden rounded-b-3xl bg-card lg:rounded-2xl lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
-              <img
-                src={teamHeroPhoto.url}
-                alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
-                className="block h-auto w-full object-contain"
-                fetchPriority="high"
-                decoding="async"
-                loading="eager"
-              />
-              {/* subtle bottom scrim for caption legibility */}
-              <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
-                aria-hidden
-              />
-              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 sm:inset-x-5 sm:bottom-5">
-                <div className="min-w-0">
-                  <p className="font-display text-sm font-bold text-primary-foreground sm:text-base">
-                    Meet the ChimCrew team.
-                  </p>
-                  <p className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/70">
-                    Columbus, Ohio · Established crew
-                  </p>
-                </div>
-                <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
-                  On the job
-                </span>
-              </div>
-            </div>
-
-            {/* Credential chip below image */}
-            <div className="mx-4 mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
-              <img
-                src={certifiedBadge.url}
-                alt="Certified chimney sweep credential"
-                width={56}
-                height={56}
-                className="h-12 w-12 shrink-0 rounded-full bg-white p-1.5"
-                loading="eager"
-                decoding="async"
-              />
-              <div className="min-w-0">
-                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
-                  Certified chimney professionals
-                </p>
-                <p className="mt-0.5 text-xs text-foreground/75 sm:text-[13px]">
-                  Every inspection documented with written photo reports.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -731,7 +680,7 @@ function CommonProblems() {
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+            onClick={() => (window.location.href = "/schedule")}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule appointment online
@@ -788,7 +737,7 @@ function PhotoVideoTrust() {
         </div>
         <button
           type="button"
-          onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+          onClick={() => (window.location.href = "/schedule")}
           className="inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-md transition active:scale-95"
         >
           <CalendarCheck className="h-4 w-4" /> Book Inspection
@@ -903,7 +852,7 @@ function WhyChooseUs() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <button
             type="button"
-            onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+            onClick={() => (window.location.href = "/schedule")}
             className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule appointment online
@@ -1217,7 +1166,7 @@ function LeakingChimney() {
           <div className="mt-7 flex flex-wrap gap-3">
             <button
               type="button"
-              onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+              onClick={() => (window.location.href = "/schedule")}
               className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
@@ -1287,7 +1236,7 @@ function ScheduleOnline() {
             <div className="mt-8 flex flex-wrap gap-3">
               <button
                 type="button"
-                onClick={() => window.dispatchEvent(new CustomEvent("chimcrew:open-schedule"))}
+                onClick={() => (window.location.href = "/schedule")}
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
               >
                 <CalendarCheck className="h-4 w-4" /> Schedule appointment online
