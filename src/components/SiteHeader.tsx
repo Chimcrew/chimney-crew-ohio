@@ -511,7 +511,8 @@ export function SiteHeader() {
         </div>
       )}
     </header>
-    <div className="h-[60px] md:hidden" aria-hidden="true" />
+    {/* Spacer: mobile header (~60px) + sticky CTA bar (~38px) */}
+    <div className="h-[98px] md:hidden" aria-hidden="true" />
     </>
   );
 }
