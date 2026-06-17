@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Facebook, Instagram, CheckCircle2 } from "lucide-react";
-import logoAsset from "@/assets/chimcrew-logo.jpeg.asset.json";
+import logoAsset from "@/assets/chimcrew-logo-crew.png.asset.json";
 const logo = logoAsset.url;
 import van from "@/assets/chimcrew-van.png";
 import { SERVICES } from "@/data/services";
