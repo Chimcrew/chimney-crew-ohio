@@ -427,7 +427,7 @@ export function SiteHeader() {
                             className="flex w-full items-center justify-between rounded-lg px-3 py-2 font-display text-sm font-semibold text-foreground"
                           >
                             <span className="inline-flex items-center gap-2">
-                              <cat.Icon className="h-4 w-4 text-[oklch(0.65_0.18_92)]" />
+                              <cat.Icon className="h-4 w-4 text-[#E63A1F]" />
                               {cat.label}
                             </span>
                             <ChevronRight
