@@ -71,10 +71,11 @@
   --color-ember: var(--ember);
   --color-soot: var(--soot);
   --color-ash: var(--ash);
-  --font-display: 'Oswald', 'Geist', 'Inter', system-ui, sans-serif;
+  --font-display: 'Manrope', 'Inter', system-ui, sans-serif;
   --font-inline: 'Bungee', 'Impact', sans-serif;
-  --font-sans: 'Geist', 'Inter', system-ui, sans-serif;
+  --font-sans: 'Manrope', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
+  --font-cta: 'Oswald', 'Manrope', sans-serif;
 }
 
 :root {
