@@ -418,7 +418,7 @@ function Hero() {
               href="tel:6146835763"
               className="order-1 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
             >
-              <Phone className="h-4 w-4 text-primary sm:text-flame" /> (614) 683-5763
+              <Phone className="h-4 w-4 text-primary sm:text-flame" /> Call Now (614) 683-5763
             </a>
             {/* SCHEDULE — secondary on mobile, primary on desktop */}
             <button
