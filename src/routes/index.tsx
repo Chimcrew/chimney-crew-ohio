@@ -47,6 +47,13 @@ import beforeAfterPhoto from "@/assets/chimney-before-after.png.asset.json";
 import fireplaceServicePhoto from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 import techFireplaceSweepPhoto from "@/assets/tech-fireplace-sweep.png.asset.json";
 import rooftopTechsPhoto from "@/assets/team/chimcrew-techs-rooftop.png.asset.json";
+import damagedLinerPhoto from "@/assets/problems/damaged-liner.png.asset.json";
+import chimneyLeakCeilingPhoto from "@/assets/problems/chimney-leak-ceiling.png.asset.json";
+import draftSmokeFireplacePhoto from "@/assets/problems/draft-smoke-fireplace.png.asset.json";
+import brickMortarDamagePhoto from "@/assets/problems/brick-mortar-damage.png.asset.json";
+import chimneyWaterDamageAtticPhoto from "@/assets/problems/chimney-water-damage-attic.png.asset.json";
+import crackedCrownPhoto from "@/assets/problems/cracked-crown.png.asset.json";
+import damagedChimneyCapPhoto from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES, formatFromPrice, getService } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
@@ -624,13 +631,55 @@ function EmergencyCallBar() {
    ============================================================ */
 function CommonProblems() {
   const problems = [
-    { icon: Droplets, label: "Chimney Leaks", body: "Water stains, ceiling drips, and damp brick after every rain.", slug: "flashing-repair" },
-    { icon: AlertTriangle, label: "Cracked Chimney Crowns", body: "Hairline cracks letting water sit on top of the chimney.", slug: "crown-tuckpoint" },
-    { icon: ShieldCheck, label: "Missing or Damaged Chimney Caps", body: "Open flues let in rain, debris, and animals.", slug: "cap-install" },
-    { icon: BrickIcon, label: "Brick & Mortar Damage", body: "Spalling brick and washed-out mortar joints.", slug: "crown-tuckpoint" },
-    { icon: Droplets, label: "Chimney Water Damage", body: "Stained masonry, efflorescence, and rotting framing inside.", slug: "waterproofing" },
-    { icon: Wrench, label: "Damaged Chimney Liners", body: "Cracked clay tiles or rusted-out metal liners hurting draft and safety.", slug: "liner-install" },
-    { icon: Wind, label: "Draft & Ventilation Problems", body: "Smoke spilling into the room, cold downdrafts, hard-to-start fires.", slug: "damper-repair" },
+    {
+      label: "Chimney Leaks",
+      body: "Water stains, ceiling drips, and damp brick after every rain.",
+      slug: "flashing-repair",
+      image: chimneyLeakCeilingPhoto.url,
+      alt: "Water stain and ceiling damage caused by a leaking chimney",
+    },
+    {
+      label: "Cracked Chimney Crowns",
+      body: "Hairline cracks letting water sit on top of the chimney.",
+      slug: "crown-tuckpoint",
+      image: crackedCrownPhoto.url,
+      alt: "Cracked concrete chimney crown around flue tiles",
+    },
+    {
+      label: "Missing or Damaged Chimney Caps",
+      body: "Open flues let in rain, debris, and animals.",
+      slug: "cap-install",
+      image: damagedChimneyCapPhoto.url,
+      alt: "Damaged chimney cap sitting loose on top of a chimney",
+    },
+    {
+      label: "Brick & Mortar Damage",
+      body: "Spalling brick and washed-out mortar joints.",
+      slug: "crown-tuckpoint",
+      image: brickMortarDamagePhoto.url,
+      alt: "Chimney brick and mortar joints with visible cracking and deterioration",
+    },
+    {
+      label: "Chimney Water Damage",
+      body: "Stained masonry, efflorescence, and rotting framing inside.",
+      slug: "waterproofing",
+      image: chimneyWaterDamageAtticPhoto.url,
+      alt: "Water damage and staining around a chimney in an attic",
+    },
+    {
+      label: "Damaged Chimney Liners",
+      body: "Cracked clay tiles or rusted-out metal liners hurting draft and safety.",
+      slug: "liner-install",
+      image: damagedLinerPhoto.url,
+      alt: "Broken clay flue liner tiles inside a chimney",
+    },
+    {
+      label: "Draft & Ventilation Problems",
+      body: "Smoke spilling into the room, cold downdrafts, hard-to-start fires.",
+      slug: "damper-repair",
+      image: draftSmokeFireplacePhoto.url,
+      alt: "Smoke backing into a living room from a fireplace with draft problems",
+    },
   ];
   return (
     <section className="relative bg-background py-14 md:py-20">
@@ -649,16 +698,22 @@ function CommonProblems() {
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {problems.map(({ icon: Icon, label, body, slug }) => (
+          {problems.map(({ label, body, slug, image, alt }) => (
             <Link
               key={label}
               to="/services/$slug"
               params={{ slug }}
               className="group flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-flame hover:shadow-md"
             >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-flame/15 text-flame">
-                <Icon className="h-5 w-5" />
-              </span>
+              <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md border border-border/60 bg-muted">
+                <img
+                  src={image}
+                  alt={alt}
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
               <div className="min-w-0">
                 <p className="font-display text-base font-bold text-primary group-hover:text-flame">
                   {label}
