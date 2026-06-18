@@ -111,12 +111,15 @@ export function serviceCtaLabel(s: Pick<ServiceSpec, "ctaLabel" | "shortTitle" |
 
 /** Display label for a service price.
  *
- *  Per company policy, the only price advertised anywhere on the public
- *  website is the $69 chimney inspection. Every other service shows no
- *  price — the homeowner is asked to request a free quote instead.
+ *  We advertise flat-rate prices for our scheduled services (inspection,
+ *  sweep, gas fireplace, dryer vent). Everything else is custom and shows
+ *  no price — the homeowner is asked to request a free quote instead.
  */
 export function formatFromPrice(s: Pick<ServiceSpec, "slug">): string {
   if (s.slug === "level-1-inspection") return "Only $69";
+  if (s.slug === "gas-fireplace-service") return "Only $49";
+  if (s.slug === "chimney-sweep") return "Only $99";
+  if (s.slug === "dryer-vent-cleaning") return "Only $79";
   return "";
 }
 
@@ -175,7 +178,7 @@ export const SERVICES: ServiceSpec[] = [
     title: "Chimney Sweep & Cleaning",
     shortTitle: "Chimney Sweep",
     tagline: "Creosote, soot and ash — gone in under 90 minutes.",
-    price: "$118",
+    price: "$99",
     duration: "",
     icon: Wind,
     variant: "maintenance",
@@ -707,7 +710,7 @@ export const SERVICES: ServiceSpec[] = [
     title: "Gas Fireplace Service",
     shortTitle: "Gas Fireplace Service",
     tagline: "Tune, clean, and safety-check your gas insert or log set.",
-    price: "$218",
+    price: "$49",
     duration: "",
     icon: Sparkles,
     variant: "maintenance",
