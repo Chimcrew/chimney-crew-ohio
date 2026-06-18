@@ -45,6 +45,7 @@ function getDefaultDate(): Date {
 function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone?: () => void }) {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [date, setDate] = useState<Date | undefined>(() => getDefaultDate());
   const [slot, setSlot] = useState<string>(SLOTS[0]);
   const [street, setStreet] = useState("");
@@ -76,6 +77,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       source: sourceLabel,
       name,
       phone,
+      email: email.trim() || undefined,
       service,
       city: city || undefined,
       address: address || undefined,
@@ -103,6 +105,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         source: `${sourceLabel} [NO EMAIL SENT]`.slice(0, 60),
         name,
         phone,
+        email: email.trim() || null,
         service,
         city: city || null,
         address: address || null,
@@ -131,11 +134,12 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     onDone?.();
     setName("");
     setPhone("");
+    setEmail("");
     setStreet("");
     setCity("");
     setZip("");
     setNotes("");
-  }, [date, street, city, zip, sourcePath, name, phone, service, slot, notes, onDone]);
+  }, [date, street, city, zip, sourcePath, name, phone, email, service, slot, notes, onDone]);
 
   return (
     <div className="bg-background text-foreground">
@@ -209,6 +213,18 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
             <Input value={phone} onChange={(e) => setPhone(e.target.value)} inputMode="tel" className="h-10 rounded-none border-foreground/20 text-sm" />
           </Field>
         </div>
+
+        {/* Email — used to send a booking confirmation */}
+        <Field label="Email (for confirmation)">
+          <Input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            inputMode="email"
+            placeholder="you@example.com"
+            className="h-10 rounded-none border-foreground/20 text-sm"
+          />
+        </Field>
 
         {/* Date + Time */}
         <div className="grid gap-3 sm:grid-cols-2">
