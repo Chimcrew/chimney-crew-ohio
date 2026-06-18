@@ -103,7 +103,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
     reportLeadFormConversion();
     toast.success("You're on the schedule!", {
-      description: `${service} · ${dateStr ?? ""} · ${slot}. We'll call ${phone} within the hour.`,
+      description: `${service} · ${dateStr ?? ""} · ${slot}. We'll email your appointment confirmation within 10 minutes.`,
       duration: 7000,
     });
     onDone?.();
@@ -259,7 +259,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
         <p className="flex items-center justify-center gap-1.5 pt-0.5 text-[11px] text-muted-foreground">
           <CheckCircle2 className="h-3.5 w-3.5 text-[#E63A1F]" />
-          No card. No spam. We call within the hour.
+          No card. No spam. Appointment confirmation email within 10 minutes.
         </p>
       </div>
     </div>

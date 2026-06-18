@@ -36,7 +36,7 @@ function SchedulePage() {
               Schedule your ChimCrew appointment.
             </h1>
             <p className="mt-2 text-sm text-foreground/75 md:text-base">
-              Three quick steps. We text to confirm within the hour.
+              Three quick steps. Appointment confirmation emailed within 10 minutes.
             </p>
           </div>
           <ScheduleInline />

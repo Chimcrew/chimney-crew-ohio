@@ -17,7 +17,7 @@ const TEL_DISPLAY = "(614) 683-5763";
 export function InlineLeadForm({
   source = "Home hero inline form",
   title = "Book your free inspection",
-  subtitle = "Takes ~30 seconds. We text or call within the hour.",
+  subtitle = "Takes ~30 seconds. Appointment confirmation emailed within 10 minutes.",
   tone = "light",
 }: Props) {
   const [name, setName] = useState("");
@@ -60,7 +60,7 @@ export function InlineLeadForm({
       });
       reportLeadFormConversion();
       setDone(true);
-      toast.success("Got it — we'll call you back shortly.");
+      toast.success("Request received — check your email for the appointment confirmation within 10 minutes.");
     } catch {
       toast.error("Something went wrong. Please call us instead.");
     } finally {
@@ -75,7 +75,7 @@ export function InlineLeadForm({
           <CheckCircle2 className="h-6 w-6" />
         </div>
         <h2 className={"mt-3 " + titleCls}>You're booked in.</h2>
-        <p className={subCls}>Our team will call within the next business hour.</p>
+        <p className={subCls}>We'll email your appointment confirmation within 10 minutes.</p>
         <a
           href={TEL}
           className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-4 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary"

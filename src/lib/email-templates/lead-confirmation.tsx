@@ -21,24 +21,38 @@ const LeadConfirmationEmail = ({
 }: LeadConfirmationProps) => (
   <Html lang="en" dir="ltr">
     <Head />
-    <Preview>We received your request — expect a call within the hour.</Preview>
+    <Preview>Your appointment request is in — confirmation arriving shortly.</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Thanks, {name.split(' ')[0]}!</Heading>
-        <Text style={subtitle}>We received your {service} request.</Text>
-
-        <Section style={card}>
-          <Text style={cardTitle}>What happens next?</Text>
-          <ul style={list}>
-            <li style={listItem}>One of our Ohio crew members will call or text you within <strong>1 business hour</strong>.</li>
-            <li style={listItem}>We will confirm your address in {city} and schedule a convenient time.</li>
-            <li style={listItem}>Your inspection includes a written photo report — no pressure, no surprise charges.</li>
-          </ul>
+        <Section style={brandBar}>
+          <Text style={brandMark}>CHIMCREW</Text>
         </Section>
 
-        <Text style={ctaText}>Questions? Call us directly:</Text>
+        <Heading style={h1}>Appointment received, {name.split(' ')[0]}.</Heading>
+        <Text style={subtitle}>
+          We got your request for <strong>{service}</strong>{city ? ` in ${city}` : ''}.
+        </Text>
+
+        <Section style={statusCard}>
+          <Text style={statusKicker}>What happens next</Text>
+          <Text style={statusHeadline}>
+            Your <strong>appointment confirmation email</strong> will arrive within the next <strong>10 minutes</strong>.
+          </Text>
+          <Text style={statusBody}>
+            It will include your scheduled day, time window, and the name of the CSIA-certified tech assigned to your job.
+          </Text>
+        </Section>
+
+        <Section style={card}>
+          <Text style={cardTitle}>Your request</Text>
+          <Text style={kv}><span style={kvLabel}>Service · </span>{service}</Text>
+          {city ? <Text style={kv}><span style={kvLabel}>Area · </span>{city}</Text> : null}
+          <Text style={kv}><span style={kvLabel}>Status · </span>Pending confirmation</Text>
+        </Section>
+
+        <Text style={ctaText}>Need to reach us sooner?</Text>
         <Button href={PHONE_HREF} style={cta}>
-          {PHONE}
+          Call {PHONE}
         </Button>
 
         <Hr style={hr} />
@@ -53,7 +67,7 @@ const LeadConfirmationEmail = ({
 export const template = {
   component: LeadConfirmationEmail,
   subject: (data: Record<string, any>) =>
-    `ChimCrew — we received your ${data?.service || 'request'}`,
+    `ChimCrew — appointment confirmation on the way`,
   displayName: 'Lead confirmation',
   previewData: {
     name: 'Jane Smith',
@@ -62,15 +76,25 @@ export const template = {
   },
 } satisfies TemplateEntry
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '24px', maxWidth: '560px' }
-const h1 = { fontSize: '22px', fontWeight: 'bold' as const, color: '#0a0a0a', margin: '0 0 6px' }
-const subtitle = { fontSize: '14px', color: '#555', margin: '0 0 18px', lineHeight: '1.5' }
-const card = { backgroundColor: '#f7f5f1', borderRadius: '8px', padding: '16px 18px', border: '1px solid #ececec' }
-const cardTitle = { fontSize: '13px', fontWeight: 'bold' as const, color: '#0a0a0a', margin: '0 0 10px', textTransform: 'uppercase' as const, letterSpacing: '0.08em' }
-const list = { padding: '0 0 0 18px', margin: '0' }
-const listItem = { fontSize: '14px', color: '#1a1a1a', margin: '6px 0', lineHeight: '1.5' }
-const ctaText = { fontSize: '14px', color: '#1a1a1a', margin: '20px 0 8px', textAlign: 'center' as const }
-const cta = { backgroundColor: '#c2410c', color: '#ffffff', borderRadius: '8px', padding: '12px 24px', fontSize: '14px', fontWeight: 'bold' as const, textDecoration: 'none', display: 'block', textAlign: 'center' as const }
-const hr = { borderColor: '#ececec', margin: '20px 0' }
-const footer = { fontSize: '12px', color: '#888', margin: '12px 0 0', lineHeight: '1.5' }
+// Brand: truck-black + hi-vis yellow
+const BRAND_BLACK = '#0B0F19'
+const BRAND_YELLOW = '#FACC15'
+
+const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, Helvetica, sans-serif' }
+const container = { padding: '0', maxWidth: '600px', margin: '0 auto' }
+const brandBar = { backgroundColor: BRAND_BLACK, padding: '18px 28px', borderBottom: `4px solid ${BRAND_YELLOW}` }
+const brandMark = { color: BRAND_YELLOW, fontSize: '18px', fontWeight: 800 as const, letterSpacing: '0.18em', margin: 0 }
+const h1 = { fontSize: '24px', fontWeight: 800 as const, color: BRAND_BLACK, margin: '28px 28px 8px', lineHeight: '1.25' }
+const subtitle = { fontSize: '15px', color: '#3f4756', margin: '0 28px 22px', lineHeight: '1.55' }
+const statusCard = { backgroundColor: BRAND_BLACK, borderRadius: '10px', padding: '20px 22px', margin: '0 28px 18px', borderLeft: `6px solid ${BRAND_YELLOW}` }
+const statusKicker = { fontSize: '11px', fontWeight: 800 as const, color: BRAND_YELLOW, margin: '0 0 8px', textTransform: 'uppercase' as const, letterSpacing: '0.14em' }
+const statusHeadline = { fontSize: '16px', color: '#ffffff', margin: '0 0 8px', lineHeight: '1.45' }
+const statusBody = { fontSize: '14px', color: '#cfd4dd', margin: 0, lineHeight: '1.55' }
+const card = { backgroundColor: '#f7f7f5', borderRadius: '10px', padding: '16px 18px', margin: '0 28px 18px', border: '1px solid #ececec' }
+const cardTitle = { fontSize: '11px', fontWeight: 800 as const, color: BRAND_BLACK, margin: '0 0 10px', textTransform: 'uppercase' as const, letterSpacing: '0.14em' }
+const kv = { fontSize: '14px', color: '#1a1a1a', margin: '4px 0', lineHeight: '1.5' }
+const kvLabel = { color: '#6b7280', fontWeight: 700 as const }
+const ctaText = { fontSize: '14px', color: '#1a1a1a', margin: '8px 28px 10px', textAlign: 'center' as const }
+const cta = { backgroundColor: BRAND_YELLOW, color: BRAND_BLACK, borderRadius: '10px', padding: '14px 24px', fontSize: '15px', fontWeight: 800 as const, textDecoration: 'none', display: 'block', textAlign: 'center' as const, margin: '0 28px' }
+const hr = { borderColor: '#ececec', margin: '24px 28px' }
+const footer = { fontSize: '12px', color: '#888', margin: '0 28px 24px', lineHeight: '1.5' }
