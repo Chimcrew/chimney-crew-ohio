@@ -183,6 +183,10 @@ export type Database = {
         Args: { payload: Json; queue_name: string }
         Returns: number
       }
+      enqueue_email_delayed: {
+        Args: { delay_seconds: number; payload: Json; queue_name: string }
+        Returns: number
+      }
       move_to_dlq: {
         Args: {
           dlq_name: string
