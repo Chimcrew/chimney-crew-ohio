@@ -22,7 +22,7 @@ function generateToken(): string {
   return Array.from(bytes).map((b) => b.toString(16).padStart(2, '0')).join('')
 }
 
-async function getOrCreateUnsubscribeToken(supabase: ReturnType<typeof createClient>, email: string): Promise<string> {
+async function getOrCreateUnsubscribeToken(supabase: ReturnType<typeof createClient<any>>, email: string): Promise<string> {
   const normalized = email.toLowerCase()
   const { data: existing } = await supabase
     .from('email_unsubscribe_tokens')
