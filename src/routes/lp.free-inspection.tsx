@@ -182,7 +182,7 @@ function InlineLeadForm() {
       });
       reportLeadFormConversion();
       setDone(true);
-      toast.success("Got it — we'll call you back shortly.");
+      toast.success("Request received — appointment confirmation email arrives within 10 minutes.");
     } catch {
       toast.error("Something went wrong. Please call us instead.");
     } finally {
@@ -198,7 +198,7 @@ function InlineLeadForm() {
         </div>
         <h2 className="mt-3 font-display text-xl font-extrabold">You're booked in.</h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Our team will call you within the next business hour. Need it sooner?
+          We'll email your appointment confirmation within 10 minutes. Need it sooner?
         </p>
         <a
           href={TEL}
@@ -274,7 +274,7 @@ function InlineLeadForm() {
           {submitting ? "Sending…" : "Get my free inspection"}
         </button>
         <p className="text-center text-xs text-muted-foreground">
-          No spam. We text or call within the hour.
+          No spam. Appointment confirmation emailed within 10 minutes.
         </p>
       </div>
     </form>
