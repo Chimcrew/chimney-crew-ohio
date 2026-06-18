@@ -56,13 +56,13 @@ const CLEANING_MENU: MenuLink[] = [
   { label: "Chimney Inspection — $69", to: "/services/$slug", slug: "level-1-inspection" },
   { label: "Level 1 Inspection", to: "/services/$slug", slug: "level-1-inspection" },
   { label: "Level 2 Inspection", to: "/services/$slug", slug: "level-2-inspection" },
-  { label: "Chimney Sweep", to: "/services/$slug", slug: "chimney-sweep" },
+  { label: "Chimney Sweep — $99", to: "/services/$slug", slug: "chimney-sweep" },
   { label: "Creosote Removal", to: "/services/$slug", slug: "chimney-sweep" },
   { label: "Chimney Cleaning", to: "/services/$slug", slug: "chimney-sweep" },
 ];
 
 const FIREPLACE_MENU: MenuLink[] = [
-  { label: "Gas Fireplace Service", to: "/services/$slug", slug: "gas-fireplace-service" },
+  { label: "Gas Fireplace Service — $49", to: "/services/$slug", slug: "gas-fireplace-service" },
   { label: "Gas Fireplace Repair", to: "/services/$slug", slug: "gas-fireplace-service" },
   { label: "Fireplace Inspection", to: "/services/$slug", slug: "level-1-inspection" },
   { label: "Fireplace Repair", to: "/services/$slug", slug: "firebox-rebuild" },
