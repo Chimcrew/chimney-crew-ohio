@@ -43,15 +43,15 @@ async function getOrCreateUnsubscribeToken(supabase: any, email: string): Promis
 }
 
 const LeadSchema = z.object({
-  source: z.string().trim().min(1).max(100).optional(),
-  name: z.string().trim().min(1).max(200).optional(),
-  phone: z.string().trim().min(1).max(50).optional(),
+  source: z.string().trim().min(1).max(60).optional(),
+  name: z.string().trim().min(1).max(120).optional(),
+  phone: z.string().trim().min(1).max(32).optional(),
   email: z.string().email().max(200).optional().or(z.literal('')),
-  service: z.string().trim().min(1).max(200).optional(),
-  city: z.string().trim().min(1).max(100).optional(),
-  address: z.string().trim().min(1).max(300).optional(),
-  date: z.string().trim().min(1).max(100).optional(),
-  timeWindow: z.string().trim().min(1).max(100).optional(),
+  service: z.string().trim().min(1).max(120).optional(),
+  city: z.string().trim().min(1).max(120).optional(),
+  address: z.string().trim().min(1).max(240).optional(),
+  date: z.string().trim().min(1).max(40).optional(),
+  timeWindow: z.string().trim().min(1).max(60).optional(),
   notes: z.string().trim().min(1).max(2000).optional(),
 }).refine((data) => Boolean(data.name || data.phone || data.email), {
   message: 'At least one contact field is required',
