@@ -22,7 +22,7 @@ function generateToken(): string {
   return Array.from(bytes).map((b) => b.toString(16).padStart(2, '0')).join('')
 }
 
-async function getOrCreateUnsubscribeToken(supabase: any, email: string): Promise<string> {
+async function getOrCreateUnsubscribeToken(supabase: ReturnType<typeof createClient>, email: string): Promise<string> {
   const normalized = email.toLowerCase()
   const { data: existing } = await supabase
     .from('email_unsubscribe_tokens')
@@ -68,7 +68,7 @@ export const Route = createFileRoute('/api/public/notify-lead')({
           return Response.json({ error: 'Server misconfigured' }, { status: 500 })
         }
 
-        let body: any
+        let body: unknown
         try {
           body = await request.json()
         } catch {
