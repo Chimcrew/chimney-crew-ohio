@@ -22,6 +22,7 @@ import techCap from "@/assets/real/tech-chimney-cap-install.jpg.asset.json";
 import crownRebuild from "@/assets/real/chimney-crown-rebuild.jpg.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import { SiteFooter } from "@/components/SiteFooter";
+import { submitLead } from "@/lib/lead-submit";
 
 export const Route = createFileRoute("/lp/free-inspection")({
   head: () => ({
@@ -170,16 +171,12 @@ function InlineLeadForm() {
     }
     setSubmitting(true);
     try {
-      await fetch("/api/public/notify-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source: "Landing page (/lp/free-inspection)",
-          name: name.trim(),
-          phone: phone.trim(),
-          city: zip.trim(),
-          service: "Free chimney inspection",
-        }),
+      await submitLead({
+        source: "Landing page (/lp/free-inspection)",
+        name,
+        phone,
+        city: zip,
+        service: "Free chimney inspection",
       });
       reportLeadFormConversion();
       setDone(true);
