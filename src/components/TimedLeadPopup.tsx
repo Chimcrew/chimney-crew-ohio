@@ -10,7 +10,7 @@ export function TimedLeadPopup() {
   const [open, setOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
-  const [form, setForm] = useState({ name: "", phone: "", service: "Chimney Sweep" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", service: "Chimney Sweep" });
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -46,13 +46,14 @@ export function TimedLeadPopup() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name || !form.phone) return;
+    if (!form.name || !form.phone || !form.email) return;
     setSubmitting(true);
     try {
       await submitLead({
         source: "Exit popup (40s)",
         name: form.name,
         phone: form.phone,
+        email: form.email,
         service: form.service,
       });
       setSubmitting(false);
@@ -170,6 +171,13 @@ export function TimedLeadPopup() {
                   onChange={(v) => setForm({ ...form, phone: v })}
                   placeholder="(614) 683-5763"
                 />
+                <Field
+                  label="Email"
+                  type="email"
+                  value={form.email}
+                  onChange={(v) => setForm({ ...form, email: v })}
+                  placeholder="you@example.com"
+                />
                 <div>
                   <label className="mb-1.5 block font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/60">
                     Service
@@ -187,7 +195,7 @@ export function TimedLeadPopup() {
 
                 <button
                   type="submit"
-                  disabled={!form.name || !form.phone || submitting}
+                  disabled={!form.name || !form.phone || !form.email || submitting}
                   className="group relative mt-1 flex h-14 items-center justify-center gap-2 overflow-hidden rounded-xl bg-foreground px-5 font-display text-sm font-extrabold uppercase tracking-[0.18em] text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {submitting ? (
