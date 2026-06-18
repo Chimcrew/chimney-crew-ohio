@@ -382,7 +382,7 @@ export function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background text-foreground md:hidden">
+        <div className="absolute left-0 right-0 top-full z-50 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background shadow-[0_20px_40px_oklch(0.18_0.02_250/0.12)] text-foreground md:hidden">
           <div className="mx-auto max-w-7xl px-4 py-4 pb-8">
             <nav className="flex flex-col">
               {/* Home first */}
