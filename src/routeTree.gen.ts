@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnsubscribeRouteImport } from './routes/unsubscribe'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScheduleRouteImport } from './routes/schedule'
 import { Route as ReviewsRouteImport } from './routes/reviews'
@@ -36,6 +37,11 @@ import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lova
 import { Route as LovableEmailTransactionalPreviewRouteImport } from './routes/lovable/email/transactional/preview'
 import { Route as LovableEmailQueueProcessRouteImport } from './routes/lovable/email/queue/process'
 
+const UnsubscribeRoute = UnsubscribeRouteImport.update({
+  id: '/unsubscribe',
+  path: '/unsubscribe',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -180,6 +186,7 @@ export interface FileRoutesByFullPath {
   '/reviews': typeof ReviewsRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/chimney-repair/$city': typeof ChimneyRepairCityRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
@@ -208,6 +215,7 @@ export interface FileRoutesByTo {
   '/reviews': typeof ReviewsRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/chimney-repair/$city': typeof ChimneyRepairCityRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
@@ -237,6 +245,7 @@ export interface FileRoutesById {
   '/reviews': typeof ReviewsRoute
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/unsubscribe': typeof UnsubscribeRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/chimney-repair/$city': typeof ChimneyRepairCityRoute
   '/email/unsubscribe': typeof EmailUnsubscribeRoute
@@ -267,6 +276,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/schedule'
     | '/sitemap.xml'
+    | '/unsubscribe'
     | '/blog/$slug'
     | '/chimney-repair/$city'
     | '/email/unsubscribe'
@@ -295,6 +305,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/schedule'
     | '/sitemap.xml'
+    | '/unsubscribe'
     | '/blog/$slug'
     | '/chimney-repair/$city'
     | '/email/unsubscribe'
@@ -323,6 +334,7 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/schedule'
     | '/sitemap.xml'
+    | '/unsubscribe'
     | '/blog/$slug'
     | '/chimney-repair/$city'
     | '/email/unsubscribe'
@@ -352,6 +364,7 @@ export interface RootRouteChildren {
   ReviewsRoute: typeof ReviewsRoute
   ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  UnsubscribeRoute: typeof UnsubscribeRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ChimneyRepairCityRoute: typeof ChimneyRepairCityRoute
   EmailUnsubscribeRoute: typeof EmailUnsubscribeRoute
@@ -373,6 +386,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/unsubscribe': {
+      id: '/unsubscribe'
+      path: '/unsubscribe'
+      fullPath: '/unsubscribe'
+      preLoaderRoute: typeof UnsubscribeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -568,6 +588,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReviewsRoute: ReviewsRoute,
   ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  UnsubscribeRoute: UnsubscribeRoute,
   BlogSlugRoute: BlogSlugRoute,
   ChimneyRepairCityRoute: ChimneyRepairCityRoute,
   EmailUnsubscribeRoute: EmailUnsubscribeRoute,
