@@ -22,7 +22,8 @@ function generateToken(): string {
   return Array.from(bytes).map((b) => b.toString(16).padStart(2, '0')).join('')
 }
 
-async function getOrCreateUnsubscribeToken(supabase: ReturnType<typeof createClient<any>>, email: string): Promise<string> {
+async function getOrCreateUnsubscribeToken(supabaseUrl: string, supabaseServiceKey: string, email: string): Promise<string> {
+  const supabase = createClient(supabaseUrl, supabaseServiceKey)
   const normalized = email.toLowerCase()
   const { data: existing } = await supabase
     .from('email_unsubscribe_tokens')
@@ -115,7 +116,7 @@ export const Route = createFileRoute('/api/public/notify-lead')({
         const results = await Promise.all(
           ADMIN_EMAILS.map(async (to) => {
             const messageId = crypto.randomUUID()
-            const unsubscribeToken = await getOrCreateUnsubscribeToken(supabase, to)
+            const unsubscribeToken = await getOrCreateUnsubscribeToken(supabaseUrl, supabaseServiceKey, to)
             await supabase.from('email_send_log').insert({
               message_id: messageId,
               template_name: TEMPLATE_NAME,
@@ -171,7 +172,7 @@ export const Route = createFileRoute('/api/public/notify-lead')({
                 : confirmTemplate.subject
 
             const confirmMessageId = crypto.randomUUID()
-            const confirmUnsubscribeToken = await getOrCreateUnsubscribeToken(supabase, data.email)
+            const confirmUnsubscribeToken = await getOrCreateUnsubscribeToken(supabaseUrl, supabaseServiceKey, data.email)
             await supabase.from('email_send_log').insert({
               message_id: confirmMessageId,
               template_name: CONFIRMATION_TEMPLATE_NAME,
