@@ -136,7 +136,7 @@ export function TimedLeadPopup() {
                 Free chimney inspection — no obligation.
               </h2>
               <p className="mt-2 text-sm text-muted-foreground">
-                Leave your number and a licensed Ohio tech calls back within the hour.
+                Leave your details and we'll email your appointment confirmation within 10 minutes.
               </p>
 
               {/* Trust strip */}
