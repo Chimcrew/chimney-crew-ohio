@@ -393,7 +393,11 @@ export function SiteHeader() {
                 activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
                 activeOptions={{ exact: true }}
               >
-                Home <Flame className="h-4 w-4 text-[oklch(0.78_0.19_92)]" />
+                <span className="inline-flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[oklch(0.78_0.19_92)]" />
+                  Home
+                </span>
+                <Flame className="h-4 w-4 text-[oklch(0.78_0.19_92)]" />
               </Link>
 
               {/* Services mega-item */}
