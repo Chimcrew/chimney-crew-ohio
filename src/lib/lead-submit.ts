@@ -36,6 +36,7 @@ export function normalizeLeadPayload(payload: LeadPayload): LeadPayload {
 export async function submitLead(payload: LeadPayload) {
   const cleaned = normalizeLeadPayload(payload);
   let serverError = "";
+  let allowFallback = true;
 
   try {
     const res = await fetch("/api/public/notify-lead", {
@@ -52,10 +53,13 @@ export async function submitLead(payload: LeadPayload) {
     } catch {
       serverError = `HTTP ${res.status}`;
     }
-    if (res.status < 500) throw new Error(serverError || "Invalid lead details");
+    if (res.status < 500) {
+      allowFallback = false;
+      throw new Error(serverError || "Invalid lead details");
+    }
   } catch (error) {
     serverError = error instanceof Error ? error.message : "Network error";
-    if (serverError !== "Network error" && !serverError.includes("Failed to fetch")) throw error;
+    if (!allowFallback) throw error;
   }
 
   const failureNote = `[Auto: server submission failed${serverError ? ` — ${serverError}` : ""}]`;
