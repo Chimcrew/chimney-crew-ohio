@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { X, Phone, Check, ArrowRight, ShieldCheck, Clock, Star, BadgeCheck } from "lucide-react";
+import { toast } from "sonner";
+import { submitLead } from "@/lib/lead-submit";
 
 const STORAGE_KEY = "chimcrew_popup_seen_v1";
 const DELAY_MS = 90_000;
@@ -42,28 +44,27 @@ export function TimedLeadPopup() {
     };
   }, [open]);
 
-  function submit(e: React.FormEvent) {
+  async function submit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.name || !form.phone) return;
     setSubmitting(true);
-    void fetch("/api/public/notify-lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+    try {
+      await submitLead({
         source: "Exit popup (40s)",
         name: form.name,
         phone: form.phone,
         service: form.service,
-      }),
-    }).catch(() => {});
-    setTimeout(() => {
+      });
       setSubmitting(false);
       setDone(true);
       if (typeof window !== "undefined") {
         const w = window as unknown as { gtag_report_lead?: () => void; gtag_report_conversion?: () => void };
         try { (w.gtag_report_lead ?? w.gtag_report_conversion)?.(); } catch { /* ignore */ }
       }
-    }, 600);
+    } catch {
+      setSubmitting(false);
+      toast.error("Something went wrong. Please call us instead.");
+    }
   }
 
   if (!open) return null;
