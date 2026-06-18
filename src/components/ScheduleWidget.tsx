@@ -57,10 +57,12 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
   const todayStr = date ? format(date, "yyyy-MM-dd") : "";
   const minDateStr = format(new Date(), "yyyy-MM-dd");
+  const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 
   const canSubmit =
     name.trim().length > 1 &&
     phone.replace(/\D/g, "").length >= 7 &&
+    emailIsValid &&
     !!date &&
     !!slot &&
     street.trim().length > 1 &&
@@ -188,9 +190,10 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         </div>
 
         {/* Email — used to send a booking confirmation */}
-        <Field label="Email (for confirmation)">
+        <Field label="Email (for confirmation)" required>
           <Input
             type="email"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             inputMode="email"
