@@ -43,16 +43,19 @@ async function getOrCreateUnsubscribeToken(supabase: any, email: string): Promis
 }
 
 const LeadSchema = z.object({
-  source: z.string().min(1).max(100).optional(),
-  name: z.string().min(1).max(200).optional(),
-  phone: z.string().min(1).max(50).optional(),
+  source: z.string().trim().min(1).max(100).optional(),
+  name: z.string().trim().min(1).max(200).optional(),
+  phone: z.string().trim().min(1).max(50).optional(),
   email: z.string().email().max(200).optional().or(z.literal('')),
-  service: z.string().min(1).max(200).optional(),
-  city: z.string().min(1).max(100).optional(),
-  address: z.string().min(1).max(300).optional(),
-  date: z.string().min(1).max(100).optional(),
-  timeWindow: z.string().min(1).max(100).optional(),
-  notes: z.string().min(1).max(2000).optional(),
+  service: z.string().trim().min(1).max(200).optional(),
+  city: z.string().trim().min(1).max(100).optional(),
+  address: z.string().trim().min(1).max(300).optional(),
+  date: z.string().trim().min(1).max(100).optional(),
+  timeWindow: z.string().trim().min(1).max(100).optional(),
+  notes: z.string().trim().min(1).max(2000).optional(),
+}).refine((data) => Boolean(data.name || data.phone || data.email), {
+  message: 'At least one contact field is required',
+  path: ['phone'],
 })
 
 export const Route = createFileRoute('/api/public/notify-lead')({
@@ -106,6 +109,7 @@ export const Route = createFileRoute('/api/public/notify-lead')({
         })
         if (insertError) {
           console.error('Lead insert failed', insertError)
+          return Response.json({ error: 'Lead could not be saved' }, { status: 500 })
         }
 
         const results = await Promise.all(
