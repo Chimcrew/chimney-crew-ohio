@@ -6,8 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
-import { supabase } from "@/integrations/supabase/client";
 import { reportLeadFormConversion } from "@/lib/track";
+import { submitLead } from "@/lib/lead-submit";
 
 /**
  * Schedule "trigger" — instead of opening a modal, we navigate to the
@@ -86,45 +86,18 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       notes: notes || undefined,
     };
 
-    // Primary path: server route (saves lead + sends email notification).
-    let ok = false;
     try {
-      const res = await fetch("/api/public/notify-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      ok = res.ok;
+      await submitLead(payload);
     } catch {
-      ok = false;
-    }
-    // Fallback: if the server route failed (network/500), still capture the
-    // lead directly so it shows up in the database even though no email went out.
-    if (!ok) {
-      const { error: fallbackError } = await supabase.from("leads").insert({
-        source: `${sourceLabel} [NO EMAIL SENT]`.slice(0, 60),
-        name,
-        phone,
-        email: email.trim() || null,
-        service,
-        city: city || null,
-        address: address || null,
-        preferred_date: dateStr ?? null,
-        time_window: slot,
-        notes: notes ? `${notes}\n\n[Auto: server submission failed]` : "[Auto: server submission failed]",
-      });
-      ok = !fallbackError;
-    }
-
-    setSubmitting(false);
-
-    if (!ok) {
+      setSubmitting(false);
       toast.error("We couldn't submit your booking.", {
         description: "Please call (614) 683-5763 and we'll get you on the schedule.",
         duration: 8000,
       });
       return;
     }
+
+    setSubmitting(false);
 
     reportLeadFormConversion();
     toast.success("You're on the schedule!", {
