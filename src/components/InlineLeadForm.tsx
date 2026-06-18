@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CalendarCheck, CheckCircle2, MapPin, Phone, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
+import { submitLead } from "@/lib/lead-submit";
 
 type Props = {
   source?: string;
@@ -40,8 +41,8 @@ export function InlineLeadForm({
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!name.trim() || !phone.trim()) {
-      toast.error("Please add your name and phone");
+    if (!name.trim() || !phone.trim() || !email.trim()) {
+      toast.error("Please add your name, phone, and email");
       return;
     }
     setSubmitting(true);
@@ -49,17 +50,13 @@ export function InlineLeadForm({
       const path = typeof window !== "undefined" ? window.location.pathname : "";
       const pageSuffix = path ? ` · ${path}` : "";
       const sourceLabel = `${source}${pageSuffix}`.slice(0, 60);
-      await fetch("/api/public/notify-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source: sourceLabel,
-          name: name.trim(),
-          phone: phone.trim(),
-          email: email.trim() || undefined,
-          city: zip.trim(),
-          service: "Free chimney inspection",
-        }),
+      await submitLead({
+        source: sourceLabel,
+        name,
+        phone,
+        email,
+        city: zip,
+        service: "Free chimney inspection",
       });
       reportLeadFormConversion();
       setDone(true);
@@ -119,10 +116,11 @@ export function InlineLeadForm({
           <Mail className={"pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 " + (isDark ? "text-primary-foreground/60" : "text-muted-foreground")} />
           <input
             type="email"
+            required
             maxLength={200}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Email (optional — for confirmation)"
+            placeholder="Email for confirmation"
             className={inputCls + " w-full pl-9"}
             aria-label="Email"
           />
@@ -142,7 +140,7 @@ export function InlineLeadForm({
         </div>
         <button
           type="submit"
-          disabled={submitting}
+          disabled={submitting || !name.trim() || !phone.trim() || !email.trim()}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
         >
           <CalendarCheck className="h-5 w-5" />

@@ -22,7 +22,8 @@ function generateToken(): string {
   return Array.from(bytes).map((b) => b.toString(16).padStart(2, '0')).join('')
 }
 
-async function getOrCreateUnsubscribeToken(supabase: any, email: string): Promise<string> {
+async function getOrCreateUnsubscribeToken(supabaseUrl: string, supabaseServiceKey: string, email: string): Promise<string> {
+  const supabase = createClient(supabaseUrl, supabaseServiceKey)
   const normalized = email.toLowerCase()
   const { data: existing } = await supabase
     .from('email_unsubscribe_tokens')
@@ -43,16 +44,19 @@ async function getOrCreateUnsubscribeToken(supabase: any, email: string): Promis
 }
 
 const LeadSchema = z.object({
-  source: z.string().min(1).max(100).optional(),
-  name: z.string().min(1).max(200).optional(),
-  phone: z.string().min(1).max(50).optional(),
+  source: z.string().trim().min(1).max(60).optional(),
+  name: z.string().trim().min(1).max(120).optional(),
+  phone: z.string().trim().min(1).max(32).optional(),
   email: z.string().email().max(200).optional().or(z.literal('')),
-  service: z.string().min(1).max(200).optional(),
-  city: z.string().min(1).max(100).optional(),
-  address: z.string().min(1).max(300).optional(),
-  date: z.string().min(1).max(100).optional(),
-  timeWindow: z.string().min(1).max(100).optional(),
-  notes: z.string().min(1).max(2000).optional(),
+  service: z.string().trim().min(1).max(120).optional(),
+  city: z.string().trim().min(1).max(120).optional(),
+  address: z.string().trim().min(1).max(240).optional(),
+  date: z.string().trim().min(1).max(40).optional(),
+  timeWindow: z.string().trim().min(1).max(60).optional(),
+  notes: z.string().trim().min(1).max(2000).optional(),
+}).refine((data) => Boolean(data.name || data.phone || data.email), {
+  message: 'At least one contact field is required',
+  path: ['phone'],
 })
 
 export const Route = createFileRoute('/api/public/notify-lead')({
@@ -65,7 +69,7 @@ export const Route = createFileRoute('/api/public/notify-lead')({
           return Response.json({ error: 'Server misconfigured' }, { status: 500 })
         }
 
-        let body: any
+        let body: unknown
         try {
           body = await request.json()
         } catch {
@@ -106,12 +110,13 @@ export const Route = createFileRoute('/api/public/notify-lead')({
         })
         if (insertError) {
           console.error('Lead insert failed', insertError)
+          return Response.json({ error: 'Lead could not be saved' }, { status: 500 })
         }
 
         const results = await Promise.all(
           ADMIN_EMAILS.map(async (to) => {
             const messageId = crypto.randomUUID()
-            const unsubscribeToken = await getOrCreateUnsubscribeToken(supabase, to)
+            const unsubscribeToken = await getOrCreateUnsubscribeToken(supabaseUrl, supabaseServiceKey, to)
             await supabase.from('email_send_log').insert({
               message_id: messageId,
               template_name: TEMPLATE_NAME,
@@ -167,7 +172,7 @@ export const Route = createFileRoute('/api/public/notify-lead')({
                 : confirmTemplate.subject
 
             const confirmMessageId = crypto.randomUUID()
-            const confirmUnsubscribeToken = await getOrCreateUnsubscribeToken(supabase, data.email)
+            const confirmUnsubscribeToken = await getOrCreateUnsubscribeToken(supabaseUrl, supabaseServiceKey, data.email)
             await supabase.from('email_send_log').insert({
               message_id: confirmMessageId,
               template_name: CONFIRMATION_TEMPLATE_NAME,

@@ -22,6 +22,7 @@ import techCap from "@/assets/real/tech-chimney-cap-install.jpg.asset.json";
 import crownRebuild from "@/assets/real/chimney-crown-rebuild.jpg.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import { SiteFooter } from "@/components/SiteFooter";
+import { submitLead } from "@/lib/lead-submit";
 
 export const Route = createFileRoute("/lp/free-inspection")({
   head: () => ({
@@ -158,28 +159,26 @@ function Hero() {
 function InlineLeadForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [zip, setZip] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!name.trim() || !phone.trim()) {
-      toast.error("Please add your name and phone");
+    if (!name.trim() || !phone.trim() || !email.trim()) {
+      toast.error("Please add your name, phone, and email");
       return;
     }
     setSubmitting(true);
     try {
-      await fetch("/api/public/notify-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source: "Landing page (/lp/free-inspection)",
-          name: name.trim(),
-          phone: phone.trim(),
-          city: zip.trim(),
-          service: "Free chimney inspection",
-        }),
+      await submitLead({
+        source: "Landing page (/lp/free-inspection)",
+        name,
+        phone,
+        email,
+        city: zip,
+        service: "Free chimney inspection",
       });
       reportLeadFormConversion();
       setDone(true);
@@ -243,6 +242,16 @@ function InlineLeadForm() {
           aria-label="Phone number"
           inputMode="tel"
         />
+        <input
+          type="email"
+          required
+          maxLength={200}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email for confirmation"
+          className="h-12 rounded-xl border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame"
+          aria-label="Email"
+        />
         <div className="relative">
           <MapPin className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <input
@@ -258,7 +267,7 @@ function InlineLeadForm() {
         </div>
         <button
           type="submit"
-          disabled={submitting}
+          disabled={submitting || !name.trim() || !phone.trim() || !email.trim()}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
         >
           <CalendarCheck className="h-5 w-5" />
