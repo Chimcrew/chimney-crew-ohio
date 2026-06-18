@@ -37,35 +37,28 @@ type ServiceCategory = {
 };
 
 const REPAIR_MENU: MenuLink[] = [
-  { label: "Chimney Repair", to: "/services/$slug", slug: "crown-tuckpoint" },
-  { label: "Chimney Leak Repair", to: "/services/$slug", slug: "flashing-repair" },
-  { label: "Chimney Crown Repair", to: "/services/$slug", slug: "crown-tuckpoint" },
-  { label: "Chimney Crown Rebuild", to: "/services/$slug", slug: "crown-tuckpoint" },
-  { label: "Tuckpointing", to: "/services/$slug", slug: "crown-tuckpoint" },
-  { label: "Masonry Repair", to: "/services/$slug", slug: "crown-tuckpoint" },
-  { label: "Flashing Repair", to: "/services/$slug", slug: "flashing-repair" },
+  { label: "Crown Repair & Tuckpointing", to: "/services/$slug", slug: "crown-tuckpoint" },
+  { label: "Chimney Leak & Flashing Repair", to: "/services/$slug", slug: "flashing-repair" },
   { label: "Chimney Cap Installation", to: "/services/$slug", slug: "cap-install" },
-  { label: "Chimney Cap Repair", to: "/services/$slug", slug: "cap-install" },
-  { label: "Chimney Rebuild", to: "/services/$slug", slug: "crown-tuckpoint" },
   { label: "Chimney Waterproofing", to: "/services/$slug", slug: "waterproofing" },
-  { label: "Chimney Liner Installation", to: "/services/$slug", slug: "liner-install" },
-  { label: "Chimney Liner Repair", to: "/services/$slug", slug: "liner-install" },
+  { label: "Stainless Liner Installation", to: "/services/$slug", slug: "liner-install" },
+  { label: "Firebox Rebuild", to: "/services/$slug", slug: "firebox-rebuild" },
+  { label: "Smoke Chamber Parging", to: "/services/$slug", slug: "smoke-chamber-parging" },
+  { label: "Damper Repair", to: "/services/$slug", slug: "damper-repair" },
 ];
 
 const CLEANING_MENU: MenuLink[] = [
-  { label: "Chimney Inspection — $69", to: "/services/$slug", slug: "level-1-inspection" },
-  { label: "Level 1 Inspection", to: "/services/$slug", slug: "level-1-inspection" },
-  { label: "Level 2 Inspection", to: "/services/$slug", slug: "level-2-inspection" },
   { label: "Chimney Sweep — $99", to: "/services/$slug", slug: "chimney-sweep" },
-  { label: "Creosote Removal", to: "/services/$slug", slug: "chimney-sweep" },
-  { label: "Chimney Cleaning", to: "/services/$slug", slug: "chimney-sweep" },
+  { label: "Level 1 Inspection — $69", to: "/services/$slug", slug: "level-1-inspection" },
+  { label: "Level 2 Inspection", to: "/services/$slug", slug: "level-2-inspection" },
+  { label: "Dryer Vent Cleaning — $79", to: "/services/$slug", slug: "dryer-vent-cleaning" },
+  { label: "Animal Removal", to: "/services/$slug", slug: "animal-removal" },
 ];
 
 const FIREPLACE_MENU: MenuLink[] = [
   { label: "Gas Fireplace Service — $49", to: "/services/$slug", slug: "gas-fireplace-service" },
-  { label: "Gas Fireplace Repair", to: "/services/$slug", slug: "gas-fireplace-service" },
-  { label: "Fireplace Inspection", to: "/services/$slug", slug: "level-1-inspection" },
-  { label: "Fireplace Repair", to: "/services/$slug", slug: "firebox-rebuild" },
+  { label: "Firebox Rebuild", to: "/services/$slug", slug: "firebox-rebuild" },
+  { label: "Annual Maintenance Plan", to: "/services/$slug", slug: "annual-plan" },
 ];
 
 const SERVICE_CATEGORIES: ServiceCategory[] = [
