@@ -15,6 +15,8 @@ const ADMIN_EMAILS = [
 ]
 
 const CONFIRMATION_TEMPLATE_NAME = 'lead-confirmation'
+const CONFIRMED_TEMPLATE_NAME = 'appointment-confirmed'
+const CONFIRMED_DELAY_SECONDS = 5 * 60
 
 function generateToken(): string {
   const bytes = new Uint8Array(32)
@@ -205,6 +207,71 @@ export const Route = createFileRoute('/api/public/notify-lead')({
                 status: 'failed',
                 error_message: confirmEnqueueError.message,
               })
+            }
+          }
+        }
+
+        // 5 minutes later: send the "Appointment confirmed" email to the customer AND the office.
+        {
+          const confirmedTemplate = TEMPLATES[CONFIRMED_TEMPLATE_NAME]
+          if (confirmedTemplate) {
+            const confirmedProps = {
+              name: data.name,
+              service: data.service,
+              city: data.city,
+              date: data.date,
+              timeWindow: data.timeWindow,
+            }
+            const confirmedElement = React.createElement(confirmedTemplate.component, confirmedProps)
+            const confirmedHtml = await render(confirmedElement)
+            const confirmedPlainText = await render(confirmedElement, { plainText: true })
+            const confirmedSubject =
+              typeof confirmedTemplate.subject === 'function'
+                ? confirmedTemplate.subject(confirmedProps)
+                : confirmedTemplate.subject
+
+            const confirmedRecipients = [
+              ...(data.email ? [data.email] : []),
+              ...ADMIN_EMAILS,
+            ]
+
+            for (const to of confirmedRecipients) {
+              const msgId = crypto.randomUUID()
+              const unsubToken = await getOrCreateUnsubscribeToken(supabaseUrl, supabaseServiceKey, to)
+              await supabase.from('email_send_log').insert({
+                message_id: msgId,
+                template_name: CONFIRMED_TEMPLATE_NAME,
+                recipient_email: to,
+                status: 'pending',
+              })
+              const { error: delayedErr } = await supabase.rpc('enqueue_email_delayed', {
+                queue_name: 'transactional_emails',
+                payload: {
+                  message_id: msgId,
+                  to,
+                  from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
+                  sender_domain: SENDER_DOMAIN,
+                  subject: confirmedSubject,
+                  html: confirmedHtml,
+                  text: confirmedPlainText,
+                  purpose: 'transactional',
+                  label: CONFIRMED_TEMPLATE_NAME,
+                  idempotency_key: `${CONFIRMED_TEMPLATE_NAME}-${msgId}`,
+                  unsubscribe_token: unsubToken,
+                  queued_at: new Date().toISOString(),
+                },
+                delay_seconds: CONFIRMED_DELAY_SECONDS,
+              })
+              if (delayedErr) {
+                console.error('Appointment-confirmed enqueue failed', { to, error: delayedErr })
+                await supabase.from('email_send_log').insert({
+                  message_id: msgId,
+                  template_name: CONFIRMED_TEMPLATE_NAME,
+                  recipient_email: to,
+                  status: 'failed',
+                  error_message: delayedErr.message,
+                })
+              }
             }
           }
         }
