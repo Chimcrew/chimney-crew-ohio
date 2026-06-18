@@ -52,8 +52,10 @@ export async function submitLead(payload: LeadPayload) {
     } catch {
       serverError = `HTTP ${res.status}`;
     }
+    if (res.status < 500) throw new Error(serverError || "Invalid lead details");
   } catch (error) {
     serverError = error instanceof Error ? error.message : "Network error";
+    if (serverError !== "Network error" && !serverError.includes("Failed to fetch")) throw error;
   }
 
   const failureNote = `[Auto: server submission failed${serverError ? ` — ${serverError}` : ""}]`;
