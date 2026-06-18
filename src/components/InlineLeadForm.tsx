@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CalendarCheck, CheckCircle2, MapPin, Phone, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
+import { submitLead } from "@/lib/lead-submit";
 
 type Props = {
   source?: string;
@@ -49,17 +50,13 @@ export function InlineLeadForm({
       const path = typeof window !== "undefined" ? window.location.pathname : "";
       const pageSuffix = path ? ` · ${path}` : "";
       const sourceLabel = `${source}${pageSuffix}`.slice(0, 60);
-      await fetch("/api/public/notify-lead", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          source: sourceLabel,
-          name: name.trim(),
-          phone: phone.trim(),
-          email: email.trim() || undefined,
-          city: zip.trim(),
-          service: "Free chimney inspection",
-        }),
+      await submitLead({
+        source: sourceLabel,
+        name,
+        phone,
+        email,
+        city: zip,
+        service: "Free chimney inspection",
       });
       reportLeadFormConversion();
       setDone(true);
