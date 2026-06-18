@@ -484,18 +484,22 @@ export function SiteHeader() {
                 )}
               </div>
 
-              {PRIMARY_NAV.slice(1).map((n) => (
-                <Link
-                  key={n.to}
-                  to={n.to}
-                  onClick={() => setOpen(false)}
-                  className="flex items-center justify-between border-b border-border/30 py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
-                  activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
-                  activeOptions={n.to === "/" ? { exact: true } : undefined}
-                >
-                  {n.label} <Flame className="h-4 w-4 text-[oklch(0.78_0.19_92)]" />
-                </Link>
-              ))}
+                {PRIMARY_NAV.slice(1).map((n) => (
+                  <Link
+                    key={n.to}
+                    to={n.to}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center justify-between border-b border-border/30 py-3.5 font-sans text-[15px] font-semibold tracking-normal text-foreground"
+                    activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
+                    activeOptions={n.to === "/" ? { exact: true } : undefined}
+                  >
+                    <span className="inline-flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-[oklch(0.78_0.19_92)]" />
+                      {n.label}
+                    </span>
+                    <Flame className="h-4 w-4 text-[oklch(0.78_0.19_92)]" />
+                  </Link>
+                ))}
             </nav>
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
