@@ -77,9 +77,6 @@ function ContactPage() {
                 <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
                   Book online · Takes 60 seconds
                 </p>
-                <h2 className="mt-1 font-display text-2xl font-black tracking-tight text-primary md:text-3xl">
-                  Schedule a free inspection
-                </h2>
               </div>
             </div>
             <ScheduleInline />
