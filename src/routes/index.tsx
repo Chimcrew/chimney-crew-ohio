@@ -66,6 +66,7 @@ import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import { DroneInspection } from "@/components/DroneInspection";
 import { ScheduleInline } from "@/components/ScheduleWidget";
+import teamWidePhoto from "@/assets/chimcrew-team-wide.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -147,7 +148,7 @@ function Index() {
   return (
     <>
       <Hero />
-      <HeroToOfferBridge />
+      <TeamWidePhotoBridge />
       <TrustBar />
       <CommonProblems />
       <PhotoVideoTrust />
@@ -203,6 +204,27 @@ function HeroToOfferBridge() {
           loading="lazy"
           decoding="async"
         />
+      </figure>
+    </div>
+  );
+}
+
+/* ============================================================
+   TEAM WIDE PHOTO BRIDGE — small framed crew shot under hero
+   ============================================================ */
+function TeamWidePhotoBridge() {
+  return (
+    <div className="relative z-10 mx-auto flex max-w-7xl justify-center px-4 py-8 md:px-8 md:py-10">
+      <figure className="relative w-full max-w-md sm:max-w-lg lg:max-w-2xl">
+        <div className="overflow-hidden rounded-xl border-2 border-border bg-card shadow-[0_20px_50px_-20px_oklch(0_0_0/0.35)]">
+          <img
+            src={teamWidePhoto.url}
+            alt="The ChimCrew team — certified chimney professionals in Columbus, Ohio"
+            className="block h-auto w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </figure>
     </div>
   );
