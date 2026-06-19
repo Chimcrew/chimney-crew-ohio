@@ -163,7 +163,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       `}</style>
 
       {/* Team photo — builds trust without overwhelming the form */}
-      <figure className="mx-auto mb-5 max-w-[200px]">
+      <figure className="mx-auto mb-5 max-w-[120px]">
         <div className="overflow-hidden rounded-lg border-2 border-border bg-muted shadow-lg">
           <img
             src={teamTruckPhoto.url}
