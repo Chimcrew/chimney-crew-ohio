@@ -148,6 +148,7 @@ function Index() {
   return (
     <>
       <Hero />
+      <HeroToOfferBridge />
       <TrustBar />
       <CommonProblems />
       <PhotoVideoTrust />
