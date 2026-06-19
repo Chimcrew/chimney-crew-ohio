@@ -162,6 +162,22 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         }
       `}</style>
 
+      {/* Team photo — builds trust without overwhelming the form */}
+      <figure className="mx-auto mb-5 max-w-[200px]">
+        <div className="overflow-hidden rounded-lg border-2 border-border bg-muted shadow-lg">
+          <img
+            src={teamTruckPhoto.url}
+            alt="The ChimCrew team — certified chimney professionals in Columbus, Ohio"
+            className="block h-auto w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption className="mt-1.5 text-center font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+          Your local crew
+        </figcaption>
+      </figure>
+
       {/* Compact single-page form */}
       <div className="space-y-3">
         {/* Service — full width, most important */}
