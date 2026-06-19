@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MapPin, Camera, ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/PageHero";
 import p01 from "@/assets/projects/project-01-double-crown.jpg";
 import p02 from "@/assets/projects/project-02-tuckpointing-after.jpg";
 import p03 from "@/assets/projects/project-03-liner-install.jpg";
