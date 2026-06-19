@@ -148,7 +148,6 @@ function Index() {
   return (
     <>
       <Hero />
-      <TeamWidePhotoBridge />
       <TrustBar />
       <CommonProblems />
       <PhotoVideoTrust />
