@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 import { submitLead } from "@/lib/lead-submit";
+import teamTruckPhoto from "@/assets/chimcrew-team-truck-schedule.png.asset.json";
 
 /**
  * Schedule "trigger" — instead of opening a modal, we navigate to the
@@ -160,6 +161,22 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           100% { opacity: 1; transform: translateY(0); }
         }
       `}</style>
+
+      {/* Team photo — builds trust without overwhelming the form */}
+      <figure className="mx-auto mb-5 max-w-[200px]">
+        <div className="overflow-hidden rounded-lg border-2 border-border bg-muted shadow-lg">
+          <img
+            src={teamTruckPhoto.url}
+            alt="The ChimCrew team — certified chimney professionals in Columbus, Ohio"
+            className="block h-auto w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption className="mt-1.5 text-center font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+          Your local crew
+        </figcaption>
+      </figure>
 
       {/* Compact single-page form */}
       <div className="space-y-3">
