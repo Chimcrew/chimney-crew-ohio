@@ -42,9 +42,9 @@ export function DroneInspection() {
         <div>
           <h2
             id="drone-heading"
-            className="font-display text-4xl font-extrabold leading-[1.02] tracking-tight text-foreground md:text-5xl lg:text-6xl"
+            className="font-display text-3xl font-bold text-primary sm:text-4xl md:text-5xl"
           >
-            Drone <span className="text-primary">Inspection</span> only $69
+            Drone <span className="text-flame">Inspection</span> only $69
           </h2>
           <p className="mt-5 max-w-xl text-base text-foreground md:text-lg">
             Get a detailed aerial inspection without climbing onto your roof. Fast, safe, and
