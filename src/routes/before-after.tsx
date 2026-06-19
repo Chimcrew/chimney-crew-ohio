@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
-import { BeforeAfter } from "@/components/BeforeAfter";
 import { PageHero } from "@/components/PageHero";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import projectCrown from "@/assets/projects/project-01-double-crown.jpg";
@@ -17,13 +16,23 @@ import baCrownStone from "@/assets/real/ba-crown-stone.png.asset.json";
 import baSpalledBrick from "@/assets/real/ba-spalled-brick.png.asset.json";
 import baCapCrown from "@/assets/real/ba-cap-crown.png.asset.json";
 import crownDemo from "@/assets/real/crown-demo-inprogress.png.asset.json";
+import gj1 from "@/assets/gallery-jobs/gj1.jpeg.asset.json";
+import gj2 from "@/assets/gallery-jobs/gj2.jpeg.asset.json";
+import gj3 from "@/assets/gallery-jobs/gj3.jpeg.asset.json";
+import gj4 from "@/assets/gallery-jobs/gj4.jpeg.asset.json";
+import gj5 from "@/assets/gallery-jobs/gj5.jpeg.asset.json";
+import gj6 from "@/assets/gallery-jobs/gj6.jpeg.asset.json";
+import gj7 from "@/assets/gallery-jobs/gj7.jpeg.asset.json";
+import gj8 from "@/assets/gallery-jobs/gj8.jpeg.asset.json";
+import gj9 from "@/assets/gallery-jobs/gj9.jpeg.asset.json";
+import gj10 from "@/assets/gallery-jobs/gj10.jpeg.asset.json";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
     meta: [
-      { title: "Before & After — ChimCrew jobs in Ohio" },
-      { name: "description", content: "Drag-to-compare before and after photos from chimney sweeps, crown rebuilds and cap installs by ChimCrew across Ohio." },
-      { property: "og:title", content: "ChimCrew Before & After — Ohio Chimney Work" },
+      { title: "Gallery — ChimCrew jobs in Ohio" },
+      { name: "description", content: "Before and after photos from chimney sweeps, crown rebuilds, fireplace remodels and cap installs by ChimCrew across Ohio." },
+      { property: "og:title", content: "ChimCrew Gallery — Ohio Chimney Work" },
       { property: "og:description", content: "Real before and after photos from chimney jobs across Ohio. No stock imagery." },
       { property: "og:url", content: "https://chimcrew.com/before-after" },
     ],
@@ -33,6 +42,16 @@ export const Route = createFileRoute("/before-after")({
 });
 
 const GALLERY = [
+  { src: gj1.url, caption: "Stacked-stone fireplace tile install — in progress" },
+  { src: gj4.url, caption: "Stacked-stone fireplace surround — finished" },
+  { src: gj2.url, caption: "Old brick fireplace stripped to studs" },
+  { src: gj5.url, caption: "Brick fireplace painted deep navy — finished" },
+  { src: gj3.url, caption: "Brick firebox demo before rebuild" },
+  { src: gj6.url, caption: "Full-height brick chimney teardown in progress" },
+  { src: gj7.url, caption: "Stone-veneer chimney install — scaffolded" },
+  { src: gj8.url, caption: "Arched brick fireplace rebuild — limewash finish" },
+  { src: gj9.url, caption: "Custom arched firebox brickwork — in progress" },
+  { src: gj10.url, caption: "Two-story limewashed brick chimney — finished" },
   { src: baCapCrown.url, caption: "Crown & cap rebuild — before / after" },
   { src: baSpalledBrick.url, caption: "Spalled brick chimney rebuild — before / after" },
   { src: baCrownStone.url, caption: "Stone-to-brick crown rebuild — before / after" },
@@ -53,12 +72,12 @@ function BeforeAfterPage() {
   return (
     <>
       <PageHero
-        eyebrow="Before / After · Ohio crew"
-        title={<>Drag the slider. <span className="text-flame">See the work.</span></>}
-        subtitle="Ohio chimneys, ChimCrew jobs. Drag any photo below with your finger or mouse to compare what it looked like when we arrived — and what other homeowners got back."
+        eyebrow="Gallery · Ohio crew"
+        title={<>Real jobs. <span className="text-flame">Real results.</span></>}
+        subtitle="Ohio chimneys and fireplaces, finished by ChimCrew. Every photo below is a job we actually completed — no stock, no AI."
       />
 
-      {/* BEFORE / AFTER PAIRS */}
+      {/* BEFORE / AFTER PAIRS — side by side, no slider */}
       <section className="bg-background py-16 md:py-20">
         <div className="mx-auto max-w-6xl space-y-16 px-4 md:px-8">
           {BEFORE_AFTER_JOBS.map((j, i) => (
@@ -76,11 +95,20 @@ function BeforeAfterPage() {
                   <MapPin className="h-3.5 w-3.5 text-flame" /> {j.city}
                 </div>
               </div>
-              <BeforeAfter
-                before={j.before}
-                after={j.after}
-                alt={j.headline}
-              />
+              <div className="grid gap-4 sm:grid-cols-2">
+                <figure className="relative overflow-hidden rounded-2xl border border-border bg-primary">
+                  <img src={j.before} alt={`${j.headline} — before`} className="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+                  <span className="absolute left-3 top-3 rounded-md bg-background/90 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
+                    Before
+                  </span>
+                </figure>
+                <figure className="relative overflow-hidden rounded-2xl border border-border bg-primary">
+                  <img src={j.after} alt={`${j.headline} — after`} className="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
+                  <span className="absolute left-3 top-3 rounded-md bg-flame px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                    After
+                  </span>
+                </figure>
+              </div>
               <p className="text-sm text-muted-foreground md:text-base">{j.note}</p>
             </article>
           ))}
