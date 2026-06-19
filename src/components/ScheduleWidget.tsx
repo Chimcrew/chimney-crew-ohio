@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 import { submitLead } from "@/lib/lead-submit";
-import teamTruckPhoto from "@/assets/chimcrew-team-truck-schedule.png.asset.json";
+import teamTruckPhoto from "@/assets/chimcrew-team-wide.png.asset.json";
 
 /**
  * Schedule "trigger" — instead of opening a modal, we navigate to the
@@ -119,6 +119,19 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
   return (
     <div className="bg-background text-foreground">
+      {/* Team photo — builds trust without overwhelming the form */}
+      <figure className="mx-auto mb-4 max-w-[160px]">
+        <div className="overflow-hidden rounded-lg border-2 border-border bg-muted shadow-lg">
+          <img
+            src={teamTruckPhoto.url}
+            alt="The ChimCrew team — certified chimney professionals in Columbus, Ohio"
+            className="block h-auto w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </figure>
+
       {/* Compact header */}
       <div className="mb-4 border-b border-border pb-4">
         <span className="inline-flex items-center gap-1.5 bg-black px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
@@ -161,22 +174,6 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           100% { opacity: 1; transform: translateY(0); }
         }
       `}</style>
-
-      {/* Team photo — builds trust without overwhelming the form */}
-      <figure className="mx-auto mb-5 max-w-[120px]">
-        <div className="overflow-hidden rounded-lg border-2 border-border bg-muted shadow-lg">
-          <img
-            src={teamTruckPhoto.url}
-            alt="The ChimCrew team — certified chimney professionals in Columbus, Ohio"
-            className="block h-auto w-full object-cover"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <figcaption className="mt-1.5 text-center font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
-          Your local crew
-        </figcaption>
-      </figure>
 
       {/* Compact single-page form */}
       <div className="space-y-3">
