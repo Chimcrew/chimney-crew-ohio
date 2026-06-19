@@ -45,6 +45,8 @@ import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asse
 import chimcrewLogoCrew from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import beforeAfterPhoto from "@/assets/chimney-before-after.png.asset.json";
+import cameraInspectionPhoto from "@/assets/inspection/camera-inspection.png.asset.json";
+import inspectionVideo from "@/assets/inspection/inspection.mp4.asset.json";
 import fireplaceServicePhoto from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 import techFireplaceSweepPhoto from "@/assets/tech-fireplace-sweep.png.asset.json";
 import rooftopTechsPhoto from "@/assets/team/chimcrew-techs-rooftop.png.asset.json";
@@ -420,7 +422,7 @@ function Hero() {
           </div>
         </div>
         {/* 3D-style overlay photo — sits on the main photo from the bottom-right */}
-        <div className="pointer-events-none absolute bottom-0 right-3 z-10 w-28 sm:right-6 sm:w-40 md:w-52 lg:w-60">
+        <div className="pointer-events-none absolute -bottom-8 right-3 z-10 w-28 sm:-bottom-4 sm:right-10 sm:w-48 md:right-16 md:w-64 lg:right-24 lg:w-80">
           <div className="relative transform-gpu [transform:perspective(900px)_rotateX(6deg)_rotateY(-10deg)_rotate(-2deg)]">
             <div className="absolute -inset-1 bg-black/40 blur-xl" aria-hidden />
             <img
@@ -463,7 +465,7 @@ function Hero() {
         </div>
 
         <h1 className="mt-10 font-sans text-[38px] font-bold leading-[1.1] tracking-[-1.5px] text-foreground sm:text-[52px] sm:leading-[1.08] md:text-[64px] md:leading-[1.05]">
-          #1 Trusted Chimney Repair Team In Central Ohio
+          #1 Trusted Chimney Repair Team In Columbus &amp; Central Ohio
         </h1>
 
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
