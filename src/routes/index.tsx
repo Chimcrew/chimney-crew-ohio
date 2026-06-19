@@ -66,6 +66,7 @@ import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import { DroneInspection } from "@/components/DroneInspection";
 import { ScheduleInline } from "@/components/ScheduleWidget";
+import teamWidePhoto from "@/assets/chimcrew-team-wide.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -147,7 +148,7 @@ function Index() {
   return (
     <>
       <Hero />
-      <HeroToOfferBridge />
+      <TeamWidePhotoBridge />
       <TrustBar />
       <CommonProblems />
       <PhotoVideoTrust />
