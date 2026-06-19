@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calendar, ArrowRight, Clock } from "lucide-react";
 import { BLOG_POSTS } from "@/data/blog-posts";
+import { PageHero } from "@/components/PageHero";
 
 const SITE = "https://chimcrew.com";
 
