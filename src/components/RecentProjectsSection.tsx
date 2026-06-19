@@ -26,7 +26,7 @@ export function RecentProjects() {
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
-              ◆ Real Work · Real Ohio Homes
+              ◆ Our Work · Ohio Homes
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-foreground md:text-5xl">
               Recent projects from{" "}

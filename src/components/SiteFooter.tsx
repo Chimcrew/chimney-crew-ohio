@@ -26,7 +26,7 @@ export function SiteFooter() {
             <ul className="mt-6 space-y-2 text-sm">
               <li><Link to="/" className="hover:text-primary">Home</Link></li>
               <li><Link to="/services" className="hover:text-primary">All Services</Link></li>
-              <li><Link to="/before-after" className="hover:text-primary">Gallery</Link></li>
+              <li><Link to="/before-after" className="hover:text-primary">Done Projects</Link></li>
               <li><Link to="/reviews" className="hover:text-primary">Reviews</Link></li>
               <li><Link to="/blog" className="hover:text-primary">Blog</Link></li>
               <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
