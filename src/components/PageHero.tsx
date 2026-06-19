@@ -1,0 +1,51 @@
+import { type ReactNode } from "react";
+import heroDesktop from "@/assets/hero/hero-team-desktop.png.asset.json";
+import heroMobile from "@/assets/hero/hero-truck-mobile.png.asset.json";
+
+type PageHeroProps = {
+  eyebrow?: ReactNode;
+  title: ReactNode;
+  subtitle?: ReactNode;
+  children?: ReactNode;
+  className?: string;
+};
+
+export function PageHero({ eyebrow, title, subtitle, children, className = "" }: PageHeroProps) {
+  return (
+    <section className={`relative overflow-hidden bg-primary text-primary-foreground ${className}`}>
+      {/* Background photo: mobile = truck, desktop = team */}
+      <picture aria-hidden className="pointer-events-none absolute inset-0">
+        <source media="(min-width: 768px)" srcSet={heroDesktop.url} />
+        <img
+          src={heroMobile.url}
+          alt=""
+          className="h-full w-full object-cover object-center"
+          loading="eager"
+          decoding="async"
+        />
+      </picture>
+      {/* Dark overlay for legibility */}
+      <div className="pointer-events-none absolute inset-0 bg-primary/80 md:bg-primary/75" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-primary/40" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" aria-hidden />
+
+      <div className="relative mx-auto w-full max-w-6xl px-4 py-14 md:px-8 md:py-20">
+        {eyebrow && (
+          <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
+            {eyebrow}
+          </span>
+        )}
+        <h1 className="mt-5 max-w-3xl font-display text-4xl font-black leading-[1.02] tracking-tight md:text-6xl">
+          {title}
+        </h1>
+        {subtitle && (
+          <p className="mt-4 max-w-2xl text-base text-primary-foreground/85 md:text-lg">
+            {subtitle}
+          </p>
+        )}
+        {children}
+      </div>
+    </section>
+  );
+}
