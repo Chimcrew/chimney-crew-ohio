@@ -422,8 +422,8 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
       {/* PHOTO — flush to header, rounded-none only at the bottom (full-bleed) */}
-      <div className="relative px-3 pt-3 pb-8 sm:px-4 sm:pt-4 sm:pb-10 lg:pb-12">
-        <div className="relative overflow-hidden rounded-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+      <div className="relative pb-10 sm:pb-12 lg:pb-16">
+        <div className="relative overflow-hidden rounded-b-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
           <img
             src={teamHeroPhoto.url}
             alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
@@ -433,11 +433,11 @@ function Hero() {
             loading="eager"
           />
           <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
             aria-hidden
           />
           <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
-            <p className="font-display text-base font-bold text-flame sm:text-lg md:text-2xl">
+            <p className="font-display text-base font-bold text-primary-foreground sm:text-lg md:text-2xl">
               Meet the ChimCrew team.
             </p>
           </div>
@@ -473,7 +473,7 @@ function Hero() {
         </div>
 
         <h1 className="mt-10 font-sans text-[38px] font-bold leading-[1.1] tracking-[-1.5px] text-foreground sm:text-[52px] sm:leading-[1.08] md:text-[64px] md:leading-[1.05]">
-          #1 Trusted Chimney Repair Team In Central Ohio
+          #1 Trusted Chimney Repair Team In Columbus &amp; Central Ohio
         </h1>
 
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
