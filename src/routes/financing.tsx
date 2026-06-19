@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calculator, CalendarCheck, ShieldCheck, CheckCircle2, Phone } from "lucide-react";
+import { PageHero } from "@/components/PageHero";
 
 export const Route = createFileRoute("/financing")({
   head: () => ({
@@ -49,24 +50,11 @@ function FinancingPage() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b-2 border-primary/30 bg-primary py-16 text-primary-foreground md:py-20">
-        <div className="bg-grid absolute inset-0 opacity-[0.08]" aria-hidden />
-        <div className="pointer-events-none absolute -right-24 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-flame/15 blur-3xl" aria-hidden />
-        <div className="relative mx-auto max-w-5xl px-4 md:px-8">
-          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
-            <Calculator className="h-3.5 w-3.5" /> Financing Calculator
-          </p>
-          <h1 className="mt-4 font-display text-4xl font-extrabold leading-[1.04] tracking-tight md:text-6xl">
-            Repair now. <span className="text-flame">Pay monthly.</span>
-          </h1>
-          <p className="mt-4 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
-            Move the sliders. See your monthly payment in seconds — no
-            credit pull, no email required. When you're ready, we'll lock the
-            quote at your free on-site inspection.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow={<><Calculator className="h-3 w-3" /> Financing Calculator</>}
+        title={<>Repair now. <span className="text-flame">Pay monthly.</span></>}
+        subtitle="Move the sliders. See your monthly payment in seconds — no credit pull, no email required. When you're ready, we'll lock the quote at your free on-site inspection."
+      />
 
       {/* CALCULATOR */}
       <section className="bg-background py-14 md:py-20">

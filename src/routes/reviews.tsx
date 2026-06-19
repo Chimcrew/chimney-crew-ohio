@@ -44,50 +44,49 @@ const SOURCES = [
 function ReviewsPage() {
   return (
     <>
-      <section className="relative border-b-2 border-primary/30 bg-card/40 py-20">
-        <div className="bg-grid absolute inset-0 opacity-60" />
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-          <p className="font-mono text-xs uppercase tracking-widest text-primary">// Reviews</p>
-          <h1 className="mt-3 text-6xl md:text-7xl">Homeowners <span className="text-flame">talk.</span></h1>
+      <PageHero
+        eyebrow="Reviews · Ohio Homeowners"
+        title={<>Homeowners <span className="text-flame">talk.</span></>}
+      >
           <div className="mt-6 flex items-center gap-4">
-            <div className="flex text-primary">
+            <div className="flex text-flame">
               {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-6 w-6 fill-current" />)}
             </div>
-            <p className="font-mono text-sm text-muted-foreground">
+            <p className="font-mono text-sm text-primary-foreground/75">
               5-star rated across Google, Yelp, Angi & Facebook
             </p>
           </div>
 
           <div className="mt-10 grid gap-3 sm:grid-cols-3">
-            <div className="flex items-center gap-3 rounded-sm border-2 border-primary/40 bg-background/70 px-4 py-3">
-              <Star className="h-6 w-6 fill-current text-primary" />
+            <div className="flex items-center gap-3 rounded-sm border-2 border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
+              <Star className="h-6 w-6 fill-current text-flame" />
               <div>
                 <p className="font-display text-sm uppercase tracking-wider">5-Star Rated</p>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Across every platform</p>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-primary-foreground/65">Across every platform</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 rounded-sm border-2 border-primary/40 bg-background/70 px-4 py-3">
+            <div className="flex items-center gap-3 rounded-sm border-2 border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
               <MapPin className="h-6 w-6 text-flame" />
               <div>
                 <p className="font-display text-sm uppercase tracking-wider">Locally Owned</p>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Ohio family business</p>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-primary-foreground/65">Ohio family business</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 rounded-sm border-2 border-primary/40 bg-background/70 px-4 py-3">
+            <div className="flex items-center gap-3 rounded-sm border-2 border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
               <ShieldCheck className="h-6 w-6 text-flame" />
               <div>
                 <p className="font-display text-sm uppercase tracking-wider">Licensed & Insured</p>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Bonded · CSIA certified</p>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-primary-foreground/65">Bonded · CSIA certified</p>
               </div>
             </div>
           </div>
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {SOURCES.map((s) => (
-              <div key={s.name} className="flex items-center justify-between rounded-sm border border-border bg-card/60 px-4 py-3">
+              <div key={s.name} className="flex items-center justify-between rounded-sm border border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
                 <span className="font-display text-sm uppercase tracking-wider">{s.name}</span>
-                <span className="flex items-center gap-2 font-mono text-xs text-muted-foreground">
-                  <span className="flex text-primary">
+                <span className="flex items-center gap-2 font-mono text-xs text-primary-foreground/65">
+                  <span className="flex text-flame">
                     {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-3 w-3 fill-current" />)}
                   </span>
                   {s.label}
@@ -95,8 +94,7 @@ function ReviewsPage() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
+      </PageHero>
 
       <section className="py-20">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-3">
