@@ -88,12 +88,12 @@ function ChimneyRepairColumbus() {
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#book"
+              <Link
+                to="/schedule"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
               >
                 <CalendarCheck className="h-4 w-4" /> Schedule appointment online
-              </a>
+              </Link>
               <a
                 href="tel:6146835763"
                 className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-5 font-sans text-[13px] font-medium tracking-normal text-primary-foreground transition hover:border-flame active:scale-95 sm:px-6"
@@ -157,12 +157,12 @@ function ChimneyRepairColumbus() {
           </div>
 
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a
-              href="#book"
+            <Link
+              to="/schedule"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
-            </a>
+            </Link>
             <a
               href="tel:6146835763"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-primary px-5 font-sans text-[13px] font-medium tracking-normal text-primary transition hover:bg-primary hover:text-primary-foreground active:scale-95 sm:px-6"
@@ -284,12 +284,12 @@ function ChimneyRepairColumbus() {
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="#book"
+            <Link
+              to="/schedule"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0.18_0.02_250/0.25)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
-            </a>
+            </Link>
             <a
               href="tel:6146835763"
               className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-primary px-5 font-sans text-[13px] font-medium tracking-normal text-primary transition hover:bg-primary hover:text-primary-foreground active:scale-95 sm:px-6"

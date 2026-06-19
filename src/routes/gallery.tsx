@@ -143,7 +143,7 @@ function GalleryPage() {
             </h2>
           </div>
           <Link
-            to="/contact"
+            to="/schedule"
             className="inline-flex items-center gap-2 rounded-xl bg-flame px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:brightness-110"
           >
             Schedule now <ArrowRight className="h-4 w-4" />

@@ -151,7 +151,7 @@ function PostPage() {
             </h3>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
-                to="/contact"
+                to="/schedule"
                 className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:brightness-110"
               >
                 Schedule online
