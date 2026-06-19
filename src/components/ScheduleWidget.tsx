@@ -8,7 +8,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 import { submitLead } from "@/lib/lead-submit";
-import teamTruckPhoto from "@/assets/chimcrew-team-wide.png.asset.json";
 
 /**
  * Schedule "trigger" — instead of opening a modal, we navigate to the
