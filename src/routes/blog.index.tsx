@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calendar, ArrowRight, Clock } from "lucide-react";
 import { BLOG_POSTS } from "@/data/blog-posts";
+import { PageHero } from "@/components/PageHero";
 
 const SITE = "https://chimcrew.com";
 
@@ -50,22 +51,15 @@ function BlogPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden border-b-2 border-primary/20 bg-card/40 py-16 md:py-24">
-        <div className="pointer-events-none absolute inset-0 bg-grid opacity-50" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-          <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
-            ◆ Field Notes · Written by working sweeps
-          </p>
-          <h1 className="mt-3 font-display text-4xl font-extrabold leading-[1.05] tracking-tight md:text-6xl">
+      <PageHero
+        eyebrow="Field Notes · Written by working sweeps"
+        title={
+          <>
             The ChimCrew <span className="text-flame">blog</span>.
-          </h1>
-          <p className="mt-5 max-w-2xl text-base text-muted-foreground md:text-lg">
-            Practical chimney advice from rooftops across Columbus, Cincinnati,
-            and Dayton. No fluff, no SEO filler — what we'd tell our own
-            homeowners.
-          </p>
-        </div>
-      </section>
+          </>
+        }
+        subtitle="Practical chimney advice from rooftops across Columbus, Cincinnati, and Dayton. No fluff, no SEO filler — what we'd tell our own homeowners."
+      />
 
       {/* FEATURED */}
       <section className="bg-background py-16 md:py-20">
