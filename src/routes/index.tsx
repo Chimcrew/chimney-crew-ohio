@@ -40,6 +40,7 @@ import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.js
 import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import teamHeroPhoto from "@/assets/team/chimcrew-team-hero.png.asset.json";
+import teamTruckPhoto from "@/assets/team/chimcrew-team-truck.png.asset.json";
 import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
 import chimcrewLogoCrew from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
@@ -416,6 +417,19 @@ function Hero() {
             <p className="font-display text-base font-bold text-primary-foreground sm:text-lg md:text-2xl">
               Meet the ChimCrew team.
             </p>
+          </div>
+          {/* 3D-style overlay photo — sits on the main photo, bottom-right */}
+          <div className="pointer-events-none absolute -bottom-6 right-3 z-10 w-28 sm:right-6 sm:-bottom-8 sm:w-40 md:w-52 lg:-bottom-10 lg:w-60">
+            <div className="relative -rotate-2 transform-gpu transition duration-500 [transform:perspective(900px)_rotateX(8deg)_rotateY(-8deg)]">
+              <div className="absolute -inset-1 bg-black/40 blur-xl" aria-hidden />
+              <img
+                src={teamTruckPhoto.url}
+                alt="ChimCrew technicians at the back of the branded service truck"
+                className="relative block h-auto w-full border-4 border-white bg-white object-cover shadow-[0_25px_45px_-10px_oklch(0_0_0/0.55)]"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
       </div>

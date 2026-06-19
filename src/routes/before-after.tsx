@@ -1,7 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import projectCrown from "@/assets/projects/project-01-double-crown.jpg";
 import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg";
 import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
@@ -12,9 +10,6 @@ import projectCapFin from "@/assets/projects/project-08-cap-finished.jpg";
 import leakRoof from "@/assets/leak-chimney-rooftop.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
-import baCrownStone from "@/assets/real/ba-crown-stone.png.asset.json";
-import baSpalledBrick from "@/assets/real/ba-spalled-brick.png.asset.json";
-import baCapCrown from "@/assets/real/ba-cap-crown.png.asset.json";
 import crownDemo from "@/assets/real/crown-demo-inprogress.png.asset.json";
 import gj1 from "@/assets/gallery-jobs/gj1.jpeg.asset.json";
 import gj2 from "@/assets/gallery-jobs/gj2.jpeg.asset.json";
@@ -26,14 +21,24 @@ import gj7 from "@/assets/gallery-jobs/gj7.jpeg.asset.json";
 import gj8 from "@/assets/gallery-jobs/gj8.jpeg.asset.json";
 import gj9 from "@/assets/gallery-jobs/gj9.jpeg.asset.json";
 import gj10 from "@/assets/gallery-jobs/gj10.jpeg.asset.json";
+import gj11 from "@/assets/gallery-jobs/gj11.jpeg.asset.json";
+import gj12 from "@/assets/gallery-jobs/gj12.jpeg.asset.json";
+import gj13 from "@/assets/gallery-jobs/gj13.jpeg.asset.json";
+import gj14 from "@/assets/gallery-jobs/gj14.jpeg.asset.json";
+import gj15 from "@/assets/gallery-jobs/gj15.jpeg.asset.json";
+import gj16 from "@/assets/gallery-jobs/gj16.jpeg.asset.json";
+import gj17 from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
+import gj18 from "@/assets/gallery-jobs/gj18.jpeg.asset.json";
+import gj19 from "@/assets/gallery-jobs/gj19.jpeg.asset.json";
+import gj20 from "@/assets/gallery-jobs/gj20.jpeg.asset.json";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
     meta: [
-      { title: "Gallery — ChimCrew jobs in Ohio" },
-      { name: "description", content: "Before and after photos from chimney sweeps, crown rebuilds, fireplace remodels and cap installs by ChimCrew across Ohio." },
-      { property: "og:title", content: "ChimCrew Gallery — Ohio Chimney Work" },
-      { property: "og:description", content: "Real before and after photos from chimney jobs across Ohio. No stock imagery." },
+      { title: "Done Projects — ChimCrew jobs in Ohio" },
+      { name: "description", content: "Finished chimney sweeps, crown rebuilds, fireplace remodels and cap installs by ChimCrew across Columbus, Cincinnati and Dayton." },
+      { property: "og:title", content: "ChimCrew Done Projects — Ohio Chimney Work" },
+      { property: "og:description", content: "Finished chimney jobs from rooftops across Ohio. No stock imagery." },
       { property: "og:url", content: "https://chimcrew.com/before-after" },
     ],
     links: [{ rel: "canonical", href: "https://chimcrew.com/before-after" }],
@@ -52,9 +57,16 @@ const GALLERY = [
   { src: gj8.url, caption: "Arched brick fireplace rebuild — limewash finish" },
   { src: gj9.url, caption: "Custom arched firebox brickwork — in progress" },
   { src: gj10.url, caption: "Two-story limewashed brick chimney — finished" },
-  { src: baCapCrown.url, caption: "Crown & cap rebuild — before / after" },
-  { src: baSpalledBrick.url, caption: "Spalled brick chimney rebuild — before / after" },
-  { src: baCrownStone.url, caption: "Stone-to-brick crown rebuild — before / after" },
+  { src: gj11.url, caption: "Interior fireplace remodel — drywall prep" },
+  { src: gj12.url, caption: "Brick firebox rebuild — fresh masonry" },
+  { src: gj13.url, caption: "Chimney inspection — rooftop access" },
+  { src: gj14.url, caption: "Crown seal and waterproof recoat" },
+  { src: gj15.url, caption: "Stainless cap install on rebuilt crown" },
+  { src: gj16.url, caption: "Flue liner install — finished" },
+  { src: gj17.url, caption: "Tuckpointing repair on brick stack" },
+  { src: gj18.url, caption: "Smoke chamber parge — finished" },
+  { src: gj19.url, caption: "Damper rebuild and gasket install" },
+  { src: gj20.url, caption: "Final inspection — chimney finished" },
   { src: techScaffold.url, caption: "Crown rebuild in progress, scaffolded job" },
   { src: techLiner.url, caption: "Stainless liner install, harnessed on roof" },
   { src: crownDemo.url, caption: "Old crown demoed, ready for fresh pour" },
@@ -72,59 +84,21 @@ function BeforeAfterPage() {
   return (
     <>
       <PageHero
-        eyebrow="Gallery · Ohio crew"
-        title={<>Real jobs. <span className="text-flame">Real results.</span></>}
+        eyebrow="Done Projects · Ohio crew"
+        title={<>Done <span className="text-flame">projects.</span></>}
         subtitle="Ohio chimneys and fireplaces, finished by ChimCrew. Every photo below is a job we actually completed — no stock, no AI."
       />
 
-      {/* BEFORE / AFTER PAIRS — side by side, no slider */}
-      <section className="bg-background py-16 md:py-20">
-        <div className="mx-auto max-w-6xl space-y-16 px-4 md:px-8">
-          {BEFORE_AFTER_JOBS.map((j, i) => (
-            <article key={j.id} className="space-y-5">
-              <div className="flex flex-wrap items-end justify-between gap-4">
-                <div className="min-w-0">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
-                    {`Job #${1000 + i}`} · {j.service}
-                  </p>
-                  <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight text-primary md:text-4xl">
-                    {j.headline}
-                  </h2>
-                </div>
-                <div className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-xs text-muted-foreground">
-                  <MapPin className="h-3.5 w-3.5 text-flame" /> {j.city}
-                </div>
-              </div>
-              <div className="grid gap-4 sm:grid-cols-2">
-                <figure className="relative overflow-hidden rounded-none border border-border bg-primary">
-                  <img src={j.before} alt={`${j.headline} — before`} className="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
-                  <span className="absolute left-3 top-3 rounded-none bg-background/90 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
-                    Before
-                  </span>
-                </figure>
-                <figure className="relative overflow-hidden rounded-none border border-border bg-primary">
-                  <img src={j.after} alt={`${j.headline} — after`} className="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
-                  <span className="absolute left-3 top-3 rounded-none bg-flame px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
-                    After
-                  </span>
-                </figure>
-              </div>
-              <p className="text-sm text-muted-foreground md:text-base">{j.note}</p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* GALLERY OF OTHER PROJECT PHOTOS */}
-      <section className="border-t-2 border-border bg-card/40 py-16 md:py-20">
+      {/* DONE PROJECTS — uniform grid, no before/after pairs */}
+      <section className="bg-card/40 py-16 md:py-20">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
           <div className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-flame">// More finished work</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-flame">// Finished work</p>
             <h2 className="mt-2 font-display text-4xl font-extrabold leading-tight text-primary md:text-5xl">
-              The rest of the rooftop.
+              The rooftop, finished.
             </h2>
             <p className="mt-3 text-muted-foreground">
-              A few more recent Ohio jobs from the ChimCrew camera roll.
+              Recent Ohio jobs from the ChimCrew camera roll.
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
