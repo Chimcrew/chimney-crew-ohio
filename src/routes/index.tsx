@@ -399,7 +399,7 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
       {/* PHOTO — flush to header, rounded-none only at the bottom (full-bleed) */}
-      <div className="relative">
+      <div className="relative pb-10 sm:pb-12 lg:pb-16">
         <div className="relative overflow-hidden rounded-none bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
           <img
             src={teamHeroPhoto.url}
@@ -418,18 +418,18 @@ function Hero() {
               Meet the ChimCrew team.
             </p>
           </div>
-          {/* 3D-style overlay photo — sits on the main photo, bottom-right */}
-          <div className="pointer-events-none absolute -bottom-6 right-3 z-10 w-28 sm:right-6 sm:-bottom-8 sm:w-40 md:w-52 lg:-bottom-10 lg:w-60">
-            <div className="relative -rotate-2 transform-gpu transition duration-500 [transform:perspective(900px)_rotateX(8deg)_rotateY(-8deg)]">
-              <div className="absolute -inset-1 bg-black/40 blur-xl" aria-hidden />
-              <img
-                src={teamTruckPhoto.url}
-                alt="ChimCrew technicians at the back of the branded service truck"
-                className="relative block h-auto w-full border-4 border-white bg-white object-cover shadow-[0_25px_45px_-10px_oklch(0_0_0/0.55)]"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+        </div>
+        {/* 3D-style overlay photo — sits on the main photo from the bottom-right */}
+        <div className="pointer-events-none absolute bottom-0 right-3 z-10 w-28 sm:right-6 sm:w-40 md:w-52 lg:w-60">
+          <div className="relative transform-gpu [transform:perspective(900px)_rotateX(6deg)_rotateY(-10deg)_rotate(-2deg)]">
+            <div className="absolute -inset-1 bg-black/40 blur-xl" aria-hidden />
+            <img
+              src={teamTruckPhoto.url}
+              alt="ChimCrew technicians at the back of the branded service truck"
+              className="relative block h-auto w-full border-4 border-white bg-white object-cover shadow-[0_25px_45px_-10px_oklch(0_0_0/0.55)]"
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </div>
