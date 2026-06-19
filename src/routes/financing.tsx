@@ -161,7 +161,7 @@ function FinancingPage() {
                 </dl>
 
                 <Link
-                  to="/contact"
+                  to="/schedule"
                   className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
                 >
                   <CalendarCheck className="h-4 w-4" /> Schedule appointment online
