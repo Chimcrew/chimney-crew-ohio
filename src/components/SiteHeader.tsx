@@ -396,6 +396,7 @@ export function SiteHeader() {
 
           {/* Mobile toggle */}
           <button
+            ref={mobileToggleRef}
             className="grid h-10 w-10 place-items-center border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] md:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
