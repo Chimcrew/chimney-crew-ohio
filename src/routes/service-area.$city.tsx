@@ -69,7 +69,7 @@ export const Route = createFileRoute("/service-area/$city")({
     <section className="py-24 mx-auto max-w-3xl px-4">
       <h1 className="font-display text-3xl font-bold">Something went wrong</h1>
       <p className="mt-3 text-muted-foreground">{error.message}</p>
-      <button onClick={() => reset()} className="mt-6 rounded-md border-2 border-primary px-5 py-2 font-display text-xs uppercase tracking-widest text-primary">Try again</button>
+      <button onClick={() => reset()} className="mt-6 rounded-none border-2 border-primary px-5 py-2 font-display text-xs uppercase tracking-widest text-primary">Try again</button>
     </section>
   ),
   component: CityPage,
@@ -90,13 +90,13 @@ function CityPage() {
           <div className="mt-7 flex flex-wrap gap-3">
             <a
               href="#schedule"
-              className="inline-flex items-center gap-2 rounded-xl bg-[#E63A1F] px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-white transition hover:brightness-110"
+              className="inline-flex items-center gap-2 rounded-none bg-[#E63A1F] px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-white transition hover:brightness-110"
             >
               Schedule {city.name} Service <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href="tel:6146835763"
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-white/20 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
+              className="inline-flex items-center gap-2 rounded-none border-2 border-white/20 px-7 py-4 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
             >
               <Phone className="h-4 w-4" /> (614) 683-5763
             </a>
@@ -121,7 +121,7 @@ function CityPage() {
           <h2 className="font-display font-bold">Why {city.name} homeowners choose ChimCrew</h2>
           <p className="mt-4 max-w-3xl text-base text-foreground/80">{city.whyUs}</p>
 
-          <div className="mt-8 rounded-2xl border border-border bg-card p-5 md:p-6">
+          <div className="mt-8 rounded-none border border-border bg-card p-5 md:p-6">
             <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-flame">Recent {city.name} job</p>
             <p className="mt-2 text-base text-foreground/85">{city.localProof}</p>
           </div>
@@ -143,9 +143,9 @@ function CityPage() {
                   key={s.slug}
                   to="/services/$slug"
                   params={{ slug: s.slug }}
-                  className="group flex items-start gap-3 rounded-lg border border-border bg-card p-4 transition hover:border-flame"
+                  className="group flex items-start gap-3 rounded-none border border-border bg-card p-4 transition hover:border-flame"
                 >
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-flame/10 text-flame">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-none bg-flame/10 text-flame">
                     <Icon className="h-5 w-5" />
                   </span>
                   <div>
@@ -198,7 +198,7 @@ function CityPage() {
           <h2 className="font-display font-bold">Frequently asked questions — {city.name}, OH</h2>
           <div className="mt-8 space-y-3">
             {city.faqs.map((f) => (
-              <details key={f.q} className="group rounded-xl border border-border bg-card p-5 transition open:border-flame">
+              <details key={f.q} className="group rounded-none border border-border bg-card p-5 transition open:border-flame">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
                   <span className="font-display text-base font-semibold text-primary">{f.q}</span>
                   <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border text-primary transition group-open:rotate-45 group-open:border-flame group-open:text-flame">+</span>
@@ -221,7 +221,7 @@ function CityPage() {
                   <Link
                     to="/service-area/$city"
                     params={{ city: c.slug }}
-                    className="flex items-center justify-between gap-1 rounded-md border border-border bg-card px-3 py-3 transition hover:border-flame"
+                    className="flex items-center justify-between gap-1 rounded-none border border-border bg-card px-3 py-3 transition hover:border-flame"
                   >
                     <span className="font-display text-sm font-semibold">{c.name}</span>
                     <CheckCircle2 className="h-4 w-4 text-flame" />

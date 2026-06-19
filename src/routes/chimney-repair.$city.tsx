@@ -116,11 +116,11 @@ function CityPage() {
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link
                 to="/schedule"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
               >
                 <CalendarCheck className="h-4 w-4" /> Schedule appointment online
               </Link>
-              <a href="tel:6146835763" className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-5 font-sans text-[13px] font-medium tracking-normal text-primary-foreground transition hover:border-flame active:scale-95 sm:px-6">
+              <a href="tel:6146835763" className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-white/20 bg-white/[0.04] px-5 font-sans text-[13px] font-medium tracking-normal text-primary-foreground transition hover:border-flame active:scale-95 sm:px-6">
                 <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
               </a>
             </div>
@@ -140,7 +140,7 @@ function CityPage() {
           </div>
 
           <div id="book" className="lg:col-span-5">
-            <div className="rounded-2xl border-2 border-flame/30 bg-card shadow-[0_30px_80px_-30px_oklch(0_0_0/0.55)]">
+            <div className="rounded-none border-2 border-flame/30 bg-card shadow-[0_30px_80px_-30px_oklch(0_0_0/0.55)]">
               <ScheduleInline />
             </div>
             <p className="mt-3 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
@@ -160,12 +160,12 @@ function CityPage() {
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">{city.intro}</p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{city.whyUs}</p>
-            <div className="mt-6 rounded-xl border-2 border-flame/30 bg-flame/5 p-5">
+            <div className="mt-6 rounded-none border-2 border-flame/30 bg-flame/5 p-5">
               <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">// Recent job in {city.name}</p>
               <p className="mt-2 text-base font-semibold text-foreground">{city.localProof}</p>
             </div>
           </div>
-          <aside className="rounded-2xl border-2 border-border bg-card p-6">
+          <aside className="rounded-none border-2 border-border bg-card p-6">
             <h3 className="font-display text-lg font-extrabold text-primary">{city.name} at a glance</h3>
             <dl className="mt-4 space-y-3 text-sm">
               <div>
@@ -214,9 +214,9 @@ function CityPage() {
                   key={s.label}
                   to="/services/$slug"
                   params={{ slug: s.slug }}
-                  className="group flex flex-col gap-3 rounded-xl border-2 border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-flame"
+                  className="group flex flex-col gap-3 rounded-none border-2 border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-flame"
                 >
-                  <div className="grid h-11 w-11 place-items-center rounded-lg bg-primary text-flame">
+                  <div className="grid h-11 w-11 place-items-center rounded-none bg-primary text-flame">
                     <Icon className="h-5 w-5" />
                   </div>
                   <p className="font-display text-base font-extrabold text-primary">{s.label}</p>
@@ -244,7 +244,7 @@ function CityPage() {
             {TRUST.map((t) => {
               const Icon = t.icon;
               return (
-                <div key={t.label} className="flex flex-col items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-5 text-center backdrop-blur">
+                <div key={t.label} className="flex flex-col items-center gap-3 rounded-none border border-white/10 bg-white/[0.03] p-5 text-center backdrop-blur">
                   <div className="grid h-11 w-11 place-items-center rounded-full bg-flame text-primary">
                     <Icon className="h-5 w-5" />
                   </div>
@@ -265,7 +265,7 @@ function CityPage() {
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             {BEFORE_AFTER_JOBS.slice(0, 4).map((job) => (
-              <div key={job.id} className="overflow-hidden rounded-2xl border-2 border-border bg-card">
+              <div key={job.id} className="overflow-hidden rounded-none border-2 border-border bg-card">
                 <BeforeAfter before={job.before} after={job.after} alt={job.headline} />
                 <div className="p-5">
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
@@ -289,7 +289,7 @@ function CityPage() {
               Chimney questions from {city.name} homeowners
             </h2>
           </div>
-          <div className="mt-10 divide-y divide-border rounded-2xl border-2 border-border bg-card">
+          <div className="mt-10 divide-y divide-border rounded-none border-2 border-border bg-card">
             {city.faqs.map((f: { q: string; a: string }) => (
               <details key={f.q} className="group p-6">
                 <summary className="flex cursor-pointer items-center justify-between gap-4 font-display text-lg font-extrabold text-primary">
@@ -318,7 +318,7 @@ function CityPage() {
                 <Link
                   to="/chimney-repair/$city"
                   params={{ city: o.slug }}
-                  className="group block h-full rounded-xl border-2 border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-flame"
+                  className="group block h-full rounded-none border-2 border-border bg-card p-5 transition hover:-translate-y-0.5 hover:border-flame"
                 >
                   <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
                     <MapPin className="h-3.5 w-3.5" /> {o.state}
@@ -348,11 +348,11 @@ function CityPage() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
               to="/schedule"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0.18_0.02_250/0.25)] transition active:scale-95 sm:px-6"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0.18_0.02_250/0.25)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </Link>
-            <a href="tel:6146835763" className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-primary px-5 font-sans text-[13px] font-medium tracking-normal text-primary transition hover:bg-primary hover:text-primary-foreground active:scale-95 sm:px-6">
+            <a href="tel:6146835763" className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-primary px-5 font-sans text-[13px] font-medium tracking-normal text-primary transition hover:bg-primary hover:text-primary-foreground active:scale-95 sm:px-6">
               <Phone className="h-4 w-4" /> (614) 683-5763
             </a>
           </div>

@@ -19,9 +19,9 @@ export function TrustBar() {
           {ITEMS.map(({ icon: Icon, label }) => (
             <li
               key={label}
-              className="group flex items-center gap-3 rounded-lg border border-border bg-card px-4 py-3 transition hover:border-flame/50"
+              className="group flex items-center gap-3 rounded-none border border-border bg-card px-4 py-3 transition hover:border-flame/50"
             >
-              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-md bg-flame/10 text-flame transition group-hover:bg-flame/20">
+              <span className="grid h-9 w-9 shrink-0 place-items-center rounded-none bg-flame/10 text-flame transition group-hover:bg-flame/20">
                 <Icon className="h-4 w-4" />
               </span>
               <span className="font-display text-xs font-bold uppercase leading-tight tracking-wider text-foreground sm:text-[0.8rem]">

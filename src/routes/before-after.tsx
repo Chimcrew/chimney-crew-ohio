@@ -96,15 +96,15 @@ function BeforeAfterPage() {
                 </div>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
-                <figure className="relative overflow-hidden rounded-2xl border border-border bg-primary">
+                <figure className="relative overflow-hidden rounded-none border border-border bg-primary">
                   <img src={j.before} alt={`${j.headline} — before`} className="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
-                  <span className="absolute left-3 top-3 rounded-md bg-background/90 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
+                  <span className="absolute left-3 top-3 rounded-none bg-background/90 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground">
                     Before
                   </span>
                 </figure>
-                <figure className="relative overflow-hidden rounded-2xl border border-border bg-primary">
+                <figure className="relative overflow-hidden rounded-none border border-border bg-primary">
                   <img src={j.after} alt={`${j.headline} — after`} className="aspect-[4/3] w-full object-cover" loading="lazy" decoding="async" />
-                  <span className="absolute left-3 top-3 rounded-md bg-flame px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+                  <span className="absolute left-3 top-3 rounded-none bg-flame px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
                     After
                   </span>
                 </figure>
@@ -131,7 +131,7 @@ function BeforeAfterPage() {
             {GALLERY.map((g, i) => (
               <figure
                 key={i}
-                className="group relative overflow-hidden rounded-xl border-2 border-border bg-primary"
+                className="group relative overflow-hidden rounded-none border-2 border-border bg-primary"
               >
                 <img
                   src={g.src}

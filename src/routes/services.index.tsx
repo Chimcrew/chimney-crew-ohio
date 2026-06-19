@@ -43,10 +43,10 @@ function ServicesPage() {
                 key={s.slug}
                 to="/services/$slug"
                 params={{ slug: s.slug }}
-                className="group flex flex-col rounded-sm border-2 border-border bg-card p-6 transition hover:border-primary hover:shadow-flame"
+                className="group flex flex-col rounded-none border-2 border-border bg-card p-6 transition hover:border-primary hover:shadow-flame"
               >
                 <div className="flex items-start justify-between">
-                  <div className={`grid h-12 w-12 place-items-center rounded-sm ${accent.bg} text-primary-foreground`}>
+                  <div className={`grid h-12 w-12 place-items-center rounded-none ${accent.bg} text-primary-foreground`}>
                     <Icon className="h-6 w-6" />
                   </div>
                   {formatFromPrice(s) ? (

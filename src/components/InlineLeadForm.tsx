@@ -29,15 +29,15 @@ export function InlineLeadForm({
 
   const isDark = tone === "dark";
   const cardCls = isDark
-    ? "rounded-3xl border border-white/15 bg-white/[0.06] p-5 backdrop-blur sm:p-6 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.55)]"
-    : "rounded-3xl border border-border/60 bg-card p-5 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)] sm:p-6";
+    ? "rounded-none border border-white/15 bg-white/[0.06] p-5 backdrop-blur sm:p-6 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.55)]"
+    : "rounded-none border border-border/60 bg-card p-5 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)] sm:p-6";
   const titleCls = isDark
     ? "font-display text-xl font-extrabold tracking-tight text-primary-foreground"
     : "font-display text-xl font-extrabold tracking-tight";
   const subCls = isDark ? "mt-1 text-sm text-primary-foreground/70" : "mt-1 text-sm text-muted-foreground";
   const inputCls = isDark
-    ? "h-12 rounded-xl border border-white/20 bg-white/[0.06] px-4 text-base text-primary-foreground placeholder:text-primary-foreground/50 outline-none focus:border-flame"
-    : "h-12 rounded-xl border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame";
+    ? "h-12 rounded-none border border-white/20 bg-white/[0.06] px-4 text-base text-primary-foreground placeholder:text-primary-foreground/50 outline-none focus:border-flame"
+    : "h-12 rounded-none border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame";
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -78,7 +78,7 @@ export function InlineLeadForm({
         <p className={subCls}>We'll email your appointment confirmation within 10 minutes.</p>
         <a
           href={TEL}
-          className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-4 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary"
+          className="mt-4 inline-flex items-center justify-center gap-2 rounded-none bg-flame px-4 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary"
         >
           <Phone className="h-4 w-4" /> Call {TEL_DISPLAY}
         </a>
@@ -141,7 +141,7 @@ export function InlineLeadForm({
         <button
           type="submit"
           disabled={submitting || !name.trim() || !phone.trim() || !email.trim()}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
         >
           <CalendarCheck className="h-5 w-5" />
           {submitting ? "Sending…" : "Get my free inspection"}

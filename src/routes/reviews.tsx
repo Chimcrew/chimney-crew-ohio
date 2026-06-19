@@ -59,21 +59,21 @@ function ReviewsPage() {
           </div>
 
           <div className="mt-10 grid gap-3 sm:grid-cols-3">
-            <div className="flex items-center gap-3 rounded-sm border-2 border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
+            <div className="flex items-center gap-3 rounded-none border-2 border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
               <Star className="h-6 w-6 fill-current text-flame" />
               <div>
                 <p className="font-display text-sm uppercase tracking-wider">5-Star Rated</p>
                 <p className="font-mono text-[10px] uppercase tracking-widest text-primary-foreground/65">Across every platform</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 rounded-sm border-2 border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
+            <div className="flex items-center gap-3 rounded-none border-2 border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
               <MapPin className="h-6 w-6 text-flame" />
               <div>
                 <p className="font-display text-sm uppercase tracking-wider">Locally Owned</p>
                 <p className="font-mono text-[10px] uppercase tracking-widest text-primary-foreground/65">Ohio family business</p>
               </div>
             </div>
-            <div className="flex items-center gap-3 rounded-sm border-2 border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
+            <div className="flex items-center gap-3 rounded-none border-2 border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
               <ShieldCheck className="h-6 w-6 text-flame" />
               <div>
                 <p className="font-display text-sm uppercase tracking-wider">Licensed & Insured</p>
@@ -84,7 +84,7 @@ function ReviewsPage() {
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {SOURCES.map((s) => (
-              <div key={s.name} className="flex items-center justify-between rounded-sm border border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
+              <div key={s.name} className="flex items-center justify-between rounded-none border border-white/15 bg-white/5 px-4 py-3 backdrop-blur">
                 <span className="font-display text-sm uppercase tracking-wider">{s.name}</span>
                 <span className="flex items-center gap-2 font-mono text-xs text-primary-foreground/65">
                   <span className="flex text-flame">
@@ -100,13 +100,13 @@ function ReviewsPage() {
       <section className="py-20">
         <div className="mx-auto grid max-w-7xl gap-5 px-4 md:grid-cols-2 md:px-8 lg:grid-cols-3">
           {REVIEWS.map((r, i) => (
-            <figure key={i} className="relative flex flex-col rounded-sm border-2 border-border bg-card p-6">
+            <figure key={i} className="relative flex flex-col rounded-none border-2 border-border bg-card p-6">
               <Quote className="absolute right-4 top-4 h-8 w-8 text-primary/15" />
               <div className="flex items-center justify-between">
                 <div className="flex gap-1 text-primary">
                   {Array.from({ length: r.rating }).map((_, j) => <Star key={j} className="h-4 w-4 fill-current" />)}
                 </div>
-                <span className="flex items-center gap-1 rounded-sm border border-border bg-background/60 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                <span className="flex items-center gap-1 rounded-none border border-border bg-background/60 px-2 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                   <BadgeCheck className="h-3 w-3 text-flame" /> {r.source}
                 </span>
               </div>

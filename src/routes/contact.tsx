@@ -30,9 +30,9 @@ function ContactPage() {
           <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
             <a
               href="tel:6146835763"
-              className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-0.5 hover:border-flame/50 hover:bg-white/10"
+              className="group flex items-center gap-3 rounded-none border border-white/10 bg-white/5 p-4 transition hover:-translate-y-0.5 hover:border-flame/50 hover:bg-white/10"
             >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-flame text-primary">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-none bg-flame text-primary">
                 <Phone className="h-5 w-5" />
               </span>
               <div className="min-w-0">
@@ -42,9 +42,9 @@ function ContactPage() {
             </a>
             <a
               href="sms:6146835763"
-              className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-0.5 hover:border-flame/50 hover:bg-white/10"
+              className="group flex items-center gap-3 rounded-none border border-white/10 bg-white/5 p-4 transition hover:-translate-y-0.5 hover:border-flame/50 hover:bg-white/10"
             >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-flame text-primary">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-none bg-flame text-primary">
                 <MessageSquare className="h-5 w-5" />
               </span>
               <div className="min-w-0">
@@ -54,9 +54,9 @@ function ContactPage() {
             </a>
             <a
               href="mailto:office@chimcrew.com"
-              className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:-translate-y-0.5 hover:border-flame/50 hover:bg-white/10"
+              className="group flex items-center gap-3 rounded-none border border-white/10 bg-white/5 p-4 transition hover:-translate-y-0.5 hover:border-flame/50 hover:bg-white/10"
             >
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-flame text-primary">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-none bg-flame text-primary">
                 <Mail className="h-5 w-5" />
               </span>
               <div className="min-w-0">
@@ -90,7 +90,7 @@ function ContactPage() {
 
           {/* Sidebar */}
           <aside className="space-y-4">
-            <div className="rounded-2xl border border-border bg-card p-5">
+            <div className="rounded-none border border-border bg-card p-5">
               <h3 className="font-display text-sm font-black uppercase tracking-wide text-primary">
                 Hours
               </h3>
@@ -106,7 +106,7 @@ function ContactPage() {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border bg-card p-5">
+            <div className="rounded-none border border-border bg-card p-5">
               <h3 className="font-display text-sm font-black uppercase tracking-wide text-primary">
                 Why homeowners call us
               </h3>
@@ -117,7 +117,7 @@ function ContactPage() {
               </ul>
             </div>
 
-            <div className="overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-primary to-[oklch(0.22_0.04_250)] p-5 text-primary-foreground">
+            <div className="overflow-hidden rounded-none border border-border bg-gradient-to-br from-primary to-[oklch(0.22_0.04_250)] p-5 text-primary-foreground">
               <div className="flex items-center gap-1 text-flame">
                 {Array.from({ length: 5 }).map((_, i) => (
                   <Star key={i} className="h-4 w-4 fill-flame" />

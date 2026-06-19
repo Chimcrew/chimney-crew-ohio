@@ -117,7 +117,7 @@ function PostPage() {
 
         {/* COVER */}
         <div className="mx-auto max-w-5xl px-4 pt-10 md:px-8">
-          <div className="aspect-[16/9] overflow-hidden rounded-2xl border-2 border-border">
+          <div className="aspect-[16/9] overflow-hidden rounded-none border-2 border-border">
             <img src={post.cover} alt={post.title} className="h-full w-full object-cover" />
           </div>
         </div>
@@ -142,7 +142,7 @@ function PostPage() {
           </div>
 
           {/* CTA */}
-          <div className="mt-14 rounded-2xl border-2 border-flame/40 bg-flame/5 p-6 md:p-8">
+          <div className="mt-14 rounded-none border-2 border-flame/40 bg-flame/5 p-6 md:p-8">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
               ◆ Live in Columbus, Cincinnati, or Dayton?
             </p>
@@ -152,13 +152,13 @@ function PostPage() {
             <div className="mt-5 flex flex-wrap gap-3">
               <Link
                 to="/schedule"
-                className="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:brightness-110"
+                className="inline-flex items-center gap-2 rounded-none bg-primary px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:brightness-110"
               >
                 Schedule online
               </Link>
               <a
                 href="tel:6146835763"
-                className="inline-flex items-center gap-2 rounded-xl border-2 border-primary px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+                className="inline-flex items-center gap-2 rounded-none border-2 border-primary px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
               >
                 <Phone className="h-4 w-4" /> (614) 683-5763
               </a>
@@ -180,7 +180,7 @@ function PostPage() {
                 key={p.slug}
                 to="/blog/$slug"
                 params={{ slug: p.slug }}
-                className="group flex flex-col overflow-hidden rounded-2xl border-2 border-border bg-card transition hover:border-flame"
+                className="group flex flex-col overflow-hidden rounded-none border-2 border-border bg-card transition hover:border-flame"
               >
                 <div className="aspect-[16/10] overflow-hidden">
                   <img src={p.cover} alt={p.title} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-105" />

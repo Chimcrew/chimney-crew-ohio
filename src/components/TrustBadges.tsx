@@ -31,7 +31,7 @@ export function TrustBadges({
         <li
           key={item}
           className={cn(
-            "flex items-center gap-2 rounded-xl border-2 px-3 py-2.5 font-display text-[11px] font-extrabold uppercase tracking-[0.05em] leading-tight",
+            "flex items-center gap-2 rounded-none border-2 px-3 py-2.5 font-display text-[11px] font-extrabold uppercase tracking-[0.05em] leading-tight",
             light
               ? "border-flame/40 bg-white/[0.04] text-primary-foreground"
               : "border-flame/30 bg-flame/[0.06] text-primary",

@@ -189,7 +189,7 @@ function HeroToOfferBridge() {
       <figure className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
         {/* soft warm halo */}
         <div
-          className="pointer-events-none absolute -inset-3 rounded-[2rem] bg-flame/20 blur-2xl"
+          className="pointer-events-none absolute -inset-3 rounded-none bg-flame/20 blur-2xl"
           aria-hidden
         />
         {/* logo */}
@@ -227,9 +227,9 @@ function HeroPhotoCard() {
   return (
     <div className="relative mx-auto w-full max-w-xs sm:max-w-sm lg:max-w-md">
       {/* ambient glow */}
-      <div className="absolute -inset-6 rounded-[2rem] bg-flame/15 blur-3xl" aria-hidden />
+      <div className="absolute -inset-6 rounded-none bg-flame/15 blur-3xl" aria-hidden />
 
-      <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
+      <div className="relative overflow-hidden rounded-none border border-white/10 bg-[oklch(0.12_0.01_250)] shadow-[0_30px_80px_oklch(0_0_0/0.55)]">
         {/* top meta strip */}
         <div className="flex items-center justify-between border-b border-white/5 px-5 py-3">
           <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
@@ -269,7 +269,7 @@ function HeroPhotoCard() {
           </div>
 
           {/* caption card */}
-          <div className="absolute inset-x-4 bottom-4 rounded-xl border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
+          <div className="absolute inset-x-4 bottom-4 rounded-none border border-white/10 bg-primary/85 px-4 py-3 backdrop-blur">
             <div className="flex items-center justify-between gap-3">
               <div className="min-w-0">
                 <p className="truncate font-display text-sm font-bold text-primary-foreground">
@@ -294,7 +294,7 @@ function HeroPhotoCard() {
               type="button"
               onClick={() => setIdx(i)}
               aria-label={`Show ${p.caption}`}
-              className={`group relative h-10 w-10 shrink-0 overflow-hidden rounded-md border transition ${i === idx ? "border-flame ring-2 ring-flame/40" : "border-white/10 opacity-60 hover:opacity-100"}`}
+              className={`group relative h-10 w-10 shrink-0 overflow-hidden rounded-none border transition ${i === idx ? "border-flame ring-2 ring-flame/40" : "border-white/10 opacity-60 hover:opacity-100"}`}
             >
               <img
                 src={p.src}
@@ -326,7 +326,7 @@ function LimitedOfferBanner() {
     <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-8 md:py-10">
       <div className="relative mx-auto max-w-2xl">
         {/* Coupon card */}
-        <div className="relative rounded-2xl bg-flame text-primary shadow-[0_20px_60px_oklch(0_0_0/0.5)]">
+        <div className="relative rounded-none bg-flame text-primary shadow-[0_20px_60px_oklch(0_0_0/0.5)]">
           {/* perforated edges */}
           <span
             className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
@@ -338,7 +338,7 @@ function LimitedOfferBanner() {
           />
 
           {/* dashed inner frame */}
-          <div className="m-2 rounded-xl border-2 border-dashed border-primary/40 p-5 sm:p-6">
+          <div className="m-2 rounded-none border-2 border-dashed border-primary/40 p-5 sm:p-6">
             {/* top ribbon */}
             <div className="flex items-center justify-between gap-3">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
@@ -375,13 +375,13 @@ function LimitedOfferBanner() {
                 <button
                   type="button"
                   onClick={() => (window.location.href = "/schedule")}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
                 >
                   <CalendarCheck className="h-4 w-4" /> Schedule now
                 </button>
                 <a
                   href="tel:6146835763"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-lg border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
+                  className="inline-flex h-12 items-center justify-center gap-2 rounded-none border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
                 >
                   <Phone className="h-4 w-4" /> Call Now
                 </a>
@@ -399,7 +399,7 @@ function Hero() {
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
       {/* PHOTO — flush to header, rounded only at the bottom (full-bleed) */}
       <div className="relative">
-        <div className="relative overflow-hidden rounded-b-3xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+        <div className="relative overflow-hidden rounded-none bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
           <img
             src={teamHeroPhoto.url}
             alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
@@ -600,7 +600,7 @@ function TrustMarquee() {
         {loop.map((c, i) => (
           <span
             key={`${c.label}-${i}`}
-            className="inline-flex items-center rounded-lg border border-border bg-background px-3 py-2 shadow-sm"
+            className="inline-flex items-center rounded-none border border-border bg-background px-3 py-2 shadow-sm"
           >
             {c.node}
           </span>
@@ -704,9 +704,9 @@ function CommonProblems() {
               key={label}
               to="/services/$slug"
               params={{ slug }}
-              className="group flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-flame hover:shadow-md"
+              className="group flex gap-4 rounded-none border border-border bg-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-flame hover:shadow-md"
             >
-              <div className="h-16 w-16 shrink-0 overflow-hidden rounded-md border border-border/60 bg-muted">
+              <div className="h-16 w-16 shrink-0 overflow-hidden rounded-none border border-border/60 bg-muted">
                 <img
                   src={image}
                   alt={alt}
@@ -729,13 +729,13 @@ function CommonProblems() {
           <button
             type="button"
             onClick={() => (window.location.href = "/schedule")}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule appointment online
           </button>
           <a
             href="tel:6146835763"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
           >
             <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
           </a>
@@ -757,7 +757,7 @@ function PhotoVideoTrust() {
           <img
             src={beforeAfterPhoto.url}
             alt="Chimney crown rebuild — before and after comparison by ChimCrew"
-            className="w-full max-w-sm rounded-lg border border-white/10 shadow-lg md:max-w-md"
+            className="w-full max-w-sm rounded-none border border-white/10 shadow-lg md:max-w-md"
             loading="lazy"
             decoding="async"
           />
@@ -781,7 +781,7 @@ function PhotoVideoTrust() {
           <button
             type="button"
             onClick={() => (window.location.href = "/schedule")}
-            className="mt-5 inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-md transition active:scale-95"
+            className="mt-5 inline-flex h-12 shrink-0 items-center justify-center gap-2 rounded-none bg-flame px-5 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-md transition active:scale-95"
           >
             <CalendarCheck className="h-4 w-4" /> Book Inspection
           </button>
@@ -837,7 +837,7 @@ function WhyChooseUs() {
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             Six reasons Ohio homeowners{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+            <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
               trust us first
             </span>
             .
@@ -850,11 +850,11 @@ function WhyChooseUs() {
 
         <div className="mt-10 grid gap-4 sm:gap-5 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-start">
           <div
-            className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-[0_30px_70px_-25px_oklch(0_0_0/0.45)] transition-transform duration-500 hover:-translate-y-1 hover:rotate-0 [transform:perspective(1400px)_rotateY(-8deg)_rotateX(2deg)]"
+            className="group relative overflow-hidden rounded-none border border-border bg-card shadow-[0_30px_70px_-25px_oklch(0_0_0/0.45)] transition-transform duration-500 hover:-translate-y-1 hover:rotate-0 [transform:perspective(1400px)_rotateY(-8deg)_rotateX(2deg)]"
             style={{ transformStyle: "preserve-3d" }}
           >
             <div
-              className="pointer-events-none absolute -inset-8 -z-10 rounded-[2.5rem] bg-flame/25 blur-3xl"
+              className="pointer-events-none absolute -inset-8 -z-10 rounded-none bg-flame/25 blur-3xl"
               aria-hidden
             />
             <img
@@ -879,10 +879,10 @@ function WhyChooseUs() {
             {reasons.map(({ icon: Icon, title, body }) => (
               <article
                 key={title}
-                className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-4 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame sm:p-6"
+                className="group relative flex flex-col overflow-hidden rounded-none border border-border bg-card p-4 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame sm:p-6"
               >
                 <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-flame/10 blur-2xl transition group-hover:bg-flame/30" />
-                <div className="relative grid h-10 w-10 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40 sm:h-12 sm:w-12">
+                <div className="relative grid h-10 w-10 place-items-center rounded-none bg-primary text-flame ring-1 ring-flame/40 sm:h-12 sm:w-12">
                   <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
                 <h3 className="mt-3 font-display text-base font-semibold text-primary sm:mt-5 sm:text-lg">
@@ -900,13 +900,13 @@ function WhyChooseUs() {
           <button
             type="button"
             onClick={() => (window.location.href = "/schedule")}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule appointment online
           </button>
           <a
             href="tel:6146835763"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
           >
             <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
           </a>
@@ -935,7 +935,7 @@ function BeforeAfterHome() {
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl">
             Drag the slider.{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+            <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
               See the work.
             </span>
           </h2>
@@ -961,7 +961,7 @@ function BeforeAfterHome() {
         <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
           <Link
             to="/before-after"
-            className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
+            className="inline-flex items-center gap-2 rounded-none bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
           >
             See all before & after jobs <ArrowRight className="h-4 w-4" />
           </Link>
@@ -1023,7 +1023,7 @@ function ProblemSolver() {
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             The problem you're searching for —{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+            <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
               we fix it
             </span>
             .
@@ -1037,9 +1037,9 @@ function ProblemSolver() {
           {problems.map(({ icon: Icon, problem, solution, cta }) => (
             <article
               key={problem}
-              className="group flex flex-col rounded-xl border-2 border-border bg-card p-4 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame sm:p-6"
+              className="group flex flex-col rounded-none border-2 border-border bg-card p-4 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame sm:p-6"
             >
-              <div className="grid h-9 w-9 place-items-center rounded-lg bg-destructive/10 text-destructive ring-1 ring-destructive/30 sm:h-11 sm:w-11">
+              <div className="grid h-9 w-9 place-items-center rounded-none bg-destructive/10 text-destructive ring-1 ring-destructive/30 sm:h-11 sm:w-11">
                 <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
               </div>
               <h3 className="mt-3 font-display text-base font-bold text-primary sm:mt-4 sm:text-lg">
@@ -1050,7 +1050,7 @@ function ProblemSolver() {
               </p>
               <Link
                 to="/contact"
-                className="mt-3 inline-flex items-center gap-2 self-start rounded-lg border-2 border-primary bg-primary px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-primary-foreground transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary sm:mt-5 sm:px-4 sm:py-2.5 sm:text-[11px]"
+                className="mt-3 inline-flex items-center gap-2 self-start rounded-none border-2 border-primary bg-primary px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-primary-foreground transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary sm:mt-5 sm:px-4 sm:py-2.5 sm:text-[11px]"
               >
                 {cta} <ArrowRight className="h-3.5 w-3.5" />
               </Link>
@@ -1061,7 +1061,7 @@ function ProblemSolver() {
         <div className="mt-10 flex items-center justify-center">
           <a
             href="tel:6146835763"
-            className="inline-flex items-center gap-2 rounded-xl bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
+            className="inline-flex items-center gap-2 rounded-none bg-flame px-7 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0.78_0.19_92/0.25)] transition hover:-translate-y-0.5 hover:bg-white"
           >
             <Phone className="h-4 w-4" /> Talk to a tech now · (614) 683-5763
           </a>
@@ -1111,7 +1111,7 @@ function FireHazards() {
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             What your chimney is{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+            <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
               hiding right now
             </span>
             .
@@ -1127,11 +1127,11 @@ function FireHazards() {
           {hazards.map(({ icon: Icon, title, body, stat }, i) => (
             <article
               key={title}
-              className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
+              className="group relative flex flex-col overflow-hidden rounded-none border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
               style={{ animationDelay: `${i * 80}ms` }}
             >
               <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-flame/10 blur-2xl transition group-hover:bg-flame/30" />
-              <div className="relative grid h-12 w-12 place-items-center rounded-lg bg-primary text-flame ring-1 ring-flame/40">
+              <div className="relative grid h-12 w-12 place-items-center rounded-none bg-primary text-flame ring-1 ring-flame/40">
                 <Icon className="h-5 w-5" />
               </div>
               <h3 className="mt-5 font-display text-lg font-semibold text-primary">{title}</h3>
@@ -1163,7 +1163,7 @@ function LeakingChimney() {
     <section className="relative overflow-hidden bg-background py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 md:grid-cols-2 md:px-8">
         <div className="relative">
-          <div className="relative overflow-hidden rounded-2xl border-2 border-primary/20 shadow-flame">
+          <div className="relative overflow-hidden rounded-none border-2 border-primary/20 shadow-flame">
             <img src={sweep} alt="Chimney inspection on an Ohio rooftop" className="block w-full" />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-transparent" />
             <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-primary/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-flame backdrop-blur">
@@ -1171,7 +1171,7 @@ function LeakingChimney() {
             </div>
           </div>
           {/* Floating stat card */}
-          <div className="absolute -bottom-6 -right-4 hidden rounded-xl border-2 border-flame bg-primary p-4 text-primary-foreground shadow-flame md:block">
+          <div className="absolute -bottom-6 -right-4 hidden rounded-none border-2 border-flame bg-primary p-4 text-primary-foreground shadow-flame md:block">
             <p className="font-display text-3xl text-flame">93%</p>
             <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em]">
               of chimney leaks
@@ -1187,7 +1187,7 @@ function LeakingChimney() {
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             One bad Ohio winter and{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+            <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
               the water wins
             </span>
             .
@@ -1202,7 +1202,7 @@ function LeakingChimney() {
             {signs.map((s) => (
               <li
                 key={s}
-                className="flex items-start gap-2 rounded-sm border border-border bg-card p-3 text-sm text-foreground"
+                className="flex items-start gap-2 rounded-none border border-border bg-card p-3 text-sm text-foreground"
               >
                 <Droplets className="mt-0.5 h-4 w-4 shrink-0 text-flame" />
                 {s}
@@ -1214,13 +1214,13 @@ function LeakingChimney() {
             <button
               type="button"
               onClick={() => (window.location.href = "/schedule")}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </button>
             <a
               href="tel:6146835763"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
             >
               <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
             </a>
@@ -1247,14 +1247,14 @@ function ScheduleOnline() {
       />
 
       <div className="relative mx-auto max-w-6xl px-4 md:px-8">
-        <div className="grid items-center gap-10 rounded-3xl border border-flame/30 bg-primary/40 p-8 backdrop-blur md:grid-cols-[1.2fr_1fr] md:p-12">
+        <div className="grid items-center gap-10 rounded-none border border-flame/30 bg-primary/40 p-8 backdrop-blur md:grid-cols-[1.2fr_1fr] md:p-12">
           <div>
             <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
               <CalendarCheck className="h-3.5 w-3.5" /> 60-second booking
             </p>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold md:text-5xl">
               Pick a window.{" "}
-              <span className="inline-block rounded-lg bg-primary-foreground px-2.5 py-0.5 text-primary">
+              <span className="inline-block rounded-none bg-primary-foreground px-2.5 py-0.5 text-primary">
                 We handle everything else.
               </span>
             </h2>
@@ -1270,7 +1270,7 @@ function ScheduleOnline() {
                 ["02", "Pick a window", "Same-day if open"],
                 ["03", "We arrive on time", "Or we discount the bill"],
               ].map(([n, t, s]) => (
-                <li key={n} className="rounded-sm border border-flame/20 bg-primary/60 p-4">
+                <li key={n} className="rounded-none border border-flame/20 bg-primary/60 p-4">
                   <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
                     Step {n}
                   </p>
@@ -1284,13 +1284,13 @@ function ScheduleOnline() {
               <button
                 type="button"
                 onClick={() => (window.location.href = "/schedule")}
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
               >
                 <CalendarCheck className="h-4 w-4" /> Schedule appointment online
               </button>
               <a
                 href="tel:6146835763"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
+                className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
               >
                 <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
               </a>
@@ -1298,7 +1298,7 @@ function ScheduleOnline() {
           </div>
 
           <div className="relative">
-            <div className="relative overflow-hidden rounded-2xl border-2 border-flame/40 shadow-flame">
+            <div className="relative overflow-hidden rounded-none border-2 border-flame/40 shadow-flame">
               <img
                 src={techScaffold.url}
                 alt="ChimCrew crew on-site rebuilding a chimney crown"
@@ -1361,7 +1361,7 @@ function Process() {
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             From "hello" to handshake in{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+            <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
               four steps
             </span>
             .
@@ -1437,7 +1437,7 @@ function Testimonials() {
     <section className="bg-background py-24">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         {/* Big social-proof banner */}
-        <div className="mb-12 grid gap-6 rounded-2xl border-2 border-flame/30 bg-secondary/60 p-6 sm:grid-cols-[auto_1fr_auto] sm:items-center md:p-8">
+        <div className="mb-12 grid gap-6 rounded-none border-2 border-flame/30 bg-secondary/60 p-6 sm:grid-cols-[auto_1fr_auto] sm:items-center md:p-8">
           <div className="flex items-center gap-4">
             <div className="flex">
               {[0, 1, 2, 3, 4].map((i) => (
@@ -1462,7 +1462,7 @@ function Testimonials() {
           </p>
           <Link
             to="/schedule"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule appointment online
           </Link>
@@ -1475,7 +1475,7 @@ function Testimonials() {
             </p>
             <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
               Ohio homeowners.{" "}
-              <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
                 Honest words
               </span>
               .
@@ -1493,7 +1493,7 @@ function Testimonials() {
           {reviews.map((r, i) => (
             <figure
               key={i}
-              className="relative flex flex-col overflow-hidden rounded-xl border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
+              className="relative flex flex-col overflow-hidden rounded-none border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
             >
               <div className="flex text-flame">
                 {[0, 1, 2, 3, 4].map((s) => (
@@ -1567,7 +1567,7 @@ function Faq() {
           {faqs.map((f, i) => (
             <details
               key={i}
-              className="group rounded-xl border border-border bg-card p-5 transition open:border-flame open:shadow-flame"
+              className="group rounded-none border border-border bg-card p-5 transition open:border-flame open:shadow-flame"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4">
                 <span className="font-display text-base font-semibold text-primary">{f.q}</span>
@@ -1616,7 +1616,7 @@ function ServiceArea() {
           {metros.map((m) => (
             <div
               key={m.city}
-              className="rounded-lg border border-primary-foreground/10 bg-primary-foreground/[0.04] px-4 py-4 text-center"
+              className="rounded-none border border-primary-foreground/10 bg-primary-foreground/[0.04] px-4 py-4 text-center"
             >
               <m.icon className="mx-auto h-4 w-4 text-primary-foreground/40" />
               <p className="mt-2 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground">
@@ -1647,13 +1647,13 @@ function ServiceArea() {
         <div className="mx-auto mt-8 flex max-w-md flex-col gap-3 sm:flex-row sm:justify-center">
           <Link
             to="/contact"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-flame px-6 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:brightness-110"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-none bg-flame px-6 py-3.5 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:brightness-110"
           >
             Check my address <ArrowRight className="h-4 w-4" />
           </Link>
           <a
             href="tel:6146835763"
-            className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-primary-foreground/20 bg-primary-foreground/[0.04] px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.15em] text-primary-foreground transition hover:bg-primary-foreground/10"
+            className="inline-flex flex-1 items-center justify-center gap-2 rounded-none border border-primary-foreground/20 bg-primary-foreground/[0.04] px-6 py-3.5 font-display text-sm font-semibold uppercase tracking-[0.15em] text-primary-foreground transition hover:bg-primary-foreground/10"
           >
             <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
           </a>
@@ -1687,7 +1687,7 @@ function FieldNotes() {
           </div>
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 rounded-xl border-2 border-foreground/15 bg-card px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame hover:text-flame"
+            className="inline-flex items-center gap-2 rounded-none border-2 border-foreground/15 bg-card px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame hover:text-flame"
           >
             All articles <ArrowRight className="h-4 w-4" />
           </Link>
@@ -1697,7 +1697,7 @@ function FieldNotes() {
           {posts.map((p) => (
             <article
               key={p.slug}
-              className="group flex flex-col overflow-hidden rounded-2xl border-2 border-border bg-card transition hover:border-flame hover:shadow-flame"
+              className="group flex flex-col overflow-hidden rounded-none border-2 border-border bg-card transition hover:border-flame hover:shadow-flame"
             >
               <Link
                 to="/blog/$slug"

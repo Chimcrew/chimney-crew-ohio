@@ -87,7 +87,7 @@ export const Route = createFileRoute("/services/$slug")({
       <p className="mt-4 text-muted-foreground">{error.message}</p>
       <button
         onClick={() => reset()}
-        className="mt-8 inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-xs uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
+        className="mt-8 inline-flex items-center gap-2 rounded-none border-2 border-primary px-6 py-3 font-display text-xs uppercase tracking-widest text-primary transition hover:bg-primary hover:text-primary-foreground"
       >
         Try again
       </button>

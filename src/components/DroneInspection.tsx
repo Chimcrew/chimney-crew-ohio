@@ -60,9 +60,9 @@ export function DroneInspection() {
             ].map((b) => (
               <li
                 key={b.label}
-                className="flex items-center gap-3 rounded-xl border border-foreground/15 bg-background/80 px-4 py-3 shadow-sm backdrop-blur"
+                className="flex items-center gap-3 rounded-none border border-foreground/15 bg-background/80 px-4 py-3 shadow-sm backdrop-blur"
               >
-                <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary text-primary-foreground ring-1 ring-primary/40">
+                <span className="grid h-9 w-9 place-items-center rounded-none bg-primary text-primary-foreground ring-1 ring-primary/40">
                   <b.icon className="h-4 w-4" />
                 </span>
                 <span className="text-sm font-semibold text-foreground">{b.label}</span>
@@ -74,7 +74,7 @@ export function DroneInspection() {
             <button
               type="button"
               onClick={openSchedule}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> Schedule appointment online
             </button>
@@ -87,10 +87,10 @@ export function DroneInspection() {
         {/* Video — framed like a hearth window */}
         <div className="relative">
           {/* subtle cool glow halo */}
-          <div className="absolute -inset-6 rounded-[2rem] bg-primary/10 blur-3xl" aria-hidden />
+          <div className="absolute -inset-6 rounded-none bg-primary/10 blur-3xl" aria-hidden />
 
           {/* Mantel header */}
-          <div className="relative mx-auto max-w-md rounded-t-2xl bg-[oklch(0.32_0.04_45)] px-5 py-3 shadow-[0_6px_0_oklch(0.22_0.03_45)]">
+          <div className="relative mx-auto max-w-md rounded-none bg-[oklch(0.32_0.04_45)] px-5 py-3 shadow-[0_6px_0_oklch(0.22_0.03_45)]">
             <div className="flex items-center justify-between">
               <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
                 <Flame className="h-3 w-3" /> Live drone feed
@@ -102,7 +102,7 @@ export function DroneInspection() {
           </div>
 
           {/* Brick frame around video */}
-          <div className="relative mx-auto max-w-md overflow-hidden rounded-b-2xl bg-[oklch(0.45_0.09_40)] p-3 shadow-[0_30px_60px_-20px_oklch(0_0_0/0.4)]">
+          <div className="relative mx-auto max-w-md overflow-hidden rounded-none bg-[oklch(0.45_0.09_40)] p-3 shadow-[0_30px_60px_-20px_oklch(0_0_0/0.4)]">
             {/* faux brick pattern */}
             <div
               className="pointer-events-none absolute inset-0 opacity-30"
@@ -113,7 +113,7 @@ export function DroneInspection() {
                 backgroundSize: "44px 22px",
               }}
             />
-            <div className="relative overflow-hidden rounded-lg ring-2 ring-[oklch(0.28_0.04_40)]">
+            <div className="relative overflow-hidden rounded-none ring-2 ring-[oklch(0.28_0.04_40)]">
               <div className="relative aspect-video bg-black">
                 <video
                   src={droneVideo.url}
@@ -130,7 +130,7 @@ export function DroneInspection() {
 
           {/* Floating drone photo — captured-on-the-job */}
           <div
-            className="absolute -bottom-10 -left-6 hidden w-48 rotate-[-6deg] overflow-hidden rounded-xl border-4 border-background bg-background shadow-[0_20px_40px_-15px_oklch(0_0_0/0.5)] sm:block md:w-56"
+            className="absolute -bottom-10 -left-6 hidden w-48 rotate-[-6deg] overflow-hidden rounded-none border-4 border-background bg-background shadow-[0_20px_40px_-15px_oklch(0_0_0/0.5)] sm:block md:w-56"
             aria-hidden
           >
             <img
@@ -146,7 +146,7 @@ export function DroneInspection() {
           </div>
 
           {/* Hearth base / mantel ledge */}
-          <div className="relative mx-auto h-3 max-w-[28rem] -mt-px rounded-b-md bg-[oklch(0.28_0.04_45)] shadow-[0_4px_10px_oklch(0_0_0/0.25)]" />
+          <div className="relative mx-auto h-3 max-w-[28rem] -mt-px rounded-none bg-[oklch(0.28_0.04_45)] shadow-[0_4px_10px_oklch(0_0_0/0.25)]" />
 
           <p className="mt-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             Roofline · crown · flashing · masonry — documented in one visit
