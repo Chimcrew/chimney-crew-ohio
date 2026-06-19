@@ -77,14 +77,14 @@ function MinimalHeader() {
     <header className="sticky top-0 z-30 border-b border-border/40 bg-background/95 backdrop-blur">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-2">
-          <div className="grid h-9 w-9 place-items-center rounded-lg bg-flame text-primary">
+          <div className="grid h-9 w-9 place-items-center rounded-none bg-flame text-primary">
             <Flame className="h-5 w-5" />
           </div>
           <span className="font-display text-lg font-extrabold tracking-tight">ChimCrew</span>
         </div>
         <a
           href={TEL}
-          className="inline-flex items-center gap-2 rounded-xl bg-flame px-3 py-2 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_4px_14px_oklch(0.78_0.19_92/0.45)] sm:px-4 sm:text-base"
+          className="inline-flex items-center gap-2 rounded-none bg-flame px-3 py-2 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_4px_14px_oklch(0.78_0.19_92/0.45)] sm:px-4 sm:text-base"
           aria-label={`Call ChimCrew at ${TEL_DISPLAY}`}
         >
           <Phone className="h-4 w-4" />
@@ -107,7 +107,7 @@ function Hero() {
           </div>
           <h1 className="mt-4 font-display text-3xl font-extrabold leading-[1.05] tracking-tight sm:text-4xl md:text-5xl">
             Free Chimney Inspection
-            <span className="mt-2 inline-block rounded-lg bg-primary px-3 py-1 text-2xl text-primary-foreground sm:text-3xl md:text-4xl">
+            <span className="mt-2 inline-block rounded-none bg-primary px-3 py-1 text-2xl text-primary-foreground sm:text-3xl md:text-4xl">
               <span className="opacity-70 line-through decoration-2">$69</span>
               <span className="ml-2">FREE this month</span>
             </span>
@@ -121,13 +121,13 @@ function Hero() {
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <a
               href={TEL}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-5 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95"
+              className="inline-flex items-center justify-center gap-2 rounded-none bg-flame px-5 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95"
             >
               <Phone className="h-5 w-5" /> Call {TEL_DISPLAY}
             </a>
             <a
               href={SMS}
-              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-foreground/15 bg-background px-5 py-4 font-display text-base font-extrabold uppercase tracking-wider text-foreground transition active:scale-95"
+              className="inline-flex items-center justify-center gap-2 rounded-none border-2 border-foreground/15 bg-background px-5 py-4 font-display text-base font-extrabold uppercase tracking-wider text-foreground transition active:scale-95"
             >
               <MessageSquare className="h-5 w-5" /> Text Us
             </a>
@@ -192,7 +192,7 @@ function InlineLeadForm() {
 
   if (done) {
     return (
-      <div className="rounded-3xl border border-border/60 bg-card p-6 text-center shadow-sm">
+      <div className="rounded-none border border-border/60 bg-card p-6 text-center shadow-sm">
         <div className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-flame/15 text-flame">
           <CheckCircle2 className="h-6 w-6" />
         </div>
@@ -202,7 +202,7 @@ function InlineLeadForm() {
         </p>
         <a
           href={TEL}
-          className="mt-4 inline-flex items-center justify-center gap-2 rounded-xl bg-flame px-4 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary"
+          className="mt-4 inline-flex items-center justify-center gap-2 rounded-none bg-flame px-4 py-3 font-display text-sm font-extrabold uppercase tracking-wider text-primary"
         >
           <Phone className="h-4 w-4" /> Call {TEL_DISPLAY}
         </a>
@@ -213,7 +213,7 @@ function InlineLeadForm() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-3xl border border-border/60 bg-card p-5 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)] sm:p-6"
+      className="rounded-none border border-border/60 bg-card p-5 shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)] sm:p-6"
     >
       <h2 className="font-display text-xl font-extrabold tracking-tight">
         Book your free inspection
@@ -228,7 +228,7 @@ function InlineLeadForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Your name"
-          className="h-12 rounded-xl border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame"
+          className="h-12 rounded-none border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame"
           aria-label="Your name"
         />
         <input
@@ -238,7 +238,7 @@ function InlineLeadForm() {
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           placeholder="Phone number"
-          className="h-12 rounded-xl border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame"
+          className="h-12 rounded-none border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame"
           aria-label="Phone number"
           inputMode="tel"
         />
@@ -249,7 +249,7 @@ function InlineLeadForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email for confirmation"
-          className="h-12 rounded-xl border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame"
+          className="h-12 rounded-none border border-foreground/15 bg-background px-4 text-base outline-none focus:border-flame"
           aria-label="Email"
         />
         <div className="relative">
@@ -260,7 +260,7 @@ function InlineLeadForm() {
             value={zip}
             onChange={(e) => setZip(e.target.value)}
             placeholder="ZIP code (optional)"
-            className="h-12 w-full rounded-xl border border-foreground/15 bg-background pl-9 pr-4 text-base outline-none focus:border-flame"
+            className="h-12 w-full rounded-none border border-foreground/15 bg-background pl-9 pr-4 text-base outline-none focus:border-flame"
             aria-label="ZIP code"
             inputMode="numeric"
           />
@@ -268,7 +268,7 @@ function InlineLeadForm() {
         <button
           type="submit"
           disabled={submitting || !name.trim() || !phone.trim() || !email.trim()}
-          className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
         >
           <CalendarCheck className="h-5 w-5" />
           {submitting ? "Sending…" : "Get my free inspection"}
@@ -311,12 +311,12 @@ function MeetTheCrew() {
     <section className="border-b border-border/30 bg-card/30 py-10 sm:py-14">
       <div className="mx-auto grid max-w-5xl items-center gap-6 px-4 md:grid-cols-[1.1fr_1fr] md:gap-10">
         <div className="relative">
-          <div className="absolute -inset-3 -z-10 rounded-[2rem] bg-gradient-to-br from-flame/30 to-primary/10 blur-2xl" />
+          <div className="absolute -inset-3 -z-10 rounded-none bg-gradient-to-br from-flame/30 to-primary/10 blur-2xl" />
           <img
             src={teamHero.url}
             alt="The ChimCrew family crew standing in front of their yellow van"
             loading="lazy"
-            className="w-full rounded-2xl border-4 border-background object-cover shadow-[0_20px_60px_-20px_oklch(0_0_0/0.45)]"
+            className="w-full rounded-none border-4 border-background object-cover shadow-[0_20px_60px_-20px_oklch(0_0_0/0.45)]"
           />
         </div>
         <div>
@@ -325,7 +325,7 @@ function MeetTheCrew() {
           </div>
           <h2 className="mt-3 font-display text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl">
             Same yellow van.{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+            <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
               same family crew
             </span>{" "}
             — every visit.
@@ -357,7 +357,7 @@ function _Includes() {
         </h2>
         <ul className="mt-6 grid gap-3">
           {items.map((t) => (
-            <li key={t} className="flex items-start gap-3 rounded-2xl border border-border/50 bg-card p-4">
+            <li key={t} className="flex items-start gap-3 rounded-none border border-border/50 bg-card p-4">
               <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
               <span className="text-sm sm:text-base">{t}</span>
             </li>
@@ -428,7 +428,7 @@ function Reviews() {
           {r.map((it) => (
             <figure
               key={it.name}
-              className="rounded-2xl border border-border/50 bg-background p-5 shadow-sm"
+              className="rounded-none border border-border/50 bg-background p-5 shadow-sm"
             >
               <div className="flex items-center gap-0.5 text-flame">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -462,13 +462,13 @@ function FinalCta() {
         <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
             href={TEL}
-            className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl bg-flame px-5 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] sm:w-auto"
+            className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-none bg-flame px-5 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] sm:w-auto"
           >
             <Phone className="h-5 w-5" /> Call {TEL_DISPLAY}
           </a>
           <a
             href={SMS}
-            className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-xl border-2 border-primary-foreground/30 bg-primary-foreground/5 px-5 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary-foreground sm:w-auto"
+            className="inline-flex w-full max-w-xs items-center justify-center gap-2 rounded-none border-2 border-primary-foreground/30 bg-primary-foreground/5 px-5 py-4 font-display text-base font-extrabold uppercase tracking-wider text-primary-foreground sm:w-auto"
           >
             <MessageSquare className="h-5 w-5" /> Text Us
           </a>
@@ -532,7 +532,7 @@ function JobsStrip() {
           {shots.map((s) => (
             <figure
               key={s.caption}
-              className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card shadow-sm"
+              className="group relative overflow-hidden rounded-none border border-border/50 bg-card shadow-sm"
             >
               <div className="relative aspect-[4/5] w-full overflow-hidden">
                 <img
@@ -541,7 +541,7 @@ function JobsStrip() {
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
                 />
-                <span className="absolute left-2 top-2 rounded-md bg-flame px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary shadow">
+                <span className="absolute left-2 top-2 rounded-none bg-flame px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary shadow">
                   {s.tag}
                 </span>
               </div>

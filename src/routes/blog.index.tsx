@@ -67,7 +67,7 @@ function BlogPage() {
           <Link
             to="/blog/$slug"
             params={{ slug: featured.slug }}
-            className="group grid gap-8 overflow-hidden rounded-2xl border-2 border-border bg-card transition hover:border-flame hover:shadow-flame md:grid-cols-2"
+            className="group grid gap-8 overflow-hidden rounded-none border-2 border-border bg-card transition hover:border-flame hover:shadow-flame md:grid-cols-2"
           >
             <div className="aspect-[16/11] overflow-hidden md:aspect-auto">
               <img
@@ -121,7 +121,7 @@ function BlogPage() {
             {rest.map((p) => (
               <article
                 key={p.slug}
-                className="group flex flex-col overflow-hidden rounded-2xl border-2 border-border bg-card transition hover:border-flame hover:shadow-flame"
+                className="group flex flex-col overflow-hidden rounded-none border-2 border-border bg-card transition hover:border-flame hover:shadow-flame"
               >
                 <Link to="/blog/$slug" params={{ slug: p.slug }} className="block aspect-[16/10] overflow-hidden">
                   <img

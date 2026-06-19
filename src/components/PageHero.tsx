@@ -1,6 +1,5 @@
 import { type ReactNode } from "react";
-import heroDesktop from "@/assets/hero/hero-team-desktop.png.asset.json";
-import heroMobile from "@/assets/hero/hero-truck-mobile.png.asset.json";
+import heroPhoto from "@/assets/team/chimcrew-team-truck.png.asset.json";
 
 type PageHeroProps = {
   eyebrow?: ReactNode;
@@ -13,17 +12,15 @@ type PageHeroProps = {
 export function PageHero({ eyebrow, title, subtitle, children, className = "" }: PageHeroProps) {
   return (
     <section className={`relative overflow-hidden bg-primary text-primary-foreground min-h-[420px] md:min-h-[520px] flex items-center ${className}`}>
-      {/* Background photo: mobile = truck, desktop = team */}
-      <picture aria-hidden className="pointer-events-none absolute inset-0">
-        <source media="(min-width: 768px)" srcSet={heroDesktop.url} />
-        <img
-          src={heroMobile.url}
-          alt=""
-          className="h-full w-full object-cover object-center"
-          loading="eager"
-          decoding="async"
-        />
-      </picture>
+      {/* Background photo — ChimCrew team + truck */}
+      <img
+        aria-hidden
+        src={heroPhoto.url}
+        alt=""
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
+        loading="eager"
+        decoding="async"
+      />
       {/* Uniform tint for text legibility (no gradient) */}
       <div className="pointer-events-none absolute inset-0 bg-black/55" aria-hidden />
 

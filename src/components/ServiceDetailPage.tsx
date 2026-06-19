@@ -169,13 +169,13 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
             <button
               type="button"
               onClick={openSchedule}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
             >
               <CalendarCheck className="h-4 w-4" /> {ctaLabel}
             </button>
             <a
               href="tel:6146835763"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-xl border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
+              className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
             >
               <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
             </a>
@@ -211,7 +211,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
         {/* RIGHT — photo card */}
         <div className="relative lg:order-2 lg:col-span-6 lg:px-8">
           <div className="relative mx-auto w-full lg:max-w-none">
-            <div className="relative overflow-hidden rounded-b-3xl bg-card lg:rounded-2xl lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+            <div className="relative overflow-hidden rounded-none bg-card lg:rounded-none lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
               <img
                 src={heroPhoto}
                 alt={`ChimCrew ${service.shortTitle.toLowerCase()} — Ohio crew on the job`}
@@ -240,7 +240,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
             </div>
 
             {/* Credential chip below image */}
-            <div className="mx-4 mt-4 flex items-center gap-3 rounded-xl border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
+            <div className="mx-4 mt-4 flex items-center gap-3 rounded-none border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
               <img
                 src={certifiedBadge.url}
                 alt="Certified chimney sweep credential"
@@ -301,7 +301,7 @@ function TrustMarquee() {
       label: "Yelp",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded bg-[#D32323] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+          <span className="rounded-none bg-[#D32323] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
             yelp
           </span>
           <span className="text-[#D32323]">★★★★★</span>
@@ -312,7 +312,7 @@ function TrustMarquee() {
       label: "Angi",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded bg-[#F26F21] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+          <span className="rounded-none bg-[#F26F21] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
             Angi
           </span>
           <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
@@ -335,7 +335,7 @@ function TrustMarquee() {
       label: "BBB",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+          <span className="rounded-none bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
             BBB
           </span>
           <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
@@ -367,7 +367,7 @@ function TrustMarquee() {
         {loop.map((c, i) => (
           <span
             key={`${c.label}-${i}`}
-            className="inline-flex items-center rounded-lg border border-border bg-background px-3 py-2 shadow-sm"
+            className="inline-flex items-center rounded-none border border-border bg-background px-3 py-2 shadow-sm"
           >
             {c.node}
           </span>
@@ -440,7 +440,7 @@ function Included({ service }: { service: ServiceSpec }) {
           </p>
           <h2 className="mt-4 font-display text-3xl font-bold leading-tight text-primary sm:text-4xl md:text-5xl">
             Everything you need —{" "}
-            <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+            <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
               nothing extra to pay
             </span>
             .
@@ -459,14 +459,14 @@ function Included({ service }: { service: ServiceSpec }) {
           {service.bullets.map((b, i) => (
             <li
               key={b}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-[0_10px_30px_-15px_oklch(0_0_0/0.18)] transition hover:-translate-y-1 hover:border-flame hover:shadow-[0_22px_50px_-20px_oklch(0.78_0.19_92/0.45)]"
+              className="group relative flex flex-col overflow-hidden rounded-none border border-border bg-card p-6 shadow-[0_10px_30px_-15px_oklch(0_0_0/0.18)] transition hover:-translate-y-1 hover:border-flame hover:shadow-[0_22px_50px_-20px_oklch(0.78_0.19_92/0.45)]"
             >
               <div
                 className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-flame/10 blur-2xl transition group-hover:bg-flame/30"
                 aria-hidden
               />
               <div className="relative flex items-center gap-3">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-primary text-flame ring-1 ring-flame/40">
+                <span className="grid h-11 w-11 place-items-center rounded-none bg-primary text-flame ring-1 ring-flame/40">
                   <CheckCircle2 className="h-5 w-5" />
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
@@ -562,7 +562,7 @@ function ProblemsBlock({ service }: { service: ServiceSpec }) {
           {service.problems!.map((p) => (
             <li
               key={p}
-              className="flex items-start gap-5 rounded-2xl border border-border bg-card p-6 transition hover:border-flame hover:shadow-[0_15px_40px_-15px_oklch(0.78_0.19_92/0.4)]"
+              className="flex items-start gap-5 rounded-none border border-border bg-card p-6 transition hover:border-flame hover:shadow-[0_15px_40px_-15px_oklch(0.78_0.19_92/0.4)]"
             >
               <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-flame/15 text-flame">
                 <AlertTriangle className="h-5 w-5" />
@@ -596,7 +596,7 @@ function BenefitsBlock({ service }: { service: ServiceSpec }) {
             </p>
             <h2 className="mt-4 font-display text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
               What you get when{" "}
-              <span className="inline-block rounded-lg bg-flame px-2.5 py-0.5 text-primary">
+              <span className="inline-block rounded-none bg-flame px-2.5 py-0.5 text-primary">
                 it's done right
               </span>
               .
@@ -607,10 +607,10 @@ function BenefitsBlock({ service }: { service: ServiceSpec }) {
             </p>
           </div>
           <div className="flex flex-wrap items-center gap-3 lg:justify-end">
-            <span className="inline-flex items-center gap-2 rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em]">
+            <span className="inline-flex items-center gap-2 rounded-none border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em]">
               <ShieldCheck className="h-3.5 w-3.5 text-flame" /> {warrantyFor(service)} warranty
             </span>
-            <span className="inline-flex items-center gap-2 rounded-xl border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em]">
+            <span className="inline-flex items-center gap-2 rounded-none border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em]">
               <Award className="h-3.5 w-3.5 text-flame" /> CSIA-certified
             </span>
           </div>
@@ -620,14 +620,14 @@ function BenefitsBlock({ service }: { service: ServiceSpec }) {
           {service.benefits!.map((b, i) => (
             <li
               key={b}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-primary-foreground/15 bg-primary-foreground/[0.04] p-6 backdrop-blur transition hover:-translate-y-1 hover:border-flame hover:bg-primary-foreground/[0.08]"
+              className="group relative flex flex-col overflow-hidden rounded-none border border-primary-foreground/15 bg-primary-foreground/[0.04] p-6 backdrop-blur transition hover:-translate-y-1 hover:border-flame hover:bg-primary-foreground/[0.08]"
             >
               <div
                 className="pointer-events-none absolute -left-10 -bottom-10 h-28 w-28 rounded-full bg-flame/15 blur-2xl transition group-hover:bg-flame/35"
                 aria-hidden
               />
               <div className="relative flex items-center justify-between">
-                <span className="grid h-11 w-11 place-items-center rounded-xl bg-flame text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]">
+                <span className="grid h-11 w-11 place-items-center rounded-none bg-flame text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]">
                   <CheckCircle2 className="h-5 w-5" />
                 </span>
                 <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">
@@ -694,7 +694,7 @@ function Faqs({ service }: { service: ServiceSpec }) {
           {service.faqs.map((f) => (
             <details
               key={f.q}
-              className="group rounded-2xl border border-border bg-card p-6 transition open:border-flame open:shadow-[0_15px_40px_-15px_oklch(0.78_0.19_92/0.35)]"
+              className="group rounded-none border border-border bg-card p-6 transition open:border-flame open:shadow-[0_15px_40px_-15px_oklch(0.78_0.19_92/0.35)]"
             >
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6">
                 <span className="font-display text-lg font-bold text-foreground md:text-xl">
@@ -741,7 +741,7 @@ function Related({ service }: { service: ServiceSpec }) {
                 key={s.slug}
                 to="/services/$slug"
                 params={{ slug: s.slug }}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:-translate-y-1 hover:border-flame hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.35)]"
+                className="group relative flex flex-col overflow-hidden rounded-none border border-border bg-card transition hover:-translate-y-1 hover:border-flame hover:shadow-[0_30px_60px_-25px_rgba(0,0,0,0.35)]"
               >
                 <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary via-[oklch(0.16_0.02_250)] to-[oklch(0.10_0.02_250)]">
                   <div
@@ -802,13 +802,13 @@ function FinalServiceCta({ ctaLabel }: { ctaLabel: string }) {
           <button
             type="button"
             onClick={openSchedule}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0_0_0/0.25)] transition active:scale-95 sm:px-6"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-primary px-5 font-sans text-[13px] font-bold tracking-normal text-primary-foreground shadow-[0_8px_22px_oklch(0_0_0/0.25)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> {ctaLabel}
           </button>
           <a
             href="tel:6146835763"
-            className="inline-flex items-center gap-2 rounded-sm border-2 border-primary px-6 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
+            className="inline-flex items-center gap-2 rounded-none border-2 border-primary px-6 py-3 font-display text-sm font-semibold text-primary transition hover:bg-primary hover:text-primary-foreground"
           >
             <Phone className="h-4 w-4" /> (614) 683-5763
           </a>
@@ -873,7 +873,7 @@ function InlineRepairCta({ variant = "dark", ctaLabel = "Schedule appointment on
           <button
             type="button"
             onClick={openSchedule}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> {ctaLabel}
           </button>
@@ -881,8 +881,8 @@ function InlineRepairCta({ variant = "dark", ctaLabel = "Schedule appointment on
             href="tel:6146835763"
             className={
               flame
-                ? "inline-flex h-12 items-center justify-center gap-2 rounded-xl border-2 border-primary px-6 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
-                : "inline-flex h-12 items-center justify-center gap-2 rounded-xl border-2 border-white/25 bg-white/[0.04] px-6 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
+                ? "inline-flex h-12 items-center justify-center gap-2 rounded-none border-2 border-primary px-6 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground"
+                : "inline-flex h-12 items-center justify-center gap-2 rounded-none border-2 border-white/25 bg-white/[0.04] px-6 font-display text-sm font-bold uppercase tracking-wider text-primary-foreground transition hover:border-flame"
             }
           >
             <Phone className="h-4 w-4 text-flame" /> (614) 683-5763

@@ -74,7 +74,7 @@ export function BeforeAfter({
       onPointerMove={onPointerMove}
       onPointerUp={endDrag}
       onPointerLeave={endDrag}
-      className="relative aspect-[4/3] w-full select-none overflow-hidden rounded-2xl border border-white/10 bg-primary shadow-[0_20px_50px_oklch(0_0_0/0.35)] sm:aspect-[16/10] touch-none"
+      className="relative aspect-[4/3] w-full select-none overflow-hidden rounded-none border border-white/10 bg-primary shadow-[0_20px_50px_oklch(0_0_0/0.35)] sm:aspect-[16/10] touch-none"
       role="group"
       aria-label={alt}
     >
@@ -100,10 +100,10 @@ export function BeforeAfter({
       />
 
       {/* Labels */}
-      <span className="pointer-events-none absolute left-3 top-3 rounded-md bg-background/85 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground backdrop-blur">
+      <span className="pointer-events-none absolute left-3 top-3 rounded-none bg-background/85 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground backdrop-blur">
         {beforeLabel}
       </span>
-      <span className="pointer-events-none absolute right-3 top-3 rounded-md bg-flame px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
+      <span className="pointer-events-none absolute right-3 top-3 rounded-none bg-flame px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary">
         {afterLabel}
       </span>
 

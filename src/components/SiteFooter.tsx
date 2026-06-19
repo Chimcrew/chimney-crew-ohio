@@ -16,17 +16,17 @@ export function SiteFooter() {
               Certified, insured, and obsessed with clean flues.
             </p>
             <div className="mt-6 flex gap-3">
-              <a href="#" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-sm border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground">
+              <a href="#" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground">
                 <Facebook className="h-4 w-4" />
               </a>
-              <a href="#" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-sm border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground">
+              <a href="#" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground">
                 <Instagram className="h-4 w-4" />
               </a>
             </div>
             <ul className="mt-6 space-y-2 text-sm">
               <li><Link to="/" className="hover:text-primary">Home</Link></li>
               <li><Link to="/services" className="hover:text-primary">All Services</Link></li>
-              <li><Link to="/before-after" className="hover:text-primary">Gallery</Link></li>
+              <li><Link to="/before-after" className="hover:text-primary">Done Projects</Link></li>
               <li><Link to="/reviews" className="hover:text-primary">Reviews</Link></li>
               <li><Link to="/blog" className="hover:text-primary">Blog</Link></li>
               <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>

@@ -46,7 +46,7 @@ export function ServiceAreaSeo() {
                   <Link
                     to="/service-area/$city"
                     params={{ city: c.slug }}
-                    className="group flex h-full items-center justify-between gap-1 rounded-md border border-border bg-card px-3 py-3 text-left transition hover:border-flame hover:bg-flame/5"
+                    className="group flex h-full items-center justify-between gap-1 rounded-none border border-border bg-card px-3 py-3 text-left transition hover:border-flame hover:bg-flame/5"
                   >
                     <span className="font-display text-sm font-semibold text-foreground group-hover:text-primary">
                       {c.name}

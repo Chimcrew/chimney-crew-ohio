@@ -133,7 +133,7 @@ function GalleryPage() {
 
       {/* CTA */}
       <section className="bg-secondary/40 py-16">
-        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 rounded-2xl border-2 border-flame/30 bg-card p-8 md:flex-row md:items-center md:p-10">
+        <div className="mx-auto flex max-w-5xl flex-col items-start justify-between gap-6 rounded-none border-2 border-flame/30 bg-card p-8 md:flex-row md:items-center md:p-10">
           <div>
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
               ◆ Want your chimney on this wall?
@@ -144,7 +144,7 @@ function GalleryPage() {
           </div>
           <Link
             to="/schedule"
-            className="inline-flex items-center gap-2 rounded-xl bg-flame px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:brightness-110"
+            className="inline-flex items-center gap-2 rounded-none bg-flame px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-primary transition hover:brightness-110"
           >
             Schedule now <ArrowRight className="h-4 w-4" />
           </Link>
@@ -172,7 +172,7 @@ function PhotoTile({ photo, index }: { photo: Photo; index: number }) {
         ? "col-span-2"
         : "";
   return (
-    <figure className={`group relative overflow-hidden rounded-2xl border-2 border-border bg-primary transition hover:border-flame ${span}`}>
+    <figure className={`group relative overflow-hidden rounded-none border-2 border-border bg-primary transition hover:border-flame ${span}`}>
       <img
         src={photo.src}
         alt={photo.alt}

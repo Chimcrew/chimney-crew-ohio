@@ -65,7 +65,7 @@ function AdminLeadsPage() {
                 {loading ? 'Refreshing…' : 'Refresh'}
               </Button>
             </div>
-            <div className="overflow-x-auto rounded-lg border">
+            <div className="overflow-x-auto rounded-none border">
               <table className="w-full text-sm">
                 <thead className="bg-muted text-left">
                   <tr>

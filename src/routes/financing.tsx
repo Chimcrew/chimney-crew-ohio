@@ -60,7 +60,7 @@ function FinancingPage() {
       <section className="bg-background py-14 md:py-20">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 md:px-8 lg:grid-cols-5">
           {/* INPUTS */}
-          <div className="rounded-2xl border-2 border-border bg-card p-6 shadow-sm md:p-8 lg:col-span-3">
+          <div className="rounded-none border-2 border-border bg-card p-6 shadow-sm md:p-8 lg:col-span-3">
             <h2 className="font-display text-2xl font-extrabold text-primary md:text-3xl">
               Your project
             </h2>
@@ -107,7 +107,7 @@ function FinancingPage() {
                       key={t}
                       type="button"
                       onClick={() => setTerm(t)}
-                      className={`h-14 rounded-xl border-2 font-display text-sm font-extrabold transition ${
+                      className={`h-14 rounded-none border-2 font-display text-sm font-extrabold transition ${
                         term === t
                           ? "border-flame bg-flame text-primary shadow-flame"
                           : "border-border bg-background text-primary hover:border-flame/60"
@@ -139,7 +139,7 @@ function FinancingPage() {
 
           {/* RESULTS */}
           <aside className="lg:col-span-2">
-            <div className="sticky top-24 overflow-hidden rounded-2xl border-2 border-primary/40 bg-primary text-primary-foreground shadow-[0_20px_60px_oklch(0_0_0/0.25)]">
+            <div className="sticky top-24 overflow-hidden rounded-none border-2 border-primary/40 bg-primary text-primary-foreground shadow-[0_20px_60px_oklch(0_0_0/0.25)]">
               <div className="bg-grid absolute inset-0 opacity-[0.08]" aria-hidden />
               <div className="relative p-6 md:p-8">
                 <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
@@ -162,13 +162,13 @@ function FinancingPage() {
 
                 <Link
                   to="/schedule"
-                  className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+                  className="mt-6 inline-flex h-12 w-full items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
                 >
                   <CalendarCheck className="h-4 w-4" /> Schedule appointment online
                 </Link>
                 <a
                   href="tel:6146835763"
-                  className="mt-3 inline-flex h-12 w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/[0.04] px-5 font-sans text-[13px] font-medium tracking-normal text-primary-foreground transition hover:border-flame active:scale-95 sm:px-6"
+                  className="mt-3 inline-flex h-12 w-full items-center justify-center gap-2 rounded-none border border-white/20 bg-white/[0.04] px-5 font-sans text-[13px] font-medium tracking-normal text-primary-foreground transition hover:border-flame active:scale-95 sm:px-6"
                 >
                   <Phone className="h-4 w-4 text-flame" /> Call (614) 683-5763
                 </a>
@@ -188,7 +188,7 @@ function FinancingPage() {
             { icon: CheckCircle2, t: "Approved on-site", b: "Most homeowners get a decision before we leave the driveway." },
             { icon: CalendarCheck, t: "Work starts fast", b: "Repairs scheduled within days of approval." },
           ].map(({ icon: Icon, t, b }) => (
-            <div key={t} className="rounded-xl border-2 border-border bg-card p-5">
+            <div key={t} className="rounded-none border-2 border-border bg-card p-5">
               <Icon className="h-5 w-5 text-flame" />
               <p className="mt-3 font-display text-base font-bold text-primary">{t}</p>
               <p className="mt-1 text-sm text-muted-foreground">{b}</p>
@@ -231,7 +231,7 @@ function NumberField({
         {label}
       </label>
       {hint ? <p className="mt-1 text-xs text-muted-foreground">{hint}</p> : null}
-      <div className="mt-3 flex items-stretch overflow-hidden rounded-xl border-2 border-border bg-background focus-within:border-flame">
+      <div className="mt-3 flex items-stretch overflow-hidden rounded-none border-2 border-border bg-background focus-within:border-flame">
         {prefix ? (
           <span className="grid place-items-center bg-secondary/60 px-4 font-display text-lg font-extrabold text-primary">
             {prefix}

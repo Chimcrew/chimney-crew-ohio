@@ -50,7 +50,7 @@ export function ServiceAreaMap() {
   const suburbs = points.filter((p) => p.tier === "suburb");
 
   return (
-    <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-[oklch(0.985_0.008_85)] shadow-sm">
+    <div className="relative w-full overflow-hidden rounded-none border border-border bg-[oklch(0.985_0.008_85)] shadow-sm">
       <svg
         viewBox={`0 0 ${VB_W} ${VB_H}`}
         className="block h-auto w-full"

@@ -86,7 +86,7 @@ export function TimedLeadPopup() {
       />
 
       {/* Card */}
-      <div className="relative w-full max-w-md overflow-hidden rounded-3xl bg-background text-foreground shadow-[0_40px_120px_-10px_oklch(0_0_0/0.55)] animate-scale-in">
+      <div className="relative w-full max-w-md overflow-hidden rounded-none bg-background text-foreground shadow-[0_40px_120px_-10px_oklch(0_0_0/0.55)] animate-scale-in">
         {/* Close button — large, high-contrast, easy to tap on mobile */}
         <button
           type="button"
@@ -116,7 +116,7 @@ export function TimedLeadPopup() {
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="mt-7 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-foreground px-6 font-display text-xs font-extrabold uppercase tracking-[0.22em] text-background transition hover:opacity-90"
+                className="mt-7 inline-flex h-12 items-center justify-center gap-2 rounded-none bg-foreground px-6 font-display text-xs font-extrabold uppercase tracking-[0.22em] text-background transition hover:opacity-90"
               >
                 Got it
               </button>
@@ -148,7 +148,7 @@ export function TimedLeadPopup() {
                 ].map((t) => (
                   <div
                     key={t.label}
-                    className="flex items-center gap-1.5 rounded-lg bg-foreground/5 px-2.5 py-2 text-[11px] font-medium text-foreground/80"
+                    className="flex items-center gap-1.5 rounded-none bg-foreground/5 px-2.5 py-2 text-[11px] font-medium text-foreground/80"
                   >
                     <t.icon className="h-3.5 w-3.5 text-foreground" />
                     {t.label}
@@ -185,7 +185,7 @@ export function TimedLeadPopup() {
                   <select
                     value={form.service}
                     onChange={(e) => setForm({ ...form, service: e.target.value })}
-                    className="w-full appearance-none rounded-xl border border-foreground/15 bg-background p-3 text-sm text-foreground outline-none transition focus:border-foreground/60"
+                    className="w-full appearance-none rounded-none border border-foreground/15 bg-background p-3 text-sm text-foreground outline-none transition focus:border-foreground/60"
                   >
                     {["Chimney Sweep","Inspection","Cap or Crown Repair","Liner Install","Animal Removal","Not sure yet"].map((s) => (
                       <option key={s} value={s}>{s}</option>
@@ -196,7 +196,7 @@ export function TimedLeadPopup() {
                 <button
                   type="submit"
                   disabled={!form.name || !form.phone || !form.email || submitting}
-                  className="group relative mt-1 flex h-14 items-center justify-center gap-2 overflow-hidden rounded-xl bg-foreground px-5 font-display text-sm font-extrabold uppercase tracking-[0.18em] text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="group relative mt-1 flex h-14 items-center justify-center gap-2 overflow-hidden rounded-none bg-foreground px-5 font-display text-sm font-extrabold uppercase tracking-[0.18em] text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {submitting ? (
                     <>
@@ -240,7 +240,7 @@ function Field({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         autoFocus={autoFocus}
-        className="w-full rounded-xl border border-foreground/15 bg-background p-3 text-base text-foreground outline-none transition placeholder:text-foreground/30 focus:border-foreground/60"
+        className="w-full rounded-none border border-foreground/15 bg-background p-3 text-base text-foreground outline-none transition placeholder:text-foreground/30 focus:border-foreground/60"
       />
     </div>
   );

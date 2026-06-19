@@ -26,11 +26,11 @@ export function RecentProjects() {
         <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
           <div className="max-w-2xl">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
-              ◆ Real Work · Real Ohio Homes
+              ◆ Our Work · Ohio Homes
             </p>
             <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-foreground md:text-5xl">
               Recent projects from{" "}
-              <span className="inline-block rounded-lg bg-primary px-2.5 py-0.5 text-primary-foreground">
+              <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
                 our crew
               </span>
               .
@@ -42,7 +42,7 @@ export function RecentProjects() {
           </div>
           <Link
             to="/gallery"
-            className="inline-flex items-center gap-2 rounded-xl border-2 border-foreground/15 bg-card px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame hover:text-flame"
+            className="inline-flex items-center gap-2 rounded-none border-2 border-foreground/15 bg-card px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame hover:text-flame"
           >
             See full gallery <ArrowRight className="h-4 w-4" />
           </Link>
@@ -72,7 +72,7 @@ function ProjectTile({
   priority?: boolean;
 }) {
   return (
-    <figure className={`group relative overflow-hidden rounded-2xl border-2 border-border bg-primary transition hover:border-flame ${className}`}>
+    <figure className={`group relative overflow-hidden rounded-none border-2 border-border bg-primary transition hover:border-flame ${className}`}>
       <img
         src={project.img}
         alt={`${project.title} — ChimCrew project in ${project.city}`}

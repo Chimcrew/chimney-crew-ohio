@@ -73,7 +73,7 @@ function TrustMarqueeLite() {
         {loop.map((c, i) => (
           <span
             key={`${c}-${i}`}
-            className="inline-flex items-center rounded-lg border border-border bg-background px-3 py-2 font-sans text-sm font-semibold text-foreground shadow-sm"
+            className="inline-flex items-center rounded-none border border-border bg-background px-3 py-2 font-sans text-sm font-semibold text-foreground shadow-sm"
           >
             {c}
           </span>
