@@ -421,8 +421,8 @@ function Hero() {
             </p>
           </div>
         </div>
-        {/* 3D-style overlay photo — sits on the main photo from the bottom-right */}
-        <div className="pointer-events-none absolute -bottom-16 right-3 z-10 w-24 sm:-bottom-8 sm:right-10 sm:w-48 md:right-16 md:w-64 lg:right-24 lg:w-80">
+        {/* 3D-style overlay photo — sits inside the main photo at the bottom-right */}
+        <div className="pointer-events-none absolute bottom-3 right-3 z-10 w-20 sm:bottom-5 sm:right-6 sm:w-36 md:right-10 md:w-48 lg:right-16 lg:w-64">
           <div className="relative transform-gpu [transform:perspective(900px)_rotateX(6deg)_rotateY(-10deg)_rotate(-2deg)]">
             <div className="absolute -inset-1 bg-black/40 blur-xl" aria-hidden />
             <img
@@ -437,7 +437,7 @@ function Hero() {
       </div>
 
       {/* MESSAGE — single column under the photo */}
-      <div className="relative z-20 mx-auto max-w-3xl px-4 pb-12 pt-14 sm:px-6 sm:pt-10 md:pb-16 md:pt-12 lg:px-8">
+      <div className="relative z-20 mx-auto max-w-3xl px-4 pb-12 pt-8 sm:px-6 sm:pt-10 md:pb-16 md:pt-12 lg:px-8">
         {/* Certified badge — pulled above the headline, larger */}
         <div className="flex items-start gap-1.5">
           <img
