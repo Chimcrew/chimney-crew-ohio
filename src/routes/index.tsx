@@ -768,18 +768,34 @@ function PhotoVideoTrust() {
   return (
     <section className="relative overflow-hidden border-y border-border bg-primary py-12 text-primary-foreground md:py-16">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 md:grid-cols-[1fr_1fr] md:px-8">
-        {/* Image — modest size, rounded-none */}
-        <div className="order-1 md:order-none">
-          <img
-            src={beforeAfterPhoto.url}
-            alt="Chimney crown rebuild — before and after comparison by ChimCrew"
-            className="w-full max-w-sm rounded-none border border-white/10 shadow-lg md:max-w-md"
-            loading="lazy"
-            decoding="async"
-          />
-          <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/60">
-            <Camera className="mr-1 inline h-3 w-3 text-flame" /> Before & After — Crown Rebuild
-          </p>
+        {/* Camera inspection photo + drone inspection video */}
+        <div className="order-1 grid grid-cols-2 gap-3 md:order-none md:gap-4">
+          <figure className="flex flex-col">
+            <img
+              src={cameraInspectionPhoto.url}
+              alt="Inside-the-firebox camera inspection by ChimCrew technician"
+              className="aspect-[3/4] w-full rounded-none border border-white/10 object-cover shadow-lg"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
+              <Camera className="mr-1 inline h-3 w-3 text-flame" /> Camera inspection
+            </figcaption>
+          </figure>
+          <figure className="flex flex-col">
+            <video
+              src={inspectionVideo.url}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              className="aspect-[3/4] w-full rounded-none border border-white/10 object-cover shadow-lg"
+            />
+            <figcaption className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-primary-foreground/70">
+              <Camera className="mr-1 inline h-3 w-3 text-flame" /> Drone inspection
+            </figcaption>
+          </figure>
         </div>
 
         {/* Text + CTA */}
@@ -788,7 +804,7 @@ function PhotoVideoTrust() {
             Transparent inspections
           </p>
           <h3 className="mt-2 font-display text-2xl font-extrabold leading-snug md:text-3xl">
-            Every job documented with photo & video — before we recommend any repair.
+            ⭐ State-Of-The-Art Inspection Equipment
           </h3>
           <p className="mt-2 text-sm text-primary-foreground/80 md:text-base">
             You see exactly what we see on the roof and inside the flue. No upsell theater, no
