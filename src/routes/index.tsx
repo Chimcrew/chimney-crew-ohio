@@ -402,7 +402,7 @@ function Hero() {
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
       {/* PHOTO — flush to header, rounded-none only at the bottom (full-bleed) */}
       <div className="relative pb-10 sm:pb-12 lg:pb-16">
-        <div className="relative overflow-hidden rounded-none bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+        <div className="relative overflow-hidden rounded-b-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
           <img
             src={teamHeroPhoto.url}
             alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
