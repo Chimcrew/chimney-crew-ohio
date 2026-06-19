@@ -421,19 +421,6 @@ function Hero() {
             </p>
           </div>
         </div>
-        {/* 3D-style overlay photo — sits inside the main photo at the bottom-right */}
-        <div className="pointer-events-none absolute bottom-3 right-3 z-10 w-20 sm:bottom-5 sm:right-6 sm:w-36 md:right-10 md:w-48 lg:right-16 lg:w-64">
-          <div className="relative transform-gpu [transform:perspective(900px)_rotateX(6deg)_rotateY(-10deg)_rotate(-2deg)]">
-            <div className="absolute -inset-1 bg-black/40 blur-xl" aria-hidden />
-            <img
-              src={teamTruckPhoto.url}
-              alt="ChimCrew technicians at the back of the branded service truck"
-              className="relative block h-auto w-full border-4 border-white bg-white object-cover shadow-[0_25px_45px_-10px_oklch(0_0_0/0.55)]"
-              loading="lazy"
-              decoding="async"
-            />
-          </div>
-        </div>
       </div>
 
       {/* MESSAGE — single column under the photo */}
