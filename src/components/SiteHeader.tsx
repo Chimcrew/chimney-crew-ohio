@@ -86,6 +86,8 @@ export function SiteHeader() {
   const [mobileOpenKey, setMobileOpenKey] = useState<string | null>(null);
   const [mobileOpenCategory, setMobileOpenCategory] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -93,6 +95,39 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close mobile menu on outside click / touch / Escape
+  useEffect(() => {
+    if (!open) return;
+    const closeIfOutside = (target: Node) => {
+      const inMenu = mobileMenuRef.current && mobileMenuRef.current.contains(target);
+      const inToggle = mobileToggleRef.current && mobileToggleRef.current.contains(target);
+      if (!inMenu && !inToggle) {
+        setOpen(false);
+        setMobileOpenKey(null);
+        setMobileOpenCategory(null);
+      }
+    };
+    const onClick = (e: MouseEvent) => closeIfOutside(e.target as Node);
+    const onTouch = (e: TouchEvent) => {
+      if (e.target) closeIfOutside(e.target as Node);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        setMobileOpenKey(null);
+        setMobileOpenCategory(null);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("touchstart", onTouch);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("touchstart", onTouch);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   // Close any open dropdown on outside click / Escape
   useEffect(() => {
