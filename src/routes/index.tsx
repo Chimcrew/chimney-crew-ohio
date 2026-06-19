@@ -397,7 +397,7 @@ function LimitedOfferBanner() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
-      {/* PHOTO — flush to header, rounded only at the bottom (full-bleed) */}
+      {/* PHOTO — flush to header, rounded-none only at the bottom (full-bleed) */}
       <div className="relative">
         <div className="relative overflow-hidden rounded-none bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
           <img
@@ -534,7 +534,7 @@ function TrustMarquee() {
       label: "Yelp",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded bg-[#D32323] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+          <span className="rounded-none bg-[#D32323] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
             yelp
           </span>
           <span className="text-[#D32323]">★★★★★</span>
@@ -545,7 +545,7 @@ function TrustMarquee() {
       label: "Angi",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded bg-[#F26F21] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+          <span className="rounded-none bg-[#F26F21] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
             Angi
           </span>
           <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
@@ -568,7 +568,7 @@ function TrustMarquee() {
       label: "BBB",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+          <span className="rounded-none bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
             BBB
           </span>
           <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
@@ -752,7 +752,7 @@ function PhotoVideoTrust() {
   return (
     <section className="relative overflow-hidden border-y border-border bg-primary py-12 text-primary-foreground md:py-16">
       <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 md:grid-cols-[1fr_1fr] md:px-8">
-        {/* Image — modest size, rounded */}
+        {/* Image — modest size, rounded-none */}
         <div className="order-1 md:order-none">
           <img
             src={beforeAfterPhoto.url}

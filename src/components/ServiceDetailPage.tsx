@@ -301,7 +301,7 @@ function TrustMarquee() {
       label: "Yelp",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded bg-[#D32323] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+          <span className="rounded-none bg-[#D32323] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
             yelp
           </span>
           <span className="text-[#D32323]">★★★★★</span>
@@ -312,7 +312,7 @@ function TrustMarquee() {
       label: "Angi",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded bg-[#F26F21] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+          <span className="rounded-none bg-[#F26F21] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
             Angi
           </span>
           <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
@@ -335,7 +335,7 @@ function TrustMarquee() {
       label: "BBB",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
+          <span className="rounded-none bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
             BBB
           </span>
           <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
