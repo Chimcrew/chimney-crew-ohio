@@ -90,30 +90,30 @@ export function DroneInspection() {
           <div className="absolute -inset-6 rounded-none bg-primary/10 blur-3xl" aria-hidden />
 
           {/* Mantel header */}
-          <div className="relative mx-auto max-w-md rounded-none bg-[oklch(0.32_0.04_45)] px-5 py-3 shadow-[0_6px_0_oklch(0.22_0.03_45)]">
+          <div className="relative mx-auto max-w-md rounded-none bg-black px-5 py-3 shadow-[0_6px_0_#111]">
             <div className="flex items-center justify-between">
               <span className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
                 <Flame className="h-3 w-3" /> Live drone feed
               </span>
-              <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-[oklch(0.92_0.06_70)]">
+              <span className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.22em] text-neutral-300">
                 <Camera className="h-3 w-3" /> 4K
               </span>
             </div>
           </div>
 
-          {/* Brick frame around video */}
-          <div className="relative mx-auto max-w-md overflow-hidden rounded-none bg-[oklch(0.45_0.09_40)] p-3 shadow-[0_30px_60px_-20px_oklch(0_0_0/0.4)]">
-            {/* faux brick pattern */}
+          {/* Black frame around video */}
+          <div className="relative mx-auto max-w-md overflow-hidden rounded-none bg-neutral-900 p-3 shadow-[0_30px_60px_-20px_oklch(0_0_0/0.4)]">
+            {/* subtle grid pattern */}
             <div
-              className="pointer-events-none absolute inset-0 opacity-30"
+              className="pointer-events-none absolute inset-0 opacity-20"
               aria-hidden
               style={{
                 backgroundImage:
-                  "linear-gradient(oklch(0.35_0.08_40) 2px, transparent 2px), linear-gradient(90deg, oklch(0.35_0.08_40) 2px, transparent 2px)",
+                  "linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)",
                 backgroundSize: "44px 22px",
               }}
             />
-            <div className="relative overflow-hidden rounded-none ring-2 ring-[oklch(0.28_0.04_40)]">
+            <div className="relative overflow-hidden rounded-none ring-2 ring-black">
               <div className="relative aspect-video bg-black">
                 <video
                   src={droneVideo.url}
@@ -146,7 +146,7 @@ export function DroneInspection() {
           </div>
 
           {/* Hearth base / mantel ledge */}
-          <div className="relative mx-auto h-3 max-w-[28rem] -mt-px rounded-none bg-[oklch(0.28_0.04_45)] shadow-[0_4px_10px_oklch(0_0_0/0.25)]" />
+          <div className="relative mx-auto h-3 max-w-[28rem] -mt-px rounded-none bg-black shadow-[0_4px_10px_oklch(0_0_0/0.25)]" />
 
           <p className="mt-5 text-center font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             Roofline · crown · flashing · masonry — documented in one visit
