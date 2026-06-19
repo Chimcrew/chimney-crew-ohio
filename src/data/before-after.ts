@@ -1,5 +1,3 @@
-import fireplaceBefore from "@/assets/ba/fireplace-before.jpeg.asset.json";
-import fireplaceAfter from "@/assets/ba/fireplace-after.jpeg.asset.json";
 import flueBefore from "@/assets/ba/flue-before.jpeg.asset.json";
 import flueAfter from "@/assets/ba/flue-after.jpeg.asset.json";
 import capBefore from "@/assets/ba/cap-before.jpeg.asset.json";
@@ -40,15 +38,6 @@ export const BEFORE_AFTER_JOBS: BeforeAfterJob[] = [
     note: "Mortar joints crumbled with a finger. Cut out, repointed every joint, and installed fresh step and counter-flashing before the next storm.",
     before: realTuckBefore.url,
     after: realTuckAfter.url,
-  },
-  {
-    id: "firebox",
-    headline: "From sooty firebox to like-new hearth",
-    service: "Full Firebox Sweep & Restoration",
-    city: "Columbus, OH",
-    note: "6 years of creosote and ash — cleared, scrubbed, sealed in one visit.",
-    before: fireplaceBefore.url,
-    after: fireplaceAfter.url,
   },
   {
     id: "flue",

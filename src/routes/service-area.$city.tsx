@@ -3,6 +3,7 @@ import { Phone, MapPin, CheckCircle2, ArrowRight, ShieldCheck, Star, Award, Cloc
 import { getSeoCity, SEO_CITIES } from "@/data/seo-cities";
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import { SERVICES } from "@/data/services";
+import { PageHero } from "@/components/PageHero";
 
 export const Route = createFileRoute("/service-area/$city")({
   loader: ({ params }) => {
@@ -81,16 +82,11 @@ function CityPage() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b-2 border-border bg-primary py-16 text-primary-foreground md:py-20">
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-          <p className="inline-flex items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-flame">
-            <MapPin className="h-3.5 w-3.5" /> {city.name}, {city.state} · {city.zip}
-          </p>
-          <h1 className="mt-4 font-display font-extrabold leading-[1.05] tracking-tight">
-            {city.h1}
-          </h1>
-          <p className="mt-5 max-w-3xl text-lg text-primary-foreground/85">{city.intro}</p>
+      <PageHero
+        eyebrow={<><MapPin className="h-3 w-3" /> {city.name}, {city.state} · {city.zip}</>}
+        title={city.h1}
+        subtitle={city.intro}
+      >
           <div className="mt-7 flex flex-wrap gap-3">
             <a
               href="#schedule"
@@ -117,8 +113,7 @@ function CityPage() {
               </span>
             ))}
           </div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* WHY US */}
       <section className="border-b border-border bg-background py-16">

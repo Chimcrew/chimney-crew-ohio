@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, Clock, CalendarCheck, ShieldCheck, Flame, MessageSquare, Star } from "lucide-react";
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import { TrustBadges } from "@/components/TrustBadges";
+import { PageHero } from "@/components/PageHero";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -20,22 +21,11 @@ export const Route = createFileRoute("/contact")({
 function ContactPage() {
   return (
     <div className="bg-background">
-      {/* Hero */}
-      <section className="relative overflow-hidden bg-primary text-primary-foreground">
-        <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" aria-hidden />
-        <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-flame/25 blur-3xl" aria-hidden />
-        <div className="mx-auto w-full max-w-6xl px-4 py-14 md:px-8 md:py-20">
-          <span className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />
-            Same-day callback · Ohio crew
-          </span>
-          <h1 className="mt-5 max-w-3xl font-display text-4xl font-black leading-[1.02] tracking-tight md:text-6xl">
-            Talk to an <span className="text-flame">Ohio chimney crew</span>.
-          </h1>
-          <p className="mt-4 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
-            Pick the easiest way to reach us. We answer fast, quote in writing, and never sell what you don't need.
-          </p>
-
+      <PageHero
+        eyebrow="Same-day callback · Ohio crew"
+        title={<>Talk to an <span className="text-flame">Ohio chimney crew</span>.</>}
+        subtitle="Pick the easiest way to reach us. We answer fast, quote in writing, and never sell what you don't need."
+      >
           {/* Quick-reach tiles */}
           <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
             <a
@@ -75,8 +65,7 @@ function ContactPage() {
               </div>
             </a>
           </div>
-        </div>
-      </section>
+      </PageHero>
 
       {/* Main grid */}
       <section className="mx-auto w-full max-w-6xl px-4 py-12 md:px-8 md:py-16">

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin } from "lucide-react";
 import { BeforeAfter } from "@/components/BeforeAfter";
+import { PageHero } from "@/components/PageHero";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import projectCrown from "@/assets/projects/project-01-double-crown.jpg";
 import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg";
@@ -10,7 +11,6 @@ import projectCrown2 from "@/assets/projects/project-05-crown-rebuild.jpg";
 import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
 import projectCapFin from "@/assets/projects/project-08-cap-finished.jpg";
 import leakRoof from "@/assets/leak-chimney-rooftop.jpg";
-import fireplaceCozy from "@/assets/fireplace-cozy.jpg";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import baCrownStone from "@/assets/real/ba-crown-stone.png.asset.json";
@@ -47,28 +47,16 @@ const GALLERY = [
   { src: projectTech, caption: "Tech on-site, Upper Arlington OH" },
   { src: projectCapFin, caption: "Cap & flashing finished, Westerville OH" },
   { src: leakRoof, caption: "Leak diagnosis, Grandview OH" },
-  { src: fireplaceCozy, caption: "Restored hearth, ready for winter" },
 ];
 
 function BeforeAfterPage() {
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b-2 border-primary/30 bg-primary py-20 text-primary-foreground md:py-24">
-        <div className="bg-grid absolute inset-0 opacity-[0.08]" aria-hidden />
-        <div className="pointer-events-none absolute -right-24 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-flame/15 blur-3xl" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-          <p className="font-mono text-xs uppercase tracking-widest text-flame">// Before / After</p>
-          <h1 className="mt-3 font-display text-5xl font-extrabold leading-[1.02] tracking-tight md:text-7xl">
-            Drag the slider. <span className="text-flame">See the work.</span>
-          </h1>
-          <p className="mt-5 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
-            Ohio chimneys, ChimCrew jobs. Drag any photo below with
-            your finger or mouse to compare what it looked like when we
-            arrived — and what other homeowners got back.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Before / After · Ohio crew"
+        title={<>Drag the slider. <span className="text-flame">See the work.</span></>}
+        subtitle="Ohio chimneys, ChimCrew jobs. Drag any photo below with your finger or mouse to compare what it looked like when we arrived — and what other homeowners got back."
+      />
 
       {/* BEFORE / AFTER PAIRS */}
       <section className="bg-background py-16 md:py-20">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { MapPin, Camera, ArrowRight } from "lucide-react";
+import { PageHero } from "@/components/PageHero";
 import p01 from "@/assets/projects/project-01-double-crown.jpg";
 import p02 from "@/assets/projects/project-02-tuckpointing-after.jpg";
 import p03 from "@/assets/projects/project-03-liner-install.jpg";
@@ -79,39 +80,19 @@ function GalleryPage() {
 
   return (
     <>
-      {/* HERO */}
-      <section className="relative overflow-hidden border-b-2 border-primary/20 bg-primary py-20 text-primary-foreground md:py-28">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-[0.08]"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 1px 1px, currentColor 1px, transparent 0)",
-            backgroundSize: "22px 22px",
-          }}
-        />
-        <div className="pointer-events-none absolute -right-32 top-1/2 h-[420px] w-[420px] -translate-y-1/2 rounded-full bg-flame/20 blur-3xl" aria-hidden />
-        <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-          <p className="inline-flex items-center gap-2 font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
-            ◆ Work · Ohio Homes
-          </p>
-          <h1 className="mt-4 font-display text-5xl font-extrabold leading-[1] tracking-tight md:text-7xl">
-            On the <span className="text-flame">job</span>.
-          </h1>
-          <p className="mt-5 max-w-2xl text-base text-primary-foreground/80 md:text-lg">
-            Every photo below is a ChimCrew job we finished this season —
-            shot on a phone from the roof or the truck. No stock. No AI. No
-            staged before-and-afters.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center gap-6">
-            <Stat label="Jobs this season" value="180+" />
-            <span className="hidden h-8 w-px bg-primary-foreground/20 md:block" />
-            <Stat label="Ohio cities served" value="3" />
-            <span className="hidden h-8 w-px bg-primary-foreground/20 md:block" />
-            <Stat label="CSIA certified" value="Yes" />
-          </div>
+      <PageHero
+        eyebrow="Work · Ohio Homes"
+        title={<>On the <span className="text-flame">job</span>.</>}
+        subtitle="Every photo below is a ChimCrew job we finished this season — shot on a phone from the roof or the truck. No stock. No AI. No staged before-and-afters."
+      >
+        <div className="mt-8 flex flex-wrap items-center gap-6">
+          <Stat label="Jobs this season" value="180+" />
+          <span className="hidden h-8 w-px bg-primary-foreground/20 md:block" />
+          <Stat label="Ohio cities served" value="3" />
+          <span className="hidden h-8 w-px bg-primary-foreground/20 md:block" />
+          <Stat label="CSIA certified" value="Yes" />
         </div>
-      </section>
+      </PageHero>
 
       {/* FILTER BAR */}
       <section className="sticky top-0 z-20 border-b border-border bg-background/95 py-4 backdrop-blur supports-[backdrop-filter]:bg-background/80">
