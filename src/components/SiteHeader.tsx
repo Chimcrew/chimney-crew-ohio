@@ -86,6 +86,8 @@ export function SiteHeader() {
   const [mobileOpenKey, setMobileOpenKey] = useState<string | null>(null);
   const [mobileOpenCategory, setMobileOpenCategory] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement | null>(null);
+  const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+  const mobileToggleRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -93,6 +95,39 @@ export function SiteHeader() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close mobile menu on outside click / touch / Escape
+  useEffect(() => {
+    if (!open) return;
+    const closeIfOutside = (target: Node) => {
+      const inMenu = mobileMenuRef.current && mobileMenuRef.current.contains(target);
+      const inToggle = mobileToggleRef.current && mobileToggleRef.current.contains(target);
+      if (!inMenu && !inToggle) {
+        setOpen(false);
+        setMobileOpenKey(null);
+        setMobileOpenCategory(null);
+      }
+    };
+    const onClick = (e: MouseEvent) => closeIfOutside(e.target as Node);
+    const onTouch = (e: TouchEvent) => {
+      if (e.target) closeIfOutside(e.target as Node);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        setMobileOpenKey(null);
+        setMobileOpenCategory(null);
+      }
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("touchstart", onTouch);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("touchstart", onTouch);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
 
   // Close any open dropdown on outside click / Escape
   useEffect(() => {
@@ -361,6 +396,7 @@ export function SiteHeader() {
 
           {/* Mobile toggle */}
           <button
+            ref={mobileToggleRef}
             className="grid h-10 w-10 place-items-center border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] md:hidden"
             onClick={() => setOpen(!open)}
             aria-label="Menu"
@@ -375,8 +411,8 @@ export function SiteHeader() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="absolute left-0 right-0 top-full z-50 max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background shadow-[0_20px_40px_oklch(0.18_0.02_250/0.12)] text-foreground md:hidden">
-          <div className="mx-auto max-w-7xl px-4 py-4 pb-8">
+        <div ref={mobileMenuRef} className="absolute left-0 right-0 top-full z-50 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-b border-border/40 bg-background shadow-[0_20px_40px_oklch(0.18_0.02_250/0.12)] text-foreground md:hidden">
+          <div className="mx-auto max-w-7xl px-4 pt-6 pb-8">
             <nav className="flex flex-col">
               {/* Home first */}
               <Link
