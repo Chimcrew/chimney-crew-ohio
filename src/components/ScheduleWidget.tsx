@@ -120,7 +120,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   return (
     <div className="bg-background text-foreground">
       {/* Team photo — builds trust without overwhelming the form */}
-      <figure className="mx-auto mb-4 max-w-[160px]">
+      <figure className="mx-auto mb-4 w-full max-w-none px-2">
         <div className="overflow-hidden rounded-lg border-2 border-border bg-muted shadow-lg">
           <img
             src={teamTruckPhoto.url}
