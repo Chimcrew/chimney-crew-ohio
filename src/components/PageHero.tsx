@@ -12,7 +12,7 @@ type PageHeroProps = {
 
 export function PageHero({ eyebrow, title, subtitle, children, className = "" }: PageHeroProps) {
   return (
-    <section className={`relative overflow-hidden bg-primary text-primary-foreground ${className}`}>
+    <section className={`relative overflow-hidden bg-primary text-primary-foreground min-h-[420px] md:min-h-[520px] flex items-center ${className}`}>
       {/* Background photo: mobile = truck, desktop = team */}
       <picture aria-hidden className="pointer-events-none absolute inset-0">
         <source media="(min-width: 768px)" srcSet={heroDesktop.url} />
@@ -24,10 +24,8 @@ export function PageHero({ eyebrow, title, subtitle, children, className = "" }:
           decoding="async"
         />
       </picture>
-      {/* Dark overlay for legibility */}
-      <div className="pointer-events-none absolute inset-0 bg-primary/80 md:bg-primary/75" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-primary/40" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.06]" aria-hidden />
+      {/* Subtle uniform tint for text legibility (no gradient) */}
+      <div className="pointer-events-none absolute inset-0 bg-black/40" aria-hidden />
 
       <div className="relative mx-auto w-full max-w-6xl px-4 py-14 md:px-8 md:py-20">
         {eyebrow && (
