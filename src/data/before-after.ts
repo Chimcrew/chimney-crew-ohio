@@ -6,7 +6,7 @@ import capAfter from "@/assets/ba/cap-after.jpeg.asset.json";
 import realCrownBefore from "@/assets/uploads/job0.jpeg.asset.json";
 import realCrownAfter from "@/assets/uploads/job_1.jpeg.asset.json";
 import realStuccoBefore from "@/assets/uploads/job_2.jpeg.asset.json";
-import realStuccoAfter from "@/assets/uploads/job_3.jpeg.asset.json";
+import realStuccoAfter from "@/assets/ba/stucco-after-real.jpeg.asset.json";
 import realTuckBefore from "@/assets/uploads/job_7.jpeg.asset.json";
 import realTuckAfter from "@/assets/uploads/job_8.jpeg.asset.json";
 
