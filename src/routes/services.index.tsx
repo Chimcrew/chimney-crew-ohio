@@ -24,7 +24,7 @@ export const Route = createFileRoute("/services/")({
           about: "Chimney sweep, inspection, repair, liner, crown, cap, waterproofing and fireplace services across Columbus, Cincinnati and Dayton.",
           hasPart: SERVICES.map((s) => ({
             "@type": "Service",
-            name: s.name,
+            name: s.title,
             url: `https://chimcrew.com/services/${s.slug}`,
             provider: { "@type": "LocalBusiness", name: "ChimCrew" },
             areaServed: "Ohio",
