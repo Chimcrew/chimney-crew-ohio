@@ -13,6 +13,25 @@ export const Route = createFileRoute("/services/")({
       { property: "og:url", content: "https://chimcrew.com/services" },
     ],
     links: [{ rel: "canonical", href: "https://chimcrew.com/services" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "Chimney Services in Ohio",
+          url: "https://chimcrew.com/services",
+          about: "Chimney sweep, inspection, repair, liner, crown, cap, waterproofing and fireplace services across Columbus, Cincinnati and Dayton.",
+          hasPart: SERVICES.map((s) => ({
+            "@type": "Service",
+            name: s.name,
+            url: `https://chimcrew.com/services/${s.slug}`,
+            provider: { "@type": "LocalBusiness", name: "ChimCrew" },
+            areaServed: "Ohio",
+          })),
+        }),
+      },
+    ],
   }),
   component: ServicesPage,
 });
