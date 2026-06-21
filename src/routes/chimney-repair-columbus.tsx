@@ -40,6 +40,26 @@ export const Route = createFileRoute("/chimney-repair-columbus")({
       },
     ],
     links: [{ rel: "canonical", href: "https://chimcrew.com/chimney-repair-columbus" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Service",
+          serviceType: "Chimney Repair",
+          name: "Chimney Repair in Columbus, OH",
+          areaServed: { "@type": "City", name: "Columbus, OH" },
+          provider: {
+            "@type": "LocalBusiness",
+            name: "ChimCrew",
+            telephone: "+1-614-683-5763",
+            url: "https://chimcrew.com",
+            areaServed: "Columbus, OH",
+          },
+          offers: { "@type": "Offer", price: "0", priceCurrency: "USD", description: "Free chimney inspection" },
+        }),
+      },
+    ],
   }),
   component: ChimneyRepairColumbus,
 });

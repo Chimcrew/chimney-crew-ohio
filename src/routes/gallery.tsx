@@ -82,7 +82,7 @@ function GalleryPage() {
     <>
       <PageHero
         eyebrow="Work · Ohio Homes"
-        title={<>On the <span className="text-flame">job</span>.</>}
+        title={<>Chimney Repair &amp; Sweep <span className="text-flame">Gallery</span> — Recent Ohio Jobs</>}
         subtitle="Every photo below is a ChimCrew job we finished this season — shot on a phone from the roof or the truck. No stock. No AI. No staged before-and-afters."
       >
         <div className="mt-8 flex flex-wrap items-center gap-6">

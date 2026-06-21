@@ -85,7 +85,7 @@ function BeforeAfterPage() {
     <>
       <PageHero
         eyebrow="Done Projects · Ohio crew"
-        title={<>Done <span className="text-flame">projects.</span></>}
+        title={<>Before &amp; After: Ohio <span className="text-flame">Chimney</span> Restoration Projects</>}
         subtitle="Ohio chimneys and fireplaces, finished by ChimCrew. Every photo below is a job we actually completed — no stock, no AI."
       />
 

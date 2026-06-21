@@ -22,6 +22,7 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/schedule", changefreq: "monthly", priority: "0.8" },
           { path: "/financing", changefreq: "monthly", priority: "0.7" },
           { path: "/chimney-repair-columbus", changefreq: "monthly", priority: "0.9" },
+          { path: "/lp/free-inspection", changefreq: "monthly", priority: "0.7" },
           { path: "/legal/privacy", changefreq: "yearly", priority: "0.2" },
           { path: "/legal/terms", changefreq: "yearly", priority: "0.2" },
           { path: "/legal/disclaimer", changefreq: "yearly", priority: "0.2" },
