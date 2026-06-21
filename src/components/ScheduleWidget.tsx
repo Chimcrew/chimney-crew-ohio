@@ -25,7 +25,7 @@ export const SCHEDULE_SERVICES = [
   { value: "Chimney/Fireplace Inspection — $69", label: "Chimney/Fireplace Inspection", price: "$69" },
   { value: "Chimney Sweep — $99", label: "Chimney Sweep", price: "$99" },
   { value: "Dryer Vent Cleaning — $79", label: "Dryer Vent Cleaning", price: "$79" },
-  { value: "Chimney Drone Inspection — Free", label: "Chimney Drone Inspection", price: "Free" },
+  { value: "⭐ Promotion – Free Chimney Inspection", label: "⭐ Promotion – Free Chimney Inspection", price: "Free" },
 ] as const;
 
 const SLOTS = ["8:00AM-11:00AM", "11:00AM-2:00PM", "2:00PM-5:00PM"];
