@@ -29,6 +29,15 @@ import { TrustBadges } from "@/components/TrustBadges";
 import { DroneInspection } from "@/components/DroneInspection";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import { ScheduleInline } from "@/components/ScheduleWidget";
+import flashingBeforeAsset from "@/assets/process/flashing-before.jpeg.asset.json";
+import flashingProgressAsset from "@/assets/process/flashing-progress.jpeg.asset.json";
+import flashingAfterAsset from "@/assets/process/flashing-after.jpeg.asset.json";
+
+const FLASHING_PROCESS = [
+  { step: "01", stage: "Before", caption: "Failing flashing — water entry point identified", url: flashingBeforeAsset.url },
+  { step: "02", stage: "In Progress", caption: "Old flashing torn out, base sealed & primed", url: flashingProgressAsset.url },
+  { step: "03", stage: "After", caption: "New step flashing tucked into fresh mortar joint", url: flashingAfterAsset.url },
+];
 
 function openSchedule() {
   if (typeof window !== "undefined") {
@@ -211,6 +220,57 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
         {/* RIGHT — photo card */}
         <div className="relative lg:order-2 lg:col-span-6 lg:px-8">
           <div className="relative mx-auto w-full lg:max-w-none">
+            {service.slug === "flashing-repair" ? (
+              <div className="relative bg-card lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+                <div className="flex items-center justify-between border-b border-border/60 bg-primary px-4 py-3 sm:px-5">
+                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary-foreground">
+                    The Flashing Repair Process
+                  </p>
+                  <p className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-flame sm:block">
+                    3 Steps · Real Job
+                  </p>
+                </div>
+                <ol className="grid grid-cols-1 sm:grid-cols-3">
+                  {FLASHING_PROCESS.map((p, i) => (
+                    <li
+                      key={p.step}
+                      className={`relative overflow-hidden ${i < FLASHING_PROCESS.length - 1 ? "sm:border-r border-b sm:border-b-0 border-border/60" : ""}`}
+                    >
+                      <div className="relative">
+                        <img
+                          src={p.url}
+                          alt={`${p.stage} — ${p.caption}`}
+                          className="block aspect-[4/5] h-auto w-full object-cover"
+                          loading={i === 0 ? "eager" : "lazy"}
+                          decoding="async"
+                          fetchPriority={i === 0 ? "high" : "auto"}
+                        />
+                        <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-primary/85 via-primary/30 to-transparent" aria-hidden />
+                        <div className="absolute left-3 top-3 flex items-center gap-2">
+                          <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-flame px-2 font-mono text-[11px] font-bold text-primary">
+                            {p.step}
+                          </span>
+                          <span className="rounded-full bg-primary-foreground/95 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                            {p.stage}
+                          </span>
+                        </div>
+                      </div>
+                      <p className="px-4 py-3 text-[12px] leading-snug text-foreground/80 sm:text-[13px]">
+                        {p.caption}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
+                <div className="flex items-center justify-between gap-3 border-t border-border/60 bg-secondary/40 px-4 py-3 sm:px-5">
+                  <p className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/70">
+                    <MapPin className="h-3 w-3 text-flame" /> Columbus · Dayton · Cincinnati
+                  </p>
+                  <span className="rounded-full border border-flame/40 bg-flame/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
+                    Real ChimCrew job
+                  </span>
+                </div>
+              </div>
+            ) : (
             <div className="relative overflow-hidden rounded-none bg-card lg:rounded-none lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
               <img
                 src={heroPhoto}
@@ -238,6 +298,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
                 </span>
               </div>
             </div>
+            )}
 
             {/* Credential chip below image */}
             <div className="mx-4 mt-4 flex items-center gap-3 rounded-none border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
