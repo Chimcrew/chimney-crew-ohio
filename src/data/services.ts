@@ -27,6 +27,7 @@ import baCapCrownAsset from "@/assets/real/ba-cap-crown.png.asset.json";
 import baCrownStoneAsset from "@/assets/real/ba-crown-stone.png.asset.json";
 import baSpalledBrickAsset from "@/assets/real/ba-spalled-brick.png.asset.json";
 import crownDemoInProgressAsset from "@/assets/real/crown-demo-inprogress.png.asset.json";
+import tuckpointTech1Asset from "@/assets/real/tuckpoint-tech-1.png.asset.json";
 import chimneyJobAAsset from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import chimneyJobBAsset from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import fireplaceServiceAsset from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
@@ -38,6 +39,7 @@ const baCapCrown = baCapCrownAsset.url;
 const baCrownStone = baCrownStoneAsset.url;
 const baSpalledBrick = baSpalledBrickAsset.url;
 const crownDemoInProgress = crownDemoInProgressAsset.url;
+const tuckpointTech1 = tuckpointTech1Asset.url;
 const chimneyJobA = chimneyJobAAsset.url;
 const chimneyJobB = chimneyJobBAsset.url;
 const fireplaceServicePhoto = fireplaceServiceAsset.url;
@@ -138,7 +140,7 @@ export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quote
 export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
   switch (s.slug) {
     case "crown-tuckpoint":
-      return baCrownStone;
+      return tuckpointTech1;
     case "level-1-inspection":
     case "level-2-inspection":
       return sweepCloseupPhoto;
