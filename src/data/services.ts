@@ -28,6 +28,7 @@ import baCrownStoneAsset from "@/assets/real/ba-crown-stone.png.asset.json";
 import baSpalledBrickAsset from "@/assets/real/ba-spalled-brick.png.asset.json";
 import crownDemoInProgressAsset from "@/assets/real/crown-demo-inprogress.png.asset.json";
 import tuckpointTech1Asset from "@/assets/real/tuckpoint-tech-1.png.asset.json";
+import capInstallHeroAsset from "@/assets/real/cap-install-hero.jpeg.asset.json";
 import chimneyJobAAsset from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import chimneyJobBAsset from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import fireplaceServiceAsset from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
@@ -40,6 +41,7 @@ const baCrownStone = baCrownStoneAsset.url;
 const baSpalledBrick = baSpalledBrickAsset.url;
 const crownDemoInProgress = crownDemoInProgressAsset.url;
 const tuckpointTech1 = tuckpointTech1Asset.url;
+const capInstallHero = capInstallHeroAsset.url;
 const chimneyJobA = chimneyJobAAsset.url;
 const chimneyJobB = chimneyJobBAsset.url;
 const fireplaceServicePhoto = fireplaceServiceAsset.url;
@@ -155,7 +157,7 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     case "smoke-chamber-parging":
       return crownDemoInProgress;
     case "cap-install":
-      return baCapCrown;
+      return capInstallHero;
     case "animal-removal":
       return beforeChimney;
     case "gas-fireplace-service":
@@ -459,7 +461,7 @@ export const SERVICES: ServiceSpec[] = [
     accent: "primary",
     hero: {
       eyebrow: "Animals + rain + sparks",
-      headline: "One small piece of stainless. Three big problems gone.",
+      headline: "Chimney Cap Installation",
       sub: "Keep critters out, rain off your smoke shelf, and sparks off your roof — for the price of a nice dinner.",
     },
     bullets: [
