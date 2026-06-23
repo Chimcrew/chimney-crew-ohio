@@ -41,6 +41,7 @@ const baCrownStone = baCrownStoneAsset.url;
 const baSpalledBrick = baSpalledBrickAsset.url;
 const crownDemoInProgress = crownDemoInProgressAsset.url;
 const tuckpointTech1 = tuckpointTech1Asset.url;
+const capInstallHero = capInstallHeroAsset.url;
 const chimneyJobA = chimneyJobAAsset.url;
 const chimneyJobB = chimneyJobBAsset.url;
 const fireplaceServicePhoto = fireplaceServiceAsset.url;
