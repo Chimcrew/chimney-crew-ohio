@@ -461,7 +461,7 @@ export const SERVICES: ServiceSpec[] = [
     accent: "primary",
     hero: {
       eyebrow: "Animals + rain + sparks",
-      headline: "One small piece of stainless. Three big problems gone.",
+      headline: "Chimney Cap Installation",
       sub: "Keep critters out, rain off your smoke shelf, and sparks off your roof — for the price of a nice dinner.",
     },
     bullets: [
