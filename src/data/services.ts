@@ -452,7 +452,7 @@ export const SERVICES: ServiceSpec[] = [
     slug: "cap-install",
     warranty: "5-Year Warranty",
     title: "Chimney Cap Installation",
-    shortTitle: "Cap Install",
+    shortTitle: "Chimney Cap Installation",
     tagline: "The cheapest insurance policy on your house.",
     price: "$218",
     duration: "",
