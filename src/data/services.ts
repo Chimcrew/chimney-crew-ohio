@@ -157,7 +157,7 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     case "smoke-chamber-parging":
       return crownDemoInProgress;
     case "cap-install":
-      return baCapCrown;
+      return capInstallHero;
     case "animal-removal":
       return beforeChimney;
     case "gas-fireplace-service":
