@@ -28,6 +28,7 @@ import baCrownStoneAsset from "@/assets/real/ba-crown-stone.png.asset.json";
 import baSpalledBrickAsset from "@/assets/real/ba-spalled-brick.png.asset.json";
 import crownDemoInProgressAsset from "@/assets/real/crown-demo-inprogress.png.asset.json";
 import tuckpointTech1Asset from "@/assets/real/tuckpoint-tech-1.png.asset.json";
+import capInstallHeroAsset from "@/assets/real/cap-install-hero.jpeg.asset.json";
 import chimneyJobAAsset from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import chimneyJobBAsset from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import fireplaceServiceAsset from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
