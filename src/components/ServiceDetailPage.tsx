@@ -230,32 +230,32 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
                     3 Steps · Real Job
                   </p>
                 </div>
-                <ol className="grid grid-cols-1 sm:grid-cols-3">
+                <ol className="grid grid-cols-3">
                   {FLASHING_PROCESS.map((p, i) => (
                     <li
                       key={p.step}
-                      className={`relative overflow-hidden ${i < FLASHING_PROCESS.length - 1 ? "sm:border-r border-b sm:border-b-0 border-border/60" : ""}`}
+                      className={`relative overflow-hidden ${i < FLASHING_PROCESS.length - 1 ? "border-r border-border/60" : ""}`}
                     >
                       <div className="relative">
                         <img
                           src={p.url}
                           alt={`${p.stage} — ${p.caption}`}
-                          className="block aspect-[4/5] h-auto w-full object-cover"
+                          className="block aspect-[3/4] h-auto w-full object-cover sm:aspect-[4/5]"
                           loading={i === 0 ? "eager" : "lazy"}
                           decoding="async"
                           fetchPriority={i === 0 ? "high" : "auto"}
                         />
                         <div className="pointer-events-none absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-primary/85 via-primary/30 to-transparent" aria-hidden />
-                        <div className="absolute left-3 top-3 flex items-center gap-2">
-                          <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full bg-flame px-2 font-mono text-[11px] font-bold text-primary">
+                        <div className="absolute left-1.5 top-1.5 flex items-center gap-1 sm:left-3 sm:top-3 sm:gap-2">
+                          <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-flame px-1 font-mono text-[9px] font-bold text-primary sm:h-7 sm:min-w-7 sm:px-2 sm:text-[11px]">
                             {p.step}
                           </span>
-                          <span className="rounded-full bg-primary-foreground/95 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                          <span className="rounded-full bg-primary-foreground/95 px-1.5 py-0.5 font-mono text-[8px] font-bold uppercase tracking-[0.14em] text-primary sm:px-2.5 sm:py-1 sm:text-[10px] sm:tracking-[0.18em]">
                             {p.stage}
                           </span>
                         </div>
                       </div>
-                      <p className="px-4 py-3 text-[12px] leading-snug text-foreground/80 sm:text-[13px]">
+                      <p className="hidden px-4 py-3 text-[12px] leading-snug text-foreground/80 sm:block sm:text-[13px]">
                         {p.caption}
                       </p>
                     </li>
