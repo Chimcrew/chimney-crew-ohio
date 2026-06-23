@@ -34,10 +34,11 @@ import flashingProgressAsset from "@/assets/process/flashing-progress.jpeg.asset
 import flashingAfterAsset from "@/assets/process/flashing-after.jpeg.asset.json";
 
 const FLASHING_PROCESS = [
-  { step: "01", stage: "Before", caption: "Failing flashing — water entry point identified", url: flashingBeforeAsset.url },
-  { step: "02", stage: "In Progress", caption: "Old flashing torn out, base sealed & primed", url: flashingProgressAsset.url },
-  { step: "03", stage: "After", caption: "New step flashing tucked into fresh mortar joint", url: flashingAfterAsset.url },
+  { step: "01", stage: "Before", caption: "Original metal flashing — leak source found at chimney shoulder", url: flashingAfterAsset.url },
+  { step: "02", stage: "In Progress", caption: "Old flashing removed, base sealed and new blue membrane installed", url: flashingBeforeAsset.url },
+  { step: "03", stage: "After", caption: "Fresh black step flashing integrated into rebuilt mortar joint", url: flashingProgressAsset.url },
 ];
+
 
 function openSchedule() {
   if (typeof window !== "undefined") {
