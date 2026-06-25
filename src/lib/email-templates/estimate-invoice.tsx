@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  Body, Container, Head, Heading, Html, Preview, Section, Text, Hr,
+  Body, Button, Container, Head, Heading, Html, Preview, Section, Text, Hr,
 } from '@react-email/components'
 import type { TemplateEntry } from './registry'
 
@@ -32,6 +32,7 @@ export interface EstimateInvoiceProps {
   balanceDue?: number
   notes?: string
   paymentInstructions?: string
+  pdfUrl?: string
 }
 
 const fmt = (n: number) =>
@@ -56,6 +57,7 @@ const EstimateInvoiceEmail = ({
   balanceDue = 0,
   notes = '',
   paymentInstructions = '',
+  pdfUrl,
 }: EstimateInvoiceProps) => {
   const label = docType === 'invoice' ? 'INVOICE' : 'ESTIMATE'
   return (
@@ -91,6 +93,13 @@ const EstimateInvoiceEmail = ({
               </tr>
             </table>
           </Section>
+
+          {pdfUrl ? (
+            <Section style={{ padding: '8px 28px 16px', textAlign: 'center' as const }}>
+              <Button href={pdfUrl} style={pdfBtn}>Download PDF</Button>
+              <Text style={pdfHelp}>Your full {label.toLowerCase()} PDF (with photos, signature, and terms) is attached above.</Text>
+            </Section>
+          ) : null}
 
           <Section style={card}>
             <Text style={cardTitle}>Billed to</Text>
@@ -228,3 +237,5 @@ const infoKicker = { fontSize: '11px', fontWeight: 800 as const, color: BRAND_BL
 const infoBody = { fontSize: '13px', color: '#1a1a1a', margin: 0, lineHeight: '1.55', whiteSpace: 'pre-wrap' as const }
 const hr = { borderColor: '#ececec', margin: '24px 28px' }
 const footer = { fontSize: '12px', color: '#888', margin: '0 28px 24px', lineHeight: '1.5', textAlign: 'center' as const }
+const pdfBtn = { backgroundColor: BRAND_YELLOW, color: BRAND_BLACK, fontWeight: 800 as const, padding: '12px 24px', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', letterSpacing: '0.06em', display: 'inline-block' }
+const pdfHelp = { fontSize: '12px', color: '#6b7280', margin: '10px 0 0' }
