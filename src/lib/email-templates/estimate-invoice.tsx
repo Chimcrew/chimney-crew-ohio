@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {
-  Body, Container, Head, Heading, Html, Preview, Section, Text, Hr,
+  Body, Button, Container, Head, Heading, Html, Preview, Section, Text, Hr,
 } from '@react-email/components'
 import type { TemplateEntry } from './registry'
 
@@ -32,6 +32,7 @@ export interface EstimateInvoiceProps {
   balanceDue?: number
   notes?: string
   paymentInstructions?: string
+  pdfUrl?: string
 }
 
 const fmt = (n: number) =>
@@ -56,6 +57,7 @@ const EstimateInvoiceEmail = ({
   balanceDue = 0,
   notes = '',
   paymentInstructions = '',
+  pdfUrl,
 }: EstimateInvoiceProps) => {
   const label = docType === 'invoice' ? 'INVOICE' : 'ESTIMATE'
   return (
@@ -91,6 +93,13 @@ const EstimateInvoiceEmail = ({
               </tr>
             </table>
           </Section>
+
+          {pdfUrl ? (
+            <Section style={{ padding: '8px 28px 16px', textAlign: 'center' as const }}>
+              <Button href={pdfUrl} style={pdfBtn}>Download PDF</Button>
+              <Text style={pdfHelp}>Your full {label.toLowerCase()} PDF (with photos, signature, and terms) is attached above.</Text>
+            </Section>
+          ) : null}
 
           <Section style={card}>
             <Text style={cardTitle}>Billed to</Text>
