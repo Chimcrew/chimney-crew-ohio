@@ -101,6 +101,54 @@ export type Database = {
         }
         Relationships: []
       }
+      estimates: {
+        Row: {
+          balance_due: number | null
+          created_at: string
+          customer_email: string | null
+          customer_name: string | null
+          customer_phone: string | null
+          doc_number: string
+          doc_type: string
+          id: string
+          message_id: string | null
+          pdf_path: string
+          sent_to: string | null
+          service_address: string | null
+          total: number | null
+        }
+        Insert: {
+          balance_due?: number | null
+          created_at?: string
+          customer_email?: string | null
+          customer_name?: string | null
+          customer_phone?: string | null
+          doc_number: string
+          doc_type: string
+          id?: string
+          message_id?: string | null
+          pdf_path: string
+          sent_to?: string | null
+          service_address?: string | null
+          total?: number | null
+        }
+        Update: {
+          balance_due?: number | null
+          created_at?: string
+          customer_email?: string | null
+          customer_name?: string | null
+          customer_phone?: string | null
+          doc_number?: string
+          doc_type?: string
+          id?: string
+          message_id?: string | null
+          pdf_path?: string
+          sent_to?: string | null
+          service_address?: string | null
+          total?: number | null
+        }
+        Relationships: []
+      }
       leads: {
         Row: {
           address: string | null
