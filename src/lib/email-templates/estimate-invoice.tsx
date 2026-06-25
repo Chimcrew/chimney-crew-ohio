@@ -237,3 +237,5 @@ const infoKicker = { fontSize: '11px', fontWeight: 800 as const, color: BRAND_BL
 const infoBody = { fontSize: '13px', color: '#1a1a1a', margin: 0, lineHeight: '1.55', whiteSpace: 'pre-wrap' as const }
 const hr = { borderColor: '#ececec', margin: '24px 28px' }
 const footer = { fontSize: '12px', color: '#888', margin: '0 28px 24px', lineHeight: '1.5', textAlign: 'center' as const }
+const pdfBtn = { backgroundColor: BRAND_YELLOW, color: BRAND_BLACK, fontWeight: 800 as const, padding: '12px 24px', borderRadius: '8px', textDecoration: 'none', fontSize: '14px', letterSpacing: '0.06em', display: 'inline-block' }
+const pdfHelp = { fontSize: '12px', color: '#6b7280', margin: '10px 0 0' }
