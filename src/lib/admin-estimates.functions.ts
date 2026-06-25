@@ -29,6 +29,13 @@ export const sendEstimateAdmin = createServerFn({ method: 'POST' })
     }
     if (!data.pdfBase64) throw new Error('Missing PDF data')
 
+    // Extract raw base64 bytes from a data URI or plain base64 string.
+    const afterComma = data.pdfBase64.includes(',') ? data.pdfBase64.split(',').slice(1).join(',') : data.pdfBase64
+    const b64 = afterComma.replace(/\s/g, '')
+    if (!b64) throw new Error('PDF data is empty')
+    if (!/^[A-Za-z0-9+/]*={0,2}$/.test(b64)) throw new Error('PDF data is not valid base64')
+    const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))
+
     const { render } = await import('@react-email/components')
     const { template } = await import('@/lib/email-templates/estimate-invoice')
     const { supabaseAdmin } = await import('@/integrations/supabase/client.server')
@@ -39,8 +46,6 @@ export const sendEstimateAdmin = createServerFn({ method: 'POST' })
     const templateName = 'estimate-invoice'
 
     // ---- Upload PDF to private storage ----
-    const b64 = data.pdfBase64.replace(/^data:application\/pdf;base64,/, '')
-    const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))
     const safeNum = (data.doc.docNumber || messageId).replace(/[^a-zA-Z0-9_-]/g, '_')
     const folder = data.doc.docType === 'invoice' ? 'invoices' : 'estimates'
     const pdfPath = `${folder}/${safeNum}-${messageId}.pdf`

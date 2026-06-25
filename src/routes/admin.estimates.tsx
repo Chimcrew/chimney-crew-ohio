@@ -170,7 +170,8 @@ function AdminEstimatesPage() {
     try {
       const pdfData = buildPdfData()
       const pdf = await generateEstimatePdf(pdfData)
-      const pdfBase64 = pdf.output('datauristring')
+      const dataUri = pdf.output('datauristring')
+      const pdfBase64 = dataUri.includes(',') ? dataUri.split(',').slice(1).join(',') : dataUri
       const { photos: _omit, ...docForEmail } = pdfData
       const res = await send({ data: {
         passcode,
