@@ -1,13 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useServerFn } from '@tanstack/react-start'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
-import { sendEstimateAdmin } from '@/lib/admin-estimates.functions'
+import { sendEstimateAdmin, listEstimatesAdmin } from '@/lib/admin-estimates.functions'
 import type { LineItem } from '@/lib/email-templates/estimate-invoice'
-import { Trash2, Plus } from 'lucide-react'
+import { Trash2, Plus, Eye, Download, Send, ImagePlus } from 'lucide-react'
+import { generateEstimatePdf, fileToPhoto, type EstimatePdfData } from '@/lib/estimate-pdf'
 
 export const Route = createFileRoute('/admin/estimates')({
   head: () => ({ meta: [
@@ -31,6 +32,7 @@ function defaultNumber(t: DocType) {
 
 function AdminEstimatesPage() {
   const send = useServerFn(sendEstimateAdmin)
+  const listSaved = useServerFn(listEstimatesAdmin)
 
   const [passcode, setPasscode] = useState('')
   const [unlocked, setUnlocked] = useState(false)
@@ -54,6 +56,8 @@ function AdminEstimatesPage() {
   const [paymentInstructions, setPaymentInstructions] = useState(
     'We accept cash, check, or major credit card. Payment due upon completion unless otherwise noted.',
   )
+  const [photos, setPhotos] = useState<{ dataUrl: string; width: number; height: number; name: string }[]>([])
+  const [savedItems, setSavedItems] = useState<any[]>([])
 
   const [sending, setSending] = useState(false)
   const [sendMsg, setSendMsg] = useState<string | null>(null)
@@ -83,12 +87,78 @@ function AdminEstimatesPage() {
     setItems((prev) => (prev.length === 1 ? prev : prev.filter((_, idx) => idx !== i)))
   }
 
+  async function onAddPhotos(files: FileList | null) {
+    if (!files?.length) return
+    const next: typeof photos = []
+    for (const f of Array.from(files)) {
+      try {
+        const p = await fileToPhoto(f)
+        next.push({ ...p, name: f.name })
+      } catch { /* skip */ }
+    }
+    setPhotos((prev) => [...prev, ...next])
+  }
+
+  function removePhoto(i: number) {
+    setPhotos((prev) => prev.filter((_, idx) => idx !== i))
+  }
+
+  function buildPdfData(): EstimatePdfData {
+    return {
+      docType, docNumber, date,
+      customerName, customerPhone, customerEmail, serviceAddress, technicianName,
+      lineItems: items.map((i) => ({
+        name: i.name, description: i.description,
+        quantity: Number(i.quantity) || 0, price: Number(i.price) || 0,
+      })),
+      subtotal, taxPercent: Number(taxPercent) || 0, taxAmount,
+      discount: Number(discount) || 0, total,
+      depositPaid: Number(depositPaid) || 0, balanceDue,
+      notes, paymentInstructions,
+      photos: photos.map(({ dataUrl, width, height }) => ({ dataUrl, width, height })),
+    }
+  }
+
+  async function onPreview() {
+    setSendErr(null)
+    try {
+      const doc = await generateEstimatePdf(buildPdfData())
+      const blob = doc.output('blob')
+      const url = URL.createObjectURL(blob)
+      window.open(url, '_blank')
+    } catch (err) {
+      setSendErr(err instanceof Error ? err.message : 'Preview failed')
+    }
+  }
+
+  async function onDownload() {
+    setSendErr(null)
+    try {
+      const doc = await generateEstimatePdf(buildPdfData())
+      doc.save(`${docNumber || 'document'}.pdf`)
+    } catch (err) {
+      setSendErr(err instanceof Error ? err.message : 'Download failed')
+    }
+  }
+
+  async function loadSaved() {
+    try {
+      const res = await listSaved({ data: { passcode } })
+      setSavedItems(res.items)
+    } catch { /* ignore */ }
+  }
+
   async function unlock(e: React.FormEvent) {
     e.preventDefault()
     setUnlockError(null)
     if (!passcode) return
-    // Lightweight unlock — actual auth happens on send. We just gate the UI.
-    setUnlocked(true)
+    try {
+      const res = await listSaved({ data: { passcode } })
+      setSavedItems(res.items)
+      setUnlocked(true)
+    } catch (err) {
+      setUnlockError(err instanceof Error ? err.message : 'Invalid passcode')
+    }
   }
 
   async function onSend(e: React.FormEvent) {
@@ -98,24 +168,19 @@ function AdminEstimatesPage() {
     if (!customerEmail) { setSendErr('Customer email is required to send.'); return }
     setSending(true)
     try {
+      const pdfData = buildPdfData()
+      const pdf = await generateEstimatePdf(pdfData)
+      const pdfBase64 = pdf.output('datauristring')
+      const { photos: _omit, ...docForEmail } = pdfData
       const res = await send({ data: {
         passcode,
         recipientEmail: customerEmail,
-        doc: {
-          docType, docNumber, date,
-          customerName, customerPhone, customerEmail, serviceAddress, technicianName,
-          lineItems: items.map((i) => ({
-            name: i.name, description: i.description,
-            quantity: Number(i.quantity) || 0, price: Number(i.price) || 0,
-          })),
-          subtotal, taxPercent: Number(taxPercent) || 0, taxAmount,
-          discount: Number(discount) || 0, total,
-          depositPaid: Number(depositPaid) || 0, balanceDue,
-          notes, paymentInstructions,
-        },
+        doc: docForEmail as any,
+        pdfBase64,
       } })
       if (res.success) setSendMsg(`Sent to ${customerEmail}.`)
       else setSendErr(`Not sent: ${res.reason ?? 'unknown reason'}`)
+      await loadSaved()
     } catch (err) {
       setSendErr(err instanceof Error ? err.message : 'Failed to send')
     } finally {
@@ -265,15 +330,54 @@ function AdminEstimatesPage() {
           </section>
 
           <div className="flex flex-wrap items-center gap-3 pt-2">
+            <Button type="button" variant="outline" onClick={onPreview}>
+              <Eye className="w-4 h-4 mr-2" /> Preview PDF
+            </Button>
+            <Button type="button" variant="outline" onClick={onDownload}>
+              <Download className="w-4 h-4 mr-2" /> Download PDF
+            </Button>
             <Button type="submit" disabled={sending} size="lg">
+              <Send className="w-4 h-4 mr-2" />
               {sending ? 'Sending…' : `Send ${docType === 'invoice' ? 'invoice' : 'estimate'} to customer`}
             </Button>
             {sendMsg && <p className="text-sm text-green-600">{sendMsg}</p>}
             {sendErr && <p className="text-sm text-destructive">{sendErr}</p>}
           </div>
         </form>
+
+        <SavedList items={savedItems} onRefresh={loadSaved} />
       </div>
     </main>
+  )
+}
+
+function SavedList({ items, onRefresh }: { items: any[]; onRefresh: () => void }) {
+  return (
+    <section className="mt-12 border-t pt-8">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="text-xl font-bold">Saved estimates & invoices</h2>
+        <Button type="button" variant="outline" size="sm" onClick={onRefresh}>Refresh</Button>
+      </div>
+      {items.length === 0 ? (
+        <p className="text-sm text-muted-foreground">No saved documents yet.</p>
+      ) : (
+        <div className="border rounded-md divide-y">
+          {items.map((it) => (
+            <div key={it.id} className="p-3 flex flex-wrap items-center gap-3 text-sm">
+              <span className="font-mono text-xs px-2 py-0.5 rounded bg-muted">{it.doc_type}</span>
+              <span className="font-semibold">{it.doc_number}</span>
+              <span>{it.customer_name || '—'}</span>
+              <span className="text-muted-foreground">{it.sent_to ?? 'not emailed'}</span>
+              <span className="ml-auto font-semibold">${Number(it.total ?? 0).toFixed(2)}</span>
+              {it.signedUrl && (
+                <a href={it.signedUrl} target="_blank" rel="noreferrer"
+                  className="text-xs px-2 py-1 rounded bg-foreground text-background">Open PDF</a>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
   )
 }
 
