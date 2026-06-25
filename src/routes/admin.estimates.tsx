@@ -310,6 +310,34 @@ function AdminEstimatesPage() {
             </Field>
           </section>
 
+          <section>
+            <div className="flex items-center justify-between mb-3">
+              <div>
+                <h2 className="font-semibold">Project photos</h2>
+                <p className="text-xs text-muted-foreground">Added to a "Project Photos" section in the PDF.</p>
+              </div>
+              <label className="inline-flex items-center gap-2 px-3 py-2 text-sm border rounded-md cursor-pointer hover:bg-muted">
+                <ImagePlus className="w-4 h-4" /> Add photos
+                <input type="file" accept="image/*" multiple className="hidden"
+                  onChange={(e) => { onAddPhotos(e.target.files); e.currentTarget.value = '' }} />
+              </label>
+            </div>
+            {photos.length > 0 && (
+              <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
+                {photos.map((p, i) => (
+                  <div key={i} className="relative group border rounded-md overflow-hidden aspect-square bg-muted">
+                    <img src={p.dataUrl} alt={p.name} className="w-full h-full object-cover" />
+                    <button type="button" onClick={() => removePhoto(i)}
+                      className="absolute top-1 right-1 bg-background/90 rounded p-1 opacity-0 group-hover:opacity-100"
+                      aria-label="Remove photo">
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </section>
+
           <section className="rounded-md border p-4 bg-muted/40">
             <Row label="Subtotal" value={subtotal} />
             {discount > 0 && <Row label="Discount" value={-discount} />}
