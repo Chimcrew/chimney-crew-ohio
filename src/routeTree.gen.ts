@@ -32,6 +32,7 @@ import { Route as EmailUnsubscribeRouteImport } from './routes/email/unsubscribe
 import { Route as ChimneyRepairCityRouteImport } from './routes/chimney-repair.$city'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
+import { Route as AdminEstimatesRouteImport } from './routes/admin.estimates'
 import { Route as LovableEmailSuppressionRouteImport } from './routes/lovable/email/suppression'
 import { Route as ApiPublicNotifyLeadRouteImport } from './routes/api/public/notify-lead'
 import { Route as LovableEmailTransactionalSendRouteImport } from './routes/lovable/email/transactional/send'
@@ -153,6 +154,11 @@ const AdminLeadsRoute = AdminLeadsRouteImport.update({
   path: '/admin/leads',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminEstimatesRoute = AdminEstimatesRouteImport.update({
+  id: '/admin/estimates',
+  path: '/admin/estimates',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LovableEmailSuppressionRoute = LovableEmailSuppressionRouteImport.update({
   id: '/lovable/email/suppression',
   path: '/lovable/email/suppression',
@@ -193,6 +199,7 @@ export interface FileRoutesByFullPath {
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/admin/estimates': typeof AdminEstimatesRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/chimney-repair/$city': typeof ChimneyRepairCityRoute
@@ -223,6 +230,7 @@ export interface FileRoutesByTo {
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/admin/estimates': typeof AdminEstimatesRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/chimney-repair/$city': typeof ChimneyRepairCityRoute
@@ -254,6 +262,7 @@ export interface FileRoutesById {
   '/schedule': typeof ScheduleRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/unsubscribe': typeof UnsubscribeRoute
+  '/admin/estimates': typeof AdminEstimatesRoute
   '/admin/leads': typeof AdminLeadsRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/chimney-repair/$city': typeof ChimneyRepairCityRoute
@@ -286,6 +295,7 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/sitemap.xml'
     | '/unsubscribe'
+    | '/admin/estimates'
     | '/admin/leads'
     | '/blog/$slug'
     | '/chimney-repair/$city'
@@ -316,6 +326,7 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/sitemap.xml'
     | '/unsubscribe'
+    | '/admin/estimates'
     | '/admin/leads'
     | '/blog/$slug'
     | '/chimney-repair/$city'
@@ -346,6 +357,7 @@ export interface FileRouteTypes {
     | '/schedule'
     | '/sitemap.xml'
     | '/unsubscribe'
+    | '/admin/estimates'
     | '/admin/leads'
     | '/blog/$slug'
     | '/chimney-repair/$city'
@@ -377,6 +389,7 @@ export interface RootRouteChildren {
   ScheduleRoute: typeof ScheduleRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   UnsubscribeRoute: typeof UnsubscribeRoute
+  AdminEstimatesRoute: typeof AdminEstimatesRoute
   AdminLeadsRoute: typeof AdminLeadsRoute
   BlogSlugRoute: typeof BlogSlugRoute
   ChimneyRepairCityRoute: typeof ChimneyRepairCityRoute
@@ -560,6 +573,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLeadsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/estimates': {
+      id: '/admin/estimates'
+      path: '/admin/estimates'
+      fullPath: '/admin/estimates'
+      preLoaderRoute: typeof AdminEstimatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lovable/email/suppression': {
       id: '/lovable/email/suppression'
       path: '/lovable/email/suppression'
@@ -609,6 +629,7 @@ const rootRouteChildren: RootRouteChildren = {
   ScheduleRoute: ScheduleRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   UnsubscribeRoute: UnsubscribeRoute,
+  AdminEstimatesRoute: AdminEstimatesRoute,
   AdminLeadsRoute: AdminLeadsRoute,
   BlogSlugRoute: BlogSlugRoute,
   ChimneyRepairCityRoute: ChimneyRepairCityRoute,
