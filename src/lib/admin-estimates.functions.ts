@@ -46,8 +46,6 @@ export const sendEstimateAdmin = createServerFn({ method: 'POST' })
     const templateName = 'estimate-invoice'
 
     // ---- Upload PDF to private storage ----
-    const b64 = data.pdfBase64.replace(/^data:application\/pdf;base64,/, '')
-    const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0))
     const safeNum = (data.doc.docNumber || messageId).replace(/[^a-zA-Z0-9_-]/g, '_')
     const folder = data.doc.docType === 'invoice' ? 'invoices' : 'estimates'
     const pdfPath = `${folder}/${safeNum}-${messageId}.pdf`
