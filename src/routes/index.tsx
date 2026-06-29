@@ -492,7 +492,7 @@ function Hero() {
         </p>
 
         <p className="mt-6 max-w-[38ch] text-[15px] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-relaxed">
-          Book your free chimney inspection in <span className="font-extrabold text-foreground">less than 60 seconds</span>. Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
+          Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
         </p>
 
         <div className="mt-8 flex flex-col items-start gap-4 sm:mt-6 sm:flex-row sm:flex-wrap sm:gap-3">
