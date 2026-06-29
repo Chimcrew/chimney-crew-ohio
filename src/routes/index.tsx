@@ -448,7 +448,7 @@ function Hero() {
       <div className="relative z-20 mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-10 sm:pt-8 md:pb-14 lg:px-8 lg:pt-12">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-12">
         {/* LEFT — message column */}
-        <div className="max-w-[42ch] sm:max-w-none">
+        <div>
         {/* Certified badge */}
         <div className="flex items-start gap-1.5">
           <img
@@ -483,7 +483,7 @@ function Hero() {
           <span className="text-flame">Free</span> Chimney Inspection - Book in 60 Seconds
         </p>
 
-        <p className="mt-6 max-w-[42ch] text-[15px] leading-[1.75] text-foreground/80 sm:max-w-xl sm:text-base sm:leading-relaxed">
+        <p className="mt-6 max-w-[38ch] text-[15px] leading-[1.75] text-foreground/80 sm:max-w-xl sm:text-base sm:leading-relaxed">
           Book your free chimney inspection in <span className="font-extrabold text-foreground">less than 60 seconds</span>. Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
         </p>
 
