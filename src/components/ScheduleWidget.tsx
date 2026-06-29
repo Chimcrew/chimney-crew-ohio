@@ -22,10 +22,10 @@ export function openScheduleDialog() {
 
 export const SCHEDULE_SERVICES = [
   { value: "Gas Fireplace Inspection — $49", label: "Gas Fireplace Inspection", price: "$49" },
-  { value: "Chimney/Fireplace Inspection — $69", label: "Chimney/Fireplace Inspection", price: "$69" },
+  { value: "⭐ Promotion – Free Chimney Inspection", label: "⭐ Promotion – Free Chimney Inspection", price: "Free" },
   { value: "Chimney Sweep — $99", label: "Chimney Sweep", price: "$99" },
   { value: "Dryer Vent Cleaning — $79", label: "Dryer Vent Cleaning", price: "$79" },
-  { value: "⭐ Promotion – Free Chimney Inspection", label: "⭐ Promotion – Free Chimney Inspection", price: "Free" },
+  { value: "Chimney/Fireplace Inspection — $69", label: "Chimney/Fireplace Inspection", price: "$69" },
 ] as const;
 
 const SLOTS = ["8:00AM-11:00AM", "11:00AM-2:00PM", "2:00PM-5:00PM"];
