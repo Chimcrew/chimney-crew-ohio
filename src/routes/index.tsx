@@ -67,6 +67,9 @@ import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import { DroneInspection } from "@/components/DroneInspection";
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import teamWidePhoto from "@/assets/chimcrew-team-wide.png.asset.json";
+import techFireplaceBurner from "@/assets/team-jobs/tech-fireplace-burner.jpeg.asset.json";
+import techCrownWaterproof from "@/assets/team-jobs/tech-crown-waterproof.jpeg.asset.json";
+import techRooftopLadder from "@/assets/team-jobs/tech-rooftop-ladder.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -149,6 +152,8 @@ function Index() {
     <>
       <Hero />
       <HeroToOfferBridge />
+      <Testimonials />
+      <RealTeamGallery />
       <TrustBar />
       <CommonProblems />
       <PhotoVideoTrust />
@@ -160,7 +165,6 @@ function Index() {
       <TrustMarquee />
       <EmergencyCallBar />
       <LeakingChimney />
-      <Testimonials />
       <FieldNotes />
       <Faq />
       <TrustMarquee />
