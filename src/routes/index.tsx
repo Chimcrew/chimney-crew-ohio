@@ -475,9 +475,13 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-6 font-sans text-[36px] font-bold leading-[1.05] tracking-[-1.5px] text-foreground sm:text-[48px] md:text-[56px]">
-          Free Chimney Inspection - Book in 60 Seconds
+        <h1 className="mt-6 max-w-4xl font-sans text-[28px] font-bold leading-[1.08] tracking-[-1px] text-foreground sm:text-[36px] md:text-[44px]">
+          The Chimney Experts You've Trusted for Over 18 Years In Columbus, Cincinnati, Dayton
         </h1>
+
+        <p className="mt-3 font-sans text-[20px] font-bold leading-tight text-foreground sm:text-[26px] md:text-[30px]">
+          <span className="text-flame">Free</span> Chimney Inspection - Book in 60 Seconds
+        </p>
 
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
           Book your free chimney inspection in <span className="font-extrabold text-foreground">less than 60 seconds</span>. Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
