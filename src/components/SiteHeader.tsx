@@ -533,16 +533,16 @@ export function SiteHeader() {
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
                 href="tel:6146835763"
-                className="flex items-center justify-center gap-2 border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-2.5 font-sans text-[10px] font-semibold tracking-normal text-foreground/80"
+                className="flex items-center justify-center gap-2 border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-3.5 font-sans text-[13px] font-bold tracking-normal text-foreground/80"
               >
-                <Phone className="h-4 w-4" /> Call
+                <Phone className="h-5 w-5" /> Call Now
               </a>
               <button
                 type="button"
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
-                className="flex items-center justify-center gap-2 bg-[oklch(0.78_0.19_92)] px-3 py-2.5 font-sans text-[10px] font-bold tracking-normal text-[oklch(0.18_0.02_250)]"
+                className="flex items-center justify-center gap-2 bg-[oklch(0.78_0.19_92)] px-3 py-3.5 font-sans text-[13px] font-extrabold tracking-normal text-[oklch(0.18_0.02_250)]"
               >
-                <CalendarCheck className="h-4 w-4" /> Schedule online
+                <CalendarCheck className="h-5 w-5" /> Schedule Free Inspection
               </button>
             </div>
           </div>
