@@ -476,11 +476,17 @@ function Hero() {
         </div>
 
         <h1 className="mt-8 max-w-4xl font-sans !text-[26px] font-bold !leading-[1.10] tracking-[-1px] text-foreground sm:mt-6 sm:!text-[30px] md:!text-[36px] mb-2">
-          The Chimney Experts You've Trusted for Over 18 Years In Columbus, Cincinnati, Dayton
+          <span className="block">The Chimney Experts You've Trusted for Over 18 Years</span>
+          <span className="block text-[50%] font-medium leading-tight tracking-normal text-foreground/80 mt-1">
+            in Columbus, Cincinnati, Dayton
+          </span>
         </h1>
 
-        <p className="mt-5 font-sans text-[20px] font-bold leading-snug text-foreground sm:mt-3 sm:text-[26px] md:text-[30px]">
-          <span className="text-flame">Free</span> Chimney Inspection - Book in 60 Seconds
+        <p className="mt-5 font-sans text-[20px] font-bold leading-tight text-foreground sm:mt-3 sm:text-[26px] md:text-[30px]">
+          <span className="block text-flame">Limited Time - Free Inspection</span>
+          <span className="block text-[16px] font-semibold text-foreground/90 mt-1 sm:text-[20px] md:text-[24px]">
+            Book in 60 Seconds
+          </span>
         </p>
 
         <p className="mt-6 max-w-[38ch] text-[15px] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-relaxed">
