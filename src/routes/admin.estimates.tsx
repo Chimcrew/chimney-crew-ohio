@@ -9,6 +9,7 @@ import { sendEstimateAdmin, listEstimatesAdmin } from '@/lib/admin-estimates.fun
 import type { LineItem } from '@/lib/email-templates/estimate-invoice'
 import { Trash2, Plus, Eye, Download, Send, ImagePlus } from 'lucide-react'
 import { generateEstimatePdf, fileToPhoto, type EstimatePdfData } from '@/lib/estimate-pdf'
+import { ESTIMATE_PRESETS } from '@/data/estimate-presets'
 
 export const Route = createFileRoute('/admin/estimates')({
   head: () => ({ meta: [
@@ -79,6 +80,22 @@ function AdminEstimatesPage() {
 
   function updateItem(i: number, patch: Partial<LineItem>) {
     setItems((prev) => prev.map((it, idx) => (idx === i ? { ...it, ...patch } : it)))
+  }
+  function onItemNameChange(i: number, value: string) {
+    const preset = ESTIMATE_PRESETS.find((p) => p.name === value)
+    setItems((prev) => prev.map((it, idx) => {
+      if (idx !== i) return it
+      const next: LineItem = { ...it, name: value }
+      // Auto-fill description only when matching a preset and current desc is empty
+      // or was the previous preset's description (so switching presets updates it).
+      if (preset) {
+        const prevPresetDesc = ESTIMATE_PRESETS.find((p) => p.name === it.name)?.description
+        if (!it.description || it.description === prevPresetDesc) {
+          next.description = preset.description
+        }
+      }
+      return next
+    }))
   }
   function addItem() {
     setItems((prev) => [...prev, { name: '', description: '', quantity: 1, price: 0 }])
@@ -268,11 +285,20 @@ function AdminEstimatesPage() {
                 <div key={i} className="border rounded-md p-3 grid grid-cols-12 gap-2 items-start">
                   <div className="col-span-12 md:col-span-4">
                     <Label className="text-xs">Item name</Label>
-                    <Input value={it.name} onChange={(e) => updateItem(i, { name: e.target.value })} />
+                    <Input
+                      list="estimate-preset-names"
+                      placeholder="Type or pick a preset…"
+                      value={it.name}
+                      onChange={(e) => onItemNameChange(i, e.target.value)}
+                    />
                   </div>
                   <div className="col-span-12 md:col-span-4">
                     <Label className="text-xs">Description</Label>
-                    <Input value={it.description ?? ''} onChange={(e) => updateItem(i, { description: e.target.value })} />
+                    <Textarea
+                      rows={2}
+                      value={it.description ?? ''}
+                      onChange={(e) => updateItem(i, { description: e.target.value })}
+                    />
                   </div>
                   <div className="col-span-4 md:col-span-1">
                     <Label className="text-xs">Qty</Label>
@@ -294,6 +320,11 @@ function AdminEstimatesPage() {
                 </div>
               ))}
             </div>
+            <datalist id="estimate-preset-names">
+              {ESTIMATE_PRESETS.map((p) => (
+                <option key={p.name} value={p.name} />
+              ))}
+            </datalist>
           </section>
 
           <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
