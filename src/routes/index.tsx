@@ -475,7 +475,7 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-6 max-w-4xl font-sans text-[28px] font-bold leading-[1.08] tracking-[-1px] text-foreground sm:text-[36px] md:text-[44px]">
+        <h1 className="mt-6 max-w-4xl font-sans !text-[26px] font-bold !leading-[1.15] tracking-[-1px] text-foreground sm:!text-[30px] md:!text-[36px] mb-2">
           The Chimney Experts You've Trusted for Over 18 Years In Columbus, Cincinnati, Dayton
         </h1>
 
