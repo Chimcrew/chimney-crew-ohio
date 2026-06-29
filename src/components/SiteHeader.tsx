@@ -187,9 +187,9 @@ export function SiteHeader() {
             aria-label="We're available now — schedule online"
             className="group pointer-events-auto absolute left-1/2 top-1/2 z-30 inline-flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 border border-[oklch(0.18_0.02_250/0.08)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-2 font-mono text-[11px] font-extrabold uppercase tracking-[0.22em] text-foreground/80 shadow-sm backdrop-blur-xl transition-all active:scale-95 active:bg-[oklch(0.18_0.02_250/0.06)] md:hidden"
           >
-            <span className="relative flex h-2 w-2">
+            <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-pulse rounded-full bg-[oklch(0.65_0.18_145/0.4)]" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-[oklch(0.65_0.18_145)] shadow-[0_0_10px_oklch(0.65_0.18_145/0.5)]" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[oklch(0.65_0.18_145)] shadow-[0_0_10px_oklch(0.65_0.18_145/0.5)]" />
             </span>
             Available Now
           </button>
