@@ -483,7 +483,9 @@ function Hero() {
         </h1>
 
         <p className="mt-5 font-sans text-[20px] font-bold leading-tight text-foreground sm:mt-3 sm:text-[26px] md:text-[30px]">
-          <span className="block text-flame">Limited Time - Free Inspection</span>
+          <span className="block">
+            Limited Time - <span className="inline-block bg-flame px-1.5 py-0.5 text-[0.85em] font-black text-primary">Free</span> Inspection
+          </span>
           <span className="block text-[16px] font-semibold text-foreground/90 mt-1 sm:text-[20px] md:text-[24px]">
             Book in 60 Seconds
           </span>
