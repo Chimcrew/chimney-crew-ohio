@@ -76,7 +76,11 @@ const FILTERS = ["All", "Crown", "Liner", "Tuckpointing", "Cap", "Waterproof", "
 
 function GalleryPage() {
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All");
-  const visible = filter === "All" ? PHOTOS : PHOTOS.filter((p) => p.tag === filter);
+  // Dedupe by src so any accidental duplicate photo never renders twice
+  const deduped = PHOTOS.filter(
+    (p, i, arr) => arr.findIndex((x) => x.src === p.src) === i,
+  );
+  const visible = filter === "All" ? deduped : deduped.filter((p) => p.tag === filter);
 
   return (
     <>
