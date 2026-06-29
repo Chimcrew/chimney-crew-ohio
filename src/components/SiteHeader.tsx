@@ -540,7 +540,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
-                className="flex items-center justify-center gap-2 bg-[oklch(0.78_0.19_92)] px-3 py-5 font-sans text-[16px] font-extrabold tracking-normal text-[oklch(0.18_0.02_250)]"
+                className="flex items-center justify-center gap-2 bg-primary px-3 py-5 font-sans text-[16px] font-extrabold tracking-normal text-primary-foreground"
               >
                 <CalendarCheck className="h-6 w-6" /> Schedule Free Inspection
               </button>
