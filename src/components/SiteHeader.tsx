@@ -380,16 +380,16 @@ export function SiteHeader() {
           <div className="hidden items-center gap-2 md:flex">
             <a
               href="tel:6146835763"
-              className="inline-flex items-center gap-2 whitespace-nowrap border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3.5 py-2 font-sans text-[11px] font-semibold tracking-normal text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)]"
+              className="inline-flex items-center gap-2 whitespace-nowrap border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-5 py-3 font-sans text-[13px] font-bold tracking-normal text-foreground/80 transition hover:border-[oklch(0.78_0.19_92/0.5)] hover:text-[oklch(0.65_0.18_92)]"
             >
-              <Phone className="h-4 w-4 shrink-0" /> (614) 683-5763
+              <Phone className="h-5 w-5 shrink-0" /> (614) 683-5763
             </a>
             <button
               type="button"
               onClick={() => openScheduleDialog()}
-              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap bg-[oklch(0.78_0.19_92)] px-4 py-2 font-sans text-[11px] font-bold tracking-normal text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)]"
+              className="group relative inline-flex items-center gap-2 overflow-hidden whitespace-nowrap bg-[oklch(0.78_0.19_92)] px-5 py-3 font-sans text-[13px] font-extrabold tracking-normal text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)]"
             >
-              <CalendarCheck className="h-4 w-4 shrink-0" /> Schedule Online
+              <CalendarCheck className="h-5 w-5 shrink-0" /> Schedule Free Inspection
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
             </button>
           </div>
