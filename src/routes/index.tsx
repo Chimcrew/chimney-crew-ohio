@@ -13,6 +13,7 @@ import {
   ChevronRight,
   MapPin,
   ArrowRight,
+  ArrowDown,
   Droplets,
   AlertTriangle,
   Wind,
@@ -482,14 +483,22 @@ function Hero() {
           </span>
         </h1>
 
-        <p className="mt-5 font-sans text-[20px] font-bold leading-tight text-foreground sm:mt-3 sm:text-[26px] md:text-[30px]">
-          <span className="block">
-            Limited Time - <span className="inline-block bg-flame px-1.5 py-0.5 text-[0.85em] font-black text-primary">Free</span> Inspection
-          </span>
-          <span className="block text-[16px] font-semibold text-foreground/90 mt-1 sm:text-[20px] md:text-[24px]">
+        <div className="mt-5 inline-flex flex-col items-start gap-1 rounded-none border border-border/60 bg-muted/40 px-4 py-3 backdrop-blur-sm sm:mt-3">
+          <p className="font-sans text-[20px] font-bold leading-tight text-foreground sm:text-[26px] md:text-[30px]">
+            <span className="inline-flex items-center gap-2">
+              <span className="inline-flex items-center gap-1 rounded-none bg-primary px-2 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-wider text-primary-foreground">
+                <Flame className="h-3 w-3 text-flame" /> Limited Time
+              </span>
+              <span className="bg-flame px-1.5 py-0.5 font-black text-primary">Free</span> Inspection
+            </span>
+          </p>
+          <p className="text-[16px] font-semibold text-foreground/80 sm:text-[20px] md:text-[24px]">
             Book in 60 Seconds
+          </p>
+          <span className="mt-1 flex w-full justify-center">
+            <ArrowDown className="h-5 w-5 text-flame" />
           </span>
-        </p>
+        </div>
 
         <p className="mt-6 max-w-[38ch] text-[15px] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-relaxed">
           Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
@@ -499,7 +508,7 @@ function Hero() {
           <a
             href="#hero-lead-form"
             data-cta
-            className="inline-flex h-12 items-center justify-center gap-2 bg-flame px-5 font-sans text-sm font-bold text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95"
+            className="inline-flex h-12 items-center justify-center gap-2 bg-primary px-5 font-sans text-sm font-bold text-primary-foreground transition active:scale-95"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule free inspection
           </a>

@@ -387,7 +387,7 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={() => openScheduleDialog()}
-              className="group relative inline-flex items-center gap-3 overflow-hidden whitespace-nowrap bg-[oklch(0.78_0.19_92)] px-7 py-4 font-sans text-[16px] font-extrabold tracking-normal text-[oklch(0.18_0.02_250)] shadow-[0_4px_16px_oklch(0.78_0.19_92/0.3)] transition hover:bg-[oklch(0.85_0.18_92)]"
+              className="group relative inline-flex items-center gap-3 overflow-hidden whitespace-nowrap bg-primary px-7 py-4 font-sans text-[16px] font-extrabold tracking-normal text-primary-foreground transition hover:bg-primary/90"
             >
               <CalendarCheck className="h-6 w-6 shrink-0" /> Schedule Free Inspection
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/60 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
@@ -540,7 +540,7 @@ export function SiteHeader() {
               <button
                 type="button"
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
-                className="flex items-center justify-center gap-2 bg-[oklch(0.78_0.19_92)] px-3 py-5 font-sans text-[16px] font-extrabold tracking-normal text-[oklch(0.18_0.02_250)]"
+                className="flex items-center justify-center gap-2 bg-primary px-3 py-5 font-sans text-[16px] font-extrabold tracking-normal text-primary-foreground"
               >
                 <CalendarCheck className="h-6 w-6" /> Schedule Free Inspection
               </button>
