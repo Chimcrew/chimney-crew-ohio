@@ -543,11 +543,7 @@ function Hero() {
               decoding="async"
             />
           </div>
-          <InlineLeadForm
-            source="Home hero inline form"
-            title="Book your free chimney inspection"
-            subtitle="Takes ~60 seconds. Appointment confirmation emailed within 10 minutes."
-          />
+          <ScheduleInline />
         </div>
         </div>
       </div>
