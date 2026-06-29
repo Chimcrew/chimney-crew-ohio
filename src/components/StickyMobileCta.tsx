@@ -40,6 +40,19 @@ export function StickyMobileCta() {
           </button>
         </div>
       </div>
+
+      {/* Bottom-fixed primary "Call Now" — always visible on mobile */}
+      <a
+        href="tel:6146835763"
+        data-cta
+        aria-label="Call ChimCrew now"
+        className="fixed inset-x-3 bottom-3 z-[60] inline-flex h-14 items-center justify-center gap-2 rounded-none bg-flame px-5 font-display text-base font-extrabold uppercase tracking-wider text-primary shadow-[0_10px_30px_oklch(0_0_0/0.35)] transition active:scale-[0.98] md:hidden"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
+        <Phone className="h-5 w-5" /> Call Now · (614) 683-5763
+      </a>
+      {/* spacer so the bottom button never covers final page content */}
+      <div aria-hidden className="h-20 md:hidden" />
     </>
   );
 }

@@ -67,6 +67,9 @@ import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import { DroneInspection } from "@/components/DroneInspection";
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import teamWidePhoto from "@/assets/chimcrew-team-wide.png.asset.json";
+import techFireplaceBurner from "@/assets/team-jobs/tech-fireplace-burner.jpeg.asset.json";
+import techCrownWaterproof from "@/assets/team-jobs/tech-crown-waterproof.jpeg.asset.json";
+import techRooftopLadder from "@/assets/team-jobs/tech-rooftop-ladder.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -149,6 +152,8 @@ function Index() {
     <>
       <Hero />
       <HeroToOfferBridge />
+      <Testimonials />
+      <RealTeamGallery />
       <TrustBar />
       <CommonProblems />
       <PhotoVideoTrust />
@@ -160,7 +165,6 @@ function Index() {
       <TrustMarquee />
       <EmergencyCallBar />
       <LeakingChimney />
-      <Testimonials />
       <FieldNotes />
       <Faq />
       <TrustMarquee />
@@ -422,32 +426,30 @@ function LimitedOfferBanner() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
-      {/* PHOTO — flush to header, rounded-none only at the bottom (full-bleed) */}
-      <div className="relative pb-10 sm:pb-12 lg:pb-16">
+      {/* Mobile-only compact hero photo above the fold */}
+      <div className="lg:hidden">
         <div className="relative overflow-hidden rounded-b-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
           <img
             src={teamHeroPhoto.url}
             alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
-            className="block h-auto w-full object-cover lg:max-h-[520px]"
+            className="block h-44 w-full object-cover sm:h-56"
             fetchPriority="high"
             decoding="async"
             loading="eager"
           />
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
-            aria-hidden
-          />
-          <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6">
-            <p className="font-display text-base font-bold text-primary-foreground sm:text-lg md:text-2xl">
-              Meet the ChimCrew team.
-            </p>
-          </div>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent" aria-hidden />
+          <p className="absolute inset-x-4 bottom-3 font-display text-sm font-bold text-primary-foreground sm:text-base">
+            Meet the ChimCrew team.
+          </p>
         </div>
       </div>
 
-      {/* MESSAGE — single column under the photo */}
-      <div className="relative z-20 mx-auto max-w-3xl px-4 pb-12 pt-8 sm:px-6 sm:pt-10 md:pb-16 md:pt-12 lg:px-8">
-        {/* Certified badge — pulled above the headline, larger */}
+      {/* Hero grid: copy + CTAs LEFT, lead form RIGHT (desktop), stacked on mobile */}
+      <div className="relative z-20 mx-auto max-w-7xl px-4 pb-10 pt-6 sm:px-6 sm:pt-8 md:pb-14 lg:px-8 lg:pt-12">
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-12">
+        {/* LEFT — message column */}
+        <div>
+        {/* Certified badge */}
         <div className="flex items-start gap-1.5">
           <img
             src={certifiedBadge.url}
@@ -473,32 +475,29 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-10 font-sans text-[38px] font-bold leading-[1.1] tracking-[-1.5px] text-foreground sm:text-[52px] sm:leading-[1.08] md:text-[64px] md:leading-[1.05]">
-          #1 Trusted Chimney Repair Team In Columbus &amp; Central Ohio
+        <h1 className="mt-6 font-sans text-[36px] font-bold leading-[1.05] tracking-[-1.5px] text-foreground sm:text-[48px] md:text-[56px]">
+          <span className="text-flame">Free</span> Chimney Inspection
         </h1>
 
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
-          Servicing <span className="font-extrabold text-foreground">your area</span> and
-          surrounding neighborhoods — chimney inspections, repair and cleaning near you.
+          Book your free chimney inspection in <span className="font-extrabold text-foreground">less than 60 seconds</span>. Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
         </p>
 
         <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
-          {/* CALL — primary on mobile, secondary on desktop */}
+          <a
+            href="#hero-lead-form"
+            data-cta
+            className="inline-flex h-12 items-center justify-center gap-2 bg-flame px-5 font-sans text-sm font-bold text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95"
+          >
+            <CalendarCheck className="h-4 w-4" /> Get My Free Inspection
+          </a>
           <a
             href="tel:6146835763"
             data-cta
-            className="order-1 inline-flex h-11 items-center justify-start gap-2 bg-flame px-4 text-left font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:order-2 sm:border sm:border-foreground/20 sm:bg-background sm:font-medium sm:text-foreground sm:shadow-none sm:hover:border-flame"
+            className="inline-flex h-12 items-center justify-center gap-2 border border-foreground/30 bg-background px-5 font-sans text-sm font-bold text-foreground transition hover:border-flame active:scale-95"
           >
-            <Phone className="h-4 w-4 text-primary sm:text-flame" /> Call Now (614) 683-5763
+            <Phone className="h-4 w-4 text-flame" /> Call Now (614) 683-5763
           </a>
-          {/* SCHEDULE — secondary on mobile, primary on desktop */}
-          <Link
-            to="/schedule"
-            data-cta
-            className="order-2 inline-flex h-11 items-center justify-start gap-2 border border-foreground/20 bg-background px-4 text-left font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:order-1 sm:border-0 sm:bg-flame sm:px-5 sm:font-bold sm:text-primary sm:shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)]"
-          >
-            <CalendarCheck className="h-4 w-4" /> Schedule appointment online
-          </Link>
         </div>
 
         {/* Emergency line micro-CTA */}
@@ -529,6 +528,97 @@ function Hero() {
               {label}
             </span>
           ))}
+        </div>
+        </div>
+
+        {/* RIGHT — lead form column (above fold on desktop, below CTAs on mobile) */}
+        <div id="hero-lead-form" className="lg:sticky lg:top-24">
+          {/* Desktop-only crew photo above the form */}
+          <div className="hidden lg:block mb-4 overflow-hidden rounded-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+            <img
+              src={teamHeroPhoto.url}
+              alt="The ChimCrew team in Columbus, Ohio"
+              className="block h-48 w-full object-cover"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+          <InlineLeadForm
+            source="Home hero inline form"
+            title="Book your free chimney inspection"
+            subtitle="Takes ~60 seconds. Appointment confirmation emailed within 10 minutes."
+          />
+        </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ============================================================
+   REAL TEAM GALLERY — authentic crew at work, near top of page
+   Placeholders included so we can drop in more real photos later
+   ============================================================ */
+function RealTeamGallery() {
+  const items = [
+    { src: techFireplaceBurner.url, label: "Fireplace burner service", city: "Columbus, OH" },
+    { src: techCrownWaterproof.url, label: "Crown waterproofing", city: "Dublin, OH" },
+    { src: techRooftopLadder.url, label: "Rooftop chimney inspection", city: "Powell, OH" },
+    { src: techScaffold.url, label: "Scaffolded chimney rebuild", city: "Westerville, OH" },
+    { src: techLiner.url, label: "Stainless liner installation", city: "Dayton, OH" },
+    { src: inspectionRoofPhoto.url, label: "Rooftop inspection", city: "Hilliard, OH" },
+    { src: rooftopTechsPhoto.url, label: "Crew on the roof", city: "Upper Arlington, OH" },
+    { src: teamTruckPhoto.url, label: "ChimCrew service trucks", city: "Columbus, OH" },
+  ];
+  return (
+    <section className="relative bg-background py-14 md:py-20">
+      <div className="mx-auto max-w-7xl px-4 md:px-8">
+        <div className="max-w-3xl">
+          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
+            <Camera className="h-3.5 w-3.5 text-flame" /> Our Crew · On the Job
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
+            The ChimCrew team — <span className="text-flame">real techs, real jobs</span>.
+          </h2>
+          <p className="mt-3 text-base text-foreground/75 md:text-lg">
+            No stock photos. No AI. Every photo below is one of our technicians on an Ohio chimney this season.
+          </p>
+        </div>
+
+        <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
+          {items.map((it) => (
+            <figure key={it.src} className="group relative overflow-hidden rounded-none border border-border bg-primary aspect-square">
+              <img
+                src={it.src}
+                alt={`${it.label} — ChimCrew technician in ${it.city}`}
+                className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent opacity-90" aria-hidden />
+              <figcaption className="absolute inset-x-3 bottom-3">
+                <p className="font-display text-xs font-extrabold leading-tight text-primary-foreground sm:text-sm">{it.label}</p>
+                <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[9px] uppercase tracking-[0.18em] text-primary-foreground/70">
+                  <MapPin className="h-3 w-3" /> {it.city}
+                </p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <Link
+            to="/gallery"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-sm font-bold text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95"
+          >
+            See the full gallery <ArrowRight className="h-4 w-4" />
+          </Link>
+          <a
+            href="tel:6146835763"
+            className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-foreground/20 bg-background px-5 font-sans text-sm font-medium text-foreground transition hover:border-flame active:scale-95"
+          >
+            <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
+          </a>
         </div>
       </div>
     </section>
