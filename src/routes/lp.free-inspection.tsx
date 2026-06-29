@@ -271,7 +271,7 @@ function InlineLeadForm() {
           className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
         >
           <CalendarCheck className="h-5 w-5" />
-          {submitting ? "Sending…" : "Get my free inspection"}
+          {submitting ? "Sending…" : "Schedule free inspection"}
         </button>
         <p className="text-center text-xs text-muted-foreground">
           No spam. Appointment confirmation emailed within 10 minutes.

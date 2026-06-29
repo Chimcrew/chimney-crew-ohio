@@ -489,7 +489,7 @@ function Hero() {
             data-cta
             className="inline-flex h-12 items-center justify-center gap-2 bg-flame px-5 font-sans text-sm font-bold text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95"
           >
-            <CalendarCheck className="h-4 w-4" /> Get My Free Inspection
+            <CalendarCheck className="h-4 w-4" /> Schedule free inspection
           </a>
           <a
             href="tel:6146835763"
