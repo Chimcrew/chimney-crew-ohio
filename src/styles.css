@@ -168,15 +168,15 @@
  * previously applied per-section. Goal: every H1/H2/H3 is identical across
  * pages for a premium, consistent look.
  *
- * Mobile:  H1 38 / H2 32 / H3 24 / body 16
- * Desktop: H1 56 / H2 40 / H3 28 / body 18
+ * Mobile:  H1 30 / H2 32 / H3 24 / body 16
+ * Desktop: H1 44 / H2 40 / H3 28 / body 18
  */
 @layer base {
   h1 {
-    font-size: 38px !important;
-    line-height: 1.08 !important;
+    font-size: 30px !important;
+    line-height: 1.15 !important;
     letter-spacing: -0.025em !important;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.35em;
   }
   h2 {
     font-size: 32px !important;
@@ -196,8 +196,8 @@
 
   @media (min-width: 768px) {
     h1 {
-      font-size: 56px !important;
-      line-height: 1.05 !important;
+      font-size: 44px !important;
+      line-height: 1.08 !important;
     }
     h2 {
       font-size: 40px !important;
