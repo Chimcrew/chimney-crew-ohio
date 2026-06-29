@@ -476,7 +476,7 @@ function Hero() {
         </div>
 
         <h1 className="mt-6 font-sans text-[36px] font-bold leading-[1.05] tracking-[-1.5px] text-foreground sm:text-[48px] md:text-[56px]">
-          <span className="text-flame">Free</span> Chimney Inspection
+          Free Chimney Inspection - Book in 60 Seconds
         </h1>
 
         <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
