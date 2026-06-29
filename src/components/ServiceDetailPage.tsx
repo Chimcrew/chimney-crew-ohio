@@ -272,6 +272,36 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
                 </div>
               </div>
             ) : (
+            service.slug === "dryer-vent-cleaning" ? (
+            <div className="relative overflow-hidden rounded-none bg-card lg:rounded-none lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+              <video
+                src={dryerVentVideo.url}
+                className="block aspect-[5/4] h-auto w-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+              />
+              <div
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent"
+                aria-hidden
+              />
+              <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 sm:inset-x-5 sm:bottom-5">
+                <div className="min-w-0">
+                  <p className="font-display text-sm font-bold text-primary-foreground sm:text-base">
+                    {service.shortTitle} · ChimCrew Ohio
+                  </p>
+                  <p className="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/70">
+                    <MapPin className="h-3 w-3 text-flame" /> Columbus · Dayton · Cincinnati
+                  </p>
+                </div>
+                <span className="hidden shrink-0 rounded-full border border-flame/30 bg-flame/15 px-3 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame sm:inline-flex">
+                  Live on the job
+                </span>
+              </div>
+            </div>
+            ) : (
             <div className="relative overflow-hidden rounded-none bg-card lg:rounded-none lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
               <img
                 src={heroPhoto}
@@ -299,7 +329,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
                 </span>
               </div>
             </div>
-            )}
+            ))}
 
             {/* Credential chip below image */}
             <div className="mx-4 mt-4 flex items-center gap-3 rounded-none border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
