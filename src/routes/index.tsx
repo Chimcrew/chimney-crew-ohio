@@ -564,8 +564,8 @@ function Hero() {
 }
 
 /* ============================================================
-   REAL TEAM GALLERY — authentic crew at work, near top of page
-   Placeholders included so we can drop in more real photos later
+   TEAM GALLERY — authentic crew at work, near top of page
+   Placeholders included so we can drop in more crew photos later
    ============================================================ */
 function RealTeamGallery() {
   const items = [
@@ -586,7 +586,7 @@ function RealTeamGallery() {
             <Camera className="h-3.5 w-3.5 text-flame" /> Our Crew · On the Job
           </p>
           <h2 className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
-            The ChimCrew team — <span className="text-flame">real techs, real jobs</span>.
+            The ChimCrew team — <span className="text-flame">certified techs, on the job</span>.
           </h2>
           <p className="mt-3 text-base text-foreground/75 md:text-lg">
             No stock photos. No AI. Every photo below is one of our technicians on an Ohio chimney this season.
