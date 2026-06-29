@@ -13,6 +13,7 @@ import {
   ChevronRight,
   MapPin,
   ArrowRight,
+  ArrowDown,
   Droplets,
   AlertTriangle,
   Wind,
