@@ -32,6 +32,7 @@ import { ScheduleInline } from "@/components/ScheduleWidget";
 import flashingBeforeAsset from "@/assets/process/flashing-before.jpeg.asset.json";
 import flashingProgressAsset from "@/assets/process/flashing-progress.jpeg.asset.json";
 import flashingAfterAsset from "@/assets/process/flashing-after.jpeg.asset.json";
+import dryerVentVideo from "@/assets/dryer-vent-cleaning.mp4.asset.json";
 
 const FLASHING_PROCESS = [
   { step: "01", stage: "Before", caption: "Original metal flashing — leak source found at chimney shoulder", url: flashingAfterAsset.url },
