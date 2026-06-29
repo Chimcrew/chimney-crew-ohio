@@ -115,6 +115,19 @@ function CityPage() {
           </div>
       </PageHero>
 
+      {/* SCHEDULE FORM */}
+      <section id="schedule" className="border-b border-border bg-secondary/30 py-16">
+        <div className="mx-auto max-w-3xl px-4 md:px-8">
+          <h2 className="font-display font-bold">Book chimney service in {city.name}</h2>
+          <p className="mt-3 text-base text-muted-foreground">
+            Pick a time, tell us what's going on, and we'll text or call within the hour.
+          </p>
+          <div className="mt-6">
+            <ScheduleInline />
+          </div>
+        </div>
+      </section>
+
       {/* WHY US */}
       <section className="border-b border-border bg-background py-16">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
@@ -176,19 +189,6 @@ function CityPage() {
               </li>
             ))}
           </ul>
-        </div>
-      </section>
-
-      {/* SCHEDULE FORM */}
-      <section id="schedule" className="border-b border-border bg-secondary/30 py-16">
-        <div className="mx-auto max-w-3xl px-4 md:px-8">
-          <h2 className="font-display font-bold">Book chimney service in {city.name}</h2>
-          <p className="mt-3 text-base text-muted-foreground">
-            Pick a time, tell us what's going on, and we'll text or call within the hour.
-          </p>
-          <div className="mt-6">
-            <ScheduleInline />
-          </div>
         </div>
       </section>
 
