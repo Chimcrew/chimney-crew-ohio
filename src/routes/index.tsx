@@ -445,8 +445,8 @@ function Hero() {
       </div>
 
       {/* Hero grid: copy + CTAs LEFT, lead form RIGHT (desktop), stacked on mobile */}
-      <div className="relative z-20 mx-auto max-w-7xl px-4 pb-10 pt-6 sm:px-6 sm:pt-8 md:pb-14 lg:px-8 lg:pt-12">
-        <div className="grid gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-12">
+      <div className="relative z-20 mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-10 sm:pt-8 md:pb-14 lg:px-8 lg:pt-12">
+        <div className="grid gap-10 sm:gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-12">
         {/* LEFT — message column */}
         <div>
         {/* Certified badge */}
@@ -475,19 +475,19 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-6 max-w-4xl font-sans !text-[26px] font-bold !leading-[1.15] tracking-[-1px] text-foreground sm:!text-[30px] md:!text-[36px] mb-2">
+        <h1 className="mt-8 max-w-4xl font-sans !text-[26px] font-bold !leading-[1.10] tracking-[-1px] text-foreground sm:mt-6 sm:!text-[30px] md:!text-[36px] mb-2">
           The Chimney Experts You've Trusted for Over 18 Years In Columbus, Cincinnati, Dayton
         </h1>
 
-        <p className="mt-3 font-sans text-[20px] font-bold leading-tight text-foreground sm:text-[26px] md:text-[30px]">
+        <p className="mt-5 font-sans text-[20px] font-bold leading-snug text-foreground sm:mt-3 sm:text-[26px] md:text-[30px]">
           <span className="text-flame">Free</span> Chimney Inspection - Book in 60 Seconds
         </p>
 
-        <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-foreground/80 sm:text-base">
+        <p className="mt-6 max-w-[38ch] text-[15px] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-relaxed">
           Book your free chimney inspection in <span className="font-extrabold text-foreground">less than 60 seconds</span>. Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
         </p>
 
-        <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
+        <div className="mt-8 flex flex-col items-start gap-4 sm:mt-6 sm:flex-row sm:flex-wrap sm:gap-3">
           <a
             href="#hero-lead-form"
             data-cta
@@ -507,7 +507,7 @@ function Hero() {
         {/* Emergency line micro-CTA */}
         <a
           href="tel:6146835763"
-          className="mt-3 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110"
+          className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110 sm:mt-3"
         >
           <span className="relative inline-flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
@@ -517,7 +517,7 @@ function Hero() {
         </a>
 
         {/* Trust strip */}
-        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
+        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-8 sm:mt-8 sm:pt-6">
           {[
             { icon: CheckCircle2, label: "CSIA-certified" },
             { icon: ShieldCheck, label: "Fully insured" },
