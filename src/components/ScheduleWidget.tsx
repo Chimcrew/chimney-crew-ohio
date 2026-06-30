@@ -70,6 +70,20 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     !!service;
 
   const submit = useCallback(async () => {
+    // Friendly per-field validation so the user always knows what's missing.
+    const missing: string[] = [];
+    if (name.trim().length < 2) missing.push("Full name");
+    if (phone.replace(/\D/g, "").length < 7) missing.push("Phone number");
+    if (!emailIsValid) missing.push("Valid email");
+    if (!date) missing.push("Appointment date");
+    if (!slot) missing.push("Appointment time");
+    if (street.trim().length < 2) missing.push("Street address");
+    if (city.trim().length < 2) missing.push("City");
+    if (!service) missing.push("Service");
+    if (missing.length) {
+      toast.error("Please complete: " + missing.join(", "), { duration: 6000 });
+      return;
+    }
     setSubmitting(true);
     const dateStr = date ? format(date, "EEE, MMM d") : undefined;
     const address = [street, city, zip].filter(Boolean).join(", ");
@@ -77,24 +91,27 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     const sourceLabel = `Schedule form${pageSuffix}`.slice(0, 60);
     const payload = {
       source: sourceLabel,
-      name,
-      phone,
+      name: name.trim(),
+      phone: phone.trim(),
       email: email.trim() || undefined,
       service,
-      city: city || undefined,
-      address: address || undefined,
+      city: city.trim() || undefined,
+      address: address.trim() || undefined,
       date: dateStr,
       timeWindow: slot,
-      notes: notes || undefined,
+      notes: notes.trim() || undefined,
     };
 
     try {
       await submitLead(payload);
-    } catch {
+    } catch (err) {
       setSubmitting(false);
+      const msg = err instanceof Error ? err.message : "";
       toast.error("We couldn't submit your booking.", {
-        description: "Please call (614) 683-5763 and we'll get you on the schedule.",
-        duration: 8000,
+        description:
+          (msg ? msg + ". " : "") +
+          "Please call (614) 683-5763 and we'll get you on the schedule.",
+        duration: 9000,
       });
       return;
     }
@@ -114,7 +131,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     setCity("");
     setZip("");
     setNotes("");
-  }, [date, street, city, zip, sourcePath, name, phone, email, service, slot, notes, onDone]);
+  }, [date, street, city, zip, sourcePath, name, phone, email, emailIsValid, service, slot, notes, onDone]);
 
   return (
     <div className="bg-background text-foreground">
@@ -162,7 +179,14 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       `}</style>
 
       {/* Compact single-page form */}
-      <div className="space-y-3">
+      <form
+        className="space-y-3"
+        noValidate
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!submitting) void submit();
+        }}
+      >
         {/* Service — full width, most important */}
         <Field label="Service Needed" required>
           <Select value={service} onValueChange={setService}>
@@ -246,11 +270,10 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Anything we should know?" rows={2} className="rounded-none border-foreground/20 text-sm" />
         </Field>
 
-        {/* Submit */}
+        {/* Submit — always clickable; missing fields are reported via toast */}
         <button
-          type="button"
-          disabled={!canSubmit || submitting}
-          onClick={submit}
+          type="submit"
+          disabled={submitting}
           className="inline-flex h-12 w-full items-center justify-center gap-2 bg-flame font-display text-sm font-bold uppercase tracking-wider text-primary shadow-[0_6px_16px_oklch(0.78_0.19_92/0.3)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
         >
           <CalendarCheck className="h-4 w-4" />
@@ -261,7 +284,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           <CheckCircle2 className="h-3.5 w-3.5 text-[#E63A1F]" />
           No card. No spam. Appointment confirmation email within 10 minutes.
         </p>
-      </div>
+      </form>
     </div>
   );
 }
