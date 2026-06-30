@@ -25,6 +25,29 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10)
 }
 
+function arrayBufferToBase64(buf: ArrayBuffer): string {
+  const bytes = new Uint8Array(buf)
+  let binary = ''
+  const chunk = 0x8000 // avoid call-stack limits
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode.apply(
+      null,
+      bytes.subarray(i, i + chunk) as unknown as number[],
+    )
+  }
+  return btoa(binary)
+}
+
+function withTimeout<T>(p: Promise<T>, ms: number, message: string): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const t = setTimeout(() => reject(new Error(message)), ms)
+    p.then(
+      (v) => { clearTimeout(t); resolve(v) },
+      (e) => { clearTimeout(t); reject(e) },
+    )
+  })
+}
+
 function defaultNumber(t: DocType) {
   const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, '')
   const rand = Math.floor(Math.random() * 900 + 100)
@@ -183,23 +206,44 @@ function AdminEstimatesPage() {
     setSendMsg(null)
     setSendErr(null)
     if (!customerEmail) { setSendErr('Customer email is required to send.'); return }
+    if (photos.length > 12) {
+      setSendErr('Too many photos (max 12). Remove some and try again.')
+      return
+    }
     setSending(true)
     try {
       const pdfData = buildPdfData()
+      setSendMsg('Building PDF…')
       const pdf = await generateEstimatePdf(pdfData)
-      const dataUri = pdf.output('datauristring')
-      const pdfBase64 = dataUri.includes(',') ? dataUri.split(',').slice(1).join(',') : dataUri
+      // Convert via ArrayBuffer + chunked base64 — much faster and avoids
+      // freezing the tab on large PDFs vs. output('datauristring').
+      const buf = pdf.output('arraybuffer') as ArrayBuffer
+      const pdfBase64 = arrayBufferToBase64(buf)
+      const sizeMb = (buf.byteLength / (1024 * 1024)).toFixed(1)
+      if (buf.byteLength > 15 * 1024 * 1024) {
+        setSending(false)
+        setSendMsg(null)
+        setSendErr(`PDF is too large (${sizeMb} MB). Remove some photos and try again.`)
+        return
+      }
+      setSendMsg(`Uploading & sending (${sizeMb} MB)…`)
       const { photos: _omit, ...docForEmail } = pdfData
-      const res = await send({ data: {
-        passcode,
-        recipientEmail: customerEmail,
-        doc: docForEmail as any,
-        pdfBase64,
-      } })
+      // Hard timeout so the button can never hang forever.
+      const res = await withTimeout(
+        send({ data: {
+          passcode,
+          recipientEmail: customerEmail,
+          doc: docForEmail as any,
+          pdfBase64,
+        } }),
+        90_000,
+        'The send request timed out. Please try again with fewer/smaller photos.',
+      )
       if (res.success) setSendMsg(`Sent to ${customerEmail}.`)
       else setSendErr(`Not sent: ${res.reason ?? 'unknown reason'}`)
       await loadSaved()
     } catch (err) {
+      setSendMsg(null)
       setSendErr(err instanceof Error ? err.message : 'Failed to send')
     } finally {
       setSending(false)

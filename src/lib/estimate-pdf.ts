@@ -130,8 +130,9 @@ export async function fileToPhoto(file: File): Promise<{ dataUrl: string; width:
     i.onerror = reject
     i.src = dataUrl
   })
-  // Downscale large photos to keep PDF size reasonable
-  const MAX = 1400
+  // Downscale large photos aggressively to keep PDF size small
+  // (large PDFs cause the browser/network to hang on send).
+  const MAX = 1100
   let w = img.naturalWidth, h = img.naturalHeight
   if (Math.max(w, h) > MAX) {
     const s = MAX / Math.max(w, h)
@@ -141,7 +142,7 @@ export async function fileToPhoto(file: File): Promise<{ dataUrl: string; width:
   canvas.width = w; canvas.height = h
   const ctx = canvas.getContext('2d')!
   ctx.drawImage(img, 0, 0, w, h)
-  const out = canvas.toDataURL('image/jpeg', 0.82)
+  const out = canvas.toDataURL('image/jpeg', 0.72)
   return { dataUrl: out, width: w, height: h }
 }
 
