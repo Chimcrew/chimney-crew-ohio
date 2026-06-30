@@ -196,10 +196,25 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         {/* Name + Phone */}
         <div className="grid gap-3 sm:grid-cols-2">
           <Field label="Full Name" required>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className="h-10 rounded-none border-foreground/20 text-sm" />
+            <Input
+              name="name"
+              aria-label="Full Name"
+              autoComplete="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="h-10 rounded-none border-foreground/20 text-sm"
+            />
           </Field>
           <Field label="Phone Number" required>
-            <Input value={phone} onChange={(e) => setPhone(e.target.value)} inputMode="tel" className="h-10 rounded-none border-foreground/20 text-sm" />
+            <Input
+              name="phone"
+              aria-label="Phone Number"
+              autoComplete="tel"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              inputMode="tel"
+              className="h-10 rounded-none border-foreground/20 text-sm"
+            />
           </Field>
         </div>
 
@@ -207,10 +222,13 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         <Field label="Email (for confirmation)" required>
           <Input
             type="email"
+              name="email"
+              aria-label="Email (for confirmation)"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             inputMode="email"
+              autoComplete="email"
             placeholder="you@example.com"
             className="h-10 rounded-none border-foreground/20 text-sm"
           />
@@ -221,6 +239,8 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           <Field label="Appointment Date" required>
             <Input
               type="date"
+              name="appointment-date"
+              aria-label="Appointment Date"
               value={todayStr}
               min={minDateStr}
               onChange={(e) => setDate(e.target.value ? new Date(e.target.value + "T00:00:00") : undefined)}
@@ -243,21 +263,55 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
         {/* Address */}
         <Field label="Street Address" required>
-          <Input value={street} onChange={(e) => setStreet(e.target.value)} placeholder="123 Main St" className="h-10 rounded-none border-foreground/20 text-sm" />
+          <Input
+            name="street-address"
+            aria-label="Street Address"
+            autoComplete="street-address"
+            value={street}
+            onChange={(e) => setStreet(e.target.value)}
+            placeholder="123 Main St"
+            className="h-10 rounded-none border-foreground/20 text-sm"
+          />
         </Field>
 
         <div className="grid gap-3 sm:grid-cols-2">
           <Field label="City" required>
-            <Input value={city} onChange={(e) => setCity(e.target.value)} placeholder="Columbus" className="h-10 rounded-none border-foreground/20 text-sm" />
+            <Input
+              name="city"
+              aria-label="City"
+              autoComplete="address-level2"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder="Columbus"
+              className="h-10 rounded-none border-foreground/20 text-sm"
+            />
           </Field>
           <Field label="ZIP Code">
-            <Input value={zip} onChange={(e) => setZip(e.target.value)} inputMode="numeric" maxLength={10} placeholder="43215" className="h-10 rounded-none border-foreground/20 text-sm" />
+            <Input
+              name="zip"
+              aria-label="ZIP Code"
+              autoComplete="postal-code"
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+              inputMode="numeric"
+              maxLength={10}
+              placeholder="43215"
+              className="h-10 rounded-none border-foreground/20 text-sm"
+            />
           </Field>
         </div>
 
         {/* Notes */}
         <Field label="Note (optional)">
-          <Textarea value={notes} onChange={(e) => setNotes(e.target.value)} placeholder="Anything we should know?" rows={2} className="rounded-none border-foreground/20 text-sm" />
+          <Textarea
+            name="notes"
+            aria-label="Note (optional)"
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            placeholder="Anything we should know?"
+            rows={2}
+            className="rounded-none border-foreground/20 text-sm"
+          />
         </Field>
 
         {/* Submit — always clickable; missing fields are reported via toast */}

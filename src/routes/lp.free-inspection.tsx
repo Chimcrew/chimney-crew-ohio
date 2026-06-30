@@ -166,8 +166,12 @@ function InlineLeadForm() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!name.trim() || !phone.trim() || !email.trim()) {
-      toast.error("Please add your name, phone, and email");
+    const missing: string[] = [];
+    if (name.trim().length < 2) missing.push("your name");
+    if (phone.replace(/\D/g, "").length < 7) missing.push("phone number");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) missing.push("valid email");
+    if (missing.length) {
+      toast.error("Please add: " + missing.join(", "));
       return;
     }
     setSubmitting(true);
@@ -267,7 +271,7 @@ function InlineLeadForm() {
         </div>
         <button
           type="submit"
-          disabled={submitting || !name.trim() || !phone.trim() || !email.trim()}
+          disabled={submitting}
           className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_6px_18px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 disabled:opacity-70"
         >
           <CalendarCheck className="h-5 w-5" />
