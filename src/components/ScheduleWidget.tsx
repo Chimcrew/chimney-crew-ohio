@@ -59,16 +59,6 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   const minDateStr = format(new Date(), "yyyy-MM-dd");
   const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
 
-  const canSubmit =
-    name.trim().length > 1 &&
-    phone.replace(/\D/g, "").length >= 7 &&
-    emailIsValid &&
-    !!date &&
-    !!slot &&
-    street.trim().length > 1 &&
-    city.trim().length > 1 &&
-    !!service;
-
   const submit = useCallback(async () => {
     // Friendly per-field validation so the user always knows what's missing.
     const missing: string[] = [];
