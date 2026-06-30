@@ -29,6 +29,7 @@ import { TrustBadges } from "@/components/TrustBadges";
 import { DroneInspection } from "@/components/DroneInspection";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import { ScheduleInline } from "@/components/ScheduleWidget";
+import { FlashingJobShowcase } from "@/components/FlashingJobShowcase";
 import flashingBeforeAsset from "@/assets/process/flashing-before.jpeg.asset.json";
 import flashingProgressAsset from "@/assets/process/flashing-progress.jpeg.asset.json";
 import flashingAfterAsset from "@/assets/process/flashing-after.jpeg.asset.json";
@@ -54,6 +55,9 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
     <div className="bg-background text-foreground">
       {/* HOMEPAGE-STYLE LIGHT HERO */}
       <ServiceHero service={service} />
+
+      {/* Flashing-only: real before/after gallery just under the hero */}
+      {service.slug === "flashing-repair" && <FlashingJobShowcase variant="full" showCta={false} />}
 
       {/* Marquee separator — trust strip */}
       <TrustMarquee />
