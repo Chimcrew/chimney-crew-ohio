@@ -73,7 +73,7 @@ import techFireplaceBurner from "@/assets/team-jobs/tech-fireplace-burner.jpeg.a
 import techCrownWaterproof from "@/assets/team-jobs/tech-crown-waterproof.jpeg.asset.json";
 import techRooftopLadder from "@/assets/team-jobs/tech-rooftop-ladder.jpeg.asset.json";
 import chimneyNightRebuild from "@/assets/team-jobs/chimney-night-rebuild.jpeg.asset.json";
-import techStoneChimneyCap from "@/assets/team-jobs/tech-stone-chimney-cap.jpeg.asset.json";
+import techChimneyCapInstall from "@/assets/real/tech-chimney-cap-install.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
