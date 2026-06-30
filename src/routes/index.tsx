@@ -588,7 +588,7 @@ function RealTeamGallery() {
     { src: techScaffold.url, label: "Scaffolded chimney rebuild", city: "Westerville, OH" },
     { src: techLiner.url, label: "Stainless liner installation", city: "Dayton, OH" },
     { src: inspectionRoofPhoto.url, label: "Rooftop inspection", city: "Hilliard, OH" },
-    { src: techStoneChimneyCap.url, label: "Stone chimney crown & cap install", city: "Upper Arlington, OH" },
+    { src: techChimneyCapInstall.url, label: "Stone chimney cap install", city: "Upper Arlington, OH" },
     { src: chimneyNightRebuild.url, label: "Late-night rebuild — finished clean", city: "Columbus, OH" },
   ];
   return (
