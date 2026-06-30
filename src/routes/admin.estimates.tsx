@@ -25,6 +25,29 @@ function todayISO() {
   return new Date().toISOString().slice(0, 10)
 }
 
+function arrayBufferToBase64(buf: ArrayBuffer): string {
+  const bytes = new Uint8Array(buf)
+  let binary = ''
+  const chunk = 0x8000 // avoid call-stack limits
+  for (let i = 0; i < bytes.length; i += chunk) {
+    binary += String.fromCharCode.apply(
+      null,
+      bytes.subarray(i, i + chunk) as unknown as number[],
+    )
+  }
+  return btoa(binary)
+}
+
+function withTimeout<T>(p: Promise<T>, ms: number, message: string): Promise<T> {
+  return new Promise((resolve, reject) => {
+    const t = setTimeout(() => reject(new Error(message)), ms)
+    p.then(
+      (v) => { clearTimeout(t); resolve(v) },
+      (e) => { clearTimeout(t); reject(e) },
+    )
+  })
+}
+
 function defaultNumber(t: DocType) {
   const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, '')
   const rand = Math.floor(Math.random() * 900 + 100)
