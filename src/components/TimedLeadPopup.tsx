@@ -46,7 +46,14 @@ export function TimedLeadPopup() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.name || !form.phone || !form.email) return;
+    const missing: string[] = [];
+    if (form.name.trim().length < 2) missing.push("your name");
+    if (form.phone.replace(/\D/g, "").length < 7) missing.push("phone number");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) missing.push("valid email");
+    if (missing.length) {
+      toast.error("Please add: " + missing.join(", "));
+      return;
+    }
     setSubmitting(true);
     try {
       await submitLead({
@@ -110,7 +117,7 @@ export function TimedLeadPopup() {
                 You're on the list.
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                A real human from the crew will call{" "}
+                A ChimCrew team member will call{" "}
                 <span className="font-semibold text-foreground">{form.phone}</span> shortly.
               </p>
               <button
@@ -195,7 +202,7 @@ export function TimedLeadPopup() {
 
                 <button
                   type="submit"
-                  disabled={!form.name || !form.phone || !form.email || submitting}
+                  disabled={submitting}
                   className="group relative mt-1 flex h-14 items-center justify-center gap-2 overflow-hidden rounded-none bg-foreground px-5 font-display text-sm font-extrabold uppercase tracking-[0.18em] text-background transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
                 >
                   {submitting ? (
@@ -236,6 +243,9 @@ function Field({
       </label>
       <input
         type={type}
+        aria-label={label}
+        name={label.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+        required={label !== "Service"}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
