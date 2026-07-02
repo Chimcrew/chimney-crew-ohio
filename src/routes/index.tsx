@@ -485,16 +485,16 @@ function Hero() {
 
         <h1 className="mt-8 max-w-full font-sans text-[22px] font-bold leading-[1.15] tracking-[-0.5px] text-foreground sm:mt-6 sm:text-[28px] md:text-[34px] lg:text-[38px] mb-2 break-words">
           <span className="block">The Chimney Experts You've Trusted for Over 18 Years</span>
-          <span className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[16px] sm:text-[18px] md:text-[20px] font-semibold tracking-normal">
-            <span className="text-foreground/70">in</span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-flame/15 px-2.5 py-0.5 text-foreground border border-flame/40">
-              <MapPin className="h-3.5 w-3.5 text-flame" /> Columbus
+          <span className="mt-4 block max-w-full border-l-4 border-flame bg-primary px-4 py-3 text-primary-foreground shadow-[8px_8px_0_oklch(0.78_0.19_92/0.35)]">
+            <span className="mb-1 block font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
+              Serving Ohio homeowners in
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-flame/15 px-2.5 py-0.5 text-foreground border border-flame/40">
-              <MapPin className="h-3.5 w-3.5 text-flame" /> Cincinnati
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-flame/15 px-2.5 py-0.5 text-foreground border border-flame/40">
-              <MapPin className="h-3.5 w-3.5 text-flame" /> Dayton
+            <span className="flex flex-wrap items-center gap-2 text-[17px] font-extrabold leading-tight sm:text-[20px] md:text-[22px]">
+              {["Columbus", "Cincinnati", "Dayton"].map((city) => (
+                <span key={city} className="inline-flex items-center gap-1.5 bg-background px-2.5 py-1 text-foreground">
+                  <MapPin className="h-3.5 w-3.5 text-flame" /> {city}
+                </span>
+              ))}
             </span>
           </span>
         </h1>
@@ -568,19 +568,18 @@ function Hero() {
               decoding="async"
             />
           </div>
-          {/* Minimal free-inspection banner above the form */}
-          <div className="mb-3 flex items-center justify-between gap-3 border-l-2 border-flame bg-background/80 px-4 py-2.5 backdrop-blur-sm">
+          {/* Minimal schedule banner above the form */}
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-3 border border-border bg-card px-4 py-3 shadow-[6px_6px_0_oklch(0.16_0.02_250/0.08)]">
             <div className="flex items-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flame/60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-flame" />
+              <span className="grid h-7 w-7 place-items-center bg-primary text-flame">
+                <ArrowRight className="h-4 w-4 rotate-90" />
               </span>
-              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-foreground">
-                Free Chimney Inspection
+              <span className="font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-foreground">
+                Start here — schedule online
               </span>
             </div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/60">
-              This month · Ohio
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
+              Columbus · Cincinnati · Dayton
             </span>
           </div>
           <ScheduleInline />

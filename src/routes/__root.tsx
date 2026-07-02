@@ -14,7 +14,6 @@ import { reportCallConversion } from "@/lib/track";
 import appCss from "../styles.css?url";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import { AmbientEmbers } from "@/components/ChimneyDecor";
 // ScheduleWidget popup removed — scheduling lives on /schedule.
 // TimedLeadPopup removed — no pop-ups per product direction.
 import { StickyMobileCta } from "@/components/StickyMobileCta";
