@@ -468,7 +468,7 @@ function Hero() {
         </div>
 
         {/* RIGHT — lead form column (above fold on desktop, below CTAs on mobile) */}
-        <div id="hero-lead-form" className="lg:sticky lg:top-24">
+        <div id="hero-lead-form" className="min-w-0 lg:sticky lg:top-24">
           {/* Mobile-only review ticker above the form */}
           <div className="block lg:hidden">
             <TrustMarquee />
