@@ -73,7 +73,7 @@ import techFireplaceBurner from "@/assets/team-jobs/tech-fireplace-burner.jpeg.a
 import techCrownWaterproof from "@/assets/team-jobs/tech-crown-waterproof.jpeg.asset.json";
 import techRooftopLadder from "@/assets/team-jobs/tech-rooftop-ladder.jpeg.asset.json";
 import chimneyNightRebuild from "@/assets/team-jobs/chimney-night-rebuild.jpeg.asset.json";
-import techChimneyCapInstall from "@/assets/real/tech-chimney-cap-install.jpg.asset.json";
+import techChimneyCapInstall from "@/assets/fireplace-tile-install.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -520,7 +520,7 @@ function RealTeamGallery() {
     { src: techScaffold.url, label: "Scaffolded chimney rebuild", city: "Westerville, OH" },
     { src: techLiner.url, label: "Stainless liner installation", city: "Dayton, OH" },
     { src: inspectionRoofPhoto.url, label: "Liner installation", city: "Hilliard, OH" },
-    { src: techChimneyCapInstall.url, label: "Stone chimney cap install", city: "Upper Arlington, OH" },
+    { src: techChimneyCapInstall.url, label: "Fireplace tile & surround install", city: "Upper Arlington, OH" },
     { src: chimneyNightRebuild.url, label: "Late-night rebuild — finished clean", city: "Columbus, OH" },
   ];
   return (
