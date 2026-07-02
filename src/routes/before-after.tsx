@@ -1,16 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Camera, MapPin } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import projectCrown from "@/assets/projects/project-01-double-crown.jpg";
-import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg";
-import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
-import projectCap from "@/assets/projects/project-04-cap-install.jpg";
-import projectCrown2 from "@/assets/projects/project-05-crown-rebuild.jpg";
-import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
-import projectCapFin from "@/assets/projects/project-08-cap-finished.jpg";
-import leakRoof from "@/assets/leak-chimney-rooftop.jpg";
-import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
-import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
-import crownDemo from "@/assets/real/crown-demo-inprogress.png.asset.json";
 import gj1 from "@/assets/gallery-jobs/gj1.jpeg.asset.json";
 import gj2 from "@/assets/gallery-jobs/gj2.jpeg.asset.json";
 import gj3 from "@/assets/gallery-jobs/gj3.jpeg.asset.json";
@@ -21,16 +11,12 @@ import gj7 from "@/assets/gallery-jobs/gj7.jpeg.asset.json";
 import gj8 from "@/assets/gallery-jobs/gj8.jpeg.asset.json";
 import gj9 from "@/assets/gallery-jobs/gj9.jpeg.asset.json";
 import gj10 from "@/assets/gallery-jobs/gj10.jpeg.asset.json";
-import gj11 from "@/assets/gallery-jobs/gj11.jpeg.asset.json";
-import gj12 from "@/assets/gallery-jobs/gj12.jpeg.asset.json";
-import gj13 from "@/assets/gallery-jobs/gj13.jpeg.asset.json";
-import gj14 from "@/assets/gallery-jobs/gj14.jpeg.asset.json";
-import gj15 from "@/assets/gallery-jobs/gj15.jpeg.asset.json";
-import gj16 from "@/assets/gallery-jobs/gj16.jpeg.asset.json";
-import gj17 from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
-import gj18 from "@/assets/gallery-jobs/gj18.jpeg.asset.json";
-import gj19 from "@/assets/gallery-jobs/gj19.jpeg.asset.json";
-import gj20 from "@/assets/gallery-jobs/gj20.jpeg.asset.json";
+import nCap from "@/assets/gallery-new/new-cap-ladder.jpeg.asset.json";
+import nChase from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
+import nAlum from "@/assets/gallery-new/new-aluminum-cap.jpeg.asset.json";
+import nCrownSeal from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
+import nCopper from "@/assets/gallery-new/new-brick-copper-flash.jpeg.asset.json";
+import nCopperDetail from "@/assets/gallery-new/new-copper-flashing-detail.jpeg.asset.json";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
@@ -46,84 +32,139 @@ export const Route = createFileRoute("/before-after")({
   component: BeforeAfterPage,
 });
 
-const GALLERY = [
-  { src: gj1.url, caption: "Stacked-stone fireplace tile install — in progress" },
-  { src: gj4.url, caption: "Stacked-stone fireplace surround — finished" },
-  { src: gj2.url, caption: "Old brick fireplace stripped to studs" },
-  { src: gj5.url, caption: "Brick fireplace painted deep navy — finished" },
-  { src: gj3.url, caption: "Brick firebox demo before rebuild" },
-  { src: gj6.url, caption: "Full-height brick chimney teardown in progress" },
-  { src: gj7.url, caption: "Stone-veneer chimney install — scaffolded" },
-  { src: gj8.url, caption: "Arched brick fireplace rebuild — limewash finish" },
-  { src: gj9.url, caption: "Custom arched firebox brickwork — in progress" },
-  { src: gj10.url, caption: "Two-story limewashed brick chimney — finished" },
-  { src: gj11.url, caption: "Interior fireplace remodel — drywall prep" },
-  { src: gj12.url, caption: "Brick firebox rebuild — fresh masonry" },
-  { src: gj13.url, caption: "Chimney inspection — rooftop access" },
-  { src: gj14.url, caption: "Crown seal and waterproof recoat" },
-  { src: gj15.url, caption: "Stainless cap install on rebuilt crown" },
-  { src: gj16.url, caption: "Flue liner install — finished" },
-  { src: gj17.url, caption: "Tuckpointing repair on brick stack" },
-  { src: gj18.url, caption: "Smoke chamber parge — finished" },
-  { src: gj19.url, caption: "Damper rebuild and gasket install" },
-  { src: gj20.url, caption: "Final inspection — chimney finished" },
-  { src: techScaffold.url, caption: "Crown rebuild in progress, scaffolded job" },
-  { src: techLiner.url, caption: "Stainless liner install, harnessed on roof" },
-  { src: crownDemo.url, caption: "Old crown demoed, ready for fresh pour" },
-  { src: projectCrown, caption: "Double-crown rebuild, Dublin OH" },
-  { src: projectTuck, caption: "Tuckpointing repair, Bexley OH" },
-  { src: projectLiner, caption: "Stainless liner install, Hilliard OH" },
-  { src: projectCap, caption: "New cap install, Worthington OH" },
-  { src: projectCrown2, caption: "Crown rebuild, Powell OH" },
-  { src: projectTech, caption: "Tech on-site, Upper Arlington OH" },
-  { src: projectCapFin, caption: "Cap & flashing finished, Westerville OH" },
-  { src: leakRoof, caption: "Leak diagnosis, Grandview OH" },
+type GalleryItem = {
+  src: string;
+  title: string;
+  caption: string;
+  city: string;
+  size: "feature" | "tall" | "wide" | "square";
+};
+
+const GALLERY: GalleryItem[] = [
+  { src: gj1.url, title: "Stone Fireplace Install", caption: "Full-height stacked-stone surround", city: "Columbus, OH", size: "feature" },
+  { src: gj4.url, title: "Fireplace Surround", caption: "Clean stonework and finished trim", city: "Dublin, OH", size: "tall" },
+  { src: gj2.url, title: "Fireplace Prep", caption: "Opened wall, clean rebuild layout", city: "Worthington, OH", size: "square" },
+  { src: gj5.url, title: "Painted Brick Fireplace", caption: "Deep navy finish with crisp edges", city: "Bexley, OH", size: "wide" },
+  { src: gj3.url, title: "Firebox Rebuild", caption: "Brickwork prepared for a safe firebox", city: "Upper Arlington, OH", size: "square" },
+  { src: gj6.url, title: "Chimney Teardown", caption: "Controlled masonry removal", city: "Hilliard, OH", size: "tall" },
+  { src: gj7.url, title: "Stone Chimney Build", caption: "Scaffolded exterior chimney work", city: "Powell, OH", size: "feature" },
+  { src: gj8.url, title: "Arched Fireplace", caption: "Limewash finish with custom brick arch", city: "German Village, OH", size: "tall" },
+  { src: gj9.url, title: "Custom Firebox", caption: "Hand-laid arched brickwork", city: "Clintonville, OH", size: "square" },
+  { src: gj10.url, title: "Two-Story Chimney", caption: "Limewashed brick chimney finish", city: "New Albany, OH", size: "wide" },
+  { src: nCap.url, title: "Cap + Mesh Arrestor", caption: "New stainless cap installed cleanly", city: "Powell, OH", size: "tall" },
+  { src: nChase.url, title: "Chase Cover Install", caption: "Fresh chase cover with round cap", city: "Dublin, OH", size: "square" },
+  { src: nAlum.url, title: "Aluminum Chase Cover", caption: "Two-tone chimney with turbine cap", city: "Westerville, OH", size: "wide" },
+  { src: nCrownSeal.url, title: "Crown Seal + Flashing", caption: "Protected crown and sealed roofline", city: "Hilliard, OH", size: "tall" },
+  { src: nCopper.url, title: "Copper Flashing", caption: "Fresh copper flashing at brick stack", city: "Upper Arlington, OH", size: "square" },
+  { src: nCopperDetail.url, title: "Counter Flashing Detail", caption: "Detailed flashing work at chimney base", city: "Clintonville, OH", size: "wide" },
 ];
+
+const UNIQUE_GALLERY = GALLERY.filter(
+  (item, index, all) => all.findIndex((match) => match.src === item.src) === index,
+);
 
 function BeforeAfterPage() {
   return (
     <>
       <PageHero
         eyebrow="Done Projects · Ohio crew"
-        title={<>Before &amp; After: Ohio <span className="text-flame">Chimney</span> Restoration Projects</>}
-        subtitle="Ohio chimneys and fireplaces, finished by ChimCrew. Every photo below is a job we actually completed — no stock, no AI."
+        title={<>Completed <span className="text-flame">Projects</span></>}
+        subtitle="A clean look at finished ChimCrew chimney, masonry, fireplace, liner, cap, and inspection work across Ohio."
       />
 
-      {/* DONE PROJECTS — uniform grid, no before/after pairs */}
-      <section className="bg-card/40 py-16 md:py-20">
+      {/* DONE PROJECTS — elevated gallery, no duplicate photos */}
+      <section className="relative overflow-hidden bg-background py-14 md:py-20">
+        <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.16]" aria-hidden />
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <div className="max-w-3xl">
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-flame">// Finished work</p>
-            <h2 className="mt-2 font-display text-4xl font-extrabold leading-tight text-primary md:text-5xl">
-              The rooftop, finished.
-            </h2>
-            <p className="mt-3 text-muted-foreground">
-              Recent Ohio jobs from the ChimCrew camera roll.
-            </p>
+          <div className="relative flex flex-col justify-between gap-6 border-b border-border pb-8 md:flex-row md:items-end">
+            <div className="max-w-3xl">
+              <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.25em] text-flame">// Finished work</p>
+              <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight text-primary md:text-4xl">
+                Finished ChimCrew work across Ohio.
+              </h2>
+              <p className="mt-3 max-w-2xl text-base text-muted-foreground">
+                No duplicate tiles, no crowded comparison blocks — just a curated project wall with breathing room.
+              </p>
+            </div>
+            <div className="grid grid-cols-3 border border-border bg-card text-center shadow-[8px_8px_0_oklch(0.16_0.02_250/0.08)]">
+              <Stat value={`${UNIQUE_GALLERY.length}`} label="photos" />
+              <Stat value="20+" label="cities" />
+              <Stat value="Done" label="status" />
+            </div>
           </div>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {GALLERY.map((g, i) => (
-              <figure
-                key={i}
-                className="group relative overflow-hidden rounded-none border-2 border-border bg-primary"
-              >
-                <img
-                  src={g.src}
-                  alt={g.caption}
-                  className="h-64 w-full object-cover transition duration-500 group-hover:scale-[1.04]"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-primary/95 via-primary/70 to-transparent p-4 font-mono text-[11px] uppercase tracking-[0.18em] text-primary-foreground">
-                  <span className="truncate">{g.caption}</span>
-                  <span className="rounded-full border border-flame/40 bg-flame/15 px-2 py-0.5 text-flame">Done</span>
-                </figcaption>
-              </figure>
+
+          <div className="relative mt-10 grid auto-rows-[190px] gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {UNIQUE_GALLERY.map((item, index) => (
+              <ProjectTile key={item.src} item={item} index={index} />
             ))}
           </div>
         </div>
       </section>
 
+      <section className="bg-primary py-12 text-primary-foreground md:py-16">
+        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 md:flex-row md:items-center md:px-8">
+          <div>
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">Need this done at your house?</p>
+            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight text-primary-foreground md:text-4xl">
+              Schedule your chimney inspection.
+            </h2>
+          </div>
+          <Link
+            to="/schedule"
+            className="inline-flex items-center gap-2 bg-flame px-6 py-4 font-display text-sm font-extrabold uppercase tracking-wider text-primary transition hover:brightness-110"
+          >
+            Schedule free inspection <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
     </>
+  );
+}
+
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="min-w-20 border-r border-border px-4 py-3 last:border-r-0">
+      <p className="font-display text-xl font-extrabold leading-none text-primary">{value}</p>
+      <p className="mt-1 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
+    </div>
+  );
+}
+
+function ProjectTile({ item, index }: { item: GalleryItem; index: number }) {
+  const sizeClass =
+    item.size === "feature"
+      ? "sm:col-span-2 sm:row-span-2"
+      : item.size === "tall"
+        ? "sm:row-span-2"
+        : item.size === "wide"
+          ? "sm:col-span-2"
+          : "";
+
+  return (
+    <figure className={`group relative overflow-hidden border border-border bg-primary shadow-[0_18px_50px_-26px_oklch(0_0_0/0.45)] ${sizeClass}`}>
+      <img
+        src={item.src}
+        alt={`${item.title} by ChimCrew in ${item.city}`}
+        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
+        loading={index < 4 ? "eager" : "lazy"}
+        decoding="async"
+      />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-primary/25 to-transparent opacity-90" aria-hidden />
+      <span className="absolute left-3 top-3 inline-flex items-center gap-1 bg-primary/85 px-2 py-1 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-flame backdrop-blur">
+        <Camera className="h-3 w-3" /> Done
+      </span>
+      <figcaption className="absolute inset-x-0 bottom-0 p-4">
+        <p className="font-display text-lg font-extrabold leading-tight text-primary-foreground drop-shadow md:text-xl">
+          {item.title}
+        </p>
+        <p className="mt-1 text-sm font-semibold leading-snug text-primary-foreground/85">
+          {item.caption}
+        </p>
+        <p className="mt-2 inline-flex items-center gap-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
+          <MapPin className="h-3 w-3" /> {item.city}
+        </p>
+      </figcaption>
+    </figure>
   );
 }

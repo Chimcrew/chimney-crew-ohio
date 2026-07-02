@@ -136,7 +136,7 @@ export const Route = createFileRoute("/")({
             },
             {
               "@type": "Question",
-              name: "Are you really local?",
+              name: "Are you local?",
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Born and raised in Ohio. Our crew lives in Columbus, Cincinnati and Dayton — same neighborhoods we service.",
@@ -353,84 +353,6 @@ function HeroPhotoCard() {
 
 /* (MobileHero removed — unified responsive Hero below) */
 
-/* ============================================================
-   LIMITED OFFER BANNER — sits directly under the hero, high
-   contrast, single CTA. The only price advertised site-wide is
-   the $69 chimney inspection.
-   ============================================================ */
-function LimitedOfferBanner() {
-  return (
-    <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-8 md:py-10">
-      <div className="relative mx-auto max-w-2xl">
-        {/* Coupon card */}
-        <div className="relative rounded-none bg-flame text-primary shadow-[0_20px_60px_oklch(0_0_0/0.5)]">
-          {/* perforated edges */}
-          <span
-            className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
-            aria-hidden
-          />
-          <span
-            className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
-            aria-hidden
-          />
-
-          {/* dashed inner frame */}
-          <div className="m-2 rounded-none border-2 border-dashed border-primary/40 p-5 sm:p-6">
-            {/* top ribbon */}
-            <div className="flex items-center justify-between gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
-                <Flame className="h-3 w-3" /> Limited Time
-              </span>
-              <span className="hidden font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/70 sm:inline">
-                Columbus, OH
-              </span>
-            </div>
-
-            {/* main — clean price comparison */}
-            <div className="mt-5 flex flex-col items-center text-center sm:mt-6">
-              {/* Big headline: FREE INSPECTION */}
-              <span className="font-display text-4xl font-black uppercase leading-none tracking-tight text-primary sm:text-5xl">
-                Free Inspection
-              </span>
-
-              {/* Price below */}
-              <div className="mt-2 flex items-baseline gap-2">
-                <span className="relative font-display text-lg font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
-                  $69
-                </span>
-                <span className="font-display text-lg font-bold text-primary">$0</span>
-              </div>
-
-              <p className="mt-2 text-xs font-semibold text-primary/80">
-                Instead of $69 —{" "}
-                <span className="font-extrabold text-primary">limited to this month only</span>. No
-                card required.
-              </p>
-
-              {/* CTAs */}
-              <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => (window.location.href = "/schedule")}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
-                >
-                  <CalendarCheck className="h-4 w-4" /> Schedule now
-                </button>
-                <a
-                  href="tel:6146835763"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-none border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
-                >
-                  <Phone className="h-4 w-4" /> Call Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
@@ -485,16 +407,16 @@ function Hero() {
 
         <h1 className="mt-8 max-w-full font-sans text-[22px] font-bold leading-[1.15] tracking-[-0.5px] text-foreground sm:mt-6 sm:text-[28px] md:text-[34px] lg:text-[38px] mb-2 break-words">
           <span className="block">The Chimney Experts You've Trusted for Over 18 Years</span>
-          <span className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[16px] sm:text-[18px] md:text-[20px] font-semibold tracking-normal">
-            <span className="text-foreground/70">in</span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-flame/15 px-2.5 py-0.5 text-foreground border border-flame/40">
-              <MapPin className="h-3.5 w-3.5 text-flame" /> Columbus
+          <span className="mt-4 block max-w-full border-l-4 border-flame bg-primary px-4 py-3 text-primary-foreground shadow-[8px_8px_0_oklch(0.78_0.19_92/0.35)]">
+            <span className="mb-1 block font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
+              Serving Ohio homeowners in
             </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-flame/15 px-2.5 py-0.5 text-foreground border border-flame/40">
-              <MapPin className="h-3.5 w-3.5 text-flame" /> Cincinnati
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-flame/15 px-2.5 py-0.5 text-foreground border border-flame/40">
-              <MapPin className="h-3.5 w-3.5 text-flame" /> Dayton
+            <span className="flex flex-wrap items-center gap-2 text-[17px] font-extrabold leading-tight sm:text-[20px] md:text-[22px]">
+              {["Columbus", "Cincinnati", "Dayton"].map((city) => (
+                <span key={city} className="inline-flex items-center gap-1.5 bg-background px-2.5 py-1 text-foreground">
+                  <MapPin className="h-3.5 w-3.5 text-flame" /> {city}
+                </span>
+              ))}
             </span>
           </span>
         </h1>
@@ -568,19 +490,18 @@ function Hero() {
               decoding="async"
             />
           </div>
-          {/* Minimal free-inspection banner above the form */}
-          <div className="mb-3 flex items-center justify-between gap-3 border-l-2 border-flame bg-background/80 px-4 py-2.5 backdrop-blur-sm">
+          {/* Minimal schedule banner above the form */}
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-3 border border-border bg-card px-4 py-3 shadow-[6px_6px_0_oklch(0.16_0.02_250/0.08)]">
             <div className="flex items-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flame/60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-flame" />
+              <span className="grid h-7 w-7 place-items-center bg-primary text-flame">
+                <ArrowRight className="h-4 w-4 rotate-90" />
               </span>
-              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-foreground">
-                Free Chimney Inspection
+              <span className="font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-foreground">
+                Start here — schedule online
               </span>
             </div>
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/60">
-              This month · Ohio
+            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
+              Columbus · Cincinnati · Dayton
             </span>
           </div>
           <ScheduleInline />
@@ -602,7 +523,7 @@ function RealTeamGallery() {
     { src: techRooftopLadder.url, label: "Rooftop chimney inspection", city: "Powell, OH" },
     { src: techScaffold.url, label: "Scaffolded chimney rebuild", city: "Westerville, OH" },
     { src: techLiner.url, label: "Stainless liner installation", city: "Dayton, OH" },
-    { src: inspectionRoofPhoto.url, label: "Rooftop inspection", city: "Hilliard, OH" },
+    { src: inspectionRoofPhoto.url, label: "Liner installation", city: "Hilliard, OH" },
     { src: techChimneyCapInstall.url, label: "Stone chimney cap install", city: "Upper Arlington, OH" },
     { src: chimneyNightRebuild.url, label: "Late-night rebuild — finished clean", city: "Columbus, OH" },
   ];
@@ -617,7 +538,7 @@ function RealTeamGallery() {
             The ChimCrew team — <span className="text-flame">certified techs, on the job</span>.
           </h2>
           <p className="mt-3 text-base text-foreground/75 md:text-lg">
-            No stock photos. No AI. Every photo below is one of our technicians on an Ohio chimney this season.
+            Photos of our technicians working on Ohio chimneys this season.
           </p>
         </div>
 
@@ -1037,7 +958,7 @@ function WhyChooseUs() {
               </p>
               <p className="mt-2 text-sm text-muted-foreground">
                 Clean work practices, protective floor coverings, clear explanations, and documented
-                findings from a real local crew.
+                findings from a local ChimCrew technician.
               </p>
             </div>
           </div>

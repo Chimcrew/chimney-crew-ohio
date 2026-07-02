@@ -105,7 +105,7 @@ function GalleryPage() {
       <PageHero
         eyebrow="Work · Ohio Homes"
         title={<>Completed <span className="text-flame">Projects</span></>}
-        subtitle="Every photo below is a ChimCrew job we finished this season — shot on a phone from the roof or the truck. No stock. No AI. No staged before-and-afters."
+        subtitle="Finished ChimCrew projects across Columbus, Cincinnati, Dayton, and nearby Ohio communities — photographed on-site by our crew."
       >
         <div className="mt-8 flex flex-wrap items-center gap-6">
           <Stat label="Jobs this season" value="180+" />
@@ -154,7 +154,7 @@ function GalleryPage() {
                 ◆ The Wall · Ohio Rooftops
               </p>
               <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight text-primary md:text-4xl">
-                Every photo is a real job.
+                Finished ChimCrew work across Ohio.
               </h2>
             </div>
             <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">

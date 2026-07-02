@@ -31,7 +31,7 @@ export function PageHero({ eyebrow, title, subtitle, children, className = "" }:
             {eyebrow}
           </span>
         )}
-        <h1 className="mt-5 max-w-3xl font-display text-4xl font-black leading-[1.02] tracking-tight text-white md:text-6xl [text-shadow:0_2px_12px_rgba(0,0,0,0.45)]">
+        <h1 className="mt-5 max-w-4xl whitespace-normal break-words font-display text-4xl font-black leading-[1.08] tracking-tight text-white md:text-6xl [text-shadow:0_2px_12px_rgba(0,0,0,0.45)]">
           {title}
         </h1>
         {subtitle && (

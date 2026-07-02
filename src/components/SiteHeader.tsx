@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown, ChevronRight, BrickWall } from "lucide-react";
+import { Menu, X, Phone, CalendarCheck, Flame, MapPin, ChevronDown, ChevronRight, BrickWall, Wind } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 // Custom broom icon (lucide doesn't include a broom)
@@ -60,17 +60,21 @@ const FIREPLACE_MENU: MenuLink[] = [
   { label: "Annual Maintenance Plan", to: "/services/$slug", slug: "annual-plan" },
 ];
 
+const DRYER_VENT_MENU: MenuLink[] = [
+  { label: "Dryer Vent Cleaning — $79", to: "/services/$slug", slug: "dryer-vent-cleaning" },
+];
+
 const SERVICE_CATEGORIES: ServiceCategory[] = [
   { key: "repair", label: "Chimney Repair", Icon: BrickWall, items: REPAIR_MENU },
   { key: "cleaning", label: "Chimney Cleaning", Icon: Broom, items: CLEANING_MENU },
   { key: "fireplace", label: "Fireplace Services", Icon: Flame, items: FIREPLACE_MENU },
+  { key: "dryer-vent", label: "Dryer Vent Cleaning", Icon: Wind, items: DRYER_VENT_MENU },
 ];
 
 type SimpleNav = { kind: "link"; to: string; label: string; slug?: string };
 
 const PRIMARY_NAV: SimpleNav[] = [
   { kind: "link", to: "/", label: "Home" },
-  { kind: "link", to: "/services/$slug", label: "Dryer Vent Cleaning", slug: "dryer-vent-cleaning" },
   { kind: "link", to: "/before-after", label: "Done Projects" },
   { kind: "link", to: "/financing", label: "Financing" },
   { kind: "link", to: "/blog", label: "Chimney Tips & Advice" },
