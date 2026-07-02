@@ -380,42 +380,42 @@ function Hero() {
         {/* LEFT — message column */}
         <div className="min-w-0">
         {/* Certified badge */}
-        <div className="flex items-start gap-1.5">
+        <div className="flex items-start gap-2">
           <img
             src={certifiedBadge.url}
             alt="Certified chimney sweep credential"
             width={80}
             height={80}
-            className="h-[68px] w-[68px] shrink-0 rounded-full bg-white p-1 ring-1 ring-border sm:h-20 sm:w-20"
+            className="h-[70px] w-[70px] shrink-0 rounded-full bg-white p-1 ring-1 ring-border min-[414px]:h-20 min-[414px]:w-20 sm:h-20 sm:w-20"
             loading="eager"
             decoding="async"
           />
           <div className="min-w-0 pt-0.5 ml-2">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-black sm:text-[11px]">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-black min-[414px]:text-[11px] sm:text-[11px]">
               Certified chimney professionals
             </p>
             <div className="mt-1 flex flex-wrap gap-1">
-              <span className="ml-4 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-primary-foreground">
+              <span className="ml-4 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-primary-foreground min-[414px]:text-[11px]">
                 <ShieldCheck className="h-2.5 w-2.5 text-flame" /> Licensed · Insured
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full border border-flame/40 bg-flame/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-foreground">
+              <span className="inline-flex items-center gap-1 rounded-full border border-flame/40 bg-flame/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-foreground min-[414px]:text-[11px]">
                 <Star className="h-2.5 w-2.5 fill-flame text-flame" /> 5-Star Reviews
               </span>
             </div>
           </div>
         </div>
 
-        <h1 className="mt-8 min-w-0 max-w-full font-sans font-bold leading-[1.15] tracking-[-0.5px] text-foreground sm:mt-6 mb-2 [overflow-wrap:anywhere] text-[clamp(20px,6.2vw,26px)] sm:text-[28px] md:text-[34px] lg:text-[38px]">
+        <h1 className="mt-8 mb-2 min-w-0 max-w-full font-sans font-bold !leading-[1.08] tracking-normal text-foreground [overflow-wrap:normal] sm:mt-6 !text-[30px] min-[414px]:!text-[36px] sm:!text-[38px] md:!text-[44px] lg:!text-[48px]">
           <span className="block">The Chimney Experts You've Trusted for Over 18 Years</span>
         </h1>
-        <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 border-l-2 border-flame pl-3 text-foreground/70">
-          <MapPin className="h-3.5 w-3.5 shrink-0 text-flame" aria-hidden />
-          <span className="min-w-0 font-mono font-bold uppercase tracking-[0.14em] text-[clamp(10px,2.9vw,11px)] sm:tracking-[0.18em] [overflow-wrap:anywhere]">
+        <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-2 gap-y-1 border-l-2 border-flame pl-3 text-foreground/70">
+          <MapPin className="h-4 w-4 shrink-0 text-flame" aria-hidden />
+          <span className="min-w-0 font-mono text-[11px] font-bold uppercase tracking-[0.1em] min-[414px]:text-[13px] min-[414px]:tracking-[0.12em] sm:tracking-[0.16em]">
             Serving <span className="text-foreground">Columbus</span> · <span className="text-foreground">Cincinnati</span> · <span className="text-foreground">Dayton</span>
           </span>
         </div>
 
-        <p className="mt-6 max-w-[38ch] text-[15px] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-relaxed">
+        <p className="mt-6 max-w-[38ch] text-[16px] leading-[1.75] text-foreground/80 min-[414px]:text-[17px] sm:mt-4 sm:max-w-xl sm:text-lg sm:leading-relaxed">
           Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
         </p>
 
@@ -423,14 +423,14 @@ function Hero() {
           <a
             href="#hero-lead-form"
             data-cta
-            className="inline-flex h-12 items-center justify-center gap-2 bg-primary px-5 font-sans text-sm font-bold text-primary-foreground transition active:scale-95"
+            className="inline-flex h-13 items-center justify-center gap-2 bg-primary px-5 font-sans text-[15px] font-bold text-primary-foreground transition active:scale-95 min-[414px]:h-14 min-[414px]:px-6 min-[414px]:text-base"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule free inspection
           </a>
           <a
             href="tel:6146835763"
             data-cta
-            className="inline-flex h-12 max-w-full items-center justify-center gap-2 border border-foreground/30 bg-background px-4 font-sans text-[13px] font-bold text-foreground transition hover:border-flame active:scale-95 sm:px-5 sm:text-sm"
+            className="inline-flex h-13 max-w-full items-center justify-center gap-2 border border-foreground/30 bg-background px-4 font-sans text-[14px] font-bold text-foreground transition hover:border-flame active:scale-95 min-[414px]:h-14 min-[414px]:px-5 min-[414px]:text-[15px] sm:px-5 sm:text-base"
           >
             <Phone className="h-4 w-4 shrink-0 text-flame" /> <span className="truncate">Call Now (614) 683-5763</span>
           </a>
@@ -439,7 +439,7 @@ function Hero() {
         {/* Emergency line micro-CTA */}
         <a
           href="tel:6146835763"
-          className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110 sm:mt-3"
+          className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110 min-[414px]:text-[12px] sm:mt-3"
         >
           <span className="relative inline-flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
@@ -458,7 +458,7 @@ function Hero() {
           ].map(({ icon: Icon, label }) => (
             <span
               key={label}
-              className="inline-flex items-center gap-2 text-xs font-medium text-foreground/80 sm:text-[13px]"
+              className="inline-flex items-center gap-2 text-[13px] font-medium text-foreground/80 min-[414px]:text-[14px] sm:text-[14px]"
             >
               <Icon className="h-4 w-4 text-flame" />
               {label}
