@@ -155,6 +155,10 @@ function Index() {
   return (
     <>
       <Hero />
+      {/* Desktop-only review ticker above the big ChimCrew logo */}
+      <div className="hidden lg:block">
+        <TrustMarquee />
+      </div>
       <HeroToOfferBridge />
       <FlashingJobShowcase variant="compact" />
       <Testimonials />
