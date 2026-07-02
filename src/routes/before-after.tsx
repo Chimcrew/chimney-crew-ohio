@@ -11,16 +11,12 @@ import gj7 from "@/assets/gallery-jobs/gj7.jpeg.asset.json";
 import gj8 from "@/assets/gallery-jobs/gj8.jpeg.asset.json";
 import gj9 from "@/assets/gallery-jobs/gj9.jpeg.asset.json";
 import gj10 from "@/assets/gallery-jobs/gj10.jpeg.asset.json";
-import gj11 from "@/assets/gallery-jobs/gj11.jpeg.asset.json";
-import gj12 from "@/assets/gallery-jobs/gj12.jpeg.asset.json";
-import gj13 from "@/assets/gallery-jobs/gj13.jpeg.asset.json";
-import gj14 from "@/assets/gallery-jobs/gj14.jpeg.asset.json";
-import gj15 from "@/assets/gallery-jobs/gj15.jpeg.asset.json";
-import gj16 from "@/assets/gallery-jobs/gj16.jpeg.asset.json";
-import gj17 from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
-import gj18 from "@/assets/gallery-jobs/gj18.jpeg.asset.json";
-import gj19 from "@/assets/gallery-jobs/gj19.jpeg.asset.json";
-import gj20 from "@/assets/gallery-jobs/gj20.jpeg.asset.json";
+import nCap from "@/assets/gallery-new/new-cap-ladder.jpeg.asset.json";
+import nChase from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
+import nAlum from "@/assets/gallery-new/new-aluminum-cap.jpeg.asset.json";
+import nCrownSeal from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
+import nCopper from "@/assets/gallery-new/new-brick-copper-flash.jpeg.asset.json";
+import nCopperDetail from "@/assets/gallery-new/new-copper-flashing-detail.jpeg.asset.json";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
@@ -55,16 +51,12 @@ const GALLERY: GalleryItem[] = [
   { src: gj8.url, title: "Arched Fireplace", caption: "Limewash finish with custom brick arch", city: "German Village, OH", size: "tall" },
   { src: gj9.url, title: "Custom Firebox", caption: "Hand-laid arched brickwork", city: "Clintonville, OH", size: "square" },
   { src: gj10.url, title: "Two-Story Chimney", caption: "Limewashed brick chimney finish", city: "New Albany, OH", size: "wide" },
-  { src: gj11.url, title: "Interior Remodel", caption: "Fireplace wall prepared for finishing", city: "Gahanna, OH", size: "square" },
-  { src: gj12.url, title: "Fresh Masonry", caption: "Firebox brick rebuild completed", city: "Westerville, OH", size: "tall" },
-  { src: gj13.url, title: "Rooftop Inspection", caption: "Chimney accessed and documented", city: "Grandview, OH", size: "square" },
-  { src: gj14.url, title: "Crown Seal", caption: "Waterproof coating and crown protection", city: "Grove City, OH", size: "wide" },
-  { src: gj15.url, title: "Cap Installation", caption: "Stainless cap set on rebuilt crown", city: "Delaware, OH", size: "tall" },
-  { src: gj16.url, title: "Liner Installation", caption: "Flue liner installed and finished", city: "Dayton, OH", size: "square" },
-  { src: gj17.url, title: "Tuckpointing Repair", caption: "Mortar joints restored on brick stack", city: "Cincinnati, OH", size: "tall" },
-  { src: gj18.url, title: "Smoke Chamber Parging", caption: "Smooth parge coat for better draft", city: "Pickerington, OH", size: "square" },
-  { src: gj19.url, title: "Damper Repair", caption: "Damper rebuilt and sealed cleanly", city: "Reynoldsburg, OH", size: "wide" },
-  { src: gj20.url, title: "Final Inspection", caption: "Completed chimney checked and documented", city: "Lewis Center, OH", size: "square" },
+  { src: nCap.url, title: "Cap + Mesh Arrestor", caption: "New stainless cap installed cleanly", city: "Powell, OH", size: "tall" },
+  { src: nChase.url, title: "Chase Cover Install", caption: "Fresh chase cover with round cap", city: "Dublin, OH", size: "square" },
+  { src: nAlum.url, title: "Aluminum Chase Cover", caption: "Two-tone chimney with turbine cap", city: "Westerville, OH", size: "wide" },
+  { src: nCrownSeal.url, title: "Crown Seal + Flashing", caption: "Protected crown and sealed roofline", city: "Hilliard, OH", size: "tall" },
+  { src: nCopper.url, title: "Copper Flashing", caption: "Fresh copper flashing at brick stack", city: "Upper Arlington, OH", size: "square" },
+  { src: nCopperDetail.url, title: "Counter Flashing Detail", caption: "Detailed flashing work at chimney base", city: "Clintonville, OH", size: "wide" },
 ];
 
 const UNIQUE_GALLERY = GALLERY.filter(
