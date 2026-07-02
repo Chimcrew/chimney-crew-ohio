@@ -66,11 +66,11 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
   { key: "fireplace", label: "Fireplace Services", Icon: Flame, items: FIREPLACE_MENU },
 ];
 
-type SimpleNav = { kind: "link"; to: string; label: string };
+type SimpleNav = { kind: "link"; to: string; label: string; slug?: string };
 
 const PRIMARY_NAV: SimpleNav[] = [
   { kind: "link", to: "/", label: "Home" },
-  { kind: "link", to: "/services/$slug", label: "Dryer Vent Cleaning" },
+  { kind: "link", to: "/services/$slug", label: "Dryer Vent Cleaning", slug: "dryer-vent-cleaning" },
   { kind: "link", to: "/before-after", label: "Done Projects" },
   { kind: "link", to: "/financing", label: "Financing" },
   { kind: "link", to: "/blog", label: "Chimney Tips & Advice" },
