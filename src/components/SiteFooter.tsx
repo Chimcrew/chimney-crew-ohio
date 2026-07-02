@@ -19,7 +19,7 @@ export function SiteFooter() {
               <a href="#" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground">
                 <Facebook className="h-4 w-4" />
               </a>
-              <a href="#" aria-label="Instagram" className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground">
+              <a href="https://www.instagram.com/chim_crew/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @chim_crew" className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground">
                 <Instagram className="h-4 w-4" />
               </a>
             </div>

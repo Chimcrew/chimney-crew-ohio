@@ -67,6 +67,7 @@ import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import { DroneInspection } from "@/components/DroneInspection";
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import { FlashingJobShowcase } from "@/components/FlashingJobShowcase";
+import { InstagramFollow } from "@/components/InstagramFollow";
 import teamWidePhoto from "@/assets/chimcrew-team-wide.png.asset.json";
 import techFireplaceBurner from "@/assets/team-jobs/tech-fireplace-burner.jpeg.asset.json";
 import techCrownWaterproof from "@/assets/team-jobs/tech-crown-waterproof.jpeg.asset.json";
@@ -162,6 +163,7 @@ function Index() {
       <FlashingJobShowcase variant="compact" />
       <Testimonials />
       <RealTeamGallery />
+      <InstagramFollow />
       <TrustBar />
       <CommonProblems />
       <PhotoVideoTrust />
