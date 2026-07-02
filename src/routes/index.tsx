@@ -405,17 +405,17 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-8 mb-2 min-w-0 max-w-full font-sans font-bold !leading-[1.08] tracking-normal text-foreground [overflow-wrap:normal] sm:mt-6 !text-[30px] min-[414px]:!text-[36px] sm:!text-[38px] md:!text-[44px] lg:!text-[48px]">
+        <h1 className="hero-main-title mt-8 mb-2 min-w-0 max-w-full font-sans font-bold tracking-normal text-foreground sm:mt-6">
           <span className="block">The Chimney Experts You've Trusted for Over 18 Years</span>
         </h1>
         <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-2 gap-y-1 border-l-2 border-flame pl-3 text-foreground/70">
           <MapPin className="h-4 w-4 shrink-0 text-flame" aria-hidden />
-          <span className="min-w-0 font-mono text-[11px] font-bold uppercase tracking-[0.1em] min-[414px]:text-[13px] min-[414px]:tracking-[0.12em] sm:tracking-[0.16em]">
+          <span className="hero-city-line min-w-0 font-mono font-bold uppercase tracking-[0.1em] sm:tracking-[0.16em]">
             Serving <span className="text-foreground">Columbus</span> · <span className="text-foreground">Cincinnati</span> · <span className="text-foreground">Dayton</span>
           </span>
         </div>
 
-        <p className="mt-6 max-w-[38ch] text-[16px] leading-[1.75] text-foreground/80 min-[414px]:text-[17px] sm:mt-4 sm:max-w-xl sm:text-lg sm:leading-relaxed">
+        <p className="hero-copy mt-6 max-w-[38ch] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:leading-relaxed">
           Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
         </p>
 
@@ -458,7 +458,7 @@ function Hero() {
           ].map(({ icon: Icon, label }) => (
             <span
               key={label}
-              className="inline-flex items-center gap-2 text-[13px] font-medium text-foreground/80 min-[414px]:text-[14px] sm:text-[14px]"
+              className="hero-trust-item inline-flex items-center gap-2 font-medium text-foreground/80"
             >
               <Icon className="h-4 w-4 text-flame" />
               {label}
