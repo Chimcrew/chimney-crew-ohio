@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { Instagram, ChevronLeft, ChevronRight, X } from "lucide-react";
 import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import p1 from "@/assets/projects/project-01-double-crown.jpg";
@@ -45,6 +45,18 @@ export function InstagramFollow() {
     if (slide > 0) setSlide(slide - 1);
     else if (open > 0) { setOpen(open - 1); setSlide(highlights[open - 1].slides.length - 1); }
   };
+
+  // Escape key closes the story viewer
+  useEffect(() => {
+    if (open === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  });
 
   return (
     <section className="relative bg-background py-14 md:py-20">
@@ -94,7 +106,7 @@ export function InstagramFollow() {
 
           <div
             ref={trackRef}
-            className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            className="flex snap-x snap-mandatory gap-5 overflow-x-auto overflow-y-visible px-1 py-2 pb-4 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
           >
             {highlights.map((h, i) => (
               <button
@@ -122,14 +134,24 @@ export function InstagramFollow() {
 
       {/* Story viewer */}
       {open !== null && (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-4" onClick={close}>
-          <button
-            onClick={(e) => { e.stopPropagation(); close(); }}
-            aria-label="Close"
-            className="absolute right-4 top-4 text-white/80 hover:text-white"
-          >
-            <X className="h-7 w-7" />
-          </button>
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 p-4" onClick={close}>
+          {/* Top bar with clear Close button */}
+          <div className="absolute inset-x-0 top-0 z-20 flex items-center justify-between p-4">
+            <button
+              onClick={(e) => { e.stopPropagation(); close(); }}
+              aria-label="Close"
+              className="inline-flex items-center gap-1.5 rounded-full bg-white/95 px-4 py-2 text-sm font-semibold text-black shadow-lg hover:bg-white"
+            >
+              <X className="h-4 w-4" /> Close
+            </button>
+            <button
+              onClick={(e) => { e.stopPropagation(); close(); }}
+              aria-label="Close"
+              className="grid h-10 w-10 place-items-center rounded-full bg-white/15 text-white backdrop-blur hover:bg-white/25"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
           <button
             onClick={(e) => { e.stopPropagation(); prev(); }}
             aria-label="Previous"
