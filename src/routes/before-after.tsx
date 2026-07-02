@@ -163,9 +163,9 @@ function ProjectTile({ item, index }: { item: GalleryItem; index: number }) {
         <Camera className="h-3 w-3" /> Done
       </span>
       <figcaption className="absolute inset-x-0 bottom-0 p-4">
-        <h3 className="font-display text-lg font-extrabold leading-tight text-primary-foreground drop-shadow md:text-xl">
+        <p className="font-display text-lg font-extrabold leading-tight text-primary-foreground drop-shadow md:text-xl">
           {item.title}
-        </h3>
+        </p>
         <p className="mt-1 text-sm font-semibold leading-snug text-primary-foreground/85">
           {item.caption}
         </p>
