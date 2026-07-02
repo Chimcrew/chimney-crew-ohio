@@ -65,8 +65,9 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {/* Emergency call bar — same as homepage */}
       <EmergencyCallBar />
 
-      {/* Drone inspection block (homepage parity) */}
-      <DroneInspection />
+      {/* Drone inspection block (homepage parity) — hidden on dryer vent page */}
+      {service.slug !== "dryer-vent-cleaning" && <DroneInspection />}
+
 
       {/* OVERVIEW + spec card (editorial split) */}
       <Overview service={service} />
