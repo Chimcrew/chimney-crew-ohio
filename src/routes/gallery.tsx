@@ -20,6 +20,15 @@ import up8 from "@/assets/uploads/job_8.jpeg.asset.json";
 import up3 from "@/assets/uploads/job_3.jpeg.asset.json";
 import jobA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
+import nCap from "@/assets/gallery-new/new-cap-ladder.jpeg.asset.json";
+import nChase from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
+import nAlum from "@/assets/gallery-new/new-aluminum-cap.jpeg.asset.json";
+import nChaseSide from "@/assets/gallery-new/new-chase-side.jpeg.asset.json";
+import nCrownSeal from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
+import nFireplace from "@/assets/gallery-new/new-fireplace-interior.jpeg.asset.json";
+import nMeshCap from "@/assets/gallery-new/new-mesh-cap-closeup.jpeg.asset.json";
+import nCopper from "@/assets/gallery-new/new-brick-copper-flash.jpeg.asset.json";
+import nCopperDetail from "@/assets/gallery-new/new-copper-flashing-detail.jpeg.asset.json";
 
 const SITE = "https://chimcrew.com";
 
@@ -54,6 +63,15 @@ type Photo = {
 const PHOTOS: Photo[] = [
   { src: jobA.url, alt: "Brick chimney with new stainless caps and freshly sealed crown", title: "New Caps + Crown Seal", city: "Columbus, OH", tag: "Cap", size: "tall" },
   { src: jobB.url, alt: "Brick chimney crown rebuild in progress on a metal roof", title: "Crown Rebuild In Progress", city: "Columbus, OH", tag: "Crown", size: "square" },
+  { src: nCap.url, alt: "New stainless chimney cap installed with mesh spark arrestor", title: "New Cap + Mesh Arrestor", city: "Powell, OH", tag: "Cap", size: "tall" },
+  { src: nChase.url, alt: "New chase cover with round mesh cap on a sided chimney", title: "Chase Cover + Round Cap", city: "Dublin, OH", tag: "Cap", size: "square" },
+  { src: nAlum.url, alt: "Aluminum chase cover with turbine cap on a two-tone chimney", title: "Aluminum Chase + Turbine Cap", city: "Westerville, OH", tag: "Cap", size: "wide" },
+  { src: nChaseSide.url, alt: "Side profile of a new stainless chase cover install", title: "Chase Cover — Side Profile", city: "Grove City, OH", tag: "Cap", size: "square" },
+  { src: nCrownSeal.url, alt: "Fresh crown seal on a red brick chimney with flashing", title: "Crown Seal + Flashing", city: "Hilliard, OH", tag: "Crown", size: "tall" },
+  { src: nFireplace.url, alt: "Wood-burning fireplace insert cleaned and serviced", title: "Fireplace Insert Service", city: "Columbus, OH", tag: "Crew", size: "square" },
+  { src: nMeshCap.url, alt: "Close-up of installed mesh chimney cap on a brick stack", title: "Mesh Cap — Close-Up", city: "Bexley, OH", tag: "Cap", size: "square" },
+  { src: nCopper.url, alt: "Brick chimney with new copper flashing installed", title: "New Copper Flashing", city: "Upper Arlington, OH", tag: "Tuckpointing", size: "tall" },
+  { src: nCopperDetail.url, alt: "Detailed copper step and counter flashing at chimney base", title: "Copper Step + Counter Flashing", city: "Clintonville, OH", tag: "Tuckpointing", size: "square" },
   { src: up5.url, alt: "Custom stainless chase cover installed on a sided chimney", title: "Custom Chase Cover Install", city: "Westerville, OH", tag: "Cap", size: "tall" },
   { src: up4.url, alt: "Fresh stainless steel chase cover replacement", title: "New Stainless Chase Cover", city: "Hilliard, OH", tag: "Cap", size: "square" },
   { src: up8.url, alt: "Brick chimney after tuckpointing with new stainless cap", title: "Tuckpoint + Cap — Finished", city: "Dublin, OH", tag: "Tuckpointing", size: "tall" },
