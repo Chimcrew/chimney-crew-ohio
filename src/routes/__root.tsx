@@ -232,7 +232,6 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="flex min-h-screen flex-col overflow-x-clip">
-        <AmbientEmbers />
         {!isLanding && <SiteHeader />}
         <main className="flex-1">
           <Outlet />

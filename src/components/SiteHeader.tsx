@@ -56,7 +56,6 @@ const CLEANING_MENU: MenuLink[] = [
 
 const FIREPLACE_MENU: MenuLink[] = [
   { label: "Gas Fireplace Service — $49", to: "/services/$slug", slug: "gas-fireplace-service" },
-  { label: "Dryer Vent Cleaning — $79", to: "/services/$slug", slug: "dryer-vent-cleaning" },
   { label: "Firebox Rebuild", to: "/services/$slug", slug: "firebox-rebuild" },
   { label: "Annual Maintenance Plan", to: "/services/$slug", slug: "annual-plan" },
 ];
@@ -71,6 +70,7 @@ type SimpleNav = { kind: "link"; to: string; label: string };
 
 const PRIMARY_NAV: SimpleNav[] = [
   { kind: "link", to: "/", label: "Home" },
+  { kind: "link", to: "/services/$slug", label: "Dryer Vent Cleaning" },
   { kind: "link", to: "/before-after", label: "Done Projects" },
   { kind: "link", to: "/financing", label: "Financing" },
   { kind: "link", to: "/blog", label: "Chimney Tips & Advice" },
