@@ -378,7 +378,7 @@ function Hero() {
       <div className="relative z-20 mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-10 sm:pt-8 md:pb-14 lg:px-8 lg:pt-12">
         <div className="grid gap-10 sm:gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-12">
         {/* LEFT — message column */}
-        <div>
+        <div className="min-w-0">
         {/* Certified badge */}
         <div className="flex items-start gap-1.5">
           <img
@@ -405,21 +405,15 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-8 max-w-full font-sans text-[22px] font-bold leading-[1.15] tracking-[-0.5px] text-foreground sm:mt-6 sm:text-[28px] md:text-[34px] lg:text-[38px] mb-2 break-words">
+        <h1 className="mt-8 min-w-0 max-w-full font-sans text-[22px] font-bold leading-[1.15] tracking-[-0.5px] text-foreground sm:mt-6 sm:text-[28px] md:text-[34px] lg:text-[38px] mb-2 [overflow-wrap:anywhere]">
           <span className="block">The Chimney Experts You've Trusted for Over 18 Years</span>
-          <span className="mt-4 block max-w-full border-l-4 border-flame bg-primary px-4 py-3 text-primary-foreground shadow-[8px_8px_0_oklch(0.78_0.19_92/0.35)]">
-            <span className="mb-1 block font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
-              Serving Ohio homeowners in
-            </span>
-            <span className="flex flex-wrap items-center gap-2 text-[17px] font-extrabold leading-tight sm:text-[20px] md:text-[22px]">
-              {["Columbus", "Cincinnati", "Dayton"].map((city) => (
-                <span key={city} className="inline-flex items-center gap-1.5 bg-background px-2.5 py-1 text-foreground">
-                  <MapPin className="h-3.5 w-3.5 text-flame" /> {city}
-                </span>
-              ))}
-            </span>
-          </span>
         </h1>
+        <div className="mt-4 flex items-center gap-2 border-l-2 border-flame pl-3 text-foreground/70">
+          <MapPin className="h-3.5 w-3.5 shrink-0 text-flame" aria-hidden />
+          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]">
+            Serving <span className="text-foreground">Columbus</span> · <span className="text-foreground">Cincinnati</span> · <span className="text-foreground">Dayton</span>
+          </span>
+        </div>
 
         <p className="mt-6 max-w-[38ch] text-[15px] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-relaxed">
           Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
