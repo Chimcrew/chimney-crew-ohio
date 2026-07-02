@@ -205,29 +205,36 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 function PhotoTile({ photo, index }: { photo: Photo; index: number }) {
-  const span =
+  const aspect =
     photo.size === "tall"
-      ? "row-span-2"
+      ? "aspect-[3/4]"
       : photo.size === "wide"
-        ? "col-span-2"
-        : "";
+        ? "aspect-[4/3]"
+        : "aspect-square";
   return (
-    <figure className={`group relative overflow-hidden rounded-none border-2 border-border bg-primary transition hover:border-flame ${span}`}>
+    <figure className={`group relative mb-3 md:mb-4 break-inside-avoid overflow-hidden border border-border/80 bg-primary shadow-[0_8px_30px_-12px_oklch(0_0_0/0.35)] transition hover:border-flame hover:shadow-[0_20px_50px_-20px_oklch(0.78_0.19_92/0.55)] ${aspect}`}>
       <img
         src={photo.src}
         alt={photo.alt}
-        loading={index < 2 ? "eager" : "lazy"}
-        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        loading={index < 3 ? "eager" : "lazy"}
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.06]"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent opacity-90" aria-hidden />
-      <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-flame/40 bg-primary/70 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent opacity-90" aria-hidden />
+      {/* Top tag */}
+      <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-flame/40 bg-primary/80 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
         <Camera className="h-2.5 w-2.5" /> {photo.tag}
       </span>
-      <figcaption className="absolute inset-x-3 bottom-3">
-        <p className="font-display text-sm font-extrabold leading-tight text-primary-foreground md:text-base">
+      {/* Done chip */}
+      <span className="absolute right-3 top-3 rounded-full border border-flame/40 bg-flame/20 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-flame backdrop-blur">
+        Done
+      </span>
+      {/* Bottom caption — slides up on hover */}
+      <figcaption className="absolute inset-x-0 bottom-0 translate-y-1 p-3 transition-transform duration-500 group-hover:translate-y-0">
+        <p className="font-display text-sm font-extrabold leading-tight text-primary-foreground md:text-base drop-shadow">
           {photo.title}
         </p>
-        <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/70">
+        <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
           <MapPin className="h-3 w-3" /> {photo.city}
         </p>
       </figcaption>
