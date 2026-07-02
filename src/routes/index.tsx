@@ -405,12 +405,12 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-8 min-w-0 max-w-full font-sans text-[22px] font-bold leading-[1.15] tracking-[-0.5px] text-foreground sm:mt-6 sm:text-[28px] md:text-[34px] lg:text-[38px] mb-2 [overflow-wrap:anywhere]">
+        <h1 className="mt-8 min-w-0 max-w-full font-sans font-bold leading-[1.15] tracking-[-0.5px] text-foreground sm:mt-6 mb-2 [overflow-wrap:anywhere] text-[clamp(20px,6.2vw,26px)] sm:text-[28px] md:text-[34px] lg:text-[38px]">
           <span className="block">The Chimney Experts You've Trusted for Over 18 Years</span>
         </h1>
-        <div className="mt-4 flex items-center gap-2 border-l-2 border-flame pl-3 text-foreground/70">
+        <div className="mt-4 flex flex-wrap items-center gap-x-2 gap-y-1 border-l-2 border-flame pl-3 text-foreground/70">
           <MapPin className="h-3.5 w-3.5 shrink-0 text-flame" aria-hidden />
-          <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em]">
+          <span className="min-w-0 font-mono font-bold uppercase tracking-[0.14em] text-[clamp(10px,2.9vw,11px)] sm:tracking-[0.18em] [overflow-wrap:anywhere]">
             Serving <span className="text-foreground">Columbus</span> · <span className="text-foreground">Cincinnati</span> · <span className="text-foreground">Dayton</span>
           </span>
         </div>
