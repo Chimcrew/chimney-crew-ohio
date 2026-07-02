@@ -56,7 +56,6 @@ const CLEANING_MENU: MenuLink[] = [
 
 const FIREPLACE_MENU: MenuLink[] = [
   { label: "Gas Fireplace Service — $49", to: "/services/$slug", slug: "gas-fireplace-service" },
-  { label: "Dryer Vent Cleaning — $79", to: "/services/$slug", slug: "dryer-vent-cleaning" },
   { label: "Firebox Rebuild", to: "/services/$slug", slug: "firebox-rebuild" },
   { label: "Annual Maintenance Plan", to: "/services/$slug", slug: "annual-plan" },
 ];
@@ -67,10 +66,11 @@ const SERVICE_CATEGORIES: ServiceCategory[] = [
   { key: "fireplace", label: "Fireplace Services", Icon: Flame, items: FIREPLACE_MENU },
 ];
 
-type SimpleNav = { kind: "link"; to: string; label: string };
+type SimpleNav = { kind: "link"; to: string; label: string; slug?: string };
 
 const PRIMARY_NAV: SimpleNav[] = [
   { kind: "link", to: "/", label: "Home" },
+  { kind: "link", to: "/services/$slug", label: "Dryer Vent Cleaning", slug: "dryer-vent-cleaning" },
   { kind: "link", to: "/before-after", label: "Done Projects" },
   { kind: "link", to: "/financing", label: "Financing" },
   { kind: "link", to: "/blog", label: "Chimney Tips & Advice" },
@@ -365,6 +365,7 @@ export function SiteHeader() {
               <Link
                 key={n.to}
                 to={n.to}
+                {...(n.slug ? { params: { slug: n.slug } } : {})}
                 className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 font-sans text-[12px] font-semibold tracking-normal text-foreground/70 transition hover:text-foreground"
                 activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
                 activeOptions={n.to === "/" ? { exact: true } : undefined}
@@ -515,8 +516,9 @@ export function SiteHeader() {
 
                 {PRIMARY_NAV.slice(1).map((n) => (
                   <Link
-                    key={n.to}
+                    key={n.to + (n.slug ?? "")}
                     to={n.to}
+                    {...(n.slug ? { params: { slug: n.slug } } : {})}
                     onClick={() => setOpen(false)}
                     className="flex items-center justify-between border-b border-border/30 py-3 font-sans text-[13px] font-semibold tracking-normal text-foreground"
                     activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}

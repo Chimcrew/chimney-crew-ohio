@@ -20,6 +20,15 @@ import up8 from "@/assets/uploads/job_8.jpeg.asset.json";
 import up3 from "@/assets/uploads/job_3.jpeg.asset.json";
 import jobA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
+import nCap from "@/assets/gallery-new/new-cap-ladder.jpeg.asset.json";
+import nChase from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
+import nAlum from "@/assets/gallery-new/new-aluminum-cap.jpeg.asset.json";
+import nChaseSide from "@/assets/gallery-new/new-chase-side.jpeg.asset.json";
+import nCrownSeal from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
+import nFireplace from "@/assets/gallery-new/new-fireplace-interior.jpeg.asset.json";
+import nMeshCap from "@/assets/gallery-new/new-mesh-cap-closeup.jpeg.asset.json";
+import nCopper from "@/assets/gallery-new/new-brick-copper-flash.jpeg.asset.json";
+import nCopperDetail from "@/assets/gallery-new/new-copper-flashing-detail.jpeg.asset.json";
 
 const SITE = "https://chimcrew.com";
 
@@ -54,6 +63,15 @@ type Photo = {
 const PHOTOS: Photo[] = [
   { src: jobA.url, alt: "Brick chimney with new stainless caps and freshly sealed crown", title: "New Caps + Crown Seal", city: "Columbus, OH", tag: "Cap", size: "tall" },
   { src: jobB.url, alt: "Brick chimney crown rebuild in progress on a metal roof", title: "Crown Rebuild In Progress", city: "Columbus, OH", tag: "Crown", size: "square" },
+  { src: nCap.url, alt: "New stainless chimney cap installed with mesh spark arrestor", title: "New Cap + Mesh Arrestor", city: "Powell, OH", tag: "Cap", size: "tall" },
+  { src: nChase.url, alt: "New chase cover with round mesh cap on a sided chimney", title: "Chase Cover + Round Cap", city: "Dublin, OH", tag: "Cap", size: "square" },
+  { src: nAlum.url, alt: "Aluminum chase cover with turbine cap on a two-tone chimney", title: "Aluminum Chase + Turbine Cap", city: "Westerville, OH", tag: "Cap", size: "wide" },
+  { src: nChaseSide.url, alt: "Side profile of a new stainless chase cover install", title: "Chase Cover — Side Profile", city: "Grove City, OH", tag: "Cap", size: "square" },
+  { src: nCrownSeal.url, alt: "Fresh crown seal on a red brick chimney with flashing", title: "Crown Seal + Flashing", city: "Hilliard, OH", tag: "Crown", size: "tall" },
+  { src: nFireplace.url, alt: "Wood-burning fireplace insert cleaned and serviced", title: "Fireplace Insert Service", city: "Columbus, OH", tag: "Crew", size: "square" },
+  { src: nMeshCap.url, alt: "Close-up of installed mesh chimney cap on a brick stack", title: "Mesh Cap — Close-Up", city: "Bexley, OH", tag: "Cap", size: "square" },
+  { src: nCopper.url, alt: "Brick chimney with new copper flashing installed", title: "New Copper Flashing", city: "Upper Arlington, OH", tag: "Tuckpointing", size: "tall" },
+  { src: nCopperDetail.url, alt: "Detailed copper step and counter flashing at chimney base", title: "Copper Step + Counter Flashing", city: "Clintonville, OH", tag: "Tuckpointing", size: "square" },
   { src: up5.url, alt: "Custom stainless chase cover installed on a sided chimney", title: "Custom Chase Cover Install", city: "Westerville, OH", tag: "Cap", size: "tall" },
   { src: up4.url, alt: "Fresh stainless steel chase cover replacement", title: "New Stainless Chase Cover", city: "Hilliard, OH", tag: "Cap", size: "square" },
   { src: up8.url, alt: "Brick chimney after tuckpointing with new stainless cap", title: "Tuckpoint + Cap — Finished", city: "Dublin, OH", tag: "Tuckpointing", size: "tall" },
@@ -86,7 +104,7 @@ function GalleryPage() {
     <>
       <PageHero
         eyebrow="Work · Ohio Homes"
-        title={<>Chimney Repair &amp; Sweep <span className="text-flame">Gallery</span> — Recent Ohio Jobs</>}
+        title={<>Completed <span className="text-flame">Projects</span></>}
         subtitle="Every photo below is a ChimCrew job we finished this season — shot on a phone from the roof or the truck. No stock. No AI. No staged before-and-afters."
       >
         <div className="mt-8 flex flex-wrap items-center gap-6">
@@ -123,11 +141,29 @@ function GalleryPage() {
         </div>
       </section>
 
-      {/* GRID */}
-      <section className="bg-background py-12 md:py-16">
-        <div className="pointer-events-none absolute inset-x-0 -z-0 h-64 bg-grid opacity-30" aria-hidden />
+      {/* GRID — masonry-style, elevated design */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-background via-background to-secondary/30 py-14 md:py-20">
+        {/* subtle grid + glow backdrop */}
+        <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.12]" aria-hidden />
+        <div className="pointer-events-none absolute -top-32 left-1/2 h-64 w-[70vw] -translate-x-1/2 rounded-full bg-flame/15 blur-3xl" aria-hidden />
+
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-          <div className="grid auto-rows-[180px] grid-cols-2 gap-3 md:auto-rows-[240px] md:grid-cols-4 md:gap-4">
+          <div className="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
+                ◆ The Wall · Ohio Rooftops
+              </p>
+              <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight text-primary md:text-4xl">
+                Every photo is a real job.
+              </h2>
+            </div>
+            <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">
+              Shot on-site · unretouched
+            </span>
+          </div>
+
+          {/* CSS columns masonry — natural aspect ratios, staggered layout */}
+          <div className="columns-2 gap-3 sm:columns-2 md:columns-3 md:gap-4 lg:columns-4">
             {visible.map((p, i) => (
               <PhotoTile key={`${p.src}-${i}`} photo={p} index={i} />
             ))}
@@ -169,29 +205,36 @@ function Stat({ label, value }: { label: string; value: string }) {
 }
 
 function PhotoTile({ photo, index }: { photo: Photo; index: number }) {
-  const span =
+  const aspect =
     photo.size === "tall"
-      ? "row-span-2"
+      ? "aspect-[3/4]"
       : photo.size === "wide"
-        ? "col-span-2"
-        : "";
+        ? "aspect-[4/3]"
+        : "aspect-square";
   return (
-    <figure className={`group relative overflow-hidden rounded-none border-2 border-border bg-primary transition hover:border-flame ${span}`}>
+    <figure className={`group relative mb-3 md:mb-4 break-inside-avoid overflow-hidden border border-border/80 bg-primary shadow-[0_8px_30px_-12px_oklch(0_0_0/0.35)] transition hover:border-flame hover:shadow-[0_20px_50px_-20px_oklch(0.78_0.19_92/0.55)] ${aspect}`}>
       <img
         src={photo.src}
         alt={photo.alt}
-        loading={index < 2 ? "eager" : "lazy"}
-        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
+        loading={index < 3 ? "eager" : "lazy"}
+        decoding="async"
+        className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.06]"
       />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent opacity-90" aria-hidden />
-      <span className="absolute right-3 top-3 inline-flex items-center gap-1 rounded-full border border-flame/40 bg-primary/70 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary via-primary/20 to-transparent opacity-90" aria-hidden />
+      {/* Top tag */}
+      <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-flame/40 bg-primary/80 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-flame backdrop-blur">
         <Camera className="h-2.5 w-2.5" /> {photo.tag}
       </span>
-      <figcaption className="absolute inset-x-3 bottom-3">
-        <p className="font-display text-sm font-extrabold leading-tight text-primary-foreground md:text-base">
+      {/* Done chip */}
+      <span className="absolute right-3 top-3 rounded-full border border-flame/40 bg-flame/20 px-2 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-flame backdrop-blur">
+        Done
+      </span>
+      {/* Bottom caption — slides up on hover */}
+      <figcaption className="absolute inset-x-0 bottom-0 translate-y-1 p-3 transition-transform duration-500 group-hover:translate-y-0">
+        <p className="font-display text-sm font-extrabold leading-tight text-primary-foreground md:text-base drop-shadow">
           {photo.title}
         </p>
-        <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/70">
+        <p className="mt-0.5 inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.18em] text-primary-foreground/80">
           <MapPin className="h-3 w-3" /> {photo.city}
         </p>
       </figcaption>
