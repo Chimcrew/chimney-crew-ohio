@@ -569,6 +569,21 @@ function Hero() {
               decoding="async"
             />
           </div>
+          {/* Minimal free-inspection banner above the form */}
+          <div className="mb-3 flex items-center justify-between gap-3 border-l-2 border-flame bg-background/80 px-4 py-2.5 backdrop-blur-sm">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flame/60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-flame" />
+              </span>
+              <span className="font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-foreground">
+                Free Chimney Inspection
+              </span>
+            </div>
+            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/60">
+              This month · Ohio
+            </span>
+          </div>
           <ScheduleInline />
         </div>
         </div>
