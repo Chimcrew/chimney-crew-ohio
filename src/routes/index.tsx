@@ -136,7 +136,7 @@ export const Route = createFileRoute("/")({
             },
             {
               "@type": "Question",
-              name: "Are you really local?",
+              name: "Are you local?",
               acceptedAnswer: {
                 "@type": "Answer",
                 text: "Born and raised in Ohio. Our crew lives in Columbus, Cincinnati and Dayton — same neighborhoods we service.",
