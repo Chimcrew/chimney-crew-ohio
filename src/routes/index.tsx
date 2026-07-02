@@ -430,9 +430,9 @@ function Hero() {
           <a
             href="tel:6146835763"
             data-cta
-            className="inline-flex h-12 items-center justify-center gap-2 border border-foreground/30 bg-background px-5 font-sans text-sm font-bold text-foreground transition hover:border-flame active:scale-95"
+            className="inline-flex h-12 max-w-full items-center justify-center gap-2 border border-foreground/30 bg-background px-4 font-sans text-[13px] font-bold text-foreground transition hover:border-flame active:scale-95 sm:px-5 sm:text-sm"
           >
-            <Phone className="h-4 w-4 text-flame" /> Call Now (614) 683-5763
+            <Phone className="h-4 w-4 shrink-0 text-flame" /> <span className="truncate">Call Now (614) 683-5763</span>
           </a>
         </div>
 
