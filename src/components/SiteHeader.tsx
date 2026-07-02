@@ -51,12 +51,12 @@ const CLEANING_MENU: MenuLink[] = [
   { label: "Chimney Sweep — $99", to: "/services/$slug", slug: "chimney-sweep" },
   { label: "Level 1 Inspection — $69", to: "/services/$slug", slug: "level-1-inspection" },
   { label: "Level 2 Inspection", to: "/services/$slug", slug: "level-2-inspection" },
-  { label: "Dryer Vent Cleaning — $79", to: "/services/$slug", slug: "dryer-vent-cleaning" },
   { label: "Animal Removal", to: "/services/$slug", slug: "animal-removal" },
 ];
 
 const FIREPLACE_MENU: MenuLink[] = [
   { label: "Gas Fireplace Service — $49", to: "/services/$slug", slug: "gas-fireplace-service" },
+  { label: "Dryer Vent Cleaning — $79", to: "/services/$slug", slug: "dryer-vent-cleaning" },
   { label: "Firebox Rebuild", to: "/services/$slug", slug: "firebox-rebuild" },
   { label: "Annual Maintenance Plan", to: "/services/$slug", slug: "annual-plan" },
 ];
