@@ -484,29 +484,21 @@ function Hero() {
           </div>
         </div>
 
-        <h1 className="mt-8 max-w-4xl font-sans !text-[26px] font-bold !leading-[1.10] tracking-[-1px] text-foreground sm:mt-6 sm:!text-[30px] md:!text-[36px] mb-2">
+        <h1 className="mt-8 max-w-full font-sans text-[22px] font-bold leading-[1.15] tracking-[-0.5px] text-foreground sm:mt-6 sm:text-[28px] md:text-[34px] lg:text-[38px] mb-2 break-words">
           <span className="block">The Chimney Experts You've Trusted for Over 18 Years</span>
-          <span className="block text-[50%] font-medium leading-tight tracking-normal text-foreground/80 mt-1">
-            in Columbus, Cincinnati, Dayton
+          <span className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[16px] sm:text-[18px] md:text-[20px] font-semibold tracking-normal">
+            <span className="text-foreground/70">in</span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-flame/15 px-2.5 py-0.5 text-foreground border border-flame/40">
+              <MapPin className="h-3.5 w-3.5 text-flame" /> Columbus
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-flame/15 px-2.5 py-0.5 text-foreground border border-flame/40">
+              <MapPin className="h-3.5 w-3.5 text-flame" /> Cincinnati
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-flame/15 px-2.5 py-0.5 text-foreground border border-flame/40">
+              <MapPin className="h-3.5 w-3.5 text-flame" /> Dayton
+            </span>
           </span>
         </h1>
-
-        <div className="mt-5 inline-flex flex-col items-start gap-1 rounded-none border border-border/60 bg-muted/40 px-4 py-3 backdrop-blur-sm sm:mt-3">
-          <p className="font-sans text-[20px] font-bold leading-tight text-foreground sm:text-[26px] md:text-[30px]">
-            <span className="inline-flex items-center gap-2">
-              <span className="inline-flex items-center gap-1 rounded-none bg-primary px-2 py-0.5 font-mono text-[10px] font-extrabold uppercase tracking-wider text-primary-foreground">
-                <Flame className="h-3 w-3 text-flame" /> Limited Time
-              </span>
-              <span className="bg-flame px-1.5 py-0.5 font-black text-primary">Free</span> Inspection
-            </span>
-          </p>
-          <p className="text-[16px] font-semibold text-foreground/80 sm:text-[20px] md:text-[24px]">
-            Book in 60 Seconds
-          </p>
-          <span className="mt-1 flex w-full justify-center">
-            <ArrowDown className="h-5 w-5 text-flame" />
-          </span>
-        </div>
 
         <p className="mt-6 max-w-[38ch] text-[15px] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:text-base sm:leading-relaxed">
           Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
