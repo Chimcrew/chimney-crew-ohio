@@ -208,6 +208,27 @@
       line-height: 1.25 !important;
     }
   }
+
+  @media (min-width: 414px) and (max-width: 767px) {
+    body {
+      font-size: 17px;
+    }
+
+    h1,
+    .hero-main-title {
+      font-size: 36px !important;
+      line-height: 1.06 !important;
+      letter-spacing: 0 !important;
+    }
+
+    h2 {
+      font-size: 34px !important;
+    }
+
+    h3 {
+      font-size: 25px !important;
+    }
+  }
 }
 
 @layer utilities {
