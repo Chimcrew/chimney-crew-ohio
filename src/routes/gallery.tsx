@@ -104,7 +104,7 @@ function GalleryPage() {
     <>
       <PageHero
         eyebrow="Work · Ohio Homes"
-        title={<>Chimney Repair &amp; Sweep <span className="text-flame">Gallery</span> — Recent Ohio Jobs</>}
+        title={<>Completed <span className="text-flame">Projects</span></>}
         subtitle="Every photo below is a ChimCrew job we finished this season — shot on a phone from the roof or the truck. No stock. No AI. No staged before-and-afters."
       >
         <div className="mt-8 flex flex-wrap items-center gap-6">
@@ -141,11 +141,29 @@ function GalleryPage() {
         </div>
       </section>
 
-      {/* GRID */}
-      <section className="bg-background py-12 md:py-16">
-        <div className="pointer-events-none absolute inset-x-0 -z-0 h-64 bg-grid opacity-30" aria-hidden />
+      {/* GRID — masonry-style, elevated design */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-background via-background to-secondary/30 py-14 md:py-20">
+        {/* subtle grid + glow backdrop */}
+        <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.12]" aria-hidden />
+        <div className="pointer-events-none absolute -top-32 left-1/2 h-64 w-[70vw] -translate-x-1/2 rounded-full bg-flame/15 blur-3xl" aria-hidden />
+
         <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-          <div className="grid auto-rows-[180px] grid-cols-2 gap-3 md:auto-rows-[240px] md:grid-cols-4 md:gap-4">
+          <div className="mb-8 flex items-end justify-between gap-4">
+            <div>
+              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
+                ◆ The Wall · Ohio Rooftops
+              </p>
+              <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight text-primary md:text-4xl">
+                Every photo is a real job.
+              </h2>
+            </div>
+            <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">
+              Shot on-site · unretouched
+            </span>
+          </div>
+
+          {/* CSS columns masonry — natural aspect ratios, staggered layout */}
+          <div className="columns-2 gap-3 sm:columns-2 md:columns-3 md:gap-4 lg:columns-4">
             {visible.map((p, i) => (
               <PhotoTile key={`${p.src}-${i}`} photo={p} index={i} />
             ))}
