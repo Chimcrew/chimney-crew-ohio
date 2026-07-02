@@ -365,6 +365,7 @@ export function SiteHeader() {
               <Link
                 key={n.to}
                 to={n.to}
+                {...(n.slug ? { params: { slug: n.slug } } : {})}
                 className="group relative inline-flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 font-sans text-[12px] font-semibold tracking-normal text-foreground/70 transition hover:text-foreground"
                 activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
                 activeOptions={n.to === "/" ? { exact: true } : undefined}
@@ -515,8 +516,9 @@ export function SiteHeader() {
 
                 {PRIMARY_NAV.slice(1).map((n) => (
                   <Link
-                    key={n.to}
+                    key={n.to + (n.slug ?? "")}
                     to={n.to}
+                    {...(n.slug ? { params: { slug: n.slug } } : {})}
                     onClick={() => setOpen(false)}
                     className="flex items-center justify-between border-b border-border/30 py-3 font-sans text-[13px] font-semibold tracking-normal text-foreground"
                     activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
