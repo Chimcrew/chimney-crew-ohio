@@ -463,3 +463,65 @@
   .drone-scan   { animation: scan-sweep 2.8s ease-in-out infinite; transform-origin: 50% 0%; }
   .drone-ring   { animation: ring-pulse 2.6s ease-out infinite; }
 }
+
+/* Unlayered hero typography overrides the global H1 important rule on iPhones. */
+.hero-main-title {
+  font-size: 30px !important;
+  line-height: 1.08 !important;
+  letter-spacing: 0 !important;
+  overflow-wrap: normal;
+}
+
+.hero-city-line {
+  font-size: 11px;
+}
+
+.hero-copy {
+  font-size: 16px;
+}
+
+.hero-trust-item {
+  font-size: 13px;
+}
+
+@media (min-width: 414px) {
+  .hero-main-title {
+    font-size: 36px !important;
+    line-height: 1.06 !important;
+  }
+
+  .hero-city-line {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+
+  .hero-copy {
+    font-size: 17px;
+  }
+
+  .hero-trust-item {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 640px) {
+  .hero-main-title {
+    font-size: 38px !important;
+  }
+
+  .hero-copy {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-main-title {
+    font-size: 44px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-main-title {
+    font-size: 48px !important;
+  }
+}
