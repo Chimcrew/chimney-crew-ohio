@@ -558,6 +558,11 @@ function Hero() {
 
         {/* RIGHT — lead form column (above fold on desktop, below CTAs on mobile) */}
         <div id="hero-lead-form" className="lg:sticky lg:top-24">
+          {/* Mobile-only review ticker above the form */}
+          <div className="block lg:hidden">
+            <TrustMarquee />
+          </div>
+
           {/* Desktop-only crew photo above the form */}
           <div className="hidden lg:block mb-4 overflow-hidden rounded-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
             <img
