@@ -353,84 +353,6 @@ function HeroPhotoCard() {
 
 /* (MobileHero removed — unified responsive Hero below) */
 
-/* ============================================================
-   LIMITED OFFER BANNER — sits directly under the hero, high
-   contrast, single CTA. The only price advertised site-wide is
-   the $69 chimney inspection.
-   ============================================================ */
-function LimitedOfferBanner() {
-  return (
-    <section className="relative isolate bg-[oklch(0.08_0.01_250)] px-4 py-8 md:py-10">
-      <div className="relative mx-auto max-w-2xl">
-        {/* Coupon card */}
-        <div className="relative rounded-none bg-flame text-primary shadow-[0_20px_60px_oklch(0_0_0/0.5)]">
-          {/* perforated edges */}
-          <span
-            className="absolute -left-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
-            aria-hidden
-          />
-          <span
-            className="absolute -right-3 top-1/2 h-6 w-6 -translate-y-1/2 rounded-full bg-[oklch(0.08_0.01_250)]"
-            aria-hidden
-          />
-
-          {/* dashed inner frame */}
-          <div className="m-2 rounded-none border-2 border-dashed border-primary/40 p-5 sm:p-6">
-            {/* top ribbon */}
-            <div className="flex items-center justify-between gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 font-mono text-[10px] font-extrabold uppercase tracking-[0.22em] text-flame">
-                <Flame className="h-3 w-3" /> Limited Time
-              </span>
-              <span className="hidden font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-primary/70 sm:inline">
-                Columbus, OH
-              </span>
-            </div>
-
-            {/* main — clean price comparison */}
-            <div className="mt-5 flex flex-col items-center text-center sm:mt-6">
-              {/* Big headline: FREE INSPECTION */}
-              <span className="font-display text-4xl font-black uppercase leading-none tracking-tight text-primary sm:text-5xl">
-                Free Inspection
-              </span>
-
-              {/* Price below */}
-              <div className="mt-2 flex items-baseline gap-2">
-                <span className="relative font-display text-lg font-bold text-primary/60 line-through decoration-primary/80 decoration-2">
-                  $69
-                </span>
-                <span className="font-display text-lg font-bold text-primary">$0</span>
-              </div>
-
-              <p className="mt-2 text-xs font-semibold text-primary/80">
-                Instead of $69 —{" "}
-                <span className="font-extrabold text-primary">limited to this month only</span>. No
-                card required.
-              </p>
-
-              {/* CTAs */}
-              <div className="mt-5 grid w-full max-w-sm grid-cols-1 gap-2 sm:grid-cols-2">
-                <button
-                  type="button"
-                  onClick={() => (window.location.href = "/schedule")}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-primary font-display text-sm font-black uppercase tracking-wider text-flame shadow-md transition active:scale-[0.98]"
-                >
-                  <CalendarCheck className="h-4 w-4" /> Schedule now
-                </button>
-                <a
-                  href="tel:6146835763"
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-none border-2 border-primary/70 bg-transparent font-display text-sm font-black uppercase tracking-wider text-primary transition active:scale-[0.98]"
-                >
-                  <Phone className="h-4 w-4" /> Call Now
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
@@ -601,7 +523,7 @@ function RealTeamGallery() {
     { src: techRooftopLadder.url, label: "Rooftop chimney inspection", city: "Powell, OH" },
     { src: techScaffold.url, label: "Scaffolded chimney rebuild", city: "Westerville, OH" },
     { src: techLiner.url, label: "Stainless liner installation", city: "Dayton, OH" },
-    { src: inspectionRoofPhoto.url, label: "Rooftop inspection", city: "Hilliard, OH" },
+    { src: inspectionRoofPhoto.url, label: "Liner installation", city: "Hilliard, OH" },
     { src: techChimneyCapInstall.url, label: "Stone chimney cap install", city: "Upper Arlington, OH" },
     { src: chimneyNightRebuild.url, label: "Late-night rebuild — finished clean", city: "Columbus, OH" },
   ];
@@ -616,7 +538,7 @@ function RealTeamGallery() {
             The ChimCrew team — <span className="text-flame">certified techs, on the job</span>.
           </h2>
           <p className="mt-3 text-base text-foreground/75 md:text-lg">
-            No stock photos. No AI. Every photo below is one of our technicians on an Ohio chimney this season.
+            Photos of our technicians working on Ohio chimneys this season.
           </p>
         </div>
 
@@ -1036,7 +958,7 @@ function WhyChooseUs() {
               </p>
               <p className="mt-2 text-sm text-muted-foreground">
                 Clean work practices, protective floor coverings, clear explanations, and documented
-                findings from a real local crew.
+                findings from a local ChimCrew technician.
               </p>
             </div>
           </div>
