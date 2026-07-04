@@ -49,15 +49,15 @@ const LeadSchema = z.object({
   source: z.string().trim().min(1).max(60).optional(),
   name: z.string().trim().min(1).max(120).optional(),
   phone: z.string().trim().min(1).max(32).optional(),
-  email: z.string().email().max(200).optional().or(z.literal('')),
+  email: z.union([z.string().email().max(200), z.literal(''), z.string().max(0)]).optional(),
   service: z.string().trim().min(1).max(120).optional(),
   city: z.string().trim().min(1).max(120).optional(),
   address: z.string().trim().min(1).max(240).optional(),
   date: z.string().trim().min(1).max(40).optional(),
   timeWindow: z.string().trim().min(1).max(60).optional(),
   notes: z.string().trim().min(1).max(2000).optional(),
-}).refine((data) => Boolean(data.name || data.phone || data.email), {
-  message: 'At least one contact field is required',
+}).refine((data) => Boolean(data.name && data.phone), {
+  message: 'Name and phone are required',
   path: ['phone'],
 })
 
