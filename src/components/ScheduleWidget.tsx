@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 import { CheckCircle2, CalendarCheck, Flame, ShieldCheck } from "lucide-react";
 import { format } from "date-fns";
 import { Input } from "@/components/ui/input";
@@ -54,24 +54,34 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   const [service, setService] = useState<string>(SCHEDULE_SERVICES[1].value);
   const [notes, setNotes] = useState("");
   const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const [submitError, setSubmitError] = useState<string>("");
+  const fieldRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const todayStr = date ? format(date, "yyyy-MM-dd") : "";
   const minDateStr = format(new Date(), "yyyy-MM-dd");
-  const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  const emailTrimmed = email.trim();
+  const emailIsValid = emailTrimmed === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTrimmed);
 
   const submit = useCallback(async () => {
-    // Friendly per-field validation so the user always knows what's missing.
-    const missing: string[] = [];
-    if (name.trim().length < 2) missing.push("Full name");
-    if (phone.replace(/\D/g, "").length < 7) missing.push("Phone number");
-    if (!emailIsValid) missing.push("Valid email");
-    if (!date) missing.push("Appointment date");
-    if (!slot) missing.push("Appointment time");
-    if (street.trim().length < 2) missing.push("Street address");
-    if (city.trim().length < 2) missing.push("City");
-    if (!service) missing.push("Service");
-    if (missing.length) {
-      toast.error("Please complete: " + missing.join(", "), { duration: 6000 });
+    setSubmitError("");
+    // Only require the essentials so a customer can always book by phone follow-up.
+    const nextErrors: Record<string, string> = {};
+    if (name.trim().length < 2) nextErrors.name = "Please enter your name";
+    if (phone.replace(/\D/g, "").length < 7) nextErrors.phone = "Enter a phone number we can reach you at";
+    if (!emailIsValid) nextErrors.email = "That email doesn't look right — or leave it blank";
+    if (!date) nextErrors.date = "Pick a date";
+    if (!slot) nextErrors.slot = "Pick a time window";
+    if (!service) nextErrors.service = "Choose a service";
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length) {
+      const firstKey = Object.keys(nextErrors)[0];
+      const el = fieldRefs.current[firstKey];
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        (el as HTMLInputElement).focus?.();
+      }
+      toast.error("Please fix the highlighted field" + (Object.keys(nextErrors).length > 1 ? "s" : ""), { duration: 5000 });
       return;
     }
     setSubmitting(true);
@@ -97,12 +107,10 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     } catch (err) {
       setSubmitting(false);
       const msg = err instanceof Error ? err.message : "";
-      toast.error("We couldn't submit your booking.", {
-        description:
-          (msg ? msg + ". " : "") +
-          "Please call (614) 683-5763 and we'll get you on the schedule.",
-        duration: 9000,
-      });
+      const friendly =
+        "We couldn't submit your booking online. Please call or text (614) 683-5763 and we'll get you on the schedule right now.";
+      setSubmitError(friendly + (msg ? ` (Details: ${msg})` : ""));
+      toast.error("Booking didn't go through", { description: friendly, duration: 9000 });
       return;
     }
 
@@ -177,8 +185,22 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           if (!submitting) void submit();
         }}
       >
+        {submitError && (
+          <div
+            role="alert"
+            className="rounded-none border-2 border-[#E63A1F] bg-[#E63A1F]/10 p-3 text-sm text-[#7a1810]"
+          >
+            <p className="font-bold">{submitError}</p>
+            <a
+              href="tel:6146835763"
+              className="mt-2 inline-flex items-center gap-1 font-display text-sm font-extrabold underline decoration-2 underline-offset-2"
+            >
+              Tap to call (614) 683-5763
+            </a>
+          </div>
+        )}
         {/* Service — full width, most important */}
-        <Field label="Service Needed" required>
+        <Field label="Service Needed" required error={errors.service}>
           <Select value={service} onValueChange={setService}>
             <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
               <SelectValue />
@@ -195,48 +217,50 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
         {/* Name + Phone */}
         <div className="grid gap-3 sm:grid-cols-2">
-          <Field label="Full Name" required>
+          <Field label="Full Name" required error={errors.name}>
             <Input
               name="name"
               aria-label="Full Name"
               autoComplete="name"
+              ref={(el) => { fieldRefs.current.name = el; }}
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="h-10 rounded-none border-foreground/20 text-sm"
+              className={"h-10 rounded-none text-sm " + (errors.name ? "border-2 border-[#E63A1F]" : "border-foreground/20")}
             />
           </Field>
-          <Field label="Phone Number" required>
+          <Field label="Phone Number" required error={errors.phone}>
             <Input
               name="phone"
               aria-label="Phone Number"
               autoComplete="tel"
+              ref={(el) => { fieldRefs.current.phone = el; }}
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               inputMode="tel"
-              className="h-10 rounded-none border-foreground/20 text-sm"
+              className={"h-10 rounded-none text-sm " + (errors.phone ? "border-2 border-[#E63A1F]" : "border-foreground/20")}
             />
           </Field>
         </div>
 
-        {/* Email — used to send a booking confirmation */}
-        <Field label="Email (for confirmation)" required>
+        {/* Email — optional; used to send a booking confirmation when provided */}
+        <Field label="Email (optional — for confirmation)" error={errors.email}>
           <Input
             type="email"
               name="email"
-              aria-label="Email (for confirmation)"
-            required
+              aria-label="Email (optional — for confirmation)"
+              ref={(el) => { fieldRefs.current.email = el; }}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             inputMode="email"
               autoComplete="email"
             placeholder="you@example.com"
-            className="h-10 rounded-none border-foreground/20 text-sm"
+            className={"h-10 rounded-none text-sm " + (errors.email ? "border-2 border-[#E63A1F]" : "border-foreground/20")}
           />
         </Field>
 
         {/* Date + Time */}
         <div className="grid gap-3 sm:grid-cols-2">
-          <Field label="Appointment Date" required>
+          <Field label="Appointment Date" required error={errors.date}>
             <Input
               type="date"
               name="appointment-date"
@@ -247,7 +271,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
               className="h-10 rounded-none border-foreground/20 text-sm"
             />
           </Field>
-          <Field label="Appointment Time" required>
+          <Field label="Appointment Time" required error={errors.slot}>
             <Select value={slot} onValueChange={setSlot}>
               <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
                 <SelectValue />
@@ -261,8 +285,8 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           </Field>
         </div>
 
-        {/* Address */}
-        <Field label="Street Address" required>
+        {/* Address (optional — we confirm on the phone call) */}
+        <Field label="Street Address (optional)">
           <Input
             name="street-address"
             aria-label="Street Address"
@@ -275,7 +299,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         </Field>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <Field label="City" required>
+          <Field label="City (optional)">
             <Input
               name="city"
               aria-label="City"
@@ -333,13 +357,14 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   );
 }
 
-function Field({ label, required, children }: { label: string; required?: boolean; children: React.ReactNode }) {
+function Field({ label, required, error, children }: { label: string; required?: boolean; error?: string; children: React.ReactNode }) {
   return (
     <div className="space-y-1">
       <Label className="text-xs font-semibold uppercase tracking-wide text-foreground/80">
         {label} {required && <span className="text-[#E63A1F]">*</span>}
       </Label>
       {children}
+      {error && <p className="text-xs font-semibold text-[#E63A1F]">{error}</p>}
     </div>
   );
 }
