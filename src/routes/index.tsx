@@ -167,7 +167,6 @@ function Index() {
       <CommonProblems />
       <RecentProjects />
       <ServiceAreaSeo />
-      <WhyChooseUs />
       <TrustMarquee />
       <EmergencyCallBar />
       <LeakingChimney />
