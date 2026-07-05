@@ -40,6 +40,7 @@ const REPAIR_MENU: MenuLink[] = [
   { label: "Crown Repair & Tuckpointing", to: "/services/$slug", slug: "crown-tuckpoint" },
   { label: "Chimney Leak & Flashing Repair", to: "/services/$slug", slug: "flashing-repair" },
   { label: "Chimney Cap Installation", to: "/services/$slug", slug: "cap-install" },
+  { label: "Chase Cover Replacement", to: "/services/$slug", slug: "chase-cover-replacement" },
   { label: "Chimney Waterproofing", to: "/services/$slug", slug: "waterproofing" },
   { label: "Stainless Liner Installation", to: "/services/$slug", slug: "liner-install" },
   { label: "Firebox Rebuild", to: "/services/$slug", slug: "firebox-rebuild" },
