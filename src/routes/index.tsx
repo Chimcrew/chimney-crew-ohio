@@ -160,14 +160,12 @@ function Index() {
         <TrustMarquee />
       </div>
       <HeroToOfferBridge />
+      <ScheduleSection />
       <FlashingJobShowcase variant="compact" />
       <Testimonials />
-      <RealTeamGallery />
       <TrustBar />
       <CommonProblems />
-      <PhotoVideoTrust />
       <RecentProjects />
-      <ScheduleSection />
       <ServiceAreaSeo />
       <WhyChooseUs />
       <TrustMarquee />
