@@ -370,11 +370,9 @@ function Hero() {
         </div>
       </div>
 
-      {/* Hero grid: copy + CTAs LEFT, lead form RIGHT (desktop), stacked on mobile */}
+      {/* Hero message */}
       <div className="relative z-20 mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-10 sm:pt-8 md:pb-14 lg:px-8 lg:pt-12">
-        <div className="grid gap-10 sm:gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-12">
-        {/* LEFT — message column */}
-        <div className="min-w-0">
+        <div className="max-w-3xl">
         {/* Certified badge */}
         <div className="flex items-start gap-2">
           <img
@@ -417,7 +415,7 @@ function Hero() {
 
         <div className="mt-8 flex flex-col items-start gap-4 sm:mt-6 sm:flex-row sm:flex-wrap sm:gap-3">
           <a
-            href="#hero-lead-form"
+            href="#schedule-section"
             data-cta
             className="inline-flex h-13 items-center justify-center gap-2 bg-primary px-5 font-sans text-[15px] font-bold text-primary-foreground transition active:scale-95 min-[414px]:h-14 min-[414px]:px-6 min-[414px]:text-base"
           >
@@ -462,8 +460,8 @@ function Hero() {
           ))}
         </div>
         </div>
+      </div>
 
-    </div>
 
       </div>
     </section>
