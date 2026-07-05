@@ -311,6 +311,25 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
               </div>
             </div>
             ) : (
+            service.slug === "smoke-chamber-parging" ? (
+            <div className="relative overflow-hidden bg-card lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
+              <BeforeAfter
+                before={smokeChamberBefore.url}
+                after={smokeChamberAfter.url}
+                beforeLabel="Before"
+                afterLabel="After Parge"
+                alt="Smoke chamber parge coat — before and after"
+              />
+              <div className="flex items-center justify-between gap-3 border-t border-border/60 bg-secondary/40 px-4 py-3 sm:px-5">
+                <p className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/70">
+                  <MapPin className="h-3 w-3 text-flame" /> Real ChimCrew smoke chamber parge
+                </p>
+                <span className="rounded-full border border-flame/40 bg-flame/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
+                  Drag to compare
+                </span>
+              </div>
+            </div>
+            ) : (
             <div className="relative overflow-hidden rounded-none bg-card lg:rounded-none lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
               <img
                 src={heroPhoto}
@@ -338,7 +357,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
                 </span>
               </div>
             </div>
-            ))}
+            )))}
 
             {/* Credential chip below image */}
             <div className="mx-4 mt-4 flex items-center gap-3 rounded-none border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
