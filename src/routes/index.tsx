@@ -463,40 +463,8 @@ function Hero() {
         </div>
         </div>
 
-        {/* RIGHT — lead form column (above fold on desktop, below CTAs on mobile) */}
-        <div id="hero-lead-form" className="min-w-0 lg:sticky lg:top-24">
-          {/* Mobile-only review ticker above the form */}
-          <div className="block lg:hidden">
-            <TrustMarquee />
-          </div>
+    </div>
 
-          {/* Desktop-only crew photo above the form */}
-          <div className="hidden lg:block mb-4 overflow-hidden rounded-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
-            <img
-              src={teamHeroPhoto.url}
-              alt="The ChimCrew team in Columbus, Ohio"
-              className="block h-48 w-full object-cover"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-          {/* Minimal schedule banner above the form */}
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-3 border border-border bg-card px-4 py-3 shadow-[6px_6px_0_oklch(0.16_0.02_250/0.08)]">
-            <div className="flex items-center gap-2">
-              <span className="grid h-7 w-7 place-items-center bg-primary text-flame">
-                <ArrowRight className="h-4 w-4 rotate-90" />
-              </span>
-              <span className="font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-foreground">
-                Start here — schedule online
-              </span>
-            </div>
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
-              Columbus · Cincinnati · Dayton
-            </span>
-          </div>
-          <ScheduleInline />
-        </div>
-        </div>
       </div>
     </section>
   );
