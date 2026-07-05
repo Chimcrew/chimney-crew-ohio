@@ -1575,7 +1575,38 @@ function Testimonials() {
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Mobile: swipeable snap carousel — one review in view */}
+        <div className="mt-8 sm:hidden -mx-4">
+          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {reviews.map((r, i) => (
+              <figure
+                key={i}
+                className="relative flex w-[86%] shrink-0 snap-center flex-col overflow-hidden rounded-none border border-border bg-card p-5"
+              >
+                <div className="flex text-flame">
+                  {[0, 1, 2, 3, 4].map((s) => (
+                    <Star key={s} className="h-4 w-4 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="mt-3 flex-1 text-[15px] leading-relaxed text-foreground">
+                  "{r.quote}"
+                </blockquote>
+                <figcaption className="mt-5 border-t border-border pt-3">
+                  <p className="font-display text-sm font-semibold text-primary">{r.name}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                    {r.city}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="mt-1 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+            ← Swipe for more reviews →
+          </p>
+        </div>
+
+        {/* Tablet/desktop: grid */}
+        <div className="mt-12 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((r, i) => (
             <figure
               key={i}
