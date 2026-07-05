@@ -167,7 +167,6 @@ function Index() {
       <CommonProblems />
       <RecentProjects />
       <ServiceAreaSeo />
-      <WhyChooseUs />
       <TrustMarquee />
       <EmergencyCallBar />
       <LeakingChimney />
@@ -762,15 +761,15 @@ function CommonProblems() {
           </p>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {problems.map(({ label, body, slug, image, alt }) => (
             <Link
               key={label}
               to="/services/$slug"
               params={{ slug }}
-              className="group flex gap-4 rounded-none border border-border bg-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-flame hover:shadow-md"
+              className="group relative flex flex-col overflow-hidden rounded-none border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
             >
-              <div className="h-16 w-16 shrink-0 overflow-hidden rounded-none border border-border/60 bg-muted">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
                 <img
                   src={image}
                   alt={alt}
@@ -778,12 +777,19 @@ function CommonProblems() {
                   loading="lazy"
                   decoding="async"
                 />
-              </div>
-              <div className="min-w-0">
-                <p className="font-display text-base font-bold text-primary group-hover:text-flame">
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent" aria-hidden />
+                <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-primary/80 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame backdrop-blur">
+                  <AlertTriangle className="h-3 w-3" /> Common issue
+                </span>
+                <h3 className="absolute inset-x-4 bottom-3 font-display text-lg font-extrabold leading-tight text-primary-foreground drop-shadow sm:text-xl">
                   {label}
-                </p>
-                <p className="mt-1 text-sm leading-snug text-foreground/75">{body}</p>
+                </h3>
+              </div>
+              <div className="flex flex-1 items-start justify-between gap-3 p-4 sm:p-5">
+                <p className="text-sm leading-snug text-foreground/80">{body}</p>
+                <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border text-primary transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary">
+                  <ArrowRight className="h-4 w-4" />
+                </span>
               </div>
             </Link>
           ))}
@@ -1569,7 +1575,38 @@ function Testimonials() {
           </Link>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Mobile: swipeable snap carousel — one review in view */}
+        <div className="mt-8 sm:hidden -mx-4">
+          <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth px-4 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {reviews.map((r, i) => (
+              <figure
+                key={i}
+                className="relative flex w-[86%] shrink-0 snap-center flex-col overflow-hidden rounded-none border border-border bg-card p-5"
+              >
+                <div className="flex text-flame">
+                  {[0, 1, 2, 3, 4].map((s) => (
+                    <Star key={s} className="h-4 w-4 fill-current" />
+                  ))}
+                </div>
+                <blockquote className="mt-3 flex-1 text-[15px] leading-relaxed text-foreground">
+                  "{r.quote}"
+                </blockquote>
+                <figcaption className="mt-5 border-t border-border pt-3">
+                  <p className="font-display text-sm font-semibold text-primary">{r.name}</p>
+                  <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+                    {r.city}
+                  </p>
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+          <p className="mt-1 text-center font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground">
+            ← Swipe for more reviews →
+          </p>
+        </div>
+
+        {/* Tablet/desktop: grid */}
+        <div className="mt-12 hidden gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((r, i) => (
             <figure
               key={i}
