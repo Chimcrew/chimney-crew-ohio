@@ -59,7 +59,7 @@ import crackedCrownPhoto from "@/assets/problems/cracked-crown.png.asset.json";
 import damagedChimneyCapPhoto from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES, formatFromPrice, getService } from "@/data/services";
-import { BLOG_POSTS } from "@/data/blog-posts";
+
 
 import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
 import { BeforeAfter } from "@/components/BeforeAfter";
