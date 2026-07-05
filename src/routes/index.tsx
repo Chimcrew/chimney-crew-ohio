@@ -60,7 +60,7 @@ import damagedChimneyCapPhoto from "@/assets/problems/damaged-chimney-cap.jpg.as
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES, formatFromPrice, getService } from "@/data/services";
 import { BLOG_POSTS } from "@/data/blog-posts";
-import { TrustBar } from "@/components/TrustBar";
+
 import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
@@ -163,7 +163,7 @@ function Index() {
       <ScheduleSection />
       <FlashingJobShowcase variant="compact" />
       <Testimonials />
-      <TrustBar />
+      
       <CommonProblems />
       <RecentProjects />
       <ServiceAreaSeo />
