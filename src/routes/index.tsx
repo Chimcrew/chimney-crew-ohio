@@ -25,7 +25,7 @@ import {
   Video,
 } from "lucide-react";
 import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
-import { InlineLeadForm } from "@/components/InlineLeadForm";
+
 const logo = logoAsset.url;
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
@@ -59,7 +59,7 @@ import crackedCrownPhoto from "@/assets/problems/cracked-crown.png.asset.json";
 import damagedChimneyCapPhoto from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
 import { RecentProjects } from "@/components/RecentProjectsSection";
 import { SERVICES, formatFromPrice, getService } from "@/data/services";
-import { BLOG_POSTS } from "@/data/blog-posts";
+
 
 import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
 import { BeforeAfter } from "@/components/BeforeAfter";
@@ -160,7 +160,7 @@ function Index() {
         <TrustMarquee />
       </div>
       <HeroToOfferBridge />
-      <ScheduleSection />
+      <ScheduleSection id="schedule-section" />
       <FlashingJobShowcase variant="compact" />
       <Testimonials />
       <CommonProblems />
@@ -169,7 +169,6 @@ function Index() {
       <TrustMarquee />
       <EmergencyCallBar />
       <LeakingChimney />
-      <FieldNotes />
       <Faq />
       <TrustMarquee />
       <EmergencyCallBar />
@@ -180,9 +179,9 @@ function Index() {
 /* ============================================================
    SCHEDULE SECTION — main form on the homepage
    ============================================================ */
-function ScheduleSection() {
+function ScheduleSection({ id }: { id?: string }) {
   return (
-    <section className="relative bg-background py-16 md:py-20">
+    <section id={id} className="relative bg-background py-16 md:py-20">
       <div className="mx-auto max-w-3xl px-4 md:px-8">
         <ScheduleInline />
       </div>
@@ -370,11 +369,9 @@ function Hero() {
         </div>
       </div>
 
-      {/* Hero grid: copy + CTAs LEFT, lead form RIGHT (desktop), stacked on mobile */}
+      {/* Hero message */}
       <div className="relative z-20 mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-10 sm:pt-8 md:pb-14 lg:px-8 lg:pt-12">
-        <div className="grid gap-10 sm:gap-8 lg:grid-cols-[1.05fr_1fr] lg:items-start lg:gap-12">
-        {/* LEFT — message column */}
-        <div className="min-w-0">
+        <div className="max-w-3xl">
         {/* Certified badge */}
         <div className="flex items-start gap-2">
           <img
@@ -417,7 +414,7 @@ function Hero() {
 
         <div className="mt-8 flex flex-col items-start gap-4 sm:mt-6 sm:flex-row sm:flex-wrap sm:gap-3">
           <a
-            href="#hero-lead-form"
+            href="#schedule-section"
             data-cta
             className="inline-flex h-13 items-center justify-center gap-2 bg-primary px-5 font-sans text-[15px] font-bold text-primary-foreground transition active:scale-95 min-[414px]:h-14 min-[414px]:px-6 min-[414px]:text-base"
           >
@@ -460,41 +457,6 @@ function Hero() {
               {label}
             </span>
           ))}
-        </div>
-        </div>
-
-        {/* RIGHT — lead form column (above fold on desktop, below CTAs on mobile) */}
-        <div id="hero-lead-form" className="min-w-0 lg:sticky lg:top-24">
-          {/* Mobile-only review ticker above the form */}
-          <div className="block lg:hidden">
-            <TrustMarquee />
-          </div>
-
-          {/* Desktop-only crew photo above the form */}
-          <div className="hidden lg:block mb-4 overflow-hidden rounded-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
-            <img
-              src={teamHeroPhoto.url}
-              alt="The ChimCrew team in Columbus, Ohio"
-              className="block h-48 w-full object-cover"
-              loading="eager"
-              decoding="async"
-            />
-          </div>
-          {/* Minimal schedule banner above the form */}
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-3 border border-border bg-card px-4 py-3 shadow-[6px_6px_0_oklch(0.16_0.02_250/0.08)]">
-            <div className="flex items-center gap-2">
-              <span className="grid h-7 w-7 place-items-center bg-primary text-flame">
-                <ArrowRight className="h-4 w-4 rotate-90" />
-              </span>
-              <span className="font-mono text-[11px] font-extrabold uppercase tracking-[0.18em] text-foreground">
-                Start here — schedule online
-              </span>
-            </div>
-            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-flame">
-              Columbus · Cincinnati · Dayton
-            </span>
-          </div>
-          <ScheduleInline />
         </div>
         </div>
       </div>
@@ -1779,73 +1741,3 @@ function ServiceArea() {
   );
 }
 
-/* ============================================================
-   FIELD NOTES — latest blog articles
-   ============================================================ */
-function FieldNotes() {
-  const posts = BLOG_POSTS.slice(0, 3);
-  return (
-    <section className="relative overflow-hidden bg-background py-20 md:py-24" id="field-notes">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-30" aria-hidden />
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
-        <div className="mb-10 flex flex-wrap items-end justify-between gap-6">
-          <div className="max-w-2xl">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.25em] text-flame">
-              ◆ Field Notes · From the rooftops
-            </p>
-            <h2 className="mt-3 font-display text-3xl font-extrabold leading-tight tracking-tight text-foreground md:text-5xl">
-              Straight talk from <span className="text-flame">our crew</span>.
-            </h2>
-            <p className="mt-4 text-base text-muted-foreground md:text-lg">
-              Practical chimney advice written by working Ohio sweeps — not marketers, not AI. Read
-              what we'd tell our own family.
-            </p>
-          </div>
-          <Link
-            to="/blog"
-            className="inline-flex items-center gap-2 rounded-none border-2 border-foreground/15 bg-card px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame hover:text-flame"
-          >
-            All articles <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-3">
-          {posts.map((p) => (
-            <article
-              key={p.slug}
-              className="group flex flex-col overflow-hidden rounded-none border-2 border-border bg-card transition hover:border-flame hover:shadow-flame"
-            >
-              <Link
-                to="/blog/$slug"
-                params={{ slug: p.slug }}
-                className="block aspect-[16/10] overflow-hidden"
-              >
-                <img
-                  src={p.cover}
-                  alt={p.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
-                />
-              </Link>
-              <div className="flex flex-1 flex-col p-6">
-                <span className="inline-flex w-fit rounded-full border border-flame/30 bg-flame/10 px-2.5 py-0.5 font-mono text-[9px] font-bold uppercase tracking-[0.22em] text-flame">
-                  {p.category}
-                </span>
-                <h3 className="mt-3 font-display text-lg font-extrabold leading-tight">
-                  <Link to="/blog/$slug" params={{ slug: p.slug }} className="hover:text-flame">
-                    {p.title}
-                  </Link>
-                </h3>
-                <p className="mt-3 flex-1 text-sm text-muted-foreground">{p.excerpt}</p>
-                <div className="mt-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                  <span>{p.date}</span>
-                  <span>{p.readMinutes} min read</span>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
