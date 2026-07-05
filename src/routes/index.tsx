@@ -179,9 +179,9 @@ function Index() {
 /* ============================================================
    SCHEDULE SECTION — main form on the homepage
    ============================================================ */
-function ScheduleSection() {
+function ScheduleSection({ id }: { id?: string }) {
   return (
-    <section className="relative bg-background py-16 md:py-20">
+    <section id={id} className="relative bg-background py-16 md:py-20">
       <div className="mx-auto max-w-3xl px-4 md:px-8">
         <ScheduleInline />
       </div>
