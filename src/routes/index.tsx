@@ -163,7 +163,6 @@ function Index() {
       <ScheduleSection />
       <FlashingJobShowcase variant="compact" />
       <Testimonials />
-      
       <CommonProblems />
       <RecentProjects />
       <ServiceAreaSeo />
