@@ -34,6 +34,9 @@ import flashingBeforeAsset from "@/assets/process/flashing-before.jpeg.asset.jso
 import flashingProgressAsset from "@/assets/process/flashing-progress.jpeg.asset.json";
 import flashingAfterAsset from "@/assets/process/flashing-after.jpeg.asset.json";
 import dryerVentVideo from "@/assets/dryer-vent-cleaning.mp4.asset.json";
+import { BeforeAfter } from "@/components/BeforeAfter";
+import smokeChamberBefore from "@/assets/ba/smoke-chamber-before.jpeg.asset.json";
+import smokeChamberAfter from "@/assets/ba/smoke-chamber-after.jpeg.asset.json";
 
 const FLASHING_PROCESS = [
   { step: "01", stage: "Before", caption: "Original metal flashing — leak source found at chimney shoulder", url: flashingAfterAsset.url },
