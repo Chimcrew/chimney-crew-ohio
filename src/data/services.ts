@@ -33,6 +33,7 @@ import chimneyJobAAsset from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import chimneyJobBAsset from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import fireplaceServiceAsset from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 import sweepCloseupAsset from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
+import chaseCoverMeshAsset from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
 
 const techLinerInstall = techLinerInstallAsset.url;
 const techScaffoldingRebuild = techScaffoldingRebuildAsset.url;
@@ -46,6 +47,7 @@ const chimneyJobA = chimneyJobAAsset.url;
 const chimneyJobB = chimneyJobBAsset.url;
 const fireplaceServicePhoto = fireplaceServiceAsset.url;
 const sweepCloseupPhoto = sweepCloseupAsset.url;
+const chaseCoverHero = chaseCoverMeshAsset.url;
 
 export type ServiceVariant =
   | "maintenance"
@@ -158,6 +160,8 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
       return crownDemoInProgress;
     case "cap-install":
       return capInstallHero;
+    case "chase-cover-replacement":
+      return chaseCoverHero;
     case "animal-removal":
       return beforeChimney;
     case "gas-fireplace-service":
