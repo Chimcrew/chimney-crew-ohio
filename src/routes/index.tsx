@@ -160,7 +160,7 @@ function Index() {
         <TrustMarquee />
       </div>
       <HeroToOfferBridge />
-      <ScheduleSection />
+      <ScheduleSection id="schedule-section" />
       <FlashingJobShowcase variant="compact" />
       <Testimonials />
       <CommonProblems />
@@ -169,7 +169,6 @@ function Index() {
       <TrustMarquee />
       <EmergencyCallBar />
       <LeakingChimney />
-      <FieldNotes />
       <Faq />
       <TrustMarquee />
       <EmergencyCallBar />
