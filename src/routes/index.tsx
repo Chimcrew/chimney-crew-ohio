@@ -163,12 +163,10 @@ function Index() {
       <FlashingJobShowcase variant="compact" />
       <Testimonials />
       <RealTeamGallery />
-      <InstagramFollow />
       <TrustBar />
       <CommonProblems />
       <PhotoVideoTrust />
       <RecentProjects />
-      <DroneInspection />
       <ScheduleSection />
       <ServiceAreaSeo />
       <WhyChooseUs />
