@@ -164,10 +164,16 @@ export async function generateEstimatePdf(data: EstimatePdfData): Promise<jsPDF>
     const targetH = 64
     const targetW = (logo.w / logo.h) * targetH
     doc.addImage(logo.dataUrl, 'PNG', margin, 16, targetW, targetH)
+    doc.setFont('helvetica', 'normal').setFontSize(9).setTextColor(255, 255, 255)
+    doc.text(COMPANY.address, margin + targetW + 12, 42)
+    doc.text(`Phone: ${COMPANY.phone}`, margin + targetW + 12, 56)
+    doc.text(COMPANY.website, margin + targetW + 12, 70)
   } catch {
     doc.setTextColor(...BRAND_YELLOW)
     doc.setFont('helvetica', 'bold').setFontSize(28)
     doc.text('CHIMCREW', margin, 58)
+    doc.setFont('helvetica', 'normal').setFontSize(9).setTextColor(255, 255, 255)
+    doc.text(COMPANY.address, margin, 78)
   }
 
   doc.setTextColor(...BRAND_YELLOW)
