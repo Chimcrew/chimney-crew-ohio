@@ -42,7 +42,7 @@ const COMPANY = {
   phone: '(614) 683-5763',
   email: 'office@chimcrew.com',
   website: 'chimcrew.com',
-  address: '220 Vine Street, Columbus, OH 43215',
+  address: '220 Vine Street, Apt 225, Columbus, OH 43215',
 }
 
 const TERMS_TITLE = 'Terms and Conditions'
