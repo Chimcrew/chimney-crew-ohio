@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 import { sendEstimateAdmin, listEstimatesAdmin } from '@/lib/admin-estimates.functions'
 import type { LineItem } from '@/lib/email-templates/estimate-invoice'
-import { Trash2, Plus, Eye, Download, Send, ImagePlus } from 'lucide-react'
+import { Trash2, Plus, Eye, Download, Send, ImagePlus, Copy } from 'lucide-react'
 import { generateEstimatePdf, fileToPhoto, type EstimatePdfData } from '@/lib/estimate-pdf'
 import { ESTIMATE_PRESETS } from '@/data/estimate-presets'
 
@@ -186,6 +186,31 @@ function AdminEstimatesPage() {
       const res = await listSaved({ data: { passcode } })
       setSavedItems(res.items)
     } catch { /* ignore */ }
+  }
+
+  function duplicateFromSaved(item: any) {
+    const nextType: DocType = item.doc_type === 'invoice' ? 'invoice' : 'estimate'
+    setDocType(nextType)
+    setDocNumber(defaultNumber(nextType))
+    setDate(todayISO())
+    setCustomerName(item.customer_name ?? '')
+    setCustomerPhone(item.customer_phone ?? '')
+    setCustomerEmail(item.customer_email ?? '')
+    setServiceAddress(item.service_address ?? '')
+    setTechnicianName('')
+    // Line items are not stored on saved records — reconstruct a single
+    // line item with the saved total so the amount is preserved.
+    const totalAmount = Number(item.total ?? 0)
+    setItems([{ name: 'Services rendered', description: '', quantity: 1, price: totalAmount }])
+    setTaxPercent(0)
+    setDiscount(0)
+    const balance = Number(item.balance_due ?? totalAmount)
+    setDepositPaid(Math.max(0, totalAmount - balance))
+    setNotes('')
+    setPhotos([])
+    setSendMsg(`Loaded ${item.doc_number} into form — edit and resend.`)
+    setSendErr(null)
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   async function unlock(e: React.FormEvent) {
@@ -449,13 +474,13 @@ function AdminEstimatesPage() {
           </div>
         </form>
 
-        <SavedList items={savedItems} onRefresh={loadSaved} />
+        <SavedList items={savedItems} onRefresh={loadSaved} onDuplicate={duplicateFromSaved} />
       </div>
     </main>
   )
 }
 
-function SavedList({ items, onRefresh }: { items: any[]; onRefresh: () => void }) {
+function SavedList({ items, onRefresh, onDuplicate }: { items: any[]; onRefresh: () => void; onDuplicate: (item: any) => void }) {
   return (
     <section className="mt-12 border-t pt-8">
       <div className="flex items-center justify-between mb-4">
@@ -477,6 +502,14 @@ function SavedList({ items, onRefresh }: { items: any[]; onRefresh: () => void }
                 <a href={it.signedUrl} target="_blank" rel="noreferrer"
                   className="text-xs px-2 py-1 rounded bg-foreground text-background">Open PDF</a>
               )}
+              <button
+                type="button"
+                onClick={() => onDuplicate(it)}
+                className="text-xs px-2 py-1 rounded border inline-flex items-center gap-1 hover:bg-muted"
+                title="Load into the form to edit and resend"
+              >
+                <Copy className="w-3 h-3" /> Duplicate & edit
+              </button>
             </div>
           ))}
         </div>
