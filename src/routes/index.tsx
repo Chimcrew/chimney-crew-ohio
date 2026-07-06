@@ -461,6 +461,9 @@ function Hero() {
         </div>
         </div>
       </div>
+
+      {/* Running review line */}
+      <TrustMarquee />
     </section>
   );
 }
