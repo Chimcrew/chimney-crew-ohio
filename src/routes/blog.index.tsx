@@ -60,6 +60,7 @@ function BlogPage() {
           </>
         }
         subtitle="Practical chimney advice from rooftops across Columbus, Cincinnati, and Dayton. No fluff, no SEO filler — what we'd tell our own homeowners."
+        mobileBgImage={mobileHeroPhoto}
       />
 
       {/* FEATURED */}
