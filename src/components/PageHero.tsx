@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import heroPhoto from "@/assets/team/chimcrew-team-truck.png.asset.json";
+import heroPhoto from "@/assets/hero/hero-rooftop-liner.jpg.asset.json";
 
 type PageHeroProps = {
   eyebrow?: ReactNode;
