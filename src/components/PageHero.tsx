@@ -8,17 +8,19 @@ type PageHeroProps = {
   children?: ReactNode;
   className?: string;
   mobileBgImage?: { url: string };
+  desktopBgImage?: { url: string };
 };
 
-export function PageHero({ eyebrow, title, subtitle, children, className = "", mobileBgImage }: PageHeroProps) {
+export function PageHero({ eyebrow, title, subtitle, children, className = "", mobileBgImage, desktopBgImage }: PageHeroProps) {
+  const hasOverride = mobileBgImage || desktopBgImage;
   return (
     <section className={`relative overflow-hidden bg-primary text-primary-foreground min-h-[420px] md:min-h-[520px] flex items-center ${className}`}>
-      {/* Background photo — desktop default */}
+      {/* Background photo — desktop default or override */}
       <img
         aria-hidden
-        src={heroPhoto.url}
+        src={desktopBgImage ? desktopBgImage.url : heroPhoto.url}
         alt=""
-        className={`pointer-events-none absolute inset-0 h-full w-full object-cover object-center ${mobileBgImage ? "hidden md:block" : ""}`}
+        className={`pointer-events-none absolute inset-0 h-full w-full object-cover object-center ${hasOverride ? "hidden md:block" : ""}`}
         loading="eager"
         decoding="async"
       />
@@ -34,7 +36,7 @@ export function PageHero({ eyebrow, title, subtitle, children, className = "", m
         />
       )}
       {/* Uniform tint for text legibility (no gradient) */}
-      <div className={`pointer-events-none absolute inset-0 ${mobileBgImage ? "bg-black/45 md:bg-black/55" : "bg-black/55"}`} aria-hidden />
+      <div className={`pointer-events-none absolute inset-0 ${hasOverride ? "bg-black/45 md:bg-black/55" : "bg-black/55"}`} aria-hidden />
 
       <div className="relative mx-auto w-full max-w-6xl px-4 py-14 md:px-8 md:py-20">
         {eyebrow && (
