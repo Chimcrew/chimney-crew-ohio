@@ -7,20 +7,32 @@ type PageHeroProps = {
   subtitle?: ReactNode;
   children?: ReactNode;
   className?: string;
+  mobileBgImage?: { url: string };
 };
 
-export function PageHero({ eyebrow, title, subtitle, children, className = "" }: PageHeroProps) {
+export function PageHero({ eyebrow, title, subtitle, children, className = "", mobileBgImage }: PageHeroProps) {
   return (
     <section className={`relative overflow-hidden bg-primary text-primary-foreground min-h-[420px] md:min-h-[520px] flex items-center ${className}`}>
-      {/* Background photo — ChimCrew team + truck */}
+      {/* Background photo — desktop default */}
       <img
         aria-hidden
         src={heroPhoto.url}
         alt=""
-        className="pointer-events-none absolute inset-0 h-full w-full object-cover object-center"
+        className={`pointer-events-none absolute inset-0 h-full w-full object-cover object-center ${mobileBgImage ? "hidden md:block" : ""}`}
         loading="eager"
         decoding="async"
       />
+      {/* Background photo — mobile override */}
+      {mobileBgImage && (
+        <img
+          aria-hidden
+          src={mobileBgImage.url}
+          alt=""
+          className="pointer-events-none absolute inset-0 block h-full w-full object-cover object-center md:hidden"
+          loading="eager"
+          decoding="async"
+        />
+      )}
       {/* Uniform tint for text legibility (no gradient) */}
       <div className="pointer-events-none absolute inset-0 bg-black/55" aria-hidden />
 

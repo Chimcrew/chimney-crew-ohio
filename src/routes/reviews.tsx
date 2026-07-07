@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star, Quote, ShieldCheck, MapPin, BadgeCheck } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
+import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset.json";
 
 export const Route = createFileRoute("/reviews")({
   head: () => ({
@@ -115,6 +116,7 @@ function ReviewsPage() {
       <PageHero
         eyebrow="Reviews · Ohio Homeowners"
         title={<>Chimney Service Reviews — What Ohio <span className="text-flame">Homeowners</span> Say</>}
+        mobileBgImage={mobileHeroPhoto}
       >
           <div className="mt-6 flex items-center gap-4">
             <div className="flex text-flame">

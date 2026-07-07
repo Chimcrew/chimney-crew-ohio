@@ -3,6 +3,7 @@ import { Phone, Mail, Clock, CalendarCheck, ShieldCheck, Flame, MessageSquare, S
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import { TrustBadges } from "@/components/TrustBadges";
 import { PageHero } from "@/components/PageHero";
+import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset.json";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -25,6 +26,7 @@ function ContactPage() {
         eyebrow="Same-day callback · Ohio crew"
         title={<>Talk to an <span className="text-flame">Ohio chimney crew</span>.</>}
         subtitle="Pick the easiest way to reach us. We answer fast, quote in writing, and never sell what you don't need."
+        mobileBgImage={mobileHeroPhoto}
       >
           {/* Quick-reach tiles */}
           <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
