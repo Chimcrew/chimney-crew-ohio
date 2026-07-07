@@ -620,7 +620,7 @@ function TrustMarquee() {
         ★ 5-Star Rated · Google · Yelp · Angi · BBB
       </p>
       <div className="flex w-max animate-marquee-single items-center gap-3 whitespace-nowrap px-3">
-        {loop.map((c, i) => (
+        {chips.map((c, i) => (
           <span
             key={`${c.label}-${i}`}
             className="inline-flex items-center rounded-none border border-border bg-background px-3 py-2 shadow-sm"
