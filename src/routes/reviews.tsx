@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star, Quote, ShieldCheck, MapPin, BadgeCheck } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
-import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset_json";
+import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset.json";
 
 export const Route = createFileRoute("/reviews")({
   head: () => ({
