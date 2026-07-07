@@ -71,6 +71,7 @@ function BeforeAfterPage() {
         eyebrow="Done Projects · Ohio crew"
         title={<>Completed <span className="text-flame">Projects</span></>}
         subtitle="A clean look at finished ChimCrew chimney, masonry, fireplace, liner, cap, and inspection work across Ohio."
+        mobileBgImage={mobileHeroPhoto}
       />
 
       {/* DONE PROJECTS — elevated gallery, no duplicate photos */}
