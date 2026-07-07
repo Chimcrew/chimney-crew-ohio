@@ -86,11 +86,6 @@ function BeforeAfterPage() {
                 No duplicate tiles, no crowded comparison blocks — just a curated project wall with breathing room.
               </p>
             </div>
-            <div className="grid grid-cols-3 border border-border bg-card text-center shadow-[8px_8px_0_oklch(0.16_0.02_250/0.08)]">
-              <Stat value={`${UNIQUE_GALLERY.length}`} label="photos" />
-              <Stat value="20+" label="cities" />
-              <Stat value="Done" label="status" />
-            </div>
           </div>
 
           <div className="relative mt-10 grid auto-rows-[190px] gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -119,15 +114,6 @@ function BeforeAfterPage() {
       </section>
 
     </>
-  );
-}
-
-function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <div className="min-w-20 border-r border-border px-4 py-3 last:border-r-0">
-      <p className="font-display text-xl font-extrabold leading-none text-primary">{value}</p>
-      <p className="mt-1 font-mono text-[9px] font-bold uppercase tracking-[0.2em] text-muted-foreground">{label}</p>
-    </div>
   );
 }
 
