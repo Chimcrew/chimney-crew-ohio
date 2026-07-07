@@ -611,7 +611,6 @@ function TrustMarquee() {
       ),
     },
   ];
-  const loop = [...chips, ...chips];
   return (
     <section
       aria-label="Trusted on review platforms"
@@ -620,7 +619,7 @@ function TrustMarquee() {
       <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
         ★ 5-Star Rated · Google · Yelp · Angi · BBB
       </p>
-      <div className="flex w-max animate-marquee items-center gap-3 whitespace-nowrap px-3">
+      <div className="flex w-max animate-marquee-single items-center gap-3 whitespace-nowrap px-3">
         {loop.map((c, i) => (
           <span
             key={`${c.label}-${i}`}
