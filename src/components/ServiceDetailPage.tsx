@@ -26,10 +26,10 @@ import {
   type ServiceSpec,
 } from "@/data/services";
 import { TrustBadges } from "@/components/TrustBadges";
-import { DroneInspection } from "@/components/DroneInspection";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import { FlashingJobShowcase } from "@/components/FlashingJobShowcase";
+import { ServiceArticle } from "@/components/ServiceArticle";
 import flashingBeforeAsset from "@/assets/process/flashing-before.jpeg.asset.json";
 import flashingProgressAsset from "@/assets/process/flashing-progress.jpeg.asset.json";
 import flashingAfterAsset from "@/assets/process/flashing-after.jpeg.asset.json";
@@ -68,39 +68,8 @@ export function ServiceDetailPage({ service }: { service: ServiceSpec }) {
       {/* Emergency call bar — same as homepage */}
       <EmergencyCallBar />
 
-      {/* Drone inspection block (homepage parity) — hidden on dryer vent page */}
-      {service.slug !== "dryer-vent-cleaning" && <DroneInspection />}
-
-
-      {/* OVERVIEW + spec card (editorial split) */}
-      <Overview service={service} />
-
-      {/* WHAT'S INCLUDED — magazine columns with big numerals */}
-      <Included service={service} />
-
-      {/* Inline conversion block — keeps CTA reachable without scrolling back up */}
-      <InlineRepairCta ctaLabel={ctaLabel} />
-
-      {/* SIGNS — alternating zig-zag list */}
-      <Signs service={service} />
-
-      {/* PROBLEMS (optional) */}
-      {service.problems && service.problems.length > 0 && <ProblemsBlock service={service} />}
-
-      {/* BENEFITS (optional) */}
-      {service.benefits && service.benefits.length > 0 && <BenefitsBlock service={service} />}
-
-      {/* Second inline CTA before final dark band */}
-      <InlineRepairCta variant="flame" ctaLabel={ctaLabel} />
-
-      {/* Pull-quote testimonial */}
-      <PullQuote service={service} />
-
-      {/* FAQ */}
-      <Faqs service={service} />
-
-      {/* RELATED */}
-      <Related service={service} />
+      {/* Long-form article body — rebuilt in the reference site's structure */}
+      <ServiceArticle service={service} />
 
       {/* SCHEDULE FORM — global lead form on every service page */}
       <section className="border-y border-border bg-secondary/30 py-16 md:py-20">
