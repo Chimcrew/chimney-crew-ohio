@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Camera, MapPin } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset.json";
+import desktopHeroPhoto from "@/assets/hero/hero-desktop-team-chimney.png.asset.json";
 import gj1 from "@/assets/gallery-jobs/gj1.jpeg.asset.json";
 import gj2 from "@/assets/gallery-jobs/gj2.jpeg.asset.json";
 import gj3 from "@/assets/gallery-jobs/gj3.jpeg.asset.json";
@@ -72,6 +73,7 @@ function BeforeAfterPage() {
         title={<>Completed <span className="text-flame">Projects</span></>}
         subtitle="A clean look at finished ChimCrew chimney, masonry, fireplace, liner, cap, and inspection work across Ohio."
         mobileBgImage={mobileHeroPhoto}
+        desktopBgImage={desktopHeroPhoto}
       />
 
       {/* DONE PROJECTS — elevated gallery, no duplicate photos */}

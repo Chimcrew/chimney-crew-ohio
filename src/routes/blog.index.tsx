@@ -3,6 +3,7 @@ import { Calendar, ArrowRight, Clock } from "lucide-react";
 import { BLOG_POSTS } from "@/data/blog-posts";
 import { PageHero } from "@/components/PageHero";
 import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset.json";
+import desktopHeroPhoto from "@/assets/hero/hero-desktop-team-chimney.png.asset.json";
 
 const SITE = "https://chimcrew.com";
 
@@ -61,6 +62,7 @@ function BlogPage() {
         }
         subtitle="Practical chimney advice from rooftops across Columbus, Cincinnati, and Dayton. No fluff, no SEO filler — what we'd tell our own homeowners."
         mobileBgImage={mobileHeroPhoto}
+        desktopBgImage={desktopHeroPhoto}
       />
 
       {/* FEATURED */}
