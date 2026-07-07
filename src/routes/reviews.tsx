@@ -116,6 +116,7 @@ function ReviewsPage() {
       <PageHero
         eyebrow="Reviews · Ohio Homeowners"
         title={<>Chimney Service Reviews — What Ohio <span className="text-flame">Homeowners</span> Say</>}
+        mobileBgImage={mobileHeroPhoto}
       >
           <div className="mt-6 flex items-center gap-4">
             <div className="flex text-flame">
