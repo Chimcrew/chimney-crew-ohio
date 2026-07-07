@@ -7,6 +7,7 @@ type PageHeroProps = {
   subtitle?: ReactNode;
   children?: ReactNode;
   className?: string;
+  mobileBgImage?: { url: string };
 };
 
 export function PageHero({ eyebrow, title, subtitle, children, className = "" }: PageHeroProps) {
