@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Calculator, CalendarCheck, ShieldCheck, CheckCircle2, Phone } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset.json";
+import desktopHeroPhoto from "@/assets/hero/hero-desktop-team-chimney.png.asset.json";
 
 export const Route = createFileRoute("/financing")({
   head: () => ({
@@ -56,6 +57,7 @@ function FinancingPage() {
         title={<>Repair now. <span className="text-flame">Pay monthly.</span></>}
         subtitle="Move the sliders. See your monthly payment in seconds — no credit pull, no email required. When you're ready, we'll lock the quote at your free on-site inspection."
         mobileBgImage={mobileHeroPhoto}
+        desktopBgImage={desktopHeroPhoto}
       />
 
       {/* CALCULATOR */}
