@@ -334,6 +334,12 @@
   }
   .animate-marquee { animation: marquee 28s linear infinite; }
 
+  @keyframes marquee-single {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+  }
+  .animate-marquee-single { animation: marquee-single 28s linear infinite; }
+
   .hero-main-title {
     font-size: 30px !important;
     line-height: 1.08 !important;

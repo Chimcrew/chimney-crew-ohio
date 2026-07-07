@@ -155,10 +155,6 @@ function Index() {
   return (
     <>
       <Hero />
-      {/* Desktop-only review ticker above the big ChimCrew logo */}
-      <div className="hidden lg:block">
-        <TrustMarquee />
-      </div>
       <HeroToOfferBridge />
       <ScheduleSection id="schedule-section" />
       <FlashingJobShowcase variant="compact" />
@@ -615,7 +611,6 @@ function TrustMarquee() {
       ),
     },
   ];
-  const loop = [...chips, ...chips];
   return (
     <section
       aria-label="Trusted on review platforms"
@@ -624,8 +619,8 @@ function TrustMarquee() {
       <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
         ★ 5-Star Rated · Google · Yelp · Angi · BBB
       </p>
-      <div className="flex w-max animate-marquee items-center gap-3 whitespace-nowrap px-3">
-        {loop.map((c, i) => (
+      <div className="flex w-max animate-marquee-single items-center gap-3 whitespace-nowrap px-3">
+        {chips.map((c, i) => (
           <span
             key={`${c.label}-${i}`}
             className="inline-flex items-center rounded-none border border-border bg-background px-3 py-2 shadow-sm"
