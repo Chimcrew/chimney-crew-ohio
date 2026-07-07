@@ -28,13 +28,13 @@ export function PageHero({ eyebrow, title, subtitle, children, className = "", m
           aria-hidden
           src={mobileBgImage.url}
           alt=""
-          className="pointer-events-none absolute inset-0 block h-full w-full object-cover object-center md:hidden"
+          className="pointer-events-none absolute inset-0 block h-full w-full object-cover object-center brightness-110 md:hidden"
           loading="eager"
           decoding="async"
         />
       )}
       {/* Uniform tint for text legibility (no gradient) */}
-      <div className="pointer-events-none absolute inset-0 bg-black/55" aria-hidden />
+      <div className={`pointer-events-none absolute inset-0 ${mobileBgImage ? "bg-black/45 md:bg-black/55" : "bg-black/55"}`} aria-hidden />
 
       <div className="relative mx-auto w-full max-w-6xl px-4 py-14 md:px-8 md:py-20">
         {eyebrow && (
