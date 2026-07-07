@@ -410,7 +410,7 @@ function Hero() {
         </div>
 
         <p className="hero-copy mt-6 max-w-[38ch] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:leading-relaxed">
-          Trusted Columbus &amp; Central Ohio homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
+          Trusted <span className="font-bold text-foreground">Columbus &amp; Central Ohio</span> homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
         </p>
 
         <div className="mt-8 flex flex-col items-start gap-4 sm:mt-6 sm:flex-row sm:flex-wrap sm:gap-3">
