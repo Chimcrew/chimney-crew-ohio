@@ -537,14 +537,14 @@ export function SiteHeader() {
             <div className="mt-4 grid grid-cols-2 gap-2">
               <a
                 href="tel:6146835763"
-                className="flex items-center justify-center gap-1.5 whitespace-nowrap border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-3 py-2.5 font-sans text-[12px] font-bold tracking-normal text-foreground/80"
+                className="flex items-center justify-center gap-1.5 whitespace-nowrap border border-[oklch(0.18_0.02_250/0.1)] bg-[oklch(0.18_0.02_250/0.03)] px-4 py-3 font-sans text-[13px] font-bold tracking-normal text-foreground/80"
               >
                 <Phone className="h-4 w-4" /> Call Now
               </a>
               <button
                 type="button"
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
-                className="flex items-center justify-center gap-1.5 whitespace-nowrap bg-primary px-3 py-2.5 font-sans text-[12px] font-extrabold tracking-normal text-primary-foreground"
+                className="flex items-center justify-center gap-1.5 whitespace-nowrap bg-primary px-4 py-3 font-sans text-[13px] font-extrabold tracking-normal text-primary-foreground"
               >
                 <CalendarCheck className="h-4 w-4" /> Schedule Free Inspection
               </button>
