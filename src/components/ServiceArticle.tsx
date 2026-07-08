@@ -14,6 +14,21 @@ import gj15 from "@/assets/gallery-jobs/gj15.jpeg.asset.json";
 import gj17 from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
 import gj19 from "@/assets/gallery-jobs/gj19.jpeg.asset.json";
 import capInstallProcessAsset from "@/assets/uploads/cap-install-process.jpeg.asset.json";
+import dryerBefore1 from "@/assets/uploads/dryer-before-1.jpeg.asset.json";
+import dryerAfter1 from "@/assets/uploads/dryer-after-1.jpeg.asset.json";
+import dryerBefore2 from "@/assets/uploads/dryer-before-2.jpeg.asset.json";
+import dryerAfter2 from "@/assets/uploads/dryer-after-2.jpeg.asset.json";
+import dryerBefore3 from "@/assets/uploads/dryer-before-3.jpeg.asset.json";
+import dryerAfter3 from "@/assets/uploads/dryer-after-3.jpeg.asset.json";
+import dryerBefore4 from "@/assets/uploads/dryer-before-4.jpeg.asset.json";
+import dryerAfter4 from "@/assets/uploads/dryer-after-4.jpeg.asset.json";
+
+const DRYER_BEFORE_AFTER = [
+  { before: dryerBefore1.url, after: dryerAfter1.url, label: "Lint-clogged dryer vent line" },
+  { before: dryerBefore2.url, after: dryerAfter2.url, label: "Exterior vent hood restoration" },
+  { before: dryerBefore3.url, after: dryerAfter3.url, label: "Interior vent — fire hazard removed" },
+  { before: dryerBefore4.url, after: dryerAfter4.url, label: "Dryer transition duct cleaning" },
+];
 
 /** Pick a secondary photo relevant to the service. Falls back to a generic
  *  ChimCrew crew shot when nothing more specific is a good match. */
@@ -98,8 +113,9 @@ function BulletList({ items }: { items: string[] }) {
 export function ServiceArticle({ service }: { service: ServiceSpec }) {
   const s = service.shortTitle;
   const sLower = s.toLowerCase();
-  const primaryPhoto = heroImageFor(service);
-  const secondaryPhoto = secondaryImageFor(service.slug);
+  const isDryer = service.slug === "dryer-vent-cleaning";
+  const primaryPhoto = isDryer ? dryerBefore1.url : heroImageFor(service);
+  const secondaryPhoto = isDryer ? dryerAfter1.url : secondaryImageFor(service.slug);
 
   // Generate content from existing service data — no hardcoding per slug.
   const dangers = service.problems ?? [
@@ -193,6 +209,55 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
           Each step is carried out by experienced technicians who are fluent in restoring your
           chimney's original functionality — and documenting every stage with photos.
         </P>
+
+        {isDryer && (
+          <div className="mt-12">
+            <H2>Real Before &amp; After — Dryer Vents</H2>
+            <P>
+              Every dryer vent below was cleaned by our crew. The lint you see in the
+              &ldquo;before&rdquo; shots is exactly what causes 15,000+ dryer fires a year in
+              the U.S. — and what we pull out on every visit.
+            </P>
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {DRYER_BEFORE_AFTER.slice(1).map((pair) => (
+                <figure
+                  key={pair.label}
+                  className="overflow-hidden rounded-none border border-border bg-card shadow-[0_20px_60px_-25px_oklch(0_0_0/0.35)]"
+                >
+                  <div className="grid grid-cols-2">
+                    <div className="relative">
+                      <img
+                        src={pair.before}
+                        alt={`Before — ${pair.label}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="block aspect-square w-full object-cover"
+                      />
+                      <span className="absolute left-2 top-2 rounded-none bg-background/90 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground">
+                        Before
+                      </span>
+                    </div>
+                    <div className="relative">
+                      <img
+                        src={pair.after}
+                        alt={`After — ${pair.label}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="block aspect-square w-full object-cover"
+                      />
+                      <span className="absolute left-2 top-2 rounded-none bg-flame px-2 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-white">
+                        After
+                      </span>
+                    </div>
+                  </div>
+                  <figcaption className="flex items-center gap-2 border-t border-border bg-secondary/40 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
+                    <MapPin className="h-3 w-3 text-flame" /> {pair.label}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
 
         <H2>Why Homeowners Prefer ChimCrew for {s}</H2>
         <P>
