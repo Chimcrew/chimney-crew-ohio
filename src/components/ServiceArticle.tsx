@@ -13,6 +13,7 @@ import gj12 from "@/assets/gallery-jobs/gj12.jpeg.asset.json";
 import gj15 from "@/assets/gallery-jobs/gj15.jpeg.asset.json";
 import gj17 from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
 import gj19 from "@/assets/gallery-jobs/gj19.jpeg.asset.json";
+import capInstallProcessAsset from "@/assets/uploads/cap-install-process.jpeg.asset.json";
 
 /** Pick a secondary photo relevant to the service. Falls back to a generic
  *  ChimCrew crew shot when nothing more specific is a good match. */
@@ -30,7 +31,7 @@ function secondaryImageFor(slug: string): string {
     case "animal-removal":
       return gj17.url;
     case "cap-install":
-      return gj10.url;
+      return capInstallProcessAsset.url;
     case "chase-cover-replacement":
       return gj15.url;
     case "waterproofing":
