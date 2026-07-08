@@ -31,7 +31,7 @@ function secondaryImageFor(slug: string): string {
     case "animal-removal":
       return gj17.url;
     case "cap-install":
-      return gj10.url;
+      return capInstallProcessAsset.url;
     case "chase-cover-replacement":
       return gj15.url;
     case "waterproofing":
