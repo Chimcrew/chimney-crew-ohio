@@ -14,6 +14,21 @@ import gj15 from "@/assets/gallery-jobs/gj15.jpeg.asset.json";
 import gj17 from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
 import gj19 from "@/assets/gallery-jobs/gj19.jpeg.asset.json";
 import capInstallProcessAsset from "@/assets/uploads/cap-install-process.jpeg.asset.json";
+import dryerBefore1 from "@/assets/uploads/dryer-before-1.jpeg.asset.json";
+import dryerAfter1 from "@/assets/uploads/dryer-after-1.jpeg.asset.json";
+import dryerBefore2 from "@/assets/uploads/dryer-before-2.jpeg.asset.json";
+import dryerAfter2 from "@/assets/uploads/dryer-after-2.jpeg.asset.json";
+import dryerBefore3 from "@/assets/uploads/dryer-before-3.jpeg.asset.json";
+import dryerAfter3 from "@/assets/uploads/dryer-after-3.jpeg.asset.json";
+import dryerBefore4 from "@/assets/uploads/dryer-before-4.jpeg.asset.json";
+import dryerAfter4 from "@/assets/uploads/dryer-after-4.jpeg.asset.json";
+
+const DRYER_BEFORE_AFTER = [
+  { before: dryerBefore1.url, after: dryerAfter1.url, label: "Lint-clogged dryer vent line" },
+  { before: dryerBefore2.url, after: dryerAfter2.url, label: "Exterior vent hood restoration" },
+  { before: dryerBefore3.url, after: dryerAfter3.url, label: "Interior vent — fire hazard removed" },
+  { before: dryerBefore4.url, after: dryerAfter4.url, label: "Dryer transition duct cleaning" },
+];
 
 /** Pick a secondary photo relevant to the service. Falls back to a generic
  *  ChimCrew crew shot when nothing more specific is a good match. */
@@ -98,8 +113,9 @@ function BulletList({ items }: { items: string[] }) {
 export function ServiceArticle({ service }: { service: ServiceSpec }) {
   const s = service.shortTitle;
   const sLower = s.toLowerCase();
-  const primaryPhoto = heroImageFor(service);
-  const secondaryPhoto = secondaryImageFor(service.slug);
+  const isDryer = service.slug === "dryer-vent-cleaning";
+  const primaryPhoto = isDryer ? dryerBefore1.url : heroImageFor(service);
+  const secondaryPhoto = isDryer ? dryerAfter1.url : secondaryImageFor(service.slug);
 
   // Generate content from existing service data — no hardcoding per slug.
   const dangers = service.problems ?? [
