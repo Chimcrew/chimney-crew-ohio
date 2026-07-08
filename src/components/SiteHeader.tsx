@@ -546,7 +546,7 @@ export function SiteHeader() {
                 onClick={() => { setOpen(false); openScheduleDialog(); }}
                 className="flex items-center justify-center gap-1.5 whitespace-nowrap bg-primary px-4 py-3 font-sans text-[13px] font-extrabold tracking-normal text-primary-foreground"
               >
-                <CalendarCheck className="h-4 w-4" /> Schedule Free Inspection
+                <CalendarCheck className="h-4 w-4" /> Schedule Online
               </button>
             </div>
 
