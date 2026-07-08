@@ -115,14 +115,16 @@ export const sendEstimateAdmin = createServerFn({ method: 'POST' })
 
     const SENDER_DOMAIN = 'notify.chimcrew.com'
     const FROM_DOMAIN = 'notify.chimcrew.com'
-    const SITE_NAME = 'ChimCrew'
+    const SITE_NAME = 'ChimCrew Estimates'
+    const REPLY_TO = 'office@chimcrew.com'
 
     const { error: enqueueError } = await supabaseAdmin.rpc('enqueue_email', {
       queue_name: 'transactional_emails',
       payload: {
         message_id: messageId,
         to: recipient,
-        from: `${SITE_NAME} <noreply@${FROM_DOMAIN}>`,
+        from: `${SITE_NAME} <estimates@${FROM_DOMAIN}>`,
+        reply_to: REPLY_TO,
         sender_domain: SENDER_DOMAIN,
         subject,
         html,
