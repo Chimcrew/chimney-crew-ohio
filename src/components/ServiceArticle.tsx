@@ -210,6 +210,55 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
           chimney's original functionality — and documenting every stage with photos.
         </P>
 
+        {isDryer && (
+          <div className="mt-12">
+            <H2>Real Before &amp; After — Dryer Vents</H2>
+            <P>
+              Every dryer vent below was cleaned by our crew. The lint you see in the
+              &ldquo;before&rdquo; shots is exactly what causes 15,000+ dryer fires a year in
+              the U.S. — and what we pull out on every visit.
+            </P>
+            <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+              {DRYER_BEFORE_AFTER.slice(1).map((pair) => (
+                <figure
+                  key={pair.label}
+                  className="overflow-hidden rounded-none border border-border bg-card shadow-[0_20px_60px_-25px_oklch(0_0_0/0.35)]"
+                >
+                  <div className="grid grid-cols-2">
+                    <div className="relative">
+                      <img
+                        src={pair.before}
+                        alt={`Before — ${pair.label}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="block aspect-square w-full object-cover"
+                      />
+                      <span className="absolute left-2 top-2 rounded-none bg-background/90 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground">
+                        Before
+                      </span>
+                    </div>
+                    <div className="relative">
+                      <img
+                        src={pair.after}
+                        alt={`After — ${pair.label}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="block aspect-square w-full object-cover"
+                      />
+                      <span className="absolute left-2 top-2 rounded-none bg-flame px-2 py-1 font-mono text-[10px] uppercase tracking-[0.22em] text-white">
+                        After
+                      </span>
+                    </div>
+                  </div>
+                  <figcaption className="flex items-center gap-2 border-t border-border bg-secondary/40 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
+                    <MapPin className="h-3 w-3 text-flame" /> {pair.label}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        )}
+
         <H2>Why Homeowners Prefer ChimCrew for {s}</H2>
         <P>
           Homeowners prefer ChimCrew because we combine personalized customer care, advanced
