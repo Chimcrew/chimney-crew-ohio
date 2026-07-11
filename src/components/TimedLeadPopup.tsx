@@ -211,6 +211,14 @@ export function TimedLeadPopup() {
                   </select>
                 </div>
 
+                <ConsentCheckboxes
+                  smsConsent={smsConsent}
+                  setSmsConsent={setSmsConsent}
+                  notRobot={notRobot}
+                  setNotRobot={setNotRobot}
+                  error={consentError}
+                />
+
                 <button
                   type="submit"
                   disabled={submitting}
