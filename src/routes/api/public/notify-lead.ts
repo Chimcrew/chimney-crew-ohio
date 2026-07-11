@@ -56,6 +56,7 @@ const LeadSchema = z.object({
   date: z.string().trim().min(1).max(40).optional(),
   timeWindow: z.string().trim().min(1).max(60).optional(),
   notes: z.string().trim().min(1).max(2000).optional(),
+  smsConsent: z.boolean().optional(),
 }).refine((data) => Boolean(data.name && data.phone), {
   message: 'Name and phone are required',
   path: ['phone'],
