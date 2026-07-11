@@ -30,6 +30,11 @@ function Terms() {
       <Section title="7. Governing law">
         <p>These terms are governed by the laws of the State of Ohio.</p>
       </Section>
+      <Section id="sms" title="8. SMS Terms and Conditions">
+        <p>By opting in to receive text messages from ChimCrew, you consent to receive SMS messages related to orders, service appointments, and other relevant information.</p>
+        <p>Message and data rates may apply. Message frequency may vary. You can reply STOP at any time to opt out of future messages. For help, reply HELP or contact us at (614) 683-5763.</p>
+        <p>We will not share your mobile information with third parties for marketing purposes. Your consent is not a condition of purchase.</p>
+      </Section>
     </LegalPage>
   );
 }
