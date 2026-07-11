@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 import { submitLead } from "@/lib/lead-submit";
+import { ConsentCheckboxes } from "@/components/ConsentCheckboxes";
 
 /**
  * Schedule "trigger" — instead of opening a modal, we navigate to the
