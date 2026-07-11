@@ -25,8 +25,11 @@ export function InlineLeadForm({
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [zip, setZip] = useState("");
+  const [smsConsent, setSmsConsent] = useState(false);
+  const [notRobot, setNotRobot] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [consentError, setConsentError] = useState("");
 
   const isDark = tone === "dark";
   const cardCls = isDark
