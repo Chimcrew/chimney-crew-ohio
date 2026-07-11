@@ -344,6 +344,14 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           />
         </Field>
 
+        <ConsentCheckboxes
+          smsConsent={smsConsent}
+          setSmsConsent={setSmsConsent}
+          notRobot={notRobot}
+          setNotRobot={setNotRobot}
+          error={errors.smsConsent || errors.notRobot}
+        />
+
         {/* Submit — always clickable; missing fields are reported via toast */}
         <button
           type="submit"
