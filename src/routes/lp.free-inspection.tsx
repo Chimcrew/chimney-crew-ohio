@@ -280,6 +280,14 @@ function InlineLeadForm() {
             inputMode="numeric"
           />
         </div>
+        <ConsentCheckboxes
+          smsConsent={smsConsent}
+          setSmsConsent={setSmsConsent}
+          notRobot={notRobot}
+          setNotRobot={setNotRobot}
+          error={consentError}
+        />
+
         <button
           type="submit"
           disabled={submitting}
