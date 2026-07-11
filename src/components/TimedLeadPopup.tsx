@@ -12,6 +12,9 @@ export function TimedLeadPopup() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "Chimney Sweep" });
+  const [smsConsent, setSmsConsent] = useState(false);
+  const [notRobot, setNotRobot] = useState(false);
+  const [consentError, setConsentError] = useState("");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
