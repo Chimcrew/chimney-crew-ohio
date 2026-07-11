@@ -11,6 +11,7 @@ export type LeadPayload = {
   date?: string;
   timeWindow?: string;
   notes?: string;
+  smsConsent?: boolean;
 };
 
 function clean(value?: string | null) {
