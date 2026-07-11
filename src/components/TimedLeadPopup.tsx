@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { X, Phone, Check, ArrowRight, ShieldCheck, Clock, Star, BadgeCheck } from "lucide-react";
 import { toast } from "sonner";
 import { submitLead } from "@/lib/lead-submit";
+import { ConsentCheckboxes } from "@/components/ConsentCheckboxes";
 
 const STORAGE_KEY = "chimcrew_popup_seen_v1";
 const DELAY_MS = 90_000;
