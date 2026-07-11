@@ -76,6 +76,8 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     if (!date) nextErrors.date = "Pick a date";
     if (!slot) nextErrors.slot = "Pick a time window";
     if (!service) nextErrors.service = "Choose a service";
+    if (!smsConsent) nextErrors.smsConsent = "Please check the box to consent to text messages";
+    if (!notRobot) nextErrors.notRobot = "Please confirm you're not a robot";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
       const firstKey = Object.keys(nextErrors)[0];
