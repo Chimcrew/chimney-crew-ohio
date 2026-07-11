@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 import { submitLead } from "@/lib/lead-submit";
+import { ConsentCheckboxes } from "@/components/ConsentCheckboxes";
 
 /**
  * Schedule "trigger" — instead of opening a modal, we navigate to the
@@ -53,6 +54,8 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   const [zip, setZip] = useState("");
   const [service, setService] = useState<string>(SCHEDULE_SERVICES[1].value);
   const [notes, setNotes] = useState("");
+  const [smsConsent, setSmsConsent] = useState(false);
+  const [notRobot, setNotRobot] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitError, setSubmitError] = useState<string>("");
@@ -73,6 +76,8 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     if (!date) nextErrors.date = "Pick a date";
     if (!slot) nextErrors.slot = "Pick a time window";
     if (!service) nextErrors.service = "Choose a service";
+    if (!smsConsent) nextErrors.smsConsent = "Please check the box to consent to text messages";
+    if (!notRobot) nextErrors.notRobot = "Please confirm you're not a robot";
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
       const firstKey = Object.keys(nextErrors)[0];
@@ -100,6 +105,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       date: dateStr,
       timeWindow: slot,
       notes: notes.trim() || undefined,
+      smsConsent,
     };
 
     try {
@@ -337,6 +343,14 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
             className="rounded-none border-foreground/20 text-sm"
           />
         </Field>
+
+        <ConsentCheckboxes
+          smsConsent={smsConsent}
+          setSmsConsent={setSmsConsent}
+          notRobot={notRobot}
+          setNotRobot={setNotRobot}
+          error={errors.smsConsent || errors.notRobot}
+        />
 
         {/* Submit — always clickable; missing fields are reported via toast */}
         <button

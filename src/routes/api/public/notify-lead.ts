@@ -56,6 +56,7 @@ const LeadSchema = z.object({
   date: z.string().trim().min(1).max(40).optional(),
   timeWindow: z.string().trim().min(1).max(60).optional(),
   notes: z.string().trim().min(1).max(2000).optional(),
+  smsConsent: z.boolean().optional(),
 }).refine((data) => Boolean(data.name && data.phone), {
   message: 'Name and phone are required',
   path: ['phone'],
@@ -98,6 +99,8 @@ export const Route = createFileRoute('/api/public/notify-lead')({
         const supabase = createClient(supabaseUrl, supabaseServiceKey)
 
         // Persist the lead so it shows up in the database even if email delivery fails later.
+        const consentNote = data.smsConsent ? '[SMS consent: yes]' : '[SMS consent: not given]'
+        const combinedNotes = [data.notes, consentNote].filter(Boolean).join('\n\n')
         const { error: insertError } = await supabase.from('leads').insert({
           source: data.source,
           name: data.name,
@@ -108,7 +111,7 @@ export const Route = createFileRoute('/api/public/notify-lead')({
           address: data.address,
           preferred_date: data.date,
           time_window: data.timeWindow,
-          notes: data.notes,
+          notes: combinedNotes || null,
         })
         if (insertError) {
           console.error('Lead insert failed', insertError)

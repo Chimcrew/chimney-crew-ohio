@@ -15,6 +15,7 @@ import {
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 import { BeforeAfter } from "@/components/BeforeAfter";
+import { ConsentCheckboxes } from "@/components/ConsentCheckboxes";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import teamHero from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import techFireplace from "@/assets/real/tech-fireplace-sweep-hoodie.png.asset.json";
@@ -161,16 +162,25 @@ function InlineLeadForm() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [zip, setZip] = useState("");
+  const [smsConsent, setSmsConsent] = useState(false);
+  const [notRobot, setNotRobot] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const [consentError, setConsentError] = useState("");
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setConsentError("");
     const missing: string[] = [];
     if (name.trim().length < 2) missing.push("your name");
     if (phone.replace(/\D/g, "").length < 7) missing.push("phone number");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) missing.push("valid email");
+    if (!smsConsent) missing.push("SMS consent");
+    if (!notRobot) missing.push("robot verification");
     if (missing.length) {
+      if (!smsConsent || !notRobot) {
+        setConsentError("Please check both boxes above to continue.");
+      }
       toast.error("Please add: " + missing.join(", "));
       return;
     }
@@ -183,6 +193,7 @@ function InlineLeadForm() {
         email,
         city: zip,
         service: "Free chimney inspection",
+        smsConsent,
       });
       reportLeadFormConversion();
       setDone(true);
@@ -269,6 +280,14 @@ function InlineLeadForm() {
             inputMode="numeric"
           />
         </div>
+        <ConsentCheckboxes
+          smsConsent={smsConsent}
+          setSmsConsent={setSmsConsent}
+          notRobot={notRobot}
+          setNotRobot={setNotRobot}
+          error={consentError}
+        />
+
         <button
           type="submit"
           disabled={submitting}

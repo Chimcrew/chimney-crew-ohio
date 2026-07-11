@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { X, Phone, Check, ArrowRight, ShieldCheck, Clock, Star, BadgeCheck } from "lucide-react";
 import { toast } from "sonner";
 import { submitLead } from "@/lib/lead-submit";
+import { ConsentCheckboxes } from "@/components/ConsentCheckboxes";
 
 const STORAGE_KEY = "chimcrew_popup_seen_v1";
 const DELAY_MS = 90_000;
@@ -11,6 +12,9 @@ export function TimedLeadPopup() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "Chimney Sweep" });
+  const [smsConsent, setSmsConsent] = useState(false);
+  const [notRobot, setNotRobot] = useState(false);
+  const [consentError, setConsentError] = useState("");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -46,11 +50,17 @@ export function TimedLeadPopup() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    setConsentError("");
     const missing: string[] = [];
     if (form.name.trim().length < 2) missing.push("your name");
     if (form.phone.replace(/\D/g, "").length < 7) missing.push("phone number");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) missing.push("valid email");
+    if (!smsConsent) missing.push("SMS consent");
+    if (!notRobot) missing.push("robot verification");
     if (missing.length) {
+      if (!smsConsent || !notRobot) {
+        setConsentError("Please check both boxes above to continue.");
+      }
       toast.error("Please add: " + missing.join(", "));
       return;
     }
@@ -62,6 +72,7 @@ export function TimedLeadPopup() {
         phone: form.phone,
         email: form.email,
         service: form.service,
+        smsConsent,
       });
       setSubmitting(false);
       setDone(true);
@@ -199,6 +210,14 @@ export function TimedLeadPopup() {
                     ))}
                   </select>
                 </div>
+
+                <ConsentCheckboxes
+                  smsConsent={smsConsent}
+                  setSmsConsent={setSmsConsent}
+                  notRobot={notRobot}
+                  setNotRobot={setNotRobot}
+                  error={consentError}
+                />
 
                 <button
                   type="submit"

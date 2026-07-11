@@ -11,6 +11,7 @@ export type LeadPayload = {
   date?: string;
   timeWindow?: string;
   notes?: string;
+  smsConsent?: boolean;
 };
 
 function clean(value?: string | null) {
@@ -30,6 +31,7 @@ export function normalizeLeadPayload(payload: LeadPayload): LeadPayload {
     date: clean(payload.date),
     timeWindow: clean(payload.timeWindow),
     notes: clean(payload.notes),
+    smsConsent: payload.smsConsent === true,
   };
 }
 
@@ -63,6 +65,8 @@ export async function submitLead(payload: LeadPayload) {
   }
 
   const failureNote = `[Auto: server submission failed${serverError ? ` — ${serverError}` : ""}]`;
+  const consentNote = cleaned.smsConsent ? "[SMS consent: yes]" : "[SMS consent: not given]";
+  const combinedNotes = [cleaned.notes, consentNote, failureNote].filter(Boolean).join("\n\n");
   const { error: fallbackError } = await supabase.from("leads").insert({
     source: `${cleaned.source ?? "Website form"} [NO EMAIL SENT]`.slice(0, 60),
     name: cleaned.name ?? null,
@@ -73,7 +77,7 @@ export async function submitLead(payload: LeadPayload) {
     address: cleaned.address ?? null,
     preferred_date: cleaned.date ?? null,
     time_window: cleaned.timeWindow ?? null,
-    notes: cleaned.notes ? `${cleaned.notes}\n\n${failureNote}` : failureNote,
+    notes: combinedNotes || null,
   });
 
   if (fallbackError) throw fallbackError;
