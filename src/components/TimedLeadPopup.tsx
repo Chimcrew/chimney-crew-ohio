@@ -50,11 +50,17 @@ export function TimedLeadPopup() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault();
+    setConsentError("");
     const missing: string[] = [];
     if (form.name.trim().length < 2) missing.push("your name");
     if (form.phone.replace(/\D/g, "").length < 7) missing.push("phone number");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) missing.push("valid email");
+    if (!smsConsent) missing.push("SMS consent");
+    if (!notRobot) missing.push("robot verification");
     if (missing.length) {
+      if (!smsConsent || !notRobot) {
+        setConsentError("Please check both boxes above to continue.");
+      }
       toast.error("Please add: " + missing.join(", "));
       return;
     }
@@ -66,6 +72,7 @@ export function TimedLeadPopup() {
         phone: form.phone,
         email: form.email,
         service: form.service,
+        smsConsent,
       });
       setSubmitting(false);
       setDone(true);
