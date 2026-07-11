@@ -3,6 +3,7 @@ import { CalendarCheck, CheckCircle2, MapPin, Phone, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 import { submitLead } from "@/lib/lead-submit";
+import { ConsentCheckboxes } from "@/components/ConsentCheckboxes";
 
 type Props = {
   source?: string;
