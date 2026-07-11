@@ -45,11 +45,17 @@ export function InlineLeadForm({
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setConsentError("");
     const missing: string[] = [];
     if (name.trim().length < 2) missing.push("your name");
     if (phone.replace(/\D/g, "").length < 7) missing.push("phone number");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) missing.push("valid email");
+    if (!smsConsent) missing.push("SMS consent");
+    if (!notRobot) missing.push("robot verification");
     if (missing.length) {
+      if (!smsConsent || !notRobot) {
+        setConsentError("Please check both boxes above to continue.");
+      }
       toast.error("Please add: " + missing.join(", "));
       return;
     }
@@ -65,6 +71,7 @@ export function InlineLeadForm({
         email,
         city: zip,
         service: "Free chimney inspection",
+        smsConsent,
       });
       reportLeadFormConversion();
       setDone(true);
