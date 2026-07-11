@@ -39,9 +39,9 @@ function Terms() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) {
   return (
-    <div className="mb-10">
+    <div id={id} className="mb-10">
       <h2 className="mb-3 text-2xl">{title}</h2>
       <div className="space-y-3 text-foreground/85 leading-relaxed">{children}</div>
     </div>
