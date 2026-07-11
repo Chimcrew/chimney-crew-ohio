@@ -15,6 +15,7 @@ import {
 import { toast } from "sonner";
 import { reportLeadFormConversion } from "@/lib/track";
 import { BeforeAfter } from "@/components/BeforeAfter";
+import { ConsentCheckboxes } from "@/components/ConsentCheckboxes";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 import teamHero from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import techFireplace from "@/assets/real/tech-fireplace-sweep-hoodie.png.asset.json";
