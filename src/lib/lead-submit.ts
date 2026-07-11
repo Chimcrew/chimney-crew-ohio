@@ -31,6 +31,7 @@ export function normalizeLeadPayload(payload: LeadPayload): LeadPayload {
     date: clean(payload.date),
     timeWindow: clean(payload.timeWindow),
     notes: clean(payload.notes),
+    smsConsent: payload.smsConsent === true,
   };
 }
 
