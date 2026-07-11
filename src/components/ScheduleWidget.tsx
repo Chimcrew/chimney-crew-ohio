@@ -105,6 +105,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       date: dateStr,
       timeWindow: slot,
       notes: notes.trim() || undefined,
+      smsConsent,
     };
 
     try {
