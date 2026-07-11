@@ -30,6 +30,11 @@ function Privacy() {
       <Section title="7. Contact">
         <p>Questions? Email <a href="mailto:privacy@chimcrew.com" className="text-primary">privacy@chimcrew.com</a> or call (614) 683-5763.</p>
       </Section>
+      <Section title="8. SMS/Text Messaging">
+        <p>ChimCrew sends text message updates and responses to customers about pricing and products offered at https://chimcrew.com/.</p>
+        <p>Mobile information will not be shared with third parties or affiliates for marketing or promotional purposes.</p>
+        <p>At ChimCrew, we respect your privacy. We use information you provide to send and respond to your mobile messages. This includes sharing it with platform providers, phone companies, and other vendors who help us deliver messages. We won't share mobile information with third parties for marketing. Text messaging originator opt-in data and consent are exempt from this. We may disclose information to satisfy legal, regulatory, or governmental requests, avoid liability, or protect our rights or property. This policy applies to your use of the Text Message Service and doesn't modify our general Privacy Policy, which may govern our relationship with you in other contexts.</p>
+      </Section>
     </LegalPage>
   );
 }
