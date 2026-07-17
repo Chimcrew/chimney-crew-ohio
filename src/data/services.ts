@@ -122,10 +122,10 @@ export function serviceCtaLabel(s: Pick<ServiceSpec, "ctaLabel" | "shortTitle" |
  *  no price — the homeowner is asked to request a free quote instead.
  */
 export function formatFromPrice(s: Pick<ServiceSpec, "slug">): string {
-  if (s.slug === "level-1-inspection") return "Only $69";
-  if (s.slug === "gas-fireplace-service") return "Only $49";
-  if (s.slug === "chimney-sweep") return "Only $99";
-  if (s.slug === "dryer-vent-cleaning") return "Only $79";
+  if (s.slug === "level-1-inspection") return "Starts from $69";
+  if (s.slug === "gas-fireplace-service") return "Starts from $49";
+  if (s.slug === "chimney-sweep") return "Starts from $99";
+  if (s.slug === "dryer-vent-cleaning") return "Starts from $79";
   return "";
 }
 
@@ -226,7 +226,7 @@ export const SERVICES: ServiceSpec[] = [
     warranty: "100% Accurate Report",
     title: "Level 1 Chimney Inspection",
     shortTitle: "Chimney Inspection",
-    tagline: "The annual check-up the NFPA recommends for every fireplace — only $69.",
+    tagline: "The annual check-up the NFPA recommends for every fireplace — starts from $69.",
     price: "$69",
     duration: "",
     icon: Search,

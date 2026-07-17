@@ -137,7 +137,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
           <div className="mt-6 flex flex-wrap items-end gap-x-8 gap-y-4">
             {priceLabel && (
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/55">Starting at</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/55">Price</p>
                 <p className="mt-1 font-display text-3xl font-extrabold text-flame md:text-4xl">{priceLabel}</p>
               </div>
             )}

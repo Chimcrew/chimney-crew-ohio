@@ -214,7 +214,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
             <SelectContent className="rounded-none">
               {SCHEDULE_SERVICES.map((s) => (
                 <SelectItem key={s.value} value={s.value} className="rounded-none">
-                  {s.label} — {s.price}
+                  {s.label} — {s.price === "Free" ? "Free" : `Starts from ${s.price}`}
                 </SelectItem>
               ))}
             </SelectContent>
