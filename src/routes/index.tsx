@@ -29,11 +29,11 @@ import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 const logo = logoAsset.url;
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
 import fireplace from "@/assets/fireplace-cozy.jpg";
-import projectHero from "@/assets/projects/project-01-double-crown.jpg";
-import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg";
-import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
-import projectCap from "@/assets/projects/project-04-cap-install.jpg";
-import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
+import projectHero from "@/assets/projects/project-01-double-crown.jpg.asset.json";
+import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg.asset.json";
+import projectLiner from "@/assets/projects/project-03-liner-install.jpg.asset.json";
+import projectCap from "@/assets/projects/project-04-cap-install.jpg.asset.json";
+import projectTech from "@/assets/projects/project-06-tech-onsite.jpg.asset.json";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
@@ -94,7 +94,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://chimcrew.com/" },
-      { rel: "preload", as: "image", href: projectHero, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: projectHero.url, fetchpriority: "high" },
     ],
     scripts: [
       {
@@ -241,11 +241,11 @@ function HeroPhotoCard() {
   const photos = [
     { src: jobPhotoA.url, caption: "New caps + crown seal", city: "Columbus, OH" },
     { src: jobPhotoB.url, caption: "Crown rebuild in progress", city: "Columbus, OH" },
-    { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
-    { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH" },
-    { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
-    { src: projectCap, caption: "New cap & flashing", city: "Cleveland, OH" },
-    { src: projectTech, caption: "On-site sweep & inspect", city: "Westerville, OH" },
+    { src: projectHero.url, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
+    { src: projectLiner.url, caption: "Stainless liner install", city: "Dayton, OH" },
+    { src: projectTuck.url, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
+    { src: projectCap.url, caption: "New cap & flashing", city: "Cleveland, OH" },
+    { src: projectTech.url, caption: "On-site sweep & inspect", city: "Westerville, OH" },
   ];
   const [idx, setIdx] = useState(0);
   useEffect(() => {

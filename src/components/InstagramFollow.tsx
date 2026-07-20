@@ -1,16 +1,15 @@
 import { useRef, useState, useEffect } from "react";
 import { Instagram, ChevronLeft, ChevronRight, X, Heart, MessageCircle } from "lucide-react";
 import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
-import p1 from "@/assets/projects/project-01-double-crown.jpg";
-import p2 from "@/assets/projects/project-04-cap-install.jpg";
-import p3 from "@/assets/projects/project-06-tech-onsite.jpg";
-import p4 from "@/assets/projects/project-03-liner-install.jpg";
-import p5 from "@/assets/projects/project-05-crown-rebuild.jpg";
-import p6 from "@/assets/projects/project-08-cap-finished.jpg";
+import p1 from "@/assets/projects/project-01-double-crown.jpg.asset.json";
+import p2 from "@/assets/projects/project-04-cap-install.jpg.asset.json";
+import p3 from "@/assets/projects/project-06-tech-onsite.jpg.asset.json";
+import p4 from "@/assets/projects/project-03-liner-install.jpg.asset.json";
+import p5 from "@/assets/projects/project-05-crown-rebuild.jpg.asset.json";
+import p6 from "@/assets/projects/project-08-cap-finished.jpg.asset.json";
 import p7 from "@/assets/fireplace-tile-install.jpeg.asset.json";
-import p8 from "@/assets/projects/project-02-tuckpointing-after.jpg";
-import p9 from "@/assets/projects/project-07-flue-before.jpg";
-import p10 from "@/assets/projects/project-09-crown-before.jpg";
+import p8 from "@/assets/projects/project-02-tuckpointing-after.jpg.asset.json";
+import p9 from "@/assets/projects/project-07-flue-before.jpg.asset.json";
 import gjA from "@/assets/gallery-new/new-brick-copper-flash.jpeg.asset.json";
 import gjB from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
 import gjC from "@/assets/gallery-new/new-fireplace-interior.jpeg.asset.json";
@@ -23,25 +22,25 @@ const IG_URL = "https://www.instagram.com/chim_crew/";
 type Highlight = { title: string; cover: string; slides: string[] };
 
 const highlights: Highlight[] = [
-  { title: "Crowns",     cover: p5, slides: [p5, p1] },
-  { title: "Caps",       cover: p2, slides: [p2, p6] },
-  { title: "Liners",     cover: p4, slides: [p4] },
+  { title: "Crowns",     cover: p5.url, slides: [p5.url, p1.url] },
+  { title: "Caps",       cover: p2.url, slides: [p2.url, p6.url] },
+  { title: "Liners",     cover: p4.url, slides: [p4.url] },
   { title: "Fireplaces", cover: p7.url, slides: [p7.url] },
-  { title: "Rooftop",    cover: p3, slides: [p3] },
-  { title: "Rebuilds",   cover: p1, slides: [p1, p5] },
+  { title: "Rooftop",    cover: p3.url, slides: [p3.url] },
+  { title: "Rebuilds",   cover: p1.url, slides: [p1.url, p5.url] },
 ];
 
 const feed: { src: string; caption: string }[] = [
-  { src: p5,      caption: "Crown rebuild — Dublin, OH" },
-  { src: p2,      caption: "Stainless cap install" },
+  { src: p5.url,      caption: "Crown rebuild — Dublin, OH" },
+  { src: p2.url,      caption: "Stainless cap install" },
   { src: p7.url,  caption: "Fireplace tile & surround" },
   { src: gjA.url, caption: "Copper flashing — brick chimney" },
-  { src: p4,      caption: "Stainless liner drop-in" },
+  { src: p4.url,      caption: "Stainless liner drop-in" },
   { src: gjC.url, caption: "Firebox refresh" },
-  { src: p3,      caption: "Tech on the rooftop" },
+  { src: p3.url,      caption: "Tech on the rooftop" },
   { src: gjB.url, caption: "Crown seal & waterproof" },
-  { src: p6,      caption: "Cap finished — clean lines" },
-  { src: p8,      caption: "Tuckpointing complete" },
+  { src: p6.url,      caption: "Cap finished — clean lines" },
+  { src: p8.url,      caption: "Tuckpointing complete" },
   { src: gjE.url, caption: "Mesh cap close-up" },
   { src: gjD.url, caption: "Copper flashing detail" },
 ];

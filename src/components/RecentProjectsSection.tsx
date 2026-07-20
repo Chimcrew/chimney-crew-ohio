@@ -9,17 +9,43 @@ import newBoomliftCapInstall from "@/assets/uploads/new-boomlift-cap-install.jpe
 import newBoomliftHouse from "@/assets/uploads/new-boomlift-house.jpeg.asset.json";
 import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
 import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
+import oldDoubleCrown from "@/assets/projects/project-01-double-crown.jpg.asset.json";
+import oldTuckpointing from "@/assets/projects/project-02-tuckpointing-after.jpg.asset.json";
+import oldLiner from "@/assets/projects/project-03-liner-install.jpg.asset.json";
+import oldCap from "@/assets/projects/project-04-cap-install.jpg.asset.json";
+import oldCrownRebuild from "@/assets/projects/project-05-crown-rebuild.jpg.asset.json";
+import oldTechOnsite from "@/assets/projects/project-06-tech-onsite.jpg.asset.json";
+import oldFlueBefore from "@/assets/projects/project-07-flue-before.jpg.asset.json";
+import oldCapFinished from "@/assets/projects/project-08-cap-finished.jpg.asset.json";
+import oldCrownBefore from "@/assets/projects/project-09-crown-before.jpg.asset.json";
 
-const PROJECTS = [
-  { img: newChimneyRestored.url, title: "Full Crown Seal + Stainless Cap", city: "Columbus, OH", tag: "Crown & Cap" },
-  { img: newBoomliftCapInstall.url, title: "Boom Lift Cap Install", city: "Upper Arlington, OH", tag: "Cap Install" },
-  { img: newCapInstallRooftop.url, title: "Stainless Cap Install", city: "Westerville, OH", tag: "Cap Install" },
-  { img: newBoomliftHouse.url, title: "High-Access Chimney Job", city: "Bexley, OH", tag: "Access" },
-  { img: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", city: "Worthington, OH", tag: "Crown & Caps" },
-  { img: newBoomliftInspect.url, title: "High-Access Inspection", city: "Dublin, OH", tag: "Done" },
-  { img: newTechLadderPoint.url, title: "On-Site Chimney Inspection", city: "Hilliard, OH", tag: "Inspection" },
-  { img: newCrownCapsView.url, title: "Crown Rebuild + Dual Caps", city: "Grove City, OH", tag: "Crown Rebuild" },
-  { img: newTechFireplace.url, title: "Fireplace Service", city: "German Village, OH", tag: "Fireplace" },
+type Project = {
+  img: string;
+  title: string;
+  city: string;
+  tag: string;
+  layout: "feature" | "wide" | "square";
+};
+
+const PROJECTS: Project[] = [
+  { img: newChimneyRestored.url, title: "Full Crown Seal + Stainless Cap", city: "Columbus, OH", tag: "Crown & Cap", layout: "feature" },
+  { img: newBoomliftCapInstall.url, title: "Boom Lift Cap Install", city: "Upper Arlington, OH", tag: "Cap Install", layout: "square" },
+  { img: newCapInstallRooftop.url, title: "Stainless Cap Install", city: "Westerville, OH", tag: "Cap Install", layout: "square" },
+  { img: oldCap.url, title: "Cap & Flashing Install", city: "Cleveland, OH", tag: "Cap Install", layout: "square" },
+  { img: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", city: "Worthington, OH", tag: "Crown & Caps", layout: "square" },
+  { img: oldCrownRebuild.url, title: "Crown Rebuild", city: "Dayton, OH", tag: "Crown Rebuild", layout: "square" },
+  { img: newBoomliftHouse.url, title: "High-Access Chimney Job", city: "Bexley, OH", tag: "Access", layout: "wide" },
+  { img: oldTechOnsite.url, title: "On-Site Sweep & Inspect", city: "Westerville, OH", tag: "Inspection", layout: "square" },
+  { img: newBoomliftInspect.url, title: "High-Access Inspection", city: "Dublin, OH", tag: "Done", layout: "square" },
+  { img: oldLiner.url, title: "Stainless Liner Install", city: "Dayton, OH", tag: "Liner", layout: "square" },
+  { img: newTechLadderPoint.url, title: "On-Site Chimney Inspection", city: "Hilliard, OH", tag: "Inspection", layout: "square" },
+  { img: oldCapFinished.url, title: "Finished Cap Install", city: "New Albany, OH", tag: "Cap Install", layout: "square" },
+  { img: newCrownCapsView.url, title: "Crown Rebuild + Dual Caps", city: "Grove City, OH", tag: "Crown Rebuild", layout: "wide" },
+  { img: oldTuckpointing.url, title: "Tuckpointing Restoration", city: "Columbus, OH", tag: "Masonry", layout: "square" },
+  { img: newTechFireplace.url, title: "Fireplace Service", city: "German Village, OH", tag: "Fireplace", layout: "square" },
+  { img: oldDoubleCrown.url, title: "Double Crown Build", city: "Powell, OH", tag: "Crown", layout: "square" },
+  { img: oldFlueBefore.url, title: "Flue Inspection", city: "Clintonville, OH", tag: "Inspection", layout: "wide" },
+  { img: oldCrownBefore.url, title: "Crown Before Rebuild", city: "Upper Arlington, OH", tag: "Before", layout: "square" },
 ];
 
 export function RecentProjects() {
@@ -53,12 +79,19 @@ export function RecentProjects() {
         </div>
 
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
-          <ProjectTile project={PROJECTS[0]} className="col-span-2 row-span-2 aspect-square md:aspect-auto" priority />
-          {PROJECTS.slice(1, 5).map((p, i) => (
-            <ProjectTile key={i} project={p} className="aspect-square" />
-          ))}
-          {PROJECTS.slice(5).map((p, i) => (
-            <ProjectTile key={`b-${i}`} project={p} className="col-span-2 aspect-[4/3] md:aspect-square" />
+          {PROJECTS.map((p, i) => (
+            <ProjectTile
+              key={`${p.title}-${i}`}
+              project={p}
+              className={
+                p.layout === "feature"
+                  ? "col-span-2 row-span-2 aspect-square md:aspect-auto"
+                  : p.layout === "wide"
+                    ? "col-span-2 aspect-[4/3] md:aspect-square"
+                    : "aspect-square"
+              }
+              priority={i === 0}
+            />
           ))}
         </div>
       </div>
@@ -71,7 +104,7 @@ function ProjectTile({
   className = "",
   priority = false,
 }: {
-  project: { img: string; title: string; city: string; tag: string };
+  project: Project;
   className?: string;
   priority?: boolean;
 }) {
