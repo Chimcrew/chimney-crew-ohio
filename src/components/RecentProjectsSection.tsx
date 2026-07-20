@@ -1,12 +1,8 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import projectHero from "@/assets/projects/project-01-double-crown.jpg";
 import projectTuckpoint from "@/assets/projects/project-02-tuckpointing-after.jpg";
 import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
-import projectCap from "@/assets/projects/project-04-cap-install.jpg";
 import projectCrownRebuild from "@/assets/projects/project-05-crown-rebuild.jpg";
-import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
-import projectCapFinished from "@/assets/projects/project-08-cap-finished.jpg";
 import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
 import newCapInstallRooftop from "@/assets/uploads/new-cap-install-rooftop.jpeg.asset.json";
 import newTechLadderPoint from "@/assets/uploads/new-tech-ladder-point.jpeg.asset.json";
