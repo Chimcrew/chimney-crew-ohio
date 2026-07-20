@@ -94,7 +94,7 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://chimcrew.com/" },
-      { rel: "preload", as: "image", href: projectHero, fetchpriority: "high" },
+      { rel: "preload", as: "image", href: projectHero.url, fetchpriority: "high" },
     ],
     scripts: [
       {
