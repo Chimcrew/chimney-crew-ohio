@@ -34,6 +34,7 @@ import chimneyJobBAsset from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import fireplaceServiceAsset from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 import sweepCloseupAsset from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import chaseCoverMeshAsset from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
+import techCrownWaterproofAsset from "@/assets/team-jobs/tech-crown-waterproof.jpeg.asset.json";
 
 const techLinerInstall = techLinerInstallAsset.url;
 const techScaffoldingRebuild = techScaffoldingRebuildAsset.url;
@@ -48,6 +49,7 @@ const chimneyJobB = chimneyJobBAsset.url;
 const fireplaceServicePhoto = fireplaceServiceAsset.url;
 const sweepCloseupPhoto = sweepCloseupAsset.url;
 const chaseCoverHero = chaseCoverMeshAsset.url;
+const techCrownWaterproof = techCrownWaterproofAsset.url;
 
 export type ServiceVariant =
   | "maintenance"
@@ -149,7 +151,7 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     case "level-2-inspection":
       return sweepCloseupPhoto;
     case "waterproofing":
-      return baSpalledBrick;
+      return techCrownWaterproof;
     case "flashing-repair":
       return leakRooftop;
     case "liner-install":
