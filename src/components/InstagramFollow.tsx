@@ -10,7 +10,6 @@ import p6 from "@/assets/projects/project-08-cap-finished.jpg.asset.json";
 import p7 from "@/assets/fireplace-tile-install.jpeg.asset.json";
 import p8 from "@/assets/projects/project-02-tuckpointing-after.jpg.asset.json";
 import p9 from "@/assets/projects/project-07-flue-before.jpg.asset.json";
-import p10 from "@/assets/projects/project-09-crown-before.jpg.asset.json";
 import gjA from "@/assets/gallery-new/new-brick-copper-flash.jpeg.asset.json";
 import gjB from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
 import gjC from "@/assets/gallery-new/new-fireplace-interior.jpeg.asset.json";
