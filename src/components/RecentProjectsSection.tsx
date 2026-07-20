@@ -1,20 +1,20 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import projectHero from "@/assets/projects/project-01-double-crown.jpg";
 import projectTuckpoint from "@/assets/projects/project-02-tuckpointing-after.jpg";
 import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
-import projectCap from "@/assets/projects/project-04-cap-install.jpg";
 import projectCrownRebuild from "@/assets/projects/project-05-crown-rebuild.jpg";
-import projectTech from "@/assets/projects/project-06-tech-onsite.jpg";
-import projectCapFinished from "@/assets/projects/project-08-cap-finished.jpg";
+import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
+import newCapInstallRooftop from "@/assets/uploads/new-cap-install-rooftop.jpeg.asset.json";
+import newTechLadderPoint from "@/assets/uploads/new-tech-ladder-point.jpeg.asset.json";
+import newCrownFreshCaps from "@/assets/uploads/new-crown-fresh-caps.jpeg.asset.json";
 
 const PROJECTS = [
-  { img: projectHero, title: "Dual Crown Rebuild + Caps", city: "Columbus, OH", tag: "Crown & Caps" },
+  { img: newChimneyRestored.url, title: "Full Crown Seal + Stainless Cap", city: "Columbus, OH", tag: "Crown & Cap" },
   { img: projectTuckpoint, title: "Full Tuckpointing Restoration", city: "Dublin, OH", tag: "Masonry" },
-  { img: projectCapFinished, title: "Stainless Cap Install", city: "Westerville, OH", tag: "Cap Install" },
+  { img: newCapInstallRooftop.url, title: "Stainless Cap Install", city: "Westerville, OH", tag: "Cap Install" },
   { img: projectLiner, title: "New Stainless Liner Installed", city: "Cincinnati, OH", tag: "Liner" },
-  { img: projectCap, title: "Mesh Cap + Crown Repair", city: "Worthington, OH", tag: "Cap & Crown" },
-  { img: projectTech, title: "Waterproof Seal + Cap", city: "Hilliard, OH", tag: "Waterproofing" },
+  { img: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", city: "Worthington, OH", tag: "Crown & Caps" },
+  { img: newTechLadderPoint.url, title: "On-Site Chimney Inspection", city: "Hilliard, OH", tag: "Inspection" },
   { img: projectCrownRebuild, title: "Crown Rebuild + Round Cap", city: "Dayton, OH", tag: "Crown Rebuild" },
 ];
 
