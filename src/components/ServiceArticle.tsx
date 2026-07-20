@@ -19,6 +19,14 @@ import newCrownFreshCaps from "@/assets/uploads/new-crown-fresh-caps.jpeg.asset.
 import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
 import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
 import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
+import flashingProgress from "@/assets/process/flashing-progress.jpeg.asset.json";
+import flashingAfter from "@/assets/process/flashing-after.jpeg.asset.json";
+import chaseCoverMesh from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
+import smokeChamberAfter from "@/assets/ba/smoke-chamber-after.jpeg.asset.json";
+import techLinerInstall from "@/assets/real/tech-liner-install.png.asset.json";
+import damagedChimneyCap from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
+import techScaffoldingRebuild from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
+import crownDemoInProgress from "@/assets/real/crown-demo-inprogress.png.asset.json";
 import dryerBefore1 from "@/assets/uploads/dryer-before-1.jpeg.asset.json";
 import dryerAfter1 from "@/assets/uploads/dryer-after-1.jpeg.asset.json";
 import dryerBefore2 from "@/assets/uploads/dryer-before-2.jpeg.asset.json";
@@ -47,21 +55,21 @@ function secondaryImageFor(slug: string): string {
     case "crown-tuckpoint":
       return newCrownFreshCaps.url;
     case "liner-install":
-      return gj12.url;
+      return techLinerInstall.url;
     case "animal-removal":
-      return gj17.url;
+      return damagedChimneyCap.url;
     case "cap-install":
       return newCapInstallRooftop.url;
     case "chase-cover-replacement":
-      return gj15.url;
+      return chaseCoverMesh.url;
     case "waterproofing":
       return newChimneyRestored.url;
     case "flashing-repair":
-      return gj19.url;
+      return flashingProgress.url;
     case "firebox-rebuild":
-      return fireplaceServiceAsset.url;
+      return techScaffoldingRebuild.url;
     case "smoke-chamber-parging":
-      return gj3.url;
+      return smokeChamberAfter.url;
     case "damper-repair":
       return fireplaceServiceAsset.url;
     case "gas-fireplace-service":
