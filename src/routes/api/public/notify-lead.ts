@@ -12,6 +12,7 @@ const TEMPLATE_NAME = 'new-lead-notification'
 
 const ADMIN_EMAILS = [
   'office@chimcrew.com',
+  'chimcrew@msg.workiz.com',
 ]
 
 const CONFIRMATION_TEMPLATE_NAME = 'lead-confirmation'
