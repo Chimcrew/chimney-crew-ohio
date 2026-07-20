@@ -241,11 +241,11 @@ function HeroPhotoCard() {
   const photos = [
     { src: jobPhotoA.url, caption: "New caps + crown seal", city: "Columbus, OH" },
     { src: jobPhotoB.url, caption: "Crown rebuild in progress", city: "Columbus, OH" },
-    { src: projectHero, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
-    { src: projectLiner, caption: "Stainless liner install", city: "Dayton, OH" },
-    { src: projectTuck, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
-    { src: projectCap, caption: "New cap & flashing", city: "Cleveland, OH" },
-    { src: projectTech, caption: "On-site sweep & inspect", city: "Westerville, OH" },
+    { src: projectHero.url, caption: "Crown rebuild + new caps", city: "Columbus, OH" },
+    { src: projectLiner.url, caption: "Stainless liner install", city: "Dayton, OH" },
+    { src: projectTuck.url, caption: "Tuckpointing restoration", city: "Cincinnati, OH" },
+    { src: projectCap.url, caption: "New cap & flashing", city: "Cleveland, OH" },
+    { src: projectTech.url, caption: "On-site sweep & inspect", city: "Westerville, OH" },
   ];
   const [idx, setIdx] = useState(0);
   useEffect(() => {
