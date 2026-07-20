@@ -1,21 +1,23 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
-import projectTuckpoint from "@/assets/projects/project-02-tuckpointing-after.jpg";
-import projectLiner from "@/assets/projects/project-03-liner-install.jpg";
-import projectCrownRebuild from "@/assets/projects/project-05-crown-rebuild.jpg";
 import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
 import newCapInstallRooftop from "@/assets/uploads/new-cap-install-rooftop.jpeg.asset.json";
 import newTechLadderPoint from "@/assets/uploads/new-tech-ladder-point.jpeg.asset.json";
 import newCrownFreshCaps from "@/assets/uploads/new-crown-fresh-caps.jpeg.asset.json";
+import newCrownCapsView from "@/assets/uploads/new-crown-caps-view.jpeg.asset.json";
+import newBoomliftCapInstall from "@/assets/uploads/new-boomlift-cap-install.jpeg.asset.json";
+import newBoomliftHouse from "@/assets/uploads/new-boomlift-house.jpeg.asset.json";
+import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
 
 const PROJECTS = [
   { img: newChimneyRestored.url, title: "Full Crown Seal + Stainless Cap", city: "Columbus, OH", tag: "Crown & Cap" },
-  { img: projectTuckpoint, title: "Full Tuckpointing Restoration", city: "Dublin, OH", tag: "Masonry" },
+  { img: newBoomliftCapInstall.url, title: "Boom Lift Cap Install", city: "Upper Arlington, OH", tag: "Cap Install" },
   { img: newCapInstallRooftop.url, title: "Stainless Cap Install", city: "Westerville, OH", tag: "Cap Install" },
-  { img: projectLiner, title: "New Stainless Liner Installed", city: "Cincinnati, OH", tag: "Liner" },
+  { img: newBoomliftHouse.url, title: "High-Access Chimney Job", city: "Bexley, OH", tag: "Access" },
   { img: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", city: "Worthington, OH", tag: "Crown & Caps" },
   { img: newTechLadderPoint.url, title: "On-Site Chimney Inspection", city: "Hilliard, OH", tag: "Inspection" },
-  { img: projectCrownRebuild, title: "Crown Rebuild + Round Cap", city: "Dayton, OH", tag: "Crown Rebuild" },
+  { img: newCrownCapsView.url, title: "Crown Rebuild + Dual Caps", city: "Grove City, OH", tag: "Crown Rebuild" },
+  { img: newTechFireplace.url, title: "Fireplace Service", city: "German Village, OH", tag: "Fireplace" },
 ];
 
 export function RecentProjects() {
