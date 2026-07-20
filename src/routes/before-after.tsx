@@ -19,6 +19,16 @@ import nAlum from "@/assets/gallery-new/new-aluminum-cap.jpeg.asset.json";
 import nCrownSeal from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
 import nCopper from "@/assets/gallery-new/new-brick-copper-flash.jpeg.asset.json";
 import nCopperDetail from "@/assets/gallery-new/new-copper-flashing-detail.jpeg.asset.json";
+import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
+import newCapInstallRooftop from "@/assets/uploads/new-cap-install-rooftop.jpeg.asset.json";
+import newCrownFreshCaps from "@/assets/uploads/new-crown-fresh-caps.jpeg.asset.json";
+import newCrownCapsView from "@/assets/uploads/new-crown-caps-view.jpeg.asset.json";
+import newBoomliftHouse from "@/assets/uploads/new-boomlift-house.jpeg.asset.json";
+import newBoomliftCapInstall from "@/assets/uploads/new-boomlift-cap-install.jpeg.asset.json";
+import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
+import newTechLadderPoint from "@/assets/uploads/new-tech-ladder-point.jpeg.asset.json";
+import newTechLadderBack from "@/assets/uploads/new-tech-ladder-back.jpeg.asset.json";
+import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
@@ -43,6 +53,16 @@ type GalleryItem = {
 };
 
 const GALLERY: GalleryItem[] = [
+  { src: newChimneyRestored.url, title: "Full Crown Seal + Stainless Cap", caption: "Fresh crown, cap and flashing rebuild", city: "Columbus, OH", size: "feature" },
+  { src: newCapInstallRooftop.url, title: "Stainless Chimney Cap Install", caption: "New cap sealed onto brick chimney", city: "Westerville, OH", size: "tall" },
+  { src: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", caption: "Parged crown with two stainless caps", city: "Worthington, OH", size: "square" },
+  { src: newCrownCapsView.url, title: "Crown Rebuild Complete", caption: "Aerial view of finished crown work", city: "Grove City, OH", size: "wide" },
+  { src: newBoomliftHouse.url, title: "Boom Lift Chimney Access", caption: "Reaching a tricky 3-story chimney safely", city: "Bexley, OH", size: "tall" },
+  { src: newBoomliftCapInstall.url, title: "Cap Install From Lift", caption: "Setting a new cap on a steep roof", city: "Upper Arlington, OH", size: "square" },
+  { src: newBoomliftInspect.url, title: "High-Access Inspection", caption: "Camera inspection from the boom", city: "Dublin, OH", size: "square" },
+  { src: newTechLadderPoint.url, title: "On-Site Inspection", caption: "Diagnosing an aged brick chimney", city: "Hilliard, OH", size: "tall" },
+  { src: newTechLadderBack.url, title: "Roof Access", caption: "Ladder up to a brick chimney inspection", city: "Clintonville, OH", size: "square" },
+  { src: newTechFireplace.url, title: "Fireplace Service", caption: "Interior fireplace inspection & sweep", city: "German Village, OH", size: "wide" },
   { src: gj1.url, title: "Stone Fireplace Install", caption: "Full-height stacked-stone surround", city: "Columbus, OH", size: "feature" },
   { src: gj4.url, title: "Fireplace Surround", caption: "Clean stonework and finished trim", city: "Dublin, OH", size: "tall" },
   { src: gj2.url, title: "Fireplace Prep", caption: "Opened wall, clean rebuild layout", city: "Worthington, OH", size: "square" },
