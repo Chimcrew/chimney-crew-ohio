@@ -7,6 +7,7 @@ import newCrownFreshCaps from "@/assets/uploads/new-crown-fresh-caps.jpeg.asset.
 import newCrownCapsView from "@/assets/uploads/new-crown-caps-view.jpeg.asset.json";
 import newBoomliftCapInstall from "@/assets/uploads/new-boomlift-cap-install.jpeg.asset.json";
 import newBoomliftHouse from "@/assets/uploads/new-boomlift-house.jpeg.asset.json";
+import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
 import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
 
 const PROJECTS = [
@@ -15,6 +16,7 @@ const PROJECTS = [
   { img: newCapInstallRooftop.url, title: "Stainless Cap Install", city: "Westerville, OH", tag: "Cap Install" },
   { img: newBoomliftHouse.url, title: "High-Access Chimney Job", city: "Bexley, OH", tag: "Access" },
   { img: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", city: "Worthington, OH", tag: "Crown & Caps" },
+  { img: newBoomliftInspect.url, title: "High-Access Inspection", city: "Dublin, OH", tag: "Done" },
   { img: newTechLadderPoint.url, title: "On-Site Chimney Inspection", city: "Hilliard, OH", tag: "Inspection" },
   { img: newCrownCapsView.url, title: "Crown Rebuild + Dual Caps", city: "Grove City, OH", tag: "Crown Rebuild" },
   { img: newTechFireplace.url, title: "Fireplace Service", city: "German Village, OH", tag: "Fireplace" },
