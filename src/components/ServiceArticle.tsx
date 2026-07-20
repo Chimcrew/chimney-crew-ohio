@@ -14,6 +14,11 @@ import gj15 from "@/assets/gallery-jobs/gj15.jpeg.asset.json";
 import gj17 from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
 import gj19 from "@/assets/gallery-jobs/gj19.jpeg.asset.json";
 import capInstallProcessAsset from "@/assets/uploads/cap-install-process.jpeg.asset.json";
+import newCapInstallRooftop from "@/assets/uploads/new-cap-install-rooftop.jpeg.asset.json";
+import newCrownFreshCaps from "@/assets/uploads/new-crown-fresh-caps.jpeg.asset.json";
+import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
+import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
+import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
 import dryerBefore1 from "@/assets/uploads/dryer-before-1.jpeg.asset.json";
 import dryerAfter1 from "@/assets/uploads/dryer-after-1.jpeg.asset.json";
 import dryerBefore2 from "@/assets/uploads/dryer-before-2.jpeg.asset.json";
@@ -38,19 +43,19 @@ function secondaryImageFor(slug: string): string {
       return sweepCloseupAsset.url;
     case "level-1-inspection":
     case "level-2-inspection":
-      return inspectionRoofAsset.url;
+      return newBoomliftInspect.url;
     case "crown-tuckpoint":
-      return gj8.url;
+      return newCrownFreshCaps.url;
     case "liner-install":
       return gj12.url;
     case "animal-removal":
       return gj17.url;
     case "cap-install":
-      return capInstallProcessAsset.url;
+      return newCapInstallRooftop.url;
     case "chase-cover-replacement":
       return gj15.url;
     case "waterproofing":
-      return gj6.url;
+      return newChimneyRestored.url;
     case "flashing-repair":
       return gj19.url;
     case "firebox-rebuild":
@@ -60,7 +65,7 @@ function secondaryImageFor(slug: string): string {
     case "damper-repair":
       return fireplaceServiceAsset.url;
     case "gas-fireplace-service":
-      return fireplaceServiceAsset.url;
+      return newTechFireplace.url;
     case "dryer-vent-cleaning":
       return teamTruckAsset.url;
     default:
