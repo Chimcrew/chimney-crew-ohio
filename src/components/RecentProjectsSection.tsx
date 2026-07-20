@@ -45,10 +45,10 @@ export function RecentProjects() {
             </p>
           </div>
           <Link
-            to="/gallery"
+            to="/before-after"
             className="inline-flex items-center gap-2 rounded-none border-2 border-foreground/15 bg-card px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame hover:text-flame"
           >
-            See full gallery <ArrowRight className="h-4 w-4" />
+            See all done projects <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
