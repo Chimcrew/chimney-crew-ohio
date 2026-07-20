@@ -76,7 +76,10 @@ function ProjectTile({
   priority?: boolean;
 }) {
   return (
-    <figure className={`group relative overflow-hidden rounded-none border-2 border-border bg-primary transition hover:border-flame ${className}`}>
+    <Link
+      to="/before-after"
+      className={`group relative overflow-hidden rounded-none border-2 border-border bg-primary transition hover:border-flame ${className}`}
+    >
       <img
         src={project.img}
         alt={`${project.title} — ChimCrew project in ${project.city}`}
@@ -97,6 +100,6 @@ function ProjectTile({
           </p>
         </div>
       </figcaption>
-    </figure>
+    </Link>
   );
 }
