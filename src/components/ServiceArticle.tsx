@@ -5,20 +5,18 @@ import inspectionRoofAsset from "@/assets/team/chimcrew-inspection-roof.png.asse
 import fireplaceServiceAsset from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 import sweepCloseupAsset from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import teamTruckAsset from "@/assets/team/chimcrew-team-truck.png.asset.json";
-import gj3 from "@/assets/gallery-jobs/gj3.jpeg.asset.json";
-import gj6 from "@/assets/gallery-jobs/gj6.jpeg.asset.json";
-import gj8 from "@/assets/gallery-jobs/gj8.jpeg.asset.json";
-import gj10 from "@/assets/gallery-jobs/gj10.jpeg.asset.json";
-import gj12 from "@/assets/gallery-jobs/gj12.jpeg.asset.json";
-import gj15 from "@/assets/gallery-jobs/gj15.jpeg.asset.json";
-import gj17 from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
-import gj19 from "@/assets/gallery-jobs/gj19.jpeg.asset.json";
-import capInstallProcessAsset from "@/assets/uploads/cap-install-process.jpeg.asset.json";
 import newCapInstallRooftop from "@/assets/uploads/new-cap-install-rooftop.jpeg.asset.json";
 import newCrownFreshCaps from "@/assets/uploads/new-crown-fresh-caps.jpeg.asset.json";
 import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
 import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
 import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
+import flashingProgress from "@/assets/process/flashing-progress.jpeg.asset.json";
+import chaseCoverMesh from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
+import smokeChamberAfter from "@/assets/ba/smoke-chamber-after.jpeg.asset.json";
+import techLinerInstall from "@/assets/real/tech-liner-install.png.asset.json";
+import damagedChimneyCap from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
+import techScaffoldingRebuild from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
+// (crown demo asset intentionally not imported)
 import dryerBefore1 from "@/assets/uploads/dryer-before-1.jpeg.asset.json";
 import dryerAfter1 from "@/assets/uploads/dryer-after-1.jpeg.asset.json";
 import dryerBefore2 from "@/assets/uploads/dryer-before-2.jpeg.asset.json";
@@ -47,21 +45,21 @@ function secondaryImageFor(slug: string): string {
     case "crown-tuckpoint":
       return newCrownFreshCaps.url;
     case "liner-install":
-      return gj12.url;
+      return techLinerInstall.url;
     case "animal-removal":
-      return gj17.url;
+      return damagedChimneyCap.url;
     case "cap-install":
       return newCapInstallRooftop.url;
     case "chase-cover-replacement":
-      return gj15.url;
+      return chaseCoverMesh.url;
     case "waterproofing":
       return newChimneyRestored.url;
     case "flashing-repair":
-      return gj19.url;
+      return flashingProgress.url;
     case "firebox-rebuild":
-      return fireplaceServiceAsset.url;
+      return techScaffoldingRebuild.url;
     case "smoke-chamber-parging":
-      return gj3.url;
+      return smokeChamberAfter.url;
     case "damper-repair":
       return fireplaceServiceAsset.url;
     case "gas-fireplace-service":
