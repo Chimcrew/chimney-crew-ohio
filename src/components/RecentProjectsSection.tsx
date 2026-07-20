@@ -7,6 +7,7 @@ import newCrownFreshCaps from "@/assets/uploads/new-crown-fresh-caps.jpeg.asset.
 import newCrownCapsView from "@/assets/uploads/new-crown-caps-view.jpeg.asset.json";
 import newBoomliftCapInstall from "@/assets/uploads/new-boomlift-cap-install.jpeg.asset.json";
 import newBoomliftHouse from "@/assets/uploads/new-boomlift-house.jpeg.asset.json";
+import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
 import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
 
 const PROJECTS = [
@@ -15,6 +16,7 @@ const PROJECTS = [
   { img: newCapInstallRooftop.url, title: "Stainless Cap Install", city: "Westerville, OH", tag: "Cap Install" },
   { img: newBoomliftHouse.url, title: "High-Access Chimney Job", city: "Bexley, OH", tag: "Access" },
   { img: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", city: "Worthington, OH", tag: "Crown & Caps" },
+  { img: newBoomliftInspect.url, title: "High-Access Inspection", city: "Dublin, OH", tag: "Done" },
   { img: newTechLadderPoint.url, title: "On-Site Chimney Inspection", city: "Hilliard, OH", tag: "Inspection" },
   { img: newCrownCapsView.url, title: "Crown Rebuild + Dual Caps", city: "Grove City, OH", tag: "Crown Rebuild" },
   { img: newTechFireplace.url, title: "Fireplace Service", city: "German Village, OH", tag: "Fireplace" },
@@ -43,10 +45,10 @@ export function RecentProjects() {
             </p>
           </div>
           <Link
-            to="/gallery"
+            to="/before-after"
             className="inline-flex items-center gap-2 rounded-none border-2 border-foreground/15 bg-card px-5 py-3 font-display text-sm font-bold uppercase tracking-wider text-foreground transition hover:border-flame hover:text-flame"
           >
-            See full gallery <ArrowRight className="h-4 w-4" />
+            See all done projects <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
@@ -74,7 +76,10 @@ function ProjectTile({
   priority?: boolean;
 }) {
   return (
-    <figure className={`group relative overflow-hidden rounded-none border-2 border-border bg-primary transition hover:border-flame ${className}`}>
+    <Link
+      to="/before-after"
+      className={`group relative overflow-hidden rounded-none border-2 border-border bg-primary transition hover:border-flame ${className}`}
+    >
       <img
         src={project.img}
         alt={`${project.title} — ChimCrew project in ${project.city}`}
@@ -95,6 +100,6 @@ function ProjectTile({
           </p>
         </div>
       </figcaption>
-    </figure>
+    </Link>
   );
 }
