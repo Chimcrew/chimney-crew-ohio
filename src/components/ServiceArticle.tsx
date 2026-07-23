@@ -11,7 +11,7 @@ import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset
 import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
 import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
 import flashingProgress from "@/assets/process/flashing-progress.jpeg.asset.json";
-import chaseCoverMesh from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
+import chaseCoverSide from "@/assets/gallery-new/new-chase-side.jpeg.asset.json";
 import smokeChamberAfter from "@/assets/ba/smoke-chamber-after.jpeg.asset.json";
 import techLinerInstall from "@/assets/real/tech-liner-install.png.asset.json";
 import damagedChimneyCap from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
@@ -51,7 +51,7 @@ function secondaryImageFor(slug: string): string {
     case "cap-install":
       return newCapInstallRooftop.url;
     case "chase-cover-replacement":
-      return chaseCoverMesh.url;
+      return chaseCoverSide.url;
     case "waterproofing":
       return newChimneyRestored.url;
     case "flashing-repair":
