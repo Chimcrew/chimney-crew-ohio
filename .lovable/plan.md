@@ -1,58 +1,122 @@
 
-## 1. New "Schedule Service Online" form (global)
+# Royal-style Header + Full SEO Service Build-Out
 
-Build one shared component `ScheduleServiceForm` matching the reference photo (bold uppercase headline, left-aligned, white inputs on deep navy background, red NEXT button, 3-step tabs: Information → Address → Note).
+## Goal
+Restructure the header and services to mirror royalchimneys.com — a 5-group mega-menu with ~40 total services (20 net-new pages), plus a dedicated Masonry group. Every new page gets photos that actually match the service.
 
-**Step 1 — Information:** Full Name, Phone Number, Appointment Date, Appointment Time (8AM-11AM / 11AM-2PM / 2PM-5PM).
-**Step 2 — Address:** Street, City, State (OH), ZIP.
-**Step 3 — Note:** Service Needed (dropdown) + optional message.
+---
 
-Service Needed options (replace all air-duct items everywhere):
-- Gas Fireplace Inspection — $49
-- Chimney/Fireplace Inspection — $69
-- Chimney Sweep — $99
-- Dryer Vent Cleaning — $79
-- Chimney Drone Inspection — Free
+## 1. New menu structure (5 service groups)
 
-Submits through existing lead pipeline (`notify-lead` route / Supabase leads table — keeping current backend wiring).
+**Chimney Repair** (most items — matches Royal exactly)
+- Chimney Crown Repair *(new)*
+- Chimney Crown Replacement *(new)*
+- Chimney Cap Repair *(new)*
+- Chimney Cap Replacement *(new)*
+- Chimney Cap Installation *(exists)*
+- Chase Cover Replacement *(exists)*
+- Chimney Liner Installation *(exists — rename from "Stainless Liner")*
+- Chimney Liner Repair *(new)*
+- Chimney Flashing Repair *(exists)*
+- Chimney Flue Repair *(new)*
+- Chimney Leak Repair *(new)*
+- Chimney Waterproofing *(exists)*
+- Chimney Mortar Repair *(new)*
+- Chimney Spalling Repair *(new)*
+- Firebox Rebuild *(exists)*
+- Smoke Chamber Parging *(exists)*
+- Damper Repair *(exists)*
 
-Place this form on:
-- Home page (new section — currently has none)
-- Every service detail page (`/services/$slug`)
-- Services index, Contact, Service-area city pages
-- Replaces the current `InlineLeadForm` / `ScheduleWidget` usage where applicable
+**Chimney Sweep & Inspection**
+- Chimney Sweep *(exists)*
+- Chimney Cleaning *(new — SEO twin of sweep)*
+- Level 1 Inspection *(exists)*
+- Level 2 Inspection *(exists)*
+- Chimney Maintenance *(new)*
+- Animal Removal *(exists)*
 
-## 2. Service Area section + SEO city pages
+**Fireplace Services**
+- Wood Fireplace Service *(new)*
+- Wood Fireplace Repair *(new)*
+- Wood Fireplace Insert *(new)*
+- Gas Fireplace Service *(exists — rename)*
+- Gas Fireplace Repair *(new)*
+- Gas Fireplace Insert *(new)*
+- Gas Fireplace Cleaning *(new)*
+- Fireplace Damper Repair *(new — twin of Damper Repair, fireplace-side keyword)*
 
-Remove current map section entirely. Replace with a clean grid of ~30 rectangle tiles (4–5 per row, 6–8 rows) listing cities around Columbus, Dayton, Cincinnati. Each tile links to `/service-area/$city`.
+**Masonry** (new group)
+- Chimney Masonry Repair *(new)*
+- Chimney Brick Repair *(new)*
+- Chimney Tuckpointing *(new)*
+- Brick Repair *(new)*
+- Tuckpointing *(new)*
+- Brick Wall Repair *(new)*
+- Foundation Masonry *(new)*
 
-Cities (30):
-Columbus, Dublin, Westerville, Worthington, Hilliard, Upper Arlington, Gahanna, Reynoldsburg, Grove City, Pickerington, Powell, New Albany, Delaware, Lewis Center, Pataskala, Dayton, Kettering, Beavercreek, Centerville, Huber Heights, Miamisburg, Springboro, Fairborn, Cincinnati, Mason, West Chester, Loveland, Blue Ash, Milford, Hamilton.
+**Dryer Vent**
+- Dryer Vent Cleaning *(exists)*
 
-Each city gets a unique SEO page at `/service-area/$city` with:
-- H1 "Chimney Services in {City}, OH"
-- 3–4 paragraphs of localized chimney/area copy (keywords: chimney sweep, chimney inspection, fireplace cleaning, dryer vent, drone inspection, {city}, suburb references)
-- Services list, trust badges
-- The new ScheduleServiceForm
+Top-level nav order: Home · Services (mega) · Financing · Done Projects · Reviews · Chimney Tips · Contact.
 
-(Route file already exists at `src/routes/service-area.$city.tsx` — update its data + content.)
+---
 
-## 3. Global layout / cleanup
+## 2. New service pages (~20)
 
-- **Left-align all headlines** site-wide. Remove `text-center` from all section headings/subheadings; standardize on left alignment.
-- **Remove van & logo section** above footer + the thin divider line above it.
-- **Remove the "Reviews & Emergency" line** above "Ask us anything"; move it down to sit just above the footer.
-- **"Ask us anything"**: remove the "we don't bite" subtext.
-- **Add "Meet the ChimCrew team." photo** directly below the site header on the home page (using existing team hero asset).
+Each new page uses the same `ServiceSpec` shape (hero, bullets, process, signs, FAQs, related, metaDescription, problems, benefits, warranty). Content will be genuinely differentiated per page — not copy-pasted — so Google treats them as unique.
 
-## 4. Typography pass
+Priced ones stay `"Starts from $X"`; specialized/masonry pages use `quoteOnly: true` → "Custom Quote" + "Request Free Inspection" CTA.
 
-Scan all pages/components and unify on the existing font stack already defined in `src/styles.css` (display + body tokens). Fix one-off `font-*` overrides on service pages, blog, legal, etc. so every heading uses the display font and every body block uses the body font at consistent sizes.
+---
 
-## Technical notes
+## 3. Photo assignments (using assets already on the CDN)
 
-- New file: `src/components/ScheduleServiceForm.tsx` (shared, 3-step, validated with zod, submits via existing lead server function).
-- Updated: `src/routes/index.tsx`, `src/routes/services.index.tsx`, `src/routes/services.$slug.tsx`, `src/routes/service-area.$city.tsx`, `src/routes/contact.tsx`, `src/components/SiteFooter.tsx`, `src/components/ServiceAreaMap.tsx` (or replaced), `src/data/seo-cities.ts` (expanded city list with copy).
-- Removed/retired: old map section, van+logo strip, reviews/emergency banner above CTA.
+I'll audit every existing asset in `src/assets/**` and map real photos to services by what's actually in the image. No stock, no mismatches. Where a real photo doesn't exist for a variation, sibling services share a photo of the same subject (e.g., Crown Repair + Crown Replacement + Crown Rebuild can share crown photos — all show a crown).
 
-Approve and I'll build it.
+Concrete pairings:
+
+```text
+Crown Repair / Replacement / Rebuild       → crown-demo-inprogress, ba-crown-stone, tech-crown-waterproof
+Cap Repair / Replacement / Installation    → cap-install-hero, new-aluminum-cap, new-cap-install-rooftop
+Chase Cover Replacement                    → chase-cover-mesh, new-chase-side
+Liner Install / Repair / Flue Repair       → tech-liner-install, project-03-liner-install, project-07-flue-before
+Flashing / Leak Repair                     → flashing-ba/*, project-02-tuckpointing-after
+Waterproofing                              → tech-crown-waterproof, ba-crown-stone
+Mortar / Spalling / Brick / Tuckpoint      → ba-spalled-brick, tuckpoint-tech-1/2, project-05-crown-rebuild
+Firebox Rebuild / Smoke Chamber            → fireplace-tile-install, ba/fireplace-*, ba/smoke-chamber-*
+Damper / Fireplace Damper                  → tech-fireplace-sweep-hoodie, chimcrew-fireplace-service
+Sweep / Cleaning / Maintenance             → sweep-closeup, gj gallery, tech-fireplace-burner
+Level 1 / Level 2 Inspection               → camera-inspection, chimcrew-inspection-roof
+Animal Removal                             → chase-cover-mesh, cap-install-hero
+Wood Fireplace *                           → fireplace-cozy, tech-fireplace-sweep, chimcrew-fireplace-service
+Gas Fireplace *                            → chimcrew-fireplace-service, fireplace-tile-install
+Masonry (non-chimney)                      → tuckpoint-tech-1/2, ba-spalled-brick, project-02
+Dryer Vent                                 → dryer before/after set (unchanged)
+```
+
+If any category has zero appropriate photo, I'll flag it after the build so you can send one — I won't invent stock.
+
+---
+
+## 4. Files touched
+
+- `src/components/SiteHeader.tsx` — replace category arrays with the 5-group structure above.
+- `src/data/services.ts` — add ~20 new `ServiceSpec` entries; re-map photos on ~10 existing entries.
+- `src/routes/services.index.tsx` — grouped grid (5 sections) instead of one flat 14-card wall.
+- `src/routes/sitemap[.]xml.ts` — add every new slug.
+- `src/data/seo-cities.ts` (if it feeds the sitemap) — no change unless needed.
+- No new route files needed: `services.$slug.tsx` handles every new slug automatically.
+
+Existing pages, homepage, footer, PDFs, forms, and admin — untouched.
+
+---
+
+## 5. What ships in one turn
+
+- Header mega-menu (5 groups, hover-slide, mobile accordion).
+- All 20 new service pages live at `/services/<slug>` with unique content + real photos.
+- Services index rebuilt as grouped sections matching the menu.
+- Sitemap updated.
+- Photo audit summary at the end listing anything I couldn't confidently match, so you can send replacements.
+
+Approve and I'll ship it.
