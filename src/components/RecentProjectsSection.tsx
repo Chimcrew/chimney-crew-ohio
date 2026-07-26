@@ -18,6 +18,13 @@ import oldTechOnsite from "@/assets/projects/project-06-tech-onsite.jpg.asset.js
 import oldFlueBefore from "@/assets/projects/project-07-flue-before.jpg.asset.json";
 import oldCapFinished from "@/assets/projects/project-08-cap-finished.jpg.asset.json";
 import oldCrownBefore from "@/assets/projects/project-09-crown-before.jpg.asset.json";
+import u2CapMesh from "@/assets/uploads2/cap-install-brick-mesh.jpeg.asset.json";
+import u2WhiteCrown from "@/assets/uploads2/brick-chimney-white-crown-cap.jpeg.asset.json";
+import u2BrickCap from "@/assets/uploads2/brick-chimney-restored-cap.jpeg.asset.json";
+import u2BrickTall from "@/assets/uploads2/brick-chimney-tall-restored.jpeg.asset.json";
+import u2BrickTuck from "@/assets/uploads2/brick-tuckpoint-double-crown.jpeg.asset.json";
+import u2CapDomed from "@/assets/uploads2/cap-domed-crown-flue.jpeg.asset.json";
+import u2CrownSide from "@/assets/uploads2/crown-parge-side-fresh.jpeg.asset.json";
 
 type Project = {
   img: string;
@@ -28,6 +35,13 @@ type Project = {
 };
 
 const PROJECTS: Project[] = [
+  { img: u2BrickCap.url, title: "Full Chimney Restoration", city: "Upper Arlington, OH", tag: "Masonry + Cap", layout: "feature" },
+  { img: u2CapMesh.url, title: "Stainless Cap on Brick", city: "Dublin, OH", tag: "Cap Install", layout: "square" },
+  { img: u2WhiteCrown.url, title: "Crown Replacement + Cap", city: "Powell, OH", tag: "Crown", layout: "square" },
+  { img: u2BrickTall.url, title: "Tall Brick Chimney Repair", city: "Hilliard, OH", tag: "Brick Repair", layout: "wide" },
+  { img: u2BrickTuck.url, title: "Brick + Double Crown Tuckpoint", city: "Clintonville, OH", tag: "Tuckpointing", layout: "square" },
+  { img: u2CapDomed.url, title: "New Cap + Domed Crown", city: "Grove City, OH", tag: "Cap + Crown", layout: "square" },
+  { img: u2CrownSide.url, title: "Fresh Crown Parge", city: "Bexley, OH", tag: "Crown", layout: "square" },
   { img: newChimneyRestored.url, title: "Full Crown Seal + Stainless Cap", city: "Columbus, OH", tag: "Crown & Cap", layout: "feature" },
   { img: newBoomliftCapInstall.url, title: "Boom Lift Cap Install", city: "Upper Arlington, OH", tag: "Cap Install", layout: "square" },
   { img: newCapInstallRooftop.url, title: "Stainless Cap Install", city: "Westerville, OH", tag: "Cap Install", layout: "square" },
