@@ -3,6 +3,53 @@ import { ChevronRight, ArrowRight } from "lucide-react";
 import { SERVICES, ACCENT_CLASSES, formatFromPrice } from "@/data/services";
 import { ScheduleInline } from "@/components/ScheduleWidget";
 
+const SERVICE_GROUPS: { key: string; label: string; slugs: string[] }[] = [
+  {
+    key: "repair",
+    label: "Chimney Repair",
+    slugs: [
+      "chimney-crown-repair", "chimney-crown-replacement", "crown-tuckpoint",
+      "chimney-cap-repair", "chimney-cap-replacement", "cap-install",
+      "chase-cover-replacement",
+      "liner-install", "chimney-liner-repair", "chimney-flue-repair",
+      "flashing-repair", "chimney-leak-repair", "waterproofing",
+      "chimney-mortar-repair", "chimney-spalling-repair",
+      "firebox-rebuild", "smoke-chamber-parging", "damper-repair",
+    ],
+  },
+  {
+    key: "sweep",
+    label: "Chimney Sweep & Inspection",
+    slugs: [
+      "chimney-sweep", "chimney-cleaning",
+      "level-1-inspection", "level-2-inspection",
+      "chimney-maintenance", "animal-removal",
+    ],
+  },
+  {
+    key: "fireplace",
+    label: "Fireplace Services",
+    slugs: [
+      "wood-fireplace-service", "wood-fireplace-repair", "wood-fireplace-insert",
+      "gas-fireplace-service", "gas-fireplace-repair", "gas-fireplace-insert",
+      "gas-fireplace-cleaning", "fireplace-damper-repair", "annual-plan",
+    ],
+  },
+  {
+    key: "masonry",
+    label: "Masonry",
+    slugs: [
+      "chimney-masonry-repair", "chimney-brick-repair", "chimney-tuckpointing",
+      "brick-repair", "tuckpointing", "brick-wall-repair", "foundation-masonry",
+    ],
+  },
+  {
+    key: "dryer",
+    label: "Dryer Vent",
+    slugs: ["dryer-vent-cleaning"],
+  },
+];
+
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
