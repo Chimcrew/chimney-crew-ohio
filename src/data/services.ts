@@ -238,11 +238,11 @@ export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quote
 export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
   switch (s.slug) {
     case "liner-install":
-      return linerStainlessMeasure;
+      return linerSmokeChamber;
     case "chimney-liner-repair":
       return linerInsideFlue;
     case "chimney-flue-repair":
-      return linerSmokeChamber;
+      return linerStainlessMeasure;
     case "chimney-cap-repair":
       return capRepairWornMesh;
     case "chimney-crown-replacement":
