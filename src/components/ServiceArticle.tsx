@@ -28,6 +28,9 @@ import crownNewDoubleCaps from "@/assets/uploads2/crown-new-double-caps.jpeg.ass
 import linerStainlessMeasure from "@/assets/uploads2/liner-stainless-measure.jpeg.asset.json";
 import linerInsideFlueClean from "@/assets/uploads2/liner-inside-flue-clean.jpeg.asset.json";
 import linerSmokeChamberView from "@/assets/uploads2/liner-smoke-chamber-view.jpeg.asset.json";
+import crownFreshOpenFlue from "@/assets/uploads4/crown-fresh-open-flue.jpeg.asset.json";
+import capBlackFreshCrown from "@/assets/uploads4/cap-black-fresh-crown.jpeg.asset.json";
+import linerStainlessFarm from "@/assets/uploads4/liner-stainless-farm-view.jpeg.asset.json";
 import smokeChamberAfter from "@/assets/ba/smoke-chamber-after.jpeg.asset.json";
 import techLinerInstall from "@/assets/real/tech-liner-install.png.asset.json";
 import damagedChimneyCap from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
@@ -62,9 +65,9 @@ function secondaryImageFor(slug: string): string {
     case "level-2-inspection":
       return newBoomliftInspect.url;
     case "crown-tuckpoint":
-      return crownPargeCloseup.url;
+      return crownFreshOpenFlue.url;
     case "liner-install":
-      return linerStainlessMeasure.url;
+      return linerStainlessFarm.url;
     case "chimney-liner-repair":
       return linerSmokeChamberView.url;
     case "chimney-flue-repair":
@@ -98,7 +101,7 @@ function secondaryImageFor(slug: string): string {
     case "chimney-cap-repair":
       return capsInstalledBrick.url;
     case "chimney-cap-replacement":
-      return crownNewWithCaps.url;
+      return capBlackFreshCrown.url;
     case "chimney-masonry-repair":
       return brickTuckpointDoubleCrown.url;
     case "chimney-brick-repair":
