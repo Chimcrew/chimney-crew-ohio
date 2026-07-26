@@ -83,6 +83,10 @@ import linerInsideFlueAsset from "@/assets/uploads2/liner-inside-flue-clean.jpeg
 import linerSmokeChamberAsset from "@/assets/uploads2/liner-smoke-chamber-view.jpeg.asset.json";
 import linerStainlessMeasureAsset from "@/assets/uploads2/liner-stainless-measure.jpeg.asset.json";
 import foundationPargeBasementAsset from "@/assets/uploads2/foundation-parge-basement.jpeg.asset.json";
+// New uploads (2026-07-26 batch 4)
+import capBlackFreshCrownAsset from "@/assets/uploads4/cap-black-fresh-crown.jpeg.asset.json";
+import techTuckpointingBrickAsset from "@/assets/uploads4/tech-tuckpointing-brick.jpeg.asset.json";
+import linerStainlessFarmAsset from "@/assets/uploads4/liner-stainless-farm-view.jpeg.asset.json";
 
 const techLinerInstall = techLinerInstallAsset.url;
 const techScaffoldingRebuild = techScaffoldingRebuildAsset.url;
@@ -144,6 +148,9 @@ const linerInsideFlue = linerInsideFlueAsset.url;
 const linerSmokeChamber = linerSmokeChamberAsset.url;
 const linerStainlessMeasure = linerStainlessMeasureAsset.url;
 const foundationPargeBasement = foundationPargeBasementAsset.url;
+const capBlackFreshCrown = capBlackFreshCrownAsset.url;
+const techTuckpointingBrick = techTuckpointingBrickAsset.url;
+const linerStainlessFarm = linerStainlessFarmAsset.url;
 
 export type ServiceVariant =
   | "maintenance"
@@ -240,7 +247,7 @@ export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quote
 export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
   switch (s.slug) {
     case "liner-install":
-      return linerSmokeChamber;
+      return linerStainlessFarm;
     case "chimney-liner-repair":
       return linerInsideFlue;
     case "chimney-flue-repair":
@@ -266,7 +273,7 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     case "smoke-chamber-parging":
       return crownDemoInProgress;
     case "cap-install":
-      return capInstallBrickMesh;
+      return capBlackFreshCrown;
     case "chase-cover-replacement":
       return chaseCoverHero;
     case "animal-removal":
@@ -318,11 +325,11 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     case "chimney-brick-repair":
       return brickChimneyTallRestored;
     case "chimney-tuckpointing":
-      return brickTuckpointDoubleCrown;
+      return techTuckpointingBrick;
     case "brick-repair":
       return brickChimneyTallRestored;
     case "tuckpointing":
-      return brickTuckpointDoubleCrown;
+      return techTuckpointingBrick;
     case "brick-wall-repair":
       return brickChimneyRestoredCap;
     default:
