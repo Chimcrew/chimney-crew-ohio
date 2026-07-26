@@ -66,9 +66,9 @@ function secondaryImageFor(slug: string): string {
     case "liner-install":
       return linerStainlessMeasure.url;
     case "chimney-liner-repair":
-      return linerInsideFlueClean.url;
-    case "chimney-flue-repair":
       return linerSmokeChamberView.url;
+    case "chimney-flue-repair":
+      return linerInsideFlueClean.url;
     case "animal-removal":
       return damagedChimneyCap.url;
     case "cap-install":
