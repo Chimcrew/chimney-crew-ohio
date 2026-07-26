@@ -31,6 +31,7 @@ import tuckpointTech1Asset from "@/assets/real/tuckpoint-tech-1.png.asset.json";
 import capInstallHeroAsset from "@/assets/real/cap-install-hero.jpeg.asset.json";
 import chimneyJobAAsset from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import chimneyJobBAsset from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
+import sweepToolsFireplaceAsset from "@/assets/uploads3/sweep-tools-fireplace.jpeg.asset.json";
 import fireplaceServiceAsset from "@/assets/team/chimcrew-fireplace-service.png.asset.json";
 import sweepCloseupAsset from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import chaseCoverMeshAsset from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
@@ -93,6 +94,7 @@ const tuckpointTech1 = tuckpointTech1Asset.url;
 const capInstallHero = capInstallHeroAsset.url;
 const chimneyJobA = chimneyJobAAsset.url;
 const chimneyJobB = chimneyJobBAsset.url;
+const sweepToolsFireplace = sweepToolsFireplaceAsset.url;
 const fireplaceServicePhoto = fireplaceServiceAsset.url;
 const sweepCloseupPhoto = sweepCloseupAsset.url;
 const chaseCoverHero = chaseCoverMeshAsset.url;
@@ -272,7 +274,7 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     case "gas-fireplace-service":
       return fireplaceServicePhoto;
     case "chimney-sweep":
-      return chimneyJobA;
+      return sweepToolsFireplace;
     case "annual-plan":
       return chimneyJobB;
     case "damper-repair":
@@ -292,7 +294,7 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
       return baSpalledBrick;
     // Sweep & Inspection — new
     case "chimney-cleaning":
-      return chimneyJobA;
+      return sweepToolsFireplace;
     case "chimney-maintenance":
       return chimneyJobB;
     // Fireplace — new
