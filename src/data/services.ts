@@ -259,8 +259,6 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
       return techCrownWaterproof;
     case "flashing-repair":
       return job7;
-    case "liner-install":
-      return techLinerInstall;
     case "firebox-rebuild":
       return gj17;
     case "smoke-chamber-parging":
@@ -284,16 +282,8 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     // Chimney Repair — new SEO pages
     case "chimney-crown-repair":
       return crownPargeSideFresh;
-    case "chimney-crown-replacement":
-      return brickChimneyWhiteCrownCap;
-    case "chimney-cap-repair":
-      return capInstallBrickMesh;
     case "chimney-cap-replacement":
       return capDomedCrownFlue;
-    case "chimney-liner-repair":
-      return job2;
-    case "chimney-flue-repair":
-      return project07FlueBefore;
     case "chimney-leak-repair":
       return job6;
     case "chimney-mortar-repair":
@@ -333,8 +323,6 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
       return brickTuckpointDoubleCrown;
     case "brick-wall-repair":
       return brickChimneyRestoredCap;
-    case "foundation-masonry":
-      return techStoneChimneyCap;
     default:
       return fireplaceCozy;
   }
