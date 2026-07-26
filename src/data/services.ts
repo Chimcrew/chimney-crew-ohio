@@ -47,6 +47,25 @@ import newChimneyRestoredAsset from "@/assets/uploads/new-chimney-restored.jpeg.
 import fireplaceInteriorAsset from "@/assets/gallery-new/new-fireplace-interior.jpeg.asset.json";
 import techFireplaceBurnerAsset from "@/assets/team-jobs/tech-fireplace-burner.jpeg.asset.json";
 import newTechFireplaceAsset from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
+// Additional gallery photos re-used for accurate per-service matching.
+import gj4Asset from "@/assets/gallery-jobs/gj4.jpeg.asset.json";
+import gj5Asset from "@/assets/gallery-jobs/gj5.jpeg.asset.json";
+import gj9Asset from "@/assets/gallery-jobs/gj9.jpeg.asset.json";
+import gj14Asset from "@/assets/gallery-jobs/gj14.jpeg.asset.json";
+import gj17Asset from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
+import gj18Asset from "@/assets/gallery-jobs/gj18.jpeg.asset.json";
+import job0Asset from "@/assets/uploads/job0.jpeg.asset.json";
+import job2Asset from "@/assets/uploads/job_2.jpeg.asset.json";
+import job3Asset from "@/assets/uploads/job_3.jpeg.asset.json";
+import job4Asset from "@/assets/uploads/job_4.jpeg.asset.json";
+import job5Asset from "@/assets/uploads/job_5.jpeg.asset.json";
+import job6Asset from "@/assets/uploads/job_6.jpeg.asset.json";
+import job7Asset from "@/assets/uploads/job_7.jpeg.asset.json";
+import job8Asset from "@/assets/uploads/job_8.jpeg.asset.json";
+import boomliftInspectAsset from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
+import meshCapCloseupAsset from "@/assets/gallery-new/new-mesh-cap-closeup.jpeg.asset.json";
+import chimneyNightRebuildAsset from "@/assets/team-jobs/chimney-night-rebuild.jpeg.asset.json";
+import techStoneChimneyCapAsset from "@/assets/team-jobs/tech-stone-chimney-cap.jpeg.asset.json";
 
 const techLinerInstall = techLinerInstallAsset.url;
 const techScaffoldingRebuild = techScaffoldingRebuildAsset.url;
@@ -74,6 +93,24 @@ const newChimneyRestored = newChimneyRestoredAsset.url;
 const fireplaceInterior = fireplaceInteriorAsset.url;
 const techFireplaceBurner = techFireplaceBurnerAsset.url;
 const newTechFireplace = newTechFireplaceAsset.url;
+const gj4 = gj4Asset.url;
+const gj5 = gj5Asset.url;
+const gj9 = gj9Asset.url;
+const gj14 = gj14Asset.url;
+const gj17 = gj17Asset.url;
+const gj18 = gj18Asset.url;
+const job0 = job0Asset.url;
+const job2 = job2Asset.url;
+const job3 = job3Asset.url;
+const job4 = job4Asset.url;
+const job5 = job5Asset.url;
+const job6 = job6Asset.url;
+const job7 = job7Asset.url;
+const job8 = job8Asset.url;
+const boomliftInspect = boomliftInspectAsset.url;
+const meshCapCloseup = meshCapCloseupAsset.url;
+const chimneyNightRebuild = chimneyNightRebuildAsset.url;
+const techStoneChimneyCap = techStoneChimneyCapAsset.url;
 
 export type ServiceVariant =
   | "maintenance"
