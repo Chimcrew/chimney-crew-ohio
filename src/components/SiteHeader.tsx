@@ -37,12 +37,21 @@ type ServiceCategory = {
 };
 
 const REPAIR_MENU: MenuLink[] = [
+  { label: "Chimney Crown Repair", to: "/services/$slug", slug: "chimney-crown-repair" },
+  { label: "Chimney Crown Replacement", to: "/services/$slug", slug: "chimney-crown-replacement" },
   { label: "Crown Repair & Tuckpointing", to: "/services/$slug", slug: "crown-tuckpoint" },
-  { label: "Chimney Leak & Flashing Repair", to: "/services/$slug", slug: "flashing-repair" },
+  { label: "Chimney Cap Repair", to: "/services/$slug", slug: "chimney-cap-repair" },
+  { label: "Chimney Cap Replacement", to: "/services/$slug", slug: "chimney-cap-replacement" },
   { label: "Chimney Cap Installation", to: "/services/$slug", slug: "cap-install" },
   { label: "Chase Cover Replacement", to: "/services/$slug", slug: "chase-cover-replacement" },
+  { label: "Chimney Liner Installation", to: "/services/$slug", slug: "liner-install" },
+  { label: "Chimney Liner Repair", to: "/services/$slug", slug: "chimney-liner-repair" },
+  { label: "Chimney Flue Repair", to: "/services/$slug", slug: "chimney-flue-repair" },
+  { label: "Chimney Flashing Repair", to: "/services/$slug", slug: "flashing-repair" },
+  { label: "Chimney Leak Repair", to: "/services/$slug", slug: "chimney-leak-repair" },
   { label: "Chimney Waterproofing", to: "/services/$slug", slug: "waterproofing" },
-  { label: "Stainless Liner Installation", to: "/services/$slug", slug: "liner-install" },
+  { label: "Chimney Mortar Repair", to: "/services/$slug", slug: "chimney-mortar-repair" },
+  { label: "Chimney Spalling Repair", to: "/services/$slug", slug: "chimney-spalling-repair" },
   { label: "Firebox Rebuild", to: "/services/$slug", slug: "firebox-rebuild" },
   { label: "Smoke Chamber Parging", to: "/services/$slug", slug: "smoke-chamber-parging" },
   { label: "Damper Repair", to: "/services/$slug", slug: "damper-repair" },
@@ -50,15 +59,33 @@ const REPAIR_MENU: MenuLink[] = [
 
 const CLEANING_MENU: MenuLink[] = [
   { label: "Chimney Sweep — $99", to: "/services/$slug", slug: "chimney-sweep" },
+  { label: "Chimney Cleaning", to: "/services/$slug", slug: "chimney-cleaning" },
   { label: "Level 1 Inspection — $69", to: "/services/$slug", slug: "level-1-inspection" },
   { label: "Level 2 Inspection", to: "/services/$slug", slug: "level-2-inspection" },
+  { label: "Chimney Maintenance", to: "/services/$slug", slug: "chimney-maintenance" },
   { label: "Animal Removal", to: "/services/$slug", slug: "animal-removal" },
 ];
 
 const FIREPLACE_MENU: MenuLink[] = [
+  { label: "Wood Fireplace Service", to: "/services/$slug", slug: "wood-fireplace-service" },
+  { label: "Wood Fireplace Repair", to: "/services/$slug", slug: "wood-fireplace-repair" },
+  { label: "Wood Fireplace Insert", to: "/services/$slug", slug: "wood-fireplace-insert" },
   { label: "Gas Fireplace Service — $49", to: "/services/$slug", slug: "gas-fireplace-service" },
-  { label: "Firebox Rebuild", to: "/services/$slug", slug: "firebox-rebuild" },
+  { label: "Gas Fireplace Repair", to: "/services/$slug", slug: "gas-fireplace-repair" },
+  { label: "Gas Fireplace Insert", to: "/services/$slug", slug: "gas-fireplace-insert" },
+  { label: "Gas Fireplace Cleaning", to: "/services/$slug", slug: "gas-fireplace-cleaning" },
+  { label: "Fireplace Damper Repair", to: "/services/$slug", slug: "fireplace-damper-repair" },
   { label: "Annual Maintenance Plan", to: "/services/$slug", slug: "annual-plan" },
+];
+
+const MASONRY_MENU: MenuLink[] = [
+  { label: "Chimney Masonry Repair", to: "/services/$slug", slug: "chimney-masonry-repair" },
+  { label: "Chimney Brick Repair", to: "/services/$slug", slug: "chimney-brick-repair" },
+  { label: "Chimney Tuckpointing", to: "/services/$slug", slug: "chimney-tuckpointing" },
+  { label: "Brick Repair", to: "/services/$slug", slug: "brick-repair" },
+  { label: "Tuckpointing", to: "/services/$slug", slug: "tuckpointing" },
+  { label: "Brick Wall Repair", to: "/services/$slug", slug: "brick-wall-repair" },
+  { label: "Foundation Masonry", to: "/services/$slug", slug: "foundation-masonry" },
 ];
 
 const DRYER_VENT_MENU: MenuLink[] = [
@@ -67,8 +94,9 @@ const DRYER_VENT_MENU: MenuLink[] = [
 
 const SERVICE_CATEGORIES: ServiceCategory[] = [
   { key: "repair", label: "Chimney Repair", Icon: BrickWall, items: REPAIR_MENU },
-  { key: "cleaning", label: "Chimney Cleaning", Icon: Broom, items: CLEANING_MENU },
+  { key: "cleaning", label: "Chimney Sweep & Inspection", Icon: Broom, items: CLEANING_MENU },
   { key: "fireplace", label: "Fireplace Services", Icon: Flame, items: FIREPLACE_MENU },
+  { key: "masonry", label: "Masonry", Icon: BrickWall, items: MASONRY_MENU },
   { key: "dryer-vent", label: "Dryer Vent Cleaning", Icon: Wind, items: DRYER_VENT_MENU },
 ];
 
