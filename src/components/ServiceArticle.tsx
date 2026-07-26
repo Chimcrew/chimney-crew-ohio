@@ -179,10 +179,12 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
         />
 
         {showSweepVideo && (
-          <figure className="my-10 overflow-hidden rounded-none border border-border bg-card shadow-[0_20px_60px_-25px_oklch(0_0_0/0.35)]">
-            <AutoLoopVideo className="block aspect-video w-full object-cover" />
-            <figcaption className="flex items-center gap-2 border-t border-border bg-secondary/40 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
-              <MapPin className="h-3 w-3 text-flame" /> ChimCrew crew on the job
+          <figure className="relative my-10 overflow-hidden rounded-xl border-2 border-border bg-card p-2 shadow-[0_20px_60px_-25px_oklch(0_0_0/0.35)]">
+            <div className="overflow-hidden rounded-lg border border-border bg-black">
+              <AutoLoopVideo className="block aspect-video w-full object-cover" />
+            </div>
+            <figcaption className="flex items-center gap-2 px-2 pb-1 pt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
+              <MapPin className="h-3 w-3 text-flame" /> ChimCrew crew at work
             </figcaption>
           </figure>
         )}
