@@ -7,6 +7,36 @@ import { SERVICE_CITIES } from "@/components/ServiceAreaSeo";
 export function SiteFooter() {
   return (
     <footer className="relative border-t-2 border-primary/40 bg-gradient-to-b from-background to-secondary text-foreground">
+      {/* Google Maps strip — real business location */}
+      <div className="border-b border-border/60 bg-background">
+        <div className="mx-auto max-w-7xl px-4 py-10 md:px-8">
+          <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">// Find Us</p>
+              <h3 className="mt-2 text-2xl md:text-3xl">ChimCrew — Columbus, Ohio</h3>
+              <p className="mt-1 text-sm text-muted-foreground">220 Vine Street, Apt 225, Columbus, OH 43215</p>
+            </div>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=ChimCrew+Columbus+Ohio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 border-2 border-primary px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] text-primary transition hover:bg-primary hover:text-primary-foreground"
+            >
+              Open in Google Maps
+            </a>
+          </div>
+          <div className="relative aspect-[16/6] w-full overflow-hidden border-2 border-border">
+            <iframe
+              title="ChimCrew on Google Maps"
+              src="https://www.google.com/maps?q=220+Vine+Street,+Columbus,+OH+43215&output=embed"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 h-full w-full"
+              style={{ border: 0 }}
+            />
+          </div>
+        </div>
+      </div>
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1.1fr_1fr_1fr]">
           <div>
