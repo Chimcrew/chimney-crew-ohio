@@ -270,7 +270,7 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     case "chase-cover-replacement":
       return chaseCoverHero;
     case "animal-removal":
-      return beforeChimney;
+      return sweepToolsFireplace;
     case "gas-fireplace-service":
       return fireplaceServicePhoto;
     case "chimney-sweep":
