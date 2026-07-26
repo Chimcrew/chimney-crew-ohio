@@ -200,6 +200,60 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
       return crownAfter;
     case "dryer-vent-cleaning":
       return afterChimney;
+    // Chimney Repair — new SEO pages
+    case "chimney-crown-repair":
+      return baCrownStone;
+    case "chimney-crown-replacement":
+      return crownDemoInProgress;
+    case "chimney-cap-repair":
+      return capInstallHero;
+    case "chimney-cap-replacement":
+      return newAluminumCap;
+    case "chimney-liner-repair":
+      return project07FlueBefore;
+    case "chimney-flue-repair":
+      return project07FlueBefore;
+    case "chimney-leak-repair":
+      return baBrickCopperFlash;
+    case "chimney-mortar-repair":
+      return baSpalledBrick;
+    case "chimney-spalling-repair":
+      return baSpalledBrick;
+    // Sweep & Inspection — new
+    case "chimney-cleaning":
+      return sweepCloseupPhoto;
+    case "chimney-maintenance":
+      return chimneyJobA;
+    // Fireplace — new
+    case "wood-fireplace-service":
+      return fireplaceInterior;
+    case "wood-fireplace-repair":
+      return newTechFireplace;
+    case "wood-fireplace-insert":
+      return fireplaceCozy;
+    case "gas-fireplace-repair":
+      return fireplaceServicePhoto;
+    case "gas-fireplace-insert":
+      return fireplaceServicePhoto;
+    case "gas-fireplace-cleaning":
+      return techFireplaceBurner;
+    case "fireplace-damper-repair":
+      return fireplaceServicePhoto;
+    // Masonry — new
+    case "chimney-masonry-repair":
+      return tuckpointTech1;
+    case "chimney-brick-repair":
+      return baSpalledBrick;
+    case "chimney-tuckpointing":
+      return baBrickCrownSeal;
+    case "brick-repair":
+      return tuckpointTech2;
+    case "tuckpointing":
+      return project02Tuckpoint;
+    case "brick-wall-repair":
+      return tuckpointTech2;
+    case "foundation-masonry":
+      return project05CrownRebuild;
     default:
       return fireplaceCozy;
   }
