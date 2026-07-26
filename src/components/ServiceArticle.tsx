@@ -64,6 +64,8 @@ function secondaryImageFor(slug: string): string {
       return fireplaceServiceAsset.url;
     case "gas-fireplace-service":
       return newTechFireplace.url;
+    case "gas-fireplace-insert":
+      return fireplaceServiceAsset.url;
     case "dryer-vent-cleaning":
       return teamTruckAsset.url;
     default:
