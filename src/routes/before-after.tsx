@@ -39,6 +39,16 @@ import u2BrickTall from "@/assets/uploads2/brick-chimney-tall-restored.jpeg.asse
 import u2BrickCap from "@/assets/uploads2/brick-chimney-restored-cap.jpeg.asset.json";
 import u2BrickTuck from "@/assets/uploads2/brick-tuckpoint-double-crown.jpeg.asset.json";
 import u2WhiteCrown from "@/assets/uploads2/brick-chimney-white-crown-cap.jpeg.asset.json";
+import u2CrownDamaged from "@/assets/uploads2/crown-damaged-open-before.jpeg.asset.json";
+import u2CrownSevere from "@/assets/uploads2/crown-severely-damaged.jpeg.asset.json";
+import u2CapsBrick from "@/assets/uploads2/caps-installed-brick.jpeg.asset.json";
+import u2CapRepairMesh from "@/assets/uploads2/cap-repair-worn-mesh.jpeg.asset.json";
+import u2CrownNewCaps from "@/assets/uploads2/crown-new-with-caps.jpeg.asset.json";
+import u2CrownDoubleCaps from "@/assets/uploads2/crown-new-double-caps.jpeg.asset.json";
+import u2LinerMeasure from "@/assets/uploads2/liner-stainless-measure.jpeg.asset.json";
+import u2LinerFlue from "@/assets/uploads2/liner-inside-flue-clean.jpeg.asset.json";
+import u2LinerSmoke from "@/assets/uploads2/liner-smoke-chamber-view.jpeg.asset.json";
+import u2FoundationParge from "@/assets/uploads2/foundation-parge-basement.jpeg.asset.json";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
@@ -63,6 +73,16 @@ type GalleryItem = {
 };
 
 const GALLERY: GalleryItem[] = [
+  { src: u2LinerMeasure.url, title: "Stainless Liner — Sized & Sealed", caption: "New 316Ti liner measured and set on the flue collar", city: "Dublin, OH", size: "tall" },
+  { src: u2LinerSmoke.url, title: "Smoke Chamber Liner Transition", caption: "Clean liner tie-in inside a rebuilt smoke chamber", city: "Bexley, OH", size: "square" },
+  { src: u2LinerFlue.url, title: "Flue Interior — Post Repair", caption: "Smooth, sealed flue interior after liner work", city: "Upper Arlington, OH", size: "square" },
+  { src: u2CrownSevere.url, title: "Crown Replacement — Before", caption: "Severely spalled crown ready for full rebuild", city: "Hilliard, OH", size: "tall" },
+  { src: u2CrownDamaged.url, title: "Crown Rebuild — Opened Up", caption: "Old crown removed, brick prepped for fresh cap", city: "Grove City, OH", size: "wide" },
+  { src: u2CapRepairMesh.url, title: "Cap Repair — Worn Mesh Out", caption: "Failed mesh screen removed for a new stainless cap", city: "Powell, OH", size: "square" },
+  { src: u2CapsBrick.url, title: "Dual Stainless Caps + Crown", caption: "Two new caps set on a freshly parged brick crown", city: "Westerville, OH", size: "wide" },
+  { src: u2CrownNewCaps.url, title: "Fresh Crown + Twin Caps", caption: "Crown rebuilt with two matching stainless caps", city: "Worthington, OH", size: "tall" },
+  { src: u2CrownDoubleCaps.url, title: "Crown Rebuild + Double Caps", caption: "Finished crown with dual caps on brick stack", city: "Clintonville, OH", size: "square" },
+  { src: u2FoundationParge.url, title: "Foundation Parge & Seal", caption: "Basement foundation wall parged and sealed", city: "German Village, OH", size: "square" },
   { src: u2CapMesh.url, title: "Stainless Cap Install on Brick", caption: "Hand-set mesh cap on a freshly parged crown", city: "Dublin, OH", size: "tall" },
   { src: u2WhiteCrown.url, title: "Crown Replacement + New Cap", caption: "White crown wash with new stainless cap on metal roof", city: "Powell, OH", size: "square" },
   { src: u2BrickCap.url, title: "Full Chimney Restoration", caption: "Tuckpointed brick with new cap — top to bottom", city: "Upper Arlington, OH", size: "feature" },
