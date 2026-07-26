@@ -35,6 +35,18 @@ import fireplaceServiceAsset from "@/assets/team/chimcrew-fireplace-service.png.
 import sweepCloseupAsset from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import chaseCoverMeshAsset from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
 import techCrownWaterproofAsset from "@/assets/team-jobs/tech-crown-waterproof.jpeg.asset.json";
+import newAluminumCapAsset from "@/assets/gallery-new/new-aluminum-cap.jpeg.asset.json";
+import project07FlueBeforeAsset from "@/assets/projects/project-07-flue-before.jpg.asset.json";
+import project05CrownRebuildAsset from "@/assets/projects/project-05-crown-rebuild.jpg.asset.json";
+import project02TuckpointAsset from "@/assets/projects/project-02-tuckpointing-after.jpg.asset.json";
+import tuckpointTech2Asset from "@/assets/real/tuckpoint-tech-2.png.asset.json";
+import baBrickCopperFlashAsset from "@/assets/gallery-new/new-brick-copper-flash.jpeg.asset.json";
+import baCopperFlashDetailAsset from "@/assets/gallery-new/new-copper-flashing-detail.jpeg.asset.json";
+import baBrickCrownSealAsset from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
+import newChimneyRestoredAsset from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
+import fireplaceInteriorAsset from "@/assets/gallery-new/new-fireplace-interior.jpeg.asset.json";
+import techFireplaceBurnerAsset from "@/assets/team-jobs/tech-fireplace-burner.jpeg.asset.json";
+import newTechFireplaceAsset from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
 
 const techLinerInstall = techLinerInstallAsset.url;
 const techScaffoldingRebuild = techScaffoldingRebuildAsset.url;
@@ -50,6 +62,18 @@ const fireplaceServicePhoto = fireplaceServiceAsset.url;
 const sweepCloseupPhoto = sweepCloseupAsset.url;
 const chaseCoverHero = chaseCoverMeshAsset.url;
 const techCrownWaterproof = techCrownWaterproofAsset.url;
+const newAluminumCap = newAluminumCapAsset.url;
+const project07FlueBefore = project07FlueBeforeAsset.url;
+const project05CrownRebuild = project05CrownRebuildAsset.url;
+const project02Tuckpoint = project02TuckpointAsset.url;
+const tuckpointTech2 = tuckpointTech2Asset.url;
+const baBrickCopperFlash = baBrickCopperFlashAsset.url;
+const baCopperFlashDetail = baCopperFlashDetailAsset.url;
+const baBrickCrownSeal = baBrickCrownSealAsset.url;
+const newChimneyRestored = newChimneyRestoredAsset.url;
+const fireplaceInterior = fireplaceInteriorAsset.url;
+const techFireplaceBurner = techFireplaceBurnerAsset.url;
+const newTechFireplace = newTechFireplaceAsset.url;
 
 export type ServiceVariant =
   | "maintenance"
