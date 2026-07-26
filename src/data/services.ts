@@ -47,6 +47,25 @@ import newChimneyRestoredAsset from "@/assets/uploads/new-chimney-restored.jpeg.
 import fireplaceInteriorAsset from "@/assets/gallery-new/new-fireplace-interior.jpeg.asset.json";
 import techFireplaceBurnerAsset from "@/assets/team-jobs/tech-fireplace-burner.jpeg.asset.json";
 import newTechFireplaceAsset from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
+// Additional gallery photos re-used for accurate per-service matching.
+import gj4Asset from "@/assets/gallery-jobs/gj4.jpeg.asset.json";
+import gj5Asset from "@/assets/gallery-jobs/gj5.jpeg.asset.json";
+import gj9Asset from "@/assets/gallery-jobs/gj9.jpeg.asset.json";
+import gj14Asset from "@/assets/gallery-jobs/gj14.jpeg.asset.json";
+import gj17Asset from "@/assets/gallery-jobs/gj17.jpeg.asset.json";
+import gj18Asset from "@/assets/gallery-jobs/gj18.jpeg.asset.json";
+import job0Asset from "@/assets/uploads/job0.jpeg.asset.json";
+import job2Asset from "@/assets/uploads/job_2.jpeg.asset.json";
+import job3Asset from "@/assets/uploads/job_3.jpeg.asset.json";
+import job4Asset from "@/assets/uploads/job_4.jpeg.asset.json";
+import job5Asset from "@/assets/uploads/job_5.jpeg.asset.json";
+import job6Asset from "@/assets/uploads/job_6.jpeg.asset.json";
+import job7Asset from "@/assets/uploads/job_7.jpeg.asset.json";
+import job8Asset from "@/assets/uploads/job_8.jpeg.asset.json";
+import boomliftInspectAsset from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
+import meshCapCloseupAsset from "@/assets/gallery-new/new-mesh-cap-closeup.jpeg.asset.json";
+import chimneyNightRebuildAsset from "@/assets/team-jobs/chimney-night-rebuild.jpeg.asset.json";
+import techStoneChimneyCapAsset from "@/assets/team-jobs/tech-stone-chimney-cap.jpeg.asset.json";
 
 const techLinerInstall = techLinerInstallAsset.url;
 const techScaffoldingRebuild = techScaffoldingRebuildAsset.url;
@@ -74,6 +93,24 @@ const newChimneyRestored = newChimneyRestoredAsset.url;
 const fireplaceInterior = fireplaceInteriorAsset.url;
 const techFireplaceBurner = techFireplaceBurnerAsset.url;
 const newTechFireplace = newTechFireplaceAsset.url;
+const gj4 = gj4Asset.url;
+const gj5 = gj5Asset.url;
+const gj9 = gj9Asset.url;
+const gj14 = gj14Asset.url;
+const gj17 = gj17Asset.url;
+const gj18 = gj18Asset.url;
+const job0 = job0Asset.url;
+const job2 = job2Asset.url;
+const job3 = job3Asset.url;
+const job4 = job4Asset.url;
+const job5 = job5Asset.url;
+const job6 = job6Asset.url;
+const job7 = job7Asset.url;
+const job8 = job8Asset.url;
+const boomliftInspect = boomliftInspectAsset.url;
+const meshCapCloseup = meshCapCloseupAsset.url;
+const chimneyNightRebuild = chimneyNightRebuildAsset.url;
+const techStoneChimneyCap = techStoneChimneyCapAsset.url;
 
 export type ServiceVariant =
   | "maintenance"
@@ -172,16 +209,17 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     case "crown-tuckpoint":
       return tuckpointTech1;
     case "level-1-inspection":
-    case "level-2-inspection":
       return sweepCloseupPhoto;
+    case "level-2-inspection":
+      return boomliftInspect;
     case "waterproofing":
       return techCrownWaterproof;
     case "flashing-repair":
-      return leakRooftop;
+      return job7;
     case "liner-install":
       return techLinerInstall;
     case "firebox-rebuild":
-      return techScaffoldingRebuild;
+      return gj17;
     case "smoke-chamber-parging":
       return crownDemoInProgress;
     case "cap-install":
@@ -202,58 +240,58 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
       return afterChimney;
     // Chimney Repair — new SEO pages
     case "chimney-crown-repair":
-      return baCrownStone;
+      return job0;
     case "chimney-crown-replacement":
-      return crownDemoInProgress;
+      return project05CrownRebuild;
     case "chimney-cap-repair":
-      return capInstallHero;
+      return meshCapCloseup;
     case "chimney-cap-replacement":
-      return newAluminumCap;
+      return job8;
     case "chimney-liner-repair":
-      return project07FlueBefore;
+      return job2;
     case "chimney-flue-repair":
       return project07FlueBefore;
     case "chimney-leak-repair":
-      return baBrickCopperFlash;
+      return job6;
     case "chimney-mortar-repair":
-      return baSpalledBrick;
+      return baBrickCopperFlash;
     case "chimney-spalling-repair":
       return baSpalledBrick;
     // Sweep & Inspection — new
     case "chimney-cleaning":
-      return sweepCloseupPhoto;
-    case "chimney-maintenance":
       return chimneyJobA;
+    case "chimney-maintenance":
+      return chimneyJobB;
     // Fireplace — new
     case "wood-fireplace-service":
-      return fireplaceInterior;
+      return gj5;
     case "wood-fireplace-repair":
-      return newTechFireplace;
+      return gj14;
     case "wood-fireplace-insert":
       return fireplaceCozy;
     case "gas-fireplace-repair":
-      return fireplaceServicePhoto;
+      return newTechFireplace;
     case "gas-fireplace-insert":
-      return fireplaceServicePhoto;
+      return fireplaceInterior;
     case "gas-fireplace-cleaning":
       return techFireplaceBurner;
     case "fireplace-damper-repair":
-      return fireplaceServicePhoto;
+      return gj4;
     // Masonry — new
     case "chimney-masonry-repair":
-      return tuckpointTech1;
+      return chimneyNightRebuild;
     case "chimney-brick-repair":
-      return baSpalledBrick;
+      return tuckpointTech2;
     case "chimney-tuckpointing":
       return baBrickCrownSeal;
     case "brick-repair":
-      return tuckpointTech2;
+      return gj9;
     case "tuckpointing":
       return project02Tuckpoint;
     case "brick-wall-repair":
-      return tuckpointTech2;
+      return gj18;
     case "foundation-masonry":
-      return project05CrownRebuild;
+      return techStoneChimneyCap;
     default:
       return fireplaceCozy;
   }
