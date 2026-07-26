@@ -21,6 +21,13 @@ import brickTuckpointDoubleCrown from "@/assets/uploads2/brick-tuckpoint-double-
 import brickChimneyWhiteCrownCap from "@/assets/uploads2/brick-chimney-white-crown-cap.jpeg.asset.json";
 import crownPargeOverhead from "@/assets/uploads2/crown-parge-overhead.jpeg.asset.json";
 import capInstallBrickMesh from "@/assets/uploads2/cap-install-brick-mesh.jpeg.asset.json";
+import capsInstalledBrick from "@/assets/uploads2/caps-installed-brick.jpeg.asset.json";
+import crownDamagedOpenBefore from "@/assets/uploads2/crown-damaged-open-before.jpeg.asset.json";
+import crownNewWithCaps from "@/assets/uploads2/crown-new-with-caps.jpeg.asset.json";
+import crownNewDoubleCaps from "@/assets/uploads2/crown-new-double-caps.jpeg.asset.json";
+import linerStainlessMeasure from "@/assets/uploads2/liner-stainless-measure.jpeg.asset.json";
+import linerInsideFlueClean from "@/assets/uploads2/liner-inside-flue-clean.jpeg.asset.json";
+import linerSmokeChamberView from "@/assets/uploads2/liner-smoke-chamber-view.jpeg.asset.json";
 import smokeChamberAfter from "@/assets/ba/smoke-chamber-after.jpeg.asset.json";
 import techLinerInstall from "@/assets/real/tech-liner-install.png.asset.json";
 import damagedChimneyCap from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
@@ -57,11 +64,15 @@ function secondaryImageFor(slug: string): string {
     case "crown-tuckpoint":
       return crownPargeCloseup.url;
     case "liner-install":
-      return techLinerInstall.url;
+      return linerStainlessMeasure.url;
+    case "chimney-liner-repair":
+      return linerInsideFlueClean.url;
+    case "chimney-flue-repair":
+      return linerSmokeChamberView.url;
     case "animal-removal":
       return damagedChimneyCap.url;
     case "cap-install":
-      return capDomedCrownFlue.url;
+      return capsInstalledBrick.url;
     case "chase-cover-replacement":
       return chaseCoverSide.url;
     case "waterproofing":
@@ -83,11 +94,11 @@ function secondaryImageFor(slug: string): string {
     case "chimney-crown-repair":
       return crownPargeCloseup.url;
     case "chimney-crown-replacement":
-      return crownPargeSideFresh.url;
+      return crownDamagedOpenBefore.url;
     case "chimney-cap-repair":
-      return capDomedCrownFlue.url;
+      return capsInstalledBrick.url;
     case "chimney-cap-replacement":
-      return capInstallBrickMesh.url;
+      return crownNewWithCaps.url;
     case "chimney-masonry-repair":
       return brickTuckpointDoubleCrown.url;
     case "chimney-brick-repair":
@@ -104,6 +115,8 @@ function secondaryImageFor(slug: string): string {
       return brickTuckpointDoubleCrown.url;
     case "chimney-leak-repair":
       return crownPargeOverhead.url;
+    case "foundation-masonry":
+      return crownNewDoubleCaps.url;
     default:
       return techRooftopAsset.url;
   }

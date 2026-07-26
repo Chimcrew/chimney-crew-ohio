@@ -25,6 +25,11 @@ import u2BrickTall from "@/assets/uploads2/brick-chimney-tall-restored.jpeg.asse
 import u2BrickTuck from "@/assets/uploads2/brick-tuckpoint-double-crown.jpeg.asset.json";
 import u2CapDomed from "@/assets/uploads2/cap-domed-crown-flue.jpeg.asset.json";
 import u2CrownSide from "@/assets/uploads2/crown-parge-side-fresh.jpeg.asset.json";
+import u2LinerMeasure from "@/assets/uploads2/liner-stainless-measure.jpeg.asset.json";
+import u2LinerSmoke from "@/assets/uploads2/liner-smoke-chamber-view.jpeg.asset.json";
+import u2CrownSevere from "@/assets/uploads2/crown-severely-damaged.jpeg.asset.json";
+import u2CapsBrick from "@/assets/uploads2/caps-installed-brick.jpeg.asset.json";
+import u2CrownNewCaps from "@/assets/uploads2/crown-new-with-caps.jpeg.asset.json";
 
 type Project = {
   img: string;
@@ -36,6 +41,11 @@ type Project = {
 
 const PROJECTS: Project[] = [
   { img: u2BrickCap.url, title: "Full Chimney Restoration", city: "Upper Arlington, OH", tag: "Masonry + Cap", layout: "feature" },
+  { img: u2LinerMeasure.url, title: "Stainless Liner Install", city: "Dublin, OH", tag: "Liner", layout: "square" },
+  { img: u2CrownSevere.url, title: "Crown Replacement Job", city: "Hilliard, OH", tag: "Crown Rebuild", layout: "square" },
+  { img: u2CapsBrick.url, title: "Dual Caps + New Crown", city: "Westerville, OH", tag: "Cap + Crown", layout: "wide" },
+  { img: u2LinerSmoke.url, title: "Smoke Chamber Liner", city: "Bexley, OH", tag: "Liner", layout: "square" },
+  { img: u2CrownNewCaps.url, title: "Fresh Crown + Twin Caps", city: "Worthington, OH", tag: "Crown & Caps", layout: "square" },
   { img: u2CapMesh.url, title: "Stainless Cap on Brick", city: "Dublin, OH", tag: "Cap Install", layout: "square" },
   { img: u2WhiteCrown.url, title: "Crown Replacement + Cap", city: "Powell, OH", tag: "Crown", layout: "square" },
   { img: u2BrickTall.url, title: "Tall Brick Chimney Repair", city: "Hilliard, OH", tag: "Brick Repair", layout: "wide" },
