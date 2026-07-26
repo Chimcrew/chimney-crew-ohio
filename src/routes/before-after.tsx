@@ -49,6 +49,12 @@ import u2LinerMeasure from "@/assets/uploads2/liner-stainless-measure.jpeg.asset
 import u2LinerFlue from "@/assets/uploads2/liner-inside-flue-clean.jpeg.asset.json";
 import u2LinerSmoke from "@/assets/uploads2/liner-smoke-chamber-view.jpeg.asset.json";
 import u2FoundationParge from "@/assets/uploads2/foundation-parge-basement.jpeg.asset.json";
+import u4CapBlack from "@/assets/uploads4/cap-black-fresh-crown.jpeg.asset.json";
+import u4CrownOpen from "@/assets/uploads4/crown-fresh-open-flue.jpeg.asset.json";
+import u4Tuck from "@/assets/uploads4/tech-tuckpointing-brick.jpeg.asset.json";
+import u4CrewShirts from "@/assets/uploads4/crew-branded-shirts-truck.jpeg.asset.json";
+import u4CrewNight from "@/assets/uploads4/crew-night-truck-gear.jpeg.asset.json";
+import u4LinerFarm from "@/assets/uploads4/liner-stainless-farm-view.jpeg.asset.json";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
@@ -73,6 +79,12 @@ type GalleryItem = {
 };
 
 const GALLERY: GalleryItem[] = [
+  { src: u4CapBlack.url, title: "Black Cap on Fresh Crown", caption: "New stainless cap set on a hand-troweled crown seal", city: "Columbus, OH", size: "feature" },
+  { src: u4Tuck.url, title: "Tuckpointing In Progress", caption: "Grinding out and re-pointing failed mortar joints", city: "Dublin, OH", size: "tall" },
+  { src: u4LinerFarm.url, title: "Stainless Liner — Final Check", caption: "Inspecting a freshly installed 316Ti liner", city: "Delaware, OH", size: "square" },
+  { src: u4CrownOpen.url, title: "Fresh Crown, Open Flue", caption: "Crown parged and sealed before cap install", city: "Westerville, OH", size: "wide" },
+  { src: u4CrewShirts.url, title: "ChimCrew Loading Out", caption: "Gearing up for a same-day service run", city: "Columbus, OH", size: "square" },
+  { src: u4CrewNight.url, title: "Night Prep — Ready to Roll", caption: "Trucks loaded for a morning of chimney work", city: "Columbus, OH", size: "wide" },
   { src: u2LinerMeasure.url, title: "Stainless Liner — Sized & Sealed", caption: "New 316Ti liner measured and set on the flue collar", city: "Dublin, OH", size: "tall" },
   { src: u2LinerSmoke.url, title: "Smoke Chamber Liner Transition", caption: "Clean liner tie-in inside a rebuilt smoke chamber", city: "Bexley, OH", size: "square" },
   { src: u2LinerFlue.url, title: "Flue Interior — Post Repair", caption: "Smooth, sealed flue interior after liner work", city: "Upper Arlington, OH", size: "square" },
