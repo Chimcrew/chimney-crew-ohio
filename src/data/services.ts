@@ -76,6 +76,12 @@ import brickChimneyTallRestoredAsset from "@/assets/uploads2/brick-chimney-tall-
 import brickChimneyRestoredCapAsset from "@/assets/uploads2/brick-chimney-restored-cap.jpeg.asset.json";
 import brickTuckpointDoubleCrownAsset from "@/assets/uploads2/brick-tuckpoint-double-crown.jpeg.asset.json";
 import brickChimneyWhiteCrownCapAsset from "@/assets/uploads2/brick-chimney-white-crown-cap.jpeg.asset.json";
+import crownSeverelyDamagedAsset from "@/assets/uploads2/crown-severely-damaged.jpeg.asset.json";
+import capRepairWornMeshAsset from "@/assets/uploads2/cap-repair-worn-mesh.jpeg.asset.json";
+import linerInsideFlueAsset from "@/assets/uploads2/liner-inside-flue-clean.jpeg.asset.json";
+import linerSmokeChamberAsset from "@/assets/uploads2/liner-smoke-chamber-view.jpeg.asset.json";
+import linerStainlessMeasureAsset from "@/assets/uploads2/liner-stainless-measure.jpeg.asset.json";
+import foundationPargeBasementAsset from "@/assets/uploads2/foundation-parge-basement.jpeg.asset.json";
 
 const techLinerInstall = techLinerInstallAsset.url;
 const techScaffoldingRebuild = techScaffoldingRebuildAsset.url;
@@ -130,6 +136,12 @@ const brickChimneyTallRestored = brickChimneyTallRestoredAsset.url;
 const brickChimneyRestoredCap = brickChimneyRestoredCapAsset.url;
 const brickTuckpointDoubleCrown = brickTuckpointDoubleCrownAsset.url;
 const brickChimneyWhiteCrownCap = brickChimneyWhiteCrownCapAsset.url;
+const crownSeverelyDamaged = crownSeverelyDamagedAsset.url;
+const capRepairWornMesh = capRepairWornMeshAsset.url;
+const linerInsideFlue = linerInsideFlueAsset.url;
+const linerSmokeChamber = linerSmokeChamberAsset.url;
+const linerStainlessMeasure = linerStainlessMeasureAsset.url;
+const foundationPargeBasement = foundationPargeBasementAsset.url;
 
 export type ServiceVariant =
   | "maintenance"
@@ -225,6 +237,18 @@ export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quote
 /** Hero photo for a service — picks the most relevant real photo we have. */
 export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
   switch (s.slug) {
+    case "liner-install":
+      return linerStainlessMeasure;
+    case "chimney-liner-repair":
+      return linerInsideFlue;
+    case "chimney-flue-repair":
+      return linerSmokeChamber;
+    case "chimney-cap-repair":
+      return capRepairWornMesh;
+    case "chimney-crown-replacement":
+      return crownSeverelyDamaged;
+    case "foundation-masonry":
+      return foundationPargeBasement;
     case "crown-tuckpoint":
       return crownPargeOverhead;
     case "level-1-inspection":
