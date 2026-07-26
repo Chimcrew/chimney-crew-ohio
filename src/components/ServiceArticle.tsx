@@ -25,6 +25,9 @@ import dryerBefore3 from "@/assets/uploads/dryer-before-3.jpeg.asset.json";
 import dryerAfter3 from "@/assets/uploads/dryer-after-3.jpeg.asset.json";
 import dryerBefore4 from "@/assets/uploads/dryer-before-4.jpeg.asset.json";
 import dryerAfter4 from "@/assets/uploads/dryer-after-4.jpeg.asset.json";
+import { AutoLoopVideo } from "@/components/AutoLoopVideo";
+
+const SWEEP_VIDEO_SLUGS = new Set(["chimney-sweep", "chimney-cleaning", "chimney-maintenance"]);
 
 const DRYER_BEFORE_AFTER = [
   { before: dryerBefore1.url, after: dryerAfter1.url, label: "Lint-clogged dryer vent line" },
@@ -119,6 +122,7 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
   const s = service.shortTitle;
   const sLower = s.toLowerCase();
   const isDryer = service.slug === "dryer-vent-cleaning";
+  const showSweepVideo = SWEEP_VIDEO_SLUGS.has(service.slug);
   const primaryPhoto = isDryer ? dryerBefore1.url : heroImageFor(service);
   const secondaryPhoto = isDryer ? dryerAfter1.url : secondaryImageFor(service.slug);
 
@@ -173,6 +177,15 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
           alt={`ChimCrew technician performing ${sLower} on an Ohio home`}
           caption={`ChimCrew · ${s} · Real Ohio job`}
         />
+
+        {showSweepVideo && (
+          <figure className="my-10 overflow-hidden rounded-none border border-border bg-card shadow-[0_20px_60px_-25px_oklch(0_0_0/0.35)]">
+            <AutoLoopVideo className="block aspect-video w-full object-cover" />
+            <figcaption className="flex items-center gap-2 border-t border-border bg-secondary/40 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
+              <MapPin className="h-3 w-3 text-flame" /> ChimCrew crew on the job
+            </figcaption>
+          </figure>
+        )}
 
         <H2>Why {s} Is Important</H2>
         <P>

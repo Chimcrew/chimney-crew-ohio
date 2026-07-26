@@ -25,6 +25,7 @@ import {
   Video,
 } from "lucide-react";
 import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
+import { AutoLoopVideoSection } from "@/components/AutoLoopVideo";
 
 const logo = logoAsset.url;
 import sweep from "@/assets/leak-chimney-rooftop.jpg";
@@ -156,6 +157,7 @@ function Index() {
     <>
       <Hero />
       <HeroToOfferBridge />
+      <AutoLoopVideoSection />
       <ScheduleSection id="schedule-section" />
       <FlashingJobShowcase variant="compact" />
       <Testimonials />
