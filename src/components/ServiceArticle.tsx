@@ -12,6 +12,15 @@ import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.jso
 import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
 import flashingProgress from "@/assets/process/flashing-progress.jpeg.asset.json";
 import chaseCoverSide from "@/assets/gallery-new/new-chase-side.jpeg.asset.json";
+import crownPargeCloseup from "@/assets/uploads2/crown-parge-closeup.jpeg.asset.json";
+import crownPargeSideFresh from "@/assets/uploads2/crown-parge-side-fresh.jpeg.asset.json";
+import capDomedCrownFlue from "@/assets/uploads2/cap-domed-crown-flue.jpeg.asset.json";
+import brickChimneyTallRestored from "@/assets/uploads2/brick-chimney-tall-restored.jpeg.asset.json";
+import brickChimneyRestoredCap from "@/assets/uploads2/brick-chimney-restored-cap.jpeg.asset.json";
+import brickTuckpointDoubleCrown from "@/assets/uploads2/brick-tuckpoint-double-crown.jpeg.asset.json";
+import brickChimneyWhiteCrownCap from "@/assets/uploads2/brick-chimney-white-crown-cap.jpeg.asset.json";
+import crownPargeOverhead from "@/assets/uploads2/crown-parge-overhead.jpeg.asset.json";
+import capInstallBrickMesh from "@/assets/uploads2/cap-install-brick-mesh.jpeg.asset.json";
 import smokeChamberAfter from "@/assets/ba/smoke-chamber-after.jpeg.asset.json";
 import techLinerInstall from "@/assets/real/tech-liner-install.png.asset.json";
 import damagedChimneyCap from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
@@ -46,13 +55,13 @@ function secondaryImageFor(slug: string): string {
     case "level-2-inspection":
       return newBoomliftInspect.url;
     case "crown-tuckpoint":
-      return newCrownFreshCaps.url;
+      return crownPargeCloseup.url;
     case "liner-install":
       return techLinerInstall.url;
     case "animal-removal":
       return damagedChimneyCap.url;
     case "cap-install":
-      return newCapInstallRooftop.url;
+      return capDomedCrownFlue.url;
     case "chase-cover-replacement":
       return chaseCoverSide.url;
     case "waterproofing":
@@ -71,6 +80,30 @@ function secondaryImageFor(slug: string): string {
       return fireplaceServiceAsset.url;
     case "dryer-vent-cleaning":
       return teamTruckAsset.url;
+    case "chimney-crown-repair":
+      return crownPargeCloseup.url;
+    case "chimney-crown-replacement":
+      return crownPargeSideFresh.url;
+    case "chimney-cap-repair":
+      return capDomedCrownFlue.url;
+    case "chimney-cap-replacement":
+      return capInstallBrickMesh.url;
+    case "chimney-masonry-repair":
+      return brickTuckpointDoubleCrown.url;
+    case "chimney-brick-repair":
+      return brickChimneyRestoredCap.url;
+    case "chimney-tuckpointing":
+      return brickChimneyTallRestored.url;
+    case "brick-repair":
+      return brickChimneyRestoredCap.url;
+    case "tuckpointing":
+      return brickChimneyTallRestored.url;
+    case "brick-wall-repair":
+      return brickChimneyWhiteCrownCap.url;
+    case "chimney-mortar-repair":
+      return brickTuckpointDoubleCrown.url;
+    case "chimney-leak-repair":
+      return crownPargeOverhead.url;
     default:
       return techRooftopAsset.url;
   }

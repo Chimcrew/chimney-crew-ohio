@@ -29,6 +29,16 @@ import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset
 import newTechLadderPoint from "@/assets/uploads/new-tech-ladder-point.jpeg.asset.json";
 import newTechLadderBack from "@/assets/uploads/new-tech-ladder-back.jpeg.asset.json";
 import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
+import u2CapMesh from "@/assets/uploads2/cap-install-brick-mesh.jpeg.asset.json";
+import u2CrownSide from "@/assets/uploads2/crown-parge-side-fresh.jpeg.asset.json";
+import u2CrownCloseup from "@/assets/uploads2/crown-parge-closeup.jpeg.asset.json";
+import u2CapDomed from "@/assets/uploads2/cap-domed-crown-flue.jpeg.asset.json";
+import u2CrownOverhead from "@/assets/uploads2/crown-parge-overhead.jpeg.asset.json";
+import u2CrownOverhead2 from "@/assets/uploads2/crown-parge-overhead-2.jpeg.asset.json";
+import u2BrickTall from "@/assets/uploads2/brick-chimney-tall-restored.jpeg.asset.json";
+import u2BrickCap from "@/assets/uploads2/brick-chimney-restored-cap.jpeg.asset.json";
+import u2BrickTuck from "@/assets/uploads2/brick-tuckpoint-double-crown.jpeg.asset.json";
+import u2WhiteCrown from "@/assets/uploads2/brick-chimney-white-crown-cap.jpeg.asset.json";
 
 export const Route = createFileRoute("/before-after")({
   head: () => ({
@@ -53,6 +63,16 @@ type GalleryItem = {
 };
 
 const GALLERY: GalleryItem[] = [
+  { src: u2CapMesh.url, title: "Stainless Cap Install on Brick", caption: "Hand-set mesh cap on a freshly parged crown", city: "Dublin, OH", size: "tall" },
+  { src: u2WhiteCrown.url, title: "Crown Replacement + New Cap", caption: "White crown wash with new stainless cap on metal roof", city: "Powell, OH", size: "square" },
+  { src: u2BrickCap.url, title: "Full Chimney Restoration", caption: "Tuckpointed brick with new cap — top to bottom", city: "Upper Arlington, OH", size: "feature" },
+  { src: u2CrownSide.url, title: "Fresh Crown Parge", caption: "Rebuilt crown sealed against Ohio freeze-thaw", city: "Bexley, OH", size: "square" },
+  { src: u2CrownCloseup.url, title: "Crown Wash Close-Up", caption: "Hand-troweled crown seal, no cracks", city: "Westerville, OH", size: "square" },
+  { src: u2CapDomed.url, title: "Cap + Domed Crown", caption: "New cap set over a fresh domed crown", city: "Grove City, OH", size: "wide" },
+  { src: u2BrickTall.url, title: "Tall Brick Chimney Repair", caption: "Full-height brick restoration on a two-story home", city: "Hilliard, OH", size: "tall" },
+  { src: u2BrickTuck.url, title: "Brick + Double Crown Tuckpoint", caption: "Restored mortar joints with fresh dual crowns", city: "Clintonville, OH", size: "square" },
+  { src: u2CrownOverhead.url, title: "Crown Parge — Side View", caption: "Overhead of a freshly sealed side-mount crown", city: "New Albany, OH", size: "square" },
+  { src: u2CrownOverhead2.url, title: "Crown Rebuild Overhead", caption: "Second angle on a completed crown rebuild", city: "German Village, OH", size: "wide" },
   { src: newChimneyRestored.url, title: "Full Crown Seal + Stainless Cap", caption: "Fresh crown, cap and flashing rebuild", city: "Columbus, OH", size: "feature" },
   { src: newCapInstallRooftop.url, title: "Stainless Chimney Cap Install", caption: "New cap sealed onto brick chimney", city: "Westerville, OH", size: "tall" },
   { src: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", caption: "Parged crown with two stainless caps", city: "Worthington, OH", size: "square" },

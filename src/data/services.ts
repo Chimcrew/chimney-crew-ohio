@@ -66,6 +66,16 @@ import boomliftInspectAsset from "@/assets/uploads/new-boomlift-inspect.jpeg.ass
 import meshCapCloseupAsset from "@/assets/gallery-new/new-mesh-cap-closeup.jpeg.asset.json";
 import chimneyNightRebuildAsset from "@/assets/team-jobs/chimney-night-rebuild.jpeg.asset.json";
 import techStoneChimneyCapAsset from "@/assets/team-jobs/tech-stone-chimney-cap.jpeg.asset.json";
+// New uploads (2026-07-26 batch)
+import capInstallBrickMeshAsset from "@/assets/uploads2/cap-install-brick-mesh.jpeg.asset.json";
+import crownPargeSideFreshAsset from "@/assets/uploads2/crown-parge-side-fresh.jpeg.asset.json";
+import crownPargeCloseupAsset from "@/assets/uploads2/crown-parge-closeup.jpeg.asset.json";
+import capDomedCrownFlueAsset from "@/assets/uploads2/cap-domed-crown-flue.jpeg.asset.json";
+import crownPargeOverheadAsset from "@/assets/uploads2/crown-parge-overhead.jpeg.asset.json";
+import brickChimneyTallRestoredAsset from "@/assets/uploads2/brick-chimney-tall-restored.jpeg.asset.json";
+import brickChimneyRestoredCapAsset from "@/assets/uploads2/brick-chimney-restored-cap.jpeg.asset.json";
+import brickTuckpointDoubleCrownAsset from "@/assets/uploads2/brick-tuckpoint-double-crown.jpeg.asset.json";
+import brickChimneyWhiteCrownCapAsset from "@/assets/uploads2/brick-chimney-white-crown-cap.jpeg.asset.json";
 
 const techLinerInstall = techLinerInstallAsset.url;
 const techScaffoldingRebuild = techScaffoldingRebuildAsset.url;
@@ -111,6 +121,15 @@ const boomliftInspect = boomliftInspectAsset.url;
 const meshCapCloseup = meshCapCloseupAsset.url;
 const chimneyNightRebuild = chimneyNightRebuildAsset.url;
 const techStoneChimneyCap = techStoneChimneyCapAsset.url;
+const capInstallBrickMesh = capInstallBrickMeshAsset.url;
+const crownPargeSideFresh = crownPargeSideFreshAsset.url;
+const crownPargeCloseup = crownPargeCloseupAsset.url;
+const capDomedCrownFlue = capDomedCrownFlueAsset.url;
+const crownPargeOverhead = crownPargeOverheadAsset.url;
+const brickChimneyTallRestored = brickChimneyTallRestoredAsset.url;
+const brickChimneyRestoredCap = brickChimneyRestoredCapAsset.url;
+const brickTuckpointDoubleCrown = brickTuckpointDoubleCrownAsset.url;
+const brickChimneyWhiteCrownCap = brickChimneyWhiteCrownCapAsset.url;
 
 export type ServiceVariant =
   | "maintenance"
@@ -207,7 +226,7 @@ export function warrantyFor(s: Pick<ServiceSpec, "warranty" | "variant" | "quote
 export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
   switch (s.slug) {
     case "crown-tuckpoint":
-      return tuckpointTech1;
+      return crownPargeOverhead;
     case "level-1-inspection":
       return sweepCloseupPhoto;
     case "level-2-inspection":
@@ -223,7 +242,7 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
     case "smoke-chamber-parging":
       return crownDemoInProgress;
     case "cap-install":
-      return capInstallHero;
+      return capInstallBrickMesh;
     case "chase-cover-replacement":
       return chaseCoverHero;
     case "animal-removal":
@@ -240,13 +259,13 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
       return afterChimney;
     // Chimney Repair — new SEO pages
     case "chimney-crown-repair":
-      return job0;
+      return crownPargeSideFresh;
     case "chimney-crown-replacement":
-      return project05CrownRebuild;
+      return brickChimneyWhiteCrownCap;
     case "chimney-cap-repair":
-      return meshCapCloseup;
+      return capInstallBrickMesh;
     case "chimney-cap-replacement":
-      return job8;
+      return capDomedCrownFlue;
     case "chimney-liner-repair":
       return job2;
     case "chimney-flue-repair":
@@ -279,17 +298,17 @@ export function heroImageFor(s: Pick<ServiceSpec, "slug" | "variant">): string {
       return gj4;
     // Masonry — new
     case "chimney-masonry-repair":
-      return chimneyNightRebuild;
+      return brickChimneyRestoredCap;
     case "chimney-brick-repair":
-      return tuckpointTech2;
+      return brickChimneyTallRestored;
     case "chimney-tuckpointing":
-      return baBrickCrownSeal;
+      return brickTuckpointDoubleCrown;
     case "brick-repair":
-      return gj9;
+      return brickChimneyTallRestored;
     case "tuckpointing":
-      return project02Tuckpoint;
+      return brickTuckpointDoubleCrown;
     case "brick-wall-repair":
-      return gj18;
+      return brickChimneyRestoredCap;
     case "foundation-masonry":
       return techStoneChimneyCap;
     default:
