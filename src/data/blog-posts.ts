@@ -448,6 +448,75 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "fireplace-cleaning-guide-columbus",
+    title: "Fireplace cleaning & maintenance: the complete Columbus homeowner's guide",
+    excerpt:
+      "How often to clean a fireplace, what you can safely do yourself, and when to call a pro — written for Columbus, Ohio homes and the way we actually burn here.",
+    date: "Jul 27, 2026",
+    dateISO: "2026-07-27",
+    cover: projectTechOnsite.url,
+    category: "Fireplace Cleaning",
+    readMinutes: 8,
+    author: "Marcus Reed, ChimCrew",
+    body: [
+      {
+        heading: "Why fireplace cleaning matters more than most people think",
+        paragraphs: [
+          "A fireplace is the only appliance in your home that you deliberately light on fire, then walk away from. Ash, soot, and creosote build up every single burn, and once buildup passes about 1/8 inch inside the flue, the National Fire Protection Association's 211 standard says it's time to clean. Skip that, and a stray spark can ignite the deposits and turn your flue into a 2,000°F pipe running through the middle of your house.",
+          "Beyond safety, a clean firebox and flue burn hotter, draft better, and put far less smoke back into your living room. Most Columbus homeowners who complain that their fireplace 'stopped drawing' don't need a new damper — they need a proper cleaning.",
+        ],
+      },
+      {
+        heading: "How often should you clean your fireplace?",
+        paragraphs: [
+          "The firebox itself (ash, embers, grate) should be shoveled out after every 3–5 burns, once ashes are fully cold — at least 48 hours after the last fire. Leave about an inch of ash on the floor of a wood-burning firebox; it insulates the next fire and helps it start faster.",
+          "The full system — flue, smoke chamber, damper, cap — should get a professional sweep and Level 1 inspection every year, or after every cord of wood burned, whichever comes first. Gas fireplaces need annual service too; they build up dust, spider webs, and moisture corrosion that quietly wreck the burner assembly.",
+          "If you only burn a few times over the holidays, once every two years may be enough — but you still want the annual inspection, because caps rust, crowns crack, and animals nest whether you're burning or not.",
+        ],
+      },
+      {
+        heading: "What you can safely do yourself",
+        paragraphs: [
+          "Cold-ash removal: scoop into a metal bucket with a lid, carry it outside, and store on concrete for at least 72 hours before disposal. Ash can hold live embers for days — never dump it in a plastic trash can or paper bag.",
+          "Glass door cleaning: use a damp paper towel dipped in cold fireplace ash to scrub baked-on soot off tempered glass. It sounds strange but it's the trick every sweep uses, and it won't scratch the glass the way commercial cleaners can.",
+          "Firebox brick wipe-down: a stiff dry brush and a shop vac with a HEPA filter will pull loose soot off the brick. Skip water, bleach, and household cleaners on masonry — they soak in and cause white efflorescence stains that are hard to reverse.",
+        ],
+      },
+      {
+        heading: "What you should NEVER DIY",
+        paragraphs: [
+          "Flue brushing from the roof. Columbus roofs are steep, tall, and slick with morning dew nine months of the year. Every year we get calls from homeowners who fell trying to sweep their own chimney. It's not worth it.",
+          "Creosote removal. Stage 2 and Stage 3 creosote (the shiny black glazed layer) will not come off with a hardware-store brush. It needs chemical treatment or mechanical rotary tools and a trained tech — done wrong, you can crack tiles or spark a chimney fire.",
+          "Any inspection of the smoke chamber, damper, or liner interior. That requires a camera scan and someone who knows what a hairline crack in clay tile actually looks like. Missing that is how house fires start.",
+        ],
+      },
+      {
+        heading: "Signs your fireplace needs a professional cleaning right now",
+        paragraphs: [
+          "Smoky smell in the house on humid summer days — creosote re-volatilizing when moisture hits the flue.",
+          "Smoke rolling back into the room when you light a fire — buildup or a partial obstruction is choking your draft.",
+          "Black flakes or tar drips inside the firebox — glazed creosote that a normal sweep won't remove without stronger tools.",
+          "You haven't had it cleaned in more than a year, or you can't remember the last time. Book the inspection first; a good sweep will only clean what actually needs it.",
+        ],
+      },
+      {
+        heading: "Wood-burning vs. gas fireplace maintenance",
+        paragraphs: [
+          "Wood fireplaces are all about creosote and ash. Annual sweep, annual Level 1 inspection, dry hardwood only (oak, maple, hickory — never pine, never wet wood), and a stainless cap with a spark arrestor.",
+          "Gas fireplaces don't produce creosote, but the flue still corrodes from water vapor in the exhaust, and the burner pan collects dust that changes the flame pattern and can trip the safety pilot. Annual service on a gas unit includes cleaning the burner, checking the thermocouple, testing for CO leaks, and inspecting the vent.",
+          "Prefab metal fireplaces (common in Dublin, Powell, and Lewis Center subdivisions) need the refractory panels checked every year — cracked panels are the #1 reason insurance won't pay out after a chimney fire.",
+        ],
+      },
+      {
+        heading: "How ChimCrew cleans a fireplace",
+        paragraphs: [
+          "Every ChimCrew fireplace cleaning starts with dropcloths and a HEPA vacuum sealed at the firebox opening — no soot in your living room, ever. From there we brush the flue top-down with the correct-diameter poly or steel brush, hand-clean the smoke shelf and damper, vacuum the firebox, and inspect the cap, crown, and flashing from the roofline.",
+          "You get a written Level 1 inspection report with photos of anything that needs attention. If nothing does, we say so — we don't invent repairs. Most cleanings take 45–75 minutes and start at $189.",
+        ],
+      },
+    ],
+  },
 ];
 
 export const getPostBySlug = (slug: string) =>
