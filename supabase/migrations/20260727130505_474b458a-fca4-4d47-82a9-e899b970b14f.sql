@@ -1,0 +1,1 @@
+DROP POLICY IF EXISTS "Authenticated can view leads" ON public.leads; REVOKE SELECT ON public.leads FROM authenticated;
