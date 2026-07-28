@@ -222,7 +222,7 @@ function CityPage() {
                   <p className="font-display text-base font-extrabold text-primary">{s.label}</p>
                   <p className="text-sm text-muted-foreground">{s.blurb(city.name)}</p>
                   <span className="mt-auto inline-flex items-center gap-1 font-mono text-[10px] uppercase tracking-widest text-flame">
-                    Learn more <ArrowRight className="h-3 w-3" />
+                    {s.label} in {city.name} <ArrowRight className="h-3 w-3" />
                   </span>
                 </Link>
               );
