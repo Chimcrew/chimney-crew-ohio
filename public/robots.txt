@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /api/
+Disallow: /unsubscribe
+Disallow: /email/
 
 Sitemap: https://chimcrew.com/sitemap.xml
