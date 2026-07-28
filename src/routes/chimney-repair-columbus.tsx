@@ -29,7 +29,7 @@ export const Route = createFileRoute("/chimney-repair-columbus")({
       {
         name: "description",
         content:
-          "Chimney repair in Columbus, OH. Free chimney inspections, CSIA-certified technicians, fully insured, written warranty. Same-day service available. Call (614) 683-5763.",
+          "Chimney repair in Columbus, OH. Free inspections, CSIA-certified, insured, written warranty. Same-day service — call (614) 683-5763.",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Chimney Repair Columbus, OH — Free Inspection" },
