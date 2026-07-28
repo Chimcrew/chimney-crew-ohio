@@ -8,7 +8,7 @@ export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
       { title: "Chimney Service Reviews — Ohio Homeowners Rate ChimCrew" },
-      { name: "description", content: "Read 60+ five-star reviews from ChimCrew customers across Columbus, Cincinnati, Dayton and Central Ohio — sweeps, inspections, crown rebuilds, liner installs and chimney repair." },
+      { name: "description", content: "60+ five-star ChimCrew reviews from Columbus, Cincinnati & Dayton homeowners — sweeps, inspections, crown rebuilds and chimney repair." },
       { property: "og:title", content: "ChimCrew Reviews — 5-Star Rated Across Ohio" },
       { property: "og:description", content: "60+ real reviews from Ohio homeowners — Columbus, Cincinnati, Dayton and surrounding cities." },
       { property: "og:url", content: "https://chimcrew.com/reviews" },
