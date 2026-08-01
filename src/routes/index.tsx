@@ -156,7 +156,7 @@ function Index() {
   return (
     <>
       <Hero />
-      <HeroToOfferBridge />
+      <TeamWidePhotoBridge />
       <AutoLoopVideoSection />
       <ScheduleSection id="schedule-section" />
       <FlashingJobShowcase variant="compact" />
@@ -165,11 +165,8 @@ function Index() {
       <RecentProjects />
       <ServiceAreaSeo />
       <DroneInspection />
-      <TrustMarquee />
-      <EmergencyCallBar />
       <LeakingChimney />
       <Faq />
-      <TrustMarquee />
       <EmergencyCallBar />
     </>
   );
@@ -220,9 +217,9 @@ function HeroToOfferBridge() {
    ============================================================ */
 function TeamWidePhotoBridge() {
   return (
-    <div className="relative z-10 mx-auto flex max-w-7xl justify-center px-4 py-8 md:px-8 md:py-10">
-      <figure className="relative w-full max-w-md sm:max-w-lg lg:max-w-2xl">
-        <div className="overflow-hidden rounded-xl border-2 border-border bg-card shadow-[0_20px_50px_-20px_oklch(0_0_0/0.35)]">
+    <section className="relative z-10 bg-background py-12 md:py-16">
+      <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 md:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] md:gap-12 md:px-8">
+        <figure className="relative overflow-hidden border border-border bg-card">
           <img
             src={teamWidePhoto.url}
             alt="The ChimCrew team — certified chimney professionals in Columbus, Ohio"
@@ -230,9 +227,35 @@ function TeamWidePhotoBridge() {
             loading="lazy"
             decoding="async"
           />
+        </figure>
+        <div className="min-w-0">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-flame">
+            Local crew · Columbus, Ohio
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-bold leading-tight text-primary sm:text-4xl">
+            Real technicians. Real chimneys. No subcontractors.
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-foreground/75">
+            Every job is handled by our own certified crew — the same people you'll meet at your
+            door. Written estimates, clean workspaces, and photos of everything we find.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              to="/before-after"
+              className="inline-flex h-12 items-center gap-2 bg-primary px-5 font-sans text-sm font-bold text-primary-foreground transition active:scale-95"
+            >
+              See our work <ArrowRight className="h-4 w-4" />
+            </Link>
+            <a
+              href="tel:6146835763"
+              className="inline-flex h-12 items-center gap-2 border border-foreground/25 bg-background px-5 font-sans text-sm font-bold text-foreground transition hover:border-flame active:scale-95"
+            >
+              <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
+            </a>
+          </div>
         </div>
-      </figure>
-    </div>
+      </div>
+    </section>
   );
 }
 
@@ -428,20 +451,8 @@ function Hero() {
           </a>
         </div>
 
-        {/* Emergency line micro-CTA */}
-        <a
-          href="tel:6146835763"
-          className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110 min-[414px]:text-[12px] sm:mt-3"
-        >
-          <span className="relative inline-flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-          </span>
-          Emergency line 24/7
-        </a>
-
         {/* Trust strip */}
-        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-8 sm:mt-8 sm:pt-6">
+        <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-border/50 pt-8">
           {[
             { icon: CheckCircle2, label: "CSIA-certified" },
             { icon: ShieldCheck, label: "Fully insured" },
