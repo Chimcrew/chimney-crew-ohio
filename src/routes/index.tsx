@@ -425,20 +425,8 @@ function Hero() {
           </a>
         </div>
 
-        {/* Emergency line micro-CTA */}
-        <a
-          href="tel:6146835763"
-          className="mt-5 inline-flex w-fit items-center gap-1.5 rounded-full bg-[#E63A1F] px-3 py-1.5 font-mono text-[11px] font-bold uppercase tracking-wider text-white shadow-sm transition hover:brightness-110 min-[414px]:text-[12px] sm:mt-3"
-        >
-          <span className="relative inline-flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white/80" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-white" />
-          </span>
-          Emergency line 24/7
-        </a>
-
         {/* Trust strip */}
-        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-8 sm:mt-8 sm:pt-6">
+        <div className="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 border-t border-border/50 pt-8">
           {[
             { icon: CheckCircle2, label: "CSIA-certified" },
             { icon: ShieldCheck, label: "Fully insured" },
