@@ -75,6 +75,7 @@
   --color-showcase-ink: var(--showcase-ink);
   --color-showcase-muted: var(--showcase-muted);
   --color-showcase-line: var(--showcase-line);
+  --color-showcase-accent: var(--showcase-accent);
   --font-display: 'Manrope', 'Inter', system-ui, sans-serif;
   --font-inline: 'Bungee', 'Impact', sans-serif;
   --font-sans: 'Manrope', 'Inter', system-ui, sans-serif;
@@ -111,10 +112,11 @@
   --ember: oklch(0.72 0.18 92);
   --soot: oklch(0.16 0.02 250);
   --ash: oklch(0.92 0.02 235);
-  --showcase: oklch(1 0 0);
-  --showcase-ink: oklch(0.18 0 0);
-  --showcase-muted: oklch(0.43 0 0);
-  --showcase-line: oklch(0.88 0 0);
+  --showcase: oklch(0.19 0.005 250);
+  --showcase-ink: oklch(0.97 0 0);
+  --showcase-muted: oklch(0.72 0.008 250);
+  --showcase-line: oklch(0.34 0.008 250);
+  --showcase-accent: oklch(0.7 0.19 46);
   --chart-1: oklch(0.86 0.17 88);
   --chart-2: oklch(0.82 0.19 92);
   --chart-3: oklch(0.55 0.02 250);
