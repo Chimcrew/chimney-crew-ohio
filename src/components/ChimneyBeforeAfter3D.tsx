@@ -69,7 +69,7 @@ export function ChimneyBeforeAfter3D() {
           className="mt-8 [perspective:1600px] md:mt-10"
         >
           <div
-            className="relative mx-auto flex max-w-4xl items-end justify-center gap-6 transition-transform duration-300 ease-out sm:gap-16 [transform-style:preserve-3d]"
+            className="relative mx-auto flex max-w-4xl items-end justify-center gap-10 transition-transform duration-300 ease-out sm:gap-28 [transform-style:preserve-3d]"
             style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
           >
             <Stack
