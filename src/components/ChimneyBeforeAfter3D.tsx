@@ -59,7 +59,7 @@ export function ChimneyBeforeAfter3D() {
   };
 
   return (
-    <section className="relative overflow-hidden border-y border-border bg-card pt-14 md:pt-20">
+    <section className="relative overflow-hidden border-y border-border bg-card pb-10 pt-14 md:pb-14 md:pt-20">
       {/* blueprint grid + spotlight backdrop */}
       <div
         aria-hidden
