@@ -52,7 +52,7 @@ export function ChimneyBeforeAfter3D() {
           className="mt-10 md:mt-14 [perspective:1600px]"
         >
           <div
-            className="relative mx-auto grid max-w-5xl grid-cols-2 gap-3 transition-transform duration-300 ease-out sm:gap-8 [transform-style:preserve-3d]"
+            className="relative mx-auto grid max-w-4xl grid-cols-2 gap-3 transition-transform duration-300 ease-out sm:gap-8 [transform-style:preserve-3d]"
             style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
           >
             <Slab
@@ -117,7 +117,7 @@ function Slab({
         <img
           src={src}
           alt={alt}
-          className="block aspect-[3/5] w-full object-cover sm:aspect-[4/6]"
+          className="block aspect-[3/4] w-full object-cover sm:aspect-[4/5]"
           loading="lazy"
           decoding="async"
         />
