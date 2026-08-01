@@ -43,7 +43,7 @@ import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import teamHeroPhoto from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import teamTruckPhoto from "@/assets/team/chimcrew-team-truck.png.asset.json";
 import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
-import heroPromoPhoto from "@/assets/chimney-repair-before-after-promo.png.asset.json";
+import { ChimneyBeforeAfter3D } from "@/components/ChimneyBeforeAfter3D";
 import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import beforeAfterPhoto from "@/assets/chimney-before-after.png.asset.json";
 import cameraInspectionPhoto from "@/assets/inspection/camera-inspection.png.asset.json";
@@ -194,25 +194,7 @@ function ScheduleSection({ id }: { id?: string }) {
    between the hero and the dark coupon banner.
    ============================================================ */
 function HeroToOfferBridge() {
-  return (
-    <div className="relative z-10 mx-auto flex max-w-7xl justify-center px-4 py-8 md:px-8 md:py-10">
-      <figure className="relative w-full max-w-md sm:max-w-lg lg:max-w-2xl">
-        {/* soft warm halo */}
-        <div
-          className="pointer-events-none absolute -inset-4 rounded-2xl bg-flame/15 blur-2xl"
-          aria-hidden
-        />
-        {/* before/after promo photo */}
-        <img
-          src={heroPromoPhoto.url}
-          alt="Before and after chimney repair — damaged brick stack restored with a new cap and flashing"
-          className="relative block h-auto w-full rounded-xl border border-white/10 shadow-2xl"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-    </div>
-  );
+  return <ChimneyBeforeAfter3D />;
 }
 
 /* ============================================================
