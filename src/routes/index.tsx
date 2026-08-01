@@ -196,17 +196,17 @@ function ScheduleSection({ id }: { id?: string }) {
 function HeroToOfferBridge() {
   return (
     <div className="relative z-10 mx-auto flex max-w-7xl justify-center px-4 py-8 md:px-8 md:py-10">
-      <figure className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
+      <figure className="relative w-full max-w-md sm:max-w-lg lg:max-w-2xl">
         {/* soft warm halo */}
         <div
-          className="pointer-events-none absolute -inset-3 rounded-none bg-flame/20 blur-2xl"
+          className="pointer-events-none absolute -inset-4 rounded-2xl bg-flame/15 blur-2xl"
           aria-hidden
         />
-        {/* logo */}
+        {/* before/after promo photo */}
         <img
-          src={chimcrewLogoCrew.url}
-          alt="ChimCrew — Chimney Repair & Inspection USA"
-          className="relative block w-full h-auto"
+          src={heroPromoPhoto.url}
+          alt="Before and after chimney repair — damaged brick stack restored with a new cap and flashing"
+          className="relative block h-auto w-full rounded-xl border border-white/10 shadow-2xl"
           loading="lazy"
           decoding="async"
         />
