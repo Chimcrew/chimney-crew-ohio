@@ -71,11 +71,16 @@
   --color-ember: var(--ember);
   --color-soot: var(--soot);
   --color-ash: var(--ash);
+  --color-showcase: var(--showcase);
+  --color-showcase-ink: var(--showcase-ink);
+  --color-showcase-muted: var(--showcase-muted);
+  --color-showcase-line: var(--showcase-line);
   --font-display: 'Manrope', 'Inter', system-ui, sans-serif;
   --font-inline: 'Bungee', 'Impact', sans-serif;
   --font-sans: 'Manrope', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
   --font-cta: 'Oswald', 'Manrope', sans-serif;
+  --font-showcase: 'Archivo Black', 'Arial Black', sans-serif;
 }
 
 :root {
@@ -106,6 +111,10 @@
   --ember: oklch(0.72 0.18 92);
   --soot: oklch(0.16 0.02 250);
   --ash: oklch(0.92 0.02 235);
+  --showcase: oklch(1 0 0);
+  --showcase-ink: oklch(0.18 0 0);
+  --showcase-muted: oklch(0.43 0 0);
+  --showcase-line: oklch(0.88 0 0);
   --chart-1: oklch(0.86 0.17 88);
   --chart-2: oklch(0.82 0.19 92);
   --chart-3: oklch(0.55 0.02 250);
@@ -235,6 +244,7 @@
   .font-display { font-family: var(--font-display); }
   .font-inline { font-family: var(--font-inline); }
   .font-mono { font-family: var(--font-mono); }
+  .font-showcase { font-family: var(--font-showcase); letter-spacing: 0; }
 
   /* Global square corners on all interactive buttons (and elements opted-in via data-cta).
      Opt-out with the `keep-radius` class or a `data-keep-radius` attribute. */
