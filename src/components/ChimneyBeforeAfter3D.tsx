@@ -115,7 +115,9 @@ function ChimneyPanel({
   after?: boolean;
 }) {
   return (
-    <figure className={`relative flex flex-col ${after ? "items-start pl-4 md:pl-10" : "items-end pr-4 md:pr-10"}`}>
+    <figure
+      className={`relative flex flex-col items-center text-center ${after ? "pl-3 md:pl-10" : "pr-3 md:pr-10"}`}
+    >
       <figcaption
         className={`mb-4 font-showcase text-2xl uppercase leading-none transition-opacity duration-700 md:text-4xl ${
           after ? "text-showcase-accent" : "text-showcase-ink/35"
