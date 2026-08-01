@@ -194,25 +194,7 @@ function ScheduleSection({ id }: { id?: string }) {
    between the hero and the dark coupon banner.
    ============================================================ */
 function HeroToOfferBridge() {
-  return (
-    <div className="relative z-10 mx-auto flex max-w-7xl justify-center px-4 py-8 md:px-8 md:py-10">
-      <figure className="relative w-full max-w-md sm:max-w-lg lg:max-w-2xl">
-        {/* soft warm halo */}
-        <div
-          className="pointer-events-none absolute -inset-4 rounded-2xl bg-flame/15 blur-2xl"
-          aria-hidden
-        />
-        {/* before/after promo photo */}
-        <img
-          src={heroPromoPhoto.url}
-          alt="Before and after chimney repair — damaged brick stack restored with a new cap and flashing"
-          className="relative block h-auto w-full rounded-xl border border-white/10 shadow-2xl"
-          loading="lazy"
-          decoding="async"
-        />
-      </figure>
-    </div>
-  );
+  return <ChimneyBeforeAfter3D />;
 }
 
 /* ============================================================
