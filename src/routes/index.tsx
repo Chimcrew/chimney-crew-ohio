@@ -156,7 +156,7 @@ function Index() {
   return (
     <>
       <Hero />
-      <HeroToOfferBridge />
+      <TeamWidePhotoBridge />
       <AutoLoopVideoSection />
       <ScheduleSection id="schedule-section" />
       <FlashingJobShowcase variant="compact" />
@@ -165,11 +165,8 @@ function Index() {
       <RecentProjects />
       <ServiceAreaSeo />
       <DroneInspection />
-      <TrustMarquee />
-      <EmergencyCallBar />
       <LeakingChimney />
       <Faq />
-      <TrustMarquee />
       <EmergencyCallBar />
     </>
   );
