@@ -1,16 +1,33 @@
-import { useRef, useState } from "react";
-import { ChevronsRight } from "lucide-react";
-import beforeImg from "@/assets/hero-ba/before.jpg.asset.json";
-import afterImg from "@/assets/hero-ba/after.jpg.asset.json";
+import { useEffect, useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import beforeImg from "@/assets/hero-ba/before-cutout.png.asset.json";
+import afterImg from "@/assets/hero-ba/after-cutout.png.asset.json";
 
 /**
- * WOW 3D before/after — two photo slabs angled toward each other like an
- * open book, floating over a warm glow. Pointer position parallax-tilts
- * the whole rig; each slab lifts and straightens on hover.
+ * Cut-out chimneys standing on a clean white stage. Both the damaged and the
+ * restored chimney rise up from the bottom edge of the section when it scrolls
+ * into view, with soft contact shadows and pointer parallax.
  */
 export function ChimneyBeforeAfter3D() {
   const stageRef = useRef<HTMLDivElement>(null);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [shown, setShown] = useState(false);
+
+  useEffect(() => {
+    const el = stageRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   const onMove = (e: React.PointerEvent) => {
     const el = stageRef.current;
@@ -18,129 +35,117 @@ export function ChimneyBeforeAfter3D() {
     const r = el.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width - 0.5;
     const py = (e.clientY - r.top) / r.height - 0.5;
-    setTilt({ x: -py * 8, y: px * 10 });
+    setTilt({ x: -py * 4, y: px * 6 });
   };
 
   return (
-    <section className="relative overflow-hidden border-y border-border bg-primary py-14 md:py-20">
-      {/* ambient */}
+    <section className="relative overflow-hidden border-y border-border bg-card pt-14 md:pt-20">
+      {/* soft warm floor glow */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[70%] w-[80%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-flame/20 blur-[110px]"
-      />
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] [background-size:64px_64px]"
+        className="pointer-events-none absolute bottom-0 left-1/2 h-64 w-[85%] -translate-x-1/2 rounded-[100%] bg-flame/10 blur-[90px]"
       />
 
-      <div className="relative mx-auto max-w-7xl px-4 md:px-8">
+      <div className="relative mx-auto max-w-6xl px-4 md:px-8">
         <div className="text-center">
           <p className="font-mono text-[10px] font-bold uppercase tracking-[0.28em] text-flame">
             Real ChimCrew Job · Columbus, OH
           </p>
-          <h2 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+          <h2 className="mt-3 font-display text-3xl font-extrabold leading-[1.05] tracking-tight text-foreground sm:text-4xl md:text-5xl">
             One chimney.
             <span className="block text-flame">Two very different winters.</span>
           </h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm text-muted-foreground">
+            Full crown rebuild, tuckpointing, new stainless cap and fresh flashing —
+            finished in a single day.
+          </p>
         </div>
 
-        {/* 3D stage */}
+        {/* stage — chimneys rise out of the bottom edge */}
         <div
           ref={stageRef}
           onPointerMove={onMove}
           onPointerLeave={() => setTilt({ x: 0, y: 0 })}
-          className="mt-10 md:mt-14 [perspective:1600px]"
+          className="mt-8 [perspective:1600px] md:mt-10"
         >
           <div
-            className="relative mx-auto grid max-w-4xl grid-cols-2 gap-3 transition-transform duration-300 ease-out sm:gap-8 [transform-style:preserve-3d]"
+            className="relative mx-auto flex max-w-4xl items-end justify-center gap-6 transition-transform duration-300 ease-out sm:gap-16 [transform-style:preserve-3d]"
             style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
           >
-            <Slab
+            <Stack
               src={beforeImg.url}
-              alt="Before — cracked, spalling brick chimney with failing crown and no cap"
+              alt="Before — cracked, spalling brick chimney with a failing crown and no cap"
               label="Before"
               tone="dark"
-              side="left"
+              shown={shown}
+              delay={0}
+              height="h-[280px] sm:h-[380px] md:h-[460px]"
             />
-            <Slab
+            <Stack
               src={afterImg.url}
               alt="After — rebuilt brick chimney with new crown, stainless cap and fresh flashing"
               label="After"
               tone="flame"
-              side="right"
+              shown={shown}
+              delay={220}
+              height="h-[310px] sm:h-[420px] md:h-[520px]"
             />
 
-            {/* center pivot badge */}
             <div
-              className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-              style={{ transform: "translate(-50%,-50%) translateZ(90px)" }}
+              className={`pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transition-all duration-700 ${
+                shown ? "scale-100 opacity-100" : "scale-50 opacity-0"
+              }`}
+              style={{ transitionDelay: "600ms" }}
             >
-              <div className="flex h-14 w-14 items-center justify-center rounded-full border-2 border-flame bg-primary text-flame shadow-[0_18px_50px_oklch(0_0_0/0.55)] sm:h-20 sm:w-20">
-                <ChevronsRight className="h-6 w-6 sm:h-9 sm:w-9" />
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-flame text-primary shadow-[0_14px_40px_oklch(0_0_0/0.25)] sm:h-16 sm:w-16">
+                <ArrowRight className="h-5 w-5 sm:h-7 sm:w-7" />
               </div>
             </div>
           </div>
         </div>
-
-        <p className="mx-auto mt-8 max-w-xl text-center text-sm text-primary-foreground/70 md:mt-10">
-          Full crown rebuild, tuckpointing, new stainless cap and fresh flashing —
-          finished in a single day.
-        </p>
       </div>
     </section>
   );
 }
 
-function Slab({
+function Stack({
   src,
   alt,
   label,
   tone,
-  side,
+  shown,
+  delay,
+  height,
 }: {
   src: string;
   alt: string;
   label: string;
   tone: "dark" | "flame";
-  side: "left" | "right";
+  shown: boolean;
+  delay: number;
+  height: string;
 }) {
-  const base =
-    side === "left"
-      ? "rotateY(9deg) translateZ(0px)"
-      : "rotateY(-9deg) translateZ(0px)";
   return (
-    <figure
-      className="group relative [transform-style:preserve-3d]"
-      style={{ transform: base }}
-    >
-      <div className="relative overflow-hidden rounded-lg border border-white/15 bg-black/40 shadow-[0_40px_80px_-30px_oklch(0_0_0/0.8)] transition-transform duration-500 ease-out will-change-transform group-hover:-translate-y-2 group-hover:scale-[1.02]">
-        <img
-          src={src}
-          alt={alt}
-          className="block aspect-[3/4] w-full object-cover sm:aspect-[4/5]"
-          loading="lazy"
-          decoding="async"
-        />
-        {/* sheen */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-white/10"
-        />
-        <figcaption
-          className={`absolute bottom-0 left-0 right-0 flex items-center justify-between px-3 py-2.5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] sm:text-xs ${
-            tone === "flame"
-              ? "bg-flame text-primary"
-              : "bg-background/90 text-foreground"
-          }`}
-        >
-          {label}
-          <span className="h-1.5 w-1.5 rounded-full bg-current opacity-60" />
-        </figcaption>
-      </div>
-      {/* floor reflection */}
-      <div
-        aria-hidden
-        className="pointer-events-none mx-auto mt-2 h-8 w-[85%] rounded-full bg-black/50 blur-xl"
+    <figure className="group relative flex flex-col items-center">
+      <figcaption
+        className={`mb-4 rounded-full px-4 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.24em] transition-all duration-700 sm:text-xs ${
+          tone === "flame"
+            ? "bg-flame text-primary"
+            : "bg-foreground/90 text-background"
+        } ${shown ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"}`}
+        style={{ transitionDelay: `${delay + 400}ms` }}
+      >
+        {label}
+      </figcaption>
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        decoding="async"
+        className={`${height} w-auto origin-bottom object-contain object-bottom drop-shadow-[0_30px_40px_oklch(0_0_0/0.28)] transition-all duration-[1100ms] ease-[cubic-bezier(0.16,1,0.3,1)] will-change-transform group-hover:-translate-y-2 ${
+          shown ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+        }`}
+        style={{ transitionDelay: `${delay}ms` }}
       />
     </figure>
   );
