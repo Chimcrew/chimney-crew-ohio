@@ -85,6 +85,7 @@ export function ChimneyRestorationProcess() {
   const [progress, setProgress] = useState(0);
   const [visible, setVisible] = useState(false);
   const reduced = usePrefersReducedMotion();
+  const lockRef = useRef(false);
 
   /* pause all work while offscreen */
   useEffect(() => {
@@ -122,6 +123,85 @@ export function ChimneyRestorationProcess() {
     };
   }, [visible, reduced]);
 
+  /* ------------------------------------------------------------------
+     One gesture = one stage.
+     While the stage is pinned we swallow the scroll gesture and animate
+     to the next/previous stage offset instead, so a long flick can never
+     blow past several stages at once. At the first/last stage we let the
+     gesture through so the page keeps scrolling normally.
+  ------------------------------------------------------------------- */
+  useEffect(() => {
+    if (reduced) return;
+    const el = sectionRef.current;
+    if (!el) return;
+    const N = STAGES.length;
+
+    const metrics = () => {
+      const rect = el.getBoundingClientRect();
+      const span = rect.height - window.innerHeight;
+      const top = rect.top + window.scrollY;
+      const pinned = rect.top <= 1 && rect.bottom >= window.innerHeight - 1;
+      const prog = span > 0 ? clamp01(-rect.top / span) : 1;
+      const stage = Math.round(prog * (N - 1));
+      return { span, top, pinned, stage };
+    };
+
+    const goTo = (stage: number) => {
+      const { span, top } = metrics();
+      const target = top + (span * stage) / (N - 1);
+      lockRef.current = true;
+      window.scrollTo({ top: target, behavior: "smooth" });
+      window.setTimeout(() => {
+        lockRef.current = false;
+      }, 620);
+    };
+
+    /** returns true when the gesture was consumed */
+    const step = (dir: 1 | -1) => {
+      const { pinned, stage } = metrics();
+      if (!pinned) return false;
+      const next = stage + dir;
+      if (next < 0 || next > N - 1) return false; // let the page scroll away
+      if (lockRef.current) return true; // still animating — swallow
+      goTo(next);
+      return true;
+    };
+
+    const onWheel = (e: WheelEvent) => {
+      if (Math.abs(e.deltaY) < 2) return;
+      if (step(e.deltaY > 0 ? 1 : -1)) e.preventDefault();
+    };
+
+    let startY = 0;
+    let consumed = false;
+    const onTouchStart = (e: TouchEvent) => {
+      startY = e.touches[0]?.clientY ?? 0;
+      consumed = false;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      const y = e.touches[0]?.clientY ?? 0;
+      const dy = startY - y;
+      if (Math.abs(dy) < 8) return;
+      if (consumed) {
+        e.preventDefault();
+        return;
+      }
+      if (step(dy > 0 ? 1 : -1)) {
+        consumed = true;
+        e.preventDefault();
+      }
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchmove", onTouchMove, { passive: false });
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchmove", onTouchMove);
+    };
+  }, [reduced]);
+
   const p = reduced ? 1 : progress;
   const collapsed = !reduced && p > 0.02;
   const active = Math.min(STAGES.length - 1, Math.floor(p * STAGES.length * 0.999));
@@ -131,7 +211,7 @@ export function ChimneyRestorationProcess() {
       ref={sectionRef}
       aria-label="How we restore your chimney"
       className="relative bg-background"
-      style={reduced ? undefined : { height: "260vh" }}
+      style={reduced ? undefined : { height: `${STAGES.length * 100}vh` }}
     >
       <div className={reduced ? "" : "sticky top-0 flex h-dvh flex-col overflow-hidden"}>
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-24 pt-20 md:px-10 md:pb-10 md:pt-28 lg:px-14">
