@@ -278,7 +278,7 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
   /* deterministic pseudo-random so the wall looks natural but never re-shuffles */
   const rnd = (i: number) => {
     const s = Math.sin(i * 12.9898) * 43758.5453;
-    return s - Math.floor(s);
+    return Math.round((s - Math.floor(s)) * 1000) / 1000;
   };
 
   // front face: x 140..252 ; right return face: x 252..276 (perspective)
@@ -438,9 +438,10 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
             <rect x="140" y="150" width="112" height="330" fill="url(#cr-mortar)" />
             {bricks.map((b, i) => {
               const t = b.t;
-              const l = 0.44 + t * 0.12 - 0.03 * wear;
-              const c = 0.075 + t * 0.045;
-              const h = 30 + t * 16;
+              const r3 = (n: number) => Math.round(n * 1000) / 1000;
+              const l = r3(0.44 + t * 0.12 - 0.03 * wear);
+              const c = r3(0.075 + t * 0.045);
+              const h = r3(30 + t * 16);
               return (
                 <g key={i}>
                   <rect
@@ -516,7 +517,7 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
                 y2={b.y + 16}
                 stroke="oklch(0.62 0.012 80)"
                 strokeWidth="1.4"
-                opacity={0.5 + b.t * 0.3}
+                opacity={Math.round((0.5 + b.t * 0.3) * 1000) / 1000}
               />
             ))}
             <polygon
