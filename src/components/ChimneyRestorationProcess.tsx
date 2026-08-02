@@ -494,7 +494,7 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
 
           {/* ---------- masonry: shaded return face ---------- */}
           <g clipPath="url(#cr-side)">
-            <polygon points="252,150 276,162 276,470 252,480" fill="oklch(0.42 0.075 38)" />
+            <polygon points="252,150 276,162 276,468 252,457" fill="oklch(0.42 0.075 38)" />
             {sideBricks.map((b, i) => (
               <line
                 key={i}
@@ -508,14 +508,14 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
               />
             ))}
             <polygon
-              points="252,150 276,162 276,470 252,480"
+              points="252,150 276,162 276,468 252,457"
               filter="url(#cr-grain)"
               fill="oklch(0.25 0.03 40)"
               opacity="0.3"
             />
-            <polygon points="252,150 276,162 276,470 252,480" fill="oklch(0 0 0)" opacity="0.28" />
+            <polygon points="252,150 276,162 276,468 252,457" fill="oklch(0 0 0)" opacity="0.28" />
           </g>
-          <line x1="252" y1="150" x2="252" y2="480" stroke="oklch(0 0 0)" strokeWidth="1.2" opacity="0.35" />
+          <line x1="252" y1="150" x2="252" y2="457" stroke="oklch(0 0 0)" strokeWidth="1.2" opacity="0.35" />
         </g>
 
         {/* ---------- crown: damaged -> rebuilt ---------- */}
