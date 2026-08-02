@@ -149,7 +149,7 @@ export function ChimneyRestorationProcess() {
           </header>
 
           {/* Stage grid */}
-          <div className="mt-5 grid flex-1 grid-cols-1 items-center gap-5 md:mt-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-12">
+          <div className="mt-4 grid flex-1 md:mt-8 grid-cols-1 items-center gap-5 md:mt-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-12">
             <div className="relative min-h-0 flex-1">
               <ChimneyVisual p={p} reduced={reduced} />
             </div>
@@ -282,7 +282,7 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
     <div className="relative flex h-full w-full items-center justify-center">
       <svg
         viewBox="0 0 400 520"
-        className="h-full max-h-[38dvh] w-full md:max-h-[54dvh]"
+        className="h-full max-h-[30dvh] w-full md:max-h-[54dvh]"
         role="img"
         aria-label="Illustration of a chimney being inspected, repaired and capped"
         style={{
