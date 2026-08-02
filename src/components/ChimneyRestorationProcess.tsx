@@ -133,7 +133,7 @@ export function ChimneyRestorationProcess() {
       style={reduced ? undefined : { height: "260vh" }}
     >
       <div className={reduced ? "" : "sticky top-0 flex h-dvh flex-col overflow-hidden"}>
-        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-6 pt-24 md:px-10 md:pb-10 md:pt-32 lg:px-14">
+        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-28 pt-28 md:px-10 md:pb-10 md:pt-32 lg:px-14">
           {/* Intro */}
           <header className="shrink-0">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-flame">
