@@ -354,7 +354,6 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
             <line x1="160" y1="372" x2="200" y2="372" />
           </g>
           {/* subtle shading */}
-          <rect x="140" y="150" width="120" height="330" fill="url(#none)" />
           <rect x="236" y="150" width="24" height="330" fill="oklch(0 0 0)" opacity="0.10" />
         </g>
 
