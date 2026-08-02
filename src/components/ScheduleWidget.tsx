@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from "react";
-import { CheckCircle2, CalendarCheck, Flame, ShieldCheck } from "lucide-react";
+import { CheckCircle2, CalendarCheck, Flame, ShieldCheck, ArrowRight, ArrowLeft } from "lucide-react";
 import { format } from "date-fns";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,6 +31,19 @@ export const SCHEDULE_SERVICES = [
 
 const SLOTS = ["8:00AM-11:00AM", "11:00AM-2:00PM", "2:00PM-5:00PM"];
 
+const STEPS = ["Service", "Contact", "Address"] as const;
+/** which wizard step owns each validated field (used to jump to the first error) */
+const FIELD_STEP: Record<string, number> = {
+  service: 0,
+  date: 0,
+  slot: 0,
+  name: 1,
+  phone: 1,
+  email: 1,
+  smsConsent: 2,
+  notRobot: 2,
+};
+
 export function ScheduleInline() {
   const path = typeof window !== "undefined" ? window.location.pathname : "";
   return <ScheduleFlow sourcePath={path} />;
@@ -59,6 +72,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   const [submitting, setSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitError, setSubmitError] = useState<string>("");
+  const [step, setStep] = useState(0);
   const fieldRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const todayStr = date ? format(date, "yyyy-MM-dd") : "";
@@ -81,10 +95,13 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
       const firstKey = Object.keys(nextErrors)[0];
+      setStep(FIELD_STEP[firstKey] ?? 0);
       const el = fieldRefs.current[firstKey];
       if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
-        (el as HTMLInputElement).focus?.();
+        window.setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+          (el as HTMLInputElement).focus?.();
+        }, 60);
       }
       toast.error("Please fix the highlighted field" + (Object.keys(nextErrors).length > 1 ? "s" : ""), { duration: 5000 });
       return;
@@ -135,60 +152,75 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     setCity("");
     setZip("");
     setNotes("");
+    setStep(0);
   }, [date, street, city, zip, sourcePath, name, phone, email, emailIsValid, service, slot, notes, onDone]);
+
+  /** validate only the fields on the current step before moving forward */
+  const goNext = useCallback(() => {
+    const next: Record<string, string> = {};
+    if (step === 0) {
+      if (!service) next.service = "Choose a service";
+      if (!date) next.date = "Pick a date";
+      if (!slot) next.slot = "Pick a time window";
+    }
+    if (step === 1) {
+      if (name.trim().length < 2) next.name = "Please enter your name";
+      if (phone.replace(/\D/g, "").length < 7) next.phone = "Enter a phone number we can reach you at";
+      if (!emailIsValid) next.email = "That email doesn't look right — or leave it blank";
+    }
+    setErrors(next);
+    if (Object.keys(next).length) {
+      toast.error("Please fix the highlighted field" + (Object.keys(next).length > 1 ? "s" : ""), { duration: 4000 });
+      return;
+    }
+    setStep((s) => Math.min(STEPS.length - 1, s + 1));
+  }, [step, service, date, slot, name, phone, emailIsValid]);
 
   return (
     <div className="bg-background text-foreground">
       {/* Compact header */}
-      <div className="mb-4 border-b border-border pb-4">
+      <div className="mb-4 border-b border-border pb-3">
         <span className="inline-flex items-center gap-1.5 bg-black px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
           <Flame className="h-3 w-3" /> ChimCrew · 60-second booking
         </span>
         <h2 className="mt-2 font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight md:text-2xl">
           Schedule Service Online
         </h2>
-        <p className="mt-1 text-xs text-foreground/70 md:text-sm">
-          Servicing your area and surrounding neighborhoods.
+        <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[11px] uppercase tracking-[0.12em] text-foreground/60">
+          <ShieldCheck className="h-3 w-3 shrink-0 text-flame" />
+          No extra charge · nights · weekends · holidays
         </p>
-        <div className="mt-2 space-y-0.5">
-          <p className="text-[10px] uppercase tracking-[0.15em] text-foreground/50">
-            <ShieldCheck className="mr-1 inline h-3 w-3 text-flame" />
-            No extra charge
-          </p>
-          <p
-            className="text-[11px] font-bold uppercase tracking-[0.15em] text-foreground/80 opacity-0"
-            style={{ animation: "revealUp 0.7s ease-out 0.3s forwards" }}
-          >
-            nights
-          </p>
-          <p
-            className="text-[11px] font-bold uppercase tracking-[0.15em] text-foreground/80 opacity-0"
-            style={{ animation: "revealUp 0.7s ease-out 0.7s forwards" }}
-          >
-            weekends
-          </p>
-          <p
-            className="text-[11px] font-bold uppercase tracking-[0.15em] text-foreground/80 opacity-0"
-            style={{ animation: "revealUp 0.7s ease-out 1.1s forwards" }}
-          >
-            holidays
-          </p>
+
+        {/* Step indicator */}
+        <div className="mt-3 grid grid-cols-3 gap-1.5" aria-hidden>
+          {STEPS.map((label, i) => (
+            <div key={label} className="space-y-1">
+              <div className={"h-1 w-full " + (i <= step ? "bg-flame" : "bg-foreground/15")} />
+              <span
+                className={
+                  "block font-mono text-[9px] font-bold uppercase tracking-[0.16em] " +
+                  (i <= step ? "text-foreground/80" : "text-foreground/35")
+                }
+              >
+                {i + 1}. {label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
-      <style>{`
-        @keyframes revealUp {
-          0% { opacity: 0; transform: translateY(8px); }
-          100% { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
 
-      {/* Compact single-page form */}
+      {/* Compact 3-step form — all fields still submitted together */}
       <form
         className="space-y-3"
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
-          if (!submitting) void submit();
+          if (submitting) return;
+          if (step < STEPS.length - 1) {
+            goNext();
+            return;
+          }
+          void submit();
         }}
       >
         {submitError && (
@@ -206,6 +238,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           </div>
         )}
         {/* Service — full width, most important */}
+        <div className={step === 0 ? "space-y-3" : "hidden"}>
         <Field label="Service Needed" required error={errors.service}>
           <Select value={service} onValueChange={setService}>
             <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
@@ -221,7 +254,36 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           </Select>
         </Field>
 
-        {/* Name + Phone */}
+        {/* Date + Time */}
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Field label="Appointment Date" required error={errors.date}>
+            <Input
+              type="date"
+              name="appointment-date"
+              aria-label="Appointment Date"
+              value={todayStr}
+              min={minDateStr}
+              onChange={(e) => setDate(e.target.value ? new Date(e.target.value + "T00:00:00") : undefined)}
+              className="h-10 rounded-none border-foreground/20 text-sm"
+            />
+          </Field>
+          <Field label="Appointment Time" required error={errors.slot}>
+            <Select value={slot} onValueChange={setSlot}>
+              <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent className="rounded-none">
+                {SLOTS.map((s) => (
+                  <SelectItem key={s} value={s} className="rounded-none">{s}</SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </Field>
+        </div>
+        </div>
+
+        {/* ---------- Step 2: contact ---------- */}
+        <div className={step === 1 ? "space-y-3" : "hidden"}>
         <div className="grid gap-3 sm:grid-cols-2">
           <Field label="Full Name" required error={errors.name}>
             <Input
@@ -263,35 +325,10 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
             className={"h-10 rounded-none text-sm " + (errors.email ? "border-2 border-[#E63A1F]" : "border-foreground/20")}
           />
         </Field>
-
-        {/* Date + Time */}
-        <div className="grid gap-3 sm:grid-cols-2">
-          <Field label="Appointment Date" required error={errors.date}>
-            <Input
-              type="date"
-              name="appointment-date"
-              aria-label="Appointment Date"
-              value={todayStr}
-              min={minDateStr}
-              onChange={(e) => setDate(e.target.value ? new Date(e.target.value + "T00:00:00") : undefined)}
-              className="h-10 rounded-none border-foreground/20 text-sm"
-            />
-          </Field>
-          <Field label="Appointment Time" required error={errors.slot}>
-            <Select value={slot} onValueChange={setSlot}>
-              <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="rounded-none">
-                {SLOTS.map((s) => (
-                  <SelectItem key={s} value={s} className="rounded-none">{s}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </Field>
         </div>
 
-        {/* Address (optional — we confirm on the phone call) */}
+        {/* ---------- Step 3: address, notes, consent ---------- */}
+        <div className={step === 2 ? "space-y-3" : "hidden"}>
         <Field label="Street Address (optional)">
           <Input
             name="street-address"
@@ -351,16 +388,38 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           setNotRobot={setNotRobot}
           error={errors.smsConsent || errors.notRobot}
         />
+        </div>
 
-        {/* Submit — always clickable; missing fields are reported via toast */}
-        <button
-          type="submit"
-          disabled={submitting}
-          className="inline-flex h-12 w-full items-center justify-center gap-2 bg-flame font-display text-sm font-bold uppercase tracking-wider text-primary shadow-[0_6px_16px_oklch(0.78_0.19_92/0.3)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
-        >
-          <CalendarCheck className="h-4 w-4" />
-          {submitting ? "Booking…" : "Submit Booking"}
-        </button>
+        {/* Navigation — one primary action per step */}
+        <div className="flex items-center gap-2 pt-1">
+          {step > 0 && (
+            <button
+              type="button"
+              onClick={() => setStep((s) => Math.max(0, s - 1))}
+              className="inline-flex h-12 shrink-0 items-center justify-center gap-1.5 border-2 border-foreground/20 px-4 font-display text-xs font-bold uppercase tracking-wider text-foreground/80 transition hover:border-foreground/40"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back
+            </button>
+          )}
+          <button
+            type="submit"
+            disabled={submitting}
+            className="inline-flex h-12 w-full min-w-0 items-center justify-center gap-2 bg-flame font-display text-sm font-bold uppercase tracking-wider text-primary shadow-[0_6px_16px_oklch(0.78_0.19_92/0.3)] transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            {step < STEPS.length - 1 ? (
+              <>
+                Continue
+                <ArrowRight className="h-4 w-4" />
+              </>
+            ) : (
+              <>
+                <CalendarCheck className="h-4 w-4" />
+                {submitting ? "Booking…" : "Submit Booking"}
+              </>
+            )}
+          </button>
+        </div>
 
         <p className="flex items-center justify-center gap-1.5 pt-0.5 text-[11px] text-muted-foreground">
           <CheckCircle2 className="h-3.5 w-3.5 text-[#E63A1F]" />
