@@ -552,8 +552,8 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
           <rect x="182" y="90" width="9" height="52" fill="oklch(1 0 0)" opacity="0.10" />
           <rect x="213" y="90" width="9" height="52" fill="oklch(0 0 0)" opacity="0.18" />
           {/* rim + dark throat */}
-          <polygon points="182,90 222,90 230,94 190,94" fill="oklch(0.52 0.05 55)" />
-          <polygon points="186,92 218,92 225,95.5 193,95.5" fill="oklch(0.18 0.02 55)" />
+          <polygon points="182,90 222,90 227,93 187,93" fill="oklch(0.58 0.045 55)" />
+          <polygon points="186,91.5 218,91.5 222,94 190,94" fill="oklch(0.18 0.02 55)" />
           {/* mortar collar where the crown meets the tile */}
           <polygon points="178,136 226,136 236,141 188,141" fill="oklch(0.88 0.006 250)" opacity={crownFix} />
         </g>
@@ -584,18 +584,18 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
           <g>
             {[0, 1, 2, 3, 4, 5].map((i) => {
               const x0 = 140 + i * 18.7;
-              const x1 = x0 + 22;
+              const x1 = x0 + 26;
               const y1 = 408 + (x1 - 140) * 0.4375;
               const y0 = 408 + (x0 - 140) * 0.4375;
               return (
                 <g key={i}>
                   <polygon
-                    points={`${x0},${y0} ${x1},${y1} ${x1},${y1 - 19} ${x0},${y1 - 19}`}
+                    points={`${x0},${y0} ${x1},${y1} ${x1},${y1 - 20} ${x0},${y1 - 20}`}
                     fill="oklch(0.72 0.012 250)"
                     stroke="oklch(0.44 0.01 250)"
                     strokeWidth="0.7"
                   />
-                  <rect x={x0} y={y1 - 19} width={22} height="1.4" fill="oklch(1 0 0)" opacity="0.35" />
+                  <rect x={x0} y={y1 - 20} width={26} height="1.4" fill="oklch(1 0 0)" opacity="0.35" />
                 </g>
               );
             })}
@@ -620,14 +620,6 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
             })}
             <polygon points="252,445 276,456 276,445 252,434" fill="oklch(0.68 0.008 250)" />
           </g>
-          {/* caulk bead along the top of the counter-flashing */}
-          <path
-            d="M140 385 L252 434"
-            stroke="oklch(0.94 0.006 250)"
-            strokeWidth="1.6"
-            opacity="0.6"
-            fill="none"
-          />
           {/* sealer sheen on the masonry */}
           <polygon
             points="140,150 252,150 252,457 140,408"
