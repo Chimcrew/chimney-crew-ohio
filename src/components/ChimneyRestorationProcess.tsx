@@ -401,20 +401,20 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
           strokeDasharray="1400"
           strokeDashoffset={1400 * (1 - draw)}
         >
-          <rect x="140" y="150" width="112" height="330" />
-          <polygon points="252,150 276,162 276,470 252,480" />
+          <polygon points="140,150 252,150 252,457 140,408" />
+          <polygon points="252,150 276,162 276,468 252,457" />
           <rect x="128" y="130" width="148" height="20" />
           <rect x="178" y="94" width="44" height="36" />
           <line x1="100" y1="150" x2="300" y2="150" strokeDasharray="6 6" strokeDashoffset="0" />
-          <line x1="100" y1="480" x2="300" y2="480" strokeDasharray="6 6" strokeDashoffset="0" />
-          <line x1="112" y1="150" x2="112" y2="480" strokeDasharray="6 6" strokeDashoffset="0" />
+          <line x1="100" y1="432" x2="300" y2="432" strokeDasharray="6 6" strokeDashoffset="0" />
+          <line x1="112" y1="150" x2="112" y2="432" strokeDasharray="6 6" strokeDashoffset="0" />
         </g>
 
         {/* ---------- solid white model ---------- */}
         <g opacity={model * (1 - brick)}>
-          <rect x="140" y="150" width="112" height="330" fill="oklch(0.98 0 0)" />
-          <polygon points="252,150 276,162 276,470 252,480" fill="oklch(0.90 0 0)" />
-          <rect x="140" y="150" width="112" height="330" fill="none" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
+          <polygon points="140,150 252,150 252,457 140,408" fill="oklch(0.98 0 0)" />
+          <polygon points="252,150 276,162 276,468 252,457" fill="oklch(0.90 0 0)" />
+          <polygon points="140,150 252,150 252,457 140,408" fill="none" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
           <rect x="128" y="130" width="148" height="20" fill="oklch(0.95 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
           <rect x="178" y="94" width="44" height="36" fill="oklch(0.93 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
         </g>
