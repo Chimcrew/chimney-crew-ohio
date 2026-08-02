@@ -123,6 +123,7 @@ export function ChimneyRestorationProcess() {
   }, [visible, reduced]);
 
   const p = reduced ? 1 : progress;
+  const collapsed = !reduced && p > 0.02;
   const active = Math.min(STAGES.length - 1, Math.floor(p * STAGES.length * 0.999));
 
   return (
@@ -139,10 +140,18 @@ export function ChimneyRestorationProcess() {
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-flame">
               The ChimCrew Process
             </p>
-            <h2 className="mt-2 font-display text-2xl font-extrabold leading-tight text-primary md:text-4xl">
+            <h2
+              className={`mt-2 font-display font-extrabold leading-tight text-primary md:text-4xl ${
+                collapsed ? "text-lg" : "text-2xl"
+              }`}
+            >
               How We Restore Your Chimney
             </h2>
-            <p className="mt-2 max-w-2xl text-xs text-foreground/70 md:text-base">
+            <p
+              className={`mt-2 max-w-2xl text-xs text-foreground/70 md:text-base ${
+                collapsed ? "hidden md:block" : ""
+              }`}
+            >
               From the first inspection to the final protective layer, every repair is completed with
               a clear process and attention to every component.
             </p>
