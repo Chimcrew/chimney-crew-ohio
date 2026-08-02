@@ -134,7 +134,7 @@ export function ChimneyRestorationProcess() {
       style={reduced ? undefined : { height: "260vh" }}
     >
       <div className={reduced ? "" : "sticky top-0 flex h-dvh flex-col overflow-hidden"}>
-        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-32 pt-32 md:px-10 md:pb-10 md:pt-32 lg:px-14">
+        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-24 pt-20 md:px-10 md:pb-10 md:pt-28 lg:px-14">
           {/* Intro */}
           <header className="shrink-0">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-flame">
@@ -158,7 +158,7 @@ export function ChimneyRestorationProcess() {
           </header>
 
           {/* Stage grid */}
-          <div className="mt-4 grid flex-1 md:mt-8 grid-cols-1 items-center gap-5 md:mt-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-12">
+          <div className="mt-3 grid min-h-0 flex-1 grid-cols-1 items-center gap-4 md:mt-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-12">
             <div className="relative min-h-0 flex-1">
               <ChimneyVisual p={p} reduced={reduced} />
             </div>
@@ -181,7 +181,7 @@ export function ChimneyRestorationProcess() {
           </div>
 
           {/* CTA */}
-          <div className="mt-4 flex shrink-0 flex-col gap-3 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-3 flex shrink-0 flex-col gap-2.5 border-t border-border pt-3 sm:flex-row sm:items-center sm:justify-between">
             <Link
               to="/before-after"
               className="story-link self-start text-sm font-semibold text-primary underline-offset-4"
@@ -191,7 +191,7 @@ export function ChimneyRestorationProcess() {
             <Button
               asChild
               size="lg"
-              className="min-h-12 w-full rounded-none bg-flame text-primary hover:bg-flame/90 sm:w-fit"
+              className="min-h-11 w-full rounded-none bg-flame text-primary hover:bg-flame/90 sm:w-fit"
             >
               <Link to="/schedule">
                 Get Your Free Estimate
@@ -403,8 +403,9 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
         >
           <polygon points="140,150 252,150 252,457 140,408" />
           <polygon points="252,150 276,162 276,468 252,457" />
-          <rect x="128" y="130" width="148" height="20" />
-          <rect x="178" y="94" width="44" height="36" />
+          <polygon points="130,138 262,138 286,150 154,150" />
+          <rect x="130" y="138" width="132" height="12" />
+          <rect x="182" y="90" width="40" height="50" />
           <line x1="100" y1="150" x2="300" y2="150" strokeDasharray="6 6" strokeDashoffset="0" />
           <line x1="100" y1="432" x2="300" y2="432" strokeDasharray="6 6" strokeDashoffset="0" />
           <line x1="112" y1="150" x2="112" y2="432" strokeDasharray="6 6" strokeDashoffset="0" />
@@ -415,8 +416,9 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
           <polygon points="140,150 252,150 252,457 140,408" fill="oklch(0.98 0 0)" />
           <polygon points="252,150 276,162 276,468 252,457" fill="oklch(0.90 0 0)" />
           <polygon points="140,150 252,150 252,457 140,408" fill="none" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
-          <rect x="128" y="130" width="148" height="20" fill="oklch(0.95 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
-          <rect x="178" y="94" width="44" height="36" fill="oklch(0.93 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
+          <polygon points="130,138 262,138 286,150 154,150" fill="oklch(0.96 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
+          <rect x="130" y="138" width="132" height="12" fill="oklch(0.95 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
+          <rect x="182" y="90" width="40" height="50" fill="oklch(0.93 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
         </g>
 
         {/* ---------- masonry: front face ---------- */}
@@ -518,98 +520,135 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
           <line x1="252" y1="150" x2="252" y2="457" stroke="oklch(0 0 0)" strokeWidth="1.2" opacity="0.35" />
         </g>
 
-        {/* ---------- crown: damaged -> rebuilt ---------- */}
+        {/* ---------- crown top face (sits flush on the brick top y=150) ---------- */}
         <g opacity={brick}>
-          {/* old flat concrete crown */}
+          {/* damaged flat slab */}
           <g opacity={1 - crownFix}>
-            {/* slab sits flush on the brick top at y=150 and follows the return face */}
-            <polygon points="134,132 288,132 288,150 134,150" fill="oklch(0.74 0.008 250)" />
-            <polygon points="288,132 300,140 300,158 288,150" fill="oklch(0.60 0.008 250)" />
-            <rect x="134" y="132" width="154" height="3" fill="oklch(0.88 0.004 250)" />
-            <rect x="134" y="146" width="154" height="4" fill="oklch(0 0 0)" opacity="0.2" />
-            <path
-              d="M168 131 l7 9 l-6 9"
-              stroke="oklch(0.32 0.02 250)"
-              strokeWidth="2.6"
-              fill="none"
-              opacity={wear}
-            />
-            <path
-              d="M226 131 l-5 8 l6 10"
-              stroke="oklch(0.32 0.02 250)"
-              strokeWidth="2"
-              fill="none"
-              opacity={wear * 0.8}
-            />
+            <polygon points="134,140 258,140 282,152 158,152" fill="oklch(0.70 0.008 250)" />
+            <polygon points="134,140 258,140 258,150 134,150" fill="oklch(0.74 0.008 250)" />
+            <polygon points="258,140 282,152 282,162 258,150" fill="oklch(0.58 0.008 250)" />
+            <rect x="134" y="148" width="124" height="2.4" fill="oklch(0 0 0)" opacity="0.25" />
+            <g opacity={wear}>
+              <path d="M168 141 l8 8 l-6 9" stroke="oklch(0.32 0.02 250)" strokeWidth="2.4" fill="none" />
+              <path d="M226 141 l-5 7 l6 9" stroke="oklch(0.32 0.02 250)" strokeWidth="1.8" fill="none" />
+              <path d="M140 146 q30 -4 62 0" stroke="oklch(0.34 0.02 250)" strokeWidth="1.6" fill="none" opacity="0.7" />
+            </g>
           </g>
-          {/* rebuilt sloped crown with drip edge */}
+
+          {/* rebuilt crown: top wash first so the flue can emerge from it */}
           <g opacity={crownFix}>
-            {/* washed top surface sloping away from the flue */}
-            <polygon points="130,140 146,124 274,124 290,140" fill="url(#cr-crown)" />
-            {/* front fascia, bottom flush with the masonry top */}
-            <polygon points="130,140 290,140 290,150 130,150" fill="oklch(0.80 0.006 250)" />
-            {/* right return so the overhang wraps the side face */}
-            <polygon points="290,140 302,147 302,157 290,150" fill="oklch(0.66 0.008 250)" />
-            <polygon points="274,124 290,140 302,147 286,131" fill="oklch(0.72 0.006 250)" />
-            {/* drip edge shadow under the overhang */}
-            <rect x="130" y="148" width="160" height="2.4" fill="oklch(0 0 0)" opacity="0.3" />
-            <polygon points="146,124 274,124 274,127 146,127" fill="oklch(1 0 0)" opacity="0.45" />
+            {/* outer top face, 10px overhang all round, 12px thick */}
+            <polygon points="130,138 262,138 286,150 154,150" fill="url(#cr-crown)" />
+            {/* raised inner wash sloping down from the flue collar to the edges */}
+            <polygon points="140,140 254,140 272,149 158,149" fill="oklch(0.86 0.006 250)" opacity="0.85" />
+            <polygon points="176,136 226,136 244,145 194,145" fill="oklch(0.90 0.005 250)" />
           </g>
         </g>
 
-        {/* ---------- clay flue tile ---------- */}
+        {/* ---------- clay flue tile, seated in the crown ---------- */}
         <g opacity={brick}>
-          <rect x="178" y="94" width="44" height="38" fill="oklch(0.46 0.05 55)" />
-          <rect x="178" y="94" width="44" height="5" fill="oklch(0.30 0.03 55)" />
-          <rect x="182" y="99" width="36" height="33" fill="oklch(0.22 0.02 55)" opacity="0.55" />
-          <rect x="178" y="94" width="8" height="38" fill="oklch(1 0 0)" opacity="0.10" />
-          <rect x="214" y="94" width="8" height="38" fill="oklch(0 0 0)" opacity="0.16" />
+          {/* tile body rises out of the crown wash */}
+          <rect x="182" y="90" width="40" height="52" fill="oklch(0.46 0.05 55)" />
+          <rect x="182" y="90" width="9" height="52" fill="oklch(1 0 0)" opacity="0.10" />
+          <rect x="213" y="90" width="9" height="52" fill="oklch(0 0 0)" opacity="0.18" />
+          {/* rim + dark throat */}
+          <polygon points="182,90 222,90 227,93 187,93" fill="oklch(0.58 0.045 55)" />
+          <polygon points="186,91.5 218,91.5 222,94 190,94" fill="oklch(0.18 0.02 55)" />
+          {/* mortar collar where the crown meets the tile */}
+          <polygon points="178,136 226,136 236,141 188,141" fill="oklch(0.88 0.006 250)" opacity={crownFix} />
+        </g>
+
+        {/* ---------- crown fascia (drawn after the tile so it reads in front) ---------- */}
+        <g opacity={brick * crownFix}>
+          <polygon points="130,138 262,138 262,150 130,150" fill="oklch(0.82 0.006 250)" />
+          <polygon points="262,138 286,150 286,162 262,150" fill="oklch(0.66 0.008 250)" />
+          <rect x="130" y="138" width="132" height="1.6" fill="oklch(1 0 0)" opacity="0.5" />
+          {/* drip edge + shadow it casts on the brick below */}
+          <rect x="130" y="148.4" width="132" height="1.6" fill="oklch(0 0 0)" opacity="0.35" />
+          <polygon points="140,150 252,150 252,155 140,155" fill="oklch(0 0 0)" opacity="0.22" />
         </g>
 
         {/* ---------- flashing + waterproof sheen ---------- */}
         <g opacity={flashing}>
-          {/* base apron lying on the shingles, following the roof pitch */}
-          <polygon points="140,408 252,457 276,468 276,482 252,471 140,422" fill="oklch(0.60 0.012 250)" />
-          <polygon points="140,408 252,457 276,468 276,471 252,460 140,411" fill="oklch(0.88 0.008 250)" opacity="0.7" />
-          {/* step flashing climbing the face along the roof line */}
-          <polygon points="140,392 252,441 252,457 140,408" fill="oklch(0.70 0.012 250)" />
-          <polygon points="252,441 276,452 276,468 252,457" fill="oklch(0.56 0.012 250)" />
-          <g stroke="oklch(0.42 0.01 250)" strokeWidth="1" opacity="0.5">
+          {/* base apron lying on the shingles, flared past the chimney sides */}
+          <polygon
+            points="124,401 140,408 252,457 276,468 290,474 290,487 276,481 252,470 140,421 124,414"
+            fill="oklch(0.58 0.012 250)"
+          />
+          <polygon
+            points="124,401 140,408 252,457 276,468 290,474 290,477 276,471 252,460 140,411 124,404"
+            fill="oklch(0.90 0.008 250)"
+            opacity="0.75"
+          />
+          {/* stepped step-flashing climbing the roof line, shingle by shingle */}
+          <g>
             {[0, 1, 2, 3, 4, 5].map((i) => {
-              const x = 156 + i * 18;
-              const y = 408 + (x - 140) * 0.4375;
-              return <line key={i} x1={x} y1={y} x2={x} y2={y - 16} />;
+              const x0 = 140 + i * 18.7;
+              const x1 = x0 + 26;
+              const y1 = 408 + (x1 - 140) * 0.4375;
+              const y0 = 408 + (x0 - 140) * 0.4375;
+              return (
+                <g key={i}>
+                  <polygon
+                    points={`${x0},${y0} ${x1},${y1} ${x1},${y1 - 20} ${x0},${y1 - 20}`}
+                    fill="oklch(0.72 0.012 250)"
+                    stroke="oklch(0.44 0.01 250)"
+                    strokeWidth="0.7"
+                  />
+                  <rect x={x0} y={y1 - 20} width={26} height="1.4" fill="oklch(1 0 0)" opacity="0.35" />
+                </g>
+              );
             })}
+            {/* side return of the step flashing */}
+            <polygon points="252,457 276,468 276,449 252,438" fill="oklch(0.54 0.012 250)" />
           </g>
-          {/* counter-flashing tucked into the mortar joint above */}
-          <polygon points="140,382 252,431 252,441 140,392" fill="oklch(0.82 0.008 250)" />
-          <polygon points="252,431 276,442 276,452 252,441" fill="oklch(0.66 0.008 250)" />
-          <polygon points="140,382 252,431 252,433 140,384" fill="oklch(1 0 0)" opacity="0.45" />
-          {/* sealer sheen */}
+          {/* counter-flashing let into the mortar joint above, stepped to match */}
+          <g>
+            {[0, 1, 2, 3, 4, 5].map((i) => {
+              const x0 = 140 + i * 18.7;
+              const x1 = x0 + 19;
+              const yb = 408 + (x1 - 140) * 0.4375 - 12;
+              return (
+                <polygon
+                  key={i}
+                  points={`${x0},${yb} ${x1},${yb} ${x1},${yb - 11} ${x0},${yb - 11}`}
+                  fill="oklch(0.86 0.008 250)"
+                  stroke="oklch(0.50 0.01 250)"
+                  strokeWidth="0.7"
+                />
+              );
+            })}
+            <polygon points="252,445 276,456 276,445 252,434" fill="oklch(0.68 0.008 250)" />
+          </g>
+          {/* sealer sheen on the masonry */}
           <polygon
             points="140,150 252,150 252,457 140,408"
             fill="oklch(0.95 0.02 220)"
-            opacity={0.1 * flashing}
+            opacity={0.09 * flashing}
           />
         </g>
 
-        {/* ---------- stainless cap lowering ---------- */}
+        {/* ---------- stainless cap lowering onto the flue tile ---------- */}
         <g opacity={cap} transform={`translate(0 ${-70 * (1 - cap)})`}>
-          <rect x="158" y="58" width="84" height="8" rx="2" fill="url(#cr-steel)" />
-          <rect x="158" y="66" width="84" height="3" fill="oklch(0 0 0)" opacity="0.22" />
-          {/* mesh */}
-          <rect x="172" y="69" width="56" height="26" fill="oklch(0.30 0.006 250)" opacity="0.55" />
-          <g stroke="oklch(0.80 0.006 250)" strokeWidth="0.8" opacity="0.65">
-            {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-              <line key={`v${i}`} x1={174 + i * 9} y1="69" x2={174 + i * 9} y2="95" />
+          {/* lid with a drip flange, centred over the tile (x 182..222) */}
+          <polygon points="166,54 238,54 246,58 174,58" fill="oklch(0.88 0.004 250)" />
+          <rect x="166" y="58" width="72" height="7" rx="1.5" fill="url(#cr-steel)" />
+          <rect x="166" y="64" width="72" height="2.6" fill="oklch(0 0 0)" opacity="0.25" />
+          {/* mesh screen between the legs */}
+          <rect x="186" y="66.6" width="32" height="23.4" fill="oklch(0.28 0.006 250)" opacity="0.6" />
+          <g stroke="oklch(0.82 0.006 250)" strokeWidth="0.7" opacity="0.6">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <line key={`v${i}`} x1={189 + i * 7} y1="66.6" x2={189 + i * 7} y2="90" />
             ))}
-            {[0, 1, 2, 3].map((i) => (
-              <line key={`h${i}`} x1="172" y1={73 + i * 7} x2="228" y2={73 + i * 7} />
+            {[0, 1, 2].map((i) => (
+              <line key={`h${i}`} x1="186" y1={72 + i * 7} x2="218" y2={72 + i * 7} />
             ))}
           </g>
-          {/* legs */}
-          <rect x="170" y="69" width="5" height="27" fill="url(#cr-steel)" />
-          <rect x="225" y="69" width="5" height="27" fill="url(#cr-steel)" />
+          {/* legs land squarely on the tile rim at y=90 */}
+          <rect x="182" y="66.6" width="4.6" height="23.4" fill="url(#cr-steel)" />
+          <rect x="217.4" y="66.6" width="4.6" height="23.4" fill="url(#cr-steel)" />
+          {/* contact shadow on the tile rim */}
+          <rect x="182" y="89" width="40" height="1.8" fill="oklch(0 0 0)" opacity="0.28" />
         </g>
 
         {/* ---------- diagnosis markers ---------- */}
