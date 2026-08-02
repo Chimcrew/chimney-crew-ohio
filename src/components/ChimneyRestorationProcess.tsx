@@ -403,8 +403,9 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
         >
           <polygon points="140,150 252,150 252,457 140,408" />
           <polygon points="252,150 276,162 276,468 252,457" />
-          <rect x="128" y="130" width="148" height="20" />
-          <rect x="178" y="94" width="44" height="36" />
+          <polygon points="130,138 262,138 286,150 154,150" />
+          <rect x="130" y="138" width="132" height="12" />
+          <rect x="182" y="90" width="40" height="50" />
           <line x1="100" y1="150" x2="300" y2="150" strokeDasharray="6 6" strokeDashoffset="0" />
           <line x1="100" y1="432" x2="300" y2="432" strokeDasharray="6 6" strokeDashoffset="0" />
           <line x1="112" y1="150" x2="112" y2="432" strokeDasharray="6 6" strokeDashoffset="0" />
@@ -415,8 +416,9 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
           <polygon points="140,150 252,150 252,457 140,408" fill="oklch(0.98 0 0)" />
           <polygon points="252,150 276,162 276,468 252,457" fill="oklch(0.90 0 0)" />
           <polygon points="140,150 252,150 252,457 140,408" fill="none" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
-          <rect x="128" y="130" width="148" height="20" fill="oklch(0.95 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
-          <rect x="178" y="94" width="44" height="36" fill="oklch(0.93 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
+          <polygon points="130,138 262,138 286,150 154,150" fill="oklch(0.96 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
+          <rect x="130" y="138" width="132" height="12" fill="oklch(0.95 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
+          <rect x="182" y="90" width="40" height="50" fill="oklch(0.93 0 0)" stroke="oklch(0.82 0.01 250)" strokeWidth="1.6" />
         </g>
 
         {/* ---------- masonry: front face ---------- */}
