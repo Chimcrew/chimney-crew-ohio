@@ -364,45 +364,31 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
 
         {/* ---------------- roof ---------------- */}
         <g opacity={0.35 + 0.65 * model}>
-          <polygon points="6,520 200,398 394,520" fill="url(#cr-roof)" />
-          {/* shingle courses, tightening with perspective */}
-          <g clipPath="none" opacity="0.9">
+          {/* peak is off to the left so the chimney lands cleanly on one slope */}
+          <polygon points="6,520 96,388 394,520" fill="url(#cr-roof)" />
+          {/* shingle courses running parallel to the eave */}
+          <g opacity="0.9">
             {Array.from({ length: 11 }).map((_, i) => {
-              const t = i / 11;
-              const y = 398 + Math.pow(t, 1.35) * 122 + 10;
-              const halfW = ((y - 398) / 122) * 194;
+              const t = (i + 1) / 12;
+              const y = 388 + Math.pow(t, 1.25) * 132;
+              const xl = 96 - (y - 388) * (90 / 132);
+              const xr = 96 + (y - 388) * (298 / 132);
               return (
                 <g key={i}>
-                  <line
-                    x1={200 - halfW}
-                    y1={y}
-                    x2={200 + halfW}
-                    y2={y}
-                    stroke="oklch(0.28 0.01 250)"
-                    strokeWidth="1.6"
-                    opacity="0.55"
-                  />
-                  <line
-                    x1={200 - halfW}
-                    y1={y + 2}
-                    x2={200 + halfW}
-                    y2={y + 2}
-                    stroke="oklch(0.72 0.01 250)"
-                    strokeWidth="1"
-                    opacity="0.22"
-                  />
+                  <line x1={xl} y1={y} x2={xr} y2={y} stroke="oklch(0.28 0.01 250)" strokeWidth="1.6" opacity="0.55" />
+                  <line x1={xl} y1={y + 2} x2={xr} y2={y + 2} stroke="oklch(0.72 0.01 250)" strokeWidth="1" opacity="0.22" />
                 </g>
               );
             })}
           </g>
-          {/* ridge */}
-          <line x1="6" y1="520" x2="200" y2="398" stroke="oklch(0.30 0.01 250)" strokeWidth="2.4" />
-          <line x1="394" y1="520" x2="200" y2="398" stroke="oklch(0.30 0.01 250)" strokeWidth="2.4" />
-          {/* chimney shadow cast on the roof */}
+          {/* hips */}
+          <line x1="6" y1="520" x2="96" y2="388" stroke="oklch(0.30 0.01 250)" strokeWidth="2.4" />
+          <line x1="394" y1="520" x2="96" y2="388" stroke="oklch(0.30 0.01 250)" strokeWidth="2.4" />
+          {/* chimney shadow cast down-slope on the roof */}
           <polygon
-            points="252,470 300,506 176,506 140,478"
+            points="140,408 252,457 276,468 236,492 120,436"
             fill="oklch(0 0 0)"
-            opacity={0.22 * brick}
+            opacity={0.2 * brick}
           />
         </g>
 
