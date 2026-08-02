@@ -133,7 +133,7 @@ export function ChimneyRestorationProcess() {
       style={reduced ? undefined : { height: "260vh" }}
     >
       <div className={reduced ? "" : "sticky top-0 flex h-dvh flex-col overflow-hidden"}>
-        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-28 pt-28 md:px-10 md:pb-10 md:pt-32 lg:px-14">
+        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-24 pt-32 md:px-10 md:pb-10 md:pt-32 lg:px-14">
           {/* Intro */}
           <header className="shrink-0">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-flame">
@@ -142,7 +142,7 @@ export function ChimneyRestorationProcess() {
             <h2 className="mt-2 font-display text-2xl font-extrabold leading-tight text-primary md:text-4xl">
               How We Restore Your Chimney
             </h2>
-            <p className="mt-2 max-w-2xl text-sm text-foreground/70 md:text-base">
+            <p className="mt-2 max-w-2xl text-xs text-foreground/70 md:text-base">
               From the first inspection to the final protective layer, every repair is completed with
               a clear process and attention to every component.
             </p>
@@ -220,13 +220,13 @@ function StageCopy({ active, p }: { active: number; p: number }) {
         <h3 className="mt-2 font-display text-xl font-extrabold leading-tight text-primary md:text-3xl">
           {stage.title}
         </h3>
-        <p className="mt-2 max-w-xl text-sm leading-relaxed text-foreground/75 md:text-lg">
+        <p className="mt-2 max-w-xl text-[13px] leading-relaxed text-foreground/75 md:text-lg">
           {stage.body}
         </p>
       </div>
 
       {final && (
-        <ul className="mt-4 grid grid-cols-1 gap-1.5 sm:grid-cols-2">
+        <ul className="mt-3 grid grid-cols-1 gap-1 sm:grid-cols-2">
           {CHECKS.map((c, i) => {
             const shown = p > 0.87 + i * 0.02;
             return (
@@ -282,7 +282,7 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
     <div className="relative flex h-full w-full items-center justify-center">
       <svg
         viewBox="0 0 400 520"
-        className="h-full max-h-[30dvh] w-full md:max-h-[54dvh]"
+        className="h-full max-h-[24dvh] w-full md:max-h-[54dvh]"
         role="img"
         aria-label="Illustration of a chimney being inspected, repaired and capped"
         style={{
