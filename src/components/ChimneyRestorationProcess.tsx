@@ -314,11 +314,12 @@ function ChimneyVisual({ p, reduced }: { p: number; reduced: boolean }) {
         }}
       >
         <defs>
+          {/* the front face stops exactly on the roof plane */}
           <clipPath id="cr-front">
-            <rect x="140" y="150" width="112" height="330" />
+            <polygon points="140,150 252,150 252,457 140,408" />
           </clipPath>
           <clipPath id="cr-side">
-            <polygon points="252,150 276,162 276,470 252,480" />
+            <polygon points="252,150 276,162 276,468 252,457" />
           </clipPath>
           {/* fine grain that makes flat fills read as fired clay */}
           <filter id="cr-grain" x="0%" y="0%" width="100%" height="100%">
