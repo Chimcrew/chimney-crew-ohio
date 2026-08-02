@@ -134,7 +134,7 @@ export function ChimneyRestorationProcess() {
       style={reduced ? undefined : { height: "260vh" }}
     >
       <div className={reduced ? "" : "sticky top-0 flex h-dvh flex-col overflow-hidden"}>
-        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-32 pt-32 md:px-10 md:pb-10 md:pt-32 lg:px-14">
+        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pb-24 pt-20 md:px-10 md:pb-10 md:pt-28 lg:px-14">
           {/* Intro */}
           <header className="shrink-0">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-flame">
@@ -158,7 +158,7 @@ export function ChimneyRestorationProcess() {
           </header>
 
           {/* Stage grid */}
-          <div className="mt-4 grid flex-1 md:mt-8 grid-cols-1 items-center gap-5 md:mt-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-12">
+          <div className="mt-3 grid min-h-0 flex-1 grid-cols-1 items-center gap-4 md:mt-8 md:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] md:gap-12">
             <div className="relative min-h-0 flex-1">
               <ChimneyVisual p={p} reduced={reduced} />
             </div>
@@ -181,7 +181,7 @@ export function ChimneyRestorationProcess() {
           </div>
 
           {/* CTA */}
-          <div className="mt-4 flex shrink-0 flex-col gap-3 border-t border-border pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mt-3 flex shrink-0 flex-col gap-2.5 border-t border-border pt-3 sm:flex-row sm:items-center sm:justify-between">
             <Link
               to="/before-after"
               className="story-link self-start text-sm font-semibold text-primary underline-offset-4"
@@ -191,7 +191,7 @@ export function ChimneyRestorationProcess() {
             <Button
               asChild
               size="lg"
-              className="min-h-12 w-full rounded-none bg-flame text-primary hover:bg-flame/90 sm:w-fit"
+              className="min-h-11 w-full rounded-none bg-flame text-primary hover:bg-flame/90 sm:w-fit"
             >
               <Link to="/schedule">
                 Get Your Free Estimate
