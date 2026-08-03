@@ -62,7 +62,7 @@ export function RecentChimcrewJobs() {
               Before &amp; After
             </p>
             <h2 className="truncate text-lg font-extrabold text-foreground sm:text-2xl">
-              Recent ChimCrew Jobs
+              Recent Projects
             </h2>
           </div>
           <Link
