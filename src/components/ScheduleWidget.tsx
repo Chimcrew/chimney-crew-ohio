@@ -23,7 +23,7 @@ export function openScheduleDialog() {
 
 export const SCHEDULE_SERVICES = [
   { value: "Gas Fireplace Inspection — $49", label: "Gas Fireplace Inspection", price: "$49" },
-  { value: "⭐ Promotion – Free Chimney Inspection", label: "⭐ Promotion – Free Chimney Inspection", price: "Free" },
+  { value: "⭐ Promo – Free Chimney Inspection", label: "⭐ Promo – Free Chimney Inspection", price: "Free" },
   { value: "Chimney Sweep — $99", label: "Chimney Sweep", price: "$99" },
   { value: "Dryer Vent Cleaning — $79", label: "Dryer Vent Cleaning", price: "$79" },
   { value: "Chimney/Fireplace Inspection — $69", label: "Chimney/Fireplace Inspection", price: "$69" },
