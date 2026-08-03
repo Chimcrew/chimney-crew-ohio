@@ -165,8 +165,6 @@ function Index() {
       <RecentProjects />
       <ServiceAreaSeo />
       <FlashingJobShowcase variant="compact" />
-      <TrustMarquee />
-      <EmergencyCallBar />
       <Faq />
       <TrustMarquee />
       <EmergencyCallBar />
