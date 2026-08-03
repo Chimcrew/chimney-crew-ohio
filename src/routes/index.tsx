@@ -20,7 +20,7 @@ import {
   Clock,
   ThumbsUp,
   Award,
-  HardHat,
+  
   Camera,
   Video,
 } from "lucide-react";
@@ -28,7 +28,7 @@ import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import { AutoLoopVideoSection } from "@/components/AutoLoopVideo";
 
 const logo = logoAsset.url;
-import sweep from "@/assets/leak-chimney-rooftop.jpg";
+
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import projectHero from "@/assets/projects/project-01-double-crown.jpg.asset.json";
 import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg.asset.json";
@@ -167,7 +167,6 @@ function Index() {
       <FlashingJobShowcase variant="compact" />
       <TrustMarquee />
       <EmergencyCallBar />
-      <LeakingChimney />
       <Faq />
       <TrustMarquee />
       <EmergencyCallBar />
@@ -1188,90 +1187,6 @@ function FireHazards() {
               </p>
             </article>
           ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   LEAKING CHIMNEY — split feature
-   ============================================================ */
-function LeakingChimney() {
-  const signs = [
-    "Water stains on the ceiling near the chimney",
-    "White efflorescence on the exterior brick",
-    "Rust on the damper or firebox",
-    "Musty smell after rain",
-    "Crumbling crown or missing cap",
-    "Damaged flashing where chimney meets roof",
-  ];
-  return (
-    <section className="relative overflow-hidden bg-background py-24">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 md:grid-cols-2 md:px-8">
-        <div className="relative">
-          <div className="relative overflow-hidden rounded-none border-2 border-primary/20 shadow-flame">
-            <img src={sweep} alt="Chimney inspection on an Ohio rooftop" className="block w-full" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-primary/40 via-transparent to-transparent" />
-            <div className="absolute left-4 top-4 inline-flex items-center gap-2 rounded-full bg-primary/90 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-flame backdrop-blur">
-              <HardHat className="h-3 w-3" /> Crown rebuild
-            </div>
-          </div>
-          {/* Floating stat card */}
-          <div className="absolute -bottom-6 -right-4 hidden rounded-none border-2 border-flame bg-primary p-4 text-primary-foreground shadow-flame md:block">
-            <p className="font-display text-3xl text-flame">93%</p>
-            <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.22em]">
-              of chimney leaks
-              <br />
-              stop with one repair
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
-            <Droplets className="h-3.5 w-3.5 text-flame" /> Is your chimney leaking?
-          </p>
-          <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
-            One bad Ohio winter and{" "}
-            <span className="inline-block rounded-none bg-primary px-2.5 py-0.5 text-primary-foreground">
-              the water wins
-            </span>
-            .
-          </h2>
-          <p className="mt-4 text-base text-muted-foreground">
-            Freeze-thaw widens hairline cracks until water reaches your firebox, your walls, your
-            ceiling. We climb up, find the source, seal it for good, and put it in writing — with a
-            leak warranty you can hand to the next owner.
-          </p>
-
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {signs.map((s) => (
-              <li
-                key={s}
-                className="flex items-start gap-2 rounded-none border border-border bg-card p-3 text-sm text-foreground"
-              >
-                <Droplets className="mt-0.5 h-4 w-4 shrink-0 text-flame" />
-                {s}
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-7 flex flex-wrap gap-3">
-            <button
-              type="button"
-              onClick={() => (window.location.href = "/schedule")}
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
-            >
-              <CalendarCheck className="h-4 w-4" /> Schedule appointment online
-            </button>
-            <a
-              href="tel:6146835763"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
-            >
-              <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
-            </a>
-          </div>
         </div>
       </div>
     </section>
