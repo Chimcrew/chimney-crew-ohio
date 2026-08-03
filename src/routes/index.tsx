@@ -639,52 +639,53 @@ function EmergencyCallBar() {
    COMMON CHIMNEY PROBLEMS WE FIX — homeowner-language list
    ============================================================ */
 function CommonProblems() {
+  const [open, setOpen] = useState<number | null>(0);
   const problems = [
     {
       label: "Chimney Leaks",
-      body: "Water stains, ceiling drips, and damp brick after every rain.",
+      body: "Water stains, ceiling drips, and damp brick after every rain. We trace the source, seal the flashing, and stop the leak at the root.",
       slug: "flashing-repair",
       image: chimneyLeakCeilingPhoto.url,
       alt: "Water stain and ceiling damage caused by a leaking chimney",
     },
     {
       label: "Cracked Chimney Crowns",
-      body: "Hairline cracks letting water sit on top of the chimney.",
+      body: "Hairline cracks let water sit on top of the chimney and freeze. We rebuild or seal crowns before the freeze-thaw cycle destroys the brick below.",
       slug: "crown-tuckpoint",
       image: crackedCrownPhoto.url,
       alt: "Cracked concrete chimney crown around flue tiles",
     },
     {
       label: "Missing or Damaged Chimney Caps",
-      body: "Open flues let in rain, debris, and animals.",
+      body: "Open flues invite rain, debris, birds, and squirrels. A proper cap keeps everything out while letting smoke escape safely.",
       slug: "cap-install",
       image: damagedChimneyCapPhoto.url,
       alt: "Damaged chimney cap sitting loose on top of a chimney",
     },
     {
       label: "Brick & Mortar Damage",
-      body: "Spalling brick and washed-out mortar joints.",
+      body: "Spalling brick and washed-out mortar joints weaken the structure. We tuckpoint and rebuild before it becomes a full rebuild.",
       slug: "crown-tuckpoint",
       image: brickMortarDamagePhoto.url,
       alt: "Chimney brick and mortar joints with visible cracking and deterioration",
     },
     {
       label: "Chimney Water Damage",
-      body: "Stained masonry, efflorescence, and rotting framing inside.",
+      body: "Stained masonry, efflorescence, and rotting framing inside are signs water is getting in. We find the entry point and fix it for good.",
       slug: "waterproofing",
       image: chimneyWaterDamageAtticPhoto.url,
       alt: "Water damage and staining around a chimney in an attic",
     },
     {
       label: "Damaged Chimney Liners",
-      body: "Cracked clay tiles or rusted-out metal liners hurting draft and safety.",
+      body: "Cracked clay tiles or rusted metal liners hurt draft and can let heat reach combustibles. We install stainless steel liners that last.",
       slug: "liner-install",
       image: damagedLinerPhoto.url,
       alt: "Broken clay flue liner tiles inside a chimney",
     },
     {
       label: "Draft & Ventilation Problems",
-      body: "Smoke spilling into the room, cold downdrafts, hard-to-start fires.",
+      body: "Smoke spilling into the room, cold downdrafts, and hard-to-start fires usually mean a drafting issue we can diagnose and solve.",
       slug: "damper-repair",
       image: draftSmokeFireplacePhoto.url,
       alt: "Smoke backing into a living room from a fireplace with draft problems",
@@ -692,8 +693,8 @@ function CommonProblems() {
   ];
   return (
     <section className="relative bg-background py-10 md:py-14">
-      <div className="mx-auto max-w-7xl px-4 md:px-8">
-        <div className="max-w-3xl">
+      <div className="mx-auto max-w-3xl px-4 md:px-8">
+        <div className="text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Wrench className="h-3.5 w-3.5 text-flame" /> What We Fix
           </p>
@@ -701,45 +702,75 @@ function CommonProblems() {
             Common Chimney Problems <span className="text-flame">We Fix</span>
           </h2>
           <p className="mt-2 text-sm text-foreground/75 md:text-base">
-            If any of these sound familiar, we can take a look — most are far cheaper to fix now
-            than after they cause water or fire damage.
+            If any of these sound familiar, click to see how we handle it.
           </p>
         </div>
 
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {problems.map(({ label, body, slug, image, alt }) => (
-            <Link
-              key={label}
-              to="/services/$slug"
-              params={{ slug }}
-              className="group flex flex-col overflow-hidden rounded-none border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
-            >
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
-                <img
-                  src={image}
-                  alt={alt}
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/10 to-transparent" aria-hidden />
-                <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-flame/40 bg-primary/80 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame backdrop-blur">
-                  <AlertTriangle className="h-3 w-3" /> Fix
-                </span>
+        <div className="mt-6 divide-y divide-border overflow-hidden rounded-none border border-border bg-card">
+          {problems.map(({ label, body, slug, image, alt }, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={label} className="group">
+                <button
+                  type="button"
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="flex w-full items-center gap-3 p-3 text-left transition hover:bg-muted/50 sm:gap-4 sm:p-4"
+                >
+                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-none border border-border bg-muted sm:h-16 sm:w-16">
+                    <img
+                      src={image}
+                      alt={alt}
+                      className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-display text-base font-extrabold text-foreground sm:text-lg">
+                      {label}
+                    </h3>
+                    <p className="mt-0.5 line-clamp-1 text-xs text-foreground/60 sm:text-sm">
+                      {body}
+                    </p>
+                  </div>
+                  <span
+                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border bg-background text-flame transition ${isOpen ? "rotate-90 border-flame/40 bg-flame/10" : ""}`}
+                  >
+                    <ChevronRight className="h-4 w-4" />
+                  </span>
+                </button>
+                <div
+                  className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+                >
+                  <div className="overflow-hidden">
+                    <div className="flex flex-col gap-3 px-3 pb-4 pt-0 sm:flex-row sm:gap-4 sm:px-4 sm:pb-5">
+                      <div className="relative hidden aspect-[4/3] w-full overflow-hidden rounded-none border border-border bg-muted sm:block sm:w-40">
+                        <img
+                          src={image}
+                          alt={alt}
+                          className="h-full w-full object-cover"
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <div className="flex flex-1 flex-col justify-between">
+                        <p className="text-sm leading-relaxed text-foreground/80">
+                          {body}
+                        </p>
+                        <Link
+                          to="/services/$slug"
+                          params={{ slug }}
+                          className="mt-3 inline-flex items-center gap-1 self-start font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-flame transition hover:translate-x-1"
+                        >
+                          Learn more <ArrowRight className="h-3.5 w-3.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex flex-1 flex-col p-4">
-                <h3 className="font-display text-base font-extrabold text-foreground sm:text-lg">
-                  {label}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-foreground/70">
-                  {body}
-                </p>
-                <span className="mt-3 inline-flex items-center gap-1 self-start font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-flame transition group-hover:translate-x-1">
-                  Learn more <ArrowRight className="h-3.5 w-3.5" />
-                </span>
-              </div>
-            </Link>
-          ))}
+            );
+          })}
         </div>
 
         <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
