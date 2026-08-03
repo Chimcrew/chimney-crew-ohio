@@ -357,10 +357,10 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         <div
           aria-hidden={step !== 2}
           className={
-            "col-start-1 row-start-1 space-y-3 " +
+            "col-start-1 row-start-1 space-y-2 " +
             (step === 2
               ? stepDirection === "forward" ? "schedule-step-forward" : "schedule-step-back"
-              : "invisible pointer-events-none")
+              : "hidden")
           }
         >
         <Field label="Street Address (optional)">
