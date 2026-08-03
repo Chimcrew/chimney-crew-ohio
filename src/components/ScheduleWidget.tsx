@@ -304,10 +304,10 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         <div
           aria-hidden={step !== 1}
           className={
-            "col-start-1 row-start-1 space-y-3 " +
+            "col-start-1 row-start-1 space-y-2 " +
             (step === 1
               ? stepDirection === "forward" ? "schedule-step-forward" : "schedule-step-back"
-              : "invisible pointer-events-none")
+              : "hidden")
           }
         >
         <div className="grid gap-3 sm:grid-cols-2">
