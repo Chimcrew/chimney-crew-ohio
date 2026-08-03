@@ -702,49 +702,33 @@ function CommonProblems() {
             Common Chimney Problems <span className="text-flame">We Fix</span>
           </h2>
           <p className="mt-2 text-sm text-foreground/75 md:text-base">
-            If any of these sound familiar, click to see how we handle it.
+            Tap any issue to see how ChimCrew handles it.
           </p>
         </div>
 
-        <div className="mt-6 divide-y divide-border overflow-hidden rounded-none border border-border bg-card">
+        <div className="mt-6 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
           {problems.map(({ label, body, slug, image, alt }, i) => {
             const isOpen = open === i;
             return (
-              <div key={label} className="group">
+              <div key={label}>
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center gap-3 p-3 text-left transition hover:bg-muted/50 sm:gap-4 sm:p-4"
+                  className={`flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition sm:px-5 sm:py-4 ${isOpen ? "bg-muted/40" : "hover:bg-muted/30"}`}
                 >
-                  <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-none border border-border bg-muted sm:h-16 sm:w-16">
-                    <img
-                      src={image}
-                      alt={alt}
-                      className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-display text-base font-extrabold text-foreground sm:text-lg">
-                      {label}
-                    </h3>
-                    <p className="mt-0.5 line-clamp-1 text-xs text-foreground/60 sm:text-sm">
-                      {body}
-                    </p>
-                  </div>
-                  <span
-                    className={`grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border bg-background text-flame transition ${isOpen ? "rotate-90 border-flame/40 bg-flame/10" : ""}`}
-                  >
-                    <ChevronRight className="h-4 w-4" />
+                  <span className="min-w-0 flex-1 text-sm font-medium text-foreground sm:text-[15px]">
+                    {label}
                   </span>
+                  <ChevronRight
+                    className={`h-4 w-4 shrink-0 text-foreground/40 transition duration-200 sm:h-5 sm:w-5 ${isOpen ? "rotate-90 text-flame" : ""}`}
+                  />
                 </button>
                 <div
                   className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
                 >
                   <div className="overflow-hidden">
-                    <div className="flex flex-col gap-3 px-3 pb-4 pt-0 sm:flex-row sm:gap-4 sm:px-4 sm:pb-5">
-                      <div className="relative hidden aspect-[4/3] w-full overflow-hidden rounded-none border border-border bg-muted sm:block sm:w-40">
+                    <div className="flex flex-col gap-3 px-4 pb-4 sm:flex-row sm:gap-4 sm:px-5 sm:pb-5">
+                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted sm:w-44">
                         <img
                           src={image}
                           alt={alt}
