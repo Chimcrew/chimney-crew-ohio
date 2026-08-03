@@ -244,9 +244,9 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
             </a>
           </div>
         )}
-        {/* Every panel shares one grid cell, so the form keeps the height of its
-            tallest step and never jumps when customers move through it. */}
-        <div className="grid overflow-hidden">
+        {/* Only the active panel is rendered, so the form stays compact; the
+            wrapper animates its height smoothly as steps change. */}
+        <div className="grid overflow-hidden transition-all duration-300 ease-out">
         {/* Service — full width, most important */}
         <div
           aria-hidden={step !== 0}
