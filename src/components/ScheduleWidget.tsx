@@ -23,7 +23,7 @@ export function openScheduleDialog() {
 
 export const SCHEDULE_SERVICES = [
   { value: "Gas Fireplace Inspection — $49", label: "Gas Fireplace Inspection", price: "$49" },
-  { value: "⭐ Promotion – Free Chimney Inspection", label: "⭐ Promotion – Free Chimney Inspection", price: "Free" },
+  { value: "⭐ Promo – Free Chimney Inspection", label: "⭐ Promo – Free Chimney Inspection", price: "Free" },
   { value: "Chimney Sweep — $99", label: "Chimney Sweep", price: "$99" },
   { value: "Dryer Vent Cleaning — $79", label: "Dryer Vent Cleaning", price: "$79" },
   { value: "Chimney/Fireplace Inspection — $69", label: "Chimney/Fireplace Inspection", price: "$69" },
@@ -218,7 +218,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
       {/* Compact 3-step form — all fields still submitted together */}
       <form
-        className="space-y-3"
+        className="space-y-2"
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
@@ -244,17 +244,17 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
             </a>
           </div>
         )}
-        {/* Every panel shares one grid cell, so the form keeps the height of its
-            tallest step and never jumps when customers move through it. */}
-        <div className="grid overflow-hidden">
+        {/* Only the active panel is rendered, so the form stays compact; the
+            wrapper animates its height smoothly as steps change. */}
+        <div className="grid overflow-hidden transition-all duration-300 ease-out">
         {/* Service — full width, most important */}
         <div
           aria-hidden={step !== 0}
           className={
-            "col-start-1 row-start-1 space-y-3 " +
+            "col-start-1 row-start-1 space-y-2 " +
             (step === 0
               ? stepDirection === "forward" ? "schedule-step-forward" : "schedule-step-back"
-              : "invisible pointer-events-none")
+              : "hidden")
           }
         >
         <Field label="Service Needed" required error={errors.service}>
@@ -265,7 +265,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
             <SelectContent className="rounded-none">
               {SCHEDULE_SERVICES.map((s) => (
                 <SelectItem key={s.value} value={s.value} className="rounded-none">
-                  {s.label} — {s.price === "Free" ? "Free" : `Starts from ${s.price}`}
+                  {s.label} {s.price === "Free" ? "" : `— Starts from ${s.price}`}
                 </SelectItem>
               ))}
             </SelectContent>
@@ -304,10 +304,10 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         <div
           aria-hidden={step !== 1}
           className={
-            "col-start-1 row-start-1 space-y-3 " +
+            "col-start-1 row-start-1 space-y-2 " +
             (step === 1
               ? stepDirection === "forward" ? "schedule-step-forward" : "schedule-step-back"
-              : "invisible pointer-events-none")
+              : "hidden")
           }
         >
         <div className="grid gap-3 sm:grid-cols-2">
@@ -357,10 +357,10 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         <div
           aria-hidden={step !== 2}
           className={
-            "col-start-1 row-start-1 space-y-3 " +
+            "col-start-1 row-start-1 space-y-2 " +
             (step === 2
               ? stepDirection === "forward" ? "schedule-step-forward" : "schedule-step-back"
-              : "invisible pointer-events-none")
+              : "hidden")
           }
         >
         <Field label="Street Address (optional)">
@@ -442,7 +442,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         </div>
 
         {/* Navigation — one primary action per step */}
-        <div className="flex items-center gap-2 pt-1">
+        <div className="flex items-center gap-2 pt-0">
           {step > 0 && (
             <button
               type="button"
