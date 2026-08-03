@@ -73,6 +73,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitError, setSubmitError] = useState<string>("");
   const [step, setStep] = useState(0);
+  const [stepDirection, setStepDirection] = useState<"forward" | "back">("forward");
   const fieldRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const todayStr = date ? format(date, "yyyy-MM-dd") : "";
@@ -95,7 +96,9 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length) {
       const firstKey = Object.keys(nextErrors)[0];
-      setStep(FIELD_STEP[firstKey] ?? 0);
+      const errorStep = FIELD_STEP[firstKey] ?? 0;
+      setStepDirection(errorStep < step ? "back" : "forward");
+      setStep(errorStep);
       const el = fieldRefs.current[firstKey];
       if (el) {
         window.setTimeout(() => {
@@ -152,8 +155,11 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     setCity("");
     setZip("");
     setNotes("");
+    setSmsConsent(false);
+    setNotRobot(false);
+    setStepDirection("back");
     setStep(0);
-  }, [date, street, city, zip, sourcePath, name, phone, email, emailIsValid, service, slot, notes, onDone]);
+  }, [date, street, city, zip, sourcePath, name, phone, email, emailIsValid, service, slot, notes, smsConsent, notRobot, step, onDone]);
 
   /** validate only the fields on the current step before moving forward */
   const goNext = useCallback(() => {
@@ -173,6 +179,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       toast.error("Please fix the highlighted field" + (Object.keys(next).length > 1 ? "s" : ""), { duration: 4000 });
       return;
     }
+    setStepDirection("forward");
     setStep((s) => Math.min(STEPS.length - 1, s + 1));
   }, [step, service, date, slot, name, phone, emailIsValid]);
 
@@ -237,8 +244,19 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
             </a>
           </div>
         )}
+        {/* Every panel shares one grid cell, so the form keeps the height of its
+            tallest step and never jumps when customers move through it. */}
+        <div className="grid overflow-hidden">
         {/* Service — full width, most important */}
-        <div className={step === 0 ? "space-y-3" : "hidden"}>
+        <div
+          aria-hidden={step !== 0}
+          className={
+            "col-start-1 row-start-1 space-y-3 " +
+            (step === 0
+              ? stepDirection === "forward" ? "schedule-step-forward" : "schedule-step-back"
+              : "invisible pointer-events-none")
+          }
+        >
         <Field label="Service Needed" required error={errors.service}>
           <Select value={service} onValueChange={setService}>
             <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
@@ -283,7 +301,15 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         </div>
 
         {/* ---------- Step 2: contact ---------- */}
-        <div className={step === 1 ? "space-y-3" : "hidden"}>
+        <div
+          aria-hidden={step !== 1}
+          className={
+            "col-start-1 row-start-1 space-y-3 " +
+            (step === 1
+              ? stepDirection === "forward" ? "schedule-step-forward" : "schedule-step-back"
+              : "invisible pointer-events-none")
+          }
+        >
         <div className="grid gap-3 sm:grid-cols-2">
           <Field label="Full Name" required error={errors.name}>
             <Input
@@ -328,7 +354,15 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         </div>
 
         {/* ---------- Step 3: address, notes, consent ---------- */}
-        <div className={step === 2 ? "space-y-3" : "hidden"}>
+        <div
+          aria-hidden={step !== 2}
+          className={
+            "col-start-1 row-start-1 space-y-3 " +
+            (step === 2
+              ? stepDirection === "forward" ? "schedule-step-forward" : "schedule-step-back"
+              : "invisible pointer-events-none")
+          }
+        >
         <Field label="Street Address (optional)">
           <Input
             name="street-address"
@@ -383,11 +417,28 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
         <ConsentCheckboxes
           smsConsent={smsConsent}
-          setSmsConsent={setSmsConsent}
+          setSmsConsent={(value) => {
+            setSmsConsent(value);
+            if (value) {
+              setErrors((current) => {
+                const { smsConsent: _cleared, ...remaining } = current;
+                return remaining;
+              });
+            }
+          }}
           notRobot={notRobot}
-          setNotRobot={setNotRobot}
+          setNotRobot={(value) => {
+            setNotRobot(value);
+            if (value) {
+              setErrors((current) => {
+                const { notRobot: _cleared, ...remaining } = current;
+                return remaining;
+              });
+            }
+          }}
           error={errors.smsConsent || errors.notRobot}
         />
+        </div>
         </div>
 
         {/* Navigation — one primary action per step */}
@@ -395,7 +446,10 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           {step > 0 && (
             <button
               type="button"
-              onClick={() => setStep((s) => Math.max(0, s - 1))}
+              onClick={() => {
+                setStepDirection("back");
+                setStep((s) => Math.max(0, s - 1));
+              }}
               className="inline-flex h-12 shrink-0 items-center justify-center gap-1.5 border-2 border-foreground/20 px-4 font-display text-xs font-bold uppercase tracking-wider text-foreground/80 transition hover:border-foreground/40"
             >
               <ArrowLeft className="h-4 w-4" />
