@@ -706,46 +706,29 @@ function CommonProblems() {
           </p>
         </div>
 
-        <div className="mt-6 space-y-2">
+        <div className="mt-6 divide-y divide-border overflow-hidden rounded-2xl border border-border bg-card">
           {problems.map(({ label, body, slug, image, alt }, i) => {
             const isOpen = open === i;
             return (
-              <div
-                key={label}
-                className={`overflow-hidden rounded-xl border transition ${isOpen ? "border-flame/40 bg-card shadow-sm" : "border-border bg-card/60 hover:border-flame/30 hover:bg-card"}`}
-              >
+              <div key={label}>
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center gap-3 p-3 text-left sm:gap-4 sm:p-4"
+                  className={`flex w-full items-center justify-between gap-3 px-4 py-3.5 text-left transition sm:px-5 sm:py-4 ${isOpen ? "bg-muted/40" : "hover:bg-muted/30"}`}
                 >
-                  <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-muted sm:h-14 sm:w-14">
-                    <img
-                      src={image}
-                      alt={alt}
-                      className="h-full w-full object-cover"
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="truncate text-sm font-semibold text-foreground sm:text-base">
-                      {label}
-                    </h3>
-                    <p className="mt-0.5 line-clamp-1 text-xs text-foreground/60 sm:text-sm">
-                      {body}
-                    </p>
-                  </div>
+                  <span className="min-w-0 flex-1 text-sm font-medium text-foreground sm:text-[15px]">
+                    {label}
+                  </span>
                   <ChevronRight
-                    className={`h-5 w-5 shrink-0 text-foreground/40 transition duration-200 sm:h-6 sm:w-6 ${isOpen ? "rotate-90 text-flame" : ""}`}
+                    className={`h-4 w-4 shrink-0 text-foreground/40 transition duration-200 sm:h-5 sm:w-5 ${isOpen ? "rotate-90 text-flame" : ""}`}
                   />
                 </button>
                 <div
                   className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
                 >
                   <div className="overflow-hidden">
-                    <div className="flex flex-col gap-3 px-3 pb-4 sm:flex-row sm:gap-4 sm:px-4 sm:pb-5">
-                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-muted sm:w-44">
+                    <div className="flex flex-col gap-3 px-4 pb-4 sm:flex-row sm:gap-4 sm:px-5 sm:pb-5">
+                      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted sm:w-44">
                         <img
                           src={image}
                           alt={alt}
