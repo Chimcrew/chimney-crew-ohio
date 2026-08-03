@@ -691,30 +691,30 @@ function CommonProblems() {
     },
   ];
   return (
-    <section className="relative bg-background py-14 md:py-20">
+    <section className="relative bg-background py-10 md:py-14">
       <div className="mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <Wrench className="h-3.5 w-3.5 text-flame" /> What We Fix
           </p>
-          <h2 className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
+          <h2 className="mt-3 font-display text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
             Common Chimney Problems <span className="text-flame">We Fix</span>
           </h2>
-          <p className="mt-3 text-base text-foreground/75 md:text-lg">
+          <p className="mt-2 text-sm text-foreground/75 md:text-base">
             If any of these sound familiar, we can take a look — most are far cheaper to fix now
             than after they cause water or fire damage.
           </p>
         </div>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
+        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map(({ label, body, slug, image, alt }) => (
             <Link
               key={label}
               to="/services/$slug"
               params={{ slug }}
-              className="group relative flex flex-col overflow-hidden rounded-none border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
+              className="group flex items-center gap-3 rounded-none border border-border bg-card p-3 shadow-sm transition hover:border-flame hover:shadow-flame"
             >
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
+              <div className="relative h-16 w-16 shrink-0 overflow-hidden bg-muted sm:h-20 sm:w-20">
                 <img
                   src={image}
                   alt={alt}
@@ -722,35 +722,33 @@ function CommonProblems() {
                   loading="lazy"
                   decoding="async"
                 />
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/20 to-transparent" aria-hidden />
-                <span className="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-flame/40 bg-primary/80 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame backdrop-blur">
-                  <AlertTriangle className="h-3 w-3" /> Common issue
-                </span>
-                <h3 className="absolute inset-x-4 bottom-3 font-display text-lg font-extrabold leading-tight text-primary-foreground drop-shadow sm:text-xl">
+              </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="truncate font-display text-sm font-extrabold text-foreground sm:text-base">
                   {label}
                 </h3>
+                <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-foreground/70">
+                  {body}
+                </p>
               </div>
-              <div className="flex flex-1 items-start justify-between gap-3 p-4 sm:p-5">
-                <p className="text-sm leading-snug text-foreground/80">{body}</p>
-                <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border text-primary transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary">
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </div>
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border text-primary transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary">
+                <ArrowRight className="h-4 w-4" />
+              </span>
             </Link>
           ))}
         </div>
 
-        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <button
             type="button"
             onClick={() => (window.location.href = "/schedule")}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-none bg-flame px-5 font-sans text-[13px] font-bold tracking-normal text-primary shadow-[0_8px_22px_oklch(0.78_0.19_92/0.45)] transition active:scale-95 sm:px-6"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule appointment online
           </button>
           <a
             href="tel:6146835763"
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-none border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-none border border-foreground/20 bg-background px-5 font-sans text-[13px] font-medium tracking-normal text-foreground transition hover:border-flame active:scale-95 sm:px-6"
           >
             <Phone className="h-4 w-4 text-flame" /> (614) 683-5763
           </a>
