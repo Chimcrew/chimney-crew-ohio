@@ -355,22 +355,22 @@ function Hero() {
       <div className="relative z-20 mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-10 sm:pt-8 md:pb-14 lg:px-8 lg:pt-12">
         <div className="max-w-3xl">
         {/* Certified badge */}
-        <div className="flex items-start gap-2">
+        <div className="flex items-center gap-3">
           <img
             src={certifiedBadge.url}
             alt="Certified chimney sweep credential"
-            width={80}
-            height={80}
-            className="h-[70px] w-[70px] shrink-0 rounded-full bg-white p-1 ring-1 ring-border min-[414px]:h-20 min-[414px]:w-20 sm:h-20 sm:w-20"
+            width={128}
+            height={128}
+            className="h-24 w-24 shrink-0 rounded-full bg-white p-1 ring-1 ring-border min-[414px]:h-28 min-[414px]:w-28 sm:h-32 sm:w-32"
             loading="eager"
             decoding="async"
           />
-          <div className="min-w-0 pt-0.5 ml-2">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-black min-[414px]:text-[11px] sm:text-[11px]">
+          <div className="min-w-0">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-black min-[414px]:text-[11px] sm:text-xs">
               Certified chimney professionals
             </p>
-            <div className="mt-1 flex flex-wrap gap-1">
-              <span className="ml-4 inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-primary-foreground min-[414px]:text-[11px]">
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              <span className="inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-primary-foreground min-[414px]:text-[11px]">
                 <ShieldCheck className="h-2.5 w-2.5 text-flame" /> Licensed · Insured
               </span>
               <span className="inline-flex items-center gap-1 rounded-full border border-flame/40 bg-flame/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-foreground min-[414px]:text-[11px]">
@@ -398,7 +398,7 @@ function Hero() {
           <a
             href="#schedule-section"
             data-cta
-            className="inline-flex h-13 items-center justify-center gap-2 bg-primary px-5 font-sans text-[15px] font-bold text-primary-foreground transition active:scale-95 min-[414px]:h-14 min-[414px]:px-6 min-[414px]:text-base"
+            className="inline-flex h-13 items-center justify-center gap-2 bg-flame px-5 font-sans text-[15px] font-bold text-black transition hover:brightness-105 active:scale-95 min-[414px]:h-14 min-[414px]:px-6 min-[414px]:text-base"
           >
             <CalendarCheck className="h-4 w-4" /> Schedule free inspection
           </a>
