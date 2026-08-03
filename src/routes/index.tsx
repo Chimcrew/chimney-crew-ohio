@@ -160,12 +160,11 @@ function Index() {
       <RecentChimcrewJobs />
       <AutoLoopVideoSection />
       <ScheduleSection id="schedule-section" />
-      <FlashingJobShowcase variant="compact" />
       <Testimonials />
       <CommonProblems />
       <RecentProjects />
       <ServiceAreaSeo />
-      <DroneInspection />
+      <FlashingJobShowcase variant="compact" />
       <TrustMarquee />
       <EmergencyCallBar />
       <LeakingChimney />
