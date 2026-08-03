@@ -186,38 +186,42 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   return (
     <div className="bg-background text-foreground">
       {/* Compact header */}
-      <div className="mb-4 border-b border-border pb-3">
-        <div className="flex items-center gap-3">
-          <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-border bg-card shadow-sm">
-            <svg
-              viewBox="0 0 32 32"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-7 w-7"
-              aria-hidden="true"
-            >
-              <rect x="5" y="3" width="22" height="26" rx="2" className="fill-primary" />
-              <rect x="8" y="7" width="16" height="2" rx="1" className="fill-primary-foreground/70" />
-              <rect x="8" y="12" width="10" height="2" rx="1" className="fill-primary-foreground/50" />
-              <rect x="8" y="17" width="13" height="2" rx="1" className="fill-primary-foreground/50" />
-              <rect x="8" y="22" width="8" height="2" rx="1" className="fill-primary-foreground/50" />
-              <circle cx="24" cy="23" r="5" className="fill-flame" />
-              <path d="M22 23L23.5 24.5L26.5 21.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary" />
-            </svg>
-            <span className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full bg-flame">
-              <Flame className="h-2.5 w-2.5 text-primary" />
-            </span>
-          </div>
-          <div className="min-w-0">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/60">
-              ChimCrew · 60-second booking
-            </p>
-            <h2 className="font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight text-foreground md:text-2xl">
-              Schedule Service Online
-            </h2>
-          </div>
+      <div className="mb-4 border-b border-border pb-3 text-center">
+        <div className="mx-auto mb-3 grid h-16 w-16 place-items-center rounded-2xl border-2 border-flame bg-gradient-to-br from-flame to-flame/70 shadow-[0_8px_24px_-6px_oklch(0.78_0.19_92/0.55)]">
+          <svg
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-10 w-10"
+            aria-hidden="true"
+          >
+            <rect x="10" y="6" width="28" height="36" rx="3" className="fill-primary" />
+            <rect x="14" y="12" width="20" height="3" rx="1.5" className="fill-primary-foreground/80" />
+            <rect x="14" y="19" width="14" height="2.5" rx="1.25" className="fill-primary-foreground/55" />
+            <rect x="14" y="25" width="18" height="2.5" rx="1.25" className="fill-primary-foreground/55" />
+            <rect x="14" y="31" width="11" height="2.5" rx="1.25" className="fill-primary-foreground/55" />
+            <circle cx="34" cy="34" r="8" className="fill-background" />
+            <path
+              d="M30 34L32.5 36.5L38 31"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="text-flame"
+            />
+            <path
+              d="M24 4C24 4 21 7 21 10C21 12 22.5 13.5 24 13.5C25.5 13.5 27 12 27 10C27 7 24 4 24 4Z"
+              className="fill-flame"
+            />
+          </svg>
         </div>
-        <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[11px] uppercase tracking-[0.12em] text-foreground/60">
+        <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/60">
+          ChimCrew · 60-second booking
+        </p>
+        <h2 className="font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight text-foreground md:text-2xl">
+          Schedule Service Online
+        </h2>
+        <p className="mt-1 flex flex-wrap items-center justify-center gap-x-1.5 text-[11px] uppercase tracking-[0.12em] text-foreground/60">
           <ShieldCheck className="h-3 w-3 shrink-0 text-flame" />
           No extra charge · nights · weekends · holidays
         </p>
