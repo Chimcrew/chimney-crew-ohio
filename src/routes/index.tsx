@@ -706,15 +706,15 @@ function CommonProblems() {
           </p>
         </div>
 
-        <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {problems.map(({ label, body, slug, image, alt }) => (
             <Link
               key={label}
               to="/services/$slug"
               params={{ slug }}
-              className="group flex items-center gap-3 rounded-none border border-border bg-card p-3 shadow-sm transition hover:border-flame hover:shadow-flame"
+              className="group flex flex-col overflow-hidden rounded-none border border-border bg-card shadow-sm transition hover:-translate-y-1 hover:border-flame hover:shadow-flame"
             >
-              <div className="relative h-16 w-16 shrink-0 overflow-hidden bg-muted sm:h-20 sm:w-20">
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
                 <img
                   src={image}
                   alt={alt}
@@ -722,23 +722,27 @@ function CommonProblems() {
                   loading="lazy"
                   decoding="async"
                 />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/60 via-primary/10 to-transparent" aria-hidden />
+                <span className="absolute left-3 top-3 inline-flex items-center gap-1 rounded-full border border-flame/40 bg-primary/80 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame backdrop-blur">
+                  <AlertTriangle className="h-3 w-3" /> Fix
+                </span>
               </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="truncate font-display text-sm font-extrabold text-foreground sm:text-base">
+              <div className="flex flex-1 flex-col p-4">
+                <h3 className="font-display text-base font-extrabold text-foreground sm:text-lg">
                   {label}
                 </h3>
-                <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-foreground/70">
+                <p className="mt-1 text-sm leading-relaxed text-foreground/70">
                   {body}
                 </p>
+                <span className="mt-3 inline-flex items-center gap-1 self-start font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-flame transition group-hover:translate-x-1">
+                  Learn more <ArrowRight className="h-3.5 w-3.5" />
+                </span>
               </div>
-              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border text-primary transition group-hover:border-flame group-hover:bg-flame group-hover:text-primary">
-                <ArrowRight className="h-4 w-4" />
-              </span>
             </Link>
           ))}
         </div>
 
-        <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+        <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <button
             type="button"
             onClick={() => (window.location.href = "/schedule")}
