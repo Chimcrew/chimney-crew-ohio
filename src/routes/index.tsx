@@ -156,7 +156,7 @@ function Index() {
   return (
     <>
       <Hero />
-      <HeroToOfferBridge />
+      <RecentChimcrewJobs />
       <AutoLoopVideoSection />
       <ScheduleSection id="schedule-section" />
       <FlashingJobShowcase variant="compact" />
