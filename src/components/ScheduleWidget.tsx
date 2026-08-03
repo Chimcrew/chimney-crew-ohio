@@ -187,12 +187,36 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     <div className="bg-background text-foreground">
       {/* Compact header */}
       <div className="mb-4 border-b border-border pb-3">
-        <span className="inline-flex items-center gap-1.5 bg-black px-2 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
-          <Flame className="h-3 w-3" /> ChimCrew · 60-second booking
-        </span>
-        <h2 className="mt-2 font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight md:text-2xl">
-          Schedule Service Online
-        </h2>
+        <div className="flex items-center gap-3">
+          <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-lg border border-border bg-card shadow-sm">
+            <svg
+              viewBox="0 0 32 32"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-7"
+              aria-hidden="true"
+            >
+              <rect x="5" y="3" width="22" height="26" rx="2" className="fill-primary" />
+              <rect x="8" y="7" width="16" height="2" rx="1" className="fill-primary-foreground/70" />
+              <rect x="8" y="12" width="10" height="2" rx="1" className="fill-primary-foreground/50" />
+              <rect x="8" y="17" width="13" height="2" rx="1" className="fill-primary-foreground/50" />
+              <rect x="8" y="22" width="8" height="2" rx="1" className="fill-primary-foreground/50" />
+              <circle cx="24" cy="23" r="5" className="fill-flame" />
+              <path d="M22 23L23.5 24.5L26.5 21.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary" />
+            </svg>
+            <span className="absolute -right-1 -top-1 grid h-4 w-4 place-items-center rounded-full bg-flame">
+              <Flame className="h-2.5 w-2.5 text-primary" />
+            </span>
+          </div>
+          <div className="min-w-0">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/60">
+              ChimCrew · 60-second booking
+            </p>
+            <h2 className="font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight text-foreground md:text-2xl">
+              Schedule Service Online
+            </h2>
+          </div>
+        </div>
         <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[11px] uppercase tracking-[0.12em] text-foreground/60">
           <ShieldCheck className="h-3 w-3 shrink-0 text-flame" />
           No extra charge · nights · weekends · holidays
