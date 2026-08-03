@@ -44,6 +44,7 @@ import teamHeroPhoto from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import teamTruckPhoto from "@/assets/team/chimcrew-team-truck.png.asset.json";
 import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
 import { ChimneyRestorationProcess } from "@/components/ChimneyRestorationProcess";
+import { RecentChimcrewJobs } from "@/components/RecentChimcrewJobs";
 import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
 import beforeAfterPhoto from "@/assets/chimney-before-after.png.asset.json";
 import cameraInspectionPhoto from "@/assets/inspection/camera-inspection.png.asset.json";
@@ -156,7 +157,7 @@ function Index() {
   return (
     <>
       <Hero />
-      <HeroToOfferBridge />
+      <RecentChimcrewJobs />
       <AutoLoopVideoSection />
       <ScheduleSection id="schedule-section" />
       <FlashingJobShowcase variant="compact" />
