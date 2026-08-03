@@ -442,7 +442,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         </div>
 
         {/* Navigation — one primary action per step */}
-        <div className="flex items-center gap-2 pt-1">
+        <div className="flex items-center gap-2 pt-0">
           {step > 0 && (
             <button
               type="button"
