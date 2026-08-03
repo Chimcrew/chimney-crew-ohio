@@ -167,7 +167,6 @@ function Index() {
       <FlashingJobShowcase variant="compact" />
       <TrustMarquee />
       <EmergencyCallBar />
-      <LeakingChimney />
       <Faq />
       <TrustMarquee />
       <EmergencyCallBar />
