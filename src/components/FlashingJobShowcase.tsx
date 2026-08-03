@@ -36,7 +36,7 @@ export function FlashingJobShowcase({ variant = "compact", showCta = true, class
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
               Recent ChimCrew Job
             </p>
-            <h2 className="mt-2 font-display text-2xl font-extrabold tracking-tight text-foreground sm:text-3xl md:text-4xl">
+            <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
               Chimney Flashing Repair — Before & After
             </h2>
             <p className="mt-2 inline-flex items-center gap-1.5 text-xs text-foreground/65 sm:text-sm">
