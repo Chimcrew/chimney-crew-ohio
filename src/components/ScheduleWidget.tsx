@@ -218,7 +218,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
       {/* Compact 3-step form — all fields still submitted together */}
       <form
-        className="space-y-3"
+        className="space-y-2"
         noValidate
         onSubmit={(e) => {
           e.preventDefault();
