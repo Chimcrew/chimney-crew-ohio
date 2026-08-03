@@ -66,7 +66,7 @@ import { SERVICES, formatFromPrice, getService } from "@/data/services";
 import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { BEFORE_AFTER_JOBS } from "@/data/before-after";
-import { DroneInspection } from "@/components/DroneInspection";
+
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import { FlashingJobShowcase } from "@/components/FlashingJobShowcase";
 import { InstagramFollow } from "@/components/InstagramFollow";
