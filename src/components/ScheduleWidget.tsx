@@ -315,21 +315,45 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
               aria-label="Appointment Date"
               value={todayStr}
               min={minDateStr}
-              onChange={(e) => setDate(e.target.value ? new Date(e.target.value + "T00:00:00") : undefined)}
-              className="h-10 rounded-none border-foreground/20 text-sm"
+              ref={(el) => { fieldRefs.current.date = el; }}
+              onChange={(e) => {
+                if (!e.target.value) { setDate(undefined); return; }
+                const picked = new Date(e.target.value + "T00:00:00");
+                if (picked.getDay() === 6) {
+                  setErrors((prev) => ({ ...prev, date: "We're closed Saturdays — pick another day." }));
+                  setDate(undefined);
+                  return;
+                }
+                setErrors((prev) => { const n = { ...prev }; delete n.date; return n; });
+                setDate(picked);
+              }}
+              className={"h-10 rounded-none text-sm " + (errors.date ? "border-2 border-[#E63A1F]" : "border-foreground/20")}
             />
+            <p className="mt-1 text-[11px] text-muted-foreground">Sun–Fri · Closed Saturdays</p>
           </Field>
           <Field label="Appointment Time" required error={errors.slot}>
-            <Select value={slot} onValueChange={setSlot}>
-              <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="rounded-none">
-                {SLOTS.map((s) => (
-                  <SelectItem key={s} value={s} className="rounded-none">{s}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="grid grid-cols-3 gap-2">
+              {SLOTS.map((s) => {
+                const active = slot === s.value;
+                return (
+                  <button
+                    key={s.value}
+                    type="button"
+                    onClick={() => setSlot(s.value)}
+                    aria-pressed={active}
+                    className={
+                      "flex flex-col items-center justify-center rounded-none border px-1 py-2 transition " +
+                      (active
+                        ? "border-flame bg-flame text-black shadow-sm"
+                        : "border-foreground/20 bg-background text-foreground hover:border-flame/60")
+                    }
+                  >
+                    <span className="text-xs font-bold leading-tight">{s.label}</span>
+                    <span className={"font-mono text-[10px] leading-tight " + (active ? "text-black/70" : "text-muted-foreground")}>{s.hint}</span>
+                  </button>
+                );
+              })}
+            </div>
           </Field>
         </div>
         </div>
