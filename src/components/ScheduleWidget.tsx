@@ -29,7 +29,11 @@ export const SCHEDULE_SERVICES = [
   { value: "Chimney/Fireplace Inspection — $69", label: "Chimney/Fireplace Inspection", price: "$69" },
 ] as const;
 
-const SLOTS = ["8:00AM-11:00AM", "11:00AM-2:00PM", "2:00PM-5:00PM"];
+const SLOTS = [
+  { value: "8:00AM-11:00AM", label: "Morning", hint: "8–11 AM" },
+  { value: "11:00AM-2:00PM", label: "Midday", hint: "11 AM–2 PM" },
+  { value: "2:00PM-5:00PM", label: "Afternoon", hint: "2–5 PM" },
+] as const;
 
 const STEPS = ["Service", "Contact", "Address"] as const;
 /** which wizard step owns each validated field (used to jump to the first error) */
@@ -52,6 +56,8 @@ export function ScheduleInline() {
 function getDefaultDate(): Date {
   const d = new Date();
   d.setDate(d.getDate() + 2);
+  // We're closed Saturdays — roll forward to Sunday.
+  if (d.getDay() === 6) d.setDate(d.getDate() + 1);
   d.setHours(0, 0, 0, 0);
   return d;
 }
@@ -61,7 +67,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState<Date | undefined>(() => getDefaultDate());
-  const [slot, setSlot] = useState<string>(SLOTS[0]);
+  const [slot, setSlot] = useState<string>(SLOTS[0].value);
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
