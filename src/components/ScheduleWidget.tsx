@@ -95,6 +95,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     if (phone.replace(/\D/g, "").length < 7) nextErrors.phone = "Enter a phone number we can reach you at";
     if (!emailIsValid) nextErrors.email = "That email doesn't look right — or leave it blank";
     if (!date) nextErrors.date = "Pick a date";
+    else if (date.getDay() === 6) nextErrors.date = "We're closed Saturdays — pick another day.";
     if (!slot) nextErrors.slot = "Pick a time window";
     if (!service) nextErrors.service = "Choose a service";
     if (!smsConsent) nextErrors.smsConsent = "Please check the box to consent to text messages";
