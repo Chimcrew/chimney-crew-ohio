@@ -33,6 +33,7 @@ const SLOTS = [
   { value: "8:00AM-11:00AM", label: "Morning", hint: "8–11 AM" },
   { value: "11:00AM-2:00PM", label: "Midday", hint: "11 AM–2 PM" },
   { value: "2:00PM-5:00PM", label: "Afternoon", hint: "2–5 PM" },
+  { value: "5:00PM-7:00PM", label: "Evening", hint: "5–7 PM" },
 ] as const;
 
 const STEPS = ["Service", "Contact", "Address"] as const;
