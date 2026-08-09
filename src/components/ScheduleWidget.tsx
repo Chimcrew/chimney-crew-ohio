@@ -29,7 +29,11 @@ export const SCHEDULE_SERVICES = [
   { value: "Chimney/Fireplace Inspection — $69", label: "Chimney/Fireplace Inspection", price: "$69" },
 ] as const;
 
-const SLOTS = ["8:00AM-11:00AM", "11:00AM-2:00PM", "2:00PM-5:00PM"];
+const SLOTS = [
+  { value: "8:00AM-11:00AM", label: "Morning", hint: "8–11 AM" },
+  { value: "11:00AM-2:00PM", label: "Midday", hint: "11 AM–2 PM" },
+  { value: "2:00PM-5:00PM", label: "Afternoon", hint: "2–5 PM" },
+] as const;
 
 const STEPS = ["Service", "Contact", "Address"] as const;
 /** which wizard step owns each validated field (used to jump to the first error) */
@@ -52,6 +56,8 @@ export function ScheduleInline() {
 function getDefaultDate(): Date {
   const d = new Date();
   d.setDate(d.getDate() + 2);
+  // We're closed Saturdays — roll forward to Sunday.
+  if (d.getDay() === 6) d.setDate(d.getDate() + 1);
   d.setHours(0, 0, 0, 0);
   return d;
 }
@@ -61,7 +67,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [date, setDate] = useState<Date | undefined>(() => getDefaultDate());
-  const [slot, setSlot] = useState<string>(SLOTS[0]);
+  const [slot, setSlot] = useState<string>(SLOTS[0].value);
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
@@ -89,6 +95,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     if (phone.replace(/\D/g, "").length < 7) nextErrors.phone = "Enter a phone number we can reach you at";
     if (!emailIsValid) nextErrors.email = "That email doesn't look right — or leave it blank";
     if (!date) nextErrors.date = "Pick a date";
+    else if (date.getDay() === 6) nextErrors.date = "We're closed Saturdays — pick another day.";
     if (!slot) nextErrors.slot = "Pick a time window";
     if (!service) nextErrors.service = "Choose a service";
     if (!smsConsent) nextErrors.smsConsent = "Please check the box to consent to text messages";
@@ -309,21 +316,45 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
               aria-label="Appointment Date"
               value={todayStr}
               min={minDateStr}
-              onChange={(e) => setDate(e.target.value ? new Date(e.target.value + "T00:00:00") : undefined)}
-              className="h-10 rounded-none border-foreground/20 text-sm"
+              ref={(el) => { fieldRefs.current.date = el; }}
+              onChange={(e) => {
+                if (!e.target.value) { setDate(undefined); return; }
+                const picked = new Date(e.target.value + "T00:00:00");
+                if (picked.getDay() === 6) {
+                  setErrors((prev) => ({ ...prev, date: "We're closed Saturdays — pick another day." }));
+                  setDate(undefined);
+                  return;
+                }
+                setErrors((prev) => { const n = { ...prev }; delete n.date; return n; });
+                setDate(picked);
+              }}
+              className={"h-10 rounded-none text-sm " + (errors.date ? "border-2 border-[#E63A1F]" : "border-foreground/20")}
             />
+            <p className="mt-1 text-[11px] text-muted-foreground">Sun–Fri · Closed Saturdays</p>
           </Field>
           <Field label="Appointment Time" required error={errors.slot}>
-            <Select value={slot} onValueChange={setSlot}>
-              <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent className="rounded-none">
-                {SLOTS.map((s) => (
-                  <SelectItem key={s} value={s} className="rounded-none">{s}</SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+            <div className="grid grid-cols-3 gap-2">
+              {SLOTS.map((s) => {
+                const active = slot === s.value;
+                return (
+                  <button
+                    key={s.value}
+                    type="button"
+                    onClick={() => setSlot(s.value)}
+                    aria-pressed={active}
+                    className={
+                      "flex flex-col items-center justify-center rounded-none border px-1 py-2 transition " +
+                      (active
+                        ? "border-flame bg-flame text-black shadow-sm"
+                        : "border-foreground/20 bg-background text-foreground hover:border-flame/60")
+                    }
+                  >
+                    <span className="text-xs font-bold leading-tight">{s.label}</span>
+                    <span className={"font-mono text-[10px] leading-tight " + (active ? "text-black/70" : "text-muted-foreground")}>{s.hint}</span>
+                  </button>
+                );
+              })}
+            </div>
           </Field>
         </div>
         </div>
