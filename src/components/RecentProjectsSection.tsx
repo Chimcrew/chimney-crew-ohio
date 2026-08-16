@@ -30,6 +30,15 @@ import u2LinerSmoke from "@/assets/uploads2/liner-smoke-chamber-view.jpeg.asset.
 import u2CrownSevere from "@/assets/uploads2/crown-severely-damaged.jpeg.asset.json";
 import u2CapsBrick from "@/assets/uploads2/caps-installed-brick.jpeg.asset.json";
 import u2CrownNewCaps from "@/assets/uploads2/crown-new-with-caps.jpeg.asset.json";
+import cwCapRoof from "@/assets/crew/crew-cap-install-roof.jpeg.asset.json";
+import cwCrownMeasure from "@/assets/crew/crew-crown-measure.jpeg.asset.json";
+import cwWaterproof from "@/assets/crew/crew-chimney-waterproof.jpeg.asset.json";
+import cwBrickInspect from "@/assets/crew/crew-brick-inspect.jpeg.asset.json";
+import cwStoneTuck from "@/assets/crew/crew-stone-tuckpoint.jpeg.asset.json";
+import cwStoneWide from "@/assets/crew/crew-stone-repair-wide.jpeg.asset.json";
+import jbNight from "@/assets/crew/job-night-brick-rebuild.jpeg.asset.json";
+import jbCrane from "@/assets/crew/job-liner-crane-install.jpeg.asset.json";
+import jbChase from "@/assets/crew/job-chase-cover-caps.jpeg.asset.json";
 
 type Project = {
   img: string;
@@ -41,6 +50,15 @@ type Project = {
 
 const PROJECTS: Project[] = [
   { img: u2BrickCap.url, title: "Full Chimney Restoration", city: "Upper Arlington, OH", tag: "Masonry + Cap", layout: "feature" },
+  { img: cwCapRoof.url, title: "Stainless Cap Install", city: "Reynoldsburg, OH", tag: "Cap Install", layout: "square" },
+  { img: cwCrownMeasure.url, title: "Crown Measure & Repair", city: "Bexley, OH", tag: "Crown", layout: "square" },
+  { img: cwWaterproof.url, title: "Crown Coat + Flashing Seal", city: "Gahanna, OH", tag: "Waterproofing", layout: "square" },
+  { img: jbChase.url, title: "New Chase Cover + Caps", city: "Powell, OH", tag: "Chase Cover", layout: "square" },
+  { img: cwStoneTuck.url, title: "Stone Chimney Tuckpointing", city: "New Albany, OH", tag: "Tuckpointing", layout: "square" },
+  { img: jbCrane.url, title: "Clay Liner Install", city: "Worthington, OH", tag: "Liner", layout: "square" },
+  { img: jbNight.url, title: "Night Rebuild Wrap-Up", city: "Columbus, OH", tag: "Rebuild", layout: "square" },
+  { img: cwBrickInspect.url, title: "Full Chimney Inspection", city: "Dublin, OH", tag: "Inspection", layout: "square" },
+  { img: cwStoneWide.url, title: "Stone Chimney Restoration", city: "Upper Arlington, OH", tag: "Masonry", layout: "wide" },
   { img: u2LinerMeasure.url, title: "Stainless Liner Install", city: "Dublin, OH", tag: "Liner", layout: "square" },
   { img: u2CrownSevere.url, title: "Crown Replacement Job", city: "Hilliard, OH", tag: "Crown Rebuild", layout: "square" },
   { img: u2CapsBrick.url, title: "Dual Caps + New Crown", city: "Westerville, OH", tag: "Cap + Crown", layout: "wide" },
@@ -102,7 +120,7 @@ export function RecentProjects() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
+        <div className="grid grid-flow-row-dense grid-cols-2 gap-3 md:grid-cols-4 md:gap-4">
           {PROJECTS.map((p, i) => (
             <ProjectTile
               key={`${p.title}-${i}`}
