@@ -11,6 +11,8 @@ import j4b from "@/assets/jobs/job4-before.jpeg.asset.json";
 import j4a from "@/assets/jobs/job4-after.jpeg.asset.json";
 import j5b from "@/assets/jobs/job5-before.jpeg.asset.json";
 import j5a from "@/assets/jobs/job5-after.jpeg.asset.json";
+import j6b from "@/assets/jobs/job6-before.jpeg.asset.json";
+import j6a from "@/assets/jobs/job6-after.jpeg.asset.json";
 
 const JOBS = [
   { title: "Crown & top rebuild", city: "Columbus, OH", before: j1b.url, after: j1a.url },
@@ -18,6 +20,7 @@ const JOBS = [
   { title: "Full chimney rebuild", city: "Dublin, OH", before: j3b.url, after: j3a.url },
   { title: "Rebuild & flashing", city: "Hilliard, OH", before: j4b.url, after: j4a.url },
   { title: "Chase to brick rebuild", city: "Gahanna, OH", before: j5b.url, after: j5a.url },
+  { title: "Chase cover & cap replacement", city: "Delaware, OH", before: j6b.url, after: j6a.url },
 ];
 
 function JobCard({ job }: { job: (typeof JOBS)[number] }) {
@@ -73,7 +76,7 @@ export function RecentChimcrewJobs() {
           </Link>
         </header>
 
-        <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-5 md:overflow-visible md:px-0">
+        <div className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] md:mx-0 md:grid md:grid-cols-6 md:overflow-visible md:px-0">
           {JOBS.map((job) => (
             <JobCard key={job.title} job={job} />
           ))}
