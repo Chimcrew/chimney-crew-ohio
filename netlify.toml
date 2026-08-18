@@ -12,6 +12,9 @@
   command = "npm run dev"
   port = 8080
 
-# After the first deploy, add two Form notifications in the Netlify UI:
-# 1. Email you at theductorsairduct@gmail.com on every chimcrew-lead submit
-# 2. Confirmation email to the submitted "email" field ({{email}})
+[functions]
+  directory = "netlify/functions"
+
+# Client confirmation emails are sent 5 minutes after each chimcrew-lead
+# submit by netlify/functions/submission-created.ts (same as the old Lovable flow).
+# Set RESEND_API_KEY in the Netlify UI. Keep your Form notification to yourself.

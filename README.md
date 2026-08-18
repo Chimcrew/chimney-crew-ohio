@@ -31,10 +31,12 @@ Lead forms use **Netlify Forms** (`chimcrew-lead`). No Lovable or Supabase keys 
 
 1. Connect this Git repository to a Netlify site.
 2. Use the `netlify.toml` build settings (`npm run build`, publish `dist/client`, Node 22). If the Netlify UI still has `bun run build`, change it to `npm run build`.
-3. Deploy once so Netlify registers the form.
-4. Turn on the two emails under **Forms → Form notifications** (this is how Netlify sends mail — there is no extra API key):
+3. Keep the Form notification you already added to `theductorsairduct@gmail.com`.
+4. Add **one** environment variable so the customer gets a confirmation email 5 minutes after submit (same as the old Lovable flow):
 
-   - **You:** Add an **Email notification** for form `chimcrew-lead` to `theductorsairduct@gmail.com`.
-   - **The customer:** Add a **confirmation email**. Set “Email to notify” to `{{email}}` so it uses the form’s email field.
+   - `RESEND_API_KEY` — free key from [resend.com](https://resend.com)
+   - Optional: `CONFIRM_FROM_EMAIL` (default is `ChimCrew <onboarding@resend.dev>` until you verify chimcrew.com)
 
-Leads then show under **Forms → Form submissions**. The `/admin/leads` page is the old Supabase inbox and is unused for new submissions.
+The delayed email uses the old “appointment confirmed” copy: name, service, area, address, date, time window, and phone. It goes to the lead and to `theductorsairduct@gmail.com`.
+
+Leads show under **Forms → Form submissions**. The `/admin/leads` page is the old Supabase inbox and is unused for new submissions.
