@@ -10,21 +10,9 @@ or something else
 but stick my instructions
 dont forget to build a stunning footer as well, with a map that shows where we serve, with the legal pages as well like disclaimer and all of the 4 pages needed
 
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://chimney-crew-ohio.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/49851b74-ff19-4902-878c-836b03624bf9).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Node.js 22+ and npm are required.
 
 ```sh
 git clone <this-repository-url>
@@ -32,3 +20,26 @@ cd <repository-name>
 npm i
 npm run dev
 ```
+
+The local app is at http://localhost:8080/.
+
+## Deploy on Netlify
+
+This is a TanStack Start app. Netlify serves static assets from `dist/client` and SSR from a Netlify Function.
+
+1. Connect this Git repository to a Netlify site.
+2. Use the `netlify.toml` build settings (`npm run build`, publish `dist/client`, Node 22). If the Netlify UI still has `bun run build`, change it to `npm run build`.
+3. Set these environment variables in the Netlify site (Site configuration → Environment variables), then trigger a new deploy:
+
+**Build-time (required for the public site)**
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_PUBLISHABLE_KEY`
+- `VITE_SUPABASE_PROJECT_ID`
+- `SUPABASE_URL`
+- `SUPABASE_PUBLISHABLE_KEY`
+
+**Runtime (admin, leads, and email)**
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `ADMIN_LEADS_PASSCODE`
+- `LOVABLE_API_KEY` (only if transactional email is still used)
+- `LOVABLE_SEND_URL` (only if transactional email is still used)

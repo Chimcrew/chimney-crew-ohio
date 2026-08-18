@@ -1,3 +1,13 @@
+# If the Netlify UI still has "bun run build", change it to "npm run build".
+# UI build settings override this file when they are set.
 [build]
-  command = "bun run build"
-  publish = "dist"
+  command = "npm run build"
+  publish = "dist/client"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--no-fund --no-audit"
+
+[dev]
+  command = "npm run dev"
+  port = 8080
