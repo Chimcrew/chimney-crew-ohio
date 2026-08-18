@@ -27,19 +27,14 @@ The local app is at http://localhost:8080/.
 
 This is a TanStack Start app. Netlify serves static assets from `dist/client` and SSR from a Netlify Function.
 
+Lead forms use **Netlify Forms** (`chimcrew-lead`). No Lovable or Supabase keys are required for the public site.
+
 1. Connect this Git repository to a Netlify site.
 2. Use the `netlify.toml` build settings (`npm run build`, publish `dist/client`, Node 22). If the Netlify UI still has `bun run build`, change it to `npm run build`.
-3. Set these environment variables in the Netlify site (Site configuration → Environment variables), then trigger a new deploy:
+3. Deploy once so Netlify registers the form.
+4. Turn on the two emails under **Forms → Form notifications** (this is how Netlify sends mail — there is no extra API key):
 
-**Build-time (required for the public site)**
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_PUBLISHABLE_KEY`
-- `VITE_SUPABASE_PROJECT_ID`
-- `SUPABASE_URL`
-- `SUPABASE_PUBLISHABLE_KEY`
+   - **You:** Add an **Email notification** for form `chimcrew-lead` to `theductorsairduct@gmail.com`.
+   - **The customer:** Add a **confirmation email**. Set “Email to notify” to `{{email}}` so it uses the form’s email field.
 
-**Runtime (admin, leads, and email)**
-- `SUPABASE_SERVICE_ROLE_KEY`
-- `ADMIN_LEADS_PASSCODE`
-- `LOVABLE_API_KEY` (only if transactional email is still used)
-- `LOVABLE_SEND_URL` (only if transactional email is still used)
+Leads then show under **Forms → Form submissions**. The `/admin/leads` page is the old Supabase inbox and is unused for new submissions.

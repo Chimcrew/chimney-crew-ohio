@@ -201,6 +201,29 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <form
+          name="chimcrew-lead"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          hidden
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <input type="hidden" name="form-name" value="chimcrew-lead" />
+          <input name="bot-field" />
+          <input name="name" />
+          <input name="phone" />
+          <input type="email" name="email" />
+          <input name="service" />
+          <input name="city" />
+          <input name="address" />
+          <input name="date" />
+          <input name="timeWindow" />
+          <textarea name="notes" />
+          <input name="source" />
+          <input name="smsConsent" />
+        </form>
         {children}
         <Scripts />
       </body>

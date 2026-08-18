@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ChimCrew lead form</title>
+  </head>
+  <body>
+    <!-- Netlify detects this static form at deploy time. JS posts to this file. -->
+    <form
+      name="chimcrew-lead"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      netlify
+    >
+      <input type="hidden" name="form-name" value="chimcrew-lead" />
+      <p hidden>
+        <label>Don’t fill this out: <input name="bot-field" /></label>
+      </p>
+      <input name="name" />
+      <input name="phone" />
+      <input type="email" name="email" />
+      <input name="service" />
+      <input name="city" />
+      <input name="address" />
+      <input name="date" />
+      <input name="timeWindow" />
+      <textarea name="notes"></textarea>
+      <input name="source" />
+      <input name="smsConsent" />
+    </form>
+  </body>
+</html>

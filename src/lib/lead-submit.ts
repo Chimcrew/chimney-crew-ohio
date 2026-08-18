@@ -1,4 +1,7 @@
-import { supabase } from "@/integrations/supabase/client";
+export const NETLIFY_FORM_NAME = "chimcrew-lead";
+/** Static HTML file Netlify registers at deploy time. POST here so SSR does not swallow the form. */
+export const NETLIFY_FORM_ENDPOINT = "/netlify-forms.html";
+export const OWNER_NOTIFY_EMAIL = "theductorsairduct@gmail.com";
 
 export type LeadPayload = {
   source?: string;
@@ -35,51 +38,40 @@ export function normalizeLeadPayload(payload: LeadPayload): LeadPayload {
   };
 }
 
+function encode(payload: LeadPayload): string {
+  const cleaned = normalizeLeadPayload(payload);
+  const body = new URLSearchParams();
+  body.set("form-name", NETLIFY_FORM_NAME);
+  body.set("bot-field", "");
+  body.set("name", cleaned.name ?? "");
+  body.set("phone", cleaned.phone ?? "");
+  body.set("email", cleaned.email ?? "");
+  body.set("service", cleaned.service ?? "");
+  body.set("city", cleaned.city ?? "");
+  body.set("address", cleaned.address ?? "");
+  body.set("date", cleaned.date ?? "");
+  body.set("timeWindow", cleaned.timeWindow ?? "");
+  body.set("notes", cleaned.notes ?? "");
+  body.set("source", cleaned.source ?? "Website form");
+  body.set("smsConsent", cleaned.smsConsent ? "yes" : "no");
+  return body.toString();
+}
+
 export async function submitLead(payload: LeadPayload) {
   const cleaned = normalizeLeadPayload(payload);
-  let serverError = "";
-  let allowFallback = true;
-
-  try {
-    const res = await fetch("/api/public/notify-lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(cleaned),
-    });
-
-    if (res.ok) return { saved: true, via: "server" as const };
-
-    try {
-      const body = await res.json();
-      serverError = typeof body?.error === "string" ? body.error : `HTTP ${res.status}`;
-    } catch {
-      serverError = `HTTP ${res.status}`;
-    }
-    if (res.status < 500) {
-      allowFallback = false;
-      throw new Error(serverError || "Invalid lead details");
-    }
-  } catch (error) {
-    serverError = error instanceof Error ? error.message : "Network error";
-    if (!allowFallback) throw error;
+  if (!cleaned.name || !cleaned.phone) {
+    throw new Error("Name and phone are required");
   }
 
-  const failureNote = `[Auto: server submission failed${serverError ? ` — ${serverError}` : ""}]`;
-  const consentNote = cleaned.smsConsent ? "[SMS consent: yes]" : "[SMS consent: not given]";
-  const combinedNotes = [cleaned.notes, consentNote, failureNote].filter(Boolean).join("\n\n");
-  const { error: fallbackError } = await supabase.from("leads").insert({
-    source: `${cleaned.source ?? "Website form"} [NO EMAIL SENT]`.slice(0, 60),
-    name: cleaned.name ?? null,
-    phone: cleaned.phone ?? null,
-    email: cleaned.email ?? null,
-    service: cleaned.service ?? null,
-    city: cleaned.city ?? null,
-    address: cleaned.address ?? null,
-    preferred_date: cleaned.date ?? null,
-    time_window: cleaned.timeWindow ?? null,
-    notes: combinedNotes || null,
+  const res = await fetch(NETLIFY_FORM_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: encode(cleaned),
   });
 
-  if (fallbackError) throw fallbackError;
-  return { saved: true, via: "fallback" as const };
+  if (!res.ok) {
+    throw new Error(`Form submission failed (${res.status})`);
+  }
+
+  return { saved: true, via: "netlify" as const };
 }
