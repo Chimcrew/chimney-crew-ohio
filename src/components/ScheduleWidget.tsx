@@ -118,7 +118,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       return;
     }
     setSubmitting(true);
-    const dateStr = date ? format(date, "EEE, MMM d") : undefined;
+    const dateStr = date ? format(date, "EEE, MMM d, yyyy") : undefined;
     const address = [street, city, zip].filter(Boolean).join(", ");
     const pageSuffix = sourcePath ? ` · ${sourcePath}` : "";
     const sourceLabel = `Schedule form${pageSuffix}`.slice(0, 60);

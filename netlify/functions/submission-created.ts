@@ -2,6 +2,7 @@ import {
   createWorkizLead,
   workizInboundEmail,
   workizInboundHtml,
+  workizInboundText,
 } from "./lib/workiz";
 
 const PHONE = "(614) 683-5763";
@@ -90,6 +91,7 @@ async function sendWithResend(
   subject: string,
   html: string,
   scheduledAt?: string,
+  text?: string,
 ) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return false;
@@ -106,6 +108,7 @@ async function sendWithResend(
       to: [to],
       subject,
       html,
+      ...(text ? { text } : {}),
       ...(scheduledAt ? { scheduled_at: scheduledAt } : {}),
     }),
   });
@@ -145,6 +148,8 @@ export async function handler(event: { body?: string | null }) {
       inbound,
       `New ChimCrew appointment: ${field(data, "name") || "Website lead"}`,
       workizInboundHtml(data),
+      undefined,
+      workizInboundText(data),
     );
     workiz.email = sent ? { ok: true, to: inbound } : { skipped: "missing RESEND_API_KEY" };
   } catch (error) {
