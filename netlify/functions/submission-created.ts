@@ -1,8 +1,8 @@
 import {
   createWorkizLead,
   workizInboundEmail,
-  workizInboundHtml,
   workizInboundText,
+  workizSubject,
 } from "./lib/workiz";
 
 const PHONE = "(614) 683-5763";
@@ -86,17 +86,18 @@ function confirmationHtml(data: Record<string, string | undefined>) {
 </html>`;
 }
 
-async function sendWithResend(
-  to: string,
-  subject: string,
-  html: string,
-  scheduledAt?: string,
-  text?: string,
-) {
+async function sendWithResend(options: {
+  to: string;
+  subject: string;
+  html?: string;
+  text?: string;
+  scheduledAt?: string;
+  replyTo?: string;
+}) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return false;
 
-  const from = process.env.CONFIRM_FROM_EMAIL || "ChimCrew <onboarding@resend.dev>";
+  const from = process.env.CONFIRM_FROM_EMAIL || "ChimCrew Website <onboarding@resend.dev>";
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -105,11 +106,12 @@ async function sendWithResend(
     },
     body: JSON.stringify({
       from,
-      to: [to],
-      subject,
-      html,
-      ...(text ? { text } : {}),
-      ...(scheduledAt ? { scheduled_at: scheduledAt } : {}),
+      to: [options.to],
+      subject: options.subject,
+      ...(options.html ? { html: options.html } : {}),
+      ...(options.text ? { text: options.text } : {}),
+      ...(options.replyTo ? { reply_to: options.replyTo } : {}),
+      ...(options.scheduledAt ? { scheduled_at: options.scheduledAt } : {}),
     }),
   });
 
@@ -144,13 +146,12 @@ export async function handler(event: { body?: string | null }) {
 
   try {
     const inbound = workizInboundEmail();
-    const sent = await sendWithResend(
-      inbound,
-      `New ChimCrew appointment: ${field(data, "name") || "Website lead"}`,
-      workizInboundHtml(data),
-      undefined,
-      workizInboundText(data),
-    );
+    const sent = await sendWithResend({
+      to: inbound,
+      subject: workizSubject(data),
+      text: workizInboundText(data),
+      replyTo: field(data, "email") || undefined,
+    });
     workiz.email = sent ? { ok: true, to: inbound } : { skipped: "missing RESEND_API_KEY" };
   } catch (error) {
     console.error("Workiz inbound email failed", error);
@@ -172,7 +173,12 @@ export async function handler(event: { body?: string | null }) {
 
   try {
     for (const to of recipients) {
-      const sent = await sendWithResend(to, subject, html, scheduledAt);
+      const sent = await sendWithResend({
+        to,
+        subject,
+        html,
+        scheduledAt,
+      });
       if (!sent) {
         console.error(
           "Confirmation not sent: set RESEND_API_KEY in Netlify env to email the customer.",

@@ -28,22 +28,48 @@ function splitName(fullName: string) {
   return { FirstName, LastName };
 }
 
+function formatPhone(raw: string) {
+  const digits = raw.replace(/\D/g, "");
+  const ten = digits.length === 11 && digits.startsWith("1") ? digits.slice(1) : digits;
+  if (ten.length === 10) {
+    return `(${ten.slice(0, 3)}) ${ten.slice(3, 6)}-${ten.slice(6)}`;
+  }
+  return raw.trim();
+}
+
+function jobSource() {
+  return process.env.WORKIZ_JOB_SOURCE?.trim() || "Website";
+}
+
+function jobType(service: string) {
+  const override = process.env.WORKIZ_LEAD_TYPE?.trim();
+  if (override) return override;
+  const lower = service.toLowerCase();
+  if (lower.includes("dryer")) return "Dryer Vent Cleaning";
+  if (lower.includes("sweep")) return "Chimney Sweep";
+  if (lower.includes("gas")) return "Gas Fireplace Inspection";
+  if (lower.includes("inspection")) return "Inspection";
+  const cleaned = service
+    .replace(/[^\p{L}\p{N}\s/()-]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return cleaned || "Inspection";
+}
+
 function parseCityZip(data: LeadFields) {
   const cityRaw = val(data, "city");
   const address = val(data, "address");
+  const parts = address.split(",").map((part) => part.trim()).filter(Boolean);
+  const street = parts[0] || address;
   if (/^\d{5}(-\d{4})?$/.test(cityRaw)) {
-    return { City: "", PostalCode: cityRaw, Address: address };
+    return { City: "", PostalCode: cityRaw, Address: street };
   }
   const zipFromAddress = address.match(/\b(\d{5})(?:-\d{4})?\b/);
   return {
     City: cityRaw.replace(/,?\s*\d{5}(?:-\d{4})?$/, "").trim(),
     PostalCode: zipFromAddress?.[1] ?? "",
-    Address: address,
+    Address: street,
   };
-}
-
-function jobSource() {
-  return process.env.WORKIZ_JOB_SOURCE?.trim() || "Website";
 }
 
 function parseClock(token: string) {
@@ -122,14 +148,20 @@ function appointmentSchedule(data: LeadFields) {
   const window = windowRaw ? parseTimeWindow(windowRaw) : null;
   if (!date || !window) {
     return {
+      dateLabel: dateRaw,
       start: "",
       end: "",
+      startTime: "",
+      endTime: "",
       summary: [dateRaw, windowRaw].filter(Boolean).join(" · "),
     };
   }
   return {
+    dateLabel: `${pad2(date.getMonth() + 1)}/${pad2(date.getDate())}/${date.getFullYear()}`,
     start: workizDateTime(date, window.start),
     end: workizDateTime(date, window.end),
+    startTime: window.startLabel,
+    endTime: window.endLabel,
     summary: `${date.toLocaleDateString("en-US", {
       weekday: "long",
       month: "long",
@@ -141,38 +173,22 @@ function appointmentSchedule(data: LeadFields) {
 
 function comments(data: LeadFields) {
   const schedule = appointmentSchedule(data);
-  const lines = [
+  const place = parseCityZip(data);
+  const phone = formatPhone(val(data, "phone"));
+  return [
     schedule.summary && `Requested arrival: ${schedule.summary}`,
     val(data, "service") && `Service: ${val(data, "service")}`,
+    phone && `Phone: ${phone}`,
+    place.Address && `Address: ${place.Address}`,
+    place.City && `City: ${place.City}`,
+    place.PostalCode && `ZIP: ${place.PostalCode}`,
+    `Job source: ${jobSource()}`,
     val(data, "source") && `Website form: ${val(data, "source")}`,
     val(data, "smsConsent") && `SMS consent: ${val(data, "smsConsent")}`,
     val(data, "notes") && `Customer notes: ${val(data, "notes")}`,
-  ].filter(Boolean);
-  return lines.join("\n");
-}
-
-function labeledLines(data: LeadFields) {
-  const name = splitName(val(data, "name"));
-  const place = parseCityZip(data);
-  const schedule = appointmentSchedule(data);
-  return [
-    ["First Name", name.FirstName],
-    ["Last Name", name.LastName],
-    ["Phone", val(data, "phone")],
-    ["Email", val(data, "email")],
-    ["Address", place.Address],
-    ["City", place.City],
-    ["State", process.env.WORKIZ_STATE || "OH"],
-    ["Zip", place.PostalCode],
-    ["Job Type", process.env.WORKIZ_LEAD_TYPE || val(data, "service") || "Website booking"],
-    ["Job Source", jobSource()],
-    ["Job start date", schedule.start],
-    ["Job end date", schedule.end],
-    ["Arrival window", schedule.summary],
-    ["Website form", val(data, "source")],
-    ["SMS consent", val(data, "smsConsent")],
-    ["Job notes", comments(data)],
-  ].filter(([, value]) => value);
+  ]
+    .filter(Boolean)
+    .join("\n");
 }
 
 export function workizLeadBody(data: LeadFields) {
@@ -181,11 +197,11 @@ export function workizLeadBody(data: LeadFields) {
   const schedule = appointmentSchedule(data);
   const service = val(data, "service") || "Website booking";
   return {
-    LeadType: process.env.WORKIZ_LEAD_TYPE || service,
+    LeadType: jobType(service),
     LeadSource: jobSource(),
     JobSource: jobSource(),
     ...name,
-    Phone: val(data, "phone"),
+    Phone: formatPhone(val(data, "phone")),
     Email: val(data, "email"),
     Address: place.Address,
     City: place.City,
@@ -217,35 +233,62 @@ export function workizInboundEmail() {
   return process.env.WORKIZ_INBOUND_EMAIL?.trim() || DEFAULT_INBOUND_EMAIL;
 }
 
-function escapeHtml(value: string) {
-  return value
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;");
+export function workizSubject(data: LeadFields) {
+  const name = val(data, "name") || "Website lead";
+  const phone = formatPhone(val(data, "phone"));
+  const schedule = appointmentSchedule(data);
+  return ["Website lead", name, phone, schedule.summary].filter(Boolean).join(" | ").slice(0, 180);
 }
 
 export function workizInboundText(data: LeadFields) {
+  const name = splitName(val(data, "name"));
+  const place = parseCityZip(data);
   const schedule = appointmentSchedule(data);
-  const header = schedule.summary
-    ? `Please schedule this ChimCrew website booking for ${schedule.summary}.`
-    : "New ChimCrew website appointment.";
-  const body = labeledLines(data)
-    .map(([label, value]) => `${label}: ${value}`)
-    .join("\n");
-  return `${header}\n\n${body}\n`;
+  const phone = formatPhone(val(data, "phone"));
+  const service = val(data, "service");
+  const type = jobType(service || "Inspection");
+  const source = jobSource();
+
+  const lines = [
+    "NEW WEBSITE LEAD",
+    "",
+    `First name: ${name.FirstName}`,
+    `Last name: ${name.LastName}`,
+    phone && `Phone: ${phone}`,
+    phone && `Phone number: ${phone}`,
+    val(data, "email") && `Email: ${val(data, "email")}`,
+    place.Address && `Address: ${place.Address}`,
+    place.Address && `Service address: ${place.Address}`,
+    place.City && `City: ${place.City}`,
+    `State: ${process.env.WORKIZ_STATE || "OH"}`,
+    place.PostalCode && `Zip: ${place.PostalCode}`,
+    place.PostalCode && `Postal code: ${place.PostalCode}`,
+    "",
+    `Job type: ${type}`,
+    `Job source: ${source}`,
+    `Lead source: ${source}`,
+    `Ad source: ${source}`,
+    `Source: ${source}`,
+    "",
+    schedule.dateLabel && `Date: ${schedule.dateLabel}`,
+    schedule.startTime && `Time: ${schedule.startTime}`,
+    schedule.startTime && `Start time: ${schedule.startTime}`,
+    schedule.endTime && `End time: ${schedule.endTime}`,
+    schedule.start && `Job start date: ${schedule.start}`,
+    schedule.end && `Job end date: ${schedule.end}`,
+    schedule.summary && `Preferred appointment: ${schedule.summary}`,
+    "",
+    "Description:",
+    comments(data),
+  ].filter((line) => line !== false) as string[];
+
+  return lines.join("\n").trim() + "\n";
 }
 
 export function workizInboundHtml(data: LeadFields) {
-  const text = workizInboundText(data);
-  const rows = labeledLines(data)
-    .map(
-      ([label, value]) =>
-        `<tr><td><strong>${escapeHtml(label)}</strong></td><td>${escapeHtml(value).replaceAll("\n", "<br>")}</td></tr>`,
-    )
-    .join("");
-  const schedule = appointmentSchedule(data);
-  const summary = schedule.summary
-    ? `<p><strong>Please schedule this job for ${escapeHtml(schedule.summary)}.</strong></p>`
-    : "<p>New ChimCrew website appointment</p>";
-  return `${summary}<pre style="font-family:Arial,sans-serif;white-space:pre-wrap">${escapeHtml(text)}</pre><table>${rows}</table>`;
+  const text = workizInboundText(data)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;");
+  return `<pre style="font-family:Arial,Helvetica,sans-serif;font-size:14px;white-space:pre-wrap">${text}</pre>`;
 }
