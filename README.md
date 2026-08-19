@@ -39,4 +39,10 @@ Lead forms use **Netlify Forms** (`chimcrew-lead`). No Lovable or Supabase keys 
 
 The delayed email uses the old “appointment confirmed” copy: name, service, area, address, date, time window, and phone. It goes to the lead and to `theductorsairduct@gmail.com`.
 
-Leads show under **Forms → Form submissions**. The `/admin/leads` page is the old Supabase inbox and is unused for new submissions.
+5. Send every scheduled appointment into **Workiz**:
+
+   - `WORKIZ_API_TOKEN` — from Workiz → Settings → Integrations (enable Developer API). Creates a CRM lead.
+   - Optional: `WORKIZ_LEAD_TYPE` if Workiz rejects the service name as a lead type (example: `Inspection`).
+   - Optional: `WORKIZ_INBOUND_EMAIL` (default `chimcrew@msg.workiz.com`) — same email-to-Workiz path as before, sent immediately via Resend.
+
+Leads also show under **Forms → Form submissions**. The `/admin/leads` page is the old Supabase inbox and is unused for new submissions.

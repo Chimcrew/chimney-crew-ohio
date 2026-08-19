@@ -1,3 +1,9 @@
+import {
+  createWorkizLead,
+  workizInboundEmail,
+  workizInboundHtml,
+} from "./lib/workiz";
+
 const PHONE = "(614) 683-5763";
 const DELAY_MS = 5 * 60 * 1000;
 const OWNER_EMAIL = "theductorsairduct@gmail.com";
@@ -79,7 +85,12 @@ function confirmationHtml(data: Record<string, string | undefined>) {
 </html>`;
 }
 
-async function sendWithResend(to: string, subject: string, html: string, scheduledAt: string) {
+async function sendWithResend(
+  to: string,
+  subject: string,
+  html: string,
+  scheduledAt?: string,
+) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return false;
 
@@ -95,7 +106,7 @@ async function sendWithResend(to: string, subject: string, html: string, schedul
       to: [to],
       subject,
       html,
-      scheduled_at: scheduledAt,
+      ...(scheduledAt ? { scheduled_at: scheduledAt } : {}),
     }),
   });
 
@@ -118,9 +129,32 @@ export async function handler(event: { body?: string | null }) {
   }
 
   const data = parsed.payload?.data ?? {};
+  const workiz: Record<string, unknown> = {};
+
+  try {
+    const created = await createWorkizLead(data);
+    workiz.api = created;
+  } catch (error) {
+    console.error("Workiz API lead create failed", error);
+    workiz.api = { ok: false, error: error instanceof Error ? error.message : String(error) };
+  }
+
+  try {
+    const inbound = workizInboundEmail();
+    const sent = await sendWithResend(
+      inbound,
+      `New ChimCrew appointment: ${field(data, "name") || "Website lead"}`,
+      workizInboundHtml(data),
+    );
+    workiz.email = sent ? { ok: true, to: inbound } : { skipped: "missing RESEND_API_KEY" };
+  } catch (error) {
+    console.error("Workiz inbound email failed", error);
+    workiz.email = { ok: false, error: error instanceof Error ? error.message : String(error) };
+  }
+
   const clientEmail = field(data, "email");
   if (!clientEmail || !clientEmail.includes("@")) {
-    return { statusCode: 200, body: JSON.stringify({ skipped: "no client email" }) };
+    return { statusCode: 200, body: JSON.stringify({ ok: true, workiz, skipped: "no client email" }) };
   }
 
   const first = field(data, "name").split(" ")[0];
@@ -138,7 +172,10 @@ export async function handler(event: { body?: string | null }) {
         console.error(
           "Confirmation not sent: set RESEND_API_KEY in Netlify env to email the customer.",
         );
-        return { statusCode: 200, body: JSON.stringify({ skipped: "missing RESEND_API_KEY" }) };
+        return {
+          statusCode: 200,
+          body: JSON.stringify({ ok: true, workiz, skipped: "missing RESEND_API_KEY" }),
+        };
       }
       sentTo.push(to);
     }
@@ -149,6 +186,6 @@ export async function handler(event: { body?: string | null }) {
 
   return {
     statusCode: 200,
-    body: JSON.stringify({ ok: true, scheduledAt, to: sentTo }),
+    body: JSON.stringify({ ok: true, workiz, scheduledAt, to: sentTo }),
   };
 }
