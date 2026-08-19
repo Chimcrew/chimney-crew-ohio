@@ -23,6 +23,7 @@ import techCap from "@/assets/real/tech-chimney-cap-install.jpg.asset.json";
 import crownRebuild from "@/assets/real/chimney-crown-rebuild.jpg.asset.json";
 import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import { SiteFooter } from "@/components/SiteFooter";
+import { ReviewLinkGeneratorWidget } from "@/components/ReviewLinkGeneratorWidget";
 import { submitLead } from "@/lib/lead-submit";
 
 export const Route = createFileRoute("/lp/free-inspection")({
@@ -67,6 +68,7 @@ function FreeInspectionLanding() {
       <Includes />
       <RecentJobs />
       <Reviews />
+      <ReviewLinkGeneratorWidget />
       <FinalCta />
       <SiteFooter />
     </div>

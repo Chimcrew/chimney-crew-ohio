@@ -27,13 +27,15 @@ export function SiteFooter() {
           </div>
           <div className="relative aspect-[16/6] w-full overflow-hidden border-2 border-border">
             <iframe
-              title="ChimCrew on Google Maps"
-              src="https://www.google.com/maps?q=220+Vine+Street,+Columbus,+OH+43215&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d932374.8144472745!2d-83.76311976073052!3d39.761603089597116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x208a8b9e2ddcc519%3A0x17b40b3804b5c5b2!2sChimcrew%20-%20Chimney%20Sweep%20%26%20Repair!5e1!3m2!1sen!2sae!4v1787099033835!5m2!1sen!2sae"
+              width="600"
+              height="450"
               className="absolute inset-0 h-full w-full"
               style={{ border: 0 }}
-            />
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+            ></iframe>
           </div>
         </div>
       </div>

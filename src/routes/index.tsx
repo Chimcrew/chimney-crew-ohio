@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import { AutoLoopVideoSection } from "@/components/AutoLoopVideo";
+import { ReviewLinkGeneratorWidget } from "@/components/ReviewLinkGeneratorWidget";
 
 const logo = logoAsset.url;
 
@@ -161,6 +162,7 @@ function Index() {
       <AutoLoopVideoSection />
       <ScheduleSection id="schedule-section" />
       <Testimonials />
+      <ReviewLinkGeneratorWidget />
       <CommonProblems />
       <RecentProjects />
       <ServiceAreaSeo />
