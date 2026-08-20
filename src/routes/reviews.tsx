@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star, Quote, ShieldCheck, MapPin, BadgeCheck } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
+import { ReviewLinkGeneratorWidget } from "@/components/ReviewLinkGeneratorWidget";
 import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset.json";
 import desktopHeroPhoto from "@/assets/hero/hero-desktop-team-chimney.png.asset.json";
 
@@ -189,6 +190,7 @@ function ReviewsPage() {
           ))}
         </div>
       </section>
+      <ReviewLinkGeneratorWidget />
 
     </>
   );
