@@ -42,7 +42,17 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
         <div className="grid gap-12 lg:grid-cols-[1.3fr_1.1fr_1fr_1fr]">
           <div>
-            <img src={logo} alt="ChimCrew" className="h-14 w-auto" />
+            <Link
+              to="/"
+              aria-label="ChimCrew homepage"
+              className="inline-block"
+            >
+              <img
+                src={logo}
+                alt="ChimCrew chimney sweep and repair"
+                className="h-20 w-auto sm:h-24"
+              />
+            </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               Locally owned chimney sweeps serving Columbus, Cincinnati, and Dayton.
               Certified, insured, and obsessed with clean flues.
