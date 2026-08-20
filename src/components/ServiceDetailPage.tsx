@@ -302,7 +302,29 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
             <div className="relative overflow-hidden rounded-none bg-card lg:rounded-none lg:border lg:border-border/60 lg:shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
               <img
                 src={heroPhoto}
-                alt={`ChimCrew ${service.shortTitle.toLowerCase()} — Ohio crew on the job`}
+                alt={
+                  service.slug === "chimney-sweep"
+                    ? "Chimney sweep and chimney cleaning service by ChimCrew in Ohio"
+                    : service.slug === "chimney-cleaning"
+                      ? "Professional chimney cleaning service by ChimCrew in Ohio"
+                      : service.slug === "gas-fireplace-repair"
+                        ? "Gas fireplace repair service by ChimCrew technician in Ohio"
+                        : service.slug === "wood-fireplace-repair"
+                          ? "Wood fireplace repair service by ChimCrew technician in Ohio"
+                          : service.slug === "level-1-inspection"
+                            ? "Chimney inspection performed by ChimCrew technician in Ohio"
+                            : service.slug === "level-2-inspection"
+                              ? "Level 2 chimney and fireplace inspection by ChimCrew in Ohio"
+                              : service.slug === "liner-install"
+                                ? "Chimney liner installation by ChimCrew technician in Ohio"
+                                : service.slug === "chimney-crown-replacement"
+                                  ? "Chimney crown replacement and masonry repair by ChimCrew in Ohio"
+                                  : service.slug === "chimney-cap-replacement"
+                                    ? "Chimney cap replacement by ChimCrew technician in Ohio"
+                                    : service.slug === "chimney-masonry-repair"
+                                      ? "Masonry chimney repair by ChimCrew specialists in Ohio"
+                                      : `ChimCrew ${service.shortTitle.toLowerCase()} — Ohio crew on the job`
+                }
                 className="block aspect-[5/4] h-auto w-full object-cover"
                 fetchPriority="high"
                 decoding="async"
