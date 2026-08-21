@@ -58,7 +58,13 @@ export function SiteFooter() {
               Certified, insured, and obsessed with clean flues.
             </p>
             <div className="mt-6 flex gap-3">
-              <a href="#" aria-label="Facebook" className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground">
+              <a
+                href="https://www.facebook.com/share/18gBuR6y1q/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground"
+              >
                 <Facebook className="h-4 w-4" />
               </a>
               <a href="https://www.instagram.com/chim_crew/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @chim_crew" className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground">
