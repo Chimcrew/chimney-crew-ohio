@@ -26,6 +26,7 @@ const Broom: LucideIcon = (({ className, ...props }: { className?: string }) => 
 import logoHeaderAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 const logoHeader = logoHeaderAsset.url;
 import { openScheduleDialog } from "@/components/ScheduleWidget";
+import { FEATURED_SERVICE_AREAS } from "@/data/service-area-featured";
 
 type MenuLink = { label: string; to: string; slug?: string };
 
@@ -115,6 +116,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [serviceAreaOpen, setServiceAreaOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const [mobileOpenKey, setMobileOpenKey] = useState<string | null>(null);
   const [mobileOpenCategory, setMobileOpenCategory] = useState<string | null>(null);
@@ -162,28 +164,36 @@ export function SiteHeader() {
     };
   }, [open]);
 
-  // Close any open dropdown on outside click / Escape
+  // Close any open desktop dropdown on outside click / Escape
   useEffect(() => {
-    if (!servicesOpen) return;
+    if (!servicesOpen && !serviceAreaOpen) return;
+
+    const closeDropdowns = () => {
+      setServicesOpen(false);
+      setServiceAreaOpen(false);
+      setHoveredCategory(null);
+    };
+
     const onClick = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
-        setServicesOpen(false);
-        setHoveredCategory(null);
+        closeDropdowns();
       }
     };
+
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setServicesOpen(false);
-        setHoveredCategory(null);
+        closeDropdowns();
       }
     };
+
     document.addEventListener("mousedown", onClick);
     document.addEventListener("keydown", onKey);
+
     return () => {
       document.removeEventListener("mousedown", onClick);
       document.removeEventListener("keydown", onKey);
     };
-  }, [servicesOpen]);
+  }, [servicesOpen, serviceAreaOpen]);
 
   return (
     <>
@@ -257,7 +267,7 @@ export function SiteHeader() {
             {/* Services mega-dropdown */}
             <div
               className="relative"
-              onMouseEnter={() => setServicesOpen(true)}
+              onMouseEnter={() => { setServicesOpen(true); setServiceAreaOpen(false); }}
               onMouseLeave={() => {
                 setServicesOpen(false);
                 setHoveredCategory(null);
@@ -385,6 +395,68 @@ export function SiteHeader() {
                           </div>
                         )}
                       </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Service Area hover dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => {
+                setServiceAreaOpen(true);
+                setServicesOpen(false);
+                setHoveredCategory(null);
+              }}
+              onMouseLeave={() => setServiceAreaOpen(false)}
+            >
+              <Link
+                to="/service-area"
+                onClick={() => setServiceAreaOpen(false)}
+                className={`group relative inline-flex items-center gap-1.5 whitespace-nowrap px-2.5 py-2 font-sans text-[12px] font-semibold tracking-normal transition ${
+                  serviceAreaOpen
+                    ? "text-[oklch(0.65_0.18_92)]"
+                    : "text-foreground/70 hover:text-foreground"
+                }`}
+                activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
+              >
+                <span className="h-1.5 w-1.5 rounded-full bg-[oklch(0.78_0.19_92/0.8)] group-hover:bg-[oklch(0.78_0.19_92)]" />
+                Service Area
+                <ChevronDown
+                  className={`h-3 w-3 transition-transform duration-200 ${
+                    serviceAreaOpen ? "rotate-180" : ""
+                  }`}
+                />
+                <span className="pointer-events-none absolute inset-x-3 -bottom-0.5 h-px origin-left scale-x-0 bg-[oklch(0.78_0.19_92)] transition-transform duration-300 group-hover:scale-x-100" />
+              </Link>
+
+              {serviceAreaOpen && (
+                <div
+                  role="menu"
+                  className="absolute left-1/2 top-full z-50 w-[430px] -translate-x-1/2 pt-3"
+                >
+                  <div className="overflow-hidden border border-[oklch(0.18_0.02_250/0.08)] bg-background shadow-[0_20px_40px_oklch(0.18_0.02_250/0.12)] backdrop-blur-xl">
+                    <div className="flex items-center justify-between border-b border-[oklch(0.18_0.02_250/0.06)] bg-[oklch(0.18_0.02_250/0.03)] px-5 py-3">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-[oklch(0.65_0.18_92)]">
+                        Service Area
+                      </span>
+                      <MapPin className="h-4 w-4 text-flame" />
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-0.5 p-2">
+                      {FEATURED_SERVICE_AREAS.map((city) => (
+                        <Link
+                          key={city.slug}
+                          to="/service-area/$city"
+                          params={{ city: city.slug }}
+                          onClick={() => setServiceAreaOpen(false)}
+                          className="group flex items-center justify-between gap-3 px-3 py-2.5 font-display text-sm font-semibold text-foreground transition hover:bg-[oklch(0.18_0.02_250/0.05)] hover:text-[oklch(0.65_0.18_92)]"
+                        >
+                          <span>{city.name}, {city.state}</span>
+                          <ChevronRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-flame" />
+                        </Link>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -540,6 +612,64 @@ export function SiteHeader() {
                         </div>
                       );
                     })}
+                  </div>
+                )}
+              </div>
+
+              {/* Service Area mobile accordion */}
+              <div className="border-b border-border/30">
+                <div className="flex items-center justify-between">
+                  <Link
+                    to="/service-area"
+                    onClick={() => {
+                      setOpen(false);
+                      setMobileOpenKey(null);
+                      setMobileOpenCategory(null);
+                    }}
+                    className="flex flex-1 items-center gap-2 py-3 font-sans text-[13px] font-semibold tracking-normal text-foreground"
+                    activeProps={{ className: "text-[oklch(0.65_0.18_92)]" }}
+                  >
+                    <span className="h-2 w-2 rounded-full bg-[oklch(0.78_0.19_92)]" />
+                    Service Area
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setMobileOpenKey((cur) =>
+                        cur === "service-area" ? null : "service-area",
+                      )
+                    }
+                    aria-label="Toggle service area cities"
+                    aria-expanded={mobileOpenKey === "service-area"}
+                    className="grid h-11 w-11 place-items-center"
+                  >
+                    <ChevronDown
+                      className={`h-5 w-5 text-[oklch(0.78_0.19_92)] transition-transform duration-200 ${
+                        mobileOpenKey === "service-area" ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+
+                {mobileOpenKey === "service-area" && (
+                  <div className="mb-3 grid grid-cols-2 gap-1 bg-[oklch(0.18_0.02_250/0.03)] p-2">
+                    {FEATURED_SERVICE_AREAS.map((city) => (
+                      <Link
+                        key={city.slug}
+                        to="/service-area/$city"
+                        params={{ city: city.slug }}
+                        onClick={() => {
+                          setOpen(false);
+                          setMobileOpenKey(null);
+                          setMobileOpenCategory(null);
+                        }}
+                        className="flex items-center justify-between gap-2 px-3 py-2.5 font-sans text-[13px] font-medium text-foreground/80 transition active:bg-[oklch(0.18_0.02_250/0.05)] active:text-[oklch(0.65_0.18_92)]"
+                      >
+                        <span>{city.name}, {city.state}</span>
+                        <ChevronRight className="h-3.5 w-3.5 shrink-0 text-flame" />
+                      </Link>
+                    ))}
                   </div>
                 )}
               </div>

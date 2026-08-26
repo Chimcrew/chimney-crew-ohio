@@ -30,6 +30,7 @@ import { Route as LegalDisclaimerRouteImport } from './routes/legal/disclaimer'
 import { Route as LegalPrivacyRouteImport } from './routes/legal/privacy'
 import { Route as LegalTermsRouteImport } from './routes/legal/terms'
 import { Route as LpFreeInspectionRouteImport } from './routes/lp.free-inspection'
+import { Route as ServiceAreaIndexRouteImport } from './routes/service-area.index'
 import { Route as ServiceAreaCityRouteImport } from './routes/service-area.$city'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
@@ -139,6 +140,11 @@ const LpFreeInspectionRoute = LpFreeInspectionRouteImport.update({
   path: '/lp/free-inspection',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServiceAreaIndexRoute = ServiceAreaIndexRouteImport.update({
+  id: '/service-area/',
+  path: '/service-area/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServiceAreaCityRoute = ServiceAreaCityRouteImport.update({
   id: '/service-area/$city',
   path: '/service-area/$city',
@@ -179,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/service-area/$city': typeof ServiceAreaCityRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/service-area/': typeof ServiceAreaIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -205,6 +212,7 @@ export interface FileRoutesByTo {
   '/service-area/$city': typeof ServiceAreaCityRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog': typeof BlogIndexRoute
+  '/service-area': typeof ServiceAreaIndexRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
@@ -232,6 +240,7 @@ export interface FileRoutesById {
   '/service-area/$city': typeof ServiceAreaCityRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/blog/': typeof BlogIndexRoute
+  '/service-area/': typeof ServiceAreaIndexRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRouteTypes {
@@ -260,6 +269,7 @@ export interface FileRouteTypes {
     | '/service-area/$city'
     | '/services/$slug'
     | '/blog/'
+    | '/service-area/'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -286,6 +296,7 @@ export interface FileRouteTypes {
     | '/service-area/$city'
     | '/services/$slug'
     | '/blog'
+    | '/service-area'
     | '/services'
   id:
     | '__root__'
@@ -312,6 +323,7 @@ export interface FileRouteTypes {
     | '/service-area/$city'
     | '/services/$slug'
     | '/blog/'
+    | '/service-area/'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
@@ -339,6 +351,7 @@ export interface RootRouteChildren {
   ServiceAreaCityRoute: typeof ServiceAreaCityRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   BlogIndexRoute: typeof BlogIndexRoute
+  ServiceAreaIndexRoute: typeof ServiceAreaIndexRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -491,6 +504,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LpFreeInspectionRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/service-area/': {
+      id: '/service-area/'
+      path: '/service-area'
+      fullPath: '/service-area/'
+      preLoaderRoute: typeof ServiceAreaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/service-area/$city': {
       id: '/service-area/$city'
       path: '/service-area/$city'
@@ -539,6 +559,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServiceAreaCityRoute: ServiceAreaCityRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   BlogIndexRoute: BlogIndexRoute,
+  ServiceAreaIndexRoute: ServiceAreaIndexRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
