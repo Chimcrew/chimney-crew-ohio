@@ -196,6 +196,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        <script async src="https://ob.buzzfufighter.com/i/ecc955025644afe9ccafc17374332bd9.js" className="ct_clicktrue"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QY2H753BK9"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18189794318"></script>
         <script dangerouslySetInnerHTML={{ __html: `(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:6728722,hjsv:6};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r);})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QY2H753BK9'); gtag('config', 'AW-18189794318'); /* Generic conversion (kept for backwards compatibility). */ function gtag_report_conversion(url){var callback=function(){if(typeof(url)!='undefined'){window.location=url;}}; gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD','event_callback':callback}); return false;} /* Dedicated phone-call conversion. Replace send_to with a Call-specific label in Google Ads when one exists. */ function gtag_report_call(){gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD'}); return false;} /* Dedicated lead-form conversion. Replace send_to with a Form-specific label in Google Ads when one exists. */ function gtag_report_lead(){gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD'}); return false;}` }} />
@@ -203,6 +204,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <noscript>
+          <iframe
+            src="https://ob.buzzfufighter.com/ns/ecc955025644afe9ccafc17374332bd9.html?ch="
+            width="0"
+            height="0"
+            style={{ display: "none" }}
+          />
+        </noscript>
         <form
           name="chimcrew-lead"
           method="POST"
