@@ -15,8 +15,7 @@
 [functions]
   directory = "netlify/functions"
 
-# Client confirmation emails are sent 5 minutes after each chimcrew-lead
-# submit by netlify/functions/submission-created.ts (same as the old Lovable flow).
-# Set RESEND_API_KEY in the Netlify UI. Keep your Form notification to yourself.
-# Workiz: set WORKIZ_API_TOKEN (and optional WORKIZ_LEAD_TYPE). Inbound email
-# chimcrew@msg.workiz.com is used as a backup when Resend is configured.
+# Client confirmation emails are sent 5 minutes after each booking.
+# Bookings POST to /.netlify/functions/submit-lead, which immediately emails
+# theductorsairduct@gmail.com and chimcrew@msg.workiz.com.
+# Set RESEND_API_KEY in the Netlify UI. Optional: CONFIRM_FROM_EMAIL.
