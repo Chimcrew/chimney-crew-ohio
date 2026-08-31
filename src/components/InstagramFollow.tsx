@@ -15,7 +15,6 @@ import gjB from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
 import gjC from "@/assets/gallery-new/new-fireplace-interior.jpeg.asset.json";
 import gjD from "@/assets/gallery-new/new-copper-flashing-detail.jpeg.asset.json";
 import gjE from "@/assets/gallery-new/new-mesh-cap-closeup.jpeg.asset.json";
-import gjF from "@/assets/gallery-new/new-cap-ladder.jpeg.asset.json";
 
 const IG_URL = "https://www.instagram.com/chim_crew/";
 

@@ -37,13 +37,11 @@ import projectLiner from "@/assets/projects/project-03-liner-install.jpg.asset.j
 import projectCap from "@/assets/projects/project-04-cap-install.jpg.asset.json";
 import projectTech from "@/assets/projects/project-06-tech-onsite.jpg.asset.json";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
-import techLiner from "@/assets/real/tech-liner-install.png.asset.json";
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import teamHeroPhoto from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import teamTruckPhoto from "@/assets/team/chimcrew-team-truck.png.asset.json";
-import inspectionRoofPhoto from "@/assets/team/chimcrew-inspection-roof.png.asset.json";
 import { ChimneyRestorationProcess } from "@/components/ChimneyRestorationProcess";
 import { RecentChimcrewJobs } from "@/components/RecentChimcrewJobs";
 import sweepCloseupPhoto from "@/assets/team/chimcrew-sweep-closeup.png.asset.json";
@@ -70,7 +68,6 @@ import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import { FlashingJobShowcase } from "@/components/FlashingJobShowcase";
-import { InstagramFollow } from "@/components/InstagramFollow";
 import teamWidePhoto from "@/assets/chimcrew-team-wide.png.asset.json";
 import techFireplaceBurner from "@/assets/team-jobs/tech-fireplace-burner.jpeg.asset.json";
 import techCrownWaterproof from "@/assets/team-jobs/tech-crown-waterproof.jpeg.asset.json";
@@ -331,6 +328,22 @@ function HeroPhotoCard() {
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
+      <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
+        <video
+          className="h-full w-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+        >
+          <source src="/videos/hero-bg-desktop.webm" type="video/webm" />
+          <source src="/videos/hero-bg-desktop.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-primary/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/50 via-primary/15 to-transparent" />
+      </div>
+
       {/* Mobile-only compact hero photo above the fold */}
       <div className="lg:hidden">
         <div className="relative overflow-hidden rounded-b-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
@@ -364,32 +377,32 @@ function Hero() {
             decoding="async"
           />
           <div className="min-w-0">
-            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-black min-[414px]:text-[11px] sm:text-xs">
+            <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-black min-[414px]:text-[11px] sm:text-xs lg:text-primary-foreground">
               Certified chimney professionals
             </p>
             <div className="mt-1.5 flex flex-wrap gap-1.5">
               <span className="inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-primary-foreground min-[414px]:text-[11px]">
                 <ShieldCheck className="h-2.5 w-2.5 text-flame" /> Licensed · Insured
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full border border-flame/40 bg-flame/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-foreground min-[414px]:text-[11px]">
+              <span className="inline-flex items-center gap-1 rounded-full border border-flame/40 bg-flame/10 px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-foreground min-[414px]:text-[11px] lg:text-primary-foreground">
                 <Star className="h-2.5 w-2.5 fill-flame text-flame" /> 5-Star Reviews
               </span>
             </div>
           </div>
         </div>
 
-        <h1 className="hero-main-title mt-8 mb-2 min-w-0 max-w-full font-sans font-bold tracking-normal text-foreground sm:mt-6">
+        <h1 className="hero-main-title mt-8 mb-2 min-w-0 max-w-full font-sans font-bold tracking-normal text-foreground sm:mt-6 lg:text-primary-foreground">
           <span className="block">The Chimney Experts You've Trusted for Over 18 Years</span>
         </h1>
-        <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-2 gap-y-1 border-l-2 border-flame pl-3 text-foreground/70">
+        <div className="mt-4 grid grid-cols-[auto_minmax(0,1fr)] items-center gap-x-2 gap-y-1 border-l-2 border-flame pl-3 text-foreground/70 lg:text-primary-foreground/80">
           <MapPin className="h-4 w-4 shrink-0 text-flame" aria-hidden />
           <span className="hero-city-line min-w-0 font-mono font-bold uppercase tracking-[0.1em] sm:tracking-[0.16em]">
-            Serving <span className="text-foreground">Columbus</span> · <span className="text-foreground">Cincinnati</span> · <span className="text-foreground">Dayton</span>
+            Serving <span className="text-foreground lg:text-primary-foreground">Columbus</span> · <span className="text-foreground lg:text-primary-foreground">Cincinnati</span> · <span className="text-foreground lg:text-primary-foreground">Dayton</span>
           </span>
         </div>
 
-        <p className="hero-copy mt-6 max-w-[38ch] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:leading-relaxed">
-          Trusted <span className="font-bold text-foreground">Columbus &amp; Central Ohio</span> homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
+        <p className="hero-copy mt-6 max-w-[38ch] leading-[1.75] text-foreground/80 sm:mt-4 sm:max-w-xl sm:leading-relaxed lg:text-primary-foreground/85">
+          Trusted <span className="font-bold text-foreground lg:text-primary-foreground">Columbus &amp; Central Ohio</span> homeowners' choice for chimney inspections, repairs, masonry, leak repairs, liners, caps, crowns, flashing, and fireplace services.
         </p>
 
         <div className="mt-8 flex flex-col items-start gap-4 sm:mt-6 sm:flex-row sm:flex-wrap sm:gap-3">
@@ -403,7 +416,7 @@ function Hero() {
           <a
             href="tel:6146835763"
             data-cta
-            className="inline-flex h-13 max-w-full items-center justify-center gap-2 border border-foreground/30 bg-background px-4 font-sans text-[14px] font-bold text-foreground transition hover:border-flame active:scale-95 min-[414px]:h-14 min-[414px]:px-5 min-[414px]:text-[15px] sm:px-5 sm:text-base"
+            className="inline-flex h-13 max-w-full items-center justify-center gap-2 border border-foreground/30 bg-background px-4 font-sans text-[14px] font-bold text-foreground transition hover:border-flame active:scale-95 min-[414px]:h-14 min-[414px]:px-5 min-[414px]:text-[15px] sm:px-5 sm:text-base lg:border-white/40 lg:bg-white/10 lg:text-primary-foreground"
           >
             <Phone className="h-4 w-4 shrink-0 text-flame" /> <span className="truncate">Call Now (614) 683-5763</span>
           </a>
@@ -422,7 +435,7 @@ function Hero() {
         </a>
 
         {/* Trust strip */}
-        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-8 sm:mt-8 sm:pt-6">
+        <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-8 sm:mt-8 sm:pt-6 lg:border-white/20">
           {[
             { icon: CheckCircle2, label: "CSIA-certified" },
             { icon: ShieldCheck, label: "Fully insured" },
@@ -431,7 +444,7 @@ function Hero() {
           ].map(({ icon: Icon, label }) => (
             <span
               key={label}
-              className="hero-trust-item inline-flex items-center gap-2 font-medium text-foreground/80"
+              className="hero-trust-item inline-flex items-center gap-2 font-medium text-foreground/80 lg:text-primary-foreground/85"
             >
               <Icon className="h-4 w-4 text-flame" />
               {label}
@@ -456,9 +469,6 @@ function RealTeamGallery() {
     { src: techFireplaceBurner.url, label: "Fireplace burner service", city: "Columbus, OH" },
     { src: techCrownWaterproof.url, label: "Crown waterproofing", city: "Dublin, OH" },
     { src: techRooftopLadder.url, label: "Rooftop chimney inspection", city: "Powell, OH" },
-    { src: techScaffold.url, label: "Scaffolded chimney rebuild", city: "Westerville, OH" },
-    { src: techLiner.url, label: "Stainless liner installation", city: "Dayton, OH" },
-    { src: inspectionRoofPhoto.url, label: "Liner installation", city: "Hilliard, OH" },
     { src: techChimneyCapInstall.url, label: "Fireplace tile & surround install", city: "Upper Arlington, OH" },
     { src: chimneyNightRebuild.url, label: "Late-night rebuild — finished clean", city: "Columbus, OH" },
   ];
@@ -479,7 +489,7 @@ function RealTeamGallery() {
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
           {items.map((it) => (
-            <figure key={it.src} className="group relative overflow-hidden rounded-none border border-border bg-primary aspect-square">
+            <figure key={it.src} className="group relative overflow-hidden rounded-none border border-border bg-primary aspect-[3/4]">
               <img
                 src={it.src}
                 alt={`${it.label} — ChimCrew technician in ${it.city}`}

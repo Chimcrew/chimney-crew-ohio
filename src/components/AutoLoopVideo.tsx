@@ -1,27 +1,17 @@
 import { Play, MapPin } from "lucide-react";
 import chimneySweepVideo from "@/assets/videos/chimney-sweep-action.mp4.asset.json";
-import cwTruck from "@/assets/crew/crew-truck-downtown.jpeg.asset.json";
-import cwCapRoof from "@/assets/crew/crew-cap-install-roof.jpeg.asset.json";
-import cwCrownMeasure from "@/assets/crew/crew-crown-measure.jpeg.asset.json";
 import cwWaterproof from "@/assets/crew/crew-chimney-waterproof.jpeg.asset.json";
-import cwBrickInspect from "@/assets/crew/crew-brick-inspect.jpeg.asset.json";
 import cwStoneTuck from "@/assets/crew/crew-stone-tuckpoint.jpeg.asset.json";
 import cwChaseFarm from "@/assets/crew/crew-chase-cover-farm.jpeg.asset.json";
 import cwCapBrickCrown from "@/assets/crew/crew-cap-brick-crown.jpeg.asset.json";
-import cwChaseRust from "@/assets/crew/crew-chase-rust-cap.jpeg.asset.json";
-import cwBlackCap from "@/assets/crew/crew-black-cap-install.jpeg.asset.json";
 
 const CREW_PHOTOS = [
-  { src: cwTruck.url, alt: "ChimCrew wrapped service truck in downtown Columbus, Ohio" },
-  { src: cwCapRoof.url, alt: "ChimCrew technician installing a stainless chimney cap on a brick chimney" },
-  { src: cwCrownMeasure.url, alt: "ChimCrew tech measuring a chimney crown before repair" },
+  { src: "/photos/crew-ladder-yellow.jpg", alt: "ChimCrew techs in yellow uniforms finishing a dual-cap brick chimney from a ladder" },
+  { src: "/photos/crew-john-flashseal.jpg", alt: "ChimCrew technician John sealing chimney flashing on a residential roof" },
   { src: cwWaterproof.url, alt: "ChimCrew crew member waterproofing a chimney and sealing flashing" },
-  { src: cwBrickInspect.url, alt: "ChimCrew technician inspecting exterior chimney brickwork" },
   { src: cwStoneTuck.url, alt: "ChimCrew mason tuckpointing a stone chimney" },
   { src: cwChaseFarm.url, alt: "ChimCrew tech fitting a new chase cover and cap on a country home" },
   { src: cwCapBrickCrown.url, alt: "ChimCrew technician setting a stainless cap on a brick chimney crown" },
-  { src: cwChaseRust.url, alt: "ChimCrew tech replacing a rusted chase cover and chimney cap" },
-  { src: cwBlackCap.url, alt: "ChimCrew technician installing a black chimney cap on a brick chimney" },
 ];
 
 export function AutoLoopVideo({ className = "" }: { className?: string }) {
@@ -79,7 +69,7 @@ export function AutoLoopVideoSection() {
             {CREW_PHOTOS.map((p) => (
               <div
                 key={p.src}
-                className="group relative aspect-square overflow-hidden rounded-lg border border-border bg-card"
+                className="group relative aspect-[3/4] overflow-hidden rounded-lg border border-border bg-card"
               >
                 <img
                   src={p.src}

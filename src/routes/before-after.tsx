@@ -4,18 +4,12 @@ import { PageHero } from "@/components/PageHero";
 import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset.json";
 import desktopHeroPhoto from "@/assets/hero/hero-desktop-team-chimney.png.asset.json";
 import gj1 from "@/assets/gallery-jobs/gj1.jpeg.asset.json";
-import gj2 from "@/assets/gallery-jobs/gj2.jpeg.asset.json";
-import gj3 from "@/assets/gallery-jobs/gj3.jpeg.asset.json";
 import gj4 from "@/assets/gallery-jobs/gj4.jpeg.asset.json";
-import gj5 from "@/assets/gallery-jobs/gj5.jpeg.asset.json";
 import gj6 from "@/assets/gallery-jobs/gj6.jpeg.asset.json";
 import gj7 from "@/assets/gallery-jobs/gj7.jpeg.asset.json";
 import gj8 from "@/assets/gallery-jobs/gj8.jpeg.asset.json";
 import gj9 from "@/assets/gallery-jobs/gj9.jpeg.asset.json";
 import gj10 from "@/assets/gallery-jobs/gj10.jpeg.asset.json";
-import nCap from "@/assets/gallery-new/new-cap-ladder.jpeg.asset.json";
-import nChase from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
-import nAlum from "@/assets/gallery-new/new-aluminum-cap.jpeg.asset.json";
 import nCrownSeal from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
 import nCopper from "@/assets/gallery-new/new-brick-copper-flash.jpeg.asset.json";
 import nCopperDetail from "@/assets/gallery-new/new-copper-flashing-detail.jpeg.asset.json";
@@ -27,12 +21,9 @@ import newBoomliftHouse from "@/assets/uploads/new-boomlift-house.jpeg.asset.jso
 import newBoomliftCapInstall from "@/assets/uploads/new-boomlift-cap-install.jpeg.asset.json";
 import newBoomliftInspect from "@/assets/uploads/new-boomlift-inspect.jpeg.asset.json";
 import newTechLadderPoint from "@/assets/uploads/new-tech-ladder-point.jpeg.asset.json";
-import newTechLadderBack from "@/assets/uploads/new-tech-ladder-back.jpeg.asset.json";
 import newTechFireplace from "@/assets/uploads/new-tech-fireplace.jpeg.asset.json";
 import u2CapMesh from "@/assets/uploads2/cap-install-brick-mesh.jpeg.asset.json";
-import u2CrownSide from "@/assets/uploads2/crown-parge-side-fresh.jpeg.asset.json";
 import u2CrownCloseup from "@/assets/uploads2/crown-parge-closeup.jpeg.asset.json";
-import u2CapDomed from "@/assets/uploads2/cap-domed-crown-flue.jpeg.asset.json";
 import u2CrownOverhead from "@/assets/uploads2/crown-parge-overhead.jpeg.asset.json";
 import u2CrownOverhead2 from "@/assets/uploads2/crown-parge-overhead-2.jpeg.asset.json";
 import u2BrickTall from "@/assets/uploads2/brick-chimney-tall-restored.jpeg.asset.json";
@@ -41,7 +32,6 @@ import u2BrickTuck from "@/assets/uploads2/brick-tuckpoint-double-crown.jpeg.ass
 import u2WhiteCrown from "@/assets/uploads2/brick-chimney-white-crown-cap.jpeg.asset.json";
 import u2CrownDamaged from "@/assets/uploads2/crown-damaged-open-before.jpeg.asset.json";
 import u2CrownSevere from "@/assets/uploads2/crown-severely-damaged.jpeg.asset.json";
-import u2CapsBrick from "@/assets/uploads2/caps-installed-brick.jpeg.asset.json";
 import u2CapRepairMesh from "@/assets/uploads2/cap-repair-worn-mesh.jpeg.asset.json";
 import u2CrownNewCaps from "@/assets/uploads2/crown-new-with-caps.jpeg.asset.json";
 import u2CrownDoubleCaps from "@/assets/uploads2/crown-new-double-caps.jpeg.asset.json";
@@ -50,10 +40,7 @@ import u2LinerFlue from "@/assets/uploads2/liner-inside-flue-clean.jpeg.asset.js
 import u2LinerSmoke from "@/assets/uploads2/liner-smoke-chamber-view.jpeg.asset.json";
 import u2FoundationParge from "@/assets/uploads2/foundation-parge-basement.jpeg.asset.json";
 import u4CapBlack from "@/assets/uploads4/cap-black-fresh-crown.jpeg.asset.json";
-import u4CrownOpen from "@/assets/uploads4/crown-fresh-open-flue.jpeg.asset.json";
 import u4Tuck from "@/assets/uploads4/tech-tuckpointing-brick.jpeg.asset.json";
-import u4CrewShirts from "@/assets/uploads4/crew-branded-shirts-truck.jpeg.asset.json";
-import u4CrewNight from "@/assets/uploads4/crew-night-truck-gear.jpeg.asset.json";
 import u4LinerFarm from "@/assets/uploads4/liner-stainless-farm-view.jpeg.asset.json";
 
 export const Route = createFileRoute("/before-after")({
@@ -75,62 +62,53 @@ type GalleryItem = {
   title: string;
   caption: string;
   city: string;
-  size: "feature" | "tall" | "wide" | "square";
 };
 
 const GALLERY: GalleryItem[] = [
-  { src: u4CapBlack.url, title: "Black Cap on Fresh Crown", caption: "New stainless cap set on a hand-troweled crown seal", city: "Columbus, OH", size: "feature" },
-  { src: u4Tuck.url, title: "Tuckpointing In Progress", caption: "Grinding out and re-pointing failed mortar joints", city: "Dublin, OH", size: "tall" },
-  { src: u4LinerFarm.url, title: "Stainless Liner — Final Check", caption: "Inspecting a freshly installed 316Ti liner", city: "Delaware, OH", size: "square" },
-  { src: u4CrownOpen.url, title: "Fresh Crown, Open Flue", caption: "Crown parged and sealed before cap install", city: "Westerville, OH", size: "wide" },
-  { src: u4CrewShirts.url, title: "ChimCrew Loading Out", caption: "Gearing up for a same-day service run", city: "Columbus, OH", size: "square" },
-  { src: u4CrewNight.url, title: "Night Prep — Ready to Roll", caption: "Trucks loaded for a morning of chimney work", city: "Columbus, OH", size: "wide" },
-  { src: u2LinerMeasure.url, title: "Stainless Liner — Sized & Sealed", caption: "New 316Ti liner measured and set on the flue collar", city: "Dublin, OH", size: "tall" },
-  { src: u2LinerSmoke.url, title: "Smoke Chamber Liner Transition", caption: "Clean liner tie-in inside a rebuilt smoke chamber", city: "Bexley, OH", size: "square" },
-  { src: u2LinerFlue.url, title: "Flue Interior — Post Repair", caption: "Smooth, sealed flue interior after liner work", city: "Upper Arlington, OH", size: "square" },
-  { src: u2CrownSevere.url, title: "Crown Replacement — Before", caption: "Severely spalled crown ready for full rebuild", city: "Hilliard, OH", size: "tall" },
-  { src: u2CrownDamaged.url, title: "Crown Rebuild — Opened Up", caption: "Old crown removed, brick prepped for fresh cap", city: "Grove City, OH", size: "wide" },
-  { src: u2CapRepairMesh.url, title: "Cap Repair — Worn Mesh Out", caption: "Failed mesh screen removed for a new stainless cap", city: "Powell, OH", size: "square" },
-  { src: u2CapsBrick.url, title: "Dual Stainless Caps + Crown", caption: "Two new caps set on a freshly parged brick crown", city: "Westerville, OH", size: "wide" },
-  { src: u2CrownNewCaps.url, title: "Fresh Crown + Twin Caps", caption: "Crown rebuilt with two matching stainless caps", city: "Worthington, OH", size: "tall" },
-  { src: u2CrownDoubleCaps.url, title: "Crown Rebuild + Double Caps", caption: "Finished crown with dual caps on brick stack", city: "Clintonville, OH", size: "square" },
-  { src: u2FoundationParge.url, title: "Foundation Parge & Seal", caption: "Basement foundation wall parged and sealed", city: "German Village, OH", size: "square" },
-  { src: u2CapMesh.url, title: "Stainless Cap Install on Brick", caption: "Hand-set mesh cap on a freshly parged crown", city: "Dublin, OH", size: "tall" },
-  { src: u2WhiteCrown.url, title: "Crown Replacement + New Cap", caption: "White crown wash with new stainless cap on metal roof", city: "Powell, OH", size: "square" },
-  { src: u2BrickCap.url, title: "Full Chimney Restoration", caption: "Tuckpointed brick with new cap — top to bottom", city: "Upper Arlington, OH", size: "feature" },
-  { src: u2CrownSide.url, title: "Fresh Crown Parge", caption: "Rebuilt crown sealed against Ohio freeze-thaw", city: "Bexley, OH", size: "square" },
-  { src: u2CrownCloseup.url, title: "Crown Wash Close-Up", caption: "Hand-troweled crown seal, no cracks", city: "Westerville, OH", size: "square" },
-  { src: u2CapDomed.url, title: "Cap + Domed Crown", caption: "New cap set over a fresh domed crown", city: "Grove City, OH", size: "wide" },
-  { src: u2BrickTall.url, title: "Tall Brick Chimney Repair", caption: "Full-height brick restoration on a two-story home", city: "Hilliard, OH", size: "tall" },
-  { src: u2BrickTuck.url, title: "Brick + Double Crown Tuckpoint", caption: "Restored mortar joints with fresh dual crowns", city: "Clintonville, OH", size: "square" },
-  { src: u2CrownOverhead.url, title: "Crown Parge — Side View", caption: "Overhead of a freshly sealed side-mount crown", city: "New Albany, OH", size: "square" },
-  { src: u2CrownOverhead2.url, title: "Crown Rebuild Overhead", caption: "Second angle on a completed crown rebuild", city: "German Village, OH", size: "wide" },
-  { src: newChimneyRestored.url, title: "Full Crown Seal + Stainless Cap", caption: "Fresh crown, cap and flashing rebuild", city: "Columbus, OH", size: "feature" },
-  { src: newCapInstallRooftop.url, title: "Stainless Chimney Cap Install", caption: "New cap sealed onto brick chimney", city: "Westerville, OH", size: "tall" },
-  { src: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", caption: "Parged crown with two stainless caps", city: "Worthington, OH", size: "square" },
-  { src: newCrownCapsView.url, title: "Crown Rebuild Complete", caption: "Aerial view of finished crown work", city: "Grove City, OH", size: "wide" },
-  { src: newBoomliftHouse.url, title: "Boom Lift Chimney Access", caption: "Reaching a tricky 3-story chimney safely", city: "Bexley, OH", size: "tall" },
-  { src: newBoomliftCapInstall.url, title: "Cap Install From Lift", caption: "Setting a new cap on a steep roof", city: "Upper Arlington, OH", size: "square" },
-  { src: newBoomliftInspect.url, title: "High-Access Inspection", caption: "Camera inspection from the boom", city: "Dublin, OH", size: "square" },
-  { src: newTechLadderPoint.url, title: "On-Site Inspection", caption: "Diagnosing an aged brick chimney", city: "Hilliard, OH", size: "tall" },
-  { src: newTechLadderBack.url, title: "Roof Access", caption: "Ladder up to a brick chimney inspection", city: "Clintonville, OH", size: "square" },
-  { src: newTechFireplace.url, title: "Fireplace Service", caption: "Interior fireplace inspection & sweep", city: "German Village, OH", size: "wide" },
-  { src: gj1.url, title: "Stone Fireplace Install", caption: "Full-height stacked-stone surround", city: "Columbus, OH", size: "feature" },
-  { src: gj4.url, title: "Fireplace Surround", caption: "Clean stonework and finished trim", city: "Dublin, OH", size: "tall" },
-  { src: gj2.url, title: "Fireplace Prep", caption: "Opened wall, clean rebuild layout", city: "Worthington, OH", size: "square" },
-  { src: gj5.url, title: "Painted Brick Fireplace", caption: "Deep navy finish with crisp edges", city: "Bexley, OH", size: "wide" },
-  { src: gj3.url, title: "Firebox Rebuild", caption: "Brickwork prepared for a safe firebox", city: "Upper Arlington, OH", size: "square" },
-  { src: gj6.url, title: "Chimney Teardown", caption: "Controlled masonry removal", city: "Hilliard, OH", size: "tall" },
-  { src: gj7.url, title: "Stone Chimney Build", caption: "Scaffolded exterior chimney work", city: "Powell, OH", size: "feature" },
-  { src: gj8.url, title: "Arched Fireplace", caption: "Limewash finish with custom brick arch", city: "German Village, OH", size: "tall" },
-  { src: gj9.url, title: "Custom Firebox", caption: "Hand-laid arched brickwork", city: "Clintonville, OH", size: "square" },
-  { src: gj10.url, title: "Two-Story Chimney", caption: "Limewashed brick chimney finish", city: "New Albany, OH", size: "wide" },
-  { src: nCap.url, title: "Cap + Mesh Arrestor", caption: "New stainless cap installed cleanly", city: "Powell, OH", size: "tall" },
-  { src: nChase.url, title: "Chase Cover Install", caption: "Fresh chase cover with round cap", city: "Dublin, OH", size: "square" },
-  { src: nAlum.url, title: "Aluminum Chase Cover", caption: "Two-tone chimney with turbine cap", city: "Westerville, OH", size: "wide" },
-  { src: nCrownSeal.url, title: "Crown Seal + Flashing", caption: "Protected crown and sealed roofline", city: "Hilliard, OH", size: "tall" },
-  { src: nCopper.url, title: "Copper Flashing", caption: "Fresh copper flashing at brick stack", city: "Upper Arlington, OH", size: "square" },
-  { src: nCopperDetail.url, title: "Counter Flashing Detail", caption: "Detailed flashing work at chimney base", city: "Clintonville, OH", size: "wide" },
+  { src: "/photos/job-tall-brick-chimney.jpg", title: "Tall Brick Chimney Rebuild", caption: "Full-height brick chimney with a new stainless cap", city: "Columbus, OH" },
+  { src: "/photos/job-triple-flue-crown.jpg", title: "Triple Flue Crown Coat", caption: "Fresh white crown on a three-flue brick chimney", city: "Columbus, OH" },
+  { src: "/photos/crew-ladder-yellow.jpg", title: "Dual Cap Crown Work", caption: "ChimCrew techs finishing a dual-cap crown from the roof", city: "Columbus, OH" },
+  { src: "/photos/crew-john-flashseal.jpg", title: "Chimney FlashSeal", caption: "Sealing the chimney-to-roof joint on a steep pitch", city: "Columbus, OH" },
+  { src: "/photos/crew-tuckpoint-hoodie.jpg", title: "Rooftop Tuckpointing", caption: "Repairing brick joints below dual stainless caps", city: "Columbus, OH" },
+  { src: u4CapBlack.url, title: "Black Cap on Fresh Crown", caption: "New stainless cap set on a hand-troweled crown seal", city: "Columbus, OH" },
+  { src: u4Tuck.url, title: "Tuckpointing In Progress", caption: "Grinding out and re-pointing failed mortar joints", city: "Dublin, OH" },
+  { src: u4LinerFarm.url, title: "Stainless Liner — Final Check", caption: "Inspecting a freshly installed 316Ti liner", city: "Delaware, OH" },
+  { src: u2LinerMeasure.url, title: "Stainless Liner — Sized & Sealed", caption: "New 316Ti liner measured and set on the flue collar", city: "Dublin, OH" },
+  { src: u2LinerSmoke.url, title: "Smoke Chamber Liner Transition", caption: "Clean liner tie-in inside a rebuilt smoke chamber", city: "Bexley, OH" },
+  { src: u2LinerFlue.url, title: "Flue Interior — Post Repair", caption: "Smooth, sealed flue interior after liner work", city: "Upper Arlington, OH" },
+  { src: u2CrownSevere.url, title: "Crown Replacement — Before", caption: "Severely spalled crown ready for full rebuild", city: "Hilliard, OH" },
+  { src: u2CrownDamaged.url, title: "Crown Rebuild — Opened Up", caption: "Old crown removed, brick prepped for fresh cap", city: "Grove City, OH" },
+  { src: u2CapRepairMesh.url, title: "Cap Repair — Worn Mesh Out", caption: "Failed mesh screen removed for a new stainless cap", city: "Powell, OH" },
+  { src: u2CrownNewCaps.url, title: "Fresh Crown + Twin Caps", caption: "Crown rebuilt with two matching stainless caps", city: "Worthington, OH" },
+  { src: u2CrownDoubleCaps.url, title: "Crown Rebuild + Double Caps", caption: "Finished crown with dual caps on brick stack", city: "Clintonville, OH" },
+  { src: u2FoundationParge.url, title: "Foundation Parge & Seal", caption: "Basement foundation wall parged and sealed", city: "German Village, OH" },
+  { src: u2CapMesh.url, title: "Stainless Cap Install on Brick", caption: "Hand-set mesh cap on a freshly parged crown", city: "Dublin, OH" },
+  { src: u2WhiteCrown.url, title: "Crown Replacement + New Cap", caption: "White crown wash with new stainless cap on metal roof", city: "Powell, OH" },
+  { src: u2BrickCap.url, title: "Full Chimney Restoration", caption: "Tuckpointed brick with new cap — top to bottom", city: "Upper Arlington, OH" },
+  { src: u2CrownCloseup.url, title: "Crown Wash Close-Up", caption: "Hand-troweled crown seal, no cracks", city: "Westerville, OH" },
+  { src: u2BrickTall.url, title: "Tall Brick Chimney Repair", caption: "Full-height brick restoration on a two-story home", city: "Hilliard, OH" },
+  { src: u2BrickTuck.url, title: "Brick + Double Crown Tuckpoint", caption: "Restored mortar joints with fresh dual crowns", city: "Clintonville, OH" },
+  { src: u2CrownOverhead.url, title: "Crown Parge — Side View", caption: "Overhead of a freshly sealed side-mount crown", city: "New Albany, OH" },
+  { src: u2CrownOverhead2.url, title: "Crown Rebuild Overhead", caption: "Second angle on a completed crown rebuild", city: "German Village, OH" },
+  { src: newChimneyRestored.url, title: "Full Crown Seal + Stainless Cap", caption: "Fresh crown, cap and flashing rebuild", city: "Columbus, OH" },
+  { src: newCapInstallRooftop.url, title: "Stainless Chimney Cap Install", caption: "New cap sealed onto brick chimney", city: "Westerville, OH" },
+  { src: newCrownFreshCaps.url, title: "Fresh Crown + Dual Caps", caption: "Parged crown with two stainless caps", city: "Worthington, OH" },
+  { src: newCrownCapsView.url, title: "Crown Rebuild Complete", caption: "Aerial view of finished crown work", city: "Grove City, OH" },
+  { src: newBoomliftHouse.url, title: "Boom Lift Chimney Access", caption: "Reaching a tricky 3-story chimney safely", city: "Bexley, OH" },
+  { src: newBoomliftCapInstall.url, title: "Cap Install From Lift", caption: "Setting a new cap on a steep roof", city: "Upper Arlington, OH" },
+  { src: newBoomliftInspect.url, title: "High-Access Inspection", caption: "Camera inspection from the boom", city: "Dublin, OH" },
+  { src: newTechLadderPoint.url, title: "On-Site Inspection", caption: "Diagnosing an aged brick chimney", city: "Hilliard, OH" },
+  { src: newTechFireplace.url, title: "Fireplace Service", caption: "Interior fireplace inspection & sweep", city: "German Village, OH" },
+  { src: gj1.url, title: "Stone Fireplace Install", caption: "Full-height stacked-stone surround", city: "Columbus, OH" },
+  { src: gj4.url, title: "Fireplace Surround", caption: "Clean stonework and finished trim", city: "Dublin, OH" },
+  { src: gj6.url, title: "Chimney Teardown", caption: "Controlled masonry removal", city: "Hilliard, OH" },
+  { src: gj7.url, title: "Stone Chimney Build", caption: "Scaffolded exterior chimney work", city: "Powell, OH" },
+  { src: gj8.url, title: "Arched Fireplace", caption: "Limewash finish with custom brick arch", city: "German Village, OH" },
+  { src: gj9.url, title: "Custom Firebox", caption: "Hand-laid arched brickwork", city: "Clintonville, OH" },
+  { src: gj10.url, title: "Two-Story Chimney", caption: "Limewashed brick chimney finish", city: "New Albany, OH" },
+  { src: nCrownSeal.url, title: "Crown Seal + Flashing", caption: "Protected crown and sealed roofline", city: "Hilliard, OH" },
+  { src: nCopper.url, title: "Copper Flashing", caption: "Fresh copper flashing at brick stack", city: "Upper Arlington, OH" },
+  { src: nCopperDetail.url, title: "Counter Flashing Detail", caption: "Detailed flashing work at chimney base", city: "Clintonville, OH" },
 ];
 
 const UNIQUE_GALLERY = GALLERY.filter(
@@ -164,7 +142,7 @@ function BeforeAfterPage() {
             </div>
           </div>
 
-          <div className="relative mt-10 grid auto-rows-[190px] gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="relative mt-10 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 md:gap-4">
             {UNIQUE_GALLERY.map((item, index) => (
               <ProjectTile key={item.src} item={item} index={index} />
             ))}
@@ -194,17 +172,8 @@ function BeforeAfterPage() {
 }
 
 function ProjectTile({ item, index }: { item: GalleryItem; index: number }) {
-  const sizeClass =
-    item.size === "feature"
-      ? "sm:col-span-2 sm:row-span-2"
-      : item.size === "tall"
-        ? "sm:row-span-2"
-        : item.size === "wide"
-          ? "sm:col-span-2"
-          : "";
-
   return (
-    <figure className={`group relative overflow-hidden border border-border bg-primary shadow-[0_18px_50px_-26px_oklch(0_0_0/0.45)] ${sizeClass}`}>
+    <figure className="group relative aspect-[3/4] overflow-hidden border border-border bg-primary shadow-[0_18px_50px_-26px_oklch(0_0_0/0.45)]">
       <img
         src={item.src}
         alt={`${item.title} by ChimCrew in ${item.city}`}

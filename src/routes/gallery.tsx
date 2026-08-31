@@ -20,9 +20,6 @@ import up8 from "@/assets/uploads/job_8.jpeg.asset.json";
 import up3 from "@/assets/uploads/job_3.jpeg.asset.json";
 import jobA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
-import nCap from "@/assets/gallery-new/new-cap-ladder.jpeg.asset.json";
-import nChase from "@/assets/gallery-new/new-chase-cover-mesh.jpeg.asset.json";
-import nAlum from "@/assets/gallery-new/new-aluminum-cap.jpeg.asset.json";
 import nChaseSide from "@/assets/gallery-new/new-chase-side.jpeg.asset.json";
 import nCrownSeal from "@/assets/gallery-new/new-brick-crown-seal.jpeg.asset.json";
 import nFireplace from "@/assets/gallery-new/new-fireplace-interior.jpeg.asset.json";
@@ -61,33 +58,35 @@ type Photo = {
 };
 
 const PHOTOS: Photo[] = [
+  { src: "/photos/job-tall-brick-chimney.jpg", alt: "Tall multi-tone brick chimney with a new stainless cap", title: "Tall Brick Chimney Rebuild", city: "Columbus, OH", tag: "Cap", size: "tall" },
+  { src: "/photos/job-triple-flue-crown.jpg", alt: "Three-flue brick chimney with a freshly coated white crown", title: "Triple Flue Crown Coat", city: "Columbus, OH", tag: "Crown", size: "tall" },
+  { src: "/photos/crew-ladder-yellow.jpg", alt: "ChimCrew techs in yellow uniforms working a dual-cap brick chimney", title: "Dual Cap Crown Work", city: "Columbus, OH", tag: "Crew", size: "tall" },
+  { src: "/photos/crew-john-flashseal.jpg", alt: "ChimCrew technician sealing chimney flashing on a residential roof", title: "Chimney FlashSeal", city: "Columbus, OH", tag: "Waterproof", size: "tall" },
+  { src: "/photos/crew-tuckpoint-hoodie.jpg", alt: "ChimCrew technician tuckpointing a red brick chimney from the rooftop", title: "Rooftop Tuckpointing", city: "Columbus, OH", tag: "Crew", size: "tall" },
   { src: jobA.url, alt: "Brick chimney with new stainless caps and freshly sealed crown", title: "New Caps + Crown Seal", city: "Columbus, OH", tag: "Cap", size: "tall" },
-  { src: jobB.url, alt: "Brick chimney crown rebuild in progress on a metal roof", title: "Crown Rebuild In Progress", city: "Columbus, OH", tag: "Crown", size: "square" },
-  { src: nCap.url, alt: "New stainless chimney cap installed with mesh spark arrestor", title: "New Cap + Mesh Arrestor", city: "Powell, OH", tag: "Cap", size: "tall" },
-  { src: nChase.url, alt: "New chase cover with round mesh cap on a sided chimney", title: "Chase Cover + Round Cap", city: "Dublin, OH", tag: "Cap", size: "square" },
-  { src: nAlum.url, alt: "Aluminum chase cover with turbine cap on a two-tone chimney", title: "Aluminum Chase + Turbine Cap", city: "Westerville, OH", tag: "Cap", size: "wide" },
-  { src: nChaseSide.url, alt: "Side profile of a new stainless chase cover install", title: "Chase Cover — Side Profile", city: "Grove City, OH", tag: "Cap", size: "square" },
+  { src: jobB.url, alt: "Brick chimney crown rebuild in progress on a metal roof", title: "Crown Rebuild In Progress", city: "Columbus, OH", tag: "Crown", size: "tall" },
+  { src: nChaseSide.url, alt: "Side profile of a new stainless chase cover install", title: "Chase Cover — Side Profile", city: "Grove City, OH", tag: "Cap", size: "tall" },
   { src: nCrownSeal.url, alt: "Fresh crown seal on a red brick chimney with flashing", title: "Crown Seal + Flashing", city: "Hilliard, OH", tag: "Crown", size: "tall" },
-  { src: nFireplace.url, alt: "Wood-burning fireplace insert cleaned and serviced", title: "Fireplace Insert Service", city: "Columbus, OH", tag: "Crew", size: "square" },
-  { src: nMeshCap.url, alt: "Close-up of installed mesh chimney cap on a brick stack", title: "Mesh Cap — Close-Up", city: "Bexley, OH", tag: "Cap", size: "square" },
+  { src: nFireplace.url, alt: "Wood-burning fireplace insert cleaned and serviced", title: "Fireplace Insert Service", city: "Columbus, OH", tag: "Crew", size: "tall" },
+  { src: nMeshCap.url, alt: "Close-up of installed mesh chimney cap on a brick stack", title: "Mesh Cap — Close-Up", city: "Bexley, OH", tag: "Cap", size: "tall" },
   { src: nCopper.url, alt: "Brick chimney with new copper flashing installed", title: "New Copper Flashing", city: "Upper Arlington, OH", tag: "Tuckpointing", size: "tall" },
-  { src: nCopperDetail.url, alt: "Detailed copper step and counter flashing at chimney base", title: "Copper Step + Counter Flashing", city: "Clintonville, OH", tag: "Tuckpointing", size: "square" },
+  { src: nCopperDetail.url, alt: "Detailed copper step and counter flashing at chimney base", title: "Copper Step + Counter Flashing", city: "Clintonville, OH", tag: "Tuckpointing", size: "tall" },
   { src: up5.url, alt: "Custom stainless chase cover installed on a sided chimney", title: "Custom Chase Cover Install", city: "Westerville, OH", tag: "Cap", size: "tall" },
-  { src: up4.url, alt: "Fresh stainless steel chase cover replacement", title: "New Stainless Chase Cover", city: "Hilliard, OH", tag: "Cap", size: "square" },
+  { src: up4.url, alt: "Fresh stainless steel chase cover replacement", title: "New Stainless Chase Cover", city: "Hilliard, OH", tag: "Cap", size: "tall" },
   { src: up8.url, alt: "Brick chimney after tuckpointing with new stainless cap", title: "Tuckpoint + Cap — Finished", city: "Dublin, OH", tag: "Tuckpointing", size: "tall" },
-  { src: up6.url, alt: "Step flashing replacement on a brick chimney", title: "Step Flashing Replacement", city: "Upper Arlington, OH", tag: "Crown", size: "wide" },
-  { src: up1.url, alt: "Crown sealed and new black mesh cap installed on a brick chimney", title: "Crown Seal + Black Mesh Cap", city: "Powell, OH", tag: "Crown", size: "square" },
-  { src: up0.url, alt: "Cracked chimney crown with exposed terracotta flue before repair", title: "Cracked Crown — Before", city: "Powell, OH", tag: "Crown", size: "square" },
+  { src: up6.url, alt: "Step flashing replacement on a brick chimney", title: "Step Flashing Replacement", city: "Upper Arlington, OH", tag: "Crown", size: "tall" },
+  { src: up1.url, alt: "Crown sealed and new black mesh cap installed on a brick chimney", title: "Crown Seal + Black Mesh Cap", city: "Powell, OH", tag: "Crown", size: "tall" },
+  { src: up0.url, alt: "Cracked chimney crown with exposed terracotta flue before repair", title: "Cracked Crown — Before", city: "Powell, OH", tag: "Crown", size: "tall" },
   { src: up3.url, alt: "Freshly waterproofed and coated chimney with new cap", title: "Waterproof Recoat", city: "Columbus, OH", tag: "Waterproof", size: "tall" },
   { src: p01.url, alt: "Dual crown rebuild with stainless caps on a brick chimney", title: "Dual Crown Rebuild + Caps", city: "Columbus, OH", tag: "Crown", size: "tall" },
-  { src: p02.url, alt: "Tuckpointing restoration finished on chimney masonry", title: "Full Tuckpointing Restoration", city: "Dublin, OH", tag: "Tuckpointing", size: "square" },
-  { src: p03.url, alt: "Stainless steel chimney liner installed from the roof", title: "Stainless Liner Install", city: "Cincinnati, OH", tag: "Liner", size: "wide" },
-  { src: p04.url, alt: "Mesh chimney cap installation in progress", title: "Mesh Cap + Crown Repair", city: "Worthington, OH", tag: "Cap", size: "square" },
+  { src: p02.url, alt: "Tuckpointing restoration finished on chimney masonry", title: "Full Tuckpointing Restoration", city: "Dublin, OH", tag: "Tuckpointing", size: "tall" },
+  { src: p03.url, alt: "Stainless steel chimney liner installed from the roof", title: "Stainless Liner Install", city: "Cincinnati, OH", tag: "Liner", size: "tall" },
+  { src: p04.url, alt: "Mesh chimney cap installation in progress", title: "Mesh Cap + Crown Repair", city: "Worthington, OH", tag: "Cap", size: "tall" },
   { src: p05.url, alt: "Rebuilt chimney crown with round stainless cap", title: "Crown Rebuild + Round Cap", city: "Dayton, OH", tag: "Crown", size: "tall" },
-  { src: p06.url, alt: "ChimCrew technician on site at a residential job", title: "Crew On Site", city: "Hilliard, OH", tag: "Crew", size: "wide" },
-  { src: p07.url, alt: "Flue interior before sweep showing creosote build-up", title: "Flue Before Sweep", city: "Westerville, OH", tag: "Liner", size: "square" },
+  { src: p06.url, alt: "ChimCrew technician on site at a residential job", title: "Crew On Site", city: "Hilliard, OH", tag: "Crew", size: "tall" },
+  { src: p07.url, alt: "Flue interior before sweep showing creosote build-up", title: "Flue Before Sweep", city: "Westerville, OH", tag: "Liner", size: "tall" },
   { src: p08.url, alt: "Finished stainless chimney cap installed cleanly", title: "Cap Install — Finished", city: "Powell, OH", tag: "Cap", size: "tall" },
-  { src: p09.url, alt: "Cracked chimney crown before rebuild", title: "Crown Before Rebuild", city: "Grove City, OH", tag: "Crown", size: "square" },
+  { src: p09.url, alt: "Cracked chimney crown before rebuild", title: "Crown Before Rebuild", city: "Grove City, OH", tag: "Crown", size: "tall" },
 ];
 
 const FILTERS = ["All", "Crown", "Liner", "Tuckpointing", "Cap", "Waterproof", "Crew"] as const;
