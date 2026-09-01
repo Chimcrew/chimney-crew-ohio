@@ -23,8 +23,11 @@ const Broom: LucideIcon = (({ className, ...props }: { className?: string }) => 
     <path d="M16 19l0 2" />
   </svg>
 )) as unknown as LucideIcon;
-import logoHeaderAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
-const logoHeader = logoHeaderAsset.url;
+// Optimized WebP derivatives of the logo. Transparent,
+// visually identical at the 48-80px it renders at, ~1.6 MB lighter than the PNG.
+const logoHeader = "/optimized/chimcrew-logo-384.webp";
+const logoHeaderSrcSet =
+  "/optimized/chimcrew-logo-192.webp 192w, /optimized/chimcrew-logo-384.webp 384w";
 import { openScheduleDialog } from "@/components/ScheduleWidget";
 import { FEATURED_SERVICE_AREAS } from "@/data/service-area-featured";
 
@@ -242,6 +245,8 @@ export function SiteHeader() {
           >
             <img
               src={logoHeader}
+              srcSet={logoHeaderSrcSet}
+              sizes="(min-width: 768px) 81px, 49px"
               alt="ChimCrew — Chimney Repair & Inspection"
               className="relative z-40 h-12 w-auto max-w-none origin-left object-contain transition-transform duration-300 ease-out will-change-transform md:-mb-2 md:h-20 group-hover:-translate-y-0.5 group-hover:scale-[1.04]"
             />

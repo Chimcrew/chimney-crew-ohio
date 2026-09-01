@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { Play, MapPin } from "lucide-react";
 import chimneySweepVideo from "@/assets/videos/chimney-sweep-action.mp4.asset.json";
 import cwWaterproof from "@/assets/crew/crew-chimney-waterproof.jpeg.asset.json";
@@ -15,18 +16,51 @@ const CREW_PHOTOS = [
 ];
 
 export function AutoLoopVideo({ className = "" }: { className?: string }) {
+  const ref = useRef<HTMLVideoElement | null>(null);
+  // The clip is ~3 MB and lives well below the fold. Hold back the `src` until
+  // the element is approaching the viewport, then let it autoplay as before.
+  const [near, setNear] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || near) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setNear(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setNear(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [near]);
+
+  // Autoplay is best-effort: a rejected play() promise (e.g. Low Power Mode)
+  // must not surface as an unhandled rejection.
+  useEffect(() => {
+    if (!near) return;
+    ref.current?.play().catch(() => {});
+  }, [near]);
+
   return (
     <video
+      ref={ref}
       className={className}
-      src={chimneySweepVideo.url}
-      autoPlay
+      autoPlay={near}
       loop
       muted
       playsInline
-      preload="auto"
+      preload="metadata"
       controls={false}
       disablePictureInPicture
       aria-hidden="true"
+      {...(near ? { src: chimneySweepVideo.url } : {})}
     />
   );
 }

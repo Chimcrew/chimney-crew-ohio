@@ -1,6 +1,9 @@
 import { useRef, useState, useEffect } from "react";
 import { Instagram, ChevronLeft, ChevronRight, X, Heart, MessageCircle } from "lucide-react";
-import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
+// Optimized WebP derivatives of the logo.
+const logoSmall = "/optimized/chimcrew-logo-192.webp";
+const logoLarge = "/optimized/chimcrew-logo-384.webp";
+const logoSrcSet = `${logoSmall} 192w, ${logoLarge} 384w`;
 import p1 from "@/assets/projects/project-01-double-crown.jpg.asset.json";
 import p2 from "@/assets/projects/project-04-cap-install.jpg.asset.json";
 import p3 from "@/assets/projects/project-06-tech-onsite.jpg.asset.json";
@@ -121,7 +124,13 @@ export function InstagramFollow() {
             style={{ background: "linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)" }}
           >
             <div className="grid h-full w-full place-items-center rounded-full bg-neutral-950 p-[3px]">
-              <img src={logoAsset.url} alt="ChimCrew" className="h-full w-full rounded-full object-cover" />
+              <img
+                src={logoLarge}
+                srcSet={logoSrcSet}
+                sizes="(min-width: 768px) 69px, 53px"
+                alt="ChimCrew"
+                className="h-full w-full rounded-full object-cover"
+              />
             </div>
           </div>
           <div className="flex-1 min-w-0">
@@ -272,7 +281,7 @@ export function InstagramFollow() {
             </div>
             {/* Header */}
             <div className="absolute left-3 right-3 top-6 z-10 flex items-center gap-2 pt-2">
-              <img src={logoAsset.url} alt="" className="h-7 w-7 rounded-full border border-white/40 object-cover" />
+              <img src={logoSmall} alt="" className="h-7 w-7 rounded-full border border-white/40 object-cover" />
               <span className="text-sm font-semibold text-white">@chim_crew</span>
               <span className="text-xs text-white/70">· {highlights[open].title}</span>
             </div>

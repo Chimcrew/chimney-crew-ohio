@@ -1,7 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
-import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
-const logo = logoAsset.url;
+// Optimized WebP derivatives of the logo.
+const logo = "/optimized/chimcrew-logo-384.webp";
+const logoSrcSet =
+  "/optimized/chimcrew-logo-192.webp 192w, /optimized/chimcrew-logo-384.webp 384w";
 import { SERVICES } from "@/data/services";
 import { SERVICE_CITIES } from "@/components/ServiceAreaSeo";
 export function SiteFooter() {
@@ -28,6 +30,7 @@ export function SiteFooter() {
           <div className="relative aspect-[16/6] w-full overflow-hidden border-2 border-border">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d932374.8144472745!2d-83.76311976073052!3d39.761603089597116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x208a8b9e2ddcc519%3A0x17b40b3804b5c5b2!2sChimcrew%20-%20Chimney%20Sweep%20%26%20Repair!5e1!3m2!1sen!2sae!4v1787099033835!5m2!1sen!2sae"
+              title="Google Maps location of ChimCrew — Chimney Sweep and Repair, 220 Vine Street, Columbus, Ohio"
               width="600"
               height="450"
               className="absolute inset-0 h-full w-full"
@@ -49,6 +52,8 @@ export function SiteFooter() {
             >
               <img
                 src={logo}
+                srcSet={logoSrcSet}
+                sizes="(min-width: 640px) 97px, 81px"
                 alt="ChimCrew chimney sweep and repair"
                 className="h-20 w-auto sm:h-24"
               />

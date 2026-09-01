@@ -30,6 +30,21 @@ import { ReviewLinkGeneratorWidget } from "@/components/ReviewLinkGeneratorWidge
 
 const logo = logoAsset.url;
 
+/**
+ * Mobile hero (the LCP element under the lg breakpoint). Optimized WebP
+ * derivatives of chimcrew-team-hero.png.
+ *
+ * No hand-written <link rel="preload"> here: React emits one automatically for
+ * this <img> (eager + fetchPriority="high") with the identical imagesrcset /
+ * imagesizes, and places it near the top of <head>. A second preload tag would
+ * resolve to the same candidate and buy nothing.
+ */
+const HERO_MOBILE_SIZES = "100vw";
+const HERO_MOBILE_SRCSET = [640, 800, 1024, 1280]
+  .map((w) => `/optimized/chimcrew-team-hero-${w}.webp ${w}w`)
+  .join(", ");
+const HERO_MOBILE_SRC = "/optimized/chimcrew-team-hero-1024.webp";
+
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import projectHero from "@/assets/projects/project-01-double-crown.jpg.asset.json";
 import projectTuck from "@/assets/projects/project-02-tuckpointing-after.jpg.asset.json";
@@ -40,7 +55,6 @@ import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json"
 import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
-import teamHeroPhoto from "@/assets/team/chimcrew-team-hero.png.asset.json";
 import teamTruckPhoto from "@/assets/team/chimcrew-team-truck.png.asset.json";
 import { ChimneyRestorationProcess } from "@/components/ChimneyRestorationProcess";
 import { RecentChimcrewJobs } from "@/components/RecentChimcrewJobs";
@@ -94,7 +108,6 @@ export const Route = createFileRoute("/")({
     ],
     links: [
       { rel: "canonical", href: "https://chimcrew.com/" },
-      { rel: "preload", as: "image", href: projectHero.url, fetchpriority: "high" },
     ],
     scripts: [
       {
@@ -348,7 +361,9 @@ function Hero() {
       <div className="lg:hidden">
         <div className="relative overflow-hidden rounded-b-2xl bg-card shadow-[0_20px_60px_-20px_oklch(0_0_0/0.25)]">
           <img
-            src={teamHeroPhoto.url}
+            src={HERO_MOBILE_SRC}
+            srcSet={HERO_MOBILE_SRCSET}
+            sizes={HERO_MOBILE_SIZES}
             alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
             className="block h-44 w-full object-cover sm:h-56"
             fetchPriority="high"
