@@ -1,6 +1,11 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+/* Self-hosted Google Fonts @font-face rules — see scripts/fetch-fonts.mjs.
+   Bundled into this stylesheet so the faces are declared in the same request
+   that is already render-blocking, instead of behind a second cross-origin
+   round trip to fonts.googleapis.com. */
+@import "./fonts.css";
 
 @custom-variant dark (&:is(.dark *));
 

@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef } from "react";
 import { CheckCircle2, CalendarCheck, Flame, ShieldCheck, ArrowRight, ArrowLeft } from "lucide-react";
-import { format } from "date-fns";
+import { formatIsoDate, formatLongDate } from "@/lib/format-date";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -83,8 +83,8 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
   const [stepDirection, setStepDirection] = useState<"forward" | "back">("forward");
   const fieldRefs = useRef<Record<string, HTMLElement | null>>({});
 
-  const todayStr = date ? format(date, "yyyy-MM-dd") : "";
-  const minDateStr = format(new Date(), "yyyy-MM-dd");
+  const todayStr = date ? formatIsoDate(date) : "";
+  const minDateStr = formatIsoDate(new Date());
   const emailTrimmed = email.trim();
   const emailIsValid = emailTrimmed === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailTrimmed);
 
@@ -118,7 +118,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
       return;
     }
     setSubmitting(true);
-    const dateStr = date ? format(date, "EEE, MMM d, yyyy") : undefined;
+    const dateStr = date ? formatLongDate(date) : undefined;
     const address = [street, city, zip].filter(Boolean).join(", ");
     const pageSuffix = sourcePath ? ` · ${sourcePath}` : "";
     const sourceLabel = `Schedule form${pageSuffix}`.slice(0, 60);

@@ -1,5 +1,6 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import { Link } from "@tanstack/react-router";
+import { Photo } from "@/components/Photo";
 import newChimneyRestored from "@/assets/uploads/new-chimney-restored.jpeg.asset.json";
 import newCapInstallRooftop from "@/assets/uploads/new-cap-install-rooftop.jpeg.asset.json";
 import newTechLadderPoint from "@/assets/uploads/new-tech-ladder-point.jpeg.asset.json";
@@ -138,10 +139,13 @@ function ProjectTile({
       to="/before-after"
       className="group relative aspect-[3/4] overflow-hidden rounded-none border-2 border-border bg-primary transition hover:border-flame"
     >
-      <img
+      <Photo
         src={project.img}
         alt={`${project.title} — ChimCrew project in ${project.city}`}
         loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        // 2 cols on mobile, 3 at sm, 4 at lg, inside a max-w-7xl container.
+        sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 45vw"
         className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/10 to-transparent" aria-hidden />

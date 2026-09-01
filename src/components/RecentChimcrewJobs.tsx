@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { Photo } from "@/components/Photo";
 
 import j1b from "@/assets/jobs/job1-before.jpeg.asset.json";
 import j1a from "@/assets/jobs/job1-after.jpeg.asset.json";
@@ -29,10 +30,14 @@ function JobCard({ job }: { job: (typeof JOBS)[number] }) {
       <div className="grid grid-cols-2">
         {(["before", "after"] as const).map((k) => (
           <div key={k} className="relative aspect-[3/4] overflow-hidden">
-            <img
+            <Photo
               src={job[k]}
               alt={`${job.title} ${k} — ChimCrew ${job.city}`}
               loading="lazy"
+              decoding="async"
+              // Six cards across on md+, each split into a before/after pair;
+              // a horizontal snap carousel at ~45vw per card below that.
+              sizes="(min-width: 768px) 9vw, 23vw"
               className="h-full w-full object-cover"
             />
             <span

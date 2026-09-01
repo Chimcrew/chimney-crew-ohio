@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, MapPin, MoveHorizontal } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { Photo } from "@/components/Photo";
 import beforeNew from "@/assets/flashing-ba/before.jpeg.asset.json";
 import afterNew1 from "@/assets/flashing-ba/after1.jpeg.asset.json";
 import afterNew2 from "@/assets/flashing-ba/after2.jpeg.asset.json";
@@ -68,12 +69,14 @@ export function FlashingJobShowcase({ variant = "compact", showCta = true, class
           {photos.map((p, i) => (
             <li key={i} className="group relative overflow-hidden border border-border/60 bg-card shadow-sm">
               <div className="relative">
-                <img
+                <Photo
                   src={p.url}
                   alt={`${p.tag} — ${p.caption}`}
                   className="block aspect-[4/5] w-full object-cover"
                   loading={i < 2 ? "eager" : "lazy"}
                   decoding="async"
+                  // 2 cols on mobile, 3 from md, inside a centered container.
+                  sizes="(min-width: 768px) 30vw, 45vw"
                 />
                 <span
                   className={`absolute left-2 top-2 rounded-full px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.18em] ${
@@ -156,10 +159,12 @@ function BeforeAfterSlider({ beforeUrl, afterUrl, beforeCaption, afterCaption }:
         }}
       >
         {/* After (base) */}
-        <img
+        <Photo
           src={afterUrl}
           alt={`After — ${afterCaption}`}
           className="absolute inset-0 h-full w-full object-cover"
+          // The comparison figure is capped at max-w-4xl (896px).
+          sizes="(min-width: 896px) 896px, 100vw"
           draggable={false}
         />
         {/* Before (clipped) */}
@@ -167,10 +172,11 @@ function BeforeAfterSlider({ beforeUrl, afterUrl, beforeCaption, afterCaption }:
           className="absolute inset-0 overflow-hidden"
           style={{ width: `${pos}%` }}
         >
-          <img
+          <Photo
             src={beforeUrl}
             alt={`Before — ${beforeCaption}`}
             className="absolute inset-0 h-full w-full object-cover"
+            sizes="(min-width: 896px) 896px, 100vw"
             style={{ width: `${(100 / Math.max(pos, 0.0001)) * 100}%`, maxWidth: "none" }}
             draggable={false}
           />

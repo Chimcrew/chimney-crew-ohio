@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Play, MapPin } from "lucide-react";
+import { Photo } from "@/components/Photo";
 import chimneySweepVideo from "@/assets/videos/chimney-sweep-action.mp4.asset.json";
 import cwWaterproof from "@/assets/crew/crew-chimney-waterproof.jpeg.asset.json";
 import cwStoneTuck from "@/assets/crew/crew-stone-tuckpoint.jpeg.asset.json";
@@ -105,10 +106,14 @@ export function AutoLoopVideoSection() {
                 key={p.src}
                 className="group relative aspect-[3/4] overflow-hidden rounded-lg border border-border bg-card"
               >
-                <img
+                <Photo
                   src={p.src}
                   alt={p.alt}
                   loading="lazy"
+                  decoding="async"
+                  // Always a 3-up grid; the column is capped by the section's
+                  // max-w-6xl container on large screens.
+                  sizes="(min-width: 768px) 22vw, 31vw"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
               </div>

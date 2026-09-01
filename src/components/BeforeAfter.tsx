@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Photo } from "@/components/Photo";
 
 type Props = {
   before: string;
@@ -79,20 +80,22 @@ export function BeforeAfter({
       aria-label={alt}
     >
       {/* AFTER image (base layer) */}
-      <img
+      <Photo
         src={after}
         alt={`${alt} — after`}
         className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
         draggable={false}
         loading="lazy"
         decoding="async"
       />
 
       {/* BEFORE image — clipped by the divider position */}
-      <img
+      <Photo
         src={before}
         alt={`${alt} — before`}
         className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+        sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 92vw"
         style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
         draggable={false}
         loading="lazy"

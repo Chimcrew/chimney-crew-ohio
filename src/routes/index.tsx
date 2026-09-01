@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import { AutoLoopVideoSection } from "@/components/AutoLoopVideo";
+import { Photo } from "@/components/Photo";
 import { ReviewLinkGeneratorWidget } from "@/components/ReviewLinkGeneratorWidget";
 
 const logo = logoAsset.url;
@@ -73,7 +74,6 @@ import chimneyWaterDamageAtticPhoto from "@/assets/problems/chimney-water-damage
 import crackedCrownPhoto from "@/assets/problems/cracked-crown.png.asset.json";
 import damagedChimneyCapPhoto from "@/assets/problems/damaged-chimney-cap.jpg.asset.json";
 import { RecentProjects } from "@/components/RecentProjectsSection";
-import { SERVICES, formatFromPrice, getService } from "@/data/services";
 
 
 import { ServiceAreaSeo } from "@/components/ServiceAreaSeo";
@@ -786,10 +786,13 @@ function CommonProblems() {
                   <div className="overflow-hidden">
                     <div className="flex flex-col gap-3 px-4 pb-4 sm:flex-row sm:gap-4 sm:px-5 sm:pb-5">
                       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted sm:w-44">
-                        <img
+                        <Photo
                           src={image}
                           alt={alt}
                           className="h-full w-full object-cover"
+                          // Full column width on mobile, a fixed 176px thumb
+                          // from sm up. These sources are 2–3 MB PNGs.
+                          sizes="(min-width: 640px) 176px, 92vw"
                           loading="lazy"
                           decoding="async"
                         />
