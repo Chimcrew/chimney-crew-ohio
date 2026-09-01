@@ -338,21 +338,55 @@ function HeroPhotoCard() {
 
 /* (MobileHero removed — unified responsive Hero below) */
 
+/**
+ * Desktop hero background video.
+ *
+ * The <video> is mounted on the client only, and only above the lg breakpoint:
+ *
+ *  - The SSR HTML carries no video URL at all, so the preload scanner cannot
+ *    discover either encoding. Under lg the files are never requested — a phone
+ *    downloads zero bytes of them instead of the ~9.2 MB MP4 / ~5.4 MB WebM.
+ *  - Desktop mounts only the original high-quality MP4 source, so the browser
+ *    fetches exactly one encoding instead of discovering both MP4 and WebM.
+ *
+ * The wrapper and the two colour overlays below stay server-rendered: the
+ * desktop hero copy is light-on-dark and depends on them, not on the footage.
+ * autoplay / muted / loop / playsInline behaviour is unchanged.
+ */
+const HERO_VIDEO_MQ = "(min-width: 1024px)"; // Tailwind `lg`
+const HERO_VIDEO_MP4 = "/videos/hero-bg-desktop.mp4"; // H.264 — higher-quality desktop source
+
+function HeroBackgroundVideo() {
+  const [src, setSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia(HERO_VIDEO_MQ);
+    const sync = () => setSrc(mq.matches ? HERO_VIDEO_MP4 : null);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  if (!src) return null;
+
+  return (
+    <video
+      className="h-full w-full object-cover"
+      autoPlay
+      loop
+      muted
+      playsInline
+      preload="metadata"
+      src={src}
+    />
+  );
+}
+
 function Hero() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-primary/[0.04] to-background">
       <div className="pointer-events-none absolute inset-0 hidden lg:block" aria-hidden="true">
-        <video
-          className="h-full w-full object-cover"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-        >
-          <source src="/videos/hero-bg-desktop.webm" type="video/webm" />
-          <source src="/videos/hero-bg-desktop.mp4" type="video/mp4" />
-        </video>
+        <HeroBackgroundVideo />
         <div className="absolute inset-0 bg-primary/20" />
         <div className="absolute inset-0 bg-gradient-to-r from-primary/50 via-primary/15 to-transparent" />
       </div>

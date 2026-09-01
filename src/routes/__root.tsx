@@ -98,9 +98,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      /*
+       * Google Fonts, trimmed to what actually renders:
+       *  - Inter dropped: it only ever appears *behind* Manrope in --font-sans /
+       *    --font-display and behind Geist in ServiceAreaMap, both of which are
+       *    loaded, so no glyph was ever painted in Inter.
+       *  - Geist kept (ServiceAreaMap paints its SVG labels in it) but narrowed
+       *    to the four weights that component actually asks for: 500/600/700/800.
+       *  Manrope, JetBrains Mono, Oswald, Bungee and Archivo Black are all bound
+       *  to live --font-* tokens in styles.css and are untouched, as is swap.
+       */
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bungee&family=Geist:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bungee&family=Geist:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap",
       },
       {
         rel: "stylesheet",
@@ -196,12 +206,25 @@ function RootShell({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
+        {/*
+          HeadContent first: it emits the charset/viewport meta, the font
+          preconnects, the Google Fonts + app stylesheets and React's image
+          preloads. Emitting it ahead of the third-party tags lets the preload
+          scanner start those requests immediately instead of after the
+          analytics block. No tag/config below is changed, only its position.
+        */}
+        <HeadContent />
         <script async src="https://ob.buzzfufighter.com/i/ecc955025644afe9ccafc17374332bd9.js" className="ct_clicktrue"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-QY2H753BK9"></script>
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18189794318"></script>
         <script dangerouslySetInnerHTML={{ __html: `(function(h,o,t,j,a,r){h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};h._hjSettings={hjid:6728722,hjsv:6};a=o.getElementsByTagName('head')[0];r=o.createElement('script');r.async=1;r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;a.appendChild(r);})(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv='); window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-QY2H753BK9'); gtag('config', 'AW-18189794318'); /* Generic conversion (kept for backwards compatibility). */ function gtag_report_conversion(url){var callback=function(){if(typeof(url)!='undefined'){window.location=url;}}; gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD','event_callback':callback}); return false;} /* Dedicated phone-call conversion. Replace send_to with a Call-specific label in Google Ads when one exists. */ function gtag_report_call(){gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD'}); return false;} /* Dedicated lead-form conversion. Replace send_to with a Form-specific label in Google Ads when one exists. */ function gtag_report_lead(){gtag('event','conversion',{'send_to':'AW-18189794318/GGRvCO3rmLwcEI74yOFD'}); return false;}` }} />
-        <script type="text/javascript" src="https://cdn.callrail.com/companies/575995871/0fa6a86aa27bec0d3aee/12/swap.js"></script>
-        <HeadContent />
+        {/*
+          CallRail swap.js — same account/company script, now `defer` so it no
+          longer blocks the HTML parser (~1.2s on the live trace). It still runs
+          before DOMContentLoaded, so number swapping and call tracking are
+          unaffected.
+        */}
+        <script defer type="text/javascript" src="https://cdn.callrail.com/companies/575995871/0fa6a86aa27bec0d3aee/12/swap.js"></script>
       </head>
       <body>
         <noscript>
