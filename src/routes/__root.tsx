@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "google-site-verification", content: "A01V3-IeHdvZeFDITROkW10YpnYkVN54hH0CMBbKU6" },
+      { name: "google-site-verification", content: "A01V3-IeHdvZeFDITROkW10YpnYkVN54hH0CMBbKU6Y" },
       { title: "ChimCrew — Ohio Chimney Sweep & Repair" },
       { name: "description", content: "Locally owned Ohio chimney sweeps. CSIA-certified, flat-rate pricing, same-day callbacks." },
       { name: "author", content: "ChimCrew" },
