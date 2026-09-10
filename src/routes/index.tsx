@@ -806,7 +806,7 @@ function CommonProblems() {
                           params={{ slug }}
                           className="mt-3 inline-flex items-center gap-1 self-start font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-flame-ink transition hover:translate-x-1"
                         >
-                          Learn more <ArrowRight className="h-3.5 w-3.5" />
+                          Learn more<span className="sr-only"> about {label}</span> <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                       </div>
                     </div>
