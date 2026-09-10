@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   CheckCircle2,
@@ -27,7 +27,7 @@ import {
 import logoAsset from "@/assets/chimcrew-logo-transparent-v2.png.asset.json";
 import { AutoLoopVideoSection } from "@/components/AutoLoopVideo";
 import { Photo } from "@/components/Photo";
-import { ReviewLinkGeneratorWidget } from "@/components/ReviewLinkGeneratorWidget";
+const ReviewLinkGeneratorWidget = lazy(() => import("@/components/ReviewLinkGeneratorWidget").then((m) => ({ default: m.ReviewLinkGeneratorWidget })));
 
 const logo = logoAsset.url;
 
@@ -172,7 +172,9 @@ function Index() {
       <AutoLoopVideoSection />
       <ScheduleSection id="schedule-section" />
       <Testimonials />
-      <ReviewLinkGeneratorWidget />
+      <Suspense fallback={null}>
+        <ReviewLinkGeneratorWidget />
+      </Suspense>
       <CommonProblems />
       <RecentProjects />
       <ServiceAreaSeo />
