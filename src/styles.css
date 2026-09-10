@@ -139,6 +139,9 @@
   --input: oklch(0.92 0.02 235);
   --ring: oklch(0.82 0.19 92);
   --flame: oklch(0.78 0.19 92);                /* hi-vis yellow (was ember orange) */
+  /* Accessible flame for light surfaces. --flame is 1.5:1 on --background,
+     which fails WCAG AA. Use this wherever flame text sits on light. */
+  --flame-ink: oklch(0.52 0.14 70);
   --ember: oklch(0.72 0.18 92);
   --soot: oklch(0.16 0.02 250);
   --ash: oklch(0.92 0.02 235);
@@ -294,6 +297,7 @@
   }
   .bg-flame-grad { background: var(--gradient-flame); }
   .text-flame { color: var(--flame); }
+  .text-flame-ink { color: var(--flame-ink); }
   .shadow-flame { box-shadow: var(--shadow-flame); }
   .shadow-hard { box-shadow: var(--shadow-hard); }
 

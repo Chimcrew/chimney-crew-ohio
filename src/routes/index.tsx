@@ -40,11 +40,11 @@ const logo = logoAsset.url;
  * imagesizes, and places it near the top of <head>. A second preload tag would
  * resolve to the same candidate and buy nothing.
  */
-const HERO_MOBILE_SIZES = "100vw";
+const HERO_MOBILE_SIZES = "(min-width: 1024px) 0px, 100vw";
 const HERO_MOBILE_SRCSET = [640, 800, 1024, 1280]
   .map((w) => `/optimized/chimcrew-team-hero-${w}.webp ${w}w`)
   .join(", ");
-const HERO_MOBILE_SRC = "/optimized/chimcrew-team-hero-1024.webp";
+const HERO_MOBILE_SRC = "/optimized/chimcrew-team-hero-640.webp";
 
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import projectHero from "@/assets/projects/project-01-double-crown.jpg.asset.json";
@@ -756,7 +756,7 @@ function CommonProblems() {
             <Wrench className="h-3.5 w-3.5 text-flame" /> What We Fix
           </p>
           <h2 className="mt-3 font-display text-2xl font-bold text-primary sm:text-3xl md:text-4xl">
-            Common Chimney Problems <span className="text-flame">We Fix</span>
+            Common Chimney Problems <span className="text-flame-ink">We Fix</span>
           </h2>
           <p className="mt-2 text-sm text-foreground/75 md:text-base">
             Tap any issue to see how ChimCrew handles it.
@@ -804,9 +804,9 @@ function CommonProblems() {
                         <Link
                           to="/services/$slug"
                           params={{ slug }}
-                          className="mt-3 inline-flex items-center gap-1 self-start font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-flame transition hover:translate-x-1"
+                          className="mt-3 inline-flex items-center gap-1 self-start font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-flame-ink transition hover:translate-x-1"
                         >
-                          Learn more <ArrowRight className="h-3.5 w-3.5" />
+                          Learn more<span className="sr-only"> about {label}</span> <ArrowRight className="h-3.5 w-3.5" />
                         </Link>
                       </div>
                     </div>
@@ -876,7 +876,7 @@ function PhotoVideoTrust() {
 
         {/* Text + CTA */}
         <div>
-          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-flame">
+          <p className="font-mono text-[11px] font-bold uppercase tracking-[0.22em] text-flame-ink">
             Transparent inspections
           </p>
           <h3 className="mt-2 font-display text-2xl font-extrabold leading-snug md:text-3xl">

@@ -101,5 +101,9 @@
     "overrides": {
       "entities": "4.5.0"
     }
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true,
+    "sharp@0.35.2": true
   }
 }

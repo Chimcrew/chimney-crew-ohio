@@ -285,7 +285,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         <div className="grid overflow-hidden transition-all duration-300 ease-out">
         {/* Service — full width, most important */}
         <div
-          aria-hidden={step !== 0}
+          inert={step !== 0}
           className={
             "col-start-1 row-start-1 space-y-2 " +
             (step === 0
@@ -295,7 +295,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         >
         <Field label="Service Needed" required error={errors.service}>
           <Select value={service} onValueChange={setService}>
-            <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
+            <SelectTrigger aria-label="Service needed" className="h-10 rounded-none border-foreground/20 text-sm">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="rounded-none">
@@ -362,7 +362,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
         {/* ---------- Step 2: contact ---------- */}
         <div
-          aria-hidden={step !== 1}
+          inert={step !== 1}
           className={
             "col-start-1 row-start-1 space-y-2 " +
             (step === 1
@@ -415,7 +415,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
 
         {/* ---------- Step 3: address, notes, consent ---------- */}
         <div
-          aria-hidden={step !== 2}
+          inert={step !== 2}
           className={
             "col-start-1 row-start-1 space-y-2 " +
             (step === 2

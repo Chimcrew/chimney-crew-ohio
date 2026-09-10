@@ -36,8 +36,8 @@ const FORCE = process.argv.includes("--force");
  * derivatives are a genuine downscale. Anything smaller is left to be served
  * as-is, and <Photo> falls through to the original `src` for it.
  */
-const MIN_BYTES = 250 * 1024;
-const MIN_SOURCE_WIDTH = 900;
+const MIN_BYTES = 80 * 1024;
+const MIN_SOURCE_WIDTH = 500;
 /** Nothing on this site paints an image wider than ~1200 CSS px. */
 const WIDTHS = [400, 800, 1200];
 const QUALITY = 74;
