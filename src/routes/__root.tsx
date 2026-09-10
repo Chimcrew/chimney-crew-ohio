@@ -131,6 +131,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         crossOrigin: "anonymous",
       },
       {
+        rel: "preload",
+        as: "font",
+        type: "font/woff2",
+        href: "/fonts/jetbrains-mono-700-normal-latin.woff2",
+        crossOrigin: "anonymous",
+      },
+      {
         rel: "stylesheet",
         href: appCss,
       },

@@ -40,11 +40,11 @@ const logo = logoAsset.url;
  * imagesizes, and places it near the top of <head>. A second preload tag would
  * resolve to the same candidate and buy nothing.
  */
-const HERO_MOBILE_SIZES = "100vw";
+const HERO_MOBILE_SIZES = "(min-width: 1024px) 0px, 100vw";
 const HERO_MOBILE_SRCSET = [640, 800, 1024, 1280]
   .map((w) => `/optimized/chimcrew-team-hero-${w}.webp ${w}w`)
   .join(", ");
-const HERO_MOBILE_SRC = "/optimized/chimcrew-team-hero-1024.webp";
+const HERO_MOBILE_SRC = "/optimized/chimcrew-team-hero-640.webp";
 
 import fireplace from "@/assets/fireplace-cozy.jpg";
 import projectHero from "@/assets/projects/project-01-double-crown.jpg.asset.json";
