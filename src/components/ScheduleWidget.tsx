@@ -295,7 +295,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
         >
         <Field label="Service Needed" required error={errors.service}>
           <Select value={service} onValueChange={setService}>
-            <SelectTrigger className="h-10 rounded-none border-foreground/20 text-sm">
+            <SelectTrigger aria-label="Service needed" className="h-10 rounded-none border-foreground/20 text-sm">
               <SelectValue />
             </SelectTrigger>
             <SelectContent className="rounded-none">
