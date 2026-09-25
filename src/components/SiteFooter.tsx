@@ -16,7 +16,7 @@ export function SiteFooter() {
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">// Find Us</p>
               <h3 className="mt-2 text-2xl md:text-3xl">ChimCrew — Columbus, Ohio</h3>
-              <p className="mt-1 text-sm text-muted-foreground">220 Vine Street, Apt 225, Columbus, OH 43215</p>
+              <p className="mt-1 text-sm text-muted-foreground">220 Vine Street, Columbus, OH 43215</p>
             </div>
             <a
               href="https://www.google.com/maps/search/?api=1&query=ChimCrew+Columbus+Ohio"

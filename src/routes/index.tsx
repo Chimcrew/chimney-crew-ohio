@@ -661,7 +661,7 @@ function TrustMarquee() {
       className="relative overflow-hidden border-y border-border bg-secondary/60 py-4"
     >
       <p className="mb-3 text-center font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-foreground/70">
-        ★ 5-Star Rated · Google · Yelp · Angi · BBB
+        ★ 5-Star Rated · Google · Yelp · Angi
       </p>
       <div className="flex w-max animate-marquee-single items-center gap-3 whitespace-nowrap px-3">
         {chips.map((c, i) => (
