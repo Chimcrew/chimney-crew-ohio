@@ -131,7 +131,7 @@ function ChimneyRepairColumbus() {
                 <Star className="h-4 w-4 fill-flame text-flame" /> 5-Star Rated · Verified Reviews
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.22em]">
-                CSIA Certified · BBB A+ · Licensed & Insured
+                CSIA Certified · Licensed & Insured
               </span>
             </div>
           </div>

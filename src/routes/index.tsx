@@ -633,19 +633,6 @@ function TrustMarquee() {
       ),
     },
     {
-      label: "BBB",
-      node: (
-        <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
-          <span className="rounded-none bg-[#005DAA] px-1.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wide text-white">
-            BBB
-          </span>
-          <span className="text-[10px] font-bold uppercase tracking-wide text-foreground/70">
-            A+ Accredited
-          </span>
-        </span>
-      ),
-    },
-    {
       label: "Porch",
       node: (
         <span className="flex items-center gap-1.5 font-sans text-sm font-bold">
@@ -1480,7 +1467,7 @@ function Testimonials() {
             </div>
           </div>
           <p className="text-sm leading-relaxed text-foreground sm:text-base">
-            Google · Facebook · BBB A+ · Nextdoor Neighborhood Favorite —
+            Google · Facebook · Nextdoor Neighborhood Favorite —
             <span className="font-semibold text-primary">
               {" "}
               Ohio homeowners rate us their #1 chimney crew.
