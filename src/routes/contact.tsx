@@ -97,12 +97,8 @@ function ContactPage() {
               </h3>
               <div className="mt-3 space-y-2 text-sm text-primary/80">
                 <div className="flex items-center justify-between">
-                  <span className="inline-flex items-center gap-2"><Clock className="h-3.5 w-3.5 text-flame" /> Sun – Fri</span>
-                  <span className="font-mono font-semibold">7a – 7p</span>
-                </div>
-                <div className="flex items-center justify-between text-muted-foreground">
-                  <span className="inline-flex items-center gap-2"><Clock className="h-3.5 w-3.5 opacity-50" /> Saturday</span>
-                  <span className="font-mono">Closed</span>
+                  <span className="inline-flex items-center gap-2"><Clock className="h-3.5 w-3.5 text-flame" /> Every day</span>
+                  <span className="font-mono font-semibold">Open 24 hours</span>
                 </div>
               </div>
             </div>
