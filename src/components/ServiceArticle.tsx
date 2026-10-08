@@ -56,7 +56,7 @@ const DRYER_BEFORE_AFTER = [
 ];
 
 /** Pick a secondary photo relevant to the service. Falls back to a generic
- *  ChimCrew crew shot when nothing more specific is a good match. */
+ *  Chimcrew - Chimney Sweep & Repair crew shot when nothing more specific is a good match. */
 function secondaryImageFor(slug: string): string {
   switch (slug) {
     case "chimney-sweep":
@@ -211,20 +211,20 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
         </p>
 
         <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight text-foreground md:text-4xl lg:text-5xl">
-          Expert {service.title} — ChimCrew Ohio
+          Expert {service.title} — Chimcrew - Chimney Sweep & Repair Ohio
         </h2>
         <P>
-          Technicians at ChimCrew understand how much homeowners value their homes. Your chimney
+          Technicians at Chimcrew - Chimney Sweep & Repair understand how much homeowners value their homes. Your chimney
           doesn't just complete the look of your house — it protects your family's safety. That's
           why we've tailored our {sLower} service to fix problems at the source and give our
           customers peace of mind. Whether you need a routine visit or a full restoration,
-          ChimCrew is here for you across Columbus, Dayton, and Cincinnati.
+          Chimcrew - Chimney Sweep & Repair is here for you across Columbus, Dayton, and Cincinnati.
         </P>
 
         <PhotoCard
           src={primaryPhoto}
-          alt={`ChimCrew technician performing ${sLower} on an Ohio home`}
-          caption={`ChimCrew · ${s} · Real Ohio job`}
+          alt={`Chimcrew - Chimney Sweep & Repair technician performing ${sLower} on an Ohio home`}
+          caption={`Chimcrew - Chimney Sweep & Repair · ${s} · Real Ohio job`}
         />
 
         {showSweepVideo && (
@@ -233,7 +233,7 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
               <AutoLoopVideo className="block aspect-video w-full object-cover" />
             </div>
             <figcaption className="flex items-center gap-2 px-2 pb-1 pt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-foreground/70">
-              <MapPin className="h-3 w-3 text-flame" /> ChimCrew crew at work
+              <MapPin className="h-3 w-3 text-flame" /> Chimcrew - Chimney Sweep & Repair crew at work
             </figcaption>
           </figure>
         )}
@@ -245,14 +245,14 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
         </P>
         <BulletList items={dangers} />
         <P>
-          With ChimCrew, you get long-lasting, professional {sLower} that comes with a
+          With Chimcrew - Chimney Sweep & Repair, you get long-lasting, professional {sLower} that comes with a
           customized approach. Our services include:
         </P>
         <BulletList items={solutionsList} />
 
         <H2>Important Indicators That You Need {s}</H2>
         <P>
-          The following are the signs it's time to call ChimCrew for {sLower}:
+          The following are the signs it's time to call Chimcrew - Chimney Sweep & Repair for {sLower}:
         </P>
         <BulletList items={indicators} />
         <P>
@@ -264,11 +264,11 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
 
         <PhotoCard
           src={secondaryPhoto}
-          alt={`ChimCrew ${sLower} — up close on the job`}
+          alt={`Chimcrew - Chimney Sweep & Repair ${sLower} — up close on the job`}
           caption={`On the job · Columbus · Dayton · Cincinnati`}
         />
 
-        <H2>ChimCrew's {s} Process</H2>
+        <H2>Chimcrew - Chimney Sweep & Repair's {s} Process</H2>
         <P>
           We carry out every {sLower} through a customized, professional, and thorough approach.
           A typical visit includes:
@@ -328,9 +328,9 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
           </div>
         )}
 
-        <H2>Why Homeowners Prefer ChimCrew for {s}</H2>
+        <H2>Why Homeowners Prefer Chimcrew - Chimney Sweep & Repair for {s}</H2>
         <P>
-          Homeowners prefer ChimCrew because we combine personalized customer care, advanced
+          Homeowners prefer Chimcrew - Chimney Sweep & Repair because we combine personalized customer care, advanced
           diagnostic tools, and skilled craftsmanship to provide a quick but long-lasting fix.
           We're also considered among the best because of our ability to:
         </P>
@@ -350,14 +350,14 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
 
         <H2>Book Your {s} Today</H2>
         <P>
-          When it comes to delivering quality to clients, ChimCrew does not cut corners. We
+          When it comes to delivering quality to clients, Chimcrew - Chimney Sweep & Repair does not cut corners. We
           ensure every task is completed with precision. Important tools and materials we use
           include:
         </P>
         <BulletList items={tools} />
         <P>
           If you're a homeowner across Columbus, Dayton, or Cincinnati and you're experiencing
-          any of the chimney issues above, contact ChimCrew today. Our customer care team will be
+          any of the chimney issues above, contact Chimcrew - Chimney Sweep & Repair today. Our customer care team will be
           happy to book you in, provide a clear price quote, and connect you with our expert
           technicians.
         </P>

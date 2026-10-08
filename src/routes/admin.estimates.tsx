@@ -13,7 +13,7 @@ import { ESTIMATE_PRESETS } from '@/data/estimate-presets'
 
 export const Route = createFileRoute('/admin/estimates')({
   head: () => ({ meta: [
-    { title: 'Estimates & Invoices · ChimCrew Admin' },
+    { title: 'Estimates & Invoices · Chimcrew - Chimney Sweep & Repair Admin' },
     { name: 'robots', content: 'noindex,nofollow' },
   ] }),
   component: AdminEstimatesPage,

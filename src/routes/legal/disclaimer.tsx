@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/LegalPage";
 
 export const Route = createFileRoute("/legal/disclaimer")({
-  head: () => ({ meta: [{ title: "Disclaimer — ChimCrew" }, { name: "description", content: "General disclaimer regarding ChimCrew website content and chimney service recommendations." }] }),
+  head: () => ({ meta: [{ title: "Disclaimer — Chimcrew - Chimney Sweep & Repair" }, { name: "description", content: "General disclaimer regarding Chimcrew - Chimney Sweep & Repair website content and chimney service recommendations." }] }),
   component: Disclaimer,
 });
 
@@ -19,7 +19,7 @@ function Disclaimer() {
         <p>Any pricing shown on this website is a starting estimate. Final pricing is provided in writing before service begins and may vary based on chimney type, condition, and access.</p>
       </Section>
       <Section title="External links">
-        <p>This site may link to third-party websites. ChimCrew is not responsible for the content or practices of those sites.</p>
+        <p>This site may link to third-party websites. Chimcrew - Chimney Sweep & Repair is not responsible for the content or practices of those sites.</p>
       </Section>
       <Section title="Photography">
         <p>Before-and-after photography may be representative of typical results and is not a guarantee of outcome for any specific chimney.</p>

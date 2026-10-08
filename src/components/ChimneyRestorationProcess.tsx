@@ -218,7 +218,7 @@ export function ChimneyRestorationProcess() {
           {/* Intro */}
           <header className="shrink-0">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-flame">
-              The ChimCrew Process
+              The Chimcrew - Chimney Sweep & Repair Process
             </p>
             <h2
               className={`mt-2 font-display font-extrabold leading-tight text-primary md:text-4xl ${

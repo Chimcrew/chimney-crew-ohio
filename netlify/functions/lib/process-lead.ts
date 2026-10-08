@@ -51,7 +51,7 @@ function ownerLeadHtml(data: LeadFields) {
 <html>
 <body style="margin:0;background:#ffffff;font-family:Arial,Helvetica,sans-serif">
   <div style="max-width:600px;margin:0 auto;padding:24px">
-    <p style="margin:0 0 8px;color:#FACC15;background:#0B0F19;padding:12px 16px;font-size:16px;font-weight:800;letter-spacing:0.16em">NEW CHIMCREW LEAD</p>
+    <p style="margin:0 0 8px;color:#FACC15;background:#0B0F19;padding:12px 16px;font-size:16px;font-weight:800;letter-spacing:0.16em">NEW CHIMCREW - CHIMNEY SWEEP & REPAIR LEAD</p>
     <div style="background:#f7f7f5;border-radius:10px;padding:16px 18px;margin:16px 0;border:1px solid #ececec">
       ${details}
     </div>
@@ -87,14 +87,14 @@ function confirmationHtml(data: LeadFields) {
 <body style="margin:0;background:#ffffff;font-family:Arial,Helvetica,sans-serif">
   <div style="max-width:600px;margin:0 auto;padding:0">
     <div style="background:#0B0F19;padding:18px 28px;border-bottom:4px solid #FACC15">
-      <p style="margin:0;color:#FACC15;font-size:18px;font-weight:800;letter-spacing:0.18em">CHIMCREW</p>
+      <p style="margin:0;color:#FACC15;font-size:18px;font-weight:800;letter-spacing:0.18em">CHIMCREW - CHIMNEY SWEEP & REPAIR</p>
     </div>
     <div style="margin:22px 28px 8px">
       <p style="display:inline-block;background:#dcfce7;color:#15803d;font-size:12px;font-weight:800;letter-spacing:0.12em;padding:6px 12px;border-radius:999px;margin:0">✓ APPOINTMENT CONFIRMED</p>
     </div>
     <h1 style="font-size:24px;font-weight:800;color:#0B0F19;margin:8px 28px 8px;line-height:1.25">You're all set, ${first}.</h1>
     <p style="font-size:15px;color:#3f4756;margin:0 28px 22px;line-height:1.55">
-      Your appointment with ChimCrew is officially confirmed. A CSIA-certified tech is on the schedule for your job.
+      Your appointment with Chimcrew - Chimney Sweep & Repair is officially confirmed. A CSIA-certified tech is on the schedule for your job.
     </p>
     <div style="background:#f7f7f5;border-radius:10px;padding:16px 18px;margin:0 28px 18px;border:1px solid #ececec">
       <p style="margin:0 0 10px;font-size:11px;font-weight:800;color:#0B0F19;text-transform:uppercase;letter-spacing:0.14em">Appointment details</p>
@@ -109,7 +109,7 @@ function confirmationHtml(data: LeadFields) {
     <p style="font-size:14px;color:#1a1a1a;margin:8px 28px 10px;text-align:center">Need to reschedule or add details?</p>
     <a href="tel:6146835763" style="background:#FACC15;color:#0B0F19;border-radius:10px;padding:14px 24px;font-size:15px;font-weight:800;text-decoration:none;display:block;text-align:center;margin:0 28px">Call ${PHONE}</a>
     <hr style="border:none;border-top:1px solid #ececec;margin:24px 28px" />
-    <p style="font-size:12px;color:#888;margin:0 28px 24px;line-height:1.5">ChimCrew — CSIA-certified chimney sweeps serving Columbus, Cincinnati, Dayton &amp; all of Central Ohio.</p>
+    <p style="font-size:12px;color:#888;margin:0 28px 24px;line-height:1.5">Chimcrew - Chimney Sweep & Repair — CSIA-certified chimney sweeps serving Columbus, Cincinnati, Dayton &amp; all of Central Ohio.</p>
   </div>
 </body>
 </html>`;
@@ -126,7 +126,7 @@ async function sendWithResend(options: {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return { ok: false as const, skipped: "missing RESEND_API_KEY" };
 
-  const from = process.env.CONFIRM_FROM_EMAIL || "ChimCrew Website <onboarding@resend.dev>";
+  const from = process.env.CONFIRM_FROM_EMAIL || "Chimcrew - Chimney Sweep & Repair Website <onboarding@resend.dev>";
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -201,7 +201,7 @@ export async function processLead(data: LeadFields) {
   try {
     const sent = await sendWithResend({
       to: clientEmail,
-      subject: `✓ ChimCrew appointment confirmed${first ? `, ${first}` : ""}`,
+      subject: `✓ Chimcrew - Chimney Sweep & Repair appointment confirmed${first ? `, ${first}` : ""}`,
       html: confirmationHtml(data),
       scheduledAt,
     });

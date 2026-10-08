@@ -11,7 +11,7 @@ const ITEMS = [
 export function TrustBar() {
   return (
     <section
-      aria-label="Why Ohio homeowners trust ChimCrew"
+      aria-label="Why Ohio homeowners trust Chimcrew - Chimney Sweep & Repair"
       className="relative z-10 border-b border-border bg-background"
     >
       <div className="mx-auto max-w-7xl px-4 py-6 md:px-8 md:py-8">

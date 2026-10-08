@@ -63,14 +63,14 @@ const EstimateInvoiceEmail = ({
   return (
     <Html lang="en" dir="ltr">
       <Head />
-      <Preview>{label} #{docNumber} from ChimCrew</Preview>
+      <Preview>{label} #{docNumber} from Chimcrew - Chimney Sweep & Repair</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={brandBar}>
             <table width="100%" cellPadding={0} cellSpacing={0} role="presentation">
               <tr>
                 <td style={{ verticalAlign: 'middle' }}>
-                  <Text style={brandMark}>CHIMCREW</Text>
+                  <Text style={brandMark}>CHIMCREW - CHIMNEY SWEEP & REPAIR</Text>
                 </td>
                 <td style={{ verticalAlign: 'middle', textAlign: 'right' as const }}>
                   <Text style={brandTag}>{label}</Text>
@@ -172,7 +172,7 @@ const EstimateInvoiceEmail = ({
 
           <Hr style={hr} />
           <Text style={footer}>
-            ChimCrew — CSIA-certified chimney sweeps · {PHONE} · chimcrew.com
+            Chimcrew - Chimney Sweep & Repair — CSIA-certified chimney sweeps · {PHONE} · chimcrew.com
           </Text>
         </Container>
       </Body>
@@ -183,7 +183,7 @@ const EstimateInvoiceEmail = ({
 export const template = {
   component: EstimateInvoiceEmail,
   subject: (data: Record<string, any>) =>
-    `ChimCrew ${data?.docType === 'invoice' ? 'Invoice' : 'Estimate'}${data?.docNumber ? ` #${data.docNumber}` : ''}`,
+    `Chimcrew - Chimney Sweep & Repair ${data?.docType === 'invoice' ? 'Invoice' : 'Estimate'}${data?.docNumber ? ` #${data.docNumber}` : ''}`,
   displayName: 'Estimate / Invoice',
   previewData: {
     docType: 'estimate',

@@ -25,7 +25,7 @@ export const Route = createFileRoute("/chimney-repair/$city")({
   },
   head: ({ loaderData }) => {
     const c = loaderData?.city;
-    if (!c) return { meta: [{ title: "Chimney Service | ChimCrew" }] };
+    if (!c) return { meta: [{ title: "Chimney Service | Chimcrew - Chimney Sweep & Repair" }] };
     const url = `https://chimcrew.com/chimney-repair/${c.slug}`;
     return {
       meta: [
@@ -44,11 +44,11 @@ export const Route = createFileRoute("/chimney-repair/$city")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: `ChimCrew — Chimney Services in ${c.name}, ${c.state}`,
+            name: "Chimcrew - Chimney Sweep & Repair",
             telephone: "+1-614-683-5763",
             url,
             areaServed: { "@type": "City", name: c.name },
-            address: { "@type": "PostalAddress", addressLocality: c.name, addressRegion: c.state, postalCode: c.zip, addressCountry: "US" },
+            address: { "@type": "PostalAddress", addressLocality: "Columbus", addressRegion: "OH", addressCountry: "US" },
           }),
         },
         {
@@ -156,7 +156,7 @@ function CityPage() {
           <div className="md:col-span-2">
             <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Local to {city.name}</p>
             <h2 className="mt-3 font-display text-3xl font-extrabold text-primary md:text-4xl">
-              Why {city.name} homeowners call ChimCrew
+              Why {city.name} homeowners call Chimcrew - Chimney Sweep & Repair
             </h2>
             <p className="mt-5 text-base leading-relaxed text-muted-foreground md:text-lg">{city.intro}</p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{city.whyUs}</p>
@@ -235,7 +235,7 @@ function CityPage() {
       <section className="bg-primary py-16 text-primary-foreground md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-8">
           <div className="text-center">
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Why {city.name} picks ChimCrew</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Why {city.name} picks Chimcrew - Chimney Sweep & Repair</p>
             <h2 className="mt-3 font-display text-3xl font-extrabold md:text-5xl">
               Local. Certified. <span className="text-flame">Accountable.</span>
             </h2>

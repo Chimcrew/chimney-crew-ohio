@@ -8,13 +8,13 @@ import desktopHeroPhoto from "@/assets/hero/hero-desktop-team-chimney.png.asset.
 export const Route = createFileRoute("/financing")({
   head: () => ({
     meta: [
-      { title: "Financing Calculator — ChimCrew Chimney Repair" },
+      { title: "Financing Calculator — Chimcrew - Chimney Sweep & Repair Chimney Repair" },
       {
         name: "description",
         content:
           "Estimate your monthly payment for chimney repair or rebuild. Flexible 12–60 month financing for Ohio homeowners. Calculate in seconds, then book your free inspection.",
       },
-      { property: "og:title", content: "Chimney Repair Financing — ChimCrew" },
+      { property: "og:title", content: "Chimney Repair Financing — Chimcrew - Chimney Sweep & Repair" },
       { property: "og:description", content: "Flexible monthly payments for chimney repair across Ohio. Calculate yours in seconds." },
     ],
     links: [{ rel: "canonical", href: "https://chimcrew.com/financing" }],

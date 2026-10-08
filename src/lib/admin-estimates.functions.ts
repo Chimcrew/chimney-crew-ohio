@@ -115,7 +115,7 @@ export const sendEstimateAdmin = createServerFn({ method: 'POST' })
 
     const SENDER_DOMAIN = 'notify.chimcrew.com'
     const FROM_DOMAIN = 'notify.chimcrew.com'
-    const SITE_NAME = 'ChimCrew Estimates'
+    const SITE_NAME = 'Chimcrew - Chimney Sweep & Repair Estimates'
     const REPLY_TO = 'office@chimcrew.com'
 
     const { error: enqueueError } = await supabaseAdmin.rpc('enqueue_email', {

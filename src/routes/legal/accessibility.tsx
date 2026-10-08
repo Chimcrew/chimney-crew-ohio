@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/LegalPage";
 
 export const Route = createFileRoute("/legal/accessibility")({
-  head: () => ({ meta: [{ title: "Accessibility — ChimCrew" }, { name: "description", content: "ChimCrew's commitment to website accessibility for all visitors." }] }),
+  head: () => ({ meta: [{ title: "Accessibility — Chimcrew - Chimney Sweep & Repair" }, { name: "description", content: "Chimcrew - Chimney Sweep & Repair's commitment to website accessibility for all visitors." }] }),
   component: Accessibility,
 });
 
@@ -10,7 +10,7 @@ function Accessibility() {
   return (
     <LegalPage kicker="// Legal" title="Accessibility Statement" updated="May 2026">
       <Section title="Our commitment">
-        <p>ChimCrew is committed to making this website accessible to everyone, including people with disabilities. We design and build with the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA as our target.</p>
+        <p>Chimcrew - Chimney Sweep & Repair is committed to making this website accessible to everyone, including people with disabilities. We design and build with the Web Content Accessibility Guidelines (WCAG) 2.1 Level AA as our target.</p>
       </Section>
       <Section title="What we do">
         <ul className="list-disc space-y-2 pl-6">

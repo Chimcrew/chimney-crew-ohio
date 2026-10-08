@@ -15,11 +15,11 @@ export function SiteFooter() {
           <div className="mb-5 flex flex-wrap items-end justify-between gap-3">
             <div>
               <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">// Find Us</p>
-              <h3 className="mt-2 text-2xl md:text-3xl">ChimCrew — Columbus, Ohio</h3>
-              <p className="mt-1 text-sm text-muted-foreground">220 Vine Street, Columbus, OH 43215</p>
+              <h3 className="mt-2 text-2xl md:text-3xl">Chimcrew - Chimney Sweep & Repair</h3>
+              <p className="mt-1 text-sm text-muted-foreground">Serving Columbus, Ohio & Surrounding Areas · Open 24 hours</p>
             </div>
             <a
-              href="https://www.google.com/maps/search/?api=1&query=ChimCrew+Columbus+Ohio"
+              href="https://maps.app.goo.gl/CdXLnGXnHRVVFnUw6"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border-2 border-primary px-4 py-2 font-mono text-[11px] uppercase tracking-[0.22em] text-primary transition hover:bg-primary hover:text-primary-foreground"
@@ -30,7 +30,7 @@ export function SiteFooter() {
           <div className="relative aspect-[16/6] w-full overflow-hidden border-2 border-border">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d932374.8144472745!2d-83.76311976073052!3d39.761603089597116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x208a8b9e2ddcc519%3A0x17b40b3804b5c5b2!2sChimcrew%20-%20Chimney%20Sweep%20%26%20Repair!5e1!3m2!1sen!2sae!4v1787099033835!5m2!1sen!2sae"
-              title="Google Maps location of ChimCrew — Chimney Sweep and Repair, 220 Vine Street, Columbus, Ohio"
+              title="Google Maps location of Chimcrew - Chimney Sweep & Repair, serving Columbus, Ohio"
               width="600"
               height="450"
               className="absolute inset-0 h-full w-full"
@@ -47,14 +47,14 @@ export function SiteFooter() {
           <div>
             <Link
               to="/"
-              aria-label="ChimCrew homepage"
+              aria-label="Chimcrew - Chimney Sweep & Repair homepage"
               className="inline-block"
             >
               <img
                 src={logo}
                 srcSet={logoSrcSet}
                 sizes="(min-width: 640px) 97px, 81px"
-                alt="ChimCrew chimney sweep and repair"
+                alt="Chimcrew - Chimney Sweep & Repair"
                 className="h-20 w-auto sm:h-24"
               />
             </Link>
@@ -143,7 +143,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
-          <p>© {new Date().getFullYear()} ChimCrew Chimney Services. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Chimcrew - Chimney Sweep & Repair. All rights reserved.</p>
           <p className="font-mono">CSIA Certified · Fully Insured · OH License #CHM-OH-0421</p>
         </div>
       </div>

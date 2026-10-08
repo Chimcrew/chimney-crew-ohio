@@ -128,7 +128,7 @@ export function TimedLeadPopup() {
                 You're on the list.
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                A ChimCrew team member will call{" "}
+                A Chimcrew - Chimney Sweep & Repair team member will call{" "}
                 <span className="font-semibold text-foreground">{form.phone}</span> shortly.
               </p>
               <button

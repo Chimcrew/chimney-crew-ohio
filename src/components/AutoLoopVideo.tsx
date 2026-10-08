@@ -8,12 +8,12 @@ import cwChaseFarm from "@/assets/crew/crew-chase-cover-farm.jpeg.asset.json";
 import cwCapBrickCrown from "@/assets/crew/crew-cap-brick-crown.jpeg.asset.json";
 
 const CREW_PHOTOS = [
-  { src: "/photos/crew-ladder-yellow.jpg", alt: "ChimCrew techs in yellow uniforms finishing a dual-cap brick chimney from a ladder" },
-  { src: "/photos/crew-john-flashseal.jpg", alt: "ChimCrew technician John sealing chimney flashing on a residential roof" },
-  { src: cwWaterproof.url, alt: "ChimCrew crew member waterproofing a chimney and sealing flashing" },
-  { src: cwStoneTuck.url, alt: "ChimCrew mason tuckpointing a stone chimney" },
-  { src: cwChaseFarm.url, alt: "ChimCrew tech fitting a new chase cover and cap on a country home" },
-  { src: cwCapBrickCrown.url, alt: "ChimCrew technician setting a stainless cap on a brick chimney crown" },
+  { src: "/photos/crew-ladder-yellow.jpg", alt: "Chimcrew - Chimney Sweep & Repair techs in yellow uniforms finishing a dual-cap brick chimney from a ladder" },
+  { src: "/photos/crew-john-flashseal.jpg", alt: "Chimcrew - Chimney Sweep & Repair technician John sealing chimney flashing on a residential roof" },
+  { src: cwWaterproof.url, alt: "Chimcrew - Chimney Sweep & Repair crew member waterproofing a chimney and sealing flashing" },
+  { src: cwStoneTuck.url, alt: "Chimcrew - Chimney Sweep & Repair mason tuckpointing a stone chimney" },
+  { src: cwChaseFarm.url, alt: "Chimcrew - Chimney Sweep & Repair tech fitting a new chase cover and cap on a country home" },
+  { src: cwCapBrickCrown.url, alt: "Chimcrew - Chimney Sweep & Repair technician setting a stainless cap on a brick chimney crown" },
 ];
 
 export function AutoLoopVideo({ className = "" }: { className?: string }) {
@@ -79,7 +79,7 @@ export function AutoLoopVideoSection() {
             Our Chimney Crew
           </h2>
           <p className="mt-2 max-w-lg text-[14px] leading-relaxed text-foreground/75 md:text-[15px]">
-            Real photos of the ChimCrew team on Ohio rooftops — the same crew that shows up
+            Real photos of the Chimcrew - Chimney Sweep & Repair team on Ohio rooftops — the same crew that shows up
             when you book below.
           </p>
         </div>
@@ -91,7 +91,7 @@ export function AutoLoopVideoSection() {
             </div>
             <figcaption className="flex items-center justify-between gap-2 px-1 pb-0.5 pt-2 font-mono text-[9px] uppercase tracking-[0.2em] text-foreground/70">
               <span className="inline-flex items-center gap-1.5">
-                <MapPin className="h-3 w-3 text-flame" /> ChimCrew · Ohio
+                <MapPin className="h-3 w-3 text-flame" /> Chimcrew - Chimney Sweep & Repair · Ohio
               </span>
               <span className="inline-flex items-center gap-1.5">
                 <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-flame" />

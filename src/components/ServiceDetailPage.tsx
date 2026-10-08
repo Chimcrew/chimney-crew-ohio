@@ -245,7 +245,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
                     <MapPin className="h-3 w-3 text-flame" /> Columbus · Dayton · Cincinnati
                   </p>
                   <span className="rounded-full border border-flame/40 bg-flame/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
-                    Real ChimCrew job
+                    Real Chimcrew - Chimney Sweep & Repair job
                   </span>
                 </div>
               </div>
@@ -268,7 +268,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
               <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 sm:inset-x-5 sm:bottom-5">
                 <div className="min-w-0">
                   <p className="font-display text-sm font-bold text-primary-foreground sm:text-base">
-                    {service.shortTitle} · ChimCrew Ohio
+                    {service.shortTitle} · Chimcrew - Chimney Sweep & Repair Ohio
                   </p>
                   <p className="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/70">
                     <MapPin className="h-3 w-3 text-flame" /> Columbus · Dayton · Cincinnati
@@ -291,7 +291,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
               />
               <div className="flex items-center justify-between gap-3 border-t border-border/60 bg-secondary/40 px-4 py-3 sm:px-5">
                 <p className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/70">
-                  <MapPin className="h-3 w-3 text-flame" /> Real ChimCrew smoke chamber parge
+                  <MapPin className="h-3 w-3 text-flame" /> Real Chimcrew - Chimney Sweep & Repair smoke chamber parge
                 </p>
                 <span className="rounded-full border border-flame/40 bg-flame/10 px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-flame">
                   Drag to compare
@@ -304,26 +304,26 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
                 src={heroPhoto}
                 alt={
                   service.slug === "chimney-sweep"
-                    ? "Chimney sweep and chimney cleaning service by ChimCrew in Ohio"
+                    ? "Chimney sweep and chimney cleaning service by Chimcrew - Chimney Sweep & Repair in Ohio"
                     : service.slug === "chimney-cleaning"
-                      ? "Professional chimney cleaning service by ChimCrew in Ohio"
+                      ? "Professional chimney cleaning service by Chimcrew - Chimney Sweep & Repair in Ohio"
                       : service.slug === "gas-fireplace-repair"
-                        ? "Gas fireplace repair service by ChimCrew technician in Ohio"
+                        ? "Gas fireplace repair service by Chimcrew - Chimney Sweep & Repair technician in Ohio"
                         : service.slug === "wood-fireplace-repair"
-                          ? "Wood fireplace repair service by ChimCrew technician in Ohio"
+                          ? "Wood fireplace repair service by Chimcrew - Chimney Sweep & Repair technician in Ohio"
                           : service.slug === "level-1-inspection"
-                            ? "Chimney inspection performed by ChimCrew technician in Ohio"
+                            ? "Chimney inspection performed by Chimcrew - Chimney Sweep & Repair technician in Ohio"
                             : service.slug === "level-2-inspection"
-                              ? "Level 2 chimney and fireplace inspection by ChimCrew in Ohio"
+                              ? "Level 2 chimney and fireplace inspection by Chimcrew - Chimney Sweep & Repair in Ohio"
                               : service.slug === "liner-install"
-                                ? "Chimney liner installation by ChimCrew technician in Ohio"
+                                ? "Chimney liner installation by Chimcrew - Chimney Sweep & Repair technician in Ohio"
                                 : service.slug === "chimney-crown-replacement"
-                                  ? "Chimney crown replacement and masonry repair by ChimCrew in Ohio"
+                                  ? "Chimney crown replacement and masonry repair by Chimcrew - Chimney Sweep & Repair in Ohio"
                                   : service.slug === "chimney-cap-replacement"
-                                    ? "Chimney cap replacement by ChimCrew technician in Ohio"
+                                    ? "Chimney cap replacement by Chimcrew - Chimney Sweep & Repair technician in Ohio"
                                     : service.slug === "chimney-masonry-repair"
-                                      ? "Masonry chimney repair by ChimCrew specialists in Ohio"
-                                      : `ChimCrew ${service.shortTitle.toLowerCase()} — Ohio crew on the job`
+                                      ? "Masonry chimney repair by Chimcrew - Chimney Sweep & Repair specialists in Ohio"
+                                      : `Chimcrew - Chimney Sweep & Repair ${service.shortTitle.toLowerCase()} — Ohio crew on the job`
                 }
                 className="block aspect-[5/4] h-auto w-full object-cover"
                 fetchPriority="high"
@@ -337,7 +337,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
               <div className="absolute inset-x-4 bottom-4 flex items-center justify-between gap-3 sm:inset-x-5 sm:bottom-5">
                 <div className="min-w-0">
                   <p className="font-display text-sm font-bold text-primary-foreground sm:text-base">
-                    {service.shortTitle} · ChimCrew Ohio
+                    {service.shortTitle} · Chimcrew - Chimney Sweep & Repair Ohio
                   </p>
                   <p className="mt-0.5 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary-foreground/70">
                     <MapPin className="h-3 w-3 text-flame" /> Columbus · Dayton · Cincinnati

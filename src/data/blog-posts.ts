@@ -32,7 +32,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectTechOnsite.url,
     category: "Chimney Sweep",
     readMinutes: 9,
-    author: "Marcus Reed, ChimCrew",
+    author: "Marcus Reed, Chimcrew - Chimney Sweep & Repair",
     body: [
       {
         heading: "Why Columbus chimneys need a different sweep schedule",
@@ -45,7 +45,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "What a real chimney sweep actually includes",
         paragraphs: [
-          "A proper sweep in Columbus is not just a brush down the flue. When ChimCrew crews show up, the visit covers: dropcloths and HEPA vacuum containment at the firebox, full top-to-bottom flue brushing with the correct-diameter poly or steel brush, smoke shelf and damper cleaning, firebox vacuuming, cap and screen inspection, crown visual from the roofline, flashing check, and a written Level 1 report with photos.",
+          "A proper sweep in Columbus is not just a brush down the flue. When Chimcrew - Chimney Sweep & Repair crews show up, the visit covers: dropcloths and HEPA vacuum containment at the firebox, full top-to-bottom flue brushing with the correct-diameter poly or steel brush, smoke shelf and damper cleaning, firebox vacuuming, cap and screen inspection, crown visual from the roofline, flashing check, and a written Level 1 report with photos.",
           "If you are quoted under $150 for a chimney sweep in the Columbus metro, ask exactly what is included. National coupon-driven companies routinely advertise a low sweep price, then add inspection, video scan, and dropcloth fees on the invoice. Honest local pricing for a real Level 1 sweep in 2026 runs roughly $189 to $279 depending on roof access and stack height.",
           "A Level 2 inspection — required by NFPA 211 anytime a home is sold, a new appliance is installed, or a chimney fire is suspected — adds an internal video camera scan and typically runs $250 to $400 on top of the sweep.",
         ],
@@ -86,7 +86,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectCrownRebuild.url,
     category: "Chimney Repair",
     readMinutes: 10,
-    author: "Marcus Reed, ChimCrew",
+    author: "Marcus Reed, Chimcrew - Chimney Sweep & Repair",
     body: [
       {
         heading: "The five repairs Columbus homeowners ask about most",
@@ -149,7 +149,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectCapFinished.url,
     category: "Gas Fireplace",
     readMinutes: 9,
-    author: "Marcus Reed, ChimCrew",
+    author: "Marcus Reed, Chimcrew - Chimney Sweep & Repair",
     body: [
       {
         heading: "Why gas fireplaces still need an annual inspection",
@@ -207,7 +207,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectTechOnsite.url,
     category: "Maintenance",
     readMinutes: 5,
-    author: "Marcus Reed, ChimCrew",
+    author: "Marcus Reed, Chimcrew - Chimney Sweep & Repair",
     body: [
       {
         heading: "The short answer",
@@ -241,7 +241,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectFlueBefore.url,
     category: "Safety",
     readMinutes: 6,
-    author: "Marcus Reed, ChimCrew",
+    author: "Marcus Reed, Chimcrew - Chimney Sweep & Repair",
     body: [
       {
         heading: "Stage 1 — flaky soot",
@@ -274,7 +274,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectCapInstall.url,
     category: "Safety",
     readMinutes: 4,
-    author: "ChimCrew Tech Team",
+    author: "Chimcrew - Chimney Sweep & Repair Tech Team",
     body: [
       {
         heading: "1. Persistent humming or pressure imbalance",
@@ -318,7 +318,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectTuckpointing.url,
     category: "Repairs",
     readMinutes: 5,
-    author: "Marcus Reed, ChimCrew",
+    author: "Marcus Reed, Chimcrew - Chimney Sweep & Repair",
     body: [
       {
         heading: "1. Failed flashing",
@@ -356,7 +356,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectCapFinished.url,
     category: "Maintenance",
     readMinutes: 4,
-    author: "ChimCrew Tech Team",
+    author: "Chimcrew - Chimney Sweep & Repair Tech Team",
     body: [
       {
         heading: "Target moisture content: under 20%",
@@ -388,7 +388,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectLiner.url,
     category: "Repairs",
     readMinutes: 6,
-    author: "Marcus Reed, ChimCrew",
+    author: "Marcus Reed, Chimcrew - Chimney Sweep & Repair",
     body: [
       {
         heading: "Clay tile: what it does well",
@@ -426,7 +426,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectCrownRebuild.url,
     category: "Maintenance",
     readMinutes: 5,
-    author: "ChimCrew Tech Team",
+    author: "Chimcrew - Chimney Sweep & Repair Tech Team",
     body: [
       {
         heading: "Level 1 — the annual",
@@ -458,7 +458,7 @@ export const BLOG_POSTS: BlogPost[] = [
     cover: projectTechOnsite.url,
     category: "Fireplace Cleaning",
     readMinutes: 8,
-    author: "Marcus Reed, ChimCrew",
+    author: "Marcus Reed, Chimcrew - Chimney Sweep & Repair",
     body: [
       {
         heading: "Why fireplace cleaning matters more than most people think",
@@ -509,9 +509,9 @@ export const BLOG_POSTS: BlogPost[] = [
         ],
       },
       {
-        heading: "How ChimCrew cleans a fireplace",
+        heading: "How Chimcrew - Chimney Sweep & Repair cleans a fireplace",
         paragraphs: [
-          "Every ChimCrew fireplace cleaning starts with dropcloths and a HEPA vacuum sealed at the firebox opening — no soot in your living room, ever. From there we brush the flue top-down with the correct-diameter poly or steel brush, hand-clean the smoke shelf and damper, vacuum the firebox, and inspect the cap, crown, and flashing from the roofline.",
+          "Every Chimcrew - Chimney Sweep & Repair fireplace cleaning starts with dropcloths and a HEPA vacuum sealed at the firebox opening — no soot in your living room, ever. From there we brush the flue top-down with the correct-diameter poly or steel brush, hand-clean the smoke shelf and damper, vacuum the firebox, and inspect the cap, crown, and flashing from the roofline.",
           "You get a written Level 1 inspection report with photos of anything that needs attention. If nothing does, we say so — we don't invent repairs. Most cleanings take 45–75 minutes and start at $189.",
         ],
       },

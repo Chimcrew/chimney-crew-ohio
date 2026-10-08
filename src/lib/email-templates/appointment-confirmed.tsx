@@ -28,7 +28,7 @@ const AppointmentConfirmedEmail = ({
     <Body style={main}>
       <Container style={container}>
         <Section style={brandBar}>
-          <Text style={brandMark}>CHIMCREW</Text>
+          <Text style={brandMark}>CHIMCREW - CHIMNEY SWEEP & REPAIR</Text>
         </Section>
 
         <Section style={statusPill}>
@@ -37,7 +37,7 @@ const AppointmentConfirmedEmail = ({
 
         <Heading style={h1}>You're all set, {name.split(' ')[0]}.</Heading>
         <Text style={subtitle}>
-          Your appointment with ChimCrew is officially confirmed. A CSIA-certified tech is on the schedule for your job.
+          Your appointment with Chimcrew - Chimney Sweep & Repair is officially confirmed. A CSIA-certified tech is on the schedule for your job.
         </Text>
 
         <Section style={card}>
@@ -63,7 +63,7 @@ const AppointmentConfirmedEmail = ({
 
         <Hr style={hr} />
         <Text style={footer}>
-          ChimCrew — CSIA-certified chimney sweeps serving Columbus, Cincinnati, Dayton & all of Central Ohio.
+          Chimcrew - Chimney Sweep & Repair — CSIA-certified chimney sweeps serving Columbus, Cincinnati, Dayton & all of Central Ohio.
         </Text>
       </Container>
     </Body>
@@ -73,7 +73,7 @@ const AppointmentConfirmedEmail = ({
 export const template = {
   component: AppointmentConfirmedEmail,
   subject: (data: Record<string, any>) =>
-    `✓ ChimCrew appointment confirmed${data?.name ? `, ${String(data.name).split(' ')[0]}` : ''}`,
+    `✓ Chimcrew - Chimney Sweep & Repair appointment confirmed${data?.name ? `, ${String(data.name).split(' ')[0]}` : ''}`,
   displayName: 'Appointment confirmed',
   previewData: {
     name: 'Jane Smith',

@@ -12,11 +12,11 @@ export const Route = createFileRoute("/blog/$slug")({
   },
   head: ({ loaderData, params }) => {
     const post = loaderData?.post;
-    if (!post) return { meta: [{ title: "Article not found — ChimCrew" }] };
+    if (!post) return { meta: [{ title: "Article not found — Chimcrew - Chimney Sweep & Repair" }] };
     const url = `${SITE}/blog/${params.slug}`;
     return {
       meta: [
-        { title: `${post.title} | ChimCrew Ohio` },
+        { title: `${post.title} | Chimcrew - Chimney Sweep & Repair Ohio` },
         { name: "description", content: post.excerpt },
         { name: "author", content: post.author },
         { property: "og:title", content: post.title },
@@ -46,7 +46,7 @@ export const Route = createFileRoute("/blog/$slug")({
             author: { "@type": "Person", name: post.author },
             publisher: {
               "@type": "Organization",
-              name: "ChimCrew",
+              name: "Chimcrew - Chimney Sweep & Repair",
               logo: { "@type": "ImageObject", url: `${SITE}/favicon.ico` },
             },
             mainEntityOfPage: { "@type": "WebPage", "@id": url },
@@ -147,7 +147,7 @@ function PostPage() {
               ◆ Live in Columbus, Cincinnati, or Dayton?
             </p>
             <h3 className="mt-3 font-display text-2xl font-extrabold leading-tight text-primary md:text-3xl">
-              Book a free inspection with a ChimCrew tech.
+              Book a free inspection with a Chimcrew - Chimney Sweep & Repair tech.
             </h3>
             <div className="mt-5 flex flex-wrap gap-3">
               <Link

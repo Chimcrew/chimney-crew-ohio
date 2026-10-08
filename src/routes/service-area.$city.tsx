@@ -13,7 +13,7 @@ export const Route = createFileRoute("/service-area/$city")({
   },
   head: ({ loaderData }) => {
     const c = loaderData ? getSeoCity(loaderData.slug) : undefined;
-    if (!c) return { meta: [{ title: "Service Area — ChimCrew" }] };
+    if (!c) return { meta: [{ title: "Service Area — Chimcrew - Chimney Sweep & Repair" }] };
     const url = `https://chimcrew.com/service-area/${c.slug}`;
     return {
       meta: [
@@ -31,15 +31,14 @@ export const Route = createFileRoute("/service-area/$city")({
           children: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: `ChimCrew — ${c.name}`,
+            name: "Chimcrew - Chimney Sweep & Repair",
             url,
             telephone: "+1-614-683-5763",
             areaServed: { "@type": "City", name: `${c.name}, ${c.state}` },
             address: {
               "@type": "PostalAddress",
-              addressLocality: c.name,
-              addressRegion: c.state,
-              postalCode: c.zip,
+              addressLocality: "Columbus",
+              addressRegion: "OH",
               addressCountry: "US",
             },
           }),
@@ -131,7 +130,7 @@ function CityPage() {
       {/* WHY US */}
       <section className="border-b border-border bg-background py-16">
         <div className="mx-auto max-w-7xl px-4 md:px-8">
-          <h2 className="font-display font-bold">Why {city.name} homeowners choose ChimCrew</h2>
+          <h2 className="font-display font-bold">Why {city.name} homeowners choose Chimcrew - Chimney Sweep & Repair</h2>
           <p className="mt-4 max-w-3xl text-base text-foreground/80">{city.whyUs}</p>
 
           <div className="mt-8 rounded-none border border-border bg-card p-5 md:p-6">

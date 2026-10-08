@@ -53,9 +53,9 @@ const SERVICE_GROUPS: { key: string; label: string; slugs: string[] }[] = [
 export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
-      { title: "Chimney Services in Ohio — ChimCrew" },
+      { title: "Chimney Services in Ohio — Chimcrew - Chimney Sweep & Repair" },
       { name: "description", content: "Sweeps, inspections, liners, crowns, caps, waterproofing, flashing, firebox rebuilds, animal removal, gas service, and more — all flat-rate." },
-      { property: "og:title", content: "Chimney Services in Ohio — ChimCrew" },
+      { property: "og:title", content: "Chimney Services in Ohio — Chimcrew - Chimney Sweep & Repair" },
       { property: "og:description", content: "14 chimney services, every one flat-rate, every one with a photo report." },
       { property: "og:url", content: "https://chimcrew.com/services" },
     ],
@@ -73,7 +73,7 @@ export const Route = createFileRoute("/services/")({
             "@type": "Service",
             name: s.title,
             url: `https://chimcrew.com/services/${s.slug}`,
-            provider: { "@type": "LocalBusiness", name: "ChimCrew" },
+            provider: { "@type": "LocalBusiness", name: "Chimcrew - Chimney Sweep & Repair" },
             areaServed: "Ohio",
           })),
         }),

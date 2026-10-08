@@ -13,12 +13,12 @@ export const Route = createFileRoute("/services/$slug")({
     if (!s) {
       return {
         meta: [
-          { title: "Service — ChimCrew" },
+          { title: "Service — Chimcrew - Chimney Sweep & Repair" },
           { name: "description", content: "Chimney services in Ohio." },
         ],
       };
     }
-    const title = `${s.title} — ChimCrew Ohio`;
+    const title = `${s.title} — Chimcrew - Chimney Sweep & Repair Ohio`;
     const url = `https://chimcrew.com/services/${s.slug}`;
     return {
       meta: [

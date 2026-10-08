@@ -10,14 +10,14 @@ const SITE = "https://chimcrew.com";
 export const Route = createFileRoute("/blog/")({
   head: () => ({
     meta: [
-      { title: "Ohio Chimney Blog — Sweep, Repair & Safety Tips | ChimCrew" },
+      { title: "Ohio Chimney Blog — Sweep, Repair & Safety Tips | Chimcrew - Chimney Sweep & Repair" },
       {
         name: "description",
         content:
-          "Practical chimney advice from working sweeps in Columbus, Cincinnati, and Dayton. Creosote, liner, leak, and inspection guides — written by ChimCrew technicians.",
+          "Practical chimney advice from working sweeps in Columbus, Cincinnati, and Dayton. Creosote, liner, leak, and inspection guides — written by Chimcrew - Chimney Sweep & Repair technicians.",
       },
       { name: "keywords", content: "chimney sweep Ohio, chimney repair Columbus, creosote, chimney liner, chimney inspection Cincinnati, chimney crown Dayton" },
-      { property: "og:title", content: "ChimCrew Blog — Ohio Chimney Tips & Safety" },
+      { property: "og:title", content: "Chimcrew - Chimney Sweep & Repair Blog — Ohio Chimney Tips & Safety" },
       { property: "og:description", content: "Advice from the rooftops — written by sweeps, not marketers." },
       { property: "og:url", content: `${SITE}/blog` },
       { property: "og:type", content: "website" },
@@ -29,9 +29,9 @@ export const Route = createFileRoute("/blog/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Blog",
-          name: "ChimCrew Field Notes",
+          name: "Chimcrew - Chimney Sweep & Repair Field Notes",
           url: `${SITE}/blog`,
-          publisher: { "@type": "Organization", name: "ChimCrew" },
+          publisher: { "@type": "Organization", name: "Chimcrew - Chimney Sweep & Repair" },
           blogPost: BLOG_POSTS.map((p) => ({
             "@type": "BlogPosting",
             headline: p.title,
@@ -57,7 +57,7 @@ function BlogPage() {
         eyebrow="Field Notes · Written by working sweeps"
         title={
           <>
-            The ChimCrew <span className="text-flame">blog</span>.
+            The Chimcrew - Chimney Sweep & Repair <span className="text-flame">blog</span>.
           </>
         }
         subtitle="Practical chimney advice from rooftops across Columbus, Cincinnati, and Dayton. No fluff, no SEO filler — what we'd tell our own homeowners."

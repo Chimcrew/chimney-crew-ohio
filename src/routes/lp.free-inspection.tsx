@@ -29,7 +29,7 @@ import { submitLead } from "@/lib/lead-submit";
 export const Route = createFileRoute("/lp/free-inspection")({
   head: () => ({
     meta: [
-      { title: "Free Chimney Inspection — Columbus, OH | ChimCrew" },
+      { title: "Free Chimney Inspection — Columbus, OH | Chimcrew - Chimney Sweep & Repair" },
       {
         name: "description",
         content:
@@ -55,7 +55,7 @@ export const Route = createFileRoute("/lp/free-inspection")({
 const TEL = "tel:6146835763";
 const TEL_DISPLAY = "(614) 683-5763";
 const SMS =
-  "sms:6146835763?&body=Hi%20ChimCrew%2C%20I%27d%20like%20a%20free%20chimney%20inspection.";
+  "sms:6146835763?&body=Hi%20Chimcrew%20-%20Chimney%20Sweep%20%26%20Repair%2C%20I%27d%20like%20a%20free%20chimney%20inspection.";
 
 function FreeInspectionLanding() {
   return (
@@ -83,12 +83,12 @@ function MinimalHeader() {
           <div className="grid h-9 w-9 place-items-center rounded-none bg-flame text-primary">
             <Flame className="h-5 w-5" />
           </div>
-          <span className="font-display text-lg font-extrabold tracking-tight">ChimCrew</span>
+          <span className="font-display text-lg font-extrabold tracking-tight">Chimcrew - Chimney Sweep & Repair</span>
         </div>
         <a
           href={TEL}
           className="inline-flex items-center gap-2 rounded-none bg-flame px-3 py-2 font-display text-sm font-extrabold uppercase tracking-wider text-primary shadow-[0_4px_14px_oklch(0.78_0.19_92/0.45)] sm:px-4 sm:text-base"
-          aria-label={`Call ChimCrew at ${TEL_DISPLAY}`}
+          aria-label={`Call Chimcrew - Chimney Sweep & Repair at ${TEL_DISPLAY}`}
         >
           <Phone className="h-4 w-4" />
           <span className="hidden sm:inline">{TEL_DISPLAY}</span>
@@ -339,7 +339,7 @@ function MeetTheCrew() {
           <div className="absolute -inset-3 -z-10 rounded-none bg-gradient-to-br from-flame/30 to-primary/10 blur-2xl" />
           <img
             src={teamHero.url}
-            alt="The ChimCrew family crew standing in front of their yellow van"
+            alt="The Chimcrew - Chimney Sweep & Repair family crew standing in front of their yellow van"
             loading="lazy"
             className="w-full rounded-none border-4 border-background object-cover shadow-[0_20px_60px_-20px_oklch(0_0_0/0.45)]"
           />
@@ -507,7 +507,7 @@ function MinimalFooter() {
   return (
     <footer className="border-t border-border/30 py-6 text-center text-xs text-muted-foreground">
       <div className="mx-auto max-w-5xl px-4">
-        © {new Date().getFullYear()} ChimCrew · Columbus, OH ·{" "}
+        © {new Date().getFullYear()} Chimcrew - Chimney Sweep & Repair · Columbus, OH ·{" "}
         <a href={TEL} className="underline-offset-2 hover:underline">
           {TEL_DISPLAY}
         </a>

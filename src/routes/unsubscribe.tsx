@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export const Route = createFileRoute("/unsubscribe")({
   head: () => ({
     meta: [
-      { title: "Unsubscribe — ChimCrew" },
+      { title: "Unsubscribe — Chimcrew - Chimney Sweep & Repair" },
       { name: "robots", content: "noindex" },
     ],
   }),
@@ -65,14 +65,14 @@ function UnsubscribePage() {
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-md flex-col justify-center px-6 py-16 text-foreground">
       <h1 className="font-display text-2xl font-extrabold uppercase tracking-tight">
-        Unsubscribe from ChimCrew
+        Unsubscribe from Chimcrew - Chimney Sweep & Repair
       </h1>
       <div className="mt-6 border border-border bg-background p-6">
         {state.kind === "loading" && <p>Checking your link…</p>}
         {state.kind === "valid" && (
           <>
             <p className="text-sm text-foreground/80">
-              Click below to stop receiving emails from ChimCrew at this address.
+              Click below to stop receiving emails from Chimcrew - Chimney Sweep & Repair at this address.
             </p>
             <button
               type="button"

@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
 export const Route = createFileRoute('/admin/leads')({
-  head: () => ({ meta: [{ title: 'Lead Inbox · ChimCrew Admin' }, { name: 'robots', content: 'noindex,nofollow' }] }),
+  head: () => ({ meta: [{ title: 'Lead Inbox · Chimcrew - Chimney Sweep & Repair Admin' }, { name: 'robots', content: 'noindex,nofollow' }] }),
   component: AdminLeadsPage,
 })
 

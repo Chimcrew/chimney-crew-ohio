@@ -128,7 +128,7 @@ export function InstagramFollow() {
                 src={logoLarge}
                 srcSet={logoSrcSet}
                 sizes="(min-width: 768px) 69px, 53px"
-                alt="ChimCrew"
+                alt="Chimcrew - Chimney Sweep & Repair"
                 className="h-full w-full rounded-full object-cover"
               />
             </div>
@@ -139,7 +139,7 @@ export function InstagramFollow() {
               @chim_crew
             </a>
             <p className="mt-0.5 text-xs text-white/60 md:text-sm">
-              ChimCrew · Chimney experts · Columbus · Cincinnati · Dayton
+              Chimcrew - Chimney Sweep & Repair · Chimney experts · Columbus · Cincinnati · Dayton
             </p>
           </div>
         </div>

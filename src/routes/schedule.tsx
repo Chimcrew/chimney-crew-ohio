@@ -5,13 +5,13 @@ import { ScheduleInline } from "@/components/ScheduleWidget";
 export const Route = createFileRoute("/schedule")({
   head: () => ({
     meta: [
-      { title: "Schedule Service Online — ChimCrew" },
+      { title: "Schedule Service Online — Chimcrew - Chimney Sweep & Repair" },
       {
         name: "description",
         content:
           "Book a chimney inspection, sweep, or repair in 60 seconds. Servicing Columbus, Dayton, Cincinnati & surrounding Ohio neighborhoods.",
       },
-      { property: "og:title", content: "Schedule Service Online — ChimCrew" },
+      { property: "og:title", content: "Schedule Service Online — Chimcrew - Chimney Sweep & Repair" },
       {
         property: "og:description",
         content:
@@ -33,7 +33,7 @@ function SchedulePage() {
               Book online · No pop-ups · No spam
             </p>
             <h1 className="mt-2 font-display text-2xl font-extrabold leading-tight text-primary md:text-4xl">
-              Schedule your ChimCrew appointment.
+              Schedule your Chimcrew - Chimney Sweep & Repair appointment.
             </h1>
             <p className="mt-2 text-sm text-foreground/75 md:text-base">
               Three quick steps. Appointment confirmation emailed within 10 minutes.

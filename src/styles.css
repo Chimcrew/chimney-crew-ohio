@@ -116,7 +116,7 @@
 
 :root {
   --radius: 0.25rem;
-  /* ChimCrew — taken from the truck wrap: jet black, hi-vis yellow,
+  /* Chimcrew - Chimney Sweep & Repair — taken from the truck wrap: jet black, hi-vis yellow,
      ember orange, sitting on a soft overcast-sky background. */
   --background: oklch(0.955 0.012 230);        /* soft sky/cloud */
   --foreground: oklch(0.18 0.02 250);          /* near-black ink */

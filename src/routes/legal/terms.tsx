@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { LegalPage } from "@/components/LegalPage";
 
 export const Route = createFileRoute("/legal/terms")({
-  head: () => ({ meta: [{ title: "Terms of Service — ChimCrew" }, { name: "description", content: "Terms governing your use of the ChimCrew website and services." }] }),
+  head: () => ({ meta: [{ title: "Terms of Service — Chimcrew - Chimney Sweep & Repair" }, { name: "description", content: "Terms governing your use of the Chimcrew - Chimney Sweep & Repair website and services." }] }),
   component: Terms,
 });
 
@@ -10,7 +10,7 @@ function Terms() {
   return (
     <LegalPage kicker="// Legal" title="Terms of Service" updated="May 2026">
       <Section title="1. Acceptance">
-        <p>By using this website or booking services with ChimCrew Chimney Services, you agree to these Terms of Service. If you do not agree, please do not use the site or our services.</p>
+        <p>By using this website or booking services with Chimcrew - Chimney Sweep & Repair, you agree to these Terms of Service. If you do not agree, please do not use the site or our services.</p>
       </Section>
       <Section title="2. Service estimates">
         <p>Quotes provided online or by phone are estimates based on the information you supply. Final pricing is confirmed in writing before any work begins. We will never charge more than the agreed-upon flat rate without your written approval.</p>
@@ -25,13 +25,13 @@ function Terms() {
         <p>Payment is due upon completion of service unless other arrangements are made in writing. We accept major credit cards, ACH, and check.</p>
       </Section>
       <Section title="6. Limitation of liability">
-        <p>ChimCrew's liability for any claim is limited to the amount paid for the service giving rise to the claim. We are not liable for pre-existing conditions or damage caused by structural deficiencies disclosed in our written reports.</p>
+        <p>Chimcrew - Chimney Sweep & Repair's liability for any claim is limited to the amount paid for the service giving rise to the claim. We are not liable for pre-existing conditions or damage caused by structural deficiencies disclosed in our written reports.</p>
       </Section>
       <Section title="7. Governing law">
         <p>These terms are governed by the laws of the State of Ohio.</p>
       </Section>
       <Section id="sms" title="8. SMS Terms and Conditions">
-        <p>By opting in to receive text messages from ChimCrew, you consent to receive SMS messages related to orders, service appointments, and other relevant information.</p>
+        <p>By opting in to receive text messages from Chimcrew - Chimney Sweep & Repair, you consent to receive SMS messages related to orders, service appointments, and other relevant information.</p>
         <p>Message and data rates may apply. Message frequency may vary. You can reply STOP at any time to opt out of future messages. For help, reply HELP or contact us at (614) 683-5763.</p>
         <p>We will not share your mobile information with third parties for marketing purposes. Your consent is not a condition of purchase.</p>
       </Section>

@@ -35,7 +35,7 @@ export function FlashingJobShowcase({ variant = "compact", showCta = true, class
         <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-flame">
-              Recent ChimCrew Job
+              Recent Chimcrew - Chimney Sweep & Repair Job
             </p>
             <h2 className="mt-2 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
               Chimney Flashing Repair — Before & After

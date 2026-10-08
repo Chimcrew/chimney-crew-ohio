@@ -25,7 +25,7 @@ import { BEFORE_AFTER_JOBS } from "@/data/before-after";
 export const Route = createFileRoute("/chimney-repair-columbus")({
   head: () => ({
     meta: [
-      { title: "Chimney Repair Columbus, OH | Free Inspection | ChimCrew" },
+      { title: "Chimney Repair Columbus, OH | Free Inspection | Chimcrew - Chimney Sweep & Repair" },
       {
         name: "description",
         content:
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/chimney-repair-columbus")({
           areaServed: { "@type": "City", name: "Columbus, OH" },
           provider: {
             "@type": "LocalBusiness",
-            name: "ChimCrew",
+            name: "Chimcrew - Chimney Sweep & Repair",
             telephone: "+1-614-683-5763",
             url: "https://chimcrew.com",
             areaServed: "Columbus, OH",
@@ -197,7 +197,7 @@ function ChimneyRepairColumbus() {
       <section className="bg-primary py-16 text-primary-foreground md:py-20">
         <div className="mx-auto max-w-6xl px-4 md:px-8">
           <div className="text-center">
-            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Why Ohio picks ChimCrew</p>
+            <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-flame">// Why Ohio picks Chimcrew - Chimney Sweep & Repair</p>
             <h2 className="mt-3 font-display text-3xl font-extrabold md:text-5xl">
               Reliable. Local. <span className="text-flame">Accountable.</span>
             </h2>

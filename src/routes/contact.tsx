@@ -9,9 +9,9 @@ import desktopHeroPhoto from "@/assets/hero/hero-desktop-team-chimney.png.asset.
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact ChimCrew — Chimney Sweep Columbus, Cincinnati, Dayton" },
-      { name: "description", content: "Call, email, or request a quote from ChimCrew. Local chimney sweeps serving Columbus, Cincinnati, and Dayton, OH." },
-      { property: "og:title", content: "Contact ChimCrew" },
+      { title: "Contact Chimcrew - Chimney Sweep & Repair — Chimney Sweep Columbus, Cincinnati, Dayton" },
+      { name: "description", content: "Call, email, or request a quote from Chimcrew - Chimney Sweep & Repair. Local chimney sweeps serving Columbus, Cincinnati, and Dayton, OH." },
+      { property: "og:title", content: "Contact Chimcrew - Chimney Sweep & Repair" },
       { property: "og:description", content: "Reach Ohio's fired-up chimney crew. Same-day callbacks." },
       { property: "og:url", content: "https://chimcrew.com/contact" },
     ],

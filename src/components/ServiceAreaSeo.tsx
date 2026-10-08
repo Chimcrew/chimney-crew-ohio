@@ -29,7 +29,7 @@ export function ServiceAreaSeo() {
             Cities we serve across Ohio.
           </h2>
           <p className="mt-3 max-w-2xl text-base text-muted-foreground">
-            ChimCrew serves homeowners throughout the Columbus, Dayton and Cincinnati
+            Chimcrew - Chimney Sweep & Repair serves homeowners throughout the Columbus, Dayton and Cincinnati
             metros — over 50 cities in central and southwest Ohio. Tap your city for
             local pricing, service details, and recent jobs.
           </p>

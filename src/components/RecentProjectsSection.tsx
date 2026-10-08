@@ -141,7 +141,7 @@ function ProjectTile({
     >
       <Photo
         src={project.img}
-        alt={`${project.title} — ChimCrew project in ${project.city}`}
+        alt={`${project.title} — Chimcrew - Chimney Sweep & Repair project in ${project.city}`}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
         // 2 cols on mobile, 3 at sm, 4 at lg, inside a max-w-7xl container.

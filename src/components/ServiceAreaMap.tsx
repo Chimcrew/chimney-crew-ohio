@@ -1,4 +1,4 @@
-// Editorial Ohio service-area map for ChimCrew.
+// Editorial Ohio service-area map for Chimcrew - Chimney Sweep & Repair.
 // Real lat/lon-driven layout covering Cincinnati, Dayton, Columbus + suburbs.
 
 type City = {
@@ -55,7 +55,7 @@ export function ServiceAreaMap() {
         viewBox={`0 0 ${VB_W} ${VB_H}`}
         className="block h-auto w-full"
         role="img"
-        aria-label="ChimCrew Ohio service area: Cincinnati, Dayton, Columbus and surrounding suburbs"
+        aria-label="Chimcrew - Chimney Sweep & Repair Ohio service area: Cincinnati, Dayton, Columbus and surrounding suburbs"
       >
         <defs>
           <radialGradient id="mapVignette" cx="50%" cy="50%" r="65%">

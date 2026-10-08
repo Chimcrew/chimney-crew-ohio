@@ -32,13 +32,13 @@ const SITE = "https://chimcrew.com";
 export const Route = createFileRoute("/gallery")({
   head: () => ({
     meta: [
-      { title: "Gallery — ChimCrew Jobs in Columbus, Cincinnati & Dayton" },
+      { title: "Gallery — Chimcrew - Chimney Sweep & Repair Jobs in Columbus, Cincinnati & Dayton" },
       {
         name: "description",
         content:
-          "Photos from ChimCrew jobs across Ohio — crown rebuilds, stainless liner installs, tuckpointing, caps, and waterproofing. No stock imagery, no AI.",
+          "Photos from Chimcrew - Chimney Sweep & Repair jobs across Ohio — crown rebuilds, stainless liner installs, tuckpointing, caps, and waterproofing. No stock imagery, no AI.",
       },
-      { property: "og:title", content: "ChimCrew Gallery — Ohio Chimney Work" },
+      { property: "og:title", content: "Chimcrew - Chimney Sweep & Repair Gallery — Ohio Chimney Work" },
       { property: "og:description", content: "Every photo is a job we finished. No stock. No AI." },
       { property: "og:url", content: `${SITE}/gallery` },
       { property: "og:image", content: `${SITE}${p01}` },
@@ -60,9 +60,9 @@ type Photo = {
 const PHOTOS: Photo[] = [
   { src: "/photos/job-tall-brick-chimney.jpg", alt: "Tall multi-tone brick chimney with a new stainless cap", title: "Tall Brick Chimney Rebuild", city: "Columbus, OH", tag: "Cap", size: "tall" },
   { src: "/photos/job-triple-flue-crown.jpg", alt: "Three-flue brick chimney with a freshly coated white crown", title: "Triple Flue Crown Coat", city: "Columbus, OH", tag: "Crown", size: "tall" },
-  { src: "/photos/crew-ladder-yellow.jpg", alt: "ChimCrew techs in yellow uniforms working a dual-cap brick chimney", title: "Dual Cap Crown Work", city: "Columbus, OH", tag: "Crew", size: "tall" },
-  { src: "/photos/crew-john-flashseal.jpg", alt: "ChimCrew technician sealing chimney flashing on a residential roof", title: "Chimney FlashSeal", city: "Columbus, OH", tag: "Waterproof", size: "tall" },
-  { src: "/photos/crew-tuckpoint-hoodie.jpg", alt: "ChimCrew technician tuckpointing a red brick chimney from the rooftop", title: "Rooftop Tuckpointing", city: "Columbus, OH", tag: "Crew", size: "tall" },
+  { src: "/photos/crew-ladder-yellow.jpg", alt: "Chimcrew - Chimney Sweep & Repair techs in yellow uniforms working a dual-cap brick chimney", title: "Dual Cap Crown Work", city: "Columbus, OH", tag: "Crew", size: "tall" },
+  { src: "/photos/crew-john-flashseal.jpg", alt: "Chimcrew - Chimney Sweep & Repair technician sealing chimney flashing on a residential roof", title: "Chimney FlashSeal", city: "Columbus, OH", tag: "Waterproof", size: "tall" },
+  { src: "/photos/crew-tuckpoint-hoodie.jpg", alt: "Chimcrew - Chimney Sweep & Repair technician tuckpointing a red brick chimney from the rooftop", title: "Rooftop Tuckpointing", city: "Columbus, OH", tag: "Crew", size: "tall" },
   { src: jobA.url, alt: "Brick chimney with new stainless caps and freshly sealed crown", title: "New Caps + Crown Seal", city: "Columbus, OH", tag: "Cap", size: "tall" },
   { src: jobB.url, alt: "Brick chimney crown rebuild in progress on a metal roof", title: "Crown Rebuild In Progress", city: "Columbus, OH", tag: "Crown", size: "tall" },
   { src: nChaseSide.url, alt: "Side profile of a new stainless chase cover install", title: "Chase Cover — Side Profile", city: "Grove City, OH", tag: "Cap", size: "tall" },
@@ -83,7 +83,7 @@ const PHOTOS: Photo[] = [
   { src: p03.url, alt: "Stainless steel chimney liner installed from the roof", title: "Stainless Liner Install", city: "Cincinnati, OH", tag: "Liner", size: "tall" },
   { src: p04.url, alt: "Mesh chimney cap installation in progress", title: "Mesh Cap + Crown Repair", city: "Worthington, OH", tag: "Cap", size: "tall" },
   { src: p05.url, alt: "Rebuilt chimney crown with round stainless cap", title: "Crown Rebuild + Round Cap", city: "Dayton, OH", tag: "Crown", size: "tall" },
-  { src: p06.url, alt: "ChimCrew technician on site at a residential job", title: "Crew On Site", city: "Hilliard, OH", tag: "Crew", size: "tall" },
+  { src: p06.url, alt: "Chimcrew - Chimney Sweep & Repair technician on site at a residential job", title: "Crew On Site", city: "Hilliard, OH", tag: "Crew", size: "tall" },
   { src: p07.url, alt: "Flue interior before sweep showing creosote build-up", title: "Flue Before Sweep", city: "Westerville, OH", tag: "Liner", size: "tall" },
   { src: p08.url, alt: "Finished stainless chimney cap installed cleanly", title: "Cap Install — Finished", city: "Powell, OH", tag: "Cap", size: "tall" },
   { src: p09.url, alt: "Cracked chimney crown before rebuild", title: "Crown Before Rebuild", city: "Grove City, OH", tag: "Crown", size: "tall" },
@@ -104,7 +104,7 @@ function GalleryPage() {
       <PageHero
         eyebrow="Work · Ohio Homes"
         title={<>Completed <span className="text-flame">Projects</span></>}
-        subtitle="Finished ChimCrew projects across Columbus, Cincinnati, Dayton, and nearby Ohio communities — photographed on-site by our crew."
+        subtitle="Finished Chimcrew - Chimney Sweep & Repair projects across Columbus, Cincinnati, Dayton, and nearby Ohio communities — photographed on-site by our crew."
       >
         <div className="mt-8 flex flex-wrap items-center gap-6">
           <Stat label="Jobs this season" value="180+" />
@@ -153,7 +153,7 @@ function GalleryPage() {
                 ◆ The Wall · Ohio Rooftops
               </p>
               <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight text-primary md:text-4xl">
-                Finished ChimCrew work across Ohio.
+                Finished Chimcrew - Chimney Sweep & Repair work across Ohio.
               </h2>
             </div>
             <span className="hidden font-mono text-[10px] uppercase tracking-[0.22em] text-muted-foreground sm:inline">

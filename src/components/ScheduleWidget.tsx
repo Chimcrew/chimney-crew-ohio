@@ -57,8 +57,6 @@ export function ScheduleInline() {
 function getDefaultDate(): Date {
   const d = new Date();
   d.setDate(d.getDate() + 2);
-  // We're closed Saturdays — roll forward to Sunday.
-  if (d.getDay() === 6) d.setDate(d.getDate() + 1);
   d.setHours(0, 0, 0, 0);
   return d;
 }
@@ -96,7 +94,6 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
     if (phone.replace(/\D/g, "").length < 7) nextErrors.phone = "Enter a phone number we can reach you at";
     if (!emailIsValid) nextErrors.email = "That email doesn't look right — or leave it blank";
     if (!date) nextErrors.date = "Pick a date";
-    else if (date.getDay() === 6) nextErrors.date = "We're closed Saturdays — pick another day.";
     if (!slot) nextErrors.slot = "Pick a time window";
     if (!service) nextErrors.service = "Choose a service";
     if (!smsConsent) nextErrors.smsConsent = "Please check the box to consent to text messages";
@@ -224,7 +221,7 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
           </svg>
         </div>
         <p className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-foreground/60">
-          ChimCrew · 60-second booking
+          Chimcrew - Chimney Sweep & Repair · 60-second booking
         </p>
         <h2 className="font-display text-xl font-extrabold uppercase leading-[1.05] tracking-tight text-foreground md:text-2xl">
           Schedule Service Online
@@ -321,17 +318,12 @@ function ScheduleFlow({ sourcePath = "", onDone }: { sourcePath?: string; onDone
               onChange={(e) => {
                 if (!e.target.value) { setDate(undefined); return; }
                 const picked = new Date(e.target.value + "T00:00:00");
-                if (picked.getDay() === 6) {
-                  setErrors((prev) => ({ ...prev, date: "We're closed Saturdays — pick another day." }));
-                  setDate(undefined);
-                  return;
-                }
                 setErrors((prev) => { const n = { ...prev }; delete n.date; return n; });
                 setDate(picked);
               }}
               className={"h-10 rounded-none text-sm " + (errors.date ? "border-2 border-[#E63A1F]" : "border-foreground/20")}
             />
-            <p className="mt-1 text-[11px] text-muted-foreground">Sun–Fri · Closed Saturdays</p>
+            <p className="mt-1 text-[11px] text-muted-foreground">Open 24 hours · 7 days a week</p>
           </Field>
           <Field label="Appointment Time" required error={errors.slot}>
             <div className="grid grid-cols-3 gap-2">

@@ -37,12 +37,12 @@ const MUTED: [number, number, number] = [110, 110, 110]
 const BORDER: [number, number, number] = [220, 220, 220]
 
 const COMPANY = {
-  name: 'ChimCrew',
+  name: 'Chimcrew - Chimney Sweep & Repair',
   tagline: 'Columbus Chimney & Fireplace Specialists',
   phone: '(614) 683-5763',
   email: 'office@chimcrew.com',
   website: 'chimcrew.com',
-  address: '220 Vine Street, Columbus, OH 43215',
+  address: 'Serving Columbus, Ohio & Surrounding Areas',
 }
 
 const TERMS_TITLE = 'Terms and Conditions'
@@ -50,7 +50,7 @@ const TERMS_BODY = `Agreement and Acknowledgment
 By paying the due balance on invoices provided, the Client acknowledges that all requested service items listed on the invoice have been completed and tested to their satisfaction, unless otherwise specified. Labor charges will still apply for partial or unsuccessful repairs where work was performed. By accepting this invoice, the Client agrees to pay in full the amount listed in the "Total" section.
 
 Scope of Terms
-These Terms govern the products and services provided by Chimcrew ("Chimcrew") and apply to all Quotes and work orders. Any different or additional terms provided by the Customer are expressly rejected unless agreed to in writing. If a separate agreement has been signed by both parties, that agreement shall take precedence.
+These Terms govern the products and services provided by Chimcrew - Chimney Sweep & Repair ("Chimcrew - Chimney Sweep & Repair") and apply to all Quotes and work orders. Any different or additional terms provided by the Customer are expressly rejected unless agreed to in writing. If a separate agreement has been signed by both parties, that agreement shall take precedence.
 
 Payment
 Customer agrees to pay the full amount set forth in the Quote or invoice, including applicable taxes. Payments are due upon completion unless otherwise agreed. A valid credit card or Zelle information must be provided upon acceptance of the Quote. Returned checks incur a $35.00 fee. Any account unpaid after 28 days may be referred to collections, and Customer agrees to reimburse all collection-related costs, including attorney fees.
@@ -65,28 +65,28 @@ Job Approval and Satisfaction
 Before finalizing any job, the Client will have an opportunity to inspect the completed work. By signing off on or verbally approving the completion of services, the Client confirms satisfaction with the results and waives the right to future disputes related to workmanship or service quality, except as provided under the limited warranty terms below.
 
 Corrections and Right to Remedy
-If the Client believes that part of the work was not completed properly, they must notify Chimcrew immediately upon discovery. Chimcrew must be given the opportunity to inspect and correct the issue. The Client agrees to allow up to three (3) reasonable attempts to fix or redo the work before requesting a refund or initiating a dispute. Failure to follow this process may forfeit the Client's right to dispute or claim a refund.
+If the Client believes that part of the work was not completed properly, they must notify Chimcrew - Chimney Sweep & Repair immediately upon discovery. Chimcrew - Chimney Sweep & Repair must be given the opportunity to inspect and correct the issue. The Client agrees to allow up to three (3) reasonable attempts to fix or redo the work before requesting a refund or initiating a dispute. Failure to follow this process may forfeit the Client's right to dispute or claim a refund.
 
 Deposits and Cancellation Policy
 For all jobs requiring a deposit, particularly those involving custom orders or materials, a minimum 30% cancellation fee applies. This fee covers materials, logistics, and administrative costs. No refunds or cancellations are permitted once the job has been completed and approved by the Client.
 
 Cleaning Results and Hidden Conditions
-Client acknowledges that certain stains, odors, and damages may not be fully removed despite reasonable effort. No guarantees are made beyond what is stated in writing. Chimcrew is not liable for issues caused by hidden or latent defects, nor can we guarantee an exact match of textures or colors when replacing or repairing materials.
+Client acknowledges that certain stains, odors, and damages may not be fully removed despite reasonable effort. No guarantees are made beyond what is stated in writing. Chimcrew - Chimney Sweep & Repair is not liable for issues caused by hidden or latent defects, nor can we guarantee an exact match of textures or colors when replacing or repairing materials.
 
 Limited Warranty
-Chimcrew warrants that services will be performed professionally and in accordance with industry standards. Warranty claims must be submitted in writing within 12 months of service. Chimcrew, at its discretion, will (i) repair/re-perform the service or (ii) issue a pro-rated refund. This remedy is exclusive and limited to the original invoice amount. Chimcrew makes no warranty for third-party products. Any manufacturer warranties will be passed to the Customer when possible.
+Chimcrew - Chimney Sweep & Repair warrants that services will be performed professionally and in accordance with industry standards. Warranty claims must be submitted in writing within 12 months of service. Chimcrew - Chimney Sweep & Repair, at its discretion, will (i) repair/re-perform the service or (ii) issue a pro-rated refund. This remedy is exclusive and limited to the original invoice amount. Chimcrew - Chimney Sweep & Repair makes no warranty for third-party products. Any manufacturer warranties will be passed to the Customer when possible.
 
 No Other Warranties
-Other than the warranty stated above, Chimcrew disclaims all other express or implied warranties, including merchantability, fitness for a particular purpose, and non-infringement.
+Other than the warranty stated above, Chimcrew - Chimney Sweep & Repair disclaims all other express or implied warranties, including merchantability, fitness for a particular purpose, and non-infringement.
 
 Limitation of Liability
-In no event shall Chimcrew be liable for indirect, incidental, or consequential damages. Total liability shall not exceed the amount paid by the Customer within the 12-month period prior to the event giving rise to the claim.
+In no event shall Chimcrew - Chimney Sweep & Repair be liable for indirect, incidental, or consequential damages. Total liability shall not exceed the amount paid by the Customer within the 12-month period prior to the event giving rise to the claim.
 
 Dispute Resolution
-All complaints must be submitted in writing within seven (7) days of substantial completion. Chimcrew must be allowed to inspect and remedy any issue. Arbitration under the American Arbitration Association's Construction Industry Rules will be the exclusive method for resolving disputes, except for cases involving non-payment, which may be pursued in court.
+All complaints must be submitted in writing within seven (7) days of substantial completion. Chimcrew - Chimney Sweep & Repair must be allowed to inspect and remedy any issue. Arbitration under the American Arbitration Association's Construction Industry Rules will be the exclusive method for resolving disputes, except for cases involving non-payment, which may be pursued in court.
 
 Stored Payment Authorization
-If Chimcrew collected an initial deposit using a credit or debit card kept on file, the Company is authorized to charge the remaining balance to the same card upon job completion, unless the Customer provides written notice via email requesting a different payment method prior to the final charge.
+If Chimcrew - Chimney Sweep & Repair collected an initial deposit using a credit or debit card kept on file, the Company is authorized to charge the remaining balance to the same card upon job completion, unless the Customer provides written notice via email requesting a different payment method prior to the final charge.
 
 Card Processing Fee
 All payments made by credit or debit card are subject to a 3.5% processing fee to cover third-party transaction costs. This fee applies to all card types, including credit and debit cards, and will be added automatically to the total amount charged. Customers may avoid this fee by paying via Zelle or check.
@@ -170,8 +170,8 @@ export async function generateEstimatePdf(data: EstimatePdfData): Promise<jsPDF>
     doc.text(COMPANY.website, margin + targetW + 12, 70)
   } catch {
     doc.setTextColor(...BRAND_YELLOW)
-    doc.setFont('helvetica', 'bold').setFontSize(28)
-    doc.text('CHIMCREW', margin, 58)
+    doc.setFont('helvetica', 'bold').setFontSize(14)
+    doc.text('CHIMCREW - CHIMNEY SWEEP & REPAIR', margin, 58)
     doc.setFont('helvetica', 'normal').setFontSize(9).setTextColor(255, 255, 255)
     doc.text(COMPANY.address, margin, 78)
   }

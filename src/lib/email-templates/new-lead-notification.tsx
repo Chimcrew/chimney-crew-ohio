@@ -4,7 +4,7 @@ import {
 } from '@react-email/components'
 import type { TemplateEntry } from './registry'
 
-const SITE_NAME = 'ChimCrew'
+const SITE_NAME = 'Chimcrew - Chimney Sweep & Repair'
 
 interface NewLeadProps {
   source?: string

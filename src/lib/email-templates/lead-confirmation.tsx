@@ -4,7 +4,7 @@ import {
 } from '@react-email/components'
 import type { TemplateEntry } from './registry'
 
-const SITE_NAME = 'ChimCrew'
+const SITE_NAME = 'Chimcrew - Chimney Sweep & Repair'
 const PHONE = '(614) 683-5763'
 const PHONE_HREF = 'tel:6146835763'
 
@@ -25,7 +25,7 @@ const LeadConfirmationEmail = ({
     <Body style={main}>
       <Container style={container}>
         <Section style={brandBar}>
-          <Text style={brandMark}>CHIMCREW</Text>
+          <Text style={brandMark}>CHIMCREW - CHIMNEY SWEEP & REPAIR</Text>
         </Section>
 
         <Heading style={h1}>Appointment received, {name.split(' ')[0]}.</Heading>
@@ -57,7 +57,7 @@ const LeadConfirmationEmail = ({
 
         <Hr style={hr} />
         <Text style={footer}>
-          ChimCrew — CSIA-certified chimney sweeps serving Columbus, Cincinnati, Dayton & all of Central Ohio.
+          Chimcrew - Chimney Sweep & Repair — CSIA-certified chimney sweeps serving Columbus, Cincinnati, Dayton & all of Central Ohio.
         </Text>
       </Container>
     </Body>
@@ -67,7 +67,7 @@ const LeadConfirmationEmail = ({
 export const template = {
   component: LeadConfirmationEmail,
   subject: (data: Record<string, any>) =>
-    `ChimCrew — appointment confirmation on the way`,
+    `Chimcrew - Chimney Sweep & Repair — appointment confirmation on the way`,
   displayName: 'Lead confirmation',
   previewData: {
     name: 'Jane Smith',

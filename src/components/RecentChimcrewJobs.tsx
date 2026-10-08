@@ -32,7 +32,7 @@ function JobCard({ job }: { job: (typeof JOBS)[number] }) {
           <div key={k} className="relative aspect-[3/4] overflow-hidden">
             <Photo
               src={job[k]}
-              alt={`${job.title} ${k} — ChimCrew ${job.city}`}
+              alt={`${job.title} ${k} — Chimcrew - Chimney Sweep & Repair ${job.city}`}
               loading="lazy"
               decoding="async"
               // Six cards across on md+, each split into a before/after pair;

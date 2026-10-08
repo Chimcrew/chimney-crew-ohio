@@ -92,13 +92,13 @@ import techChimneyCapInstall from "@/assets/fireplace-tile-install.jpeg.asset.js
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ohio Chimney Sweep, Repair & Fireplace | ChimCrew" },
+      { title: "Ohio Chimney Sweep, Repair & Fireplace | Chimcrew - Chimney Sweep & Repair" },
       {
         name: "description",
         content:
           "CSIA-certified chimney sweeps, inspections, and repairs across Columbus, Dayton, Cincinnati & Cleveland. Upfront pricing, fully insured, same-day callbacks.",
       },
-      { property: "og:title", content: "Ohio Chimney Sweep, Repair & Fireplace | ChimCrew" },
+      { property: "og:title", content: "Ohio Chimney Sweep, Repair & Fireplace | Chimcrew - Chimney Sweep & Repair" },
       {
         property: "og:description",
         content:
@@ -218,7 +218,7 @@ function TeamWidePhotoBridge() {
         <div className="overflow-hidden rounded-xl border-2 border-border bg-card shadow-[0_20px_50px_-20px_oklch(0_0_0/0.35)]">
           <img
             src={teamWidePhoto.url}
-            alt="The ChimCrew team — certified chimney professionals in Columbus, Ohio"
+            alt="The Chimcrew - Chimney Sweep & Repair team — certified chimney professionals in Columbus, Ohio"
             className="block h-auto w-full object-cover"
             loading="lazy"
             decoding="async"
@@ -271,7 +271,7 @@ function HeroPhotoCard() {
             <img
               key={p.src}
               src={p.src}
-              alt={`ChimCrew project — ${p.caption} in ${p.city}`}
+              alt={`Chimcrew - Chimney Sweep & Repair project — ${p.caption} in ${p.city}`}
               className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-[1200ms] ease-out ${i === idx ? "opacity-100" : "opacity-0"}`}
               width={800}
               height={1000}
@@ -400,7 +400,7 @@ function Hero() {
             src={HERO_MOBILE_SRC}
             srcSet={HERO_MOBILE_SRCSET}
             sizes={HERO_MOBILE_SIZES}
-            alt="The ChimCrew team in front of their branded service vehicles in Columbus, Ohio"
+            alt="The Chimcrew - Chimney Sweep & Repair team in front of their branded service vehicles in Columbus, Ohio"
             className="block h-44 w-full object-cover sm:h-56"
             fetchPriority="high"
             decoding="async"
@@ -408,7 +408,7 @@ function Hero() {
           />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent" aria-hidden />
           <p className="absolute inset-x-4 bottom-3 font-display text-sm font-bold text-primary-foreground sm:text-base">
-            Meet the ChimCrew team.
+            Meet the Chimcrew - Chimney Sweep & Repair team.
           </p>
         </div>
       </div>
@@ -531,7 +531,7 @@ function RealTeamGallery() {
             <Camera className="h-3.5 w-3.5 text-flame" /> Our Crew · On the Job
           </p>
           <h2 className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
-            The ChimCrew team — <span className="text-flame">certified techs, on the job</span>.
+            The Chimcrew - Chimney Sweep & Repair team — <span className="text-flame">certified techs, on the job</span>.
           </h2>
           <p className="mt-3 text-base text-foreground/75 md:text-lg">
             Photos of our technicians working on Ohio chimneys this season.
@@ -543,7 +543,7 @@ function RealTeamGallery() {
             <figure key={it.src} className="group relative overflow-hidden rounded-none border border-border bg-primary aspect-[3/4]">
               <img
                 src={it.src}
-                alt={`${it.label} — ChimCrew technician in ${it.city}`}
+                alt={`${it.label} — Chimcrew - Chimney Sweep & Repair technician in ${it.city}`}
                 className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105"
                 loading="lazy"
                 decoding="async"
@@ -748,7 +748,7 @@ function CommonProblems() {
             Common Chimney Problems <span className="text-flame-ink">We Fix</span>
           </h2>
           <p className="mt-2 text-sm text-foreground/75 md:text-base">
-            Tap any issue to see how ChimCrew handles it.
+            Tap any issue to see how Chimcrew - Chimney Sweep & Repair handles it.
           </p>
         </div>
 
@@ -838,7 +838,7 @@ function PhotoVideoTrust() {
           <figure className="flex flex-col">
             <img
               src={cameraInspectionPhoto.url}
-              alt="Inside-the-firebox camera inspection by ChimCrew technician"
+              alt="Inside-the-firebox camera inspection by Chimcrew - Chimney Sweep & Repair technician"
               className="aspect-[3/4] w-full rounded-none border border-white/10 object-cover shadow-lg"
               loading="lazy"
               decoding="async"
@@ -889,7 +889,7 @@ function PhotoVideoTrust() {
 }
 
 /* ============================================================
-   WHY CHOOSE CHIMCREW — trust + benefit cards
+   WHY CHOOSE CHIMCREW - CHIMNEY SWEEP & REPAIR — trust + benefit cards
    ============================================================ */
 function WhyChooseUs() {
   const reasons = [
@@ -930,7 +930,7 @@ function WhyChooseUs() {
       <div className="relative mx-auto max-w-7xl px-4 md:px-8">
         <div className="max-w-3xl">
           <p className="inline-flex items-center gap-2 rounded-full border border-flame/40 bg-flame/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
-            <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why Chimcrew
+            <ShieldCheck className="h-3.5 w-3.5 text-flame" /> Why Chimcrew - Chimney Sweep & Repair
           </p>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl font-bold text-primary md:text-5xl">
             Six reasons Ohio homeowners{" "}
@@ -956,7 +956,7 @@ function WhyChooseUs() {
             />
             <img
               src={techFireplaceSweepPhoto.url}
-              alt="A ChimCrew technician sweeping a fireplace inside an Ohio home"
+              alt="A Chimcrew - Chimney Sweep & Repair technician sweeping a fireplace inside an Ohio home"
               className="aspect-[4/5] w-full object-cover"
               loading="lazy"
               decoding="async"
@@ -967,7 +967,7 @@ function WhyChooseUs() {
               </p>
               <p className="mt-2 text-sm text-muted-foreground">
                 Clean work practices, protective floor coverings, clear explanations, and documented
-                findings from a local ChimCrew technician.
+                findings from a local Chimcrew - Chimney Sweep & Repair technician.
               </p>
             </div>
           </div>
@@ -1037,7 +1037,7 @@ function BeforeAfterHome() {
             </span>
           </h2>
           <p className="mt-3 text-base text-primary-foreground/80">
-            Ohio chimneys, ChimCrew results — drag any photo with your finger to compare.
+            Ohio chimneys, Chimcrew - Chimney Sweep & Repair results — drag any photo with your finger to compare.
           </p>
         </div>
 
@@ -1314,7 +1314,7 @@ function ScheduleOnline() {
             <div className="relative overflow-hidden rounded-none border-2 border-flame/40 shadow-flame">
               <img
                 src={techScaffold.url}
-                alt="ChimCrew crew on-site rebuilding a chimney crown"
+                alt="Chimcrew - Chimney Sweep & Repair crew on-site rebuilding a chimney crown"
                 className="block aspect-[4/5] w-full object-cover sm:aspect-[4/3]"
                 loading="lazy"
                 decoding="async"
@@ -1435,7 +1435,7 @@ function Testimonials() {
     },
     {
       quote:
-        "Dryer was taking three cycles to dry a load. ChimCrew cleared the vent, showed me before/after photos, and now it's one cycle. Should've called sooner.",
+        "Dryer was taking three cycles to dry a load. Chimcrew - Chimney Sweep & Repair cleared the vent, showed me before/after photos, and now it's one cycle. Should've called sooner.",
       name: "Lauren B.",
       city: "Mason, Cincinnati",
     },

@@ -46,9 +46,9 @@ import u4LinerFarm from "@/assets/uploads4/liner-stainless-farm-view.jpeg.asset.
 export const Route = createFileRoute("/before-after")({
   head: () => ({
     meta: [
-      { title: "Done Projects — ChimCrew jobs in Ohio" },
-      { name: "description", content: "Finished chimney sweeps, crown rebuilds, fireplace remodels and cap installs by ChimCrew across Columbus, Cincinnati and Dayton." },
-      { property: "og:title", content: "ChimCrew Done Projects — Ohio Chimney Work" },
+      { title: "Done Projects — Chimcrew - Chimney Sweep & Repair jobs in Ohio" },
+      { name: "description", content: "Finished chimney sweeps, crown rebuilds, fireplace remodels and cap installs by Chimcrew - Chimney Sweep & Repair across Columbus, Cincinnati and Dayton." },
+      { property: "og:title", content: "Chimcrew - Chimney Sweep & Repair Done Projects — Ohio Chimney Work" },
       { property: "og:description", content: "Finished chimney jobs from rooftops across Ohio. No stock imagery." },
       { property: "og:url", content: "https://chimcrew.com/before-after" },
     ],
@@ -67,7 +67,7 @@ type GalleryItem = {
 const GALLERY: GalleryItem[] = [
   { src: "/photos/job-tall-brick-chimney.jpg", title: "Tall Brick Chimney Rebuild", caption: "Full-height brick chimney with a new stainless cap", city: "Columbus, OH" },
   { src: "/photos/job-triple-flue-crown.jpg", title: "Triple Flue Crown Coat", caption: "Fresh white crown on a three-flue brick chimney", city: "Columbus, OH" },
-  { src: "/photos/crew-ladder-yellow.jpg", title: "Dual Cap Crown Work", caption: "ChimCrew techs finishing a dual-cap crown from the roof", city: "Columbus, OH" },
+  { src: "/photos/crew-ladder-yellow.jpg", title: "Dual Cap Crown Work", caption: "Chimcrew - Chimney Sweep & Repair techs finishing a dual-cap crown from the roof", city: "Columbus, OH" },
   { src: "/photos/crew-john-flashseal.jpg", title: "Chimney FlashSeal", caption: "Sealing the chimney-to-roof joint on a steep pitch", city: "Columbus, OH" },
   { src: "/photos/crew-tuckpoint-hoodie.jpg", title: "Rooftop Tuckpointing", caption: "Repairing brick joints below dual stainless caps", city: "Columbus, OH" },
   { src: u4CapBlack.url, title: "Black Cap on Fresh Crown", caption: "New stainless cap set on a hand-troweled crown seal", city: "Columbus, OH" },
@@ -121,7 +121,7 @@ function BeforeAfterPage() {
       <PageHero
         eyebrow="Done Projects · Ohio crew"
         title={<>Completed <span className="text-flame">Projects</span></>}
-        subtitle="A clean look at finished ChimCrew chimney, masonry, fireplace, liner, cap, and inspection work across Ohio."
+        subtitle="A clean look at finished Chimcrew - Chimney Sweep & Repair chimney, masonry, fireplace, liner, cap, and inspection work across Ohio."
         mobileBgImage={mobileHeroPhoto}
         desktopBgImage={desktopHeroPhoto}
       />
@@ -134,7 +134,7 @@ function BeforeAfterPage() {
             <div className="max-w-3xl">
               <p className="font-mono text-[11px] font-extrabold uppercase tracking-[0.25em] text-flame">// Finished work</p>
               <h2 className="mt-2 font-display text-3xl font-extrabold leading-tight text-primary md:text-4xl">
-                Finished ChimCrew work across Ohio.
+                Finished Chimcrew - Chimney Sweep & Repair work across Ohio.
               </h2>
               <p className="mt-3 max-w-2xl text-base text-muted-foreground">
                 No duplicate tiles, no crowded comparison blocks — just a curated project wall with breathing room.
@@ -176,7 +176,7 @@ function ProjectTile({ item, index }: { item: GalleryItem; index: number }) {
     <figure className="group relative aspect-[3/4] overflow-hidden border border-border bg-primary shadow-[0_18px_50px_-26px_oklch(0_0_0/0.45)]">
       <img
         src={item.src}
-        alt={`${item.title} by ChimCrew in ${item.city}`}
+        alt={`${item.title} by Chimcrew - Chimney Sweep & Repair in ${item.city}`}
         className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-[1.05]"
         loading={index < 4 ? "eager" : "lazy"}
         decoding="async"

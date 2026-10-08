@@ -9,13 +9,13 @@ const SITE = "https://chimcrew.com";
 export const Route = createFileRoute("/service-area/")({
   head: () => ({
     meta: [
-      { title: "Service Areas | ChimCrew" },
+      { title: "Service Areas | Chimcrew - Chimney Sweep & Repair" },
       {
         name: "description",
         content:
-          "Chimney Crew provides professional chimney inspections, cleaning, repair, maintenance, and related services throughout Columbus and surrounding Central Ohio communities.",
+          "Chimcrew - Chimney Sweep & Repair provides professional chimney inspections, cleaning, repair, maintenance, and related services throughout Columbus and surrounding Central Ohio communities.",
       },
-      { property: "og:title", content: "Service Areas | ChimCrew" },
+      { property: "og:title", content: "Service Areas | Chimcrew - Chimney Sweep & Repair" },
       {
         property: "og:description",
         content:
@@ -40,7 +40,7 @@ function ServiceAreaPage() {
           </>
         }
         title="Service Areas"
-        subtitle="Chimney Crew proudly provides professional chimney services throughout Columbus and surrounding communities. Our experienced team serves homeowners with reliable chimney inspections, cleaning, repair, maintenance, and related services across Central Ohio."
+        subtitle="Chimcrew - Chimney Sweep & Repair proudly provides professional chimney services throughout Columbus and surrounding communities. Our experienced team serves homeowners with reliable chimney inspections, cleaning, repair, maintenance, and related services across Central Ohio."
       />
 
       <section className="border-b border-border bg-background py-16 md:py-20">

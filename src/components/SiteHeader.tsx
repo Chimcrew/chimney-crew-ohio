@@ -241,13 +241,13 @@ export function SiteHeader() {
           <Link
             to="/"
             className="group relative z-40 flex shrink-0 items-center bg-transparent outline-none [-webkit-tap-highlight-color:transparent]"
-            aria-label="ChimCrew home"
+            aria-label="Chimcrew - Chimney Sweep & Repair home"
           >
             <img
               src={logoHeader}
               srcSet={logoHeaderSrcSet}
               sizes="(min-width: 768px) 81px, 49px"
-              alt="ChimCrew — Chimney Repair & Inspection"
+              alt="Chimcrew - Chimney Sweep & Repair"
               className="relative z-40 h-12 w-auto max-w-none origin-left object-contain transition-transform duration-300 ease-out will-change-transform md:-mb-2 md:h-20 group-hover:-translate-y-0.5 group-hover:scale-[1.04]"
             />
           </Link>
