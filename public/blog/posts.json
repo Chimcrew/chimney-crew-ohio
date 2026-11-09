@@ -1,6 +1,15 @@
 {
   "posts": [
     {
+      "id": 802546369,
+      "slug": "signs-chimney-crown-needs-replacement",
+      "title": "7 Signs Your Chimney Crown Needs Replacement in Columbus",
+      "excerpt": "Learn the seven most reliable signs that your chimney crown needs replacement, what can happen if you delay, and realistic Columbus cost and timeline expectations.",
+      "url": "https://chimcrew.com/blog/signs-chimney-crown-needs-replacement/",
+      "publishedAt": "2026-11-09T22:33:00.000Z",
+      "image": "/blog-images/uploads/1-1560bc2258-800.webp"
+    },
+    {
       "id": 888192267,
       "slug": "attic-specific-report-items-win-sale",
       "title": "Realtor in Clintonville: When a buyer asks for a chimney inspection after smelling smoke",
@@ -117,5 +126,6 @@
       "publishedAt": "2026-10-15T14:25:00.000Z",
       "image": "/blog-images/uploads/4-e7975f6986-800.webp"
     }
-  ]
+  ],
+  "ownedListing": true
 }
