@@ -1,6 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, Mail, Clock, CalendarCheck, ShieldCheck, Flame, MessageSquare, Star } from "lucide-react";
+import { Phone, Mail, Clock, CalendarCheck, ShieldCheck, Flame, MessageSquare, Star, Facebook, Instagram, Linkedin } from "lucide-react";
 import { ScheduleInline } from "@/components/ScheduleWidget";
+// lucide-react ships no Pinterest brand mark, so we inline the official glyph.
+function PinterestIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345c-.091.378-.293 1.194-.333 1.361-.052.22-.173.267-.4.161-1.492-.695-2.424-2.875-2.424-4.627 0-3.769 2.738-7.229 7.892-7.229 4.144 0 7.365 2.953 7.365 6.899 0 4.117-2.595 7.431-6.199 7.431-1.211 0-2.348-.63-2.738-1.373l-.745 2.841c-.269 1.038-.996 2.339-1.485 3.132C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+    </svg>
+  );
+}
 import { TrustBadges } from "@/components/TrustBadges";
 import { PageHero } from "@/components/PageHero";
 import mobileHeroPhoto from "@/assets/hero/hero-mobile-team-chimney.png.asset.json";
@@ -112,6 +120,50 @@ function ContactPage() {
                 <li className="flex items-start gap-2"><CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-flame" /> Flat-rate quotes in writing</li>
                 <li className="flex items-start gap-2"><Flame className="mt-0.5 h-4 w-4 shrink-0 text-flame" /> Free drone inspection w/ every quote</li>
               </ul>
+            </div>
+
+            <div className="rounded-none border border-border bg-card p-5">
+              <h3 className="font-display text-sm font-black uppercase tracking-wide text-primary">
+                Follow us
+              </h3>
+              <div className="mt-3 flex gap-3">
+                <a
+                  href="https://www.facebook.com/people/Chimcrew-Chimney-Sweep-Repair/61590821911485"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Facebook className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.instagram.com/chim_crew/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram @chim_crew"
+                  className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/chimcrew/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Linkedin className="h-4 w-4" />
+                </a>
+                <a
+                  href="https://www.pinterest.com/chimcrew/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Pinterest"
+                  className="grid h-10 w-10 place-items-center rounded-none border border-primary/30 text-primary transition hover:bg-primary hover:text-primary-foreground"
+                >
+                  <PinterestIcon className="h-4 w-4" />
+                </a>
+              </div>
             </div>
 
             <div className="overflow-hidden rounded-none border border-border bg-gradient-to-br from-primary to-[oklch(0.22_0.04_250)] p-5 text-primary-foreground">

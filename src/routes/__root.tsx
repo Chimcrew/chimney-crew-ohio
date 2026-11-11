@@ -216,7 +216,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               closes: "23:59",
             },
           ],
-          sameAs: ["https://chimcrew.com"],
+          sameAs: [
+            "https://www.facebook.com/people/Chimcrew-Chimney-Sweep-Repair/61590821911485",
+            "https://www.instagram.com/chim_crew/",
+            "https://www.linkedin.com/company/chimcrew/",
+            "https://www.pinterest.com/chimcrew/",
+          ],
         }),
       },
     ],
