@@ -29,7 +29,7 @@ export const Route = createFileRoute("/chimney-repair-columbus")({
       {
         name: "description",
         content:
-          "Chimney repair in Columbus, OH. Free inspections, CSIA-certified, insured, written warranty. Same-day service — call (614) 683-5763.",
+          "Chimney repair in Columbus, OH. Free inspections, insured, written warranty. Same-day service — call (614) 683-5763.",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: "Chimney Repair Columbus, OH — Free Inspection" },
@@ -76,7 +76,7 @@ const SERVICES = [
 
 const TRUST = [
   { icon: HomeIcon, label: "Family Owned" },
-  { icon: Award, label: "Certified Technicians" },
+  { icon: Award, label: "Professional Technicians" },
   { icon: ShieldCheck, label: "Fully Insured" },
   { icon: CheckCircle2, label: "Written Warranty" },
   { icon: MapPin, label: "Local Ohio Company" },
@@ -104,7 +104,7 @@ function ChimneyRepairColumbus() {
             </h1>
 
             <p className="mt-5 max-w-xl text-base font-medium text-primary-foreground/85 md:text-lg">
-              Free Chimney Inspections · Certified Technicians · Same-Day Service Available.
+              Free Chimney Inspections · Professional Technicians · Same-Day Service Available.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -131,7 +131,7 @@ function ChimneyRepairColumbus() {
                 <Star className="h-4 w-4 fill-flame text-flame" /> 5-Star Rated · Verified Reviews
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.22em]">
-                CSIA Certified · Licensed & Insured
+                Licensed & Insured
               </span>
             </div>
           </div>
@@ -262,7 +262,7 @@ function ChimneyRepairColumbus() {
               Book your Free Chimney Inspection
             </h2>
             <p className="mt-4 text-base text-primary-foreground/80 md:text-lg">
-              A CSIA-certified Columbus tech calls you back the same day with a flat-rate quote in writing — no pressure, no obligation.
+              A Columbus technician calls you back the same day with a flat-rate quote in writing — no pressure, no obligation.
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">

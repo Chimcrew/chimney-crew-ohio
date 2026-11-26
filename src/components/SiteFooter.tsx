@@ -68,7 +68,7 @@ export function SiteFooter() {
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
               Locally owned chimney sweeps serving Columbus, Cincinnati, and Dayton.
-              Certified, insured, and obsessed with clean flues.
+              Insured and obsessed with clean flues.
             </p>
             <div className="mt-6 flex gap-3">
               <a
@@ -158,7 +158,7 @@ export function SiteFooter() {
 
         <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-border pt-6 text-xs text-muted-foreground md:flex-row md:items-center">
           <p>© {new Date().getFullYear()} Chimcrew - Chimney Sweep & Repair. All rights reserved.</p>
-          <p className="font-mono">CSIA Certified · Fully Insured · OH License #CHM-OH-0421</p>
+          <p className="font-mono">Fully Insured · OH License #CHM-OH-0421</p>
         </div>
       </div>
     </footer>

@@ -53,7 +53,6 @@ import projectLiner from "@/assets/projects/project-03-liner-install.jpg.asset.j
 import projectCap from "@/assets/projects/project-04-cap-install.jpg.asset.json";
 import projectTech from "@/assets/projects/project-06-tech-onsite.jpg.asset.json";
 import techScaffold from "@/assets/real/tech-scaffolding-rebuild.png.asset.json";
-import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import jobPhotoA from "@/assets/uploads/chimney-job-a.jpeg.asset.json";
 import jobPhotoB from "@/assets/uploads/chimney-job-b.jpeg.asset.json";
 import teamTruckPhoto from "@/assets/team/chimcrew-team-truck.png.asset.json";
@@ -96,13 +95,13 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "CSIA-certified chimney sweeps, inspections, and repairs across Columbus, Dayton, Cincinnati & Cleveland. Upfront pricing, fully insured, same-day callbacks.",
+          "Professional chimney sweeps, inspections, and repairs across Columbus, Dayton, Cincinnati & Cleveland. Upfront pricing, fully insured, same-day callbacks.",
       },
       { property: "og:title", content: "Ohio Chimney Sweep, Repair & Fireplace | Chimcrew - Chimney Sweep & Repair" },
       {
         property: "og:description",
         content:
-          "CSIA-certified chimney sweeps and repairs across Columbus, Dayton, Cincinnati & Cleveland. Upfront pricing, fully insured.",
+          "Professional chimney sweeps and repairs across Columbus, Dayton, Cincinnati & Cleveland. Upfront pricing, fully insured.",
       },
       { property: "og:url", content: "https://chimcrew.com/" },
     ],
@@ -121,7 +120,7 @@ export const Route = createFileRoute("/")({
               name: "How often should I sweep my chimney?",
               acceptedAnswer: {
                 "@type": "Answer",
-                text: "The CSIA recommends an annual inspection and a sweep whenever creosote reaches 1/8\". For most Ohio homes that burn wood weekly, that's once a year.",
+                text: "An annual inspection is recommended, with a sweep whenever creosote reaches 1/8\". For most Ohio homes that burn wood weekly, that's once a year.",
               },
             },
             {
@@ -218,7 +217,7 @@ function TeamWidePhotoBridge() {
         <div className="overflow-hidden rounded-xl border-2 border-border bg-card shadow-[0_20px_50px_-20px_oklch(0_0_0/0.35)]">
           <img
             src={teamWidePhoto.url}
-            alt="The Chimcrew - Chimney Sweep & Repair team — certified chimney professionals in Columbus, Ohio"
+            alt="The Chimcrew - Chimney Sweep & Repair team — chimney professionals in Columbus, Ohio"
             className="block h-auto w-full object-cover"
             loading="lazy"
             decoding="async"
@@ -416,20 +415,11 @@ function Hero() {
       {/* Hero message */}
       <div className="relative z-20 mx-auto max-w-7xl px-4 pb-12 pt-8 sm:px-6 sm:pb-10 sm:pt-8 md:pb-14 lg:px-8 lg:pt-12">
         <div className="max-w-3xl">
-        {/* Certified badge */}
+        {/* Trust badges */}
         <div className="flex items-center gap-3">
-          <img
-            src={certifiedBadge.url}
-            alt="Certified chimney sweep credential"
-            width={128}
-            height={128}
-            className="h-24 w-24 shrink-0 rounded-full bg-white p-1 ring-1 ring-border min-[414px]:h-28 min-[414px]:w-28 sm:h-32 sm:w-32"
-            loading="eager"
-            decoding="async"
-          />
           <div className="min-w-0">
             <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-black min-[414px]:text-[11px] sm:text-xs lg:text-primary-foreground">
-              Certified chimney professionals
+              Chimney professionals
             </p>
             <div className="mt-1.5 flex flex-wrap gap-1.5">
               <span className="inline-flex items-center gap-1 rounded-full bg-primary px-2 py-0.5 font-mono text-[10px] font-bold uppercase tracking-[0.14em] text-primary-foreground min-[414px]:text-[11px]">
@@ -488,7 +478,7 @@ function Hero() {
         {/* Trust strip */}
         <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-8 sm:mt-8 sm:pt-6 lg:border-white/20">
           {[
-            { icon: CheckCircle2, label: "CSIA-certified" },
+            { icon: CheckCircle2, label: "Professional service" },
             { icon: ShieldCheck, label: "Fully insured" },
             { icon: Clock, label: "Same-day callback" },
             { icon: Award, label: "Family owned & operated" },
@@ -531,7 +521,7 @@ function RealTeamGallery() {
             <Camera className="h-3.5 w-3.5 text-flame" /> Our Crew · On the Job
           </p>
           <h2 className="mt-4 font-display text-3xl font-bold text-primary sm:text-4xl md:text-5xl">
-            The Chimcrew - Chimney Sweep & Repair team — <span className="text-flame">certified techs, on the job</span>.
+            The Chimcrew - Chimney Sweep & Repair team — <span className="text-flame">technicians on the job</span>.
           </h2>
           <p className="mt-3 text-base text-foreground/75 md:text-lg">
             Photos of our technicians working on Ohio chimneys this season.
@@ -910,8 +900,8 @@ function WhyChooseUs() {
     },
     {
       icon: ShieldCheck,
-      title: "Licensed, Insured & CSIA Certified",
-      body: "Fully insured Ohio crew with industry-standard certifications. Your home is covered every visit.",
+      title: "Licensed & Insured",
+      body: "Fully insured Ohio crew. Your home is covered every visit.",
     },
     {
       icon: Star,
@@ -1568,7 +1558,7 @@ function Faq() {
   const faqs = [
     {
       q: "How often should I sweep my chimney?",
-      a: "The CSIA recommends an annual inspection and a sweep whenever creosote reaches 1/8\". For most Ohio homes that burn wood weekly, that's once a year.",
+      a: "An annual inspection is recommended, with a sweep whenever creosote reaches 1/8\". For most Ohio homes that burn wood weekly, that's once a year.",
     },
     {
       q: "Do you service gas fireplaces too?",

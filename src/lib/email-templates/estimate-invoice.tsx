@@ -172,7 +172,7 @@ const EstimateInvoiceEmail = ({
 
           <Hr style={hr} />
           <Text style={footer}>
-            Chimcrew - Chimney Sweep & Repair — CSIA-certified chimney sweeps · {PHONE} · chimcrew.com
+            Chimcrew - Chimney Sweep & Repair — Professional chimney sweeps · {PHONE} · chimcrew.com
           </Text>
         </Container>
       </Body>

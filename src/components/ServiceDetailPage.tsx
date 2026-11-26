@@ -26,7 +26,6 @@ import {
   type ServiceSpec,
 } from "@/data/services";
 import { TrustBadges } from "@/components/TrustBadges";
-import certifiedBadge from "@/assets/badges/certified-chimney-sweep.svg.asset.json";
 import { ScheduleInline } from "@/components/ScheduleWidget";
 import { FlashingJobShowcase } from "@/components/FlashingJobShowcase";
 import { ServiceArticle } from "@/components/ServiceArticle";
@@ -184,7 +183,7 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
           {/* Trust strip */}
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border/50 pt-6">
             {[
-              { icon: CheckCircle2, label: "CSIA-certified" },
+              { icon: CheckCircle2, label: "Professional service" },
               { icon: ShieldCheck, label: "Fully insured" },
               { icon: Clock, label: "Same-day callback" },
               { icon: Award, label: "Family owned & operated" },
@@ -352,17 +351,8 @@ function ServiceHero({ service }: { service: ServiceSpec }) {
 
             {/* Credential chip below image */}
             <div className="mx-4 mt-4 flex items-center gap-3 rounded-none border border-border/60 bg-card p-3 shadow-sm sm:mx-6 lg:mx-0">
-              <img
-                src={certifiedBadge.url}
-                alt="Certified chimney sweep credential"
-                width={56}
-                height={56}
-                className="h-12 w-12 shrink-0 rounded-full bg-white p-1.5"
-                loading="eager"
-                decoding="async"
-              />
               <div className="min-w-0">
-                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">Certified chimney professionals</p>
+                <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-flame">Chimney professionals</p>
                 <p className="mt-0.5 text-xs text-foreground/75 sm:text-[13px]">Every inspection documented with written photo reports.</p>
               </div>
             </div>
@@ -709,7 +699,7 @@ function BenefitsBlock({ service }: { service: ServiceSpec }) {
               <ShieldCheck className="h-3.5 w-3.5 text-flame" /> {warrantyFor(service)} warranty
             </span>
             <span className="inline-flex items-center gap-2 rounded-none border border-primary-foreground/20 bg-primary-foreground/5 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.22em]">
-              <Award className="h-3.5 w-3.5 text-flame" /> CSIA-certified
+              <Award className="h-3.5 w-3.5 text-flame" /> Professional service
             </span>
           </div>
         </div>

@@ -55,7 +55,7 @@ export const BLOG_POSTS: BlogPost[] = [
         paragraphs: [
           "Older urban neighborhoods — Clintonville, German Village, Victorian Village, Olde Towne East, Bexley, and Grandview — make up the bulk of our sweep volume because the housing stock is full of original brick masonry chimneys that have been venting wood and gas for 80+ years.",
           "Newer suburban areas like Dublin, Powell, New Albany, Lewis Center, Pickerington, and Hilliard see different problems: prefab metal fireboxes with class-A chimney pipe, missing rain caps, and condensation issues on gas inserts that were converted from wood without re-lining the flue.",
-          "Whatever side of 270 you live on, a Columbus sweep should be familiar with both worlds. Always ask whether the technician is CSIA-certified and whether they carry a real Ohio contractor's liability policy — both are non-negotiable for anyone working on your roof.",
+          "Whatever side of 270 you live on, a Columbus sweep should be familiar with both worlds. Always ask about the technician's experience and whether they carry a real Ohio contractor's liability policy — both are non-negotiable for anyone working on your roof.",
         ],
       },
       {
@@ -70,7 +70,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "How to book the right Columbus chimney sweep",
         paragraphs: [
-          "Look for CSIA certification, written quotes, photo documentation, and Ohio-licensed insurance. Avoid companies that demand cash up front, refuse to provide a written inspection report, or try to upsell a full liner replacement during a routine sweep without showing you camera footage of the damage.",
+          "Look for relevant experience, written quotes, photo documentation, and Ohio-licensed insurance. Avoid companies that demand cash up front, refuse to provide a written inspection report, or try to upsell a full liner replacement during a routine sweep without showing you camera footage of the damage.",
           "Fall — September through early November — is peak sweep season in Columbus. Book by August if you want a weekend slot. Mid-winter is technically fine for cleaning, but if a Level 2 inspection reveals damage, you may be without your fireplace through the coldest months. The best time to schedule is right after burning season ends, in April or May.",
         ],
       },
@@ -133,7 +133,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "How to vet a Columbus chimney repair company",
         paragraphs: [
-          "Ask for current Ohio liability insurance with proof, CSIA or NCSG certification, and before/after photos of recent crown and tuckpointing jobs in the Columbus area. A real repair company will happily show you the camera footage that justifies a quoted liner replacement and will give you a written, itemized scope of work — not a one-line invoice.",
+          "Ask for current Ohio liability insurance with proof, NCSG certification, and before/after photos of recent crown and tuckpointing jobs in the Columbus area. A real repair company will happily show you the camera footage that justifies a quoted liner replacement and will give you a written, itemized scope of work — not a one-line invoice.",
           "Walk away from any contractor offering 'free chimney inspections' that conveniently turn into $8,000 of recommended work. Honest chimney repair is technical, weather-dependent, and never sold door-to-door.",
         ],
       },
@@ -155,7 +155,7 @@ export const BLOG_POSTS: BlogPost[] = [
         heading: "Why gas fireplaces still need an annual inspection",
         paragraphs: [
           "Gas fireplaces feel low-maintenance because they do not produce visible soot or creosote the way wood fires do. That perception is the single biggest reason we get called to homes with serious safety issues — failed thermocouples, cracked heat exchangers, blocked vents, and rodent damage in vent terminations.",
-          "The Chimney Safety Institute of America, the National Fireplace Institute, and the gas appliance manufacturers themselves all recommend an annual inspection. The Ohio Residential Code echoes that standard. A gas fireplace inspection is not optional maintenance — it is the only routine check standing between a small, fixable issue and a carbon monoxide event.",
+          "The National Fireplace Institute and gas appliance manufacturers recommend an annual inspection. The Ohio Residential Code echoes that standard. A gas fireplace inspection is not optional maintenance — it is the only routine check standing between a small, fixable issue and a carbon monoxide event.",
         ],
       },
       {
@@ -192,7 +192,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         heading: "Choosing a qualified gas fireplace technician",
         paragraphs: [
-          "Look for NFI Gas Specialist certification (NFI-G), CSIA credentialing, and current Ohio liability insurance. Many general HVAC techs are excellent at furnaces and air conditioning but have never been trained on hearth appliances. Gas fireplaces have their own venting standards, their own combustion math, and their own failure modes — and they sit in your living room. Hire a specialist.",
+          "Look for NFI Gas Specialist certification (NFI-G) and current Ohio liability insurance. Many general HVAC techs are excellent at furnaces and air conditioning but have never been trained on hearth appliances. Gas fireplaces have their own venting standards, their own combustion math, and their own failure modes — and they sit in your living room. Hire a specialist.",
         ],
       },
     ],
@@ -420,7 +420,7 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: "annual-inspection-checklist",
     title: "The annual chimney inspection: what's actually on our checklist",
     excerpt:
-      "What a CSIA Level 1 inspection covers, what Level 2 adds, and when you should ask for Level 3 — in plain English.",
+      "What a Level 1 inspection covers, what Level 2 adds, and when you should ask for Level 3 — in plain English.",
     date: "Jan 28, 2026",
     dateISO: "2026-01-28",
     cover: projectCrownRebuild.url,

@@ -33,13 +33,13 @@ export const Route = createFileRoute("/lp/free-inspection")({
       {
         name: "description",
         content:
-          "Free chimney inspection in Columbus, OH. CSIA-certified, same-day callbacks, written report. Limited to this month — call (614) 683-5763 now.",
+          "Free chimney inspection in Columbus, OH. same-day callbacks, written report. Limited to this month — call (614) 683-5763 now.",
       },
       { property: "og:title", content: "Free Chimney Inspection — Columbus, OH" },
       {
         property: "og:description",
         content:
-          "Free chimney inspection (normally $69). Same-day callbacks. CSIA-certified Ohio sweeps.",
+          "Free chimney inspection (normally $69). Same-day callbacks. Local Ohio sweeps.",
       },
       { property: "og:url", content: "https://chimcrew.com/lp/free-inspection" },
       { property: "og:type", content: "website" },
@@ -116,7 +116,7 @@ function Hero() {
             </span>
           </h1>
           <p className="mt-4 max-w-prose text-base text-foreground/80 sm:text-lg">
-            CSIA-certified Ohio sweeps. Same-day callbacks. Written safety report with
+            Local Ohio sweeps. Same-day callbacks. Written safety report with
             photos — no pressure, no surprise charges.
           </p>
 
@@ -139,7 +139,7 @@ function Hero() {
           {/* Trust strip */}
           <ul className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-foreground/80 sm:text-sm">
             <li className="inline-flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4 text-primary" /> CSIA-certified
+              <ShieldCheck className="h-4 w-4 text-primary" /> Professional service
             </li>
             <li className="inline-flex items-center gap-1.5">
               <Star className="h-4 w-4 fill-amber-500 text-amber-600" /> 5-Star Rated
@@ -308,7 +308,7 @@ function InlineLeadForm() {
 
 function ProofBar() {
   const items = [
-    { icon: ShieldCheck, label: "CSIA-Certified" },
+    { icon: ShieldCheck, label: "Professional service" },
     { icon: Star, label: "5-Star Rated" },
     { icon: Clock, label: "Same-day callbacks" },
     { icon: BadgeCheck, label: "Licensed & Insured" },
@@ -356,7 +356,7 @@ function MeetTheCrew() {
             — every visit.
           </h2>
           <p className="mt-3 text-sm text-foreground/80 sm:text-base">
-            We're a CSIA-certified, family-owned Ohio crew. No call centers, no
+            We're a family-owned Ohio crew. No call centers, no
             subcontractors — just the same friendly faces on your roof and at your
             fireplace.
           </p>

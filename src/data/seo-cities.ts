@@ -34,7 +34,7 @@ export const CITY_SERVICES: { slug: string; label: string; icon: LucideIcon; blu
   { slug: "chimney-repair", label: "Chimney Repair", icon: Hammer,
     blurb: (c) => `Brick rebuilds, crown work, flashing fixes and structural repairs for ${c} homes.` },
   { slug: "level-1-inspection", label: "Chimney Inspection", icon: Search,
-    blurb: (c) => `CSIA Level 1 & 2 inspections with a written photo report for every ${c} fireplace.` },
+    blurb: (c) => `Level 1 & 2 inspections with a written photo report for every ${c} fireplace.` },
   { slug: "chimney-sweep", label: "Chimney Sweep", icon: Sparkles,
     blurb: (c) => `Full creosote removal and tune-up before burn season — drop-cloth clean inside your ${c} home.` },
   { slug: "flashing-repair", label: "Chimney Leak Repair", icon: Droplets,
@@ -73,9 +73,9 @@ const SEEDS: CitySeed[] = [
     neighborhoods: ["Short North", "German Village", "Clintonville", "Bexley", "Upper Arlington"],
     titleOverride: "Columbus Chimney Sweep, Inspection & Repair | Chimcrew - Chimney Sweep & Repair",
     descriptionOverride:
-      "CSIA-certified chimney sweep, inspection & repair in Columbus, OH (43215) — Short North, German Village, Clintonville, Bexley & Upper Arlington. Free drone inspection. (614) 683-5763.",
+      "Professional chimney sweep, inspection & repair in Columbus, OH (43215) — Short North, German Village, Clintonville, Bexley & Upper Arlington. Free drone inspection. (614) 683-5763.",
     introOverride:
-      "Chimcrew - Chimney Sweep & Repair keeps Columbus fireplaces and chimneys safe from the Short North and German Village to Clintonville, Bexley and Upper Arlington. As a CSIA-certified, fully insured, family-owned Ohio crew working downtown Columbus (43215) and the surrounding neighborhoods every week, we handle chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning — with a free drone inspection and a written photo report on every visit.",
+      "Chimcrew - Chimney Sweep & Repair keeps Columbus fireplaces and chimneys safe from the Short North and German Village to Clintonville, Bexley and Upper Arlington. As a fully insured, family-owned Ohio crew working downtown Columbus (43215) and the surrounding neighborhoods every week, we handle chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning — with a free drone inspection and a written photo report on every visit.",
     whyUsOverride:
       "From German Village and Clintonville to Upper Arlington and Bexley, we treat every Columbus chimney on its own terms. We show up with flat-rate pricing, an honest read on what actually needs fixing, and a free drone inspection so you can see your crown, cap and flashing for yourself. No high-pressure upsells: if your Columbus fireplace only needs a sweep and a new cap, that's what we quote.",
     localProofOverride:
@@ -95,9 +95,9 @@ const SEEDS: CitySeed[] = [
     neighborhoods: ["Old Worthington", "Colonial Hills", "Rush Creek", "Worthington Hills"],
     titleOverride: "Worthington Chimney Sweep, Inspection & Repair | Chimcrew - Chimney Sweep & Repair",
     descriptionOverride:
-      "CSIA-certified chimney sweep, inspection & repair in Worthington, OH (43085) — Old Worthington, Colonial Hills, Rush Creek & Worthington Hills. Free drone inspection. (614) 683-5763.",
+      "Professional chimney sweep, inspection & repair in Worthington, OH (43085) — Old Worthington, Colonial Hills, Rush Creek & Worthington Hills. Free drone inspection. (614) 683-5763.",
     introOverride:
-      "Chimcrew - Chimney Sweep & Repair serves Worthington homeowners from Old Worthington and Colonial Hills to Rush Creek and Worthington Hills — about 12 minutes north of downtown Columbus. We're a CSIA-certified, fully insured, family-owned Ohio crew on Worthington rooftops every week for chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning, and we back every visit with a free drone inspection and a written photo report.",
+      "Chimcrew - Chimney Sweep & Repair serves Worthington homeowners from Old Worthington and Colonial Hills to Rush Creek and Worthington Hills — about 12 minutes north of downtown Columbus. We're a fully insured, family-owned Ohio crew on Worthington rooftops every week for chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning, and we back every visit with a free drone inspection and a written photo report.",
     whyUsOverride:
       "From Old Worthington to Colonial Hills, Rush Creek and Worthington Hills, we treat every Worthington chimney on its own terms. We bring flat-rate pricing, a straight answer on what genuinely needs fixing, and a free drone inspection of your crown, cap and flashing. If a Worthington fireplace only needs a sweep and a new cap, that's exactly what we quote — no upsells on the truck.",
     localProofOverride:
@@ -115,9 +115,9 @@ const SEEDS: CitySeed[] = [
     neighborhoods: ["Old Hilliard", "Heritage Lakes", "Brookside Estates", "Scioto Reserve"],
     titleOverride: "Hilliard Chimney Sweep, Inspection & Repair | Chimcrew - Chimney Sweep & Repair",
     descriptionOverride:
-      "CSIA-certified chimney sweep, inspection & repair in Hilliard, OH (43026) — Old Hilliard, Heritage Lakes, Brookside Estates & Scioto Reserve. Free drone inspection. (614) 683-5763.",
+      "Professional chimney sweep, inspection & repair in Hilliard, OH (43026) — Old Hilliard, Heritage Lakes, Brookside Estates & Scioto Reserve. Free drone inspection. (614) 683-5763.",
     introOverride:
-      "Chimcrew - Chimney Sweep & Repair looks after Hilliard chimneys and fireplaces from Old Hilliard to Heritage Lakes, Brookside Estates and Scioto Reserve — about 18 minutes west of downtown Columbus. We're a CSIA-certified, fully insured, family-owned Ohio crew handling chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning, with a free drone inspection and a written photo report on every Hilliard visit.",
+      "Chimcrew - Chimney Sweep & Repair looks after Hilliard chimneys and fireplaces from Old Hilliard to Heritage Lakes, Brookside Estates and Scioto Reserve — about 18 minutes west of downtown Columbus. We're a fully insured, family-owned Ohio crew handling chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning, with a free drone inspection and a written photo report on every Hilliard visit.",
     whyUsOverride:
       "From Old Hilliard to Heritage Lakes, Brookside Estates and Scioto Reserve, we service full-masonry and prefab fireplace chimneys alike. We bring flat-rate pricing, an honest assessment, and a free drone inspection so you can see your crown, cap and flashing for yourself. If your Hilliard fireplace just needs a sweep and a new cap, that's what we quote — nothing you don't need.",
     localProofOverride:
@@ -138,9 +138,9 @@ const SEEDS: CitySeed[] = [
     neighborhoods: ["Town Center", "Pinnacle Club", "Beulah Park"],
     titleOverride: "Grove City Chimney Sweep, Inspection & Repair | Chimcrew - Chimney Sweep & Repair",
     descriptionOverride:
-      "CSIA-certified chimney sweep, inspection & repair in Grove City, OH (43123) — Town Center, Pinnacle Club & Beulah Park. Free drone inspection. (614) 683-5763.",
+      "Professional chimney sweep, inspection & repair in Grove City, OH (43123) — Town Center, Pinnacle Club & Beulah Park. Free drone inspection. (614) 683-5763.",
     introOverride:
-      "Chimcrew - Chimney Sweep & Repair serves Grove City homeowners around Town Center, Pinnacle Club and Beulah Park — about 15 minutes southwest of downtown Columbus. We're a CSIA-certified, fully insured, family-owned Ohio crew handling chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning, and every Grove City visit comes with a free drone inspection and a written photo report.",
+      "Chimcrew - Chimney Sweep & Repair serves Grove City homeowners around Town Center, Pinnacle Club and Beulah Park — about 15 minutes southwest of downtown Columbus. We're a fully insured, family-owned Ohio crew handling chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning, and every Grove City visit comes with a free drone inspection and a written photo report.",
     whyUsOverride:
       "Grove City homeowners tell us they want three things from a chimney company: clear pricing, an honest answer on what actually needs fixing, and a crew that respects the house. Around Town Center, Pinnacle Club and Beulah Park we deliver exactly that — flat-rate quotes, a free drone inspection of your crown, cap and flashing, and no high-pressure upsells. If your Grove City fireplace only needs a sweep and a new cap, that's what we quote.",
     localProofOverride:
@@ -236,7 +236,7 @@ function buildCity(s: CitySeed): SeoCity {
     neighborhoods: s.neighborhoods,
     intro:
       s.introOverride ??
-      `${s.name}, Ohio (${s.zip}) homeowners trust Chimcrew - Chimney Sweep & Repair for chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning across ${hood} and the wider ${s.region} metro. We're a CSIA-certified, family-owned Ohio crew serving ${s.drive} every week — same neighborhoods, same trucks, same techs on every callback.`,
+      `${s.name}, Ohio (${s.zip}) homeowners trust Chimcrew - Chimney Sweep & Repair for chimney sweeping, fireplace inspection, chimney repair and dryer vent cleaning across ${hood} and the wider ${s.region} metro. We're a family-owned Ohio crew serving ${s.drive} every week — same neighborhoods, same trucks, same techs on every callback.`,
     whyUs:
       s.whyUsOverride ??
       `Most ${s.name} homeowners we meet want three things from a chimney company: clear pricing, an honest answer about what actually needs fixing, and a crew that respects the house. We bring a drone for the chimney inspection, a written photo report, and flat-rate quotes — no high-pressure upsells. If your ${s.name} fireplace only needs a sweep and a new cap, that's what we quote.`,
@@ -247,7 +247,7 @@ function buildCity(s: CitySeed): SeoCity {
     title: s.titleOverride ?? `Chimney Sweep & Repair ${s.name} OH | Chimcrew - Chimney Sweep & Repair`,
     description:
       s.descriptionOverride ??
-      `Local chimney sweep, inspection, fireplace repair and dryer vent cleaning in ${s.name}, OH (${s.zip}). CSIA-certified, fully insured. Free chimney drone inspection. (614) 683-5763.`,
+      `Local chimney sweep, inspection, fireplace repair and dryer vent cleaning in ${s.name}, OH (${s.zip}). Fully insured. Free chimney drone inspection. (614) 683-5763.`,
     faqs: s.faqsOverride ?? [
       {
         q: `How much does a chimney sweep cost in ${s.name}, OH?`,

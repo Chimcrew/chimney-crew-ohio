@@ -341,7 +341,7 @@ export function ServiceArticle({ service }: { service: ServiceSpec }) {
             <ShieldCheck className="h-4 w-4 text-flame" /> {warrantyFor(service)}
           </span>
           <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
-            <CheckCircle2 className="h-4 w-4 text-flame" /> CSIA-certified
+            <CheckCircle2 className="h-4 w-4 text-flame" /> Professional service
           </span>
           <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.22em] text-foreground">
             <AlertTriangle className="h-4 w-4 text-flame" /> Same-day callback

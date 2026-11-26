@@ -102,7 +102,7 @@ function CityPage() {
           </div>
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 border-t border-white/15 pt-6">
             {[
-              { I: ShieldCheck, t: "CSIA-certified" },
+              { I: ShieldCheck, t: "Professional service" },
               { I: Award, t: "Fully insured" },
               { I: Star, t: "5-star rated" },
               { I: Clock, t: "Same-week scheduling" },

@@ -440,13 +440,13 @@ export const SERVICES: ServiceSpec[] = [
       "Internal camera scan of the full flue, top to bottom — cracked tiles, gaps and blockages caught on camera",
       "Includes the complete Level 1: firebox, damper, smoke chamber, crown, cap, flashing and masonry",
       "Written PDF documentation accepted by Ohio lenders and insurers",
-      "Every finding bundled into one report with our CSIA credentials, emailed to you",
+      "Every finding bundled into one report, emailed to you",
     ],
     process: [
       { title: "Level 1 review", desc: "We inspect every accessible interior and exterior area first — firebox, damper, smoke chamber, crown, cap and flashing." },
       { title: "Camera scan", desc: "A calibrated camera is fed down the entire flue to reach what a visual check can't see." },
       { title: "Defect review", desc: "Cracked or shifted tiles, gaps and blockages are photographed and flagged by severity." },
-      { title: "PDF report", desc: "Findings and our CSIA credentials are bundled into one lender-ready PDF and emailed to you." },
+      { title: "PDF report", desc: "Findings are bundled into one lender-ready PDF and emailed to you." },
     ],
     signs: [
       "You're buying or selling the home and need documentation for closing",
@@ -457,7 +457,7 @@ export const SERVICES: ServiceSpec[] = [
     faqs: [
       { q: "What's the difference between a Level 1 and a Level 2 inspection?", a: "A Level 1 is a visual check of every accessible part of the chimney. A Level 2 includes everything in a Level 1 and adds an internal camera scan of the entire flue. NFPA 211 requires a Level 2 after a chimney fire, before a home sale, or when you change appliances." },
       { q: "When do I need a Level 2 chimney inspection?", a: "Any time you're buying or selling the home, after a chimney fire (even a small one), or when you add or swap a wood stove, insert, or gas appliance — and whenever a lender or insurer asks for written documentation." },
-      { q: "Are your Level 2 inspection reports accepted by lenders?", a: "Yes. Our PDF report includes our CSIA credentials and is accepted by every Ohio lender we've worked with, along with insurers requesting documentation." },
+      { q: "Are your Level 2 inspection reports accepted by lenders?", a: "Yes. Our PDF report documents our findings and has been accepted by every Ohio lender we've worked with, along with insurers requesting documentation." },
       { q: "How much does a Level 2 chimney inspection cost?", a: "Our Level 2 inspection is $318 and includes the full Level 1 inspection, the internal camera scan, and the written PDF report." },
       { q: "Can you do a same-day Level 2 inspection for a closing?", a: "Often yes — closing dates move fast. Call us at (614) 683-5763 and we'll do our best to squeeze you in." },
     ],
@@ -470,7 +470,7 @@ export const SERVICES: ServiceSpec[] = [
       "Hidden flue defects — cracked tiles, gaps, or blockages — that a visual-only inspection can miss",
     ],
     benefits: [
-      "Documentation lenders and insurers accept, with our CSIA credentials on the report",
+      "Written inspection documentation for lenders and insurers",
       "Camera confirmation of what's really happening inside the flue, not just an educated guess",
       "A clear, severity-ranked list of any defects so you can prioritize repairs",
       "Often available same-day when a closing date is tight",

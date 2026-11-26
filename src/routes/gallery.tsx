@@ -111,7 +111,7 @@ function GalleryPage() {
           <span className="hidden h-8 w-px bg-primary-foreground/20 md:block" />
           <Stat label="Ohio cities served" value="3" />
           <span className="hidden h-8 w-px bg-primary-foreground/20 md:block" />
-          <Stat label="CSIA certified" value="Yes" />
+          <Stat label="Written reports" value="Yes" />
         </div>
       </PageHero>
 

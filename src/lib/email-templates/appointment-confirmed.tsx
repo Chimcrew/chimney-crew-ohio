@@ -37,7 +37,7 @@ const AppointmentConfirmedEmail = ({
 
         <Heading style={h1}>You're all set, {name.split(' ')[0]}.</Heading>
         <Text style={subtitle}>
-          Your appointment with Chimcrew - Chimney Sweep & Repair is officially confirmed. A CSIA-certified tech is on the schedule for your job.
+          Your appointment with Chimcrew - Chimney Sweep & Repair is officially confirmed. A technician is on the schedule for your job.
         </Text>
 
         <Section style={card}>
@@ -63,7 +63,7 @@ const AppointmentConfirmedEmail = ({
 
         <Hr style={hr} />
         <Text style={footer}>
-          Chimcrew - Chimney Sweep & Repair — CSIA-certified chimney sweeps serving Columbus, Cincinnati, Dayton & all of Central Ohio.
+          Chimcrew - Chimney Sweep & Repair — Professional chimney sweeps serving Columbus, Cincinnati, Dayton & all of Central Ohio.
         </Text>
       </Container>
     </Body>

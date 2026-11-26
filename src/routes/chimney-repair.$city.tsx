@@ -82,7 +82,7 @@ export const Route = createFileRoute("/chimney-repair/$city")({
 
 const TRUST = [
   { icon: HomeIcon, label: "Family Owned Since 1974" },
-  { icon: Award, label: "CSIA Certified" },
+  { icon: Award, label: "Professional service" },
   { icon: ShieldCheck, label: "Fully Insured" },
   { icon: CheckCircle2, label: "Written Warranty" },
   { icon: MapPin, label: "Local Ohio Crew" },
@@ -110,7 +110,7 @@ function CityPage() {
             </h1>
 
             <p className="mt-5 max-w-xl text-base font-medium text-primary-foreground/85 md:text-lg">
-              CSIA-certified, family-owned since 1974 · {city.drive} · Written warranty on every job.
+              Family-owned since 1974 · {city.drive} · Written warranty on every job.
             </p>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
@@ -134,7 +134,7 @@ function CityPage() {
                 <Star className="h-4 w-4 fill-flame text-flame" /> 5-Star Rated · Verified Reviews
               </span>
               <span className="font-mono text-[10px] uppercase tracking-[0.22em]">
-                CSIA Certified · Licensed &amp; Insured
+                Licensed &amp; Insured
               </span>
             </div>
           </div>

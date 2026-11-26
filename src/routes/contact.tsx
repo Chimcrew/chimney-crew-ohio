@@ -116,7 +116,7 @@ function ContactPage() {
                 Why homeowners call us
               </h3>
               <ul className="mt-3 space-y-2.5 text-sm text-primary/80">
-                <li className="flex items-start gap-2"><ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-flame" /> CSIA-certified, fully insured</li>
+                <li className="flex items-start gap-2"><ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-flame" /> Fully insured</li>
                 <li className="flex items-start gap-2"><CalendarCheck className="mt-0.5 h-4 w-4 shrink-0 text-flame" /> Flat-rate quotes in writing</li>
                 <li className="flex items-start gap-2"><Flame className="mt-0.5 h-4 w-4 shrink-0 text-flame" /> Free drone inspection w/ every quote</li>
               </ul>

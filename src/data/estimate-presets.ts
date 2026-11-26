@@ -32,7 +32,7 @@ export const ESTIMATE_PRESETS: EstimatePreset[] = [
   {
     name: "Chimney Sweep & Cleaning",
     description:
-      "Service Name / Description: Professional cleaning of the firebox, smoke chamber, smoke shelf, damper, and full flue. Using rotary brushes, rods, and HEPA vacuum equipment, we remove creosote, soot, and debris without leaving dust in your home. A clean chimney prevents chimney fires, restores proper draft, and is recommended annually by the CSIA for any wood-burning system. A written cleaning report is provided upon completion noting flue condition and any safety concerns observed during the service.",
+      "Service Name / Description: Professional cleaning of the firebox, smoke chamber, smoke shelf, damper, and full flue. Using rotary brushes, rods, and HEPA vacuum equipment, we remove creosote, soot, and debris without leaving dust in your home. A clean chimney prevents chimney fires, restores proper draft, and is recommended annually for any wood-burning system. A written cleaning report is provided upon completion noting flue condition and any safety concerns observed during the service.",
   },
   {
     name: "Level 2 Chimney Inspection",

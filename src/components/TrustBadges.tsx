@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 const ITEMS = [
   "Free Inspections",
-  "Certified Technicians",
+  "Professional Technicians",
   "Fully Insured",
   "Written Warranty",
 ];

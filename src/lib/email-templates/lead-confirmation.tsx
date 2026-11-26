@@ -39,7 +39,7 @@ const LeadConfirmationEmail = ({
             Your <strong>appointment confirmation email</strong> will arrive within the next <strong>10 minutes</strong>.
           </Text>
           <Text style={statusBody}>
-            It will include your scheduled day, time window, and the name of the CSIA-certified tech assigned to your job.
+            It will include your scheduled day, time window, and the name of the technician assigned to your job.
           </Text>
         </Section>
 
@@ -57,7 +57,7 @@ const LeadConfirmationEmail = ({
 
         <Hr style={hr} />
         <Text style={footer}>
-          Chimcrew - Chimney Sweep & Repair — CSIA-certified chimney sweeps serving Columbus, Cincinnati, Dayton & all of Central Ohio.
+          Chimcrew - Chimney Sweep & Repair — Professional chimney sweeps serving Columbus, Cincinnati, Dayton & all of Central Ohio.
         </Text>
       </Container>
     </Body>

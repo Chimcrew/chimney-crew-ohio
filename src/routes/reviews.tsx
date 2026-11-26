@@ -149,7 +149,7 @@ function ReviewsPage() {
               <ShieldCheck className="h-6 w-6 text-flame" />
               <div>
                 <p className="font-display text-sm uppercase tracking-wider">Licensed & Insured</p>
-                <p className="font-mono text-[10px] uppercase tracking-widest text-primary-foreground/65">Bonded · CSIA certified</p>
+                <p className="font-mono text-[10px] uppercase tracking-widest text-primary-foreground/65">Bonded</p>
               </div>
             </div>
           </div>

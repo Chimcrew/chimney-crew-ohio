@@ -94,7 +94,7 @@ function confirmationHtml(data: LeadFields) {
     </div>
     <h1 style="font-size:24px;font-weight:800;color:#0B0F19;margin:8px 28px 8px;line-height:1.25">You're all set, ${first}.</h1>
     <p style="font-size:15px;color:#3f4756;margin:0 28px 22px;line-height:1.55">
-      Your appointment with Chimcrew - Chimney Sweep & Repair is officially confirmed. A CSIA-certified tech is on the schedule for your job.
+      Your appointment with Chimcrew - Chimney Sweep & Repair is officially confirmed. A technician is on the schedule for your job.
     </p>
     <div style="background:#f7f7f5;border-radius:10px;padding:16px 18px;margin:0 28px 18px;border:1px solid #ececec">
       <p style="margin:0 0 10px;font-size:11px;font-weight:800;color:#0B0F19;text-transform:uppercase;letter-spacing:0.14em">Appointment details</p>
@@ -109,7 +109,7 @@ function confirmationHtml(data: LeadFields) {
     <p style="font-size:14px;color:#1a1a1a;margin:8px 28px 10px;text-align:center">Need to reschedule or add details?</p>
     <a href="tel:6146835763" style="background:#FACC15;color:#0B0F19;border-radius:10px;padding:14px 24px;font-size:15px;font-weight:800;text-decoration:none;display:block;text-align:center;margin:0 28px">Call ${PHONE}</a>
     <hr style="border:none;border-top:1px solid #ececec;margin:24px 28px" />
-    <p style="font-size:12px;color:#888;margin:0 28px 24px;line-height:1.5">Chimcrew - Chimney Sweep & Repair — CSIA-certified chimney sweeps serving Columbus, Cincinnati, Dayton &amp; all of Central Ohio.</p>
+    <p style="font-size:12px;color:#888;margin:0 28px 24px;line-height:1.5">Chimcrew - Chimney Sweep & Repair — Professional chimney sweeps serving Columbus, Cincinnati, Dayton &amp; all of Central Ohio.</p>
   </div>
 </body>
 </html>`;
